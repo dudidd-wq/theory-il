@@ -48,7 +48,10 @@ for l in L:
     miss = [s for s in srcs if s not in SRC and re.sub(r'\(.*$', '', s) not in SRC]
     ok(not miss, f'{l["id"]}: every rule/example/recap cites a known source {miss[:3]}')
 kinds = {v['kind'] for v in SRC.values()}
-ok(kinds <= {'TR', 'TO', 'LT', 'LTP', 'Q'}, f'sources only from law (TR/TO), sign table (LT/LTP) and the bank (Q): {sorted(kinds)}')
+ok(kinds <= {'TR', 'TO', 'LT', 'LTP', 'Q', 'OFF'}, f'sources only from law (TR/TO), sign table (LT/LTP), the bank (Q) and official RSA/MoT pages (OFF): {sorted(kinds)}')
+offd = lambda u: re.match(r'https://(www\.)?(gov\.il|mot\.gov\.il|rsa\.org\.il)/', u)
+ok(all(offd(v['url']) and v.get('sha256') and v.get('accessed') and v['ex'] for v in SRC.values() if v['kind'] == 'OFF'),
+   'official sources are gov.il / mot.gov.il / rsa.org.il pages, pinned (access date + sha256) and quoted')
 ok(all(('wikisource.org' in v['url'] and 'oldid=' in v['url']) for v in SRC.values() if v['kind'] in ('TR', 'TO')), 'law sources are pinned Wikisource revisions')
 ok(all('gov.il' in v['url'] for v in SRC.values() if v['kind'] in ('LT', 'LTP')), 'sign sources are the gov.il sign table')
 

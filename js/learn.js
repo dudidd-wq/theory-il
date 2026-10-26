@@ -28,7 +28,7 @@ export function ref(s) {
   if (!x) return h('span', { class: 'lawref', text: s });
   const label = x.label + s.slice(k.length);
   return h('details', { class: 'lawref' }, h('summary', {}, icon('book'), h('span', { text: label })),
-    h('div', { class: 'lawbox' }, h('p', { class: 'small muted', text: x.doc + (x.title ? ' – ' + x.title : '') + (x.rev ? ` (ויקיטקסט, גרסה ${x.rev})` : '') }),
+    h('div', { class: 'lawbox' }, h('p', { class: 'small muted', text: x.doc + (x.title ? ' – ' + x.title : '') + (x.rev ? ` (ויקיטקסט, גרסה ${x.rev})` : '') + (x.accessed ? ` (${t('ln.accessed', x.accessed)}${x.pub ? ', ' + t('ln.updated', x.pub) : ''})` : '') }),
       ...(x.ex || []).slice(0, 4).map(e => h('blockquote', { text: e })),
       ext(x.url, x.kind === 'Q' ? t('ln.bank') : t('ln.full'))));
 }
@@ -41,11 +41,12 @@ export function explain(id, c, cov, sg) {
   const lessonOf = lid => mine.get(lid) || null;
   const nums = sg?.q?.[id];
   if (nums?.length && nums.every(n => sg.e?.[n])) {
-    return { kind: 'sign', lines: nums.map(n => ({ n, t: sg.e[n] })), url: sg.src?.url, lesson: lessonOf('signs') };
+    return { kind: 'sign', lines: nums.map(n => ({ n, t: sg.e[n] })), url: sg.src?.url, lesson: lessonOf('signs'), note: L?.notes?.[id] || null };
   }
-  const e = cov?.q?.[id]; if (!e) return null;
+  const note = L?.notes?.[id] || null;   // the bank's answer differs from (or is narrower than) the current law text
+  const e = cov?.q?.[id]; if (!e) return note ? { kind: 'none', lesson: null, note } : null;
   const [stt, lids, units] = e;
-  if (stt === 'n') return { kind: 'none', lesson: null };   // nearest-by-words lessons are often unrelated: no link, just say so
+  if (stt === 'n') return { kind: 'none', lesson: null, note };   // nearest-by-words lessons are often unrelated: no link, just say so
   for (const u of units || []) {
     const m = /^([\w]+)#([rxbc])(\d+)$/.exec(u); if (!m) continue;
     const l = lessonOf(m[1]); if (!l) continue;
@@ -54,9 +55,10 @@ export function explain(id, c, cov, sg) {
       : m[2] === 'x' ? l.ex[i] && { t: l.ex[i].t, s: l.ex[i].s }
       : m[2] === 'c' ? l.recap[i] && { t: l.recap[i].f + ' ' + l.recap[i].b, s: l.recap[i].s }
       : l.body[i] && { t: l.body[i], s: null };
-    if (r) return { kind: stt === 'w' ? 'part' : 'rule', t: r.t, s: r.s, lesson: l };
+    // only explicit links / hand-judged matches ('f') are shown as the answer's reason; word-overlap matches ('a', 'w') as a related rule
+    if (r) return { kind: stt === 'f' ? 'rule' : 'part', t: r.t, s: r.s, lesson: l, note };
   }
-  return { kind: 'none', lesson: null };
+  return { kind: 'none', lesson: null, note };
 }
 /** link target for a lesson: locked lessons open in read-only "peek" mode */
 export function lessonHref(l, c) { const ls = lessonsFor(c); return '#/learn/' + l.id + (status(l, ls).unlocked ? '' : '/peek'); }
@@ -72,6 +74,9 @@ export function whyBox(x, ok, c) {
     kids.push(he(h('p', {}, h('b', { text: t(x.kind === 'rule' ? 'ln.why' : 'why.part') + ' ' }), x.t)));
     if (x.s) kids.push(h('p', { class: 'refs' }, ref(x.s)));
   } else kids.push(h('p', { class: 'small muted', text: t('why.none') }));
+  if (x.note) kids.push(he(h('div', { class: 'notice lawnote', role: 'note' }, icon('info'), h('div', {},
+    h('p', {}, h('b', { text: t('why.exam') + ' ' }), x.note.exam), h('p', {}, h('b', { text: t('why.law') + ' ' }), x.note.law),
+    x.note.s ? h('p', { class: 'refs' }, ref(x.note.s)) : null))));
   if (x.lesson) kids.push(h('p', { class: 'row tight' }, h('a', { href: lessonHref(x.lesson, c), class: ok ? 'btn small ghost' : 'btn small primary', 'data-learn': x.lesson.id },
     icon('book'), h('span', { text: t(ok ? 'why.related' : 'why.learn', x.lesson.title) }))));
   return h('div', { class: 'why' + (ok ? '' : ' bad') }, ...kids);

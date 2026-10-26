@@ -1,1540 +1,1813 @@
 {
-"note": "manual judgement of the fixed sample (tools/coverage/sample.py). v=full|partial|none, u=lesson units that carry the knowledge. Class-specific: a unit only counts for classes its lesson is shown to. | after: deltas re-judged 2026-10-26 against v1.2.0 lessons (signal, duty, sober, accident, terms, cargo, bus additions); unlisted ids keep the before label; sign questions mapped in data/signs.json count as full.",
-"before": {
-"18": {
-"v": "none",
-"u": []
-},
-"22": {
-"v": "partial",
-"u": [
-"safety#r0"
-]
-},
-"25": {
-"v": "none",
-"u": []
-},
-"40": {
-"v": "none",
-"u": []
-},
-"73": {
-"v": "none",
-"u": []
-},
-"76": {
-"v": "full",
-"u": [
-"safety#r6"
-]
-},
-"100": {
-"v": "partial",
-"u": [
-"safety#r0"
-]
-},
-"109": {
-"v": "none",
-"u": []
-},
-"114": {
-"v": "none",
-"u": []
-},
-"115": {
-"v": "none",
-"u": []
-},
-"116": {
-"v": "none",
-"u": []
-},
-"118": {
-"v": "none",
-"u": []
-},
-"125": {
-"v": "full",
-"u": [
-"overtake#r3",
-"bus#r6"
-]
-},
-"142": {
-"v": "partial",
-"u": [
-"speed#b2"
-]
-},
-"144": {
-"v": "partial",
-"u": [
-"speed#b2"
-]
-},
-"160": {
-"v": "full",
-"u": [
-"rail#r0"
-]
-},
-"161": {
-"v": "full",
-"u": [
-"rail#x1"
-]
-},
-"164": {
-"v": "none",
-"u": []
-},
-"166": {
-"v": "none",
-"u": []
-},
-"167": {
-"v": "none",
-"u": []
-},
-"171": {
-"v": "none",
-"u": []
-},
-"174": {
-"v": "full",
-"u": [
-"priority#r3"
-]
-},
-"184": {
-"v": "partial",
-"u": [
-"priority#r5",
-"signs#x1"
-]
-},
-"188": {
-"v": "none",
-"u": []
-},
-"196": {
-"v": "none",
-"u": []
-},
-"201": {
-"v": "full",
-"u": [
-"parking#r1"
-]
-},
-"207": {
-"v": "full",
-"u": [
-"parking#x0"
-]
-},
-"226": {
-"v": "none",
-"u": []
-},
-"229": {
-"v": "none",
-"u": []
-},
-"230": {
-"v": "full",
-"u": [
-"safety#c0"
-]
-},
-"233": {
-"v": "full",
-"u": [
-"safety#r3"
-]
-},
-"262": {
-"v": "none",
-"u": []
-},
-"265": {
-"v": "full",
-"u": [
-"peds#r5"
-]
-},
-"270": {
-"v": "none",
-"u": []
-},
-"273": {
-"v": "none",
-"u": []
-},
-"276": {
-"v": "none",
-"u": []
-},
-"290": {
-"v": "none",
-"u": []
-},
-"299": {
-"v": "none",
-"u": []
-},
-"301": {
-"v": "none",
-"u": []
-},
-"304": {
-"v": "none",
-"u": []
-},
-"313": {
-"v": "none",
-"u": []
-},
-"319": {
-"v": "none",
-"u": []
-},
-"324": {
-"v": "none",
-"u": []
-},
-"326": {
-"v": "partial",
-"u": [
-"heavy#b2"
-]
-},
-"337": {
-"v": "none",
-"u": []
-},
-"355": {
-"v": "full",
-"u": [
-"signs#x1"
-]
-},
-"362": {
-"v": "none",
-"u": []
-},
-"379": {
-"v": "none",
-"u": []
-},
-"394": {
-"v": "full",
-"u": [
-"signs#g394"
-]
-},
-"395": {
-"v": "none",
-"u": []
-},
-"398": {
-"v": "none",
-"u": []
-},
-"399": {
-"v": "full",
-"u": [
-"safety#r6"
-]
-},
-"400": {
-"v": "none",
-"u": []
-},
-"406": {
-"v": "none",
-"u": []
-},
-"419": {
-"v": "none",
-"u": []
-},
-"424": {
-"v": "full",
-"u": [
-"priority#g424"
-]
-},
-"438": {
-"v": "none",
-"u": []
-},
-"443": {
-"v": "partial",
-"u": [
-"priority#r4"
-]
-},
-"446": {
-"v": "none",
-"u": []
-},
-"448": {
-"v": "none",
-"u": []
-},
-"449": {
-"v": "full",
-"u": [
-"rail#x0"
-]
-},
-"458": {
-"v": "partial",
-"u": [
-"priority#g460"
-]
-},
-"459": {
-"v": "full",
-"u": [
-"rail#g459"
-]
-},
-"467": {
-"v": "none",
-"u": []
-},
-"492": {
-"v": "none",
-"u": []
-},
-"518": {
-"v": "full",
-"u": [
-"signs#r9"
-]
-},
-"520": {
-"v": "full",
-"u": [
-"peds#g520"
-]
-},
-"537": {
-"v": "none",
-"u": []
-},
-"547": {
-"v": "none",
-"u": []
-},
-"556": {
-"v": "full",
-"u": [
-"signs#g556"
-]
-},
-"562": {
-"v": "none",
-"u": []
-},
-"569": {
-"v": "partial",
-"u": [
-"parking#g658"
-]
-},
-"572": {
-"v": "none",
-"u": []
-},
-"585": {
-"v": "none",
-"u": []
-},
-"587": {
-"v": "partial",
-"u": [
-"signs#g556"
-]
-},
-"604": {
-"v": "none",
-"u": []
-},
-"608": {
-"v": "none",
-"u": []
-},
-"612": {
-"v": "none",
-"u": []
-},
-"614": {
-"v": "none",
-"u": []
-},
-"617": {
-"v": "none",
-"u": []
-},
-"619": {
-"v": "none",
-"u": []
-},
-"620": {
-"v": "none",
-"u": []
-},
-"629": {
-"v": "partial",
-"u": [
-"speed#x1"
-]
-},
-"631": {
-"v": "partial",
-"u": [
-"signs#g632",
-"speed#b1"
-]
-},
-"632": {
-"v": "full",
-"u": [
-"signs#g632"
-]
-},
-"636": {
-"v": "full",
-"u": [
-"overtake#x0"
-]
-},
-"645": {
-"v": "none",
-"u": []
-},
-"648": {
-"v": "none",
-"u": []
-},
-"653": {
-"v": "full",
-"u": [
-"newdrv#x0"
-]
-},
-"660": {
-"v": "full",
-"u": [
-"distance#r5"
-]
-},
-"662": {
-"v": "none",
-"u": []
-},
-"678": {
-"v": "full",
-"u": [
-"overtake#g679"
-]
-},
-"684": {
-"v": "none",
-"u": []
-},
-"694": {
-"v": "full",
-"u": [
-"heavy#r6"
-]
-},
-"697": {
-"v": "full",
-"u": [
-"priority#r0"
-]
-},
-"701": {
-"v": "full",
-"u": [
-"priority#r0"
-]
-},
-"705": {
-"v": "full",
-"u": [
-"priority#r0"
-]
-},
-"707": {
-"v": "full",
-"u": [
-"priority#r1"
-]
-},
-"724": {
-"v": "full",
-"u": [
-"priority#r0"
-]
-},
-"729": {
-"v": "full",
-"u": [
-"signs#g785"
-]
-},
-"731": {
-"v": "none",
-"u": []
-},
-"734": {
-"v": "none",
-"u": []
-},
-"736": {
-"v": "none",
-"u": []
-},
-"746": {
-"v": "none",
-"u": []
-},
-"748": {
-"v": "partial",
-"u": [
-"overtake#r0",
-"overtake#r6"
-]
-},
-"752": {
-"v": "partial",
-"u": [
-"overtake#r0"
-]
-},
-"757": {
-"v": "none",
-"u": []
-},
-"762": {
-"v": "partial",
-"u": [
-"blind#b1"
-]
-},
-"765": {
-"v": "none",
-"u": []
-},
-"767": {
-"v": "none",
-"u": []
-},
-"786": {
-"v": "none",
-"u": []
-},
-"789": {
-"v": "none",
-"u": []
-},
-"796": {
-"v": "none",
-"u": []
-},
-"803": {
-"v": "partial",
-"u": [
-"speed#b0"
-]
-},
-"805": {
-"v": "partial",
-"u": [
-"distance#b1"
-]
-},
-"808": {
-"v": "partial",
-"u": [
-"distance#b0"
-]
-},
-"811": {
-"v": "full",
-"u": [
-"distance#r2"
-]
-},
-"823": {
-"v": "full",
-"u": [
-"overtake#b1"
-]
-},
-"831": {
-"v": "none",
-"u": []
-},
-"836": {
-"v": "none",
-"u": []
-},
-"838": {
-"v": "none",
-"u": []
-},
-"840": {
-"v": "none",
-"u": []
-},
-"845": {
-"v": "none",
-"u": []
-},
-"848": {
-"v": "none",
-"u": []
-},
-"850": {
-"v": "partial",
-"u": [
-"speed#r6"
-]
-},
-"859": {
-"v": "none",
-"u": []
-},
-"868": {
-"v": "none",
-"u": []
-},
-"869": {
-"v": "none",
-"u": []
-},
-"873": {
-"v": "none",
-"u": []
-},
-"882": {
-"v": "full",
-"u": [
-"overtake#m0"
-]
-},
-"887": {
-"v": "partial",
-"u": [
-"overtake#r6"
-]
-},
-"895": {
-"v": "none",
-"u": []
-},
-"912": {
-"v": "partial",
-"u": [
-"rail#g441"
-]
-},
-"919": {
-"v": "none",
-"u": []
-},
-"924": {
-"v": "full",
-"u": [
-"peds#r0"
-]
-},
-"926": {
-"v": "full",
-"u": [
-"peds#r0"
-]
-},
-"927": {
-"v": "none",
-"u": []
-},
-"929": {
-"v": "partial",
-"u": [
-"overtake#r0"
-]
-},
-"937": {
-"v": "full",
-"u": [
-"speed#r0"
-]
-},
-"939": {
-"v": "partial",
-"u": [
-"priority#r0",
-"speed#r0"
-]
-},
-"945": {
-"v": "full",
-"u": [
-"speed#g410"
-]
-},
-"948": {
-"v": "none",
-"u": []
-},
-"960": {
-"v": "none",
-"u": []
-},
-"964": {
-"v": "partial",
-"u": [
-"signs#b0"
-]
-},
-"977": {
-"v": "none",
-"u": []
-},
-"981": {
-"v": "partial",
-"u": [
-"overtake#r0"
-]
-},
-"982": {
-"v": "partial",
-"u": [
-"overtake#r0"
-]
-},
-"988": {
-"v": "partial",
-"u": [
-"tractor#r8"
-]
-},
-"998": {
-"v": "none",
-"u": []
-},
-"1007": {
-"v": "none",
-"u": []
-},
-"1012": {
-"v": "none",
-"u": []
-},
-"1019": {
-"v": "none",
-"u": []
-},
-"1023": {
-"v": "none",
-"u": []
-},
-"1031": {
-"v": "none",
-"u": []
-},
-"1039": {
-"v": "none",
-"u": []
-},
-"1059": {
-"v": "none",
-"u": []
-},
-"1061": {
-"v": "none",
-"u": []
-},
-"1062": {
-"v": "none",
-"u": []
-},
-"1077": {
-"v": "none",
-"u": []
-},
-"1079": {
-"v": "none",
-"u": []
-},
-"1081": {
-"v": "none",
-"u": []
-},
-"1085": {
-"v": "none",
-"u": []
-},
-"1096": {
-"v": "partial",
-"u": [
-"tractor#r6"
-]
-},
-"1098": {
-"v": "none",
-"u": []
-},
-"1103": {
-"v": "none",
-"u": []
-},
-"1107": {
-"v": "none",
-"u": []
-},
-"1112": {
-"v": "full",
-"u": [
-"tractor#r8"
-]
-},
-"1118": {
-"v": "none",
-"u": []
-},
-"1127": {
-"v": "none",
-"u": []
-},
-"1133": {
-"v": "none",
-"u": []
-},
-"1144": {
-"v": "none",
-"u": []
-},
-"1157": {
-"v": "none",
-"u": []
-},
-"1158": {
-"v": "none",
-"u": []
-},
-"1167": {
-"v": "none",
-"u": []
-},
-"1168": {
-"v": "none",
-"u": []
-},
-"1180": {
-"v": "none",
-"u": []
-},
-"1189": {
-"v": "none",
-"u": []
-},
-"1192": {
-"v": "none",
-"u": []
-},
-"1196": {
-"v": "none",
-"u": []
-},
-"1199": {
-"v": "full",
-"u": [
-"bus#b0"
-]
-},
-"1204": {
-"v": "none",
-"u": []
-},
-"1212": {
-"v": "none",
-"u": []
-},
-"1214": {
-"v": "none",
-"u": []
-},
-"1218": {
-"v": "none",
-"u": []
-},
-"1239": {
-"v": "none",
-"u": []
-},
-"1241": {
-"v": "none",
-"u": []
-},
-"1250": {
-"v": "none",
-"u": []
-},
-"1271": {
-"v": "none",
-"u": []
-},
-"1276": {
-"v": "partial",
-"u": [
-"heavy#r6"
-]
-},
-"1278": {
-"v": "none",
-"u": []
-},
-"1288": {
-"v": "none",
-"u": []
-},
-"1290": {
-"v": "none",
-"u": []
-},
-"1312": {
-"v": "none",
-"u": []
-},
-"1323": {
-"v": "none",
-"u": []
-},
-"1326": {
-"v": "none",
-"u": []
-},
-"1327": {
-"v": "partial",
-"u": [
-"heavy#b2"
-]
-},
-"1331": {
-"v": "none",
-"u": []
-},
-"1332": {
-"v": "partial",
-"u": [
-"distance#b0"
-]
-},
-"1354": {
-"v": "none",
-"u": []
-},
-"1357": {
-"v": "none",
-"u": []
-},
-"1371": {
-"v": "none",
-"u": []
-},
-"1375": {
-"v": "none",
-"u": []
-},
-"1376": {
-"v": "none",
-"u": []
-},
-"1379": {
-"v": "none",
-"u": []
-},
-"1381": {
-"v": "none",
-"u": []
-},
-"1387": {
-"v": "partial",
-"u": [
-"rail#g1387"
-]
-},
-"1390": {
-"v": "none",
-"u": []
-},
-"1396": {
-"v": "none",
-"u": []
-},
-"1398": {
-"v": "none",
-"u": []
-},
-"1404": {
-"v": "none",
-"u": []
-},
-"1413": {
-"v": "none",
-"u": []
-},
-"1415": {
-"v": "none",
-"u": []
-},
-"1416": {
-"v": "none",
-"u": []
-},
-"1417": {
-"v": "none",
-"u": []
-},
-"1419": {
-"v": "none",
-"u": []
-},
-"1426": {
-"v": "partial",
-"u": [
-"bus#r4"
-]
-},
-"1439": {
-"v": "full",
-"u": [
-"speed#r2"
-]
-},
-"1446": {
-"v": "none",
-"u": []
-},
-"1447": {
-"v": "none",
-"u": []
-},
-"1451": {
-"v": "none",
-"u": []
-},
-"1457": {
-"v": "none",
-"u": []
-},
-"1461": {
-"v": "none",
-"u": []
-},
-"1469": {
-"v": "none",
-"u": []
-},
-"1473": {
-"v": "full",
-"u": [
-"speed#r2"
-]
-},
-"1476": {
-"v": "none",
-"u": []
-},
-"1481": {
-"v": "none",
-"u": []
-},
-"1482": {
-"v": "none",
-"u": []
-},
-"1490": {
-"v": "partial",
-"u": [
-"distance#b0"
-]
-},
-"1507": {
-"v": "partial",
-"u": [
-"peds#g1507"
-]
-},
-"1527": {
-"v": "none",
-"u": []
-},
-"1529": {
-"v": "full",
-"u": [
-"speed#r6"
-]
-},
-"1539": {
-"v": "none",
-"u": []
-},
-"1542": {
-"v": "full",
-"u": [
-"lights#b2"
-]
-},
-"1548": {
-"v": "full",
-"u": [
-"priority#r2"
-]
-},
-"1550": {
-"v": "none",
-"u": []
-},
-"1552": {
-"v": "none",
-"u": []
-},
-"1556": {
-"v": "none",
-"u": []
-},
-"1571": {
-"v": "none",
-"u": []
-},
-"1577": {
-"v": "full",
-"u": [
-"lights#r1"
-]
-},
-"1581": {
-"v": "full",
-"u": [
-"moto#r0"
-]
-},
-"1601": {
-"v": "partial",
-"u": [
-"distance#b0"
-]
-},
-"1612": {
-"v": "none",
-"u": []
-},
-"1628": {
-"v": "none",
-"u": []
-},
-"1629": {
-"v": "none",
-"u": []
-},
-"1634": {
-"v": "partial",
-"u": [
-"distance#r0"
-]
-},
-"1637": {
-"v": "none",
-"u": []
-},
-"1641": {
-"v": "none",
-"u": []
-},
-"1642": {
-"v": "none",
-"u": []
-},
-"1652": {
-"v": "none",
-"u": []
-},
-"1667": {
-"v": "none",
-"u": []
-},
-"1680": {
-"v": "none",
-"u": []
-},
-"1685": {
-"v": "none",
-"u": []
-},
-"1686": {
-"v": "none",
-"u": []
-},
-"1691": {
-"v": "none",
-"u": []
-},
-"1701": {
-"v": "none",
-"u": []
-},
-"1707": {
-"v": "full",
-"u": [
-"distance#r1"
-]
-},
-"1708": {
-"v": "none",
-"u": []
-},
-"1712": {
-"v": "none",
-"u": []
-},
-"1723": {
-"v": "none",
-"u": []
-},
-"1727": {
-"v": "none",
-"u": []
-},
-"1731": {
-"v": "none",
-"u": []
-},
-"1739": {
-"v": "full",
-"u": [
-"overtake#r3"
-]
-},
-"1747": {
-"v": "full",
-"u": [
-"overtake#r5"
-]
-},
-"1748": {
-"v": "full",
-"u": [
-"parking#r3"
-]
-},
-"1758": {
-"v": "partial",
-"u": [
-"speed#r7"
-]
-},
-"1762": {
-"v": "full",
-"u": [
-"rail#r6"
-]
-},
-"1768": {
-"v": "none",
-"u": []
-},
-"1770": {
-"v": "none",
-"u": []
-},
-"1801": {
-"v": "none",
-"u": []
-},
-"1802": {
-"v": "none",
-"u": []
-}
-},
-"after": {
-"18": {
-"v": "full",
-"u": [
-"terms#r0"
-]
-},
-"25": {
-"v": "full",
-"u": [
-"terms#r2"
-]
-},
-"40": {
-"v": "partial",
-"u": [
-"terms#r6"
-],
-"why": "bank answer uses the old definition (up to 8 passengers); TR:1 now defines it by class M1"
-},
-"73": {
-"v": "full",
-"u": [
-"duty#r5"
-]
-},
-"118": {
-"v": "full",
-"u": [
-"signal#r10"
-]
-},
-"164": {
-"v": "full",
-"u": [
-"signal#r0"
-]
-},
-"166": {
-"v": "full",
-"u": [
-"signal#r0"
-]
-},
-"167": {
-"v": "full",
-"u": [
-"signal#r1"
-]
-},
-"171": {
-"v": "full",
-"u": [
-"signal#r8"
-]
-},
-"188": {
-"v": "full",
-"u": [
-"signal#r2",
-"signal#r0"
-]
-},
-"196": {
-"v": "full",
-"u": [
-"duty#r13"
-]
-},
-"226": {
-"v": "full",
-"u": [
-"duty#r10"
-]
-},
-"229": {
-"v": "full",
-"u": [
-"duty#r12"
-]
-},
-"276": {
-"v": "full",
-"u": [
-"accident#r2"
-]
-},
-"299": {
-"v": "partial",
-"u": [
-"sober#r5"
-],
-"why": "refusal = deemed drunk is not taught"
-},
-"304": {
-"v": "full",
-"u": [
-"duty#r6"
-]
-},
-"379": {
-"v": "full",
-"u": [
-"duty#r17"
-]
-},
-"731": {
-"v": "partial",
-"u": [
-"signal#r2"
-]
-},
-"734": {
-"v": "full",
-"u": [
-"duty#r15"
-]
-},
-"736": {
-"v": "full",
-"u": [
-"duty#r3"
-]
-},
-"757": {
-"v": "full",
-"u": [
-"cargo#r8"
-]
-},
-"796": {
-"v": "partial",
-"u": [
-"signal#r11"
-]
-},
-"831": {
-"v": "partial",
-"u": [
-"signal#r0"
-]
-},
-"836": {
-"v": "full",
-"u": [
-"signal#r2"
-]
-},
-"927": {
-"v": "full",
-"u": [
-"signal#r8"
-]
-},
-"1144": {
-"v": "full",
-"u": [
-"bus#r7"
-]
-},
-"1189": {
-"v": "full",
-"u": [
-"bus#r9",
-"duty#r8"
-]
-},
-"1218": {
-"v": "full",
-"u": [
-"duty#r13"
-]
-},
-"1241": {
-"v": "partial",
-"u": [
-"bus#r7"
-]
-},
-"1312": {
-"v": "full",
-"u": [
-"cargo#r5"
-]
-},
-"1323": {
-"v": "full",
-"u": [
-"cargo#r5"
-]
-},
-"1379": {
-"v": "full",
-"u": [
-"terms#r1"
-]
-},
-"1381": {
-"v": "full",
-"u": [
-"duty#r14"
-]
-},
-"1398": {
-"v": "partial",
-"u": [
-"duty#r13"
-]
-},
-"1415": {
-"v": "partial",
-"u": [
-"cargo#r7"
-]
-},
-"1416": {
-"v": "partial",
-"u": [
-"cargo#r7"
-]
-},
-"1446": {
-"v": "full",
-"u": [
-"terms#r4"
-]
-},
-"1527": {
-"v": "full",
-"u": [
-"cargo#r1"
-]
-},
-"1539": {
-"v": "partial",
-"u": [
-"cargo#r6"
-]
-},
-"1550": {
-"v": "partial",
-"u": [
-"sober#r1"
-]
-},
-"1552": {
-"v": "full",
-"u": [
-"sober#r0"
-]
-},
-"1571": {
-"v": "full",
-"u": [
-"terms#r7"
-]
-},
-"1641": {
-"v": "full",
-"u": [
-"duty#r7"
-]
-},
-"1768": {
-"v": "full",
-"u": [
-"duty#r0"
-]
-}
-}
+ "note": "manual judgement of the fixed sample (tools/coverage/sample.py). v=full|partial|none, u=lesson units that carry the knowledge. Class-specific: a unit only counts for classes its lesson is shown to. | after: deltas re-judged 2026-10-26 against v1.2.0 lessons (signal, duty, sober, accident, terms, cargo, bus additions); unlisted ids keep the before label; sign questions mapped in data/signs.json count as full.",
+ "before": {
+  "18": {
+   "v": "none",
+   "u": []
+  },
+  "22": {
+   "v": "partial",
+   "u": [
+    "safety#r0"
+   ]
+  },
+  "25": {
+   "v": "none",
+   "u": []
+  },
+  "40": {
+   "v": "none",
+   "u": []
+  },
+  "73": {
+   "v": "none",
+   "u": []
+  },
+  "76": {
+   "v": "full",
+   "u": [
+    "safety#r6"
+   ]
+  },
+  "100": {
+   "v": "partial",
+   "u": [
+    "safety#r0"
+   ]
+  },
+  "109": {
+   "v": "none",
+   "u": []
+  },
+  "114": {
+   "v": "none",
+   "u": []
+  },
+  "115": {
+   "v": "none",
+   "u": []
+  },
+  "116": {
+   "v": "none",
+   "u": []
+  },
+  "118": {
+   "v": "none",
+   "u": []
+  },
+  "125": {
+   "v": "full",
+   "u": [
+    "overtake#r3",
+    "bus#r6"
+   ]
+  },
+  "142": {
+   "v": "partial",
+   "u": [
+    "speed#b2"
+   ]
+  },
+  "144": {
+   "v": "partial",
+   "u": [
+    "speed#b2"
+   ]
+  },
+  "160": {
+   "v": "full",
+   "u": [
+    "rail#r0"
+   ]
+  },
+  "161": {
+   "v": "full",
+   "u": [
+    "rail#x1"
+   ]
+  },
+  "164": {
+   "v": "none",
+   "u": []
+  },
+  "166": {
+   "v": "none",
+   "u": []
+  },
+  "167": {
+   "v": "none",
+   "u": []
+  },
+  "171": {
+   "v": "none",
+   "u": []
+  },
+  "174": {
+   "v": "full",
+   "u": [
+    "priority#r3"
+   ]
+  },
+  "184": {
+   "v": "partial",
+   "u": [
+    "priority#r5",
+    "signs#x1"
+   ]
+  },
+  "188": {
+   "v": "none",
+   "u": []
+  },
+  "196": {
+   "v": "none",
+   "u": []
+  },
+  "201": {
+   "v": "full",
+   "u": [
+    "parking#r1"
+   ]
+  },
+  "207": {
+   "v": "full",
+   "u": [
+    "parking#x0"
+   ]
+  },
+  "226": {
+   "v": "none",
+   "u": []
+  },
+  "229": {
+   "v": "none",
+   "u": []
+  },
+  "230": {
+   "v": "full",
+   "u": [
+    "safety#c0"
+   ]
+  },
+  "233": {
+   "v": "full",
+   "u": [
+    "safety#r3"
+   ]
+  },
+  "262": {
+   "v": "none",
+   "u": []
+  },
+  "265": {
+   "v": "full",
+   "u": [
+    "peds#r5"
+   ]
+  },
+  "270": {
+   "v": "none",
+   "u": []
+  },
+  "273": {
+   "v": "none",
+   "u": []
+  },
+  "276": {
+   "v": "none",
+   "u": []
+  },
+  "290": {
+   "v": "none",
+   "u": []
+  },
+  "299": {
+   "v": "none",
+   "u": []
+  },
+  "301": {
+   "v": "none",
+   "u": []
+  },
+  "304": {
+   "v": "none",
+   "u": []
+  },
+  "313": {
+   "v": "none",
+   "u": []
+  },
+  "319": {
+   "v": "none",
+   "u": []
+  },
+  "324": {
+   "v": "none",
+   "u": []
+  },
+  "326": {
+   "v": "partial",
+   "u": [
+    "heavy#b2"
+   ]
+  },
+  "337": {
+   "v": "none",
+   "u": []
+  },
+  "355": {
+   "v": "full",
+   "u": [
+    "signs#x1"
+   ]
+  },
+  "362": {
+   "v": "none",
+   "u": []
+  },
+  "379": {
+   "v": "none",
+   "u": []
+  },
+  "394": {
+   "v": "full",
+   "u": [
+    "signs#g394"
+   ]
+  },
+  "395": {
+   "v": "none",
+   "u": []
+  },
+  "398": {
+   "v": "none",
+   "u": []
+  },
+  "399": {
+   "v": "full",
+   "u": [
+    "safety#r6"
+   ]
+  },
+  "400": {
+   "v": "none",
+   "u": []
+  },
+  "406": {
+   "v": "none",
+   "u": []
+  },
+  "419": {
+   "v": "none",
+   "u": []
+  },
+  "424": {
+   "v": "full",
+   "u": [
+    "priority#g424"
+   ]
+  },
+  "438": {
+   "v": "none",
+   "u": []
+  },
+  "443": {
+   "v": "partial",
+   "u": [
+    "priority#r4"
+   ]
+  },
+  "446": {
+   "v": "none",
+   "u": []
+  },
+  "448": {
+   "v": "none",
+   "u": []
+  },
+  "449": {
+   "v": "full",
+   "u": [
+    "rail#x0"
+   ]
+  },
+  "458": {
+   "v": "partial",
+   "u": [
+    "priority#g460"
+   ]
+  },
+  "459": {
+   "v": "full",
+   "u": [
+    "rail#g459"
+   ]
+  },
+  "467": {
+   "v": "none",
+   "u": []
+  },
+  "492": {
+   "v": "none",
+   "u": []
+  },
+  "518": {
+   "v": "full",
+   "u": [
+    "signs#r9"
+   ]
+  },
+  "520": {
+   "v": "full",
+   "u": [
+    "peds#g520"
+   ]
+  },
+  "537": {
+   "v": "none",
+   "u": []
+  },
+  "547": {
+   "v": "none",
+   "u": []
+  },
+  "556": {
+   "v": "full",
+   "u": [
+    "signs#g556"
+   ]
+  },
+  "562": {
+   "v": "none",
+   "u": []
+  },
+  "569": {
+   "v": "partial",
+   "u": [
+    "parking#g658"
+   ]
+  },
+  "572": {
+   "v": "none",
+   "u": []
+  },
+  "585": {
+   "v": "none",
+   "u": []
+  },
+  "587": {
+   "v": "partial",
+   "u": [
+    "signs#g556"
+   ]
+  },
+  "604": {
+   "v": "none",
+   "u": []
+  },
+  "608": {
+   "v": "none",
+   "u": []
+  },
+  "612": {
+   "v": "none",
+   "u": []
+  },
+  "614": {
+   "v": "none",
+   "u": []
+  },
+  "617": {
+   "v": "none",
+   "u": []
+  },
+  "619": {
+   "v": "none",
+   "u": []
+  },
+  "620": {
+   "v": "none",
+   "u": []
+  },
+  "629": {
+   "v": "partial",
+   "u": [
+    "speed#x1"
+   ]
+  },
+  "631": {
+   "v": "partial",
+   "u": [
+    "signs#g632",
+    "speed#b1"
+   ]
+  },
+  "632": {
+   "v": "full",
+   "u": [
+    "signs#g632"
+   ]
+  },
+  "636": {
+   "v": "full",
+   "u": [
+    "overtake#x0"
+   ]
+  },
+  "645": {
+   "v": "none",
+   "u": []
+  },
+  "648": {
+   "v": "none",
+   "u": []
+  },
+  "653": {
+   "v": "full",
+   "u": [
+    "newdrv#x0"
+   ]
+  },
+  "660": {
+   "v": "full",
+   "u": [
+    "distance#r5"
+   ]
+  },
+  "662": {
+   "v": "none",
+   "u": []
+  },
+  "678": {
+   "v": "full",
+   "u": [
+    "overtake#g679"
+   ]
+  },
+  "684": {
+   "v": "none",
+   "u": []
+  },
+  "694": {
+   "v": "full",
+   "u": [
+    "heavy#r6"
+   ]
+  },
+  "697": {
+   "v": "full",
+   "u": [
+    "priority#r0"
+   ]
+  },
+  "701": {
+   "v": "full",
+   "u": [
+    "priority#r0"
+   ]
+  },
+  "705": {
+   "v": "full",
+   "u": [
+    "priority#r0"
+   ]
+  },
+  "707": {
+   "v": "full",
+   "u": [
+    "priority#r1"
+   ]
+  },
+  "724": {
+   "v": "full",
+   "u": [
+    "priority#r0"
+   ]
+  },
+  "729": {
+   "v": "full",
+   "u": [
+    "signs#g785"
+   ]
+  },
+  "731": {
+   "v": "none",
+   "u": []
+  },
+  "734": {
+   "v": "none",
+   "u": []
+  },
+  "736": {
+   "v": "none",
+   "u": []
+  },
+  "746": {
+   "v": "none",
+   "u": []
+  },
+  "748": {
+   "v": "partial",
+   "u": [
+    "overtake#r0",
+    "overtake#r6"
+   ]
+  },
+  "752": {
+   "v": "partial",
+   "u": [
+    "overtake#r0"
+   ]
+  },
+  "757": {
+   "v": "none",
+   "u": []
+  },
+  "762": {
+   "v": "partial",
+   "u": [
+    "blind#b1"
+   ]
+  },
+  "765": {
+   "v": "none",
+   "u": []
+  },
+  "767": {
+   "v": "none",
+   "u": []
+  },
+  "786": {
+   "v": "none",
+   "u": []
+  },
+  "789": {
+   "v": "none",
+   "u": []
+  },
+  "796": {
+   "v": "none",
+   "u": []
+  },
+  "803": {
+   "v": "partial",
+   "u": [
+    "speed#b0"
+   ]
+  },
+  "805": {
+   "v": "partial",
+   "u": [
+    "distance#b1"
+   ]
+  },
+  "808": {
+   "v": "partial",
+   "u": [
+    "distance#b0"
+   ]
+  },
+  "811": {
+   "v": "full",
+   "u": [
+    "distance#r2"
+   ]
+  },
+  "823": {
+   "v": "full",
+   "u": [
+    "overtake#b1"
+   ]
+  },
+  "831": {
+   "v": "none",
+   "u": []
+  },
+  "836": {
+   "v": "none",
+   "u": []
+  },
+  "838": {
+   "v": "none",
+   "u": []
+  },
+  "840": {
+   "v": "none",
+   "u": []
+  },
+  "845": {
+   "v": "none",
+   "u": []
+  },
+  "848": {
+   "v": "none",
+   "u": []
+  },
+  "850": {
+   "v": "partial",
+   "u": [
+    "speed#r6"
+   ]
+  },
+  "859": {
+   "v": "none",
+   "u": []
+  },
+  "868": {
+   "v": "none",
+   "u": []
+  },
+  "869": {
+   "v": "none",
+   "u": []
+  },
+  "873": {
+   "v": "none",
+   "u": []
+  },
+  "882": {
+   "v": "full",
+   "u": [
+    "overtake#m0"
+   ]
+  },
+  "887": {
+   "v": "partial",
+   "u": [
+    "overtake#r6"
+   ]
+  },
+  "895": {
+   "v": "none",
+   "u": []
+  },
+  "912": {
+   "v": "partial",
+   "u": [
+    "rail#g441"
+   ]
+  },
+  "919": {
+   "v": "none",
+   "u": []
+  },
+  "924": {
+   "v": "full",
+   "u": [
+    "peds#r0"
+   ]
+  },
+  "926": {
+   "v": "full",
+   "u": [
+    "peds#r0"
+   ]
+  },
+  "927": {
+   "v": "none",
+   "u": []
+  },
+  "929": {
+   "v": "partial",
+   "u": [
+    "overtake#r0"
+   ]
+  },
+  "937": {
+   "v": "full",
+   "u": [
+    "speed#r0"
+   ]
+  },
+  "939": {
+   "v": "partial",
+   "u": [
+    "priority#r0",
+    "speed#r0"
+   ]
+  },
+  "945": {
+   "v": "full",
+   "u": [
+    "speed#g410"
+   ]
+  },
+  "948": {
+   "v": "none",
+   "u": []
+  },
+  "960": {
+   "v": "none",
+   "u": []
+  },
+  "964": {
+   "v": "partial",
+   "u": [
+    "signs#b0"
+   ]
+  },
+  "977": {
+   "v": "none",
+   "u": []
+  },
+  "981": {
+   "v": "partial",
+   "u": [
+    "overtake#r0"
+   ]
+  },
+  "982": {
+   "v": "partial",
+   "u": [
+    "overtake#r0"
+   ]
+  },
+  "988": {
+   "v": "partial",
+   "u": [
+    "tractor#r8"
+   ]
+  },
+  "998": {
+   "v": "none",
+   "u": []
+  },
+  "1007": {
+   "v": "none",
+   "u": []
+  },
+  "1012": {
+   "v": "none",
+   "u": []
+  },
+  "1019": {
+   "v": "none",
+   "u": []
+  },
+  "1023": {
+   "v": "none",
+   "u": []
+  },
+  "1031": {
+   "v": "none",
+   "u": []
+  },
+  "1039": {
+   "v": "none",
+   "u": []
+  },
+  "1059": {
+   "v": "none",
+   "u": []
+  },
+  "1061": {
+   "v": "none",
+   "u": []
+  },
+  "1062": {
+   "v": "none",
+   "u": []
+  },
+  "1077": {
+   "v": "none",
+   "u": []
+  },
+  "1079": {
+   "v": "none",
+   "u": []
+  },
+  "1081": {
+   "v": "none",
+   "u": []
+  },
+  "1085": {
+   "v": "none",
+   "u": []
+  },
+  "1096": {
+   "v": "partial",
+   "u": [
+    "tractor#r6"
+   ]
+  },
+  "1098": {
+   "v": "none",
+   "u": []
+  },
+  "1103": {
+   "v": "none",
+   "u": []
+  },
+  "1107": {
+   "v": "none",
+   "u": []
+  },
+  "1112": {
+   "v": "full",
+   "u": [
+    "tractor#r8"
+   ]
+  },
+  "1118": {
+   "v": "none",
+   "u": []
+  },
+  "1127": {
+   "v": "none",
+   "u": []
+  },
+  "1133": {
+   "v": "none",
+   "u": []
+  },
+  "1144": {
+   "v": "none",
+   "u": []
+  },
+  "1157": {
+   "v": "none",
+   "u": []
+  },
+  "1158": {
+   "v": "none",
+   "u": []
+  },
+  "1167": {
+   "v": "none",
+   "u": []
+  },
+  "1168": {
+   "v": "none",
+   "u": []
+  },
+  "1180": {
+   "v": "none",
+   "u": []
+  },
+  "1189": {
+   "v": "none",
+   "u": []
+  },
+  "1192": {
+   "v": "none",
+   "u": []
+  },
+  "1196": {
+   "v": "none",
+   "u": []
+  },
+  "1199": {
+   "v": "full",
+   "u": [
+    "bus#b0"
+   ]
+  },
+  "1204": {
+   "v": "none",
+   "u": []
+  },
+  "1212": {
+   "v": "none",
+   "u": []
+  },
+  "1214": {
+   "v": "none",
+   "u": []
+  },
+  "1218": {
+   "v": "none",
+   "u": []
+  },
+  "1239": {
+   "v": "none",
+   "u": []
+  },
+  "1241": {
+   "v": "none",
+   "u": []
+  },
+  "1250": {
+   "v": "none",
+   "u": []
+  },
+  "1271": {
+   "v": "none",
+   "u": []
+  },
+  "1276": {
+   "v": "partial",
+   "u": [
+    "heavy#r6"
+   ]
+  },
+  "1278": {
+   "v": "none",
+   "u": []
+  },
+  "1288": {
+   "v": "none",
+   "u": []
+  },
+  "1290": {
+   "v": "none",
+   "u": []
+  },
+  "1312": {
+   "v": "none",
+   "u": []
+  },
+  "1323": {
+   "v": "none",
+   "u": []
+  },
+  "1326": {
+   "v": "none",
+   "u": []
+  },
+  "1327": {
+   "v": "partial",
+   "u": [
+    "heavy#b2"
+   ]
+  },
+  "1331": {
+   "v": "none",
+   "u": []
+  },
+  "1332": {
+   "v": "partial",
+   "u": [
+    "distance#b0"
+   ]
+  },
+  "1354": {
+   "v": "none",
+   "u": []
+  },
+  "1357": {
+   "v": "none",
+   "u": []
+  },
+  "1371": {
+   "v": "none",
+   "u": []
+  },
+  "1375": {
+   "v": "none",
+   "u": []
+  },
+  "1376": {
+   "v": "none",
+   "u": []
+  },
+  "1379": {
+   "v": "none",
+   "u": []
+  },
+  "1381": {
+   "v": "none",
+   "u": []
+  },
+  "1387": {
+   "v": "partial",
+   "u": [
+    "rail#g1387"
+   ]
+  },
+  "1390": {
+   "v": "none",
+   "u": []
+  },
+  "1396": {
+   "v": "none",
+   "u": []
+  },
+  "1398": {
+   "v": "none",
+   "u": []
+  },
+  "1404": {
+   "v": "none",
+   "u": []
+  },
+  "1413": {
+   "v": "none",
+   "u": []
+  },
+  "1415": {
+   "v": "none",
+   "u": []
+  },
+  "1416": {
+   "v": "none",
+   "u": []
+  },
+  "1417": {
+   "v": "none",
+   "u": []
+  },
+  "1419": {
+   "v": "none",
+   "u": []
+  },
+  "1426": {
+   "v": "partial",
+   "u": [
+    "bus#r4"
+   ]
+  },
+  "1439": {
+   "v": "full",
+   "u": [
+    "speed#r2"
+   ]
+  },
+  "1446": {
+   "v": "none",
+   "u": []
+  },
+  "1447": {
+   "v": "none",
+   "u": []
+  },
+  "1451": {
+   "v": "none",
+   "u": []
+  },
+  "1457": {
+   "v": "none",
+   "u": []
+  },
+  "1461": {
+   "v": "none",
+   "u": []
+  },
+  "1469": {
+   "v": "none",
+   "u": []
+  },
+  "1473": {
+   "v": "full",
+   "u": [
+    "speed#r2"
+   ]
+  },
+  "1476": {
+   "v": "none",
+   "u": []
+  },
+  "1481": {
+   "v": "none",
+   "u": []
+  },
+  "1482": {
+   "v": "none",
+   "u": []
+  },
+  "1490": {
+   "v": "partial",
+   "u": [
+    "distance#b0"
+   ]
+  },
+  "1507": {
+   "v": "partial",
+   "u": [
+    "peds#g1507"
+   ]
+  },
+  "1527": {
+   "v": "none",
+   "u": []
+  },
+  "1529": {
+   "v": "full",
+   "u": [
+    "speed#r6"
+   ]
+  },
+  "1539": {
+   "v": "none",
+   "u": []
+  },
+  "1542": {
+   "v": "full",
+   "u": [
+    "lights#b2"
+   ]
+  },
+  "1548": {
+   "v": "full",
+   "u": [
+    "priority#r2"
+   ]
+  },
+  "1550": {
+   "v": "none",
+   "u": []
+  },
+  "1552": {
+   "v": "none",
+   "u": []
+  },
+  "1556": {
+   "v": "none",
+   "u": []
+  },
+  "1571": {
+   "v": "none",
+   "u": []
+  },
+  "1577": {
+   "v": "full",
+   "u": [
+    "lights#r1"
+   ]
+  },
+  "1581": {
+   "v": "full",
+   "u": [
+    "moto#r0"
+   ]
+  },
+  "1601": {
+   "v": "partial",
+   "u": [
+    "distance#b0"
+   ]
+  },
+  "1612": {
+   "v": "none",
+   "u": []
+  },
+  "1628": {
+   "v": "none",
+   "u": []
+  },
+  "1629": {
+   "v": "none",
+   "u": []
+  },
+  "1634": {
+   "v": "partial",
+   "u": [
+    "distance#r0"
+   ]
+  },
+  "1637": {
+   "v": "none",
+   "u": []
+  },
+  "1641": {
+   "v": "none",
+   "u": []
+  },
+  "1642": {
+   "v": "none",
+   "u": []
+  },
+  "1652": {
+   "v": "none",
+   "u": []
+  },
+  "1667": {
+   "v": "none",
+   "u": []
+  },
+  "1680": {
+   "v": "none",
+   "u": []
+  },
+  "1685": {
+   "v": "none",
+   "u": []
+  },
+  "1686": {
+   "v": "none",
+   "u": []
+  },
+  "1691": {
+   "v": "none",
+   "u": []
+  },
+  "1701": {
+   "v": "none",
+   "u": []
+  },
+  "1707": {
+   "v": "full",
+   "u": [
+    "distance#r1"
+   ]
+  },
+  "1708": {
+   "v": "none",
+   "u": []
+  },
+  "1712": {
+   "v": "none",
+   "u": []
+  },
+  "1723": {
+   "v": "none",
+   "u": []
+  },
+  "1727": {
+   "v": "none",
+   "u": []
+  },
+  "1731": {
+   "v": "none",
+   "u": []
+  },
+  "1739": {
+   "v": "full",
+   "u": [
+    "overtake#r3"
+   ]
+  },
+  "1747": {
+   "v": "full",
+   "u": [
+    "overtake#r5"
+   ]
+  },
+  "1748": {
+   "v": "full",
+   "u": [
+    "parking#r3"
+   ]
+  },
+  "1758": {
+   "v": "partial",
+   "u": [
+    "speed#r7"
+   ]
+  },
+  "1762": {
+   "v": "full",
+   "u": [
+    "rail#r6"
+   ]
+  },
+  "1768": {
+   "v": "none",
+   "u": []
+  },
+  "1770": {
+   "v": "none",
+   "u": []
+  },
+  "1801": {
+   "v": "none",
+   "u": []
+  },
+  "1802": {
+   "v": "none",
+   "u": []
+  }
+ },
+ "after": {
+  "18": {
+   "v": "full",
+   "u": [
+    "terms#r0"
+   ]
+  },
+  "25": {
+   "v": "full",
+   "u": [
+    "terms#r2"
+   ]
+  },
+  "40": {
+   "v": "full",
+   "u": [
+    "terms#r7"
+   ],
+   "why": "v1.3: TR 271א M1 rule + bank-vs-law note (wording only)"
+  },
+  "73": {
+   "v": "full",
+   "u": [
+    "duty#r5"
+   ]
+  },
+  "118": {
+   "v": "full",
+   "u": [
+    "signal#r10"
+   ]
+  },
+  "164": {
+   "v": "full",
+   "u": [
+    "signal#r0"
+   ]
+  },
+  "166": {
+   "v": "full",
+   "u": [
+    "signal#r0"
+   ]
+  },
+  "167": {
+   "v": "full",
+   "u": [
+    "signal#r1"
+   ]
+  },
+  "171": {
+   "v": "full",
+   "u": [
+    "signal#r8"
+   ]
+  },
+  "188": {
+   "v": "full",
+   "u": [
+    "signal#r2",
+    "signal#r0"
+   ]
+  },
+  "196": {
+   "v": "full",
+   "u": [
+    "duty#r13"
+   ]
+  },
+  "226": {
+   "v": "full",
+   "u": [
+    "duty#r10"
+   ]
+  },
+  "229": {
+   "v": "full",
+   "u": [
+    "duty#r12"
+   ]
+  },
+  "276": {
+   "v": "full",
+   "u": [
+    "accident#r2"
+   ]
+  },
+  "299": {
+   "v": "full",
+   "u": [
+    "sober#r7",
+    "sober#r16"
+   ],
+   "why": "v1.3: TO 64ד(א) refusal = drunk-driving offence"
+  },
+  "304": {
+   "v": "full",
+   "u": [
+    "duty#r6"
+   ]
+  },
+  "379": {
+   "v": "full",
+   "u": [
+    "duty#r17"
+   ]
+  },
+  "731": {
+   "v": "partial",
+   "u": [
+    "signal#r2"
+   ]
+  },
+  "734": {
+   "v": "full",
+   "u": [
+    "duty#r15"
+   ]
+  },
+  "736": {
+   "v": "full",
+   "u": [
+    "duty#r3"
+   ]
+  },
+  "757": {
+   "v": "full",
+   "u": [
+    "cargo#r8"
+   ]
+  },
+  "796": {
+   "v": "partial",
+   "u": [
+    "signal#r11"
+   ]
+  },
+  "831": {
+   "v": "partial",
+   "u": [
+    "signal#r0"
+   ]
+  },
+  "836": {
+   "v": "full",
+   "u": [
+    "signal#r2"
+   ]
+  },
+  "927": {
+   "v": "full",
+   "u": [
+    "signal#r8"
+   ]
+  },
+  "1144": {
+   "v": "full",
+   "u": [
+    "bus#r7"
+   ]
+  },
+  "1189": {
+   "v": "full",
+   "u": [
+    "bus#r9",
+    "duty#r8"
+   ]
+  },
+  "1218": {
+   "v": "full",
+   "u": [
+    "duty#r13"
+   ]
+  },
+  "1241": {
+   "v": "partial",
+   "u": [
+    "bus#r7"
+   ]
+  },
+  "1312": {
+   "v": "full",
+   "u": [
+    "cargo#r5"
+   ]
+  },
+  "1323": {
+   "v": "full",
+   "u": [
+    "cargo#r5"
+   ]
+  },
+  "1379": {
+   "v": "full",
+   "u": [
+    "terms#r1"
+   ]
+  },
+  "1381": {
+   "v": "full",
+   "u": [
+    "duty#r14"
+   ]
+  },
+  "1398": {
+   "v": "partial",
+   "u": [
+    "duty#r13"
+   ]
+  },
+  "1415": {
+   "v": "partial",
+   "u": [
+    "cargo#r7"
+   ]
+  },
+  "1416": {
+   "v": "partial",
+   "u": [
+    "cargo#r7"
+   ]
+  },
+  "1446": {
+   "v": "full",
+   "u": [
+    "terms#r4"
+   ]
+  },
+  "1527": {
+   "v": "full",
+   "u": [
+    "cargo#r1"
+   ]
+  },
+  "1539": {
+   "v": "partial",
+   "u": [
+    "cargo#r6"
+   ]
+  },
+  "1550": {
+   "v": "full",
+   "u": [
+    "sober#r11"
+   ],
+   "why": "v1.3: RSA fatigue page – stop in a safe place"
+  },
+  "1552": {
+   "v": "full",
+   "u": [
+    "sober#r0"
+   ]
+  },
+  "1571": {
+   "v": "full",
+   "u": [
+    "terms#r7"
+   ]
+  },
+  "1641": {
+   "v": "full",
+   "u": [
+    "duty#r7"
+   ]
+  },
+  "1768": {
+   "v": "full",
+   "u": [
+    "duty#r0"
+   ]
+  },
+  "1767": {
+   "v": "full",
+   "u": [
+    "overtake#r3"
+   ],
+   "why": "reviewer #8: overtake R3 teaches right-passing in a public-transport lane"
+  },
+  "88": {
+   "v": "full",
+   "u": [
+    "tractor#x0",
+    "overtake#r7"
+   ],
+   "why": "reviewer #8: 48(א) added as related unit"
+  },
+  "270": {
+   "v": "full",
+   "u": [
+    "newdrv#r7",
+    "newdrv#r5"
+   ],
+   "why": "v1.3: Third Schedule offences listed (TO 12א + schedule)"
+  },
+  "398": {
+   "v": "full",
+   "u": [
+    "newdrv#r7",
+    "newdrv#r5"
+   ],
+   "why": "v1.3: Third Schedule offences listed (TO 12א + schedule)"
+  },
+  "1685": {
+   "v": "full",
+   "u": [
+    "newdrv#r7",
+    "newdrv#r5"
+   ],
+   "why": "v1.3: Third Schedule offences listed (TO 12א + schedule)"
+  },
+  "1686": {
+   "v": "full",
+   "u": [
+    "newdrv#r7",
+    "newdrv#r5"
+   ],
+   "why": "v1.3: Third Schedule offences listed (TO 12א + schedule)"
+  },
+  "313": {
+   "v": "full",
+   "u": [
+    "sober#r4"
+   ],
+   "why": "v1.3: RSA drunk page – coordination"
+  },
+  "319": {
+   "v": "full",
+   "u": [
+    "sober#r3"
+   ],
+   "why": "v1.3: RSA drunk page – reaction time"
+  },
+  "301": {
+   "v": "partial",
+   "u": [
+    "sober#r4"
+   ],
+   "why": "any amount impairs; bank equal-effect claim not stated"
+  },
+  "1192": {
+   "v": "partial",
+   "u": [
+    "bus#r17"
+   ],
+   "why": "v1.3: 83ב(ג) rule + note; the bank says exempt, the regulation is a permission to the driver"
+  },
+  "998": {
+   "v": "full",
+   "u": [
+    "vehicle#r13"
+   ],
+   "why": "v1.3: TR 97(א)"
+  },
+  "1133": {
+   "v": "full",
+   "u": [
+    "vehicle#r13"
+   ],
+   "why": "v1.3: TR 97(א)"
+  },
+  "1680": {
+   "v": "full",
+   "u": [
+    "moto2#r7"
+   ],
+   "why": "v1.3: TR 97(ב)"
+  },
+  "262": {
+   "v": "full",
+   "u": [
+    "lights#r5"
+   ],
+   "why": "v1.3: TR 100(א)(2)"
+  },
+  "1371": {
+   "v": "full",
+   "u": [
+    "lights#r4"
+   ],
+   "why": "v1.3: TR 97(ד) + 340(א)"
+  },
+  "1375": {
+   "v": "full",
+   "u": [
+    "heavy2#r7"
+   ],
+   "why": "v1.3: TR 329(ו)"
+  },
+  "1451": {
+   "v": "full",
+   "u": [
+    "heavy2#r10"
+   ],
+   "why": "v1.3: TR 364ד(ב)(1)"
+  },
+  "1482": {
+   "v": "full",
+   "u": [
+    "heavy2#r13"
+   ],
+   "why": "v1.3: TR 168(א)(1)"
+  },
+  "1652": {
+   "v": "full",
+   "u": [
+    "heavy2#r2"
+   ],
+   "why": "v1.3: TR 313(א)(3)"
+  },
+  "1326": {
+   "v": "full",
+   "u": [
+    "heavy2#r22"
+   ],
+   "why": "v1.3: TR 85א(ג)"
+  },
+  "1419": {
+   "v": "full",
+   "u": [
+    "heavy2#r22"
+   ],
+   "why": "v1.3: TR 85א(ז)"
+  },
+  "1667": {
+   "v": "full",
+   "u": [
+    "moto2#r0"
+   ],
+   "why": "v1.3: TR 176 + note (14.6 vs 14.916 hp)"
+  },
+  "1612": {
+   "v": "full",
+   "u": [
+    "moto2#r11"
+   ],
+   "why": "v1.3: RSA booklet p31"
+  },
+  "1634": {
+   "v": "full",
+   "u": [
+    "moto2#r14"
+   ],
+   "why": "v1.3: RSA booklet p31"
+  },
+  "808": {
+   "v": "full",
+   "u": [
+    "defensive#r1"
+   ],
+   "why": "v1.3: RSA speed page"
+  },
+  "1758": {
+   "v": "full",
+   "u": [
+    "defensive#r2"
+   ],
+   "why": "v1.3: RSA speed page"
+  },
+  "859": {
+   "v": "full",
+   "u": [
+    "defensive#r10"
+   ],
+   "why": "v1.3: RSA elderly page"
+  },
+  "1691": {
+   "v": "full",
+   "u": [
+    "vehicle#r17"
+   ],
+   "why": "v1.3: RSA belts page"
+  },
+  "1727": {
+   "v": "full",
+   "u": [
+    "terms#r8"
+   ],
+   "why": "v1.3: TR 180(א)(1)"
+  },
+  "1118": {
+   "v": "full",
+   "u": [
+    "bus#r12"
+   ],
+   "why": "v1.3: TR 57"
+  },
+  "1404": {
+   "v": "partial",
+   "u": [
+    "terms#r8"
+   ],
+   "why": "B + trailer 5,000 total taught; 750 kg answer not derivable"
+  },
+  "1031": {
+   "v": "partial",
+   "u": [
+    "vehicle#r7"
+   ],
+   "why": "spare wheel per maker size; general tyre size rule not stated"
+  },
+  "1081": {
+   "v": "partial",
+   "u": [
+    "vehicle#r1"
+   ],
+   "why": "oil/coolant taught; brake & washer fluid not listed"
+  },
+  "1288": {
+   "v": "partial",
+   "u": [
+    "vehicle#r4"
+   ],
+   "why": "tyre pressure taught; fuel economy not"
+  },
+  "895": {
+   "v": "partial",
+   "u": [
+    "defensive#r5"
+   ],
+   "why": "fog lights/slow taught"
+  },
+  "1701": {
+   "v": "partial",
+   "u": [
+    "defensive#r7"
+   ],
+   "why": "slippery → slower"
+  },
+  "848": {
+   "v": "partial",
+   "u": [
+    "vehicle#r10"
+   ],
+   "why": "loss of control in a skid mentioned"
+  },
+  "1601": {
+   "v": "partial",
+   "u": [
+    "defensive#r1"
+   ],
+   "why": "reaction ability"
+  }
+ }
 }

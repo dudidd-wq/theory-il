@@ -1,6 +1,6 @@
 // UI strings. Interface: Hebrew (default) or English. Question text always comes verbatim from the official banks.
 const he = {
-  'why.sign': 'תמרור {0}:', 'why.signSrc': 'לוח התמרורים, תמרור {0}', 'why.part': 'כלל קשור:', 'why.none': 'הנושא של השאלה הזו עדיין לא מוסבר בשיעורים, ולכן אין כאן הפניה לשיעור.',
+  'why.sign': 'תמרור {0}:', 'why.signSrc': 'לוח התמרורים, תמרור {0}', 'why.part': 'כלל קשור:', 'why.exam': 'בבחינה התשובה הנכונה היא:', 'why.law': 'נוסח החוק היום:', 'ln.accessed': 'נצפה ב־{0}', 'ln.updated': 'עודכן {0}', 'why.none': 'הנושא של השאלה הזו עדיין לא מוסבר בשיעורים, ולכן אין כאן הפניה לשיעור.',
   'why.learn': 'ללמוד את זה: {0}', 'why.related': 'שיעור קשור: {0}', 'ln.peek': 'מצב קריאה: השיעור עוד נעול במסלול, אבל אפשר לקרוא אותו. הבוחן ייפתח כשתגיעו אליו.',
   'rv.byLesson': 'הטעויות לפי שיעור', 'rv.byLessonHint': 'כדאי לקרוא שוב את השיעור, ואז לתרגל רק את השאלות שלו.', 'rv.lessonChip': '{0} · {1} טעויות', 'rv.practiceThese': 'תרגול',
   'set.merge': 'למזג עם ההתקדמות הנוכחית במקום להחליף', 'set.mergeAsk': 'הגיבוי ימוזג עם ההתקדמות שבמכשיר: לכל שאלה נשמר הניסיון האחרון, וסימניות, מבחנים והישגים מצטרפים. אפשר לבטל אחר כך. להמשיך?', 'set.merged': 'המיזוג הושלם',
@@ -109,7 +109,7 @@ const he = {
   'bk.errOld': 'הדפדפן הזה ישן מדי לקוד – השתמשו בקובץ', 'bk.errNoFile': 'לא נבחר קובץ', 'bk.saved': 'קובץ הגיבוי נשמר',
 };
 const en = {
-  'why.sign': 'Sign {0}:', 'why.signSrc': 'Sign table, sign {0}', 'why.part': 'Related rule:', 'why.none': 'This question’s topic is not explained in the lessons yet, so there is no lesson link.',
+  'why.sign': 'Sign {0}:', 'why.signSrc': 'Sign table, sign {0}', 'why.part': 'Related rule:', 'why.exam': 'For the exam the answer is:', 'why.law': 'What the law says today:', 'ln.accessed': 'accessed {0}', 'ln.updated': 'updated {0}', 'why.none': 'This question’s topic is not explained in the lessons yet, so there is no lesson link.',
   'why.learn': 'Learn this: {0}', 'why.related': 'Related lesson: {0}', 'ln.peek': 'Read-only: this lesson is still locked on the path, but you can read it. Its quiz opens when you get there.',
   'rv.byLesson': 'Mistakes by lesson', 'rv.byLessonHint': 'Re-read the lesson, then practise only its questions.', 'rv.lessonChip': '{0} · {1} mistakes', 'rv.practiceThese': 'Practise',
   'set.merge': 'Merge with the current progress instead of replacing it', 'set.mergeAsk': 'The backup will be merged with this device: each question keeps its latest attempt; bookmarks, exams and achievements are combined. You can undo it. Continue?', 'set.merged': 'Merge complete',

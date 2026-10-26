@@ -5,10 +5,11 @@ import json, re, sys, os, hashlib
 from urllib.parse import quote
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'tools'))
-from lessons_spec import LESSONS, EXAMPLES
+from lessons_spec import LESSONS, EXAMPLES, NOTES
 
 LAW = json.load(open(os.path.join(ROOT, 'tools/law/law.json')))
 LOT = json.load(open(os.path.join(ROOT, 'tools/law/lotam.json')))
+OFF = json.load(open(os.path.join(ROOT, 'tools/official/pages.json')))  # pinned RSA/gov.il pages (tools/official/pin.py)
 QS = {q['id']: q for q in json.load(open(os.path.join(ROOT, 'data/q.he.json')))}
 META = LAW['_meta']
 TITLES = {'TR': 'תקנות_התעבורה', 'TO': 'פקודת_התעבורה'}
@@ -32,8 +33,12 @@ def lt_windows(num):
         out.append(LOT_ALL[i:i + 400])
     return out
 
+def anchor(key):
+    m = re.match(r'תוספת(\d+)פרט(.+)$', key)
+    return f'תוספת_{m[1]}_פרט_{m[2]}' if m else 'סעיף_' + key
+
 def parse(src):
-    m = re.match(r'^(TR|TO|LT|LTP|Q):([^()]+)(\(.*\))?$', src)
+    m = re.match(r'^(TR|TO|LT|LTP|Q|OFF):([^()]+)(\(.*\))?$', src)
     if not m: raise SystemExit('bad src ' + src)
     return m.group(1), m.group(2), m.group(3) or ''
 
@@ -62,9 +67,9 @@ def source(src, checks, where):
             if norm(c) not in nt: errors.append(f'{where}: "{c}" not in {sid}')
         rev = META[kind]['revid']
         url = ('https://he.wikisource.org/w/index.php?title=' + quote(TITLES[kind]) +
-               '&oldid=' + str(rev) + '#' + quote('סעיף_' + key))
-        s = sources.setdefault(sid, {'kind': kind, 'label': ('תקנה ' if kind == 'TR' else 'סעיף ') + key,
-            'title': sec.get('title', ''), 'doc': NAMES[kind], 'url': url, 'rev': rev, 'ex': []})
+               '&oldid=' + str(rev) + '#' + quote(anchor(key)))
+        s = sources.setdefault(sid, {'kind': kind, 'label': sec['title'] if key.startswith('תוספת') else ('תקנה ' if kind == 'TR' else 'סעיף ') + key,
+            'title': '' if key.startswith('תוספת') else sec.get('title', ''), 'doc': NAMES[kind], 'url': url, 'rev': rev, 'ex': []})
         e = excerpt(text, checks)
         if e and e not in s['ex']: s['ex'].append(e)
     elif kind == 'LT':
@@ -83,6 +88,18 @@ def source(src, checks, where):
         sources.setdefault(sid, {'kind': kind, 'label': 'לוח התמרורים, חלק ' + key, 'title': '',
             'doc': LOT['title'], 'url': LOT['url'],
             'ex': [re.sub(r'^.*?(חלק)', r'\1', pg[0]).strip()] if pg else []})
+    elif kind == 'OFF':
+        pg = OFF.get(key)
+        if not pg: errors.append(f'{where}: no official page {key}'); return sid
+        qs = [q for q in pg['quotes'] if any(norm(c, True) in norm(q['t'], True) for c in checks)]
+        for c in checks:
+            if not any(norm(c, True) in norm(q['t'], True) for q in pg['quotes']): errors.append(f'{where}: "{c}" not in a pinned quote of OFF:{key}')
+        if not checks: errors.append(f'{where}: OFF source needs checks (they pick the quoted passage)')
+        s = sources.setdefault(sid, {'kind': kind, 'label': pg['title'], 'title': '', 'doc': pg['publisher'], 'url': pg['url'],
+            'accessed': pg['accessed'], 'sha256': pg['sha256'], 'pub': pg.get('updated') or pg.get('published'), 'ex': []})
+        for q in qs:
+            e = q['t'] + (f' (עמ׳ {q["p"]})' if q.get('p') else '')
+            if e not in s['ex']: s['ex'].append(e)
     elif kind == 'Q':
         q = QS.get(int(key))
         if not q: errors.append(f'{where}: no question {key}'); return sid
@@ -118,11 +135,11 @@ for L in LESSONS:
         for a, ch in r.get('also', []): source(a, ch, f'{lid}.rule{i}.also')
         rules.append({'t': r['t'], 's': r['s'], **({'also': [a for a, _ in r['also']]} if r.get('also') else {})})
     for i, m in enumerate(L.get('mnem', [])):
-        source(m[2], [], f'{lid}.mnem{i}')
+        source(m[2], list(m[3]) if len(m) > 3 else [], f'{lid}.mnem{i}')
     recap = []
     for i, c in enumerate(L['recap']):
-        source(c['s'], [], f'{lid}.recap{i}')
-        recap.append(c)
+        source(c['s'], c.get('chk', []), f'{lid}.recap{i}')
+        recap.append({k: v for k, v in c.items() if k != 'chk'})
     ex = []
     for i, x in enumerate(EXAMPLES.get(lid, [])):
         if x['q'] not in QS: errors.append(f'{lid}.ex{i}: no Q{x["q"]}')
@@ -157,12 +174,19 @@ for L in LESSONS:
                 'viz': L.get('viz', []), 'gal': gal, 'ex': ex, 'quiz': quiz, 'recap': recap})
     print(f'{lid:9s} rules={len(rules):2d} gal={len(gal):2d} ex={len(ex)} quiz={len(quiz):3d} per-class={per}')
 
+notes = {}
+for qid, (law, src, chk) in NOTES.items():
+    q = QS.get(qid)
+    if not q: errors.append(f'note {qid}: no such question'); continue
+    source(src, chk, f'note{qid}')
+    notes[str(qid)] = {'exam': q['a'][q['c']], 'law': law, 's': src}
+
 if errors:
     print('\n'.join('ERROR ' + e for e in errors)); sys.exit(1)
 
 meta = {'built': 'from tools/lessons_spec.py', 'TR_rev': META['TR']['revid'], 'TO_rev': META['TO']['revid'],
         'lotam': {'title': LOT['title'], 'url': LOT['url'], 'sha256': LOT.get('sha256')}}
-json.dump({'v': 1, 'meta': meta, 'lessons': out}, open(os.path.join(ROOT, 'data/lessons.json'), 'w'),
+json.dump({'v': 1, 'meta': meta, 'lessons': out, 'notes': notes}, open(os.path.join(ROOT, 'data/lessons.json'), 'w'),
           ensure_ascii=False, separators=(',', ':'))
 json.dump(sources, open(os.path.join(ROOT, 'data/sources.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 print('ok', len(out), 'lessons', len(sources), 'sources',
