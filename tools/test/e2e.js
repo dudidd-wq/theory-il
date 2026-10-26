@@ -148,6 +148,7 @@ async function run(prof, opts) {
   ok(/CC|Creative Commons/.test(await (async () => { await go(p, '#/about'); return text(p); })()), 'about credits CC BY');
   ok(await p.locator('#ab-ccbysa a[href="https://creativecommons.org/licenses/by-sa/4.0/"]').count() === 1, 'about credits Wikisource CC BY-SA 4.0 with a link');
   ok(/משרד התחבורה/.test(await text(p)), 'about names the ministry as source');
+  ok(await p.locator('a[href*="meyda.education.gov.il"][href*="traffic-s07-"], a[href*="traffic-s13-"], a[href*="traffic-s17-"], a[href*="traffic-s21-"]').count() === 4 && await p.locator('a[href*="oldid=2968550"]').count() === 1, 'about: v1.12 sources (MoE topics 7/13/17/21 + Compensation Law s.1, pinned oldid) are linked');
   { const CV = await p.evaluate(() => fetch('data/coverage.json').then(r => r.json())); const tx = await text(p);
     ok(['B', 'A', 'C1', 'C', 'D', '1'].every(c => tx.includes(`${c} ${(+CV.tot[c][1]).toFixed(1)}%`)) && /אף רישיון אינו מכוסה במלואו/.test(tx), 'about: every class partial, computed per-class full figures'); }
   ok(/לא כולל תיאור מילולי/.test(await text(p)) && (await p.locator('.elig').count()) === 6, 'about: picture-question accessibility note + eligibility for all 6 classes');
