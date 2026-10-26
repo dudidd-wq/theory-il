@@ -133,7 +133,7 @@ export function makeLearn(ctx) {
     }, 'btn small', 'vol', { 'aria-pressed': 'false' }) : null;
     const sec = (key, ...kids) => h('section', { class: 'lsec', 'aria-labelledby': 'ls-' + key }, h('h2', { id: 'ls-' + key, text: t('ln.' + key) }), ...kids);
     // v1.11 (review #8): all four official options in the published order, the official correct one marked (text + icon, not colour only)
-    const opts = v => he(h('ol', { class: 'opts', 'aria-label': t('ln.opts') }, v.a.map((a, k) => h('li', { class: k === v.c ? 'ans-ok' : 'ans-no' },
+    const opts = v => he(h('ol', { class: 'bopts', 'aria-label': t('ln.opts') }, v.a.map((a, k) => h('li', { class: k === v.c ? 'ans-ok' : 'ans-no' },
       k === v.c ? icon('check') : h('span', { class: 'ic', 'aria-hidden': 'true', text: '·' }), h('span', { class: 'at', text: a }),
       k === v.c ? h('small', { class: 'okb', text: t('ln.okb') }) : null))));
     const qimg = q => q.i ? h('img', { class: 'qimg', src: 'img/q/' + q.i, alt: t('q.img', q.id), loading: 'lazy', width: 320, height: 180 }) : null;
@@ -160,6 +160,10 @@ export function makeLearn(ctx) {
       l.ex.length ? sec('ex', h('div', { class: 'exs' }, l.ex.filter(x => byId.has(x.q)).map(x => { const v = byId.get(x.q);
         return h('article', { class: 'excard' }, qimg(v), he(h('p', { class: 'qtext sm' }, h('small', { class: 'muted', text: t('ln.q', v.id) + ' · ' }), v.q)),
           opts(v),
+          // v1.11 (review #8 item 2): walk through the closest wrong option against the cited source's own wording – no written text
+          x.tr != null && v.a[x.tr] ? h('div', { class: 'trap' }, he(h('p', {}, h('b', { text: t('ln.trap') + ' ' }), h('span', { class: 'trapopt', text: '«' + v.a[x.tr] + '»' }))),
+            (x.qt || []).length ? h('div', {}, h('p', {}, h('b', { text: t('ln.trapSrc') })), he(h('ul', { class: 'qt' }, x.qt.map(p => h('li', {}, h('q', { text: p.t.length > 320 ? p.t.slice(0, 320) + '…' : p.t }), ' ', ref(p.s)))))) : null,
+            h('p', { class: 'muted sm', text: t('ln.trapNote') })) : null,
           he(h('p', {}, h('b', { text: t('ln.why') + ' ' }), x.t)), h('p', { class: 'refs' }, ref(x.s), ...(x.also || []).map(ref), ref('Q:' + x.q))); }))) : null,
       // v1.11: B/A questions this lesson covers only partly – official question + answer as published, the covering unit with
       // its own citation, and a separate label that the rest comes from the bank alone (still 'partial' in the coverage figures)

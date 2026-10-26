@@ -57,6 +57,15 @@ def excerpt(text, checks):
     ex = ' … '.join(keep)
     return ex[:900]
 
+PASS = []  # v1.11: passages picked by the last source() calls (per-example official wording)
+
+def trap(q):
+    # v1.11 (review #8 item 2): the wrong option closest in wording to the correct one (token overlap) – an objective pick, no written text
+    tok = lambda s: set(re.findall(r'[\w\u0590-\u05ff]+', s))
+    A = tok(q['a'][q['c']])
+    sc = [(len(A & tok(a)) / (len(A | tok(a)) or 1), -k) for k, a in enumerate(q['a']) if k != q['c']]
+    return -max(sc)[1] if sc else None
+
 def source(src, checks, where):
     kind, key, sub = parse(src)
     sid = kind + ':' + key
@@ -73,6 +82,7 @@ def source(src, checks, where):
             'title': '' if key.startswith('תוספת') else sec.get('title', ''), 'doc': NAMES[kind], 'url': url, 'rev': rev, 'ex': []})
         e = excerpt(text, checks)
         if e and e not in s['ex']: s['ex'].append(e)
+        if e: PASS.append((sid, e))
     elif kind == 'LT':
         ws = lt_windows(key)
         ok = [w for w in ws if all(norm(c, True) in norm(w, True) for c in checks)]
@@ -82,6 +92,12 @@ def source(src, checks, where):
         if ok:
             e = re.sub(r'\s+', ' ', ok[0])[:220]
             if e not in s['ex']: s['ex'].append(e)
+            # the sign's own entry only (cut at the next sign number); PDF RTL artefact ' .word' shown as ' word'
+            m = re.search(r'(?<!\d)' + re.escape(key) + r'(?!\d)', e); e2 = e[m.start():] if m else e
+            kn = int(re.match(r'\d+', key).group()) if re.match(r'\d+', key) else None
+            m = next((m for m in re.finditer(r'\s(\d{3})[א-ת]?\s', e2[len(key):]) if kn and kn < int(m.group(1)) <= kn + 9), None)
+            e2 = e2[:len(key) + m.start()] if m else e2
+            PASS.append((sid, re.sub(r'(^|\s)[.,:;]+(?=\S)', r'\1', e2).strip()))
     elif kind == 'LTP':
         pg = [p for p in LOT_PAGES if re.search(r'חלק\s*' + key + r'\s', p) and len(p) < 400]
         if not pg or not all(norm(c, True) in norm(pg[0], True) for c in checks):
@@ -89,6 +105,7 @@ def source(src, checks, where):
         sources.setdefault(sid, {'kind': kind, 'label': 'לוח התמרורים, חלק ' + key, 'title': '',
             'doc': LOT['title'], 'url': LOT['url'],
             'ex': [re.sub(r'^.*?(חלק)', r'\1', pg[0]).strip()] if pg else []})
+        if pg: PASS.append((sid, re.sub(r'^.*?(חלק)', r'\1', pg[0]).strip()))
     elif kind == 'OFF':
         pg = OFF.get(key)
         if not pg: errors.append(f'{where}: no official page {key}'); return sid
@@ -101,6 +118,7 @@ def source(src, checks, where):
         for q in qs:
             e = q['t'] + (f' (עמ׳ {q["p"]})' if q.get('p') else '')
             if e not in s['ex']: s['ex'].append(e)
+            PASS.append((sid, e))
     elif kind == 'Q':
         q = QS.get(int(key))
         if not q: errors.append(f'{where}: no question {key}'); return sid
@@ -144,9 +162,13 @@ for L in LESSONS:
     ex = []
     for i, x in enumerate(EXAMPLES.get(lid, [])):
         if x['q'] not in QS: errors.append(f'{lid}.ex{i}: no Q{x["q"]}')
+        PASS.clear()
         source(x['s'], x.get('chk', []), f'{lid}.ex{i}')
         for a_, ch in x.get('also', []): source(a_, ch, f'{lid}.ex{i}.also')
-        ex.append({**{k: v for k, v in x.items() if k not in ('chk', 'also')}, **({'also': [a_ for a_, _ in x['also']]} if x.get('also') else {})})
+        qt = [{'s': s_, 't': t_} for s_, t_ in dict.fromkeys(PASS)]
+        q_ = QS.get(x['q'])
+        ex.append({**{k: v for k, v in x.items() if k not in ('chk', 'also')}, **({'also': [a_ for a_, _ in x['also']]} if x.get('also') else {}),
+                   'qt': qt, **({'tr': trap(q_)} if q_ and trap(q_) is not None else {})})
     quiz = pick(L, dict(L['quiz']), False)
     if COV:  # quiz = the bank questions the coverage map sends to this lesson (taught/likely), regex picks as fallback
         mapped = [int(k) for k, v in COV.items() if v[0] in 'fa' and v[1] and v[1][0] == lid and int(k) in QS

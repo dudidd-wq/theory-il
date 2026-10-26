@@ -172,7 +172,7 @@ async function run(prof, opts) {
     ok(BKL.length >= 4 && ids.slice(-BKL.length).every(i => i.startsWith('bank_')), `B path ends with ${BKL.length} "מהמאגר הרשמי" lessons`);
     const bv = BKL.find(l => l.id === 'bank_veh'), want = bv.bank.filter(i => QH.get(i)?.t.includes('B'));
     await go(p, '#/learn/bank_veh/peek'); await p.waitForSelector('.bankcard');
-    const cards = await p.locator('.bankcard').evaluateAll(es => es.map(e => [+e.dataset.q, e.querySelector('.qtext').textContent, e.querySelector('.ans-ok .at').textContent, [...e.querySelectorAll('.opts li .at')].map(x => x.textContent)]));
+    const cards = await p.locator('.bankcard').evaluateAll(es => es.map(e => [+e.dataset.q, e.querySelector('.qtext').textContent, e.querySelector('.ans-ok .at').textContent, [...e.querySelectorAll('.bopts li .at')].map(x => x.textContent)]));
     ok(cards.length === want.length && cards.every(([i, q, a, o]) => q.endsWith(QH.get(i).q) && a === QH.get(i).a[QH.get(i).c] && JSON.stringify(o) === JSON.stringify(QH.get(i).a)), `bank lesson: all ${want.length} B questions shown with the official text, all four official options and the correct one marked`);
     ok(/אין לשאלות האלה הסבר רשמי או מקור חוקי/.test(await p.textContent('.banknote')) && await p.locator('.banktag').count() === cards.length, 'bank lesson: visible "no official explanation or legal source" label on the lesson and every card');
     ok(/data\.gov\.il/.test(await p.getAttribute('a:has-text("CC BY")', 'href')) && await p.locator('.rules, .lbody, .recap, .mnems').count() === 0, 'bank lesson: CC BY attribution link to data.gov.il, no rules/explanation/recap of ours');
@@ -187,10 +187,13 @@ async function run(prof, opts) {
     ok(PL.length >= 20 && all.length === new Set(all).size && PL.every(l => l.pbank.every(x => !QH.get(x.q)?.t.includes('B') || l.quiz.includes(x.q))), `partial cards: ${all.length} B questions in ${PL.length} lessons, each in its lesson quiz`);
     const pl = PL.reduce((a, b) => (b.pbank.length > a.pbank.length ? b : a)), want = pl.pbank.filter(x => QH.get(x.q)?.t.includes('B'));
     await go(p, '#/learn/' + pl.id + '/peek'); await p.waitForSelector('.pbcard');
-    const cards = await p.locator('.pbcard').evaluateAll(es => es.map(e => [+e.dataset.q, e.querySelector('.qtext').textContent, e.querySelector('.ans-ok .at').textContent, [...e.querySelectorAll('.opts li .at')].map(x => x.textContent), e.querySelectorAll('.pbpart').length, !!e.querySelector('.pbrest')]));
+    const cards = await p.locator('.pbcard').evaluateAll(es => es.map(e => [+e.dataset.q, e.querySelector('.qtext').textContent, e.querySelector('.ans-ok .at').textContent, [...e.querySelectorAll('.bopts li .at')].map(x => x.textContent), e.querySelectorAll('.pbpart').length, !!e.querySelector('.pbrest')]));
     ok(cards.length === want.length && cards.every(([i, q, a, o, n, r], k) => i === want[k].q && q.endsWith(QH.get(i).q) && a === QH.get(i).a[QH.get(i).c] && JSON.stringify(o) === JSON.stringify(QH.get(i).a) && n === want[k].u.length && r),
       `partial cards (${pl.id}): ${cards.length} questions with the official text and answer, the cited unit, and a bank-only rest line`);
     ok(/שאלות מהמאגר שהשיעור מכסה רק חלקית/.test(await text(p)) && await p.locator('#ls-pbank ~ .bankattr a[href*="data.gov.il"]').count() === 1 && await p.locator('.pbcard .pbpart.off .lawref').count() >= 1, 'partial cards: section title, CC BY link, official-source part with its citation chip');
+    { const sl = LB.find(l => l.id === 'signs'), x = sl.ex[0], v = QH.get(x.q); await go(p, '#/learn/signs/peek'); await p.waitForSelector('.excard .trap');
+      const tr = await p.locator('.excard').first().evaluate(e => [e.querySelector('.trapopt')?.textContent, [...e.querySelectorAll('.trap ul.qt q')].map(q => q.textContent), e.querySelectorAll('.trap .lawref, .trap a').length]);
+      ok(tr[0] === '«' + v.a[x.tr] + '»' && x.tr !== v.c && tr[1].length === x.qt.length && tr[1][0] === x.qt[0].t && tr[2] >= 1, `worked example Q${x.q}: closest wrong option shown against the cited source's own wording (${tr[1].length} passages)`); }
     const no = LB.find(l => (l.pbank || []).some(x => QH.get(x.q)?.t.includes('B') && x.u.every(u => !u.o)));
     if (no) { const x = no.pbank.find(x => QH.get(x.q)?.t.includes('B') && x.u.every(u => !u.o)); await go(p, '#/learn/' + no.id + '/peek'); await p.waitForSelector('.pbcard');
       ok(/בלי מקור רשמי מצוטט/.test(await p.textContent(`.pbcard[data-q="${x.q}"]`)) && await p.locator(`.pbcard[data-q="${x.q}"] .pbpart.off`).count() === 0, `partial card Q${x.q}: covering unit without an official source is labelled so`); }

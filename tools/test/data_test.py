@@ -251,6 +251,12 @@ ok(any('אור מהבהב צהוב' in r['t'] and 'מחווני הכיוון' in
 ok(any('בבלם ובמצמד' in r['t'] for r in _LB['blind']['rules']), 'v1.11 (review #8): blind stopping-steps rule follows the textbook wording (brake and clutch)')
 _CSS = T('css', 'style.css'); _APP = T('js', 'app.js')
 ok('.tbl.cov td::before { content: attr(data-label)' in _CSS and "'data-label': t(COVH[k + 1]) }, h('bdi'" in _APP and 'pc(nb)' in _APP, 'v1.11 (review #8): About coverage table stacks as labelled cards at phone widths; percentages one decimal')
+_np = lambda x: re.sub(r'[\s.,:;\-–״"\'()]+', '', x)
+_EXBA = [(l['id'], x) for l in LJ['lessons'] if 'B' in l['cls'] or 'A' in l['cls'] for x in l['ex']]
+_badtr = [x['q'] for _, x in _EXBA if 'tr' in x and not (0 <= x['tr'] < len(byid[x['q']]['a']) and x['tr'] != byid[x['q']]['c'])]
+ok(not _badtr and sum('tr' in x for _, x in _EXBA) >= len(_EXBA) - 2, f'v1.11 (review #8): B/A worked examples name the closest wrong option (index != correct): {sum("tr" in x for _, x in _EXBA)}/{len(_EXBA)} {_badtr[:5]}')
+_badqt = [(x['q'], p['s']) for _, x in _EXBA for p in x.get('qt', []) if not any(_np(p['t'].rstrip('…')) in _np(e) for e in SRC.get(p['s'], {}).get('ex', []))]
+ok(not _badqt and sum(bool(x.get('qt')) for _, x in _EXBA) >= len(_EXBA) - 6 and "'ln.trapNote'" in I18 and 'x.qt.map' in JL, f'v1.11 (review #8): each worked example quotes its own official passage verbatim (from the pinned source excerpts): {sum(bool(x.get("qt")) for _, x in _EXBA)}/{len(_EXBA)} {_badqt[:5]}')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 
