@@ -4,88 +4,88 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1206,
-"partial": 240,
-"none": 355,
-"full_pct": 67.0,
-"any_pct": 80.3,
-"strict_full": 973,
-"strict_pct": 54.0,
+"full": 1227,
+"partial": 231,
+"none": 343,
+"full_pct": 68.1,
+"any_pct": 81.0,
+"strict_full": 994,
+"strict_pct": 55.2,
 "none_teachable": 98,
-"none_nosource": 257
+"none_nosource": 245
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 856,
-"partial": 166,
-"none": 250,
-"full_pct": 67.3,
-"any_pct": 80.3,
-"strict_full": 648,
-"strict_pct": 50.9,
+"full": 877,
+"partial": 157,
+"none": 238,
+"full_pct": 68.9,
+"any_pct": 81.3,
+"strict_full": 669,
+"strict_pct": 52.6,
 "none_teachable": 64,
-"none_nosource": 186
+"none_nosource": 174
 },
 "A": {
 "n": 1155,
-"full": 783,
-"partial": 161,
-"none": 211,
-"full_pct": 67.8,
-"any_pct": 81.7,
-"strict_full": 580,
-"strict_pct": 50.2,
+"full": 804,
+"partial": 152,
+"none": 199,
+"full_pct": 69.6,
+"any_pct": 82.8,
+"strict_full": 601,
+"strict_pct": 52.0,
 "none_teachable": 53,
-"none_nosource": 158
+"none_nosource": 146
 },
 "C1": {
 "n": 1385,
-"full": 924,
-"partial": 182,
-"none": 279,
-"full_pct": 66.7,
-"any_pct": 79.9,
-"strict_full": 713,
-"strict_pct": 51.5,
+"full": 945,
+"partial": 173,
+"none": 267,
+"full_pct": 68.2,
+"any_pct": 80.7,
+"strict_full": 734,
+"strict_pct": 53.0,
 "none_teachable": 93,
-"none_nosource": 186
+"none_nosource": 174
 },
 "C": {
 "n": 1314,
-"full": 918,
-"partial": 166,
-"none": 230,
-"full_pct": 69.9,
-"any_pct": 82.5,
-"strict_full": 708,
-"strict_pct": 53.9,
+"full": 939,
+"partial": 157,
+"none": 218,
+"full_pct": 71.5,
+"any_pct": 83.4,
+"strict_full": 729,
+"strict_pct": 55.5,
 "none_teachable": 86,
-"none_nosource": 144
+"none_nosource": 132
 },
 "D": {
 "n": 1316,
-"full": 936,
-"partial": 169,
-"none": 211,
-"full_pct": 71.1,
-"any_pct": 84.0,
-"strict_full": 714,
-"strict_pct": 54.3,
+"full": 957,
+"partial": 160,
+"none": 199,
+"full_pct": 72.7,
+"any_pct": 84.9,
+"strict_full": 735,
+"strict_pct": 55.9,
 "none_teachable": 58,
-"none_nosource": 153
+"none_nosource": 141
 },
 "1": {
 "n": 1127,
-"full": 787,
-"partial": 138,
-"none": 202,
-"full_pct": 69.8,
-"any_pct": 82.1,
-"strict_full": 583,
-"strict_pct": 51.7,
+"full": 807,
+"partial": 129,
+"none": 191,
+"full_pct": 71.6,
+"any_pct": 83.1,
+"strict_full": 603,
+"strict_pct": 53.5,
 "none_teachable": 54,
-"none_nosource": 148
+"none_nosource": 137
 }
 },
 "class_only": {
@@ -165,39 +165,39 @@
 "topic": {
 "law": {
 "n": 901,
-"full": 657,
-"partial": 136,
+"full": 663,
+"partial": 130,
 "none": 108,
-"full_pct": 72.9,
+"full_pct": 73.6,
 "any_pct": 88.0,
-"strict_full": 657,
-"strict_pct": 72.9,
+"strict_full": 663,
+"strict_pct": 73.6,
 "none_teachable": 69,
 "none_nosource": 39
 },
 "signs": {
 "n": 390,
-"full": 359,
-"partial": 11,
+"full": 360,
+"partial": 10,
 "none": 20,
-"full_pct": 92.1,
+"full_pct": 92.3,
 "any_pct": 94.9,
-"strict_full": 126,
-"strict_pct": 32.3,
+"strict_full": 127,
+"strict_pct": 32.6,
 "none_teachable": 17,
 "none_nosource": 3
 },
 "safety": {
 "n": 400,
-"full": 161,
-"partial": 74,
-"none": 165,
-"full_pct": 40.2,
-"any_pct": 58.8,
-"strict_full": 161,
-"strict_pct": 40.2,
+"full": 175,
+"partial": 72,
+"none": 153,
+"full_pct": 43.8,
+"any_pct": 61.8,
+"strict_full": 175,
+"strict_pct": 43.8,
 "none_teachable": 9,
-"none_nosource": 156
+"none_nosource": 144
 },
 "vehicle": {
 "n": 110,
@@ -216,39 +216,39 @@
 "B": {
 "law": {
 "n": 501,
-"full": 364,
-"partial": 82,
+"full": 370,
+"partial": 76,
 "none": 55,
-"full_pct": 72.7,
+"full_pct": 73.9,
 "any_pct": 89.0,
-"strict_full": 364,
-"strict_pct": 72.7,
+"strict_full": 370,
+"strict_pct": 73.9,
 "none_teachable": 38,
 "none_nosource": 17
 },
 "signs": {
 "n": 360,
-"full": 330,
-"partial": 11,
+"full": 331,
+"partial": 10,
 "none": 19,
-"full_pct": 91.7,
+"full_pct": 91.9,
 "any_pct": 94.7,
-"strict_full": 122,
-"strict_pct": 33.9,
+"strict_full": 123,
+"strict_pct": 34.2,
 "none_teachable": 16,
 "none_nosource": 3
 },
 "safety": {
 "n": 305,
-"full": 134,
-"partial": 54,
-"none": 117,
-"full_pct": 43.9,
-"any_pct": 61.6,
-"strict_full": 134,
-"strict_pct": 43.9,
+"full": 148,
+"partial": 52,
+"none": 105,
+"full_pct": 48.5,
+"any_pct": 65.6,
+"strict_full": 148,
+"strict_pct": 48.5,
 "none_teachable": 8,
-"none_nosource": 109
+"none_nosource": 97
 },
 "vehicle": {
 "n": 106,
@@ -266,39 +266,39 @@
 "A": {
 "law": {
 "n": 429,
-"full": 315,
-"partial": 78,
+"full": 321,
+"partial": 72,
 "none": 36,
-"full_pct": 73.4,
+"full_pct": 74.8,
 "any_pct": 91.6,
-"strict_full": 315,
-"strict_pct": 73.4,
+"strict_full": 321,
+"strict_pct": 74.8,
 "none_teachable": 27,
 "none_nosource": 9
 },
 "signs": {
 "n": 354,
-"full": 324,
-"partial": 11,
+"full": 325,
+"partial": 10,
 "none": 19,
-"full_pct": 91.5,
+"full_pct": 91.8,
 "any_pct": 94.6,
-"strict_full": 121,
-"strict_pct": 34.2,
+"strict_full": 122,
+"strict_pct": 34.5,
 "none_teachable": 16,
 "none_nosource": 3
 },
 "safety": {
 "n": 312,
-"full": 126,
-"partial": 62,
-"none": 124,
-"full_pct": 40.4,
-"any_pct": 60.3,
-"strict_full": 126,
-"strict_pct": 40.4,
+"full": 140,
+"partial": 60,
+"none": 112,
+"full_pct": 44.9,
+"any_pct": 64.1,
+"strict_full": 140,
+"strict_pct": 44.9,
 "none_teachable": 8,
-"none_nosource": 116
+"none_nosource": 104
 },
 "vehicle": {
 "n": 60,
@@ -316,39 +316,39 @@
 "C1": {
 "law": {
 "n": 605,
-"full": 423,
-"partial": 94,
+"full": 429,
+"partial": 88,
 "none": 88,
-"full_pct": 69.9,
+"full_pct": 70.9,
 "any_pct": 85.5,
-"strict_full": 423,
-"strict_pct": 69.9,
+"strict_full": 429,
+"strict_pct": 70.9,
 "none_teachable": 66,
 "none_nosource": 22
 },
 "signs": {
 "n": 367,
-"full": 336,
-"partial": 11,
+"full": 337,
+"partial": 10,
 "none": 20,
-"full_pct": 91.6,
+"full_pct": 91.8,
 "any_pct": 94.6,
-"strict_full": 125,
-"strict_pct": 34.1,
+"strict_full": 126,
+"strict_pct": 34.3,
 "none_teachable": 17,
 "none_nosource": 3
 },
 "safety": {
 "n": 312,
-"full": 137,
-"partial": 60,
-"none": 115,
-"full_pct": 43.9,
-"any_pct": 63.1,
-"strict_full": 137,
-"strict_pct": 43.9,
+"full": 151,
+"partial": 58,
+"none": 103,
+"full_pct": 48.4,
+"any_pct": 67.0,
+"strict_full": 151,
+"strict_pct": 48.4,
 "none_teachable": 8,
-"none_nosource": 107
+"none_nosource": 95
 },
 "vehicle": {
 "n": 101,
@@ -366,39 +366,39 @@
 "C": {
 "law": {
 "n": 619,
-"full": 445,
-"partial": 92,
+"full": 451,
+"partial": 86,
 "none": 82,
-"full_pct": 71.9,
+"full_pct": 72.9,
 "any_pct": 86.8,
-"strict_full": 445,
-"strict_pct": 71.9,
+"strict_full": 451,
+"strict_pct": 72.9,
 "none_teachable": 60,
 "none_nosource": 22
 },
 "signs": {
 "n": 366,
-"full": 335,
-"partial": 11,
+"full": 336,
+"partial": 10,
 "none": 20,
-"full_pct": 91.5,
+"full_pct": 91.8,
 "any_pct": 94.5,
-"strict_full": 125,
-"strict_pct": 34.2,
+"strict_full": 126,
+"strict_pct": 34.4,
 "none_teachable": 17,
 "none_nosource": 3
 },
 "safety": {
 "n": 307,
-"full": 128,
-"partial": 61,
-"none": 118,
-"full_pct": 41.7,
-"any_pct": 61.6,
-"strict_full": 128,
-"strict_pct": 41.7,
+"full": 142,
+"partial": 59,
+"none": 106,
+"full_pct": 46.3,
+"any_pct": 65.5,
+"strict_full": 142,
+"strict_pct": 46.3,
 "none_teachable": 9,
-"none_nosource": 109
+"none_nosource": 97
 },
 "vehicle": {
 "n": 22,
@@ -416,39 +416,39 @@
 "D": {
 "law": {
 "n": 618,
-"full": 451,
-"partial": 99,
+"full": 457,
+"partial": 93,
 "none": 68,
-"full_pct": 73.0,
+"full_pct": 73.9,
 "any_pct": 89.0,
-"strict_full": 451,
-"strict_pct": 73.0,
+"strict_full": 457,
+"strict_pct": 73.9,
 "none_teachable": 34,
 "none_nosource": 34
 },
 "signs": {
 "n": 377,
-"full": 347,
-"partial": 11,
+"full": 348,
+"partial": 10,
 "none": 19,
-"full_pct": 92.0,
+"full_pct": 92.3,
 "any_pct": 95.0,
-"strict_full": 125,
-"strict_pct": 33.2,
+"strict_full": 126,
+"strict_pct": 33.4,
 "none_teachable": 16,
 "none_nosource": 3
 },
 "safety": {
 "n": 299,
-"full": 128,
-"partial": 57,
-"none": 114,
-"full_pct": 42.8,
-"any_pct": 61.9,
-"strict_full": 128,
-"strict_pct": 42.8,
+"full": 142,
+"partial": 55,
+"none": 102,
+"full_pct": 47.5,
+"any_pct": 65.9,
+"strict_full": 142,
+"strict_pct": 47.5,
 "none_teachable": 8,
-"none_nosource": 106
+"none_nosource": 94
 },
 "vehicle": {
 "n": 22,
@@ -466,39 +466,39 @@
 "1": {
 "law": {
 "n": 436,
-"full": 324,
-"partial": 73,
+"full": 330,
+"partial": 67,
 "none": 39,
-"full_pct": 74.3,
+"full_pct": 75.7,
 "any_pct": 91.1,
-"strict_full": 324,
-"strict_pct": 74.3,
+"strict_full": 330,
+"strict_pct": 75.7,
 "none_teachable": 29,
 "none_nosource": 10
 },
 "signs": {
 "n": 353,
-"full": 325,
-"partial": 10,
+"full": 326,
+"partial": 9,
 "none": 18,
-"full_pct": 92.1,
+"full_pct": 92.4,
 "any_pct": 94.9,
-"strict_full": 121,
-"strict_pct": 34.3,
+"strict_full": 122,
+"strict_pct": 34.6,
 "none_teachable": 15,
 "none_nosource": 3
 },
 "safety": {
 "n": 295,
-"full": 125,
-"partial": 49,
-"none": 121,
-"full_pct": 42.4,
-"any_pct": 59.0,
-"strict_full": 125,
-"strict_pct": 42.4,
+"full": 138,
+"partial": 47,
+"none": 110,
+"full_pct": 46.8,
+"any_pct": 62.7,
+"strict_full": 138,
+"strict_pct": 46.8,
 "none_teachable": 8,
-"none_nosource": 113
+"none_nosource": 102
 },
 "vehicle": {
 "n": 43,
@@ -515,10 +515,10 @@
 }
 },
 "by": {
-"hand": 946,
-"v1.5": 506,
+"hand": 923,
+"v1.5": 531,
 "link": 81,
-"sample": 268
+"sample": 266
 }
 },
 "q": {
@@ -1649,12 +1649,12 @@
 "61": {
 "v": "partial",
 "rule": [
-"duty#r1"
+"peds2#r6"
 ],
 "ref": [
-"duty#r:מצייתים להוראות ולאותות של שוטר במדי"
+"peds2#r:מדרג הציות: הוראת שוטר גוברת על הרמז"
 ],
-"why": "police in uniform taught, appointment card not",
+"why": "rule covers part of the answer (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -1664,7 +1664,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "62": {
 "v": "full",
@@ -1807,14 +1807,14 @@
 "by": "v1.5"
 },
 "69": {
-"v": "partial",
+"v": "full",
 "rule": [
-"priority#b0"
+"peds2#r6"
 ],
 "ref": [
-"priority#b:בצומת הכלל הראשון הוא לבדוק: יש תמרו"
+"peds2#r:מדרג הציות: הוראת שוטר גוברת על הרמז"
 ],
-"why": "order of precedence not given",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -1824,7 +1824,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "70": {
 "v": "full",
@@ -3262,14 +3262,14 @@
 "by": "sample"
 },
 "143": {
-"v": "partial",
+"v": "full",
 "rule": [
-"overtake#b0"
+"peds2#r2"
 ],
 "ref": [
-"overtake#b:הבסיס: נוסעים כמה שאפשר בצד ימין של "
+"peds2#r:חובה להאט במפגש עם קבוצת אנשים ההולכ"
 ],
-"why": "duty to slow listed; animals not named",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -3279,7 +3279,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "144": {
 "v": "partial",
@@ -3508,14 +3508,14 @@
 "by": "hand"
 },
 "156": {
-"v": "partial",
+"v": "full",
 "rule": [
-"speed#b2"
+"rail2#r0"
 ],
 "ref": [
-"speed#b:החוק גם מונה מצבים שבהם חובה להאט: ל"
+"rail2#r:לפני מפגש מסילת ברזל חייבים להאט, גם"
 ],
-"why": "slowing duties; crossing with barrier not named",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -3525,7 +3525,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "157": {
 "v": "full",
@@ -7934,14 +7934,14 @@
 "by": "hand"
 },
 "388": {
-"v": "partial",
+"v": "full",
 "rule": [
-"signs#g632"
+"rail2#r4"
 ],
 "ref": [
-"signs#g632"
+"rail2#r:אזור מיתון תנועה: עד 30 קמ\"ש. התמרור"
 ],
-"why": "30 km/h zone end sign only",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -7951,7 +7951,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "389": {
 "v": "full",
@@ -9075,14 +9075,14 @@
 "by": "sample"
 },
 "444": {
-"v": "partial",
+"v": "full",
 "rule": [
-"speed#c0"
+"rail2#r3"
 ],
 "ref": [
-"speed#c:מהירות מרבית לרכב פרטי בדרך עירונית "
+"rail2#r:מהירות סבירה מתחשבת בכל הנסיבות ותמי"
 ],
-"why": "reasonable speed general",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -9092,7 +9092,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "445": {
 "v": "full",
@@ -9358,14 +9358,14 @@
 "by": "link"
 },
 "458": {
-"v": "partial",
+"v": "full",
 "rule": [
-"priority#g460"
+"rail2#r0"
 ],
 "ref": [
-"priority#g460"
+"rail2#r:לפני מפגש מסילת ברזל חייבים להאט, גם"
 ],
-"why": "related rule only",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -9375,7 +9375,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "sample"
+"by": "v1.5"
 },
 "459": {
 "v": "full",
@@ -9585,12 +9585,12 @@
 "469": {
 "v": "partial",
 "rule": [
-"peds#r0"
+"peds2#r0"
 ],
 "ref": [
-"peds#r:הולכי רגל חוצים במעבר – נותנים להם ל"
+"peds2#r:לפני מעבר חצייה חובה להאט – גם כשאין"
 ],
-"why": "sign-link 135",
+"why": "rule covers part of the answer (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -9600,7 +9600,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "470": {
 "v": "full",
@@ -9802,14 +9802,14 @@
 "by": "hand"
 },
 "480": {
-"v": "partial",
+"v": "full",
 "rule": [
-"speed#r7"
+"peds2#r1"
 ],
 "ref": [
-"speed#r:חובה להאט (ואף לעצור) כשצפויה סכנה –"
+"peds2#r:חובה להאט, ואם צריך לעצור, בכל מקום "
 ],
-"why": "slow for danger; children not named",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -9819,7 +9819,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "481": {
 "v": "full",
@@ -15603,11 +15603,14 @@
 "by": "hand"
 },
 "775": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "pedestrian anticipation",
-"src": "S",
+"v": "full",
+"rule": [
+"peds2#r5"
+],
+"ref": [
+"peds2#r:אל תסמוך על הולך הרגל, גם באזור צומת"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -15617,7 +15620,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "776": {
 "v": "full",
@@ -15733,11 +15736,14 @@
 "by": "v1.5"
 },
 "782": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "right-turn hazard two-wheeler",
-"src": "S",
+"v": "full",
+"rule": [
+"rail2#r2"
+],
+"ref": [
+"rail2#r:רוכבי דו-גלגלי נוטים לעקוף מימין, ול"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -15747,7 +15753,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "783": {
 "v": "full",
@@ -16133,14 +16139,14 @@
 "by": "hand"
 },
 "803": {
-"v": "partial",
+"v": "full",
 "rule": [
-"speed#b0"
+"rail2#r3"
 ],
 "ref": [
-"speed#b:יש שני כללים שעובדים יחד. הראשון: המ"
+"rail2#r:מהירות סבירה מתחשבת בכל הנסיבות ותמי"
 ],
-"why": "related rule only",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -16150,7 +16156,7 @@
 "D"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.5"
 },
 "804": {
 "v": "partial",
@@ -17787,31 +17793,14 @@
 "by": "v1.5"
 },
 "892": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "picture",
-"src": "S",
-"cls": [
-"1",
-"A",
-"B",
-"C",
-"C1",
-"D"
-],
-"topic": "safety",
-"by": "hand"
-},
-"893": {
-"v": "partial",
+"v": "full",
 "rule": [
-"peds#x1"
+"peds2#r4"
 ],
 "ref": [
-"peds#x:Q205"
+"peds2#r:מקומות שבהם הולכי רגל עלולים להופיע "
 ],
-"why": "related rule only",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -17821,7 +17810,27 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
+},
+"893": {
+"v": "full",
+"rule": [
+"peds2#r0"
+],
+"ref": [
+"peds2#r:לפני מעבר חצייה חובה להאט – גם כשאין"
+],
+"why": "rule written for this question (OFF:textbook)",
+"cls": [
+"1",
+"A",
+"B",
+"C",
+"C1",
+"D"
+],
+"topic": "safety",
+"by": "v1.5"
 },
 "894": {
 "v": "full",
@@ -18030,11 +18039,14 @@
 "by": "v1.5"
 },
 "905": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "picture",
-"src": "S",
+"v": "full",
+"rule": [
+"peds2#r2"
+],
+"ref": [
+"peds2#r:חובה להאט במפגש עם קבוצת אנשים ההולכ"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -18044,7 +18056,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "906": {
 "v": "partial",
@@ -18067,11 +18079,14 @@
 "by": "hand"
 },
 "907": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "picture cyclist",
-"src": "S",
+"v": "partial",
+"rule": [
+"rail2#r2"
+],
+"ref": [
+"rail2#r:רוכבי דו-גלגלי נוטים לעקוף מימין, ול"
+],
+"why": "rule covers part of the answer (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -18081,7 +18096,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "908": {
 "v": "none",
@@ -18118,11 +18133,14 @@
 "by": "hand"
 },
 "910": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "picture children",
-"src": "S",
+"v": "partial",
+"rule": [
+"peds2#r4"
+],
+"ref": [
+"peds2#r:מקומות שבהם הולכי רגל עלולים להופיע "
+],
+"why": "rule covers part of the answer (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -18132,7 +18150,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "911": {
 "v": "none",
@@ -18172,14 +18190,14 @@
 "by": "sample"
 },
 "913": {
-"v": "partial",
+"v": "full",
 "rule": [
-"rail#b1"
+"rail2#r1"
 ],
 "ref": [
-"rail#b:איפה עוצרים? לפני קו העצירה; אם אין "
+"rail2#r:ממשיכים לנסוע רק אחרי שהמחסום נפתח א"
 ],
-"why": "rail stop; picture",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -18189,7 +18207,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "914": {
 "v": "none",
@@ -18209,11 +18227,14 @@
 "by": "hand"
 },
 "915": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "picture",
-"src": "S",
+"v": "full",
+"rule": [
+"peds2#r3"
+],
+"ref": [
+"peds2#r:צריך לזהות הולך רגל מוקדם, עוד לפני "
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -18223,14 +18244,17 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "916": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "picture",
-"src": "S",
+"v": "full",
+"rule": [
+"peds2#r3"
+],
+"ref": [
+"peds2#r:צריך לזהות הולך רגל מוקדם, עוד לפני "
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -18240,14 +18264,17 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "917": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "picture",
-"src": "S",
+"v": "full",
+"rule": [
+"peds2#r3"
+],
+"ref": [
+"peds2#r:צריך לזהות הולך רגל מוקדם, עוד לפני "
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -18257,7 +18284,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "918": {
 "v": "none",
@@ -18317,11 +18344,14 @@
 "by": "v1.5"
 },
 "921": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "picture",
-"src": "S",
+"v": "full",
+"rule": [
+"peds2#r4"
+],
+"ref": [
+"peds2#r:מקומות שבהם הולכי רגל עלולים להופיע "
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "A",
 "B",
@@ -18330,14 +18360,17 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "922": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "picture school bus",
-"src": "S",
+"v": "full",
+"rule": [
+"peds2#r1"
+],
+"ref": [
+"peds2#r:חובה להאט, ואם צריך לעצור, בכל מקום "
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -18347,7 +18380,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "923": {
 "v": "none",
@@ -30943,11 +30976,14 @@
 "by": "hand"
 },
 "1715": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "rough road",
-"src": "S",
+"v": "full",
+"rule": [
+"rail2#r5"
+],
+"ref": [
+"rail2#r:ככל שהדרך קשה יותר – משובשת, מעוקלת,"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -30957,7 +30993,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1716": {
 "v": "full",
@@ -31329,14 +31365,14 @@
 "by": "hand"
 },
 "1738": {
-"v": "partial",
+"v": "full",
 "rule": [
-"speed#r6"
+"peds2#r1"
 ],
 "ref": [
-"speed#r:תמיד – מהירות סבירה לפי התנאים, כך ש"
+"peds2#r:חובה להאט, ואם צריך לעצור, בכל מקום "
 ],
-"why": "slow for danger",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -31346,7 +31382,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1739": {
 "v": "full",
