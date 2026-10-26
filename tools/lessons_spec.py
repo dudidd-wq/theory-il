@@ -802,3 +802,14 @@ def add_v15():
         i = next(i for i, x in enumerate(LESSONS) if x['id'] == after)
         LESSONS.insert(i + 1, L)
 add_v15()
+
+# v1.6: every B/A question taught from an official state source (tools/lessons_v16.py)
+def add_v16():
+    import lessons_v16 as m
+    for after, L in m.lessons(R, C):
+        if any(x['id'] == L['id'] for x in LESSONS): continue
+        i = next(i for i, x in enumerate(LESSONS) if x['id'] == after)
+        LESSONS.insert(i + 1, L)
+    for k, v in m.EXAMPLES16.items(): EXAMPLES.setdefault(k, []).extend(X(*e) for e in v)
+    for k, v in m.NOTES16.items(): NOTES.setdefault(k, v)
+add_v16()

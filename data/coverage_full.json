@@ -4,87 +4,87 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1068,
-"partial": 265,
-"none": 468,
-"full_pct": 59.3,
-"any_pct": 74.0,
-"strict_full": 835,
-"strict_pct": 46.4,
-"none_teachable": 140,
+"full": 1097,
+"partial": 267,
+"none": 437,
+"full_pct": 60.9,
+"any_pct": 75.7,
+"strict_full": 864,
+"strict_pct": 48.0,
+"none_teachable": 109,
 "none_nosource": 328
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 719,
-"partial": 185,
-"none": 368,
-"full_pct": 56.5,
-"any_pct": 71.1,
-"strict_full": 511,
-"strict_pct": 40.2,
-"none_teachable": 106,
+"full": 748,
+"partial": 187,
+"none": 337,
+"full_pct": 58.8,
+"any_pct": 73.5,
+"strict_full": 540,
+"strict_pct": 42.5,
+"none_teachable": 75,
 "none_nosource": 262
 },
 "A": {
 "n": 1155,
-"full": 685,
-"partial": 177,
-"none": 293,
-"full_pct": 59.3,
-"any_pct": 74.6,
-"strict_full": 482,
-"strict_pct": 41.7,
-"none_teachable": 81,
+"full": 701,
+"partial": 178,
+"none": 276,
+"full_pct": 60.7,
+"any_pct": 76.1,
+"strict_full": 498,
+"strict_pct": 43.1,
+"none_teachable": 64,
 "none_nosource": 212
 },
 "C1": {
 "n": 1385,
-"full": 788,
-"partial": 201,
-"none": 396,
-"full_pct": 56.9,
-"any_pct": 71.4,
-"strict_full": 577,
-"strict_pct": 41.7,
-"none_teachable": 135,
+"full": 817,
+"partial": 203,
+"none": 365,
+"full_pct": 59.0,
+"any_pct": 73.6,
+"strict_full": 606,
+"strict_pct": 43.8,
+"none_teachable": 104,
 "none_nosource": 261
 },
 "C": {
 "n": 1314,
-"full": 806,
-"partial": 186,
-"none": 322,
-"full_pct": 61.3,
-"any_pct": 75.5,
-"strict_full": 596,
-"strict_pct": 45.4,
-"none_teachable": 119,
+"full": 827,
+"partial": 187,
+"none": 300,
+"full_pct": 62.9,
+"any_pct": 77.2,
+"strict_full": 617,
+"strict_pct": 47.0,
+"none_teachable": 97,
 "none_nosource": 203
 },
 "D": {
 "n": 1316,
-"full": 825,
-"partial": 187,
-"none": 304,
-"full_pct": 62.7,
-"any_pct": 76.9,
-"strict_full": 603,
-"strict_pct": 45.8,
-"none_teachable": 89,
+"full": 844,
+"partial": 188,
+"none": 284,
+"full_pct": 64.1,
+"any_pct": 78.4,
+"strict_full": 622,
+"strict_pct": 47.3,
+"none_teachable": 69,
 "none_nosource": 215
 },
 "1": {
 "n": 1127,
-"full": 673,
-"partial": 159,
-"none": 295,
-"full_pct": 59.7,
-"any_pct": 73.8,
-"strict_full": 469,
-"strict_pct": 41.6,
-"none_teachable": 87,
+"full": 694,
+"partial": 160,
+"none": 273,
+"full_pct": 61.6,
+"any_pct": 75.8,
+"strict_full": 490,
+"strict_pct": 43.5,
+"none_teachable": 65,
 "none_nosource": 208
 }
 },
@@ -165,38 +165,38 @@
 "topic": {
 "law": {
 "n": 901,
-"full": 606,
-"partial": 147,
-"none": 148,
-"full_pct": 67.3,
-"any_pct": 83.6,
-"strict_full": 606,
-"strict_pct": 67.3,
-"none_teachable": 108,
+"full": 633,
+"partial": 149,
+"none": 119,
+"full_pct": 70.3,
+"any_pct": 86.8,
+"strict_full": 633,
+"strict_pct": 70.3,
+"none_teachable": 79,
 "none_nosource": 40
 },
 "signs": {
 "n": 390,
-"full": 356,
+"full": 357,
 "partial": 12,
-"none": 22,
-"full_pct": 91.3,
-"any_pct": 94.4,
-"strict_full": 123,
-"strict_pct": 31.5,
-"none_teachable": 19,
+"none": 21,
+"full_pct": 91.5,
+"any_pct": 94.6,
+"strict_full": 124,
+"strict_pct": 31.8,
+"none_teachable": 18,
 "none_nosource": 3
 },
 "safety": {
 "n": 400,
-"full": 91,
+"full": 92,
 "partial": 86,
-"none": 223,
-"full_pct": 22.8,
-"any_pct": 44.2,
-"strict_full": 91,
-"strict_pct": 22.8,
-"none_teachable": 10,
+"none": 222,
+"full_pct": 23.0,
+"any_pct": 44.5,
+"strict_full": 92,
+"strict_pct": 23.0,
+"none_teachable": 9,
 "none_nosource": 213
 },
 "vehicle": {
@@ -216,38 +216,38 @@
 "B": {
 "law": {
 "n": 501,
-"full": 313,
-"partial": 92,
-"none": 96,
-"full_pct": 62.5,
-"any_pct": 80.8,
-"strict_full": 313,
-"strict_pct": 62.5,
-"none_teachable": 77,
+"full": 340,
+"partial": 94,
+"none": 67,
+"full_pct": 67.9,
+"any_pct": 86.6,
+"strict_full": 340,
+"strict_pct": 67.9,
+"none_teachable": 48,
 "none_nosource": 19
 },
 "signs": {
 "n": 360,
-"full": 327,
+"full": 328,
 "partial": 12,
-"none": 21,
-"full_pct": 90.8,
-"any_pct": 94.2,
-"strict_full": 119,
-"strict_pct": 33.1,
-"none_teachable": 18,
+"none": 20,
+"full_pct": 91.1,
+"any_pct": 94.4,
+"strict_full": 120,
+"strict_pct": 33.3,
+"none_teachable": 17,
 "none_nosource": 3
 },
 "safety": {
 "n": 305,
-"full": 64,
+"full": 65,
 "partial": 62,
-"none": 179,
-"full_pct": 21.0,
-"any_pct": 41.3,
-"strict_full": 64,
-"strict_pct": 21.0,
-"none_teachable": 9,
+"none": 178,
+"full_pct": 21.3,
+"any_pct": 41.6,
+"strict_full": 65,
+"strict_pct": 21.3,
+"none_teachable": 8,
 "none_nosource": 170
 },
 "vehicle": {
@@ -266,14 +266,14 @@
 "A": {
 "law": {
 "n": 429,
-"full": 278,
-"partial": 88,
-"none": 63,
-"full_pct": 64.8,
-"any_pct": 85.3,
-"strict_full": 278,
-"strict_pct": 64.8,
-"none_teachable": 53,
+"full": 293,
+"partial": 89,
+"none": 47,
+"full_pct": 68.3,
+"any_pct": 89.0,
+"strict_full": 293,
+"strict_pct": 68.3,
+"none_teachable": 37,
 "none_nosource": 10
 },
 "signs": {
@@ -290,14 +290,14 @@
 },
 "safety": {
 "n": 312,
-"full": 75,
+"full": 76,
 "partial": 67,
-"none": 170,
-"full_pct": 24.0,
-"any_pct": 45.5,
-"strict_full": 75,
-"strict_pct": 24.0,
-"none_teachable": 9,
+"none": 169,
+"full_pct": 24.4,
+"any_pct": 45.8,
+"strict_full": 76,
+"strict_pct": 24.4,
+"none_teachable": 8,
 "none_nosource": 161
 },
 "vehicle": {
@@ -316,38 +316,38 @@
 "C1": {
 "law": {
 "n": 605,
-"full": 373,
-"partial": 103,
-"none": 129,
-"full_pct": 61.7,
-"any_pct": 78.7,
-"strict_full": 373,
-"strict_pct": 61.7,
-"none_teachable": 105,
+"full": 400,
+"partial": 105,
+"none": 100,
+"full_pct": 66.1,
+"any_pct": 83.5,
+"strict_full": 400,
+"strict_pct": 66.1,
+"none_teachable": 76,
 "none_nosource": 24
 },
 "signs": {
 "n": 367,
-"full": 333,
+"full": 334,
 "partial": 12,
-"none": 22,
-"full_pct": 90.7,
-"any_pct": 94.0,
-"strict_full": 122,
-"strict_pct": 33.2,
-"none_teachable": 19,
+"none": 21,
+"full_pct": 91.0,
+"any_pct": 94.3,
+"strict_full": 123,
+"strict_pct": 33.5,
+"none_teachable": 18,
 "none_nosource": 3
 },
 "safety": {
 "n": 312,
-"full": 67,
+"full": 68,
 "partial": 69,
-"none": 176,
-"full_pct": 21.5,
-"any_pct": 43.6,
-"strict_full": 67,
-"strict_pct": 21.5,
-"none_teachable": 9,
+"none": 175,
+"full_pct": 21.8,
+"any_pct": 43.9,
+"strict_full": 68,
+"strict_pct": 21.8,
+"none_teachable": 8,
 "none_nosource": 167
 },
 "vehicle": {
@@ -366,38 +366,38 @@
 "C": {
 "law": {
 "n": 619,
-"full": 403,
-"partial": 102,
-"none": 114,
-"full_pct": 65.1,
-"any_pct": 81.6,
-"strict_full": 403,
-"strict_pct": 65.1,
-"none_teachable": 90,
+"full": 422,
+"partial": 103,
+"none": 94,
+"full_pct": 68.2,
+"any_pct": 84.8,
+"strict_full": 422,
+"strict_pct": 68.2,
+"none_teachable": 70,
 "none_nosource": 24
 },
 "signs": {
 "n": 366,
-"full": 332,
+"full": 333,
 "partial": 12,
-"none": 22,
-"full_pct": 90.7,
-"any_pct": 94.0,
-"strict_full": 122,
-"strict_pct": 33.3,
-"none_teachable": 19,
+"none": 21,
+"full_pct": 91.0,
+"any_pct": 94.3,
+"strict_full": 123,
+"strict_pct": 33.6,
+"none_teachable": 18,
 "none_nosource": 3
 },
 "safety": {
 "n": 307,
-"full": 66,
+"full": 67,
 "partial": 69,
-"none": 172,
-"full_pct": 21.5,
-"any_pct": 44.0,
-"strict_full": 66,
-"strict_pct": 21.5,
-"none_teachable": 10,
+"none": 171,
+"full_pct": 21.8,
+"any_pct": 44.3,
+"strict_full": 67,
+"strict_pct": 21.8,
+"none_teachable": 9,
 "none_nosource": 162
 },
 "vehicle": {
@@ -416,38 +416,38 @@
 "D": {
 "law": {
 "n": 618,
-"full": 412,
-"partial": 108,
-"none": 98,
-"full_pct": 66.7,
-"any_pct": 84.1,
-"strict_full": 412,
-"strict_pct": 66.7,
-"none_teachable": 62,
+"full": 429,
+"partial": 109,
+"none": 80,
+"full_pct": 69.4,
+"any_pct": 87.1,
+"strict_full": 429,
+"strict_pct": 69.4,
+"none_teachable": 44,
 "none_nosource": 36
 },
 "signs": {
 "n": 377,
-"full": 344,
+"full": 345,
 "partial": 12,
-"none": 21,
-"full_pct": 91.2,
-"any_pct": 94.4,
-"strict_full": 122,
-"strict_pct": 32.4,
-"none_teachable": 18,
+"none": 20,
+"full_pct": 91.5,
+"any_pct": 94.7,
+"strict_full": 123,
+"strict_pct": 32.6,
+"none_teachable": 17,
 "none_nosource": 3
 },
 "safety": {
 "n": 299,
-"full": 64,
+"full": 65,
 "partial": 64,
-"none": 171,
-"full_pct": 21.4,
-"any_pct": 42.8,
-"strict_full": 64,
-"strict_pct": 21.4,
-"none_teachable": 9,
+"none": 170,
+"full_pct": 21.7,
+"any_pct": 43.1,
+"strict_full": 65,
+"strict_pct": 21.7,
+"none_teachable": 8,
 "none_nosource": 162
 },
 "vehicle": {
@@ -466,14 +466,14 @@
 "1": {
 "law": {
 "n": 436,
-"full": 282,
-"partial": 82,
-"none": 72,
-"full_pct": 64.7,
-"any_pct": 83.5,
-"strict_full": 282,
-"strict_pct": 64.7,
-"none_teachable": 60,
+"full": 302,
+"partial": 83,
+"none": 51,
+"full_pct": 69.3,
+"any_pct": 88.3,
+"strict_full": 302,
+"strict_pct": 69.3,
+"none_teachable": 39,
 "none_nosource": 12
 },
 "signs": {
@@ -490,14 +490,14 @@
 },
 "safety": {
 "n": 295,
-"full": 62,
+"full": 63,
 "partial": 59,
-"none": 174,
-"full_pct": 21.0,
-"any_pct": 41.0,
-"strict_full": 62,
-"strict_pct": 21.0,
-"none_teachable": 9,
+"none": 173,
+"full_pct": 21.4,
+"any_pct": 41.4,
+"strict_full": 63,
+"strict_pct": 21.4,
+"none_teachable": 8,
 "none_nosource": 165
 },
 "vehicle": {
@@ -515,8 +515,8 @@
 }
 },
 "by": {
-"hand": 1077,
-"v1.5": 357,
+"hand": 1046,
+"v1.5": 388,
 "link": 81,
 "sample": 286
 }
@@ -773,18 +773,21 @@
 "by": "v1.5"
 },
 "14": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 טרקטורון",
-"src": "T",
+"v": "full",
+"rule": [
+"quad#r0"
+],
+"ref": [
+"quad#r:\"טרקטורון\" – נע על ארבעה גלגלים לפחו"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "1",
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "15": {
 "v": "full",
@@ -1220,17 +1223,20 @@
 "by": "v1.5"
 },
 "38": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR passengers for hire",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r9"
+],
+"ref": [
+"rules4#r:הסעת נוסעים בשכר מותרת רק ברכב מהסוג"
+],
+"why": "rule written for this question (TR:84א)",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "39": {
 "v": "full",
@@ -1541,11 +1547,14 @@
 "by": "hand"
 },
 "56": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR documents",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r11"
+],
+"ref": [
+"rules4#r:אסור לשנות פרט בתעודה (רישיון נהיגה,"
+],
+"why": "rule written for this question (TR:11)",
 "cls": [
 "1",
 "A",
@@ -1555,7 +1564,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "57": {
 "v": "full",
@@ -1778,11 +1787,14 @@
 "by": "v1.5"
 },
 "68": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR temporary sign",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r12"
+],
+"ref": [
+"rules4#r:קצין משטרה רשאי להציב בדרך תמרור זמנ"
+],
+"why": "rule written for this question (TR:20(א))",
 "cls": [
 "1",
 "A",
@@ -1792,7 +1804,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "69": {
 "v": "partial",
@@ -2046,11 +2058,14 @@
 "by": "hand"
 },
 "82": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 picture of road parts",
-"src": "T",
+"v": "full",
+"rule": [
+"roadparts#r1"
+],
+"ref": [
+"roadparts#r:\"כביש\" – חלק הדרך המיועד לתנועת כלי "
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "1",
 "A",
@@ -2060,14 +2075,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "83": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 שטח הפרדה",
-"src": "T",
+"v": "partial",
+"rule": [
+"roadparts#r3"
+],
+"ref": [
+"roadparts#r:\"שטח הפרדה\" – מבנה, אי תנועה, סימון "
+],
+"why": "rule covers part of the answer (TR:1)",
 "cls": [
 "1",
 "A",
@@ -2077,7 +2095,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "84": {
 "v": "full",
@@ -2217,17 +2235,20 @@
 "by": "v1.5"
 },
 "91": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 180 B licence",
-"src": "T",
+"v": "partial",
+"rule": [
+"rules4#r13"
+],
+"ref": [
+"rules4#r:רישיון B מתיר לנהוג גם ברכב רפואי מי"
+],
+"why": "rule covers part of the answer (TR:180(א)(5))",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "92": {
 "v": "none",
@@ -2267,18 +2288,21 @@
 "by": "link"
 },
 "94": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR ATV roads",
-"src": "T",
+"v": "full",
+"rule": [
+"quad#r1"
+],
+"ref": [
+"quad#r:בטרקטורון לא נוהגים בכביש – אלא כדי "
+],
+"why": "rule written for this question (TR:39ג(א))",
 "cls": [
 "1",
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "95": {
 "v": "partial",
@@ -2301,18 +2325,21 @@
 "by": "v1.5"
 },
 "96": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR ATV passenger",
-"src": "T",
+"v": "full",
+"rule": [
+"quad#r2"
+],
+"ref": [
+"quad#r:בטרקטורון לא מסיעים אדם נוסף, אלא בה"
+],
+"why": "rule written for this question (TR:39ג(ג))",
 "cls": [
 "1",
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "97": {
 "v": "full",
@@ -2332,18 +2359,21 @@
 "by": "link"
 },
 "98": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR tractor passenger",
-"src": "T",
+"v": "full",
+"rule": [
+"quad#r3"
+],
+"ref": [
+"quad#r:בטרקטור משא לא מסיעים אדם נוסף, אלא "
+],
+"why": "rule written for this question (TR:39ד(א))",
 "cls": [
 "1",
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "99": {
 "v": "full",
@@ -2380,11 +2410,14 @@
 "by": "sample"
 },
 "101": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 picture",
-"src": "T",
+"v": "full",
+"rule": [
+"roadparts#r2"
+],
+"ref": [
+"roadparts#r:\"נתיב\" – חלק מרוחב הכביש, מסומן או ל"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "1",
 "A",
@@ -2394,14 +2427,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "102": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 picture",
-"src": "T",
+"v": "full",
+"rule": [
+"roadparts#r3"
+],
+"ref": [
+"roadparts#r:\"שטח הפרדה\" – מבנה, אי תנועה, סימון "
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "1",
 "A",
@@ -2411,14 +2447,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "103": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 picture",
-"src": "T",
+"v": "full",
+"rule": [
+"roadparts#r4"
+],
+"ref": [
+"roadparts#r:\"שול הדרך\" – השטח שאין לצדו מדרכה, ה"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "1",
 "A",
@@ -2428,7 +2467,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "104": {
 "v": "partial",
@@ -3609,11 +3648,14 @@
 "by": "sample"
 },
 "165": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 43 signalling",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r0"
+],
+"ref": [
+"rules4#r:אות (מחוון כיוון) נותנים בזמן וממרחק"
+],
+"why": "rule written for this question (TR:58(א))",
 "cls": [
 "1",
 "A",
@@ -3623,7 +3665,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "166": {
 "v": "full",
@@ -3746,11 +3788,14 @@
 "by": "sample"
 },
 "172": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 picture",
-"src": "T",
+"v": "full",
+"rule": [
+"roadparts#r0"
+],
+"ref": [
+"roadparts#r:\"דרך\" – כל מסילה, דרך, רחוב, סמטה, כ"
+],
+"why": "rule written for this question (TO:1)",
 "cls": [
 "1",
 "A",
@@ -3760,7 +3805,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "173": {
 "v": "full",
@@ -3823,11 +3868,14 @@
 "by": "hand"
 },
 "176": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 picture one-way",
-"src": "T",
+"v": "full",
+"rule": [
+"roadparts#r5"
+],
+"ref": [
+"roadparts#r:תמרור 618 מסמן כביש חד־סטרי: כניסה ל"
+],
+"why": "rule written for this question (LT:618)",
 "cls": [
 "1",
 "A",
@@ -3837,7 +3885,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "177": {
 "v": "full",
@@ -4146,11 +4194,14 @@
 "by": "hand"
 },
 "192": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 51 obstruction",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r1"
+],
+"ref": [
+"rules4#r:נתיב הנסיעה שלך נחסם (למשל רכב בחניי"
+],
+"why": "rule written for this question (TR:68)",
 "cls": [
 "1",
 "A",
@@ -4160,14 +4211,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "193": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 69 stopping allowed",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r2"
+],
+"ref": [
+"rules4#r:מותר לעצור, להעמיד ולהחנות על הכביש "
+],
+"why": "rule written for this question (TR:71)",
 "cls": [
 "1",
 "A",
@@ -4177,7 +4231,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "194": {
 "v": "full",
@@ -4295,11 +4349,14 @@
 "by": "hand"
 },
 "200": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 69 left side",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r3"
+],
+"ref": [
+"rules4#r:אסור לעצור, להעמיד או להחנות בצד שמא"
+],
+"why": "rule written for this question (TR:72(א)(1))",
 "cls": [
 "1",
 "A",
@@ -4309,7 +4366,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "201": {
 "v": "full",
@@ -4935,11 +4992,14 @@
 "by": "sample"
 },
 "234": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r10"
+],
+"ref": [
+"rules4#r:תמרור בתחנת אוטובוס יכול להתיר לרכב "
+],
+"why": "rule written for this question (TO:70א1(א))",
 "cls": [
 "A",
 "B",
@@ -4948,7 +5008,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "235": {
 "v": "full",
@@ -4969,11 +5029,14 @@
 "by": "hand"
 },
 "236": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 83א exemption",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r4"
+],
+"ref": [
+"rules4#r:נוהג ברכב בשעת נסיעה לאחור פטור מחגי"
+],
+"why": "rule written for this question (TR:83ג(6))",
 "cls": [
 "B",
 "C",
@@ -4981,7 +5044,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "237": {
 "v": "none",
@@ -5017,18 +5080,21 @@
 "by": "v1.5"
 },
 "239": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR passengers for hire",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r9"
+],
+"ref": [
+"rules4#r:הסעת נוסעים בשכר מותרת רק ברכב מהסוג"
+],
+"why": "rule written for this question (TR:84א)",
 "cls": [
 "B",
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "240": {
 "v": "none",
@@ -5044,18 +5110,21 @@
 "by": "hand"
 },
 "241": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR towing",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r5"
+],
+"ref": [
+"rules4#r:ברכב נגרר לא יימצאו אנשים מלבד הנוהג"
+],
+"why": "rule written for this question (TR:90(ז))",
 "cls": [
 "B",
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "242": {
 "v": "partial",
@@ -5760,11 +5829,14 @@
 "by": "hand"
 },
 "279": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 144 police on scene",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r6"
+],
+"ref": [
+"rules4#r:פגעת ברכב או ברכוש בלי שבעליהם נכחו?"
+],
+"why": "rule written for this question (TR:145(ג)(2))",
 "cls": [
 "1",
 "A",
@@ -5774,7 +5846,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "280": {
 "v": "full",
@@ -5834,11 +5906,14 @@
 "by": "v1.5"
 },
 "283": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 74 24h",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r7"
+],
+"ref": [
+"rules4#r:רכב שהתקלקל בדרך מפנים בהקדם – ולא י"
+],
+"why": "rule written for this question (TR:154(ב))",
 "cls": [
 "1",
 "A",
@@ -5848,7 +5923,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "284": {
 "v": "full",
@@ -6034,11 +6109,14 @@
 "by": "v1.5"
 },
 "294": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus stop sign",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r10"
+],
+"ref": [
+"rules4#r:תמרור בתחנת אוטובוס יכול להתיר לרכב "
+],
+"why": "rule written for this question (TO:70א1(א))",
 "cls": [
 "B",
 "C",
@@ -6046,7 +6124,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "295": {
 "v": "full",
@@ -6069,17 +6147,20 @@
 "by": "hand"
 },
 "296": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 190 companion sober",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r8"
+],
+"ref": [
+"rules4#r:מלווה של נהג חדש לא ייחשב מלווה בזמן"
+],
+"why": "rule written for this question (TO:12א1(ז))",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "297": {
 "v": "full",
@@ -17335,11 +17416,14 @@
 "by": "hand"
 },
 "880": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 51 obstruction",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r1"
+],
+"ref": [
+"rules4#r:נתיב הנסיעה שלך נחסם (למשל רכב בחניי"
+],
+"why": "rule written for this question (TR:68)",
 "cls": [
 "1",
 "A",
@@ -17349,7 +17433,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "881": {
 "v": "full",
@@ -25618,11 +25702,14 @@
 "by": "v1.5"
 },
 "1403": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link bus stop parking Shabbat",
-"src": "T",
+"v": "full",
+"rule": [
+"rules4#r10"
+],
+"ref": [
+"rules4#r:תמרור בתחנת אוטובוס יכול להתיר לרכב "
+],
+"why": "rule written for this question (TO:70א1(א))",
 "cls": [
 "B",
 "C",
@@ -25630,7 +25717,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "1404": {
 "v": "partial",
@@ -29523,18 +29610,21 @@
 "by": "hand"
 },
 "1650": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR quad passenger licence",
-"src": "T",
+"v": "full",
+"rule": [
+"quad#r2"
+],
+"ref": [
+"quad#r:בטרקטורון לא מסיעים אדם נוסף, אלא בה"
+],
+"why": "rule written for this question (TR:39ג(ג))",
 "cls": [
 "1",
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1651": {
 "v": "partial",
@@ -30614,18 +30704,21 @@
 "by": "hand"
 },
 "1716": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR tractor passenger licence",
-"src": "T",
+"v": "full",
+"rule": [
+"quad#r3"
+],
+"ref": [
+"quad#r:בטרקטור משא לא מסיעים אדם נוסף, אלא "
+],
+"why": "rule written for this question (TR:39ד(א))",
 "cls": [
 "1",
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1717": {
 "v": "partial",

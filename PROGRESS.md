@@ -95,3 +95,10 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 - [x] law notes Q1793 (16 vs 19), Q13 (1,500 vs 1,800 kg); taxi example trimmed to TR 511; sign 703 punctuated; Kol Zchut link removed
 - [x] no class removed; tractor (1) and motorcycle (A) labelled partial in About/COVERAGE.md
 - [ ] 140 questions judged "source exists" not yet taught (mostly general law: 108); 328 have no official state source
+
+## v1.6 – B and A taught to 100% (minus a listed no-source remainder) – in progress
+Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official state source; true no-source remainder → docs/NO_SOURCE_B_A.md; tractor (1) and others wait; no class removed; 1 and A stay partial.
+- new official source: the RSA + Ministry of Transport theory textbook "נוהגים אחרת – נוהגים נכון" (2017, gov.il BlobFolder PDF, cached in tools/official/cache, gitignored). Lessons cite it as `OFF:textbook`; pin.py pins every quote with its page, and refuses a quote that occurs only inside the textbook's sample-exam questions (never cite them).
+- build order: `python3 tools/official/sync_textbook_quotes.py && python3 tools/official/pin.py` → compile_verdicts → signs_build → lessons → coverage → lessons → data_test
+- lessons live in tools/lessons_v16.py (merged by lessons_spec.add_v16); lesson↔question map = data/coverage.json `q`
+- [x] batch 1: law rules – road parts (+ `roadparts` diagram), quad / tractor passengers, signal, blocked lane, stopping, belts in reverse, towed vehicle, accident report, breakdown 24h, escort, paid rides, bus-stop parking, documents, temporary police sign, NOTE Q91

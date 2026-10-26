@@ -362,4 +362,24 @@ function dims() {
   });
 }
 
-export const VIZ = { priority, signs, speed, gap, overtake, crosswalk, parking, rail, blind, moto, signdict, duty, newdrv, accident, brakes, blowout, bac, dims, motojx, lamps, hands, load, kids, taxi, tractor };
+
+// ---------- road parts (TO 1 "דרך"; TR 1 "כביש", "נתיב", "שטח הפרדה", "שול הדרך") ----------
+const RP = [['road', 'דרך', [[0, 320]], 'דרך – כל השטח הפתוח שיש לציבור זכות לעבור בו: הכבישים, שטח ההפרדה והשוליים (פקודת התעבורה 1).'],
+  ['cw', 'כביש', [[30, 145], [175, 290]], 'כביש – החלק שמיועד לתנועת כלי רכב, בלי השוליים. כאן יש שני כבישים, אחד מכל צד של שטח ההפרדה (תקנה 1).'],
+  ['lane', 'נתיב', [[30, 87]], 'נתיב – חלק מרוחב הכביש שמספיק לטור אחד של כלי רכב, מסומן או לא. כל כביש כאן מחולק לשני נתיבים (תקנה 1).'],
+  ['sep', 'שטח הפרדה', [[145, 175]], 'שטח הפרדה – אי תנועה, גינה, סימון או שטח לא סלול שמחלקים את הדרך לאורכה (תקנה 1).'],
+  ['sh', 'שול', [[0, 30], [290, 320]], 'שול הדרך – השטח שליד שפת הכביש כשאין לידו מדרכה, עד רוחב של 4 מטרים (תקנה 1).']];
+function roadparts() {
+  return fig('חלקי הדרך – לחצו על חלק', 'לפי פקודת התעבורה 1 ותקנה 1', ({ stage, ctl, say }) => {
+    const hl = S('g', {});
+    stage.append(svg('0 0 320 150', S('rect', { class: 'vz-obj', x: 0, y: 10, width: 30, height: 130, opacity: .35 }), S('rect', { class: 'vz-obj', x: 290, y: 10, width: 30, height: 130, opacity: .35 }),
+      road(30, 10, 115, 130), road(175, 10, 115, 130), S('rect', { class: 'vz-zone', x: 145, y: 10, width: 30, height: 130, opacity: .5 }),
+      line(87, 10, 87, 140, 'vz-mark dash'), line(232, 10, 232, 140, 'vz-mark dash'), hl));
+    const run = k => { const p = RP.find(x => x[0] === k); hl.replaceChildren(...p[2].map(([a, b]) => S('rect', { class: 'vz-hl', x: a + 1, y: 8, width: b - a - 2, height: 134, rx: 4, fill: 'none', 'stroke-width': 3, stroke: 'currentColor' })));
+      say(p[3]); };
+    const chips = RP.map(p => chip(p[1], p[0] === 'road', () => { chips.forEach((c, j) => c.setAttribute('aria-pressed', String(RP[j][0] === p[0]))); run(p[0]); }));
+    ctl.append(h('div', { class: 'row tight' }, chips)); run('road');
+  });
+}
+
+export const VIZ = { roadparts, priority, signs, speed, gap, overtake, crosswalk, parking, rail, blind, moto, signdict, duty, newdrv, accident, brakes, blowout, bac, dims, motojx, lamps, hands, load, kids, taxi, tractor };

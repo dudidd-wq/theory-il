@@ -15,6 +15,25 @@ ARCHIVE = 'web.archive.org lookup rate-limited (HTTP 429) on 2026-10-26; pinned 
 PUB = 'הרשות הלאומית לבטיחות בדרכים, חטיבת חינוך והסברה (gov.il)'
 G = 'https://www.gov.il/he/'
 BOOK_URL = 'https://www.gov.il/BlobFolder/reports/safety_rules_book/he/publications_safety_rules_book.pdf'
+# The official driving-theory textbook of the RSA and the Ministry of Transport ("נוהגים אחרת – נוהגים נכון", 2017;
+# landing page https://www.gov.il/he/pages/driving_textbook). Cached as textbook.pdf; textbook.txt is
+# `pdftotext -f N -l N` per page with bidi control marks removed, pages joined by \f. Its quotes live in
+# textbook_quotes.txt (one per line; written by sync_textbook_quotes.py from the lessons that cite OFF:textbook).
+# Quotes may come only from the explanatory text – never from the book's embedded sample exam questions.
+TEXTBOOK_URL = 'https://www.gov.il/BlobFolder/reports/driving_textbook/he/publications_2017_nohagim_aheret_nohagim_nachon.pdf'
+TEXTBOOK_PUB = 'הרשות הלאומית לבטיחות בדרכים ומשרד התחבורה (gov.il)'
+PDFS = {'book': ('book.pdf', '03.2026'), 'textbook': ('textbook.pdf', '2017')}
+def textbook_quotes():
+    f = os.path.join(HERE, 'textbook_quotes.txt')
+    return [l.strip() for l in open(f, encoding='utf-8') if l.strip()] if os.path.exists(f) else []
+def quiz_spans(page):
+    """Sample-exam blocks ('שאלות לדוגמה ממבחן ...' up to the 'תשובות' line) – not citable as rules."""
+    out, i = [], 0
+    while True:
+        j = page.find('שאלות לדוגמה ממבחן', i)
+        if j < 0: return out
+        m = re.compile(r'\n\s*תשובות[^\n]*\n').search(page, j)
+        k = m.end() if m else len(page); out.append(page[j:k]); i = k
 
 def norm(s):
     s = re.sub(r'[\u0591-\u05C7]', '', s)
@@ -117,6 +136,7 @@ P = {
   'מקפידים על מהירות נסיעה התואמת את החוק ואת תנאי הדרך (שדה ראייה, מזג אוויר ומצב הכביש).',
   'בהתקרבות לצומת וביציאה מצומת מאטים, מתמקמים בנתיב כך ששדה הראייה רחב יותר ושנהגים אחרים יכולים להבחין בכם, מוודאים שהצומת פנוי ומצייתים לרמזורים ולתמרורים.']),
 }
+P['textbook'] = (TEXTBOOK_URL, 'נוהגים אחרת – נוהגים נכון: ספר הלימוד הרשמי לתיאוריה', 'textbook', textbook_quotes())
 TERMS = {'url': G + 'pages/gov_terms_of_use', 'title': 'תנאי שימוש באתר gov.il', 'file': 'terms', 'quotes': [
   'שימוש הוגן כולל ציטוט סביר מתוך החומר המוגן',
   'המצטט כאמור חייב לציין את המקור']}
@@ -132,21 +152,27 @@ def build(verify_only=False):
     errs, out = [], {}
     old = json.load(open(os.path.join(HERE, 'pages.json'))) if verify_only else {}
     for pid, (url, title, f, qs) in list(P.items()) + [('terms', (TERMS['url'], TERMS['title'], TERMS['file'], TERMS['quotes']))]:
-        fn = os.path.join(CACHE, f + ('.txt' if f == 'book' else '.body'))
+        fn = os.path.join(CACHE, f + ('.txt' if f in PDFS else '.body'))
         if not os.path.exists(fn): errs.append(f'{pid}: no cached text {fn}'); continue
         raw = open(fn, encoding='utf-8').read(); nt = norm(raw)
         pages = raw.split('\f')
-        rec = {'url': url, 'title': title, 'publisher': PUB if pid != 'terms' else 'מערך הדיגיטל הלאומי (gov.il)',
+        rec = {'url': url, 'title': title, 'publisher': {'terms': 'מערך הדיגיטל הלאומי (gov.il)', 'textbook': TEXTBOOK_PUB}.get(pid, PUB),
                'accessed': ACCESSED, 'sha256': hashlib.sha256(raw.encode()).hexdigest(), 'archive': ARCHIVE, 'quotes': []}
-        if f == 'book':
-            rec['pdf_sha256'] = hashlib.sha256(open(os.path.join(CACHE, 'book.pdf'), 'rb').read()).hexdigest()
-            rec['published'] = '03.2026'
+        if f in PDFS:
+            rec['pdf_sha256'] = hashlib.sha256(open(os.path.join(CACHE, PDFS[f][0]), 'rb').read()).hexdigest()
+            rec['published'] = PDFS[f][1]
         else:
             rec['published'], rec['updated'] = dates(f)
         for q in qs:
             if norm(q) not in nt: errs.append(f'{pid}: quote not in cache: {q[:60]}'); continue
             e = {'t': q}
-            if f == 'book': e['p'] = next(i + 1 for i, pg in enumerate(pages) if norm(q) in norm(pg)) if any(norm(q) in norm(pg) for pg in pages) else None
+            if f == 'textbook':
+                def prose(pg):
+                    for z in quiz_spans(pg): pg = pg.replace(z, '')
+                    return pg
+                if not any(norm(q) in norm(prose(pg)) for pg in pages):
+                    errs.append(f'{pid}: quote only in a sample-exam block: {q[:60]}'); continue
+            if f in PDFS: e['p'] = next(i + 1 for i, pg in enumerate(pages) if norm(q) in norm(pg)) if any(norm(q) in norm(pg) for pg in pages) else None
             rec['quotes'].append(e)
         out[pid] = rec
     if verify_only:

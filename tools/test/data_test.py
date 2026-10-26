@@ -52,7 +52,7 @@ for i, e in CF['q'].items():
 ok(not bad, f'every stored unit reference resolves to exactly one unit {bad[:3]}')
 # keyword overlap: the cited unit must share a content word with the question or its answer (stale-pointer guard);
 # the allowlist holds checked pairs whose overlap is a synonym only
-OVL_OK = {('981', 'overtake'): 'ימין / ימני', ('1064', 'defensive'): 'הסחת / היסח דעת'}
+OVL_OK = {('981', 'overtake'): 'ימין / ימני', ('172', 'roadparts'): 'דרך – the defined term itself (a stopword for the matcher)', ('1064', 'defensive'): 'הסחת / היסח דעת'}
 ut = {u['id']: u['text'] for u in _U}; bad = []
 for i, e in cq.items():
     if e[0] == 'n': continue

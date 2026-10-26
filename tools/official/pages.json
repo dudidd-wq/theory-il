@@ -450,6 +450,17 @@
   "pdf_sha256": "5d1e6e96d3190c7fd39ebe979201bbe842e3715212e63370a9512b0bf4662e48",
   "published": "03.2026"
  },
+ "textbook": {
+  "url": "https://www.gov.il/BlobFolder/reports/driving_textbook/he/publications_2017_nohagim_aheret_nohagim_nachon.pdf",
+  "title": "נוהגים אחרת – נוהגים נכון: ספר הלימוד הרשמי לתיאוריה",
+  "publisher": "הרשות הלאומית לבטיחות בדרכים ומשרד התחבורה (gov.il)",
+  "accessed": "2026-10-26",
+  "sha256": "7ea6a255ec79a014594ed41404f3d213db14883c88af6ee499364a1c8117f51f",
+  "archive": "web.archive.org lookup rate-limited (HTTP 429) on 2026-10-26; pinned by sha256 of the text as fetched",
+  "quotes": [],
+  "pdf_sha256": "d1d3e9ecfad0d36611b6e54616093ac71b67e6f4a785c87b99a8e0db10cb1ecc",
+  "published": "2017"
+ },
  "terms": {
   "url": "https://www.gov.il/he/pages/gov_terms_of_use",
   "title": "תנאי שימוש באתר gov.il",
