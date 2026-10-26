@@ -14,6 +14,7 @@ async function axe(p, name, prof) {
   await p.evaluate(AXE);
   const r = await p.evaluate(() => axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] } }));
   const v = r.violations.filter(x => x.impact === 'serious' || x.impact === 'critical' || x.impact === 'moderate');
+  if (v.length && process.env.AXEDBG) console.log(JSON.stringify(v.map(x => x.nodes.map(n => [n.html, n.failureSummary]))));
   ok(!v.length, `axe ${name}: ${v.length ? v.map(x => `${x.id}(${x.impact}) ${x.nodes.slice(0, 2).map(n => n.target.join(' ')).join(' | ')}`).join('; ') : 'no serious/moderate violations'}`);
   await p.screenshot({ path: path.join(OUT, `${prof}-${name}.png`), fullPage: true });
 }
@@ -138,6 +139,38 @@ async function run(prof, opts) {
   ok(/CC|Creative Commons/.test(await (async () => { await go(p, '#/about'); return text(p); })()), 'about credits CC BY');
   ok(/משרד התחבורה/.test(await text(p)), 'about names the ministry as source');
   ok(/לא כולל תיאור מילולי/.test(await text(p)) && (await p.locator('.elig').count()) === 6, 'about: picture-question accessibility note + eligibility for all 6 classes');
+  // learning stage: path → lesson (law chips, diagram + text alternative, recap) → mini-quiz → mastery → unlock
+  const LJ = await p.evaluate(() => fetch('data/lessons.json').then(r => r.json())), LB = LJ.lessons.filter(l => l.cls.includes('B'));
+  await go(p, '#/learn'); await p.waitForSelector('.lessons');
+  ok(await p.locator('.lessons li').count() === LB.length && await p.locator('.lessons li:nth-child(1) a').count() === 1 && await p.locator('.lessons li:nth-child(2) [aria-disabled="true"]').count() === 1, `learn path: ${LB.length} lessons for B, only the first open`);
+  await axe(p, 'learn-path', prof);
+  await go(p, '#/learn/' + LB[2].id); ok((await p.evaluate(() => location.hash)) === '#/learn', 'locked lesson redirects to the path');
+  await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lsec');
+  ok(await p.getAttribute('.lbody', 'lang') === 'he' && await p.locator('.rules li').count() === LB[0].rules.length, 'lesson: Hebrew body + all rules');
+  ok(await p.locator('.rules details.lawref').count() >= LB[0].rules.length, 'every rule carries a law/sign reference');
+  await p.click('.rules details.lawref >> nth=0 >> summary');
+  ok(await p.isVisible('.rules details.lawref[open] blockquote') && /noopener/.test(await p.getAttribute('.rules details.lawref[open] a', 'rel')), 'law chip opens the cited excerpt + external link');
+  ok(await p.locator('.viz svg[aria-hidden="true"]').count() >= 1 && (await p.textContent('.viz .vz-alt')).length > 40, 'diagram is aria-hidden with a text alternative');
+  await p.fill('#vz-num', '305'); ok(/חלק 3/.test(await p.textContent('.vz-out')), 'sign-number diagram reacts (305 → part 3)');
+  await p.click('.recap .flip >> nth=0'); ok(await p.getAttribute('.recap .flip >> nth=0', 'aria-expanded') === 'true' && await p.isVisible('.recap .back >> nth=0'), 'recap card flips (aria-expanded)');
+  ok(await p.locator('.gal img').count() > 0 && await p.locator('.excard').count() > 0, 'sign gallery + worked examples with images');
+  await axe(p, 'lesson', prof);
+  await p.click('.lend a.btn.primary'); await p.waitForSelector('.qcard');
+  for (let i = 0; i < 6; i++) { if (!(await p.locator('.qcard').count())) break; const id = await curId(p); await p.click(`.ans[data-i="${correct(id)}"]`); await p.click('.next'); await p.waitForTimeout(80); }
+  await p.waitForSelector('.result');
+  { const s = await S(p); ok(s.les?.[LB[0].id]?.[1] === 100 && s.les[LB[0].id][0] > 0, `mini-quiz → lesson mastered ${JSON.stringify(s.les?.[LB[0].id])}`); }
+  ok(/שלטתם/.test(await text(p)) && await p.locator(`a[href="#/learn/${LB[1].id}"]`).count() === 1, 'summary: mastery + link to the next lesson');
+  await p.waitForTimeout(2800);   // perfect score → confetti; let it fall past the text first
+  await axe(p, 'lesson-summary', prof);
+  await go(p, '#/learn/' + LB[1].id); await p.waitForSelector('.viz');
+  const alt0 = await p.textContent('.viz .vz-alt'); await p.click('.viz .vz-ctl .btn.primary');
+  ok((await p.textContent('.viz .vz-alt')) !== alt0, 'step diagram: text alternative follows each step');
+  const dur = await p.evaluate(() => getComputedStyle(document.querySelector('.vz-car')).transitionDuration);
+  ok(opts.reducedMotion === 'reduce' ? dur === '0s' : dur !== '0s', `diagram motion respects prefers-reduced-motion (${dur})`);
+  await go(p, '#/learn'); await p.waitForSelector('.lessons');
+  ok(await p.locator('.lessons li:nth-child(2) a').count() === 1, 'reading lesson 1 unlocked lesson 2');
+  await go(p, '#/parent'); ok(new RegExp(`שיעורים שנשלטו\\s*1/${LB.length}`).test(await text(p)), 'parent view lists lessons mastered');
+  await go(p, '#/stats'); ok(/שיעורים שנשלטו/.test(await text(p)), 'readiness hint mentions lessons');
   // backup code → reset → restore → undo
   await go(p, '#/settings');
   await p.click('#bk-code'); await p.waitForSelector('.codeout textarea');
@@ -153,6 +186,7 @@ async function run(prof, opts) {
   ok(/לא שלם|פגום/.test(await p.textContent('#toast')), `corrupted code rejected (${await p.textContent('#toast')})`);
   await p.fill('#codein', code); await p.click('#bk-restore'); await p.waitForSelector('.drive');
   ok(JSON.stringify((await S(p)).q) === before, 'restore from code: same progress');
+  ok((await S(p)).les?.[LB[0].id]?.[1] === 100, 'restore from code keeps lesson progress');
   await go(p, '#/settings'); await p.waitForSelector('.card#backup');
   ok(await p.isVisible('#bk-undo'), 'undo restore offered');
   // file export → import (sanitised)
@@ -177,8 +211,13 @@ async function run(prof, opts) {
   await go(p, '#/settings'); await p.selectOption('#su', 'en'); await p.waitForTimeout(300);
   ok((await p.getAttribute('html', 'dir')) === 'ltr' && (await p.getAttribute('html', 'lang')) === 'en', 'English UI is LTR');
   await go(p, '#/home'); await axe(p, 'home-en', prof);
+  await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lsec');
+  ok(/Hebrew only/.test(await text(p)) && await p.getAttribute('.lbody', 'dir') === 'rtl', 'English UI: lesson flagged Hebrew-only, body stays RTL');
+  await axe(p, 'lesson-en', prof);
   await go(p, '#/settings'); await p.selectOption('#su', 'he'); await p.selectOption('#st', 'dark'); await p.waitForTimeout(300);
   await go(p, '#/home'); await axe(p, 'home-dark', prof);
+  await go(p, '#/learn/' + LB[1].id); await p.waitForSelector('.viz'); await axe(p, 'lesson-dark', prof);
+  ok(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'lesson page: no horizontal overflow');
   await go(p, '#/exam'); await p.click('.btn.primary.big'); await p.waitForSelector('#timer'); await axe(p, 'exam-dark', prof);
   dialogAnswer = true; await go(p, '#/home');
   // persistence across reload + IndexedDB mirror recovery
@@ -193,6 +232,8 @@ async function run(prof, opts) {
   await ctx.setOffline(true); await p.reload(); await p.waitForSelector('.drive');
   await go(p, '#/signs/go'); await p.waitForSelector('.qcard .qimg'); await p.waitForFunction(() => document.querySelector('.qcard .qimg').complete);
   ok(await p.evaluate(() => document.querySelector('.qcard .qimg').naturalWidth > 100), 'works offline (shell + images)');
+  await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lsec .viz', { timeout: 5000 }).catch(() => {});
+  ok(await p.locator('.lsec .viz').count() > 0 && await p.locator('.rules li').count() === LB[0].rules.length, 'lessons + diagrams work offline');
   await ctx.setOffline(false);
   ok(!foreign.length, `no third-party requests ${foreign.slice(0, 3).join(' ')}`);
   ok(!errs.length, `no console/page errors ${errs.slice(0, 3).join(' | ')}`);
