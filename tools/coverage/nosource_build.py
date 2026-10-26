@@ -5,7 +5,7 @@ import json, os
 R = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 P = lambda p: os.path.join(R, p)
 BASE = ('regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table '
-        '(lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook '
+        '(lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) '
         '2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404')
 G = {
  'law': ('No provision in the pinned law', BASE + '; law grep for the key terms of the answer',
@@ -37,15 +37,14 @@ Q = {
  'pic': {i: '' for i in (699, 708, 728, 878, 885, 896, 898, 909, 911, 914, 923, 931, 942, 944, 948, 953, 954,
                          958, 968, 978, 980, 985)},
  'veh': {830: 'hybrid car', 886: 'hybrid fuel use', 1065: 'GPS', 1076: 'panoramic mirror', 1699: 'panoramic mirror',
-         861: 'what side mirrors show (textbook p16 only says mirrors complement peripheral vision)',
-         1765: 'head restraint height (textbook p16 says centre at skull centre – conflicts)',
+         1765: 'head restraint height (textbook p133 says set it at the height of the centre of the skull, which conflicts with the bank answer)',
          1016: 'engine and safety', 1020: 'fast indicator blink', 1037: 'fire extinguisher replacement',
          1041: 'fuel economy', 1059: 'fuel economy', 1287: 'fuel economy', 1042: 'exhaust pollution maintenance',
          1066: 'jack position', 742: 'kick-down', 1290: 'manual vs automatic difference'},
  'edu': {1048: 'steering wear on front tyres', 1068: 'pressure gauge', 1069: 'fuel light', 1562: 'parking-brake light (only listed)'},
  'drv': {778: 'pedestrians near junction', 869: 'knowing the cockpit',
          1006: 'flooded road – low gear (textbook only has a photo caption)', 1183: 'approaching a cyclist',
-         1296: 'daytime lights when the sun is behind', 1532: 'what affects overtaking distance'},
+         1296: 'daytime lights when the sun is behind'},
  'moto': {1588: 'side stand', 1596: 'separate brakes', 1599: 'helmet field of view', 1609: 'hazard detection',
           1614: 'gaze in a turn', 1615: 'why lean (textbook defines centrifugal force only for cars)', 1616: 'lean into the turn',
           1619: 'oily patch in a turn', 1620: 'avoiding an obstacle', 1626: 'safety space responsibility',

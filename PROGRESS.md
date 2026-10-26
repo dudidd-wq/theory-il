@@ -130,3 +130,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - COVERAGE.md tables and headline regenerated. B: 1216 taught of 1272, 56 with no source. A: 1089 taught of 1155, 66 with no source.
 - bumped to 1.7.0 (js/version.js, sw.js VERSION).
 - live v1.7.0 confirmed via sw.js; sources.json has OFF:kids_co; live e2e 220 passed, 0 failed; data_test passed (15:14 UTC+2).
+- 2026-10-26 15:20 (UTC+2) v1.8 item 2: textbook searched for all 77 no-source B/A + 209 partial B/A; 6 new T() rules (p75, p81, p98–99, p106, p131, p150) + 861 qp on cockpit#r12; full: 23 24 46 47 55 128 134 455; partial: 861 1532. No-source 77→75. Pic/moto groups: textbook has no explicit text. B full 81.1% / A 79.7%.
