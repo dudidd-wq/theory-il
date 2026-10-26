@@ -68,7 +68,7 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 ## v1.3 – official sources (law + MOT + National Road Safety Authority) and review #3
 - [x] 17 official gov.il pages pinned (tools/official/pages.json: access date + sha256; no archive copy – archive.org 429, Save Page Now not used)
 - [x] gov.il terms of use checked; recorded in About ("מקורות רשמיים") and LICENSE-DATA.md (fair use / ציטוט סביר with source; no alteration; not CC BY)
-- [x] alcohol, fatigue, speed, distance, tyres, winter/summer, shoulder, emergency, truck/bus drivers – cited RSA rules in sober/defensive/vehicle/heavy2/bus
+- [x] alcohol, fatigue, speed, distance, tyres, winter/summer, shoulder, emergency, truck/bus drivers – cited RSA rules in sober/defensive/vehicle/heavy2/bus/moto2
 - [x] headlight failure (TR 97), new-driver renewal (TO 12א + 3rd schedule), tachograph/rest (TR 364ד, 168), trailer/container (TR 85א, 313)
 - [x] new lesson taxi (D): TR 501, 503, 510, 511, 485, 517, 281, 83(א), 184, 385א, 447, 369א + taxi-ride diagram
 - [x] class-only: TR 86 (bulk cargo), 34(א) (moto2), 38, 359א (tractor), 65 (junction), 324 (service brakes); tractor diagram
