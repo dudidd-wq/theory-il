@@ -106,3 +106,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - batch 3 (14:02 UTC+2): textbook ch.3 lessons turns (+leftturn diagram), parking2; lanes/junction extended. B full 66.1%, A 66.6%.
 - 2026-10-26 14:04 UTC+2 — v1.6 batch 4: yield2 (right of way, TB pp.60–68) + lights2 (traffic light stop line, hazard lights, stop/park order). B full 67.3% / A 67.8%.
 - 2026-10-26 14:05 UTC+2 — v1.6 batch 5: peds2 + rail2 (TB pp.73–90). B full 68.9% any 81.3% / A full 69.6% any 82.8%.
+- 2026-10-26 14:07 UTC+2 — v1.6 batch 6: gap2 + overtake2 (TB pp.91–106). B full 70.0% any 82.5% / A full 70.6% any 84.0%.
