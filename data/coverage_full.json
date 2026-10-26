@@ -4,101 +4,101 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 916,
-"partial": 240,
-"none": 645,
-"full_pct": 50.9,
-"any_pct": 64.2,
-"strict_full": 683,
-"strict_pct": 37.9,
-"none_teachable": 329,
+"full": 978,
+"partial": 247,
+"none": 576,
+"full_pct": 54.3,
+"any_pct": 68.0,
+"strict_full": 745,
+"strict_pct": 41.4,
+"none_teachable": 260,
 "none_nosource": 316
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 580,
-"partial": 162,
-"none": 530,
-"full_pct": 45.6,
-"any_pct": 58.3,
-"strict_full": 372,
-"strict_pct": 29.2,
-"none_teachable": 271,
+"full": 638,
+"partial": 169,
+"none": 465,
+"full_pct": 50.2,
+"any_pct": 63.4,
+"strict_full": 430,
+"strict_pct": 33.8,
+"none_teachable": 206,
 "none_nosource": 259
 },
 "A": {
 "n": 1155,
-"full": 576,
-"partial": 154,
-"none": 425,
-"full_pct": 49.9,
-"any_pct": 63.2,
-"strict_full": 373,
-"strict_pct": 32.3,
-"none_teachable": 219,
+"full": 620,
+"partial": 160,
+"none": 375,
+"full_pct": 53.7,
+"any_pct": 67.5,
+"strict_full": 417,
+"strict_pct": 36.1,
+"none_teachable": 169,
 "none_nosource": 206
 },
 "C1": {
 "n": 1385,
-"full": 642,
-"partial": 178,
-"none": 565,
-"full_pct": 46.4,
-"any_pct": 59.2,
-"strict_full": 431,
-"strict_pct": 31.1,
-"none_teachable": 307,
+"full": 702,
+"partial": 184,
+"none": 499,
+"full_pct": 50.7,
+"any_pct": 64.0,
+"strict_full": 491,
+"strict_pct": 35.5,
+"none_teachable": 241,
 "none_nosource": 258
 },
 "C": {
 "n": 1314,
-"full": 666,
-"partial": 164,
-"none": 484,
-"full_pct": 50.7,
-"any_pct": 63.2,
-"strict_full": 456,
-"strict_pct": 34.7,
-"none_teachable": 284,
+"full": 724,
+"partial": 170,
+"none": 420,
+"full_pct": 55.1,
+"any_pct": 68.0,
+"strict_full": 514,
+"strict_pct": 39.1,
+"none_teachable": 220,
 "none_nosource": 200
 },
 "D": {
 "n": 1316,
-"full": 695,
-"partial": 166,
-"none": 455,
-"full_pct": 52.8,
-"any_pct": 65.4,
-"strict_full": 473,
-"strict_pct": 35.9,
-"none_teachable": 247,
+"full": 750,
+"partial": 172,
+"none": 394,
+"full_pct": 57.0,
+"any_pct": 70.1,
+"strict_full": 528,
+"strict_pct": 40.1,
+"none_teachable": 186,
 "none_nosource": 208
 },
 "1": {
 "n": 1127,
-"full": 556,
-"partial": 138,
-"none": 433,
-"full_pct": 49.3,
-"any_pct": 61.6,
-"strict_full": 352,
-"strict_pct": 31.2,
-"none_teachable": 227,
+"full": 602,
+"partial": 144,
+"none": 381,
+"full_pct": 53.4,
+"any_pct": 66.2,
+"strict_full": 398,
+"strict_pct": 35.3,
+"none_teachable": 175,
 "none_nosource": 206
 }
 },
 "class_only": {
 "B": {
 "n": 9,
-"full": 1,
-"partial": 1,
-"none": 7,
-"full_pct": 11.1,
-"any_pct": 22.2,
-"strict_full": 1,
-"strict_pct": 11.1,
-"none_teachable": 4,
+"full": 3,
+"partial": 2,
+"none": 4,
+"full_pct": 33.3,
+"any_pct": 55.6,
+"strict_full": 3,
+"strict_pct": 33.3,
+"none_teachable": 1,
 "none_nosource": 3
 },
 "A": {
@@ -165,50 +165,50 @@
 "topic": {
 "law": {
 "n": 901,
-"full": 491,
-"partial": 127,
-"none": 283,
-"full_pct": 54.5,
-"any_pct": 68.6,
-"strict_full": 491,
-"strict_pct": 54.5,
-"none_teachable": 255,
+"full": 546,
+"partial": 134,
+"none": 221,
+"full_pct": 60.6,
+"any_pct": 75.5,
+"strict_full": 546,
+"strict_pct": 60.6,
+"none_teachable": 193,
 "none_nosource": 28
 },
 "signs": {
 "n": 390,
-"full": 330,
+"full": 331,
 "partial": 9,
-"none": 51,
-"full_pct": 84.6,
-"any_pct": 86.9,
-"strict_full": 97,
-"strict_pct": 24.9,
-"none_teachable": 48,
+"none": 50,
+"full_pct": 84.9,
+"any_pct": 87.2,
+"strict_full": 98,
+"strict_pct": 25.1,
+"none_teachable": 47,
 "none_nosource": 3
 },
 "safety": {
 "n": 400,
-"full": 83,
+"full": 88,
 "partial": 85,
-"none": 232,
-"full_pct": 20.8,
-"any_pct": 42.0,
-"strict_full": 83,
-"strict_pct": 20.8,
-"none_teachable": 19,
+"none": 227,
+"full_pct": 22.0,
+"any_pct": 43.2,
+"strict_full": 88,
+"strict_pct": 22.0,
+"none_teachable": 14,
 "none_nosource": 213
 },
 "vehicle": {
 "n": 110,
-"full": 12,
+"full": 13,
 "partial": 19,
-"none": 79,
-"full_pct": 10.9,
-"any_pct": 28.2,
-"strict_full": 12,
-"strict_pct": 10.9,
-"none_teachable": 7,
+"none": 78,
+"full_pct": 11.8,
+"any_pct": 29.1,
+"strict_full": 13,
+"strict_pct": 11.8,
+"none_teachable": 6,
 "none_nosource": 72
 }
 },
@@ -216,188 +216,188 @@
 "B": {
 "law": {
 "n": 501,
-"full": 210,
-"partial": 73,
-"none": 218,
-"full_pct": 41.9,
-"any_pct": 56.5,
-"strict_full": 210,
-"strict_pct": 41.9,
-"none_teachable": 202,
+"full": 261,
+"partial": 80,
+"none": 160,
+"full_pct": 52.1,
+"any_pct": 68.1,
+"strict_full": 261,
+"strict_pct": 52.1,
+"none_teachable": 144,
 "none_nosource": 16
 },
 "signs": {
 "n": 360,
-"full": 301,
+"full": 302,
 "partial": 9,
-"none": 50,
-"full_pct": 83.6,
-"any_pct": 86.1,
-"strict_full": 93,
-"strict_pct": 25.8,
-"none_teachable": 47,
+"none": 49,
+"full_pct": 83.9,
+"any_pct": 86.4,
+"strict_full": 94,
+"strict_pct": 26.1,
+"none_teachable": 46,
 "none_nosource": 3
 },
 "safety": {
 "n": 305,
-"full": 57,
+"full": 62,
 "partial": 62,
-"none": 186,
-"full_pct": 18.7,
-"any_pct": 39.0,
-"strict_full": 57,
-"strict_pct": 18.7,
-"none_teachable": 16,
+"none": 181,
+"full_pct": 20.3,
+"any_pct": 40.7,
+"strict_full": 62,
+"strict_pct": 20.3,
+"none_teachable": 11,
 "none_nosource": 170
 },
 "vehicle": {
 "n": 106,
-"full": 12,
+"full": 13,
 "partial": 18,
-"none": 76,
-"full_pct": 11.3,
-"any_pct": 28.3,
-"strict_full": 12,
-"strict_pct": 11.3,
-"none_teachable": 6,
+"none": 75,
+"full_pct": 12.3,
+"any_pct": 29.2,
+"strict_full": 13,
+"strict_pct": 12.3,
+"none_teachable": 5,
 "none_nosource": 70
 }
 },
 "A": {
 "law": {
 "n": 429,
-"full": 202,
-"partial": 70,
-"none": 157,
-"full_pct": 47.1,
-"any_pct": 63.4,
-"strict_full": 202,
-"strict_pct": 47.1,
-"none_teachable": 153,
+"full": 241,
+"partial": 76,
+"none": 112,
+"full_pct": 56.2,
+"any_pct": 73.9,
+"strict_full": 241,
+"strict_pct": 56.2,
+"none_teachable": 108,
 "none_nosource": 4
 },
 "signs": {
 "n": 354,
-"full": 296,
+"full": 297,
 "partial": 9,
-"none": 49,
-"full_pct": 83.6,
-"any_pct": 86.2,
-"strict_full": 93,
-"strict_pct": 26.3,
-"none_teachable": 46,
+"none": 48,
+"full_pct": 83.9,
+"any_pct": 86.4,
+"strict_full": 94,
+"strict_pct": 26.6,
+"none_teachable": 45,
 "none_nosource": 3
 },
 "safety": {
 "n": 312,
-"full": 71,
+"full": 74,
 "partial": 66,
-"none": 175,
-"full_pct": 22.8,
-"any_pct": 43.9,
-"strict_full": 71,
-"strict_pct": 22.8,
-"none_teachable": 14,
+"none": 172,
+"full_pct": 23.7,
+"any_pct": 44.9,
+"strict_full": 74,
+"strict_pct": 23.7,
+"none_teachable": 11,
 "none_nosource": 161
 },
 "vehicle": {
 "n": 60,
-"full": 7,
+"full": 8,
 "partial": 9,
-"none": 44,
-"full_pct": 11.7,
-"any_pct": 26.7,
-"strict_full": 7,
-"strict_pct": 11.7,
-"none_teachable": 6,
+"none": 43,
+"full_pct": 13.3,
+"any_pct": 28.3,
+"strict_full": 8,
+"strict_pct": 13.3,
+"none_teachable": 5,
 "none_nosource": 38
 }
 },
 "C1": {
 "law": {
 "n": 605,
-"full": 264,
-"partial": 84,
-"none": 257,
-"full_pct": 43.6,
-"any_pct": 57.5,
-"strict_full": 264,
-"strict_pct": 43.6,
-"none_teachable": 236,
+"full": 317,
+"partial": 90,
+"none": 198,
+"full_pct": 52.4,
+"any_pct": 67.3,
+"strict_full": 317,
+"strict_pct": 52.4,
+"none_teachable": 177,
 "none_nosource": 21
 },
 "signs": {
 "n": 367,
-"full": 307,
+"full": 308,
 "partial": 9,
-"none": 51,
-"full_pct": 83.7,
-"any_pct": 86.1,
-"strict_full": 96,
-"strict_pct": 26.2,
-"none_teachable": 48,
+"none": 50,
+"full_pct": 83.9,
+"any_pct": 86.4,
+"strict_full": 97,
+"strict_pct": 26.4,
+"none_teachable": 47,
 "none_nosource": 3
 },
 "safety": {
 "n": 312,
-"full": 59,
+"full": 64,
 "partial": 69,
-"none": 184,
-"full_pct": 18.9,
-"any_pct": 41.0,
-"strict_full": 59,
-"strict_pct": 18.9,
-"none_teachable": 17,
+"none": 179,
+"full_pct": 20.5,
+"any_pct": 42.6,
+"strict_full": 64,
+"strict_pct": 20.5,
+"none_teachable": 12,
 "none_nosource": 167
 },
 "vehicle": {
 "n": 101,
-"full": 12,
+"full": 13,
 "partial": 16,
-"none": 73,
-"full_pct": 11.9,
-"any_pct": 27.7,
-"strict_full": 12,
-"strict_pct": 11.9,
-"none_teachable": 6,
+"none": 72,
+"full_pct": 12.9,
+"any_pct": 28.7,
+"strict_full": 13,
+"strict_pct": 12.9,
+"none_teachable": 5,
 "none_nosource": 67
 }
 },
 "C": {
 "law": {
 "n": 619,
-"full": 298,
-"partial": 83,
-"none": 238,
-"full_pct": 48.1,
-"any_pct": 61.6,
-"strict_full": 298,
-"strict_pct": 48.1,
-"none_teachable": 217,
+"full": 350,
+"partial": 89,
+"none": 180,
+"full_pct": 56.5,
+"any_pct": 70.9,
+"strict_full": 350,
+"strict_pct": 56.5,
+"none_teachable": 159,
 "none_nosource": 21
 },
 "signs": {
 "n": 366,
-"full": 306,
+"full": 307,
 "partial": 9,
-"none": 51,
-"full_pct": 83.6,
-"any_pct": 86.1,
-"strict_full": 96,
-"strict_pct": 26.2,
-"none_teachable": 48,
+"none": 50,
+"full_pct": 83.9,
+"any_pct": 86.3,
+"strict_full": 97,
+"strict_pct": 26.5,
+"none_teachable": 47,
 "none_nosource": 3
 },
 "safety": {
 "n": 307,
-"full": 58,
+"full": 63,
 "partial": 69,
-"none": 180,
-"full_pct": 18.9,
-"any_pct": 41.4,
-"strict_full": 58,
-"strict_pct": 18.9,
-"none_teachable": 18,
+"none": 175,
+"full_pct": 20.5,
+"any_pct": 43.0,
+"strict_full": 63,
+"strict_pct": 20.5,
+"none_teachable": 13,
 "none_nosource": 162
 },
 "vehicle": {
@@ -416,38 +416,38 @@
 "D": {
 "law": {
 "n": 618,
-"full": 317,
-"partial": 90,
-"none": 211,
-"full_pct": 51.3,
-"any_pct": 65.9,
-"strict_full": 317,
-"strict_pct": 51.3,
-"none_teachable": 182,
+"full": 366,
+"partial": 96,
+"none": 156,
+"full_pct": 59.2,
+"any_pct": 74.8,
+"strict_full": 366,
+"strict_pct": 59.2,
+"none_teachable": 127,
 "none_nosource": 29
 },
 "signs": {
 "n": 377,
-"full": 318,
+"full": 319,
 "partial": 9,
-"none": 50,
-"full_pct": 84.4,
-"any_pct": 86.7,
-"strict_full": 96,
-"strict_pct": 25.5,
-"none_teachable": 47,
+"none": 49,
+"full_pct": 84.6,
+"any_pct": 87.0,
+"strict_full": 97,
+"strict_pct": 25.7,
+"none_teachable": 46,
 "none_nosource": 3
 },
 "safety": {
 "n": 299,
-"full": 56,
+"full": 61,
 "partial": 64,
-"none": 179,
-"full_pct": 18.7,
-"any_pct": 40.1,
-"strict_full": 56,
-"strict_pct": 18.7,
-"none_teachable": 17,
+"none": 174,
+"full_pct": 20.4,
+"any_pct": 41.8,
+"strict_full": 61,
+"strict_pct": 20.4,
+"none_teachable": 12,
 "none_nosource": 162
 },
 "vehicle": {
@@ -466,38 +466,38 @@
 "1": {
 "law": {
 "n": 436,
-"full": 197,
-"partial": 64,
-"none": 175,
-"full_pct": 45.2,
-"any_pct": 59.9,
-"strict_full": 197,
-"strict_pct": 45.2,
-"none_teachable": 165,
+"full": 238,
+"partial": 70,
+"none": 128,
+"full_pct": 54.6,
+"any_pct": 70.6,
+"strict_full": 238,
+"strict_pct": 54.6,
+"none_teachable": 118,
 "none_nosource": 10
 },
 "signs": {
 "n": 353,
-"full": 297,
+"full": 298,
 "partial": 8,
-"none": 48,
-"full_pct": 84.1,
-"any_pct": 86.4,
-"strict_full": 93,
-"strict_pct": 26.3,
-"none_teachable": 45,
+"none": 47,
+"full_pct": 84.4,
+"any_pct": 86.7,
+"strict_full": 94,
+"strict_pct": 26.6,
+"none_teachable": 44,
 "none_nosource": 3
 },
 "safety": {
 "n": 295,
-"full": 57,
+"full": 61,
 "partial": 59,
-"none": 179,
-"full_pct": 19.3,
-"any_pct": 39.3,
-"strict_full": 57,
-"strict_pct": 19.3,
-"none_teachable": 14,
+"none": 175,
+"full_pct": 20.7,
+"any_pct": 40.7,
+"strict_full": 61,
+"strict_pct": 20.7,
+"none_teachable": 10,
 "none_nosource": 165
 },
 "vehicle": {
@@ -515,10 +515,10 @@
 }
 },
 "by": {
-"hand": 1248,
-"v1.5": 180,
+"hand": 1181,
+"v1.5": 249,
 "link": 81,
-"sample": 292
+"sample": 290
 }
 },
 "q": {
@@ -1542,11 +1542,14 @@
 "by": "hand"
 },
 "58": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 22 obey signs",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r0"
+],
+"ref": [
+"roads2#r:עובר דרך חייב לקיים את ההוראות שבתמר"
+],
+"why": "rule written for this question (TR:22(א))",
 "cls": [
 "1",
 "A",
@@ -1556,14 +1559,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "59": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 22 lights over signs",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r1"
+],
+"ref": [
+"roads2#r:אותות הרמזור, חוץ מאור צהוב מהבהב, ע"
+],
+"why": "rule written for this question (TR:22(ב))",
 "cls": [
 "1",
 "A",
@@ -1573,7 +1579,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "60": {
 "v": "full",
@@ -1616,11 +1622,14 @@
 "by": "hand"
 },
 "62": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 23 inspector",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r2"
+],
+"ref": [
+"roads2#r:מצייתים להוראות של שוטר, ושל פקח עיר"
+],
+"why": "rule written for this question (TR:23(א)(1))",
 "cls": [
 "1",
 "A",
@@ -1630,14 +1639,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "63": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 23 works",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r3"
+],
+"ref": [
+"roads2#r:מצייתים גם לעובד במדים של רשות התמרו"
+],
+"why": "rule written for this question (TR:23(א)(1א))",
 "cls": [
 "1",
 "A",
@@ -1647,7 +1659,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "64": {
 "v": "partial",
@@ -1710,11 +1722,14 @@
 "by": "hand"
 },
 "67": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 23 inspector",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r2"
+],
+"ref": [
+"roads2#r:מצייתים להוראות של שוטר, ושל פקח עיר"
+],
+"why": "rule written for this question (TR:23(א)(1))",
 "cls": [
 "1",
 "A",
@@ -1724,7 +1739,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "68": {
 "v": "none",
@@ -1841,11 +1856,14 @@
 "by": "sample"
 },
 "74": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR vision field",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r5"
+],
+"ref": [
+"roads2#r:אסור לנהוג ברכב שבו הוגבלה הראייה דר"
+],
+"why": "rule written for this question (TR:27(ד))",
 "cls": [
 "1",
 "B",
@@ -1854,7 +1872,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "75": {
 "v": "full",
@@ -1937,30 +1955,36 @@
 "by": "hand"
 },
 "79": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 37 roadway",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r6"
+],
+"ref": [
+"roads2#r:במקום שיש כביש נוסעים רק בכביש."
+],
+"why": "rule written for this question (TR:33(א))",
 "cls": [
 "B"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "80": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR public-transport lane, bicycles",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r8"
+],
+"ref": [
+"roads2#r:רוכב אופניים רוכב קרוב ככל האפשר לשפ"
+],
+"why": "rule written for this question (TR:128)",
 "cls": [
 "B",
 "C1",
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "81": {
 "v": "full",
@@ -2017,11 +2041,14 @@
 "by": "hand"
 },
 "84": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 36 separation",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r9"
+],
+"ref": [
+"roads2#r:בדרך עם שטח הפרדה נוסעים מימין לו, ל"
+],
+"why": "rule written for this question (TR:36(ב))",
 "cls": [
 "1",
 "A",
@@ -2031,14 +2058,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "85": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 36 solid line",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r10"
+],
+"ref": [
+"roads2#r:בכביש עם קו הפרדה רצוף נוסעים מימין "
+],
+"why": "rule written for this question (TR:36(ג))",
 "cls": [
 "1",
 "A",
@@ -2048,14 +2078,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "86": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR one-way",
-"src": "T",
+"v": "partial",
+"rule": [
+"roads2#r12"
+],
+"ref": [
+"roads2#r:לא נוהגים בכביש חד־סטרי בכיוון ההפוך"
+],
+"why": "rule covers part of the answer (TR:37)",
 "cls": [
 "1",
 "A",
@@ -2065,7 +2098,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "87": {
 "v": "full",
@@ -2105,11 +2138,14 @@
 "by": "sample"
 },
 "89": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 36 obstacle",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r13"
+],
+"ref": [
+"roads2#r:מבנה, עמוד, אי תנועה או שטח סגור בכב"
+],
+"why": "rule written for this question (TR:39(א))",
 "cls": [
 "1",
 "A",
@@ -2119,14 +2155,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "90": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 36 obstacle",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r13"
+],
+"ref": [
+"roads2#r:מבנה, עמוד, אי תנועה או שטח סגור בכב"
+],
+"why": "rule written for this question (TR:39(א))",
 "cls": [
 "1",
 "A",
@@ -2136,7 +2175,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "91": {
 "v": "none",
@@ -2350,11 +2389,14 @@
 "by": "hand"
 },
 "104": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR one-way",
-"src": "T",
+"v": "partial",
+"rule": [
+"roads2#r12"
+],
+"ref": [
+"roads2#r:לא נוהגים בכביש חד־סטרי בכיוון ההפוך"
+],
+"why": "rule covers part of the answer (TR:37)",
 "cls": [
 "1",
 "A",
@@ -2364,7 +2406,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "105": {
 "v": "full",
@@ -2444,11 +2486,14 @@
 "by": "hand"
 },
 "109": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 41 right turn check",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r14"
+],
+"ref": [
+"roads2#r:פנייה ימינה: רק כשהרכב סמוך ככל האפש"
+],
+"why": "rule written for this question (TR:42)",
 "cls": [
 "1",
 "A",
@@ -2458,7 +2503,7 @@
 "D"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.5"
 },
 "110": {
 "v": "none",
@@ -2640,11 +2685,14 @@
 "by": "hand"
 },
 "120": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 45 reversing",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r16"
+],
+"ref": [
+"roads2#r:נוסעים לאחור רק אם יש צורך בכך, ובמי"
+],
+"why": "rule written for this question (TR:45)",
 "cls": [
 "1",
 "B",
@@ -2653,14 +2701,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "121": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 51 narrow road",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r17"
+],
+"ref": [
+"roads2#r:בכביש צר מדי למעבר שני כלי רכב – שני"
+],
+"why": "rule written for this question (TR:46(א))",
 "cls": [
 "1",
 "A",
@@ -2670,14 +2721,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "122": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 52 steep road",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r18"
+],
+"ref": [
+"roads2#r:נפגשו בדרך תלולה וצריך שאחד יעצור – "
+],
+"why": "rule written for this question (TR:46(ב))",
 "cls": [
 "1",
 "A",
@@ -2687,7 +2741,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "123": {
 "v": "full",
@@ -3126,11 +3180,14 @@
 "by": "sample"
 },
 "145": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 50 braking",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r21"
+],
+"ref": [
+"roads2#r:לא בולמים פתאום, אלא כדי למנוע תאונה"
+],
+"why": "rule written for this question (TR:53)",
 "cls": [
 "1",
 "A",
@@ -3140,14 +3197,17 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "146": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 50 braking",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r21"
+],
+"ref": [
+"roads2#r:לא בולמים פתאום, אלא כדי למנוע תאונה"
+],
+"why": "rule written for this question (TR:53)",
 "cls": [
 "1",
 "A",
@@ -3157,7 +3217,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "147": {
 "v": "full",
@@ -3213,11 +3273,14 @@
 "by": "hand"
 },
 "150": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 54 expressway 110",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r22"
+],
+"ref": [
+"roads2#r:מהירות מרבית לרכב מנועי (חוץ מאוטובו"
+],
+"why": "rule written for this question (TR:54(א))",
 "cls": [
 "B",
 "C",
@@ -3225,7 +3288,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "151": {
 "v": "full",
@@ -4089,11 +4152,14 @@
 "by": "hand"
 },
 "195": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 70 shoulder",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r0"
+],
+"ref": [
+"parking2#r:בדרך לא עירונית שמסומנת כדרך ראשית א"
+],
+"why": "rule written for this question (TR:69(א))",
 "cls": [
 "B",
 "C",
@@ -4101,7 +4167,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "196": {
 "v": "full",
@@ -4352,11 +4418,14 @@
 "by": "hand"
 },
 "209": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 72 solid line",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r3"
+],
+"ref": [
+"parking2#r:אסור לעצור, להעמיד או להחנות בכביש ("
+],
+"why": "rule written for this question (TR:72(א)(9))",
 "cls": [
 "1",
 "A",
@@ -4366,7 +4435,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "210": {
 "v": "full",
@@ -4389,11 +4458,14 @@
 "by": "link"
 },
 "211": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 72 bridge/tunnel",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r4"
+],
+"ref": [
+"parking2#r:אסור לעצור, להעמיד או להחנות על גשר,"
+],
+"why": "rule written for this question (TR:72(א)(11))",
 "cls": [
 "1",
 "A",
@@ -4403,7 +4475,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "212": {
 "v": "full",
@@ -4426,11 +4498,14 @@
 "by": "hand"
 },
 "213": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 72 opposite bus stop",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r5"
+],
+"ref": [
+"parking2#r:מול תחנת אוטובוס מותר לעצור או להחנו"
+],
+"why": "rule written for this question (TR:72(א)(12))",
 "cls": [
 "1",
 "A",
@@ -4440,14 +4515,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "214": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 72 railing",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r6"
+],
+"ref": [
+"parking2#r:אסור לעצור, להעמיד או להחנות בצד מעק"
+],
+"why": "rule written for this question (TR:72(א)(13))",
 "cls": [
 "1",
 "A",
@@ -4457,7 +4535,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "215": {
 "v": "full",
@@ -4498,11 +4576,14 @@
 "by": "hand"
 },
 "217": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 73 securing vehicle",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r7"
+],
+"ref": [
+"parking2#r:לפני שמשאירים רכב: מבטיחים שלא יזוז,"
+],
+"why": "rule written for this question (TR:74(א))",
 "cls": [
 "1",
 "A",
@@ -4512,14 +4593,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "218": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 73",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r7"
+],
+"ref": [
+"parking2#r:לפני שמשאירים רכב: מבטיחים שלא יזוז,"
+],
+"why": "rule written for this question (TR:74(א))",
 "cls": [
 "1",
 "B",
@@ -4528,7 +4612,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "219": {
 "v": "full",
@@ -4627,11 +4711,14 @@
 "by": "hand"
 },
 "224": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 83 body outside",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r8"
+],
+"ref": [
+"parking2#r:בנסיעה כל הגוף בתוך הרכב (חוץ מאופנו"
+],
+"why": "rule written for this question (TR:79(א))",
 "cls": [
 "B",
 "C",
@@ -4639,14 +4726,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "225": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 83 door open",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r8"
+],
+"ref": [
+"parking2#r:בנסיעה כל הגוף בתוך הרכב (חוץ מאופנו"
+],
+"why": "rule written for this question (TR:79(א))",
 "cls": [
 "B",
 "C",
@@ -4654,7 +4744,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "226": {
 "v": "full",
@@ -5210,11 +5300,14 @@
 "by": "hand"
 },
 "258": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 54 speed limit during overtaking",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r22"
+],
+"ref": [
+"roads2#r:מהירות מרבית לרכב מנועי (חוץ מאוטובו"
+],
+"why": "rule written for this question (TR:54(א))",
 "cls": [
 "1",
 "A",
@@ -5224,7 +5317,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "259": {
 "v": "none",
@@ -5451,11 +5544,14 @@
 "by": "hand"
 },
 "272": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bicycles right edge",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r8"
+],
+"ref": [
+"roads2#r:רוכב אופניים רוכב קרוב ככל האפשר לשפ"
+],
+"why": "rule written for this question (TR:128)",
 "cls": [
 "1",
 "A",
@@ -5465,7 +5561,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "273": {
 "v": "none",
@@ -5637,11 +5733,14 @@
 "by": "hand"
 },
 "282": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 2 objects on road",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r10"
+],
+"ref": [
+"parking2#r:לא מניחים על הדרך דבר שעלול לסכן או "
+],
+"why": "rule written for this question (TR:152(א))",
 "cls": [
 "1",
 "A",
@@ -5651,7 +5750,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "283": {
 "v": "none",
@@ -6944,11 +7043,14 @@
 "by": "hand"
 },
 "357": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 36 obstacle",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r13"
+],
+"ref": [
+"roads2#r:מבנה, עמוד, אי תנועה או שטח סגור בכב"
+],
+"why": "rule written for this question (TR:39(א))",
 "cls": [
 "1",
 "A",
@@ -6958,7 +7060,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "358": {
 "v": "full",
@@ -7589,11 +7691,14 @@
 "by": "hand"
 },
 "389": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 72 railing",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r6"
+],
+"ref": [
+"parking2#r:אסור לעצור, להעמיד או להחנות בצד מעק"
+],
+"why": "rule written for this question (TR:72(א)(13))",
 "cls": [
 "1",
 "A",
@@ -7603,7 +7708,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "390": {
 "v": "full",
@@ -14237,11 +14342,14 @@
 "by": "hand"
 },
 "727": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 41 left turn lane",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r15"
+],
+"ref": [
+"roads2#r:פנייה שמאלה: מחד־סטרי – מצד שמאל של "
+],
+"why": "rule written for this question (TR:43(א))",
 "cls": [
 "1",
 "A",
@@ -14251,7 +14359,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "728": {
 "v": "none",
@@ -14521,11 +14629,14 @@
 "by": "hand"
 },
 "744": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 52 narrow downhill",
-"src": "T",
+"v": "partial",
+"rule": [
+"roads2#r18"
+],
+"ref": [
+"roads2#r:נפגשו בדרך תלולה וצריך שאחד יעצור – "
+],
+"why": "rule covers part of the answer (TR:46(ב))",
 "cls": [
 "1",
 "A",
@@ -14535,7 +14646,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "745": {
 "v": "none",
@@ -14688,11 +14799,14 @@
 "by": "sample"
 },
 "753": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 36 keep right",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r15"
+],
+"ref": [
+"roads2#r:פנייה שמאלה: מחד־סטרי – מצד שמאל של "
+],
+"why": "rule written for this question (TR:43(א))",
 "cls": [
 "1",
 "A",
@@ -14702,7 +14816,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "754": {
 "v": "partial",
@@ -14745,11 +14859,14 @@
 "by": "hand"
 },
 "756": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 36 right lane",
-"src": "T",
+"v": "partial",
+"rule": [
+"roads2#r7"
+],
+"ref": [
+"roads2#r:נוסעים ככל האפשר בצד הימני הקיצוני ש"
+],
+"why": "rule covers part of the answer (TR:35)",
 "cls": [
 "1",
 "A",
@@ -14759,7 +14876,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "757": {
 "v": "full",
@@ -15192,11 +15309,14 @@
 "by": "hand"
 },
 "781": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 41 right turn near edge",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r14"
+],
+"ref": [
+"roads2#r:פנייה ימינה: רק כשהרכב סמוך ככל האפש"
+],
+"why": "rule written for this question (TR:42)",
 "cls": [
 "1",
 "A",
@@ -15206,7 +15326,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "782": {
 "v": "none",
@@ -15226,16 +15346,19 @@
 "by": "hand"
 },
 "783": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 41 multiple right-turn lanes",
-"src": "T",
+"v": "partial",
+"rule": [
+"roads2#r14"
+],
+"ref": [
+"roads2#r:פנייה ימינה: רק כשהרכב סמוך ככל האפש"
+],
+"why": "rule covers part of the answer (TR:42)",
 "cls": [
 "B"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "784": {
 "v": "none",
@@ -15364,11 +15487,14 @@
 "by": "v1.5"
 },
 "791": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 41 multiple left-turn lanes",
-"src": "T",
+"v": "partial",
+"rule": [
+"roads2#r15"
+],
+"ref": [
+"roads2#r:פנייה שמאלה: מחד־סטרי – מצד שמאל של "
+],
+"why": "rule covers part of the answer (TR:43(א))",
 "cls": [
 "1",
 "A",
@@ -15378,7 +15504,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "792": {
 "v": "partial",
@@ -15498,11 +15624,14 @@
 "by": "hand"
 },
 "798": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 45 reversing",
-"src": "T",
+"v": "partial",
+"rule": [
+"roads2#r16"
+],
+"ref": [
+"roads2#r:נוסעים לאחור רק אם יש צורך בכך, ובמי"
+],
+"why": "rule covers part of the answer (TR:45)",
 "cls": [
 "1",
 "A",
@@ -15512,7 +15641,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "799": {
 "v": "none",
@@ -16929,11 +17058,14 @@
 "by": "hand"
 },
 "877": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 45 reversing",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r16"
+],
+"ref": [
+"roads2#r:נוסעים לאחור רק אם יש צורך בכך, ובמי"
+],
+"why": "rule written for this question (TR:45)",
 "cls": [
 "1",
 "B",
@@ -16942,7 +17074,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "878": {
 "v": "none",
@@ -18454,16 +18586,19 @@
 "by": "hand"
 },
 "963": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 54 expressway 110",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r22"
+],
+"ref": [
+"roads2#r:מהירות מרבית לרכב מנועי (חוץ מאוטובו"
+],
+"why": "rule written for this question (TR:54(א))",
 "cls": [
 "B"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "964": {
 "v": "partial",
@@ -19909,18 +20044,21 @@
 "by": "hand"
 },
 "1055": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 27 defect stop driving",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r4"
+],
+"ref": [
+"roads2#r:לא נוהגים ברכב שמצבו עלול לסכן או שו"
+],
+"why": "rule written for this question (TR:27(א))",
 "cls": [
 "A",
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1056": {
 "v": "none",
@@ -24541,18 +24679,21 @@
 "by": "hand"
 },
 "1363": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR portable amber lamp",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r2"
+],
+"ref": [
+"parking2#r:רכב שנתקע בזמן תאורה מחוץ לעיר: באוט"
+],
+"why": "rule written for this question (TR:70(ב)(1))",
 "cls": [
 "C",
 "C1",
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1364": {
 "v": "none",
@@ -24858,11 +24999,14 @@
 "by": "hand"
 },
 "1383": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 51 crest slow",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r20"
+],
+"ref": [
+"roads2#r:מאטים, ואם צריך עוצרים, כשצפויה סכנה"
+],
+"why": "rule written for this question (TR:52)",
 "cls": [
 "1",
 "A",
@@ -24872,7 +25016,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1384": {
 "v": "none",
@@ -25683,17 +25827,20 @@
 "by": "hand"
 },
 "1436": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR parking width 2.50",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r1"
+],
+"ref": [
+"parking2#r:אסור להחנות או להעמיד בדרך רכב שרוחב"
+],
+"why": "rule written for this question (TR:69(ו)(1))",
 "cls": [
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1437": {
 "v": "full",
@@ -25854,30 +26001,36 @@
 "by": "sample"
 },
 "1447": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR overtaking ban heavy",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r19"
+],
+"ref": [
+"roads2#r:אוטובוס (לא זעיר) ורכב מסחרי או רכב "
+],
+"why": "rule written for this question (TR:47(ח))",
 "cls": [
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.5"
 },
 "1448": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR right lane heavy 10,000",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r11"
+],
+"ref": [
+"roads2#r:בכביש עם שני נתיבים או יותר באותו כי"
+],
+"why": "rule written for this question (TR:36(ה))",
 "cls": [
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1449": {
 "v": "full",
@@ -26409,11 +26562,14 @@
 "by": "hand"
 },
 "1484": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 54 no speeding when overtaking",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r22"
+],
+"ref": [
+"roads2#r:מהירות מרבית לרכב מנועי (חוץ מאוטובו"
+],
+"why": "rule written for this question (TR:54(א))",
 "cls": [
 "A",
 "B",
@@ -26422,7 +26578,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1485": {
 "v": "none",
@@ -26453,11 +26609,14 @@
 "by": "hand"
 },
 "1487": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 54 no speeding when overtaking",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r22"
+],
+"ref": [
+"roads2#r:מהירות מרבית לרכב מנועי (חוץ מאוטובו"
+],
+"why": "rule written for this question (TR:54(א))",
 "cls": [
 "A",
 "B",
@@ -26466,7 +26625,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1488": {
 "v": "none",
@@ -27063,11 +27222,14 @@
 "by": "hand"
 },
 "1523": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 51 narrow bridge",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r20"
+],
+"ref": [
+"roads2#r:מאטים, ואם צריך עוצרים, כשצפויה סכנה"
+],
+"why": "rule written for this question (TR:52)",
 "cls": [
 "1",
 "A",
@@ -27077,7 +27239,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1524": {
 "v": "full",
@@ -27144,11 +27306,14 @@
 "by": "sample"
 },
 "1528": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 52 narrow road oncoming",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r17"
+],
+"ref": [
+"roads2#r:בכביש צר מדי למעבר שני כלי רכב – שני"
+],
+"why": "rule written for this question (TR:46(א))",
 "cls": [
 "1",
 "A",
@@ -27158,7 +27323,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1529": {
 "v": "full",
@@ -27181,11 +27346,14 @@
 "by": "sample"
 },
 "1530": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 51 curves slow",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r20"
+],
+"ref": [
+"roads2#r:מאטים, ואם צריך עוצרים, כשצפויה סכנה"
+],
+"why": "rule written for this question (TR:52)",
 "cls": [
 "1",
 "A",
@@ -27195,7 +27363,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1531": {
 "v": "partial",
@@ -27459,25 +27627,31 @@
 "by": "hand"
 },
 "1546": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR fallen load",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r10"
+],
+"ref": [
+"parking2#r:לא מניחים על הדרך דבר שעלול לסכן או "
+],
+"why": "rule written for this question (TR:152(א))",
 "cls": [
 "B",
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1547": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR sudden braking",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r21"
+],
+"ref": [
+"roads2#r:לא בולמים פתאום, אלא כדי למנוע תאונה"
+],
+"why": "rule written for this question (TR:53)",
 "cls": [
 "1",
 "A",
@@ -27487,7 +27661,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1548": {
 "v": "full",
@@ -27703,11 +27877,14 @@
 "by": "hand"
 },
 "1560": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 45 reversing need",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r16"
+],
+"ref": [
+"roads2#r:נוסעים לאחור רק אם יש צורך בכך, ובמי"
+],
+"why": "rule written for this question (TR:45)",
 "cls": [
 "1",
 "B",
@@ -27716,7 +27893,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1561": {
 "v": "full",
@@ -29624,11 +29801,14 @@
 "by": "sample"
 },
 "1687": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 54 private minibus 110",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r22"
+],
+"ref": [
+"roads2#r:מהירות מרבית לרכב מנועי (חוץ מאוטובו"
+],
+"why": "rule written for this question (TR:54(א))",
 "cls": [
 "B",
 "C",
@@ -29636,7 +29816,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1688": {
 "v": "partial",
@@ -29773,11 +29953,14 @@
 "by": "hand"
 },
 "1696": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 51 narrow bridge",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r20"
+],
+"ref": [
+"roads2#r:מאטים, ואם צריך עוצרים, כשצפויה סכנה"
+],
+"why": "rule written for this question (TR:52)",
 "cls": [
 "1",
 "A",
@@ -29787,7 +29970,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1697": {
 "v": "none",
@@ -30746,11 +30929,14 @@
 "by": "hand"
 },
 "1752": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 52 narrow road",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r17"
+],
+"ref": [
+"roads2#r:בכביש צר מדי למעבר שני כלי רכב – שני"
+],
+"why": "rule written for this question (TR:46(א))",
 "cls": [
 "1",
 "A",
@@ -30760,7 +30946,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1753": {
 "v": "full",
@@ -30834,11 +31020,14 @@
 "by": "hand"
 },
 "1757": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 72 no stopping with solid line",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r3"
+],
+"ref": [
+"parking2#r:אסור לעצור, להעמיד או להחנות בכביש ("
+],
+"why": "rule written for this question (TR:72(א)(9))",
 "cls": [
 "1",
 "A",
@@ -30848,7 +31037,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1758": {
 "v": "full",
@@ -31179,11 +31368,14 @@
 "by": "hand"
 },
 "1776": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR separation area",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r9"
+],
+"ref": [
+"roads2#r:בדרך עם שטח הפרדה נוסעים מימין לו, ל"
+],
+"why": "rule written for this question (TR:36(ב))",
 "cls": [
 "1",
 "A",
@@ -31193,14 +31385,17 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "1777": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR repairs on road",
-"src": "T",
+"v": "full",
+"rule": [
+"parking2#r9"
+],
+"ref": [
+"parking2#r:לא מתקנים רכב בדרך; קלקול קל שאירע ב"
+],
+"why": "rule written for this question (TR:154(ב))",
 "cls": [
 "1",
 "A",
@@ -31210,7 +31405,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1778": {
 "v": "none",
@@ -31270,11 +31465,14 @@
 "by": "hand"
 },
 "1781": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR traffic island right",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r13"
+],
+"ref": [
+"roads2#r:מבנה, עמוד, אי תנועה או שטח סגור בכב"
+],
+"why": "rule written for this question (TR:39(א))",
 "cls": [
 "1",
 "A",
@@ -31284,14 +31482,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1782": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 52 narrow steep road",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r18"
+],
+"ref": [
+"roads2#r:נפגשו בדרך תלולה וצריך שאחד יעצור – "
+],
+"why": "rule written for this question (TR:46(ב))",
 "cls": [
 "1",
 "A",
@@ -31301,7 +31502,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1783": {
 "v": "partial",
@@ -31541,11 +31742,14 @@
 "by": "hand"
 },
 "1797": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 51 tunnel slow",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r20"
+],
+"ref": [
+"roads2#r:מאטים, ואם צריך עוצרים, כשצפויה סכנה"
+],
+"why": "rule written for this question (TR:52)",
 "cls": [
 "1",
 "A",
@@ -31555,14 +31759,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1798": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 51 traffic-calming slow",
-"src": "T",
+"v": "full",
+"rule": [
+"roads2#r20"
+],
+"ref": [
+"roads2#r:מאטים, ואם צריך עוצרים, כשצפויה סכנה"
+],
+"why": "rule written for this question (TR:52)",
 "cls": [
 "1",
 "A",
@@ -31572,7 +31779,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1799": {
 "v": "full",
