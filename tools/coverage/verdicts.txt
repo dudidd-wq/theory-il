@@ -84,7 +84,7 @@
 89 n T TR 36 obstacle
 90 n T TR 36 obstacle
 91 n T TR 180 B licence
-92 n T TR licence renewal
+92 n S searched TR 173/174/196/203, TO: no 1-year renewal provision (see NO_SOURCE_B_A.md)
 94 n T TR ATV roads
 95 n T TR הודעת אי שימוש
 96 n T TR ATV passenger
@@ -246,7 +246,7 @@
 297 f1
 298 p1
 300 f1
-302 n T OFF:drunk any amount
+302 n S OFF:drunk says any amount of alcohol impairs but does not name beer (see NO_SOURCE_B_A.md)
 303 f1
 305 n T TO 64ב evidence
 306 n T TO 64ד blood
@@ -548,7 +548,7 @@
 703 p2 picture scenario
 704 p1 picture scenario
 706 p2 picture scenario roundabout
-708 n T TR 64 picture
+708 n S picture scene; see NO_SOURCE_B_A.md
 709 p2 picture scenario
 710 p2 picture scenario
 711 p2 picture scenario
@@ -565,7 +565,7 @@
 725 n T TR 41 right turn bicycle
 726 n T sign-link lanes
 727 n T TR 41 left turn lane
-728 n T sign-link lanes
+728 n S picture scene; see NO_SOURCE_B_A.md
 730 n S scanning ahead
 732 n S pre-drive checks
 735 n S gear choice

@@ -11,8 +11,8 @@
 "any_pct": 90.1,
 "strict_full": 1135,
 "strict_pct": 63.0,
-"none_teachable": 37,
-"none_nosource": 141
+"none_teachable": 33,
+"none_nosource": 145
 },
 "class": {
 "B": {
@@ -24,8 +24,8 @@
 "any_pct": 95.4,
 "strict_full": 815,
 "strict_pct": 64.1,
-"none_teachable": 4,
-"none_nosource": 55
+"none_teachable": 0,
+"none_nosource": 59
 },
 "A": {
 "n": 1155,
@@ -36,8 +36,8 @@
 "any_pct": 94.2,
 "strict_full": 712,
 "strict_pct": 61.6,
-"none_teachable": 4,
-"none_nosource": 63
+"none_teachable": 0,
+"none_nosource": 67
 },
 "C1": {
 "n": 1385,
@@ -48,8 +48,8 @@
 "any_pct": 92.7,
 "strict_full": 876,
 "strict_pct": 63.2,
-"none_teachable": 34,
-"none_nosource": 67
+"none_teachable": 30,
+"none_nosource": 71
 },
 "C": {
 "n": 1314,
@@ -60,8 +60,8 @@
 "any_pct": 92.8,
 "strict_full": 839,
 "strict_pct": 63.9,
-"none_teachable": 36,
-"none_nosource": 59
+"none_teachable": 32,
+"none_nosource": 63
 },
 "D": {
 "n": 1316,
@@ -72,8 +72,8 @@
 "any_pct": 94.2,
 "strict_full": 844,
 "strict_pct": 64.1,
-"none_teachable": 9,
-"none_nosource": 67
+"none_teachable": 5,
+"none_nosource": 71
 },
 "1": {
 "n": 1127,
@@ -84,8 +84,8 @@
 "any_pct": 94.1,
 "strict_full": 711,
 "strict_pct": 63.1,
-"none_teachable": 5,
-"none_nosource": 62
+"none_teachable": 1,
+"none_nosource": 66
 }
 },
 "class_only": {
@@ -172,8 +172,8 @@
 "any_pct": 92.3,
 "strict_full": 701,
 "strict_pct": 77.8,
-"none_teachable": 34,
-"none_nosource": 35
+"none_teachable": 31,
+"none_nosource": 38
 },
 "signs": {
 "n": 390,
@@ -196,8 +196,8 @@
 "any_pct": 78.8,
 "strict_full": 234,
 "strict_pct": 58.5,
-"none_teachable": 2,
-"none_nosource": 83
+"none_teachable": 1,
+"none_nosource": 84
 },
 "vehicle": {
 "n": 110,
@@ -223,8 +223,8 @@
 "any_pct": 98.8,
 "strict_full": 414,
 "strict_pct": 82.6,
-"none_teachable": 3,
-"none_nosource": 3
+"none_teachable": 0,
+"none_nosource": 6
 },
 "signs": {
 "n": 360,
@@ -247,8 +247,8 @@
 "any_pct": 89.5,
 "strict_full": 207,
 "strict_pct": 67.9,
-"none_teachable": 1,
-"none_nosource": 31
+"none_teachable": 0,
+"none_nosource": 32
 },
 "vehicle": {
 "n": 106,
@@ -273,8 +273,8 @@
 "any_pct": 98.4,
 "strict_full": 347,
 "strict_pct": 80.9,
-"none_teachable": 3,
-"none_nosource": 4
+"none_teachable": 0,
+"none_nosource": 7
 },
 "signs": {
 "n": 354,
@@ -297,8 +297,8 @@
 "any_pct": 85.6,
 "strict_full": 195,
 "strict_pct": 62.5,
-"none_teachable": 1,
-"none_nosource": 44
+"none_teachable": 0,
+"none_nosource": 45
 },
 "vehicle": {
 "n": 60,
@@ -323,8 +323,8 @@
 "any_pct": 92.7,
 "strict_full": 470,
 "strict_pct": 77.7,
-"none_teachable": 32,
-"none_nosource": 12
+"none_teachable": 29,
+"none_nosource": 15
 },
 "signs": {
 "n": 367,
@@ -347,8 +347,8 @@
 "any_pct": 88.5,
 "strict_full": 210,
 "strict_pct": 67.3,
-"none_teachable": 1,
-"none_nosource": 35
+"none_teachable": 0,
+"none_nosource": 36
 },
 "vehicle": {
 "n": 101,
@@ -373,8 +373,8 @@
 "any_pct": 92.1,
 "strict_full": 483,
 "strict_pct": 78.0,
-"none_teachable": 33,
-"none_nosource": 16
+"none_teachable": 30,
+"none_nosource": 19
 },
 "signs": {
 "n": 366,
@@ -397,8 +397,8 @@
 "any_pct": 87.0,
 "strict_full": 201,
 "strict_pct": 65.5,
-"none_teachable": 2,
-"none_nosource": 38
+"none_teachable": 1,
+"none_nosource": 39
 },
 "vehicle": {
 "n": 22,
@@ -423,8 +423,8 @@
 "any_pct": 93.9,
 "strict_full": 488,
 "strict_pct": 79.0,
-"none_teachable": 8,
-"none_nosource": 30
+"none_teachable": 5,
+"none_nosource": 33
 },
 "signs": {
 "n": 377,
@@ -447,8 +447,8 @@
 "any_pct": 89.0,
 "strict_full": 201,
 "strict_pct": 67.2,
-"none_teachable": 1,
-"none_nosource": 32
+"none_teachable": 0,
+"none_nosource": 33
 },
 "vehicle": {
 "n": 22,
@@ -473,8 +473,8 @@
 "any_pct": 97.9,
 "strict_full": 360,
 "strict_pct": 82.6,
-"none_teachable": 4,
-"none_nosource": 5
+"none_teachable": 1,
+"none_nosource": 8
 },
 "signs": {
 "n": 353,
@@ -497,8 +497,8 @@
 "any_pct": 82.7,
 "strict_full": 188,
 "strict_pct": 63.7,
-"none_teachable": 1,
-"none_nosource": 50
+"none_teachable": 0,
+"none_nosource": 51
 },
 "vehicle": {
 "n": 43,
@@ -2404,8 +2404,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR licence renewal",
-"src": "T",
+"why": "searched TR 173/174/196/203, TO: no 1-year renewal provision (see NO_SOURCE_B_A.md)",
+"src": "S",
 "cls": [
 "1",
 "A",
@@ -6480,8 +6480,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "OFF:drunk any amount",
-"src": "T",
+"why": "OFF:drunk says any amount of alcohol impairs but does not name beer (see NO_SOURCE_B_A.md)",
+"src": "S",
 "cls": [
 "1",
 "A",
@@ -14580,8 +14580,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR 64 picture",
-"src": "T",
+"why": "picture scene; see NO_SOURCE_B_A.md",
+"src": "S",
 "cls": [
 "1",
 "A",
@@ -14954,8 +14954,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "sign-link lanes",
-"src": "T",
+"why": "picture scene; see NO_SOURCE_B_A.md",
+"src": "S",
 "cls": [
 "1",
 "A",
