@@ -13,7 +13,7 @@ QS = {q['id']: q for q in json.load(open(os.path.join(ROOT, 'data/q.he.json')))}
 META = LAW['_meta']
 TITLES = {'TR': 'תקנות_התעבורה', 'TO': 'פקודת_התעבורה'}
 NAMES = {'TR': 'תקנות התעבורה, התשכ"א–1961', 'TO': 'פקודת התעבורה [נוסח חדש]'}
-BANK_URL = 'https://data.gov.il/dataset/theoryexamhe'
+BANK_URL = 'https://data.gov.il/he/datasets/ministry_of_transport/tqhe'
 
 def norm(s, nospace=False):
     s = re.sub(r'[\u0591-\u05C7]', '', s)
