@@ -1,0 +1,11 @@
+# v1.10 (review #7 item 2): rules that cited only a bank question now cite the official law/textbook passage that states
+# the same answer. These questions lost their automatic "explicit citation" link, so the judgement is recorded here.
+# format: qid|verdict|unit-refs (;-separated)|why
+809|full|distance#r:כשהמהירות עולה – מרחק העצירה גדל.|textbook: "ככל שתגדל המהירות כך יגדל מרחק העצירה" (re-based v1.10)
+800|full|blind#r:שטח מת – שטח סביב הרכב שהנהג אינו יכ|textbook: definition of the blind spot (re-based v1.10)
+733|full|blind#r:לפני האטה: מסתכלים במראות, מרפים מהד|textbook: safe stopping steps, mirrors then release the accelerator, brake/clutch (re-based v1.10)
+1429|full|heavy#r:המטען ממוקם ומעוגן כך שלא יישמט מהרכ|TR 85(א)(4): load fastened so it will not fall or loosen (re-based v1.10)
+1203|full|bus#r:חובה זמזם שפועל אוטומטית עם השילוב ל|TR 359א: reversing buzzer in a bus, automatic with reverse gear (re-based v1.10)
+1206|full|bus#r:אוטובוס שנאלץ לעמוד בלילה מחוץ לעיר:;bus#x:Q1206|TR 70: triangle visible from 100 m; bus outside a city at night: amber flasher or all indicators (re-based v1.10)
+328|full|tractor#r:דרגת הרישיון לטרקטור: דרגה 1.|TR 179: a class 1 licence is for a tractor (re-based v1.10)
+1664|full|tractor#r:גרור מעל 4,000 ק"ג – רק אחרי שישה חו|TR 39ו(א): trailer over 4,000 kg only 6 months after the licence (re-based v1.10)

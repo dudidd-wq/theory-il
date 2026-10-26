@@ -53,7 +53,7 @@ for i, e in CF['q'].items():
 ok(not bad, f'every stored unit reference resolves to exactly one unit {bad[:3]}')
 # keyword overlap: the cited unit must share a content word with the question or its answer (stale-pointer guard);
 # the allowlist holds checked pairs whose overlap is a synonym only
-OVL_OK = {('981', 'overtake'): 'ימין / ימני', ('172', 'roadparts'): 'דרך – the defined term itself (a stopword for the matcher)', ('1064', 'defensive'): 'הסחת / היסח דעת'}
+OVL_OK = {('981', 'overtake'): 'ימין / ימני', ('172', 'roadparts'): 'דרך – the defined term itself (a stopword for the matcher)', ('1064', 'defensive'): 'הסחת / היסח דעת', ('910', 'peds2'): 'ילדים / ליד בתי ספר (partial; the textbook excerpt sample shifted in v1.10)'}
 ut = {u['id']: u['text'] for u in _U}; bad = []
 for i, e in cq.items():
     if e[0] == 'n': continue
@@ -199,6 +199,24 @@ ok(all(int(k) in inbank for k, v in NT.items() if v.get('k') == 'tb'), 'v1.10: t
 ok(NT.get('1765', {}).get('k') == 'tb' and NT['1765']['s'] == 'OFF:textbook', 'v1.10: Q1765 states the textbook difference with its source')
 JL = T('js', 'learn.js')
 ok("'ln.bankNote'" in JL and 'BANK_URL' in JL and I18.count("'ln.bankNote'") == 2 and I18.count("'ln.bankAttr'") == 2, 'v1.10: bank lessons show the no-explanation label and CC BY attribution (he and en)')
+
+# 5d. v1.10 (review #7 item 2): bank-sourced rules re-based on law/textbook where the official text states the answer;
+# the remaining ones are disclosed through a "without bank-sourced rules" figure
+LB = {l['id']: l for l in LALL}
+RB = [('distance', 2), ('distance', 4), ('distance', 5), ('blind', 0), ('blind', 1), ('heavy', 4), ('bus', 5), ('bus', 6), ('tractor', 2), ('tractor', 3), ('tractor', 8)]
+ok(all(not LB[l]['rules'][i]['s'].startswith('Q:') for l, i in RB), 'v1.10: re-based rules cite law/textbook, not only a bank question')
+CFQ = J('data', 'coverage_full.json')['q']
+ok(CFQ['1305']['rule'] and set(CFQ['1305']['rule']) <= {'heavy2#r2', 'cargo2#r0'} and CFQ['1520']['rule'] == ['equip#r2'], 'v1.10: Q1305 -> TR 313(א)(3) length rule, Q1520 -> TR 368 chocks rule')
+CA = J('docs', 'coverage_after.json'); CJ = J('data', 'coverage.json')['tot']
+TBC = J('data', 'coverage.json')['tb']; LDT = T('LICENSE-DATA.md')
+ok(f"{TBC[0]} of the {TBC[1]} lesson rules cite it; {TBC[2]} excerpts from {TBC[3]} of its 170 pages" in LDT and f"about {TBC[4]} %" in LDT,
+   f'v1.10: LICENSE-DATA textbook counts match the build ({TBC})')
+ok("'ab.tbookText', ...(COV?.tb" in T('js', 'app.js') and I18.count('{0}') >= 2 and 'רוב הכללים' not in I18, 'v1.10: About textbook counts are computed, not "most rules"')
+ok('GitHub Pages' in I18 and I18.count('IP') >= 2 and "'ln.why'" in I18 and 'במבחן אין הסברים' in I18, 'v1.10: About privacy names GitHub Pages logging; law text says practice shows "Why?"')
+ok(all(len(v) == 7 and v[6] <= v[1] for v in CJ.values()), 'v1.10: app coverage table carries the without-bank-sourced figure (<= full)')
+ok(all(CA['class'][c]['full_nobank_pct'] <= CA['class'][c]['full_pct'] and CA['class'][c]['full_bank_sourced'] >= 0 for c in CA['class']), 'v1.10: per-class without-bank-sourced figure recorded')
+CM = T('docs', 'COVERAGE.md')
+ok(f"{CA['all']['full_nobank_pct']}%" in CM and 'bank-sourced' in CM, 'v1.10: COVERAGE.md reports the without-bank-sourced figure next to the headline')
 
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)

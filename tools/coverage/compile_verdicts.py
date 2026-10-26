@@ -50,6 +50,14 @@ for qid, j in man.items():
     elif j['v'] == 'partial' and qid in SG['q']:
         e.update(v='full', dict=True, strict_u=e['u'], u=['signs#d' + n for n in SG['q'][qid]])
     out[qid] = e
+# v1.10 re-based rules (tools/coverage/rebase_v110.txt): explicit judgement for questions whose rule now cites law/textbook
+for l in open(P('tools/coverage/rebase_v110.txt')):
+    l = l.strip()
+    if not l or l.startswith('#'): continue
+    qid, v, units, why = l.split('|', 3)
+    if qid in out: continue
+    for u in units.split(';'): resolve(LS, u)
+    out[qid] = {'by': 'rebase', 'v': v, 'u': units.split(';'), 'why': why}
 for q in Q:
     k = str(q['id'])
     if k in out: continue
@@ -57,7 +65,7 @@ for q in Q:
     assert links, f'unjudged question {k}'
     out[k] = {'by': 'link', 'v': 'full', 'u': [ref_of(LS, u) for u in links], 'why': 'rule written for this question (explicit citation / worked example / same sign picture)'}
 # v1.9 re-judgement: over-claims and gallery-only verdicts (tools/coverage/rejudge_v19.txt), applied last
-for l in open(P('tools/coverage/rejudge_v19.txt')):
+for l in [*open(P('tools/coverage/rejudge_v19.txt')), *open(P('tools/coverage/rejudge_v110.txt'))]:
     l = l.strip()
     if not l or l.startswith('#'): continue
     qid, v, units, why = l.split(' ', 3)

@@ -18,6 +18,18 @@ for v in lessons_v16.EXAMPLES16.values():
         if e[2] == 'OFF:textbook': Q.extend(e[3:])
 for v in lessons_v16.NOTES16.values():
     if v[1] == 'OFF:textbook': Q.extend(v[2])
+import lessons_spec
+for L in lessons_spec.LESSONS:
+    for r in L.get('rules', []):
+        for s_, c in [(r['s'], r['chk'])] + list(r.get('also', [])):
+            if s_ == 'OFF:textbook': Q.extend(c)
+    for c in L.get('recap', []):
+        if c['s'] == 'OFF:textbook': Q.extend(c.get('chk', []))
+    for m in L.get('mnem', []):
+        if m[2] == 'OFF:textbook' and len(m) > 3: Q.extend(m[3])
+for v in lessons_spec.EXAMPLES.values():
+    for e in v:
+        if e['s'] == 'OFF:textbook': Q.extend(e['chk'])
 import bank_lessons
 for v in bank_lessons.BANK_NOTES.values():
     if v[1] == 'OFF:textbook': Q.extend(v[2])

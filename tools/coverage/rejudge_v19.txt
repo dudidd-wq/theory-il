@@ -4,7 +4,7 @@
 # Policy: a full verdict may not rest only on a gallery tile (bank picture + bank answer). It is re-based on a cited
 # lesson rule that states the answer, or on the official sign-table meaning (dict), or downgraded to partial.
 # Worked examples stay valid only when the example text itself states the answer with a cited source.
-1001 full safety2#r10 textbook p.139: ABS "מונעת נעילת גלגלי הרכב ומאפשרת היגוי" (was: irrelevant sober#r3)
+1001 full safety2#r10 textbook p.140: ABS "מונעת נעילת גלגלי הרכב ומאפשרת היגוי" (was: irrelevant sober#r3)
 93 partial lights2#r6 textbook says flashing green warns of the last three seconds; "three flashes" is not stated
 405 full lights2#r5 textbook p.71-72: phase order and "עם הופעת האור האדום" after yellow (was: dictionary 701 only)
 983 partial overtake2#r5 mountain-road rule only; the sign's own text (narrow, no escape shoulders) is not taught
