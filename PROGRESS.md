@@ -129,3 +129,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - maint2 rule (OFF:kids_co): Q1061 full; Q1039 and Q1040 partial. They were removed from NO_SOURCE (now 77).
 - COVERAGE.md tables and headline regenerated. B: 1216 taught of 1272, 56 with no source. A: 1089 taught of 1155, 66 with no source.
 - bumped to 1.7.0 (js/version.js, sw.js VERSION).
+- live v1.7.0 confirmed via sw.js; sources.json has OFF:kids_co; live e2e 220 passed, 0 failed; data_test passed (15:14 UTC+2).
