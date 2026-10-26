@@ -3,7 +3,7 @@
 // NOTHING here talks to a server – there is no fetch/XHR/beacon in this file.
 import { snapshot, replaceState, state, onPersist, hasProgress, lostLocal, CLASSES, LANGS, blank } from './store.js';
 import { t } from './i18n.js';
-export const SCHEMA = 1;
+export const SCHEMA = 2;   // 2 = app 1.1 (lessons, streak freezes); schema-1 backups are migrated on import
 const APP = 'theory-il', META = 'theoryIL.meta', MAX_BYTES = 5e6;
 
 // ---------- tiny IndexedDB key/value ----------
@@ -25,6 +25,8 @@ let meta = (() => { try { return JSON.parse(localStorage.getItem(META)) || {}; }
 export const getMeta = () => meta;
 function setMeta(patch) { meta = { ...meta, ...patch }; try { localStorage.setItem(META, JSON.stringify(meta)); } catch {} idbSet('meta', meta); }
 const markBackup = kind => setMeta({ lastBackup: Date.now(), lastKind: kind });
+/** the reminder is reset only after a backup really left the app: copy succeeded, share completed, or the user confirmed the download */
+export const confirmBackup = kind => markBackup(kind);
 
 // ---------- sanitising: imports are data only (JSON.parse + strict whitelist copy; nothing is evaluated) ----------
 const int = (x, lo, hi, d) => Number.isInteger(x) && x >= lo && x <= hi ? x : d;
@@ -32,7 +34,7 @@ const str = (x, n) => typeof x === 'string' ? x.replace(/[<>&"'`\u0000-\u001f\u2
 const isObj = o => o && typeof o === 'object' && !Array.isArray(o);
 const keys = o => Object.keys(o).filter(k => !/^(__proto__|constructor|prototype)$/.test(k));
 export function cleanState(raw) {
-  if (!isObj(raw) || raw.v !== 1) throw new Error('state');
+  if (!isObj(raw) || (raw.v !== 1 && raw.v !== 2)) throw new Error('state');
   const s = blank(), D = 1e6;                  // day numbers are < 1e6 (≈ year 4700)
   const p = raw.profile;
   s.profile = isObj(p) ? {
@@ -48,6 +50,9 @@ export function cleanState(raw) {
   if (Array.isArray(raw.ex)) s.ex = raw.ex.slice(-200).filter(Array.isArray).map(e => [int(e[0], 0, 1e13, 0), CLASSES.includes(e[1]) ? e[1] : 'B', int(e[2], 0, 30, 0), int(e[3], 0, 86400, 0), LANGS.includes(e[4]) ? e[4] : 'he', Array.isArray(e[5]) ? e[5].slice(0, 30).filter(x => int(x, 1, 99999, 0)) : []]).filter(e => e[0]);
   if (isObj(raw.days)) { let n = 0; for (const k of keys(raw.days)) { if (++n > 4000) break; const v = raw.days[k]; if (int(+k, 1, D, 0) && Array.isArray(v)) { const a = int(v[0], 0, 1e5, 0); s.days[+k] = [a, Math.min(a, int(v[1], 0, 1e5, 0))]; } } }
   if (isObj(raw.badges)) for (const k of keys(raw.badges)) if (/^[a-z0-9]{1,16}$/.test(k)) s.badges[k] = int(raw.badges[k], 0, 1e13, 0);
+  if (isObj(raw.les)) for (const k of keys(raw.les).slice(0, 200)) { const v = raw.les[k]; if (/^[a-z0-9]{1,16}$/.test(k) && Array.isArray(v) && v.length === 3) s.les[k] = [int(v[0], 0, 1e13, 0), int(v[1], 0, 100, 0), int(v[2], 0, 1e5, 0)]; }
+  s.fz = int(raw.fz, 0, 2, 0);
+  if (Array.isArray(raw.frz)) s.frz = raw.frz.slice(-60).filter(x => int(x, 1, D, 0));
   s.xp = int(Math.round(raw.xp || 0), 0, 1e8, 0); s.created = int(raw.created, 0, 1e13, Date.now());
   return s;
 }
@@ -72,8 +77,7 @@ export async function makeCode() {
   const raw = new TextEncoder().encode(JSON.stringify(w));
   let body, tag;
   if ('CompressionStream' in self) { body = b64(await pipe(raw, new CompressionStream('deflate-raw'))); tag = 'TH1'; } else { body = b64(raw); tag = 'TH1U'; }
-  markBackup('code');
-  return `${tag}-${body}-${sum(body)}`;
+  return `${tag}-${body}-${sum(body)}`;      // not counted as a backup until it is copied (confirmBackup)
 }
 export async function readCode(code) {
   const m = /^(TH1U?)-([\w-]+)-([0-9a-f]{4})$/.exec(String(code || '').replace(/\s+/g, ''));
@@ -95,7 +99,7 @@ export async function exportFile() {
   }
   const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type: 'application/json' })); a.download = name;
   document.body.append(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
-  markBackup('file'); return 'downloaded';
+  return 'downloaded';                      // no success signal from a download: the app asks the user to confirm
 }
 export async function readFile(file) {
   if (!file) throw new Error(t('bk.errNoFile'));

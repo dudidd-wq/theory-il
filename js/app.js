@@ -11,7 +11,10 @@ const app = () => document.getElementById('app');
 let Q = [], byId = new Map(), TR = {}, MAN = null, session = null, exam = null, timer = 0;
 
 // ---------- data ----------
-async function getJSON(u) { const r = await fetch(u); if (!r.ok) throw new Error(u); return r.json(); }
+async function getJSON(u, ms = 15000) {   // timeout so a stalled network never leaves the loading screen forever
+  const ac = new AbortController(), tm = setTimeout(() => ac.abort(), ms);
+  try { const r = await fetch(u, { signal: ac.signal }); if (!r.ok) throw new Error(u); return await r.json(); } finally { clearTimeout(tm); }
+}
 async function loadData() { [Q, MAN] = await Promise.all([getJSON('data/q.he.json'), getJSON('data/manifest.json')]); byId = new Map(Q.map(p => [p.id, p])); }
 async function loadLang(l) { if (l !== 'he' && !TR[l]) { try { TR[l] = await getJSON(`data/q.${l}.json`); } catch { TR[l] = {}; } } }
 const prof = () => S().profile;
@@ -91,7 +94,7 @@ let leaving = false;
 addEventListener('hashchange', () => {
   if (exam && !exam.done && !leaving) {
     if (!confirm(t('ex.leave'))) { leaving = true; history.back(); return; }
-    exam = null;
+    exam = null; st.clearExam();
   }
   if (leaving) { leaving = false; return; }   // the history.back() that undid a cancelled navigation
   session = null; route();
@@ -101,9 +104,11 @@ addEventListener('hashchange', () => {
 function welcome() {
   document.getElementById('nav').hidden = true;
   screen(t('ob.welcome'),
+    h('img', { class: 'hero', src: 'img/hero.svg', alt: '', width: 360, height: 170 }),
     h('p', { class: 'lead', text: t('ob.intro') }),
     h('ul', { class: 'points' }, t('ob.points').map(s => h('li', {}, icon('check'), h('span', { text: s })))),
     h('p', { class: 'disc', role: 'note' }, icon('info'), h('span', { text: t('disc.short') })),
+    bankNotice(),
     h('div', { class: 'row' }, link(t('ob.start'), '#/onboard/1', 'btn primary big'), link(t('ob.restore'), '#/settings', 'btn ghost')),
     h('p', { class: 'small' }, h('a', { href: '#/about', text: t('set.about') })),
     h('div', { class: 'ui-switch' }, ['he', 'en'].map(l => btn(l === 'he' ? 'עברית' : 'English', () => { draft.ui = l; setUi(l); applyPrefs(); welcome(); }, 'chip', null, { 'aria-pressed': String(uiLang() === l), lang: l }))));
@@ -148,9 +153,11 @@ function home() {
   const b = bk.backupDue();
   if (b) kids.push(h('div', { class: 'banner', role: 'status' }, icon('shield'), h('p', { text: b.never ? t('bk.dueNever') : t('bk.due', b.days) }),
     h('div', { class: 'row tight' }, link(t('bk.now'), '#/settings/backup', 'btn small primary'), btn(t('bk.later'), () => { bk.snoozeReminder(); home(); }, 'btn small ghost'))));
+  const ex = st.loadExam();
+  if (ex) kids.push(h('div', { class: 'banner', role: 'status' }, icon('clock'), h('p', { text: t('home.examOn') }), h('div', { class: 'row tight' }, link(t('home.examGo'), '#/exam', 'btn small primary'))));
   kids.push(h('p', { class: 'sub', text: t('home.cls', clsName(p.cls)) }));
   kids.push(h('section', { class: 'kpis', 'aria-label': t('st.title') },
-    h('div', { class: 'kpi' }, icon('flame', 'ic accent'), h('b', { text: streak }), h('span', { text: t('home.streak') })),
+    h('div', { class: 'kpi', title: t('home.freezeHint') }, icon('flame', 'ic accent'), h('b', { text: streak }), h('span', { text: t('home.streak') }), h('small', { class: 'frz', text: '❄ ' + t('home.freeze', st.freezes()) })),
     h('div', { class: 'kpi' }, icon('star', 'ic accent'), h('b', { text: S().xp }), h('span', { text: t('home.xp') })),
     h('div', { class: 'kpi' }, icon('award', 'ic accent'), h('b', { text: lv.lv }), h('span', { text: t('home.level', '') }),
       h('div', { class: 'bar', role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': lv.need, 'aria-valuenow': lv.into, 'aria-label': t('home.level', lv.lv) }, h('i', { style: { width: (100 * lv.into / lv.need) + '%' } }))),
@@ -161,11 +168,12 @@ function home() {
     tile('#/exam', 'exam', t('home.exam'), t('home.examD'), 'hl'),
     tile('#/review', 'repeat', t('home.review'), due ? t('home.reviewD', due) : (mist ? t('rv.due', 0, mist) : t('home.reviewNone')), due ? 'warn' : ''),
     tile('#/bookmarks', 'star', t('home.bm'), t('home.bmD', S().bm.length)));
-  kids.push(tiles);
+  const cols = h('div', { class: 'cols' }, tiles); kids.push(cols);
+  if (streak && st.frozeYesterday()) kids.splice(kids.indexOf(cols), 0, h('p', { class: 'small accent', text: t('home.frozen') }));
   // the route ("drive" metaphor): topic stations → exam
   const stops = TOPICS.map(k => { const ids = topicPool(k), f = frac(ids); return { k, f, n: ids.length }; });
   const cur = stops.findIndex(s => s.f < 0.6);
-  kids.push(h('section', { class: 'drive', 'aria-labelledby': 'drv' }, h('h2', { id: 'drv', text: t('home.drive') }), h('p', { class: 'small muted', text: t('home.driveHint') }),
+  cols.append(h('section', { class: 'drive', 'aria-labelledby': 'drv' }, h('h2', { id: 'drv', text: t('home.drive') }), h('p', { class: 'small muted', text: t('home.driveHint') }),
     h('ol', { class: 'road' }, stops.map((s, i) => h('li', { class: 'stop' + (s.f >= 0.6 ? ' done' : '') + (i === cur ? ' cur' : '') },
       h('a', { href: '#/practice/' + s.k, 'aria-current': i === cur ? 'step' : null },
         ring(s.f, 52, 6), h('span', { class: 'stop-t' }, h('b', { text: t('topic.' + s.k) }), h('small', { text: t('pr.stats', s.n, Math.round(s.f * 100)) })), i === cur && icon('car', 'ic car')))),
@@ -195,9 +203,13 @@ function review(go) {
   const due = dueList(), all = mistakes();
   if (go === 'go') return startSession('review', shuffle(due).slice(0, 15), t('rv.title'), '#/review');
   if (go === 'all') return startSession('review', shuffle(all).slice(0, 15), t('rv.title'), '#/review');
+  const tk = go?.startsWith('all-') && go.slice(4);
+  if (TOPICS.includes(tk)) return startSession('review', shuffle(all.filter(id => byId.get(id).k === tk)).slice(0, 15), t('rv.title') + ' · ' + t('topic.' + tk), '#/review');
+  const byT = TOPICS.map(k => [k, all.filter(id => byId.get(id).k === k).length]).filter(x => x[1]);
   screen(t('rv.title'), h('p', { class: 'small', text: t('rv.hint') }), h('p', { class: 'sub', text: t('rv.due', due.length, all.length) }),
-    !all.length ? h('p', { class: 'empty', text: t('rv.empty') }) :
-      h('div', { class: 'row' }, due.length ? link(t('rv.start'), '#/review/go', 'btn primary big', 'repeat') : null, link(t('rv.early'), '#/review/all', 'btn ghost')));
+    !all.length && !due.length ? h('p', { class: 'empty', text: t('rv.empty') }) :
+      h('div', { class: 'row' }, due.length ? link(t('rv.start'), '#/review/go', 'btn primary big', 'repeat') : null, all.length ? link(t('rv.early'), '#/review/all', 'btn ghost') : null),
+    byT.length ? h('section', {}, h('h2', { text: t('rv.byTopic') }), h('div', { class: 'row tight' }, byT.map(([k, n]) => link(t('rv.chip', t('topic.' + k), n), '#/review/all-' + k, 'chip')))) : null);
 }
 function bookmarks(go) {
   const ids = S().bm.filter(id => byId.has(id));
@@ -261,7 +273,7 @@ function renderQ() {
     next.hidden = false; next.focus();
   }
   screen('', qHeader(s.i, s.ids.length, s.title, () => { if (confirm(t('q.quitAsk'))) { session = null; location.hash = '#/home'; } }),
-    h('article', { class: 'qcard' }, qTools(v, s), ...qBody(v), answers, fb, next));
+    h('article', { class: 'qcard' + (v.i ? ' has-img' : '') }, qTools(v, s), ...qBody(v), answers, fb, next));
   app().querySelector('h1').classList.add('sr'); app().querySelector('h1').textContent = s.title;
   if (s.answered) paint();
 }
@@ -275,17 +287,43 @@ function summary() {
 }
 
 // ---------- full exam ----------
+const bankNotice = () => h('p', { class: 'notice', role: 'note' }, icon('info'), h('span', { text: t('disc.bank', fmtDate(MAN?.langs?.he?.resourceModified)) }));
+const fmtDate = iso => iso ? new Date(iso.slice(0, 10) + 'T12:00:00Z').toLocaleDateString(uiLang() === 'he' ? 'he-IL' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) : '2021';
 function examIntro(go) {
+  const saved = st.loadExam();
+  if (saved && !exam) {
+    const left = Math.max(0, (saved.end - Date.now()) / 1000), done = Object.keys(saved.ans || {}).length;
+    return screen(t('ex.title'), h('div', { class: 'banner', role: 'status' }, icon('clock'),
+      h('p', { text: left > 0 ? t('ex.resumeQ', done, mmss(left)) : t('ex.resumeLate', done) }),
+      h('div', { class: 'row tight' }, btn(left > 0 ? t('ex.resume') : t('ex.resumeSubmit'), () => resumeExam(saved), 'btn primary'),
+        btn(t('ex.discard'), () => { if (confirm(t('ex.discardAsk'))) { st.clearExam(); examIntro(); } }, 'btn ghost'))));
+  }
   if (go === 'go') return startExam();
   screen(t('ex.title'), h('p', { class: 'sub', text: clsName(cls()) }),
     h('ul', { class: 'points' }, t('ex.rules').map(r => h('li', {}, icon('check'), h('span', { text: r.replace('{0}', cls()) })))),
+    bankNotice(),
     h('p', { class: 'small muted', text: t('ex.note') }),
     h('div', { class: 'row' }, btn(t('ex.start'), () => startExam(), 'btn primary big', 'clock')),
     S().ex.length ? examHistory(5) : null);
 }
+/** 30 questions, topic mix proportional to the class pool's topic shares (largest remainder), random inside each topic */
+function examIds(c = cls(), n = 30) {
+  const by = TOPICS.map(k => shuffle(topicPool(k, c))), tot = by.reduce((a, x) => a + x.length, 0);
+  const quota = by.map(x => n * x.length / tot), take = quota.map(Math.floor);
+  let rest = n - take.reduce((a, x) => a + x, 0);
+  quota.map((q, i) => [q - take[i], i]).sort((a, b) => b[0] - a[0]).forEach(([, i]) => { if (rest > 0) { take[i]++; rest--; } });
+  return shuffle(by.flatMap((x, i) => x.slice(0, take[i])));
+}
 function startExam() {
-  exam = { ids: shuffle(pool()).slice(0, 30), ans: {}, orders: {}, i: 0, start: Date.now(), end: Date.now() + 40 * 60e3, done: false, he: false, flags: {} };
+  exam = { ids: examIds(), cls: cls(), ans: {}, orders: {}, i: 0, start: Date.now(), end: Date.now() + 40 * 60e3, done: false, he: false, flags: {} };
   exam.render = renderExam; renderExam(); startTimer();
+}
+function resumeExam(saved) {
+  exam = { ...saved, ids: saved.ids.filter(id => byId.has(id)), ans: saved.ans || {}, orders: saved.orders || {}, flags: saved.flags || {} };
+  exam.i = Math.min(Math.max(0, exam.i | 0), exam.ids.length - 1); exam.render = renderExam;
+  if (!exam.ids.length) { st.clearExam(); exam = null; return examIntro(); }
+  if (Date.now() >= exam.end) { toast(t('ex.timeUp')); return submitExam(); }
+  renderExam(); startTimer();
 }
 function startTimer() {
   stopTimer();
@@ -298,23 +336,24 @@ function startTimer() {
 }
 function stopTimer() { if (timer) clearInterval(timer); timer = 0; }
 function renderExam() {
-  const e = exam, id = e.ids[e.i], v = view(id, e.he);
+  const e = exam, id = e.ids[e.i], v = view(id, e.he), N = e.ids.length;
   const key = id + v.lang; e.orders[key] ||= shuffle([0, 1, 2, 3]);
+  st.saveExam(e);
   const picked = e.ans[id]?.lang === v.lang ? e.ans[id].ai : (e.ans[id] ? -2 : -1);
   const left = Math.max(0, (e.end - Date.now()) / 1000);
   const grid = h('details', { class: 'grid' }, h('summary', { text: t('ex.grid') }), h('div', { class: 'gridb' }, e.ids.map((qid, n) =>
-    btn(String(n + 1), () => { e.i = n; renderExam(); }, 'gbtn' + (e.ans[qid] ? ' done' : '') + (n === e.i ? ' cur' : ''), null, { 'aria-label': t('q.of', n + 1, 30), 'aria-current': n === e.i ? 'true' : null }))));
+    btn(String(n + 1), () => { e.i = n; renderExam(); }, 'gbtn' + (e.ans[qid] ? ' done' : '') + (n === e.i ? ' cur' : ''), null, { 'aria-label': t('q.of', n + 1, N), 'aria-current': n === e.i ? 'true' : null }))));
   const answers = h('div', { class: 'answers', role: 'radiogroup', 'aria-labelledby': 'qt' }, e.orders[key].map((ai, n) =>
     h('button', { type: 'button', role: 'radio', class: 'ans' + (picked === ai ? ' sel' : ''), 'aria-checked': String(picked === ai), 'data-i': ai, lang: v.lang, dir: dirOf(v.lang),
       onclick: () => { e.ans[id] = { ai, lang: v.lang, ok: ai === v.c }; renderExam(); } }, h('span', { class: 'ans-n', text: n + 1 }), h('span', { class: 'ans-t', text: v.a[ai] }))));
   const unanswered = e.ids.filter(q => !e.ans[q]).length;
-  screen('', h('div', { class: 'qhead' }, btn(t('q.quit'), () => { if (confirm(t('ex.leave'))) { exam = null; stopTimer(); location.hash = '#/home'; } }, 'iconbtn', 'x', { 'aria-label': t('q.quit') }),
-      h('div', { class: 'qprog' }, h('span', { text: t('q.of', e.i + 1, 30) }), h('div', { class: 'bar', role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': 30, 'aria-valuenow': 30 - unanswered, 'aria-label': t('q.answers') }, h('i', { style: { width: (100 * (30 - unanswered) / 30) + '%' } }))),
+  screen('', h('div', { class: 'qhead' }, btn(t('q.quit'), () => { if (confirm(t('ex.leave'))) { exam = null; st.clearExam(); stopTimer(); location.hash = '#/home'; } }, 'iconbtn', 'x', { 'aria-label': t('q.quit') }),
+      h('div', { class: 'qprog' }, h('span', { text: t('q.of', e.i + 1, N) }), h('div', { class: 'bar', role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': N, 'aria-valuenow': N - unanswered, 'aria-label': t('q.answers') }, h('i', { style: { width: (100 * (N - unanswered) / N) + '%' } }))),
       h('span', { id: 'timer', class: 'timer' + (left < 300 ? ' low' : ''), role: 'timer', 'aria-live': 'off', text: t('ex.left', mmss(left)) })),
-    h('article', { class: 'qcard' }, qTools(v, e), ...qBody(v), answers,
+    h('article', { class: 'qcard' + (v.i ? ' has-img' : '') }, qTools(v, e), ...qBody(v), answers,
       h('div', { class: 'row nav2' }, btn(t('ex.prev'), () => { e.i--; renderExam(); }, 'btn ghost', null, { disabled: e.i === 0 }),
-        e.i < 29 ? btn(t('q.next'), () => { e.i++; renderExam(); }, 'btn primary') : null,
-        btn(t('ex.submit'), () => { if (confirm(unanswered ? t('ex.submitAsk', unanswered) : t('ex.submitOk'))) submitExam(); }, e.i === 29 ? 'btn primary' : 'btn', 'flag'))),
+        e.i < N - 1 ? btn(t('q.next'), () => { e.i++; renderExam(); }, 'btn primary') : null,
+        btn(t('ex.submit'), () => { if (confirm(unanswered ? t('ex.submitAsk', unanswered) : t('ex.submitOk'))) submitExam(); }, e.i === N - 1 ? 'btn primary' : 'btn', 'flag'))),
     grid);
   app().querySelector('h1').classList.add('sr'); app().querySelector('h1').textContent = t('ex.title');
 }
@@ -322,12 +361,15 @@ function submitExam() {
   const e = exam; if (!e || e.done) return; e.done = true; stopTimer();
   const secs = Math.round((Math.min(Date.now(), e.end) - e.start) / 1000);
   let score = 0; const wrong = [];
-  for (const id of e.ids) { const a = e.ans[id], ok = !!a?.ok; if (ok) score++; else wrong.push(id); st.record(id, ok); }
-  st.addExam(cls(), score, secs, prof().lang, wrong);
-  checkBadges();
+  // unanswered questions count as wrong for the score (as in the real test) but are NOT recorded as mistakes in the SRS
+  for (const id of e.ids) { const a = e.ans[id], ok = !!a?.ok; if (ok) score++; else wrong.push(id); if (a) st.record(id, ok); }
+  st.clearExam();
+  st.addExam(e.cls || cls(), score, secs, prof().lang, wrong);
+  const unans = e.ids.filter(id => !e.ans[id]).length;
   const pass = score >= 26;
-  screen(pass ? t('ex.pass') : t('ex.fail'),
-    h('div', { class: 'result ' + (pass ? 'pass' : 'fail') }, ring(score / 30, 140, 12, t('ex.score', score)), h('p', { class: 'big-t', text: t('ex.score', score) }), h('p', { class: 'muted', text: t('ex.time', mmss(secs)) })),
+  screen(pass ? t('ex.pass') : t('ex.fail'), pass ? confetti() : null,
+    h('div', { class: 'result ' + (pass ? 'pass' : 'fail') }, ring(score / 30, 140, 12, t('ex.score', score)), h('p', { class: 'big-t', text: t('ex.score', score) }), h('p', { class: 'muted', text: t('ex.time', mmss(secs)) }),
+      unans ? h('p', { class: 'small muted', text: t('ex.unans', unans) }) : null),
     h('div', { class: 'row' }, btn(t('ex.again'), () => startExam(), 'btn primary', 'repeat'), wrong.length ? btn(t('sum.mist'), () => { exam = null; startSession('review', wrong, t('rv.title'), '#/review'); }, 'btn', 'repeat') : null, link(t('sum.home'), '#/home', 'btn ghost', 'home')),
     h('h2', { text: t('ex.review') }),
     !wrong.length ? h('p', { text: t('ex.allRight') }) : h('ol', { class: 'qlist' }, wrong.map(id => { const v = view(id), a = e.ans[id], va = a && view(id, a.lang === 'he');
@@ -335,7 +377,11 @@ function submitExam() {
         v.i && h('img', { class: 'qimg sm', src: 'img/q/' + v.i, alt: t('q.img', id), loading: 'lazy', width: 240, height: 135 }),
         h('p', { class: 'ans-bad' }, icon('x'), h('span', { text: a ? t('ex.yours', va.a[a.ai]) : t('ex.none') })),
         h('p', { class: 'ans-ok' }, icon('check'), h('span', { text: t('ex.right', v.a[v.c]) }))); })));
-  exam = null;
+  exam = null; checkBadges();
+}
+function confetti() {   // CSS-only celebration; with prefers-reduced-motion it is a static burst (see css)
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) navigator.vibrate?.([60, 40, 60]);
+  return h('div', { class: 'confetti', 'aria-hidden': 'true' }, Array.from({ length: 28 }, (_, i) => h('i', { style: { '--x': ((i * 37) % 100) + '%', '--d': ((i * 53) % 9) / 10 + 's', '--r': ((i * 71) % 360) + 'deg', '--c': ['var(--accent)', 'var(--ok)', '#f5b301', '#e94d8a', '#3aa0ff'][i % 5] } })));
 }
 function examHistory(n) {
   const ex = S().ex.slice(-n).reverse();
@@ -407,11 +453,16 @@ async function settings(sec) {
   const fmtT = ts => new Date(ts).toLocaleString(uiLang() === 'he' ? 'he-IL' : 'en-GB', { dateStyle: 'short', timeStyle: 'short' });
   const bsec = h('section', { class: 'card', id: 'backup' }, h('h2', { text: t('set.backup') }), h('p', { class: 'small', text: t('set.bkHint') }),
     h('p', { class: 'sub', text: meta.lastBackup ? t('set.last', fmtT(meta.lastBackup)) : t('set.lastNever') }),
-    h('div', { class: 'row' }, p ? btn(t('set.export'), async () => { const r = await bk.exportFile(); if (r !== 'cancelled') { toast(t('bk.saved')); checkBadges(); } }, 'btn primary', 'down', { id: 'bk-export' }) : null,
+    h('div', { class: 'row' }, p ? btn(t('set.export'), async () => { const r = await bk.exportFile();
+      if (r === 'shared') { toast(t('bk.saved')); checkBadges(); }
+      else if (r === 'downloaded') out.replaceChildren(h('div', { class: 'banner', role: 'status' }, h('p', { text: t('bk.didSave') }),
+        btn(t('bk.didSaveBtn'), () => { bk.confirmBackup('file'); out.replaceChildren(); toast(t('bk.saved')); checkBadges(); }, 'btn small primary', 'check', { id: 'bk-confirm' }))); }, 'btn primary', 'down', { id: 'bk-export' }) : null,
       btn(t('set.import'), () => fileIn.click(), 'btn', 'up'), fileIn),
     p ? h('div', { class: 'row' }, btn(t('set.code'), async () => {
       const code = await bk.makeCode(); const ta = h('textarea', { readonly: true, rows: 4, dir: 'ltr', 'aria-label': t('set.codeLabel'), text: code });
-      out.replaceChildren(h('p', { class: 'small', text: t('set.codeHint') }), ta, btn(t('set.copy'), async () => { try { await navigator.clipboard.writeText(code); toast(t('set.copied')); } catch { ta.select(); } }, 'btn small')); checkBadges();
+      const copied = () => { bk.confirmBackup('code'); checkBadges(); };
+      ta.addEventListener('copy', () => setTimeout(copied, 0));     // a manual copy (long-press / Ctrl+C) also counts
+      out.replaceChildren(h('p', { class: 'small', text: t('set.codeHint') }), ta, btn(t('set.copy'), async () => { try { await navigator.clipboard.writeText(code); toast(t('set.copied')); copied(); } catch { ta.select(); toast(t('set.copyManual')); } }, 'btn small', null, { id: 'bk-copy' }));
     }, 'btn', 'key', { id: 'bk-code' })) : null, out,
     h('label', { for: 'codein', class: 'lbl', text: t('set.enter') }), codeIn,
     h('div', { class: 'row' }, btn(t('set.restore'), async () => { try { await doRestore(await bk.readCode(codeIn.value)); } catch (err) { toast(err.message, 5000); } }, 'btn', null, { id: 'bk-restore' })),
@@ -470,11 +521,12 @@ async function boot() {
   const rec = await bk.init();
   applyPrefs();
   try { await loadData(); if (prof()?.lang) await loadLang(prof().lang); }
-  catch { app().replaceChildren(h('p', { class: 'loading', role: 'alert', text: t('loadErr') })); return; }
+  catch { app().replaceChildren(h('p', { class: 'loading', role: 'alert', text: t('loadErr') }), h('p', { class: 'row center' }, btn(t('retry'), () => location.reload(), 'btn primary'))); return; }
   if (rec === 'restored') toast(t('restored'), 5000);
   route();
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname))) {
     navigator.serviceWorker?.register('sw.js').then(reg => {
+      if (reg.waiting && navigator.serviceWorker.controller) showUpdate(reg.waiting);     // an update that was already waiting at load
       reg.addEventListener('updatefound', () => { const w = reg.installing; w?.addEventListener('statechange', () => { if (w.state === 'installed' && navigator.serviceWorker.controller) showUpdate(w); }); });
     }).catch(() => {});
   }
@@ -487,5 +539,4 @@ document.addEventListener('keydown', e => {
   if (e.target.closest('input,textarea,select')) return;
   if (/^[1-4]$/.test(e.key)) { const b = document.querySelectorAll('.answers .ans')[+e.key - 1]; if (b && !b.disabled) { b.click(); } }
 });
-window.__theory = { S, view, pool, get exam() { return exam; } };   // test hook (read-only use in Playwright)
 boot();

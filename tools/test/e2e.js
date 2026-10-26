@@ -18,10 +18,16 @@ async function axe(p, name, prof) {
 }
 const go = async (p, hash) => { await p.evaluate(h => { location.hash = h; }, hash); await p.waitForTimeout(250); };
 const text = p => p.evaluate(() => document.getElementById('app').innerText);
+// no test hook in the app: state is read from localStorage, correct answers from the published data files
+const S = p => p.evaluate(() => JSON.parse(localStorage.getItem('theoryIL.state') || 'null') || {});
+const META = p => p.evaluate(() => JSON.parse(localStorage.getItem('theoryIL.meta') || '{}'));
+let QH = null; const correct = id => QH.get(id).c;
+const curId = p => p.evaluate(() => +document.querySelector('.qmeta .muted').textContent.match(/\d+/)[0]);
 async function run(prof, opts) {
   console.log(`\n== ${prof}`);
   const b = await chromium.launch({ executablePath: '/usr/bin/google-chrome', args: ['--no-sandbox'] });
   const ctx = await b.newContext({ ...opts, acceptDownloads: true, serviceWorkers: 'allow' });
+  await ctx.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: new URL(BASE).origin });
   const p = await ctx.newPage();
   const errs = [], foreign = [];
   p.on('pageerror', e => errs.push(e.message));
@@ -29,6 +35,9 @@ async function run(prof, opts) {
   ctx.on('request', r => { const u = r.url(); if (!u.startsWith(new URL(BASE).origin) && !u.startsWith('data:') && !u.startsWith('blob:')) foreign.push(u); });
   let dialogAnswer = true; p.on('dialog', d => (dialogAnswer ? d.accept() : d.dismiss()));
   await p.goto(BASE); await p.waitForSelector('h1');
+  QH ||= new Map((await p.evaluate(() => fetch('data/q.he.json').then(r => r.json()))).map(q => [q.id, q]));
+  ok(await p.evaluate(() => !('__theory' in window)), 'no test hook in production');
+  ok(/עודכן לאחרונה/.test(await text(p)) && await p.isVisible('img.hero'), 'welcome: bank-date notice + illustration');
   ok((await p.getAttribute('html', 'dir')) === 'rtl' && (await p.title()) === 'תאוריה לנהיגה', 'RTL + Hebrew title');
   ok(/לא מוצר רשמי/.test(await text(p)), 'disclaimer on welcome');
   await axe(p, 'welcome', prof);
@@ -40,15 +49,14 @@ async function run(prof, opts) {
   await p.waitForSelector('input[value="en"]'); await axe(p, 'onboard-lang', prof);
   await p.click('a[href="#/onboard/3"]'); await p.fill('#nm', 'נועה<script>');
   await p.click('.row .btn.primary.big'); await p.waitForSelector('.drive');
-  const s0 = await p.evaluate(() => window.__theory.S().profile);
+  const s0 = (await S(p)).profile;
   ok(s0.cls === 'B' && s0.lang === 'he' && s0.name === 'נועהscript', `profile saved + name sanitised (${s0.name})`);
   ok(await p.isVisible('#nav'), 'bottom nav visible');
   await axe(p, 'home', prof);
   // practice: answer 10, first wrong on purpose
   await go(p, '#/practice/mix'); await p.waitForSelector('.answers .ans');
   for (let i = 0; i < 10; i++) {
-    const id = await p.evaluate(() => +document.querySelector('.qmeta .muted').textContent.match(/\d+/)[0]);
-    const c = await p.evaluate(id => window.__theory.view(id).c, id);
+    const c = correct(await curId(p));
     if (i === 0) await p.click('.iconbtn[aria-pressed]');            // bookmark the first question
     const sel = i < 3 ? `.answers .ans:not([data-i="${c}"])` : `.answers .ans[data-i="${c}"]`;
     await p.click(sel);
@@ -57,19 +65,20 @@ async function run(prof, opts) {
   }
   await p.waitForSelector('.result');
   ok(/7\s*\/\s*10|7 מתוך 10/.test(await text(p)), 'summary 7/10');
-  const st1 = await p.evaluate(() => { const S = window.__theory.S(); return { xp: S.xp, n: Object.keys(S.q).length, bm: S.bm.length }; });
-  ok(st1.xp === 76 && st1.n === 10 && st1.bm === 1, `XP/records/bookmark (${JSON.stringify(st1)})`);
+  const st1 = await (async () => { const s = await S(p); return { xp: s.xp, n: Object.keys(s.q).length, bm: s.bm.length, v: s.v }; })();
+  ok(st1.xp === 76 && st1.n === 10 && st1.bm === 1 && st1.v === 2, `XP/records/bookmark (${JSON.stringify(st1)})`);
   // keyboard answer
   await go(p, '#/practice/law'); await p.waitForSelector('.answers .ans'); await p.keyboard.press('2');
   ok(await p.isVisible('.next'), 'keyboard 1-4 answers'); await go(p, '#/home');
   // signs
-  await go(p, '#/signs'); await p.click('a[href="#/signs/go"]'); await p.waitForSelector('.qimg');
-  await p.waitForFunction(() => document.querySelector('.qimg').complete);
-  ok(await p.evaluate(() => document.querySelector('.qimg').naturalWidth > 100), 'sign image loads locally');
+  await go(p, '#/signs'); await p.click('a[href="#/signs/go"]'); await p.waitForSelector('.answers .ans'); await p.waitForSelector('.qcard .qimg');
+  await p.waitForFunction(() => document.querySelector('.qcard .qimg').complete);
+  ok(await p.evaluate(() => document.querySelector('.qcard .qimg').naturalWidth > 100), 'sign image loads locally');
   await axe(p, 'signs', prof); await go(p, '#/home');
   // review (3 wrong → mistakes)
   await go(p, '#/review'); await p.waitForSelector('h1');
-  ok(/3/.test(await text(p)), 'review lists mistakes');
+  ok(+((await text(p)).match(/(\d+) טעויות/) || [0, 0])[1] >= 3, 'review lists mistakes');
+  ok(await p.locator('a[href^="#/review/all-"]').count() >= 1, 'mistakes filter by topic offered');
   await p.click('a[href="#/review/go"], a[href="#/review/all"]'); await p.waitForSelector('.answers .ans');
   ok(true, 'review session starts'); await go(p, '#/home');
   // bookmarks
@@ -81,18 +90,33 @@ async function run(prof, opts) {
   dialogAnswer = false; await p.click('#nav a[data-route="home"]'); await p.waitForTimeout(400); dialogAnswer = true;
   ok(await p.isVisible('#timer'), 'leaving exam cancelled stays in exam');
   await axe(p, 'exam-question', prof);
+  // topic-weighted mix: per-topic counts match the class pool's shares (largest remainder, ±1)
+  const ex0 = await p.evaluate(() => JSON.parse(localStorage.getItem('theoryIL.exam')));
+  const shares = {}, got = {}; for (const q of QH.values()) if (q.t.includes('B')) shares[q.k] = (shares[q.k] || 0) + 1;
+  const tot = Object.values(shares).reduce((a, b) => a + b, 0); for (const id of ex0.ids) got[QH.get(id).k] = (got[QH.get(id).k] || 0) + 1;
+  ok(ex0.ids.length === 30 && Object.keys(shares).every(k => Math.abs((got[k] || 0) - 30 * shares[k] / tot) < 1.01), `exam topic mix ${JSON.stringify(got)}`);
+  // answer 2, reload → resume with the same answers and deadline
+  for (let i = 0; i < 2; i++) { await p.click(`.answers .ans[data-i="${correct(await curId(p))}"]`); await p.click('.nav2 .btn.primary'); }
+  await p.reload(); await p.waitForSelector('.banner');
+  ok(/ענית על 2 מתוך 30/.test(await text(p)), 'unfinished exam offered after reload');
+  await p.click('.banner .btn.primary'); await p.waitForSelector('#timer');
+  ok((await p.locator('.gbtn.done').count()) === 2, 'exam resumed with its answers');
   // answer all 30 correctly
+  await p.click('.grid summary'); await p.click('.gbtn >> nth=0');
   for (let i = 0; i < 30; i++) {
-    const c = await p.evaluate(() => { const e = window.__theory.exam; return window.__theory.view(e.ids[e.i]).c; });
-    await p.click(`.answers .ans[data-i="${c}"]`);
+    await p.click(`.answers .ans[data-i="${correct(await curId(p))}"]`);
     if (i < 29) await p.click('.nav2 .btn.primary');
   }
   await p.click('.nav2 .btn:has-text("הגשה"), .nav2 .btn:has-text("Submit")'); await p.waitForSelector('.result.pass');
-  ok(/30/.test(await text(p)), 'exam 30/30 pass'); await axe(p, 'exam-result', prof);
+  ok(/30/.test(await text(p)) && await p.locator('.confetti').count() === 1, 'exam 30/30 pass + celebration'); await axe(p, 'exam-result', prof);
+  ok(await p.evaluate(() => !localStorage.getItem('theoryIL.exam')), 'finished exam cleared from storage');
+  const nq0 = Object.keys((await S(p)).q).length;
   // second exam: submit empty → fail
   await p.click('.row .btn.primary'); await p.waitForSelector('#timer');
   await p.click('.nav2 .btn:has-text("הגשה")'); await p.waitForSelector('.result.fail');
-  ok(await p.evaluate(() => window.__theory.S().ex.length === 2 && window.__theory.S().ex[1][2] === 0), 'empty exam scored 0, history 2');
+  { const s = await S(p); ok(s.ex.length === 2 && s.ex[1][2] === 0, 'empty exam scored 0, history 2');
+    ok(Object.keys(s.q).length === nq0, 'unanswered exam questions not recorded as mistakes'); }
+  ok(/לא נענו/.test(await text(p)), 'unanswered note on result');
   // stats / parent / about / settings
   for (const r of ['stats', 'parent', 'about', 'settings']) { await go(p, '#/' + r); await p.waitForSelector('h1'); await axe(p, r, prof); }
   ok(/CC|Creative Commons/.test(await (async () => { await go(p, '#/about'); return text(p); })()), 'about credits CC BY');
@@ -101,28 +125,36 @@ async function run(prof, opts) {
   await go(p, '#/settings');
   await p.click('#bk-code'); await p.waitForSelector('.codeout textarea');
   const code = await p.inputValue('.codeout textarea'); ok(/^TH1U?-[\w-]+-[0-9a-f]{4}$/.test(code), 'backup code generated');
-  const before = await p.evaluate(() => JSON.stringify(window.__theory.S().q));
+  ok(!(await META(p)).lastBackup, 'generating a code alone does not count as a backup');
+  await p.click('#bk-copy'); await p.waitForTimeout(200);
+  ok(!!(await META(p)).lastBackup, 'copying the code counts as a backup');
+  const before = JSON.stringify((await S(p)).q);
   await p.click('.card.danger .btn'); await p.waitForSelector('a[href="#/onboard/1"]');
-  ok(await p.evaluate(() => !window.__theory.S().profile), 'reset → welcome');
+  ok(!(await S(p)).profile, 'reset → welcome');
   await go(p, '#/settings'); await p.fill('#codein', code.slice(0, -1) + (code.endsWith('0') ? '1' : '0'));
   await p.click('#bk-restore'); await p.waitForTimeout(300);
   ok(/לא שלם|פגום/.test(await p.textContent('#toast')), `corrupted code rejected (${await p.textContent('#toast')})`);
   await p.fill('#codein', code); await p.click('#bk-restore'); await p.waitForSelector('.drive');
-  ok(await p.evaluate(b => JSON.stringify(window.__theory.S().q) === b, before), 'restore from code: same progress');
+  ok(JSON.stringify((await S(p)).q) === before, 'restore from code: same progress');
   await go(p, '#/settings'); await p.waitForSelector('.card#backup');
   ok(await p.isVisible('#bk-undo'), 'undo restore offered');
   // file export → import (sanitised)
+  await p.evaluate(() => { const m = JSON.parse(localStorage.getItem('theoryIL.meta')); delete m.lastBackup; localStorage.setItem('theoryIL.meta', JSON.stringify(m)); });
   const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#bk-export')]);
+  await p.waitForSelector('#bk-confirm'); ok(!(await META(p)).lastBackup, 'download alone does not count as a backup');
+  await p.click('#bk-confirm'); ok(!!(await META(p)).lastBackup, 'confirmed download counts as a backup');
   const f = path.join(OUT, 'backup.json'); await dl.saveAs(f);
   const j = JSON.parse(fs.readFileSync(f, 'utf8')); ok(j.app === 'theory-il' && j.state.profile.cls === 'B', `backup file ${dl.suggestedFilename()}`);
   j.state.profile.name = '<img src=x onerror=alert(1)>'; j.state.profile.cls = 'ZZ'; j.state.evil = { a: 1 }; j.state.q['abc'] = [1, 2, 3, 4, 5]; j.state.xp = -5;
   const f2 = path.join(OUT, 'evil.json'); fs.writeFileSync(f2, JSON.stringify(j));
   await p.setInputFiles('#filein', f2); await p.waitForSelector('.drive');
-  const ev = await p.evaluate(() => { const S = window.__theory.S(); return { name: S.profile.name, cls: S.profile.cls, evil: 'evil' in S, abc: 'abc' in S.q, xp: S.xp, imgs: document.querySelectorAll('img[src="x"]').length }; });
+  const ev = await (async () => { const s = await S(p); return { name: s.profile.name, cls: s.profile.cls, evil: 'evil' in s, abc: 'abc' in s.q, xp: s.xp, imgs: await p.evaluate(() => document.querySelectorAll('img[src="x"]').length) }; })();
   ok(!/[<>]/.test(ev.name) && ev.cls === 'B' && !ev.evil && !ev.abc && ev.xp === 0 && !ev.imgs, `sanitised import ${JSON.stringify(ev)}`);
   // translations + UI language + theme
   await go(p, '#/settings'); await p.selectOption('#sl', 'en'); await p.waitForTimeout(400);
   await go(p, '#/practice/signs'); await p.waitForSelector('.qtext');
+  const EN = await p.evaluate(() => fetch('data/q.en.json').then(r => r.json()));
+  for (let i = 0; i < 9 && !EN[await curId(p)]; i++) { await p.click('.answers .ans >> nth=0'); await p.click('.next'); await p.waitForSelector('.answers .ans:not([disabled])'); }   // skip questions whose translation failed the gate
   ok((await p.getAttribute('.qtext', 'lang')) === 'en' && (await p.getAttribute('.qtext', 'dir')) === 'ltr', 'English question text, LTR inside RTL UI');
   await p.click('.qtools .chip'); ok((await p.getAttribute('.qtext', 'lang')) === 'he', 'toggle to official Hebrew');
   await go(p, '#/settings'); await p.selectOption('#su', 'en'); await p.waitForTimeout(300);
@@ -135,15 +167,15 @@ async function run(prof, opts) {
   // persistence across reload + IndexedDB mirror recovery
   await p.reload(); await p.waitForSelector('.drive'); ok(true, 'progress survives reload');
   await p.evaluate(() => localStorage.clear()); await p.reload(); await p.waitForSelector('.drive');
-  ok(await p.evaluate(() => !!window.__theory.S().profile), 'recovered from IndexedDB after localStorage loss');
+  ok(!!(await S(p)).profile, 'recovered from IndexedDB after localStorage loss');
   // offline
   await p.evaluate(() => navigator.serviceWorker.ready); await p.reload(); await p.waitForSelector('.drive');
   await p.waitForFunction(async () => { const c = await caches.open('theory-il-img-v1'); return (await c.keys()).length >= 442; }, null, { timeout: 60000 }).catch(() => {});
   const nImg = await p.evaluate(async () => (await (await caches.open('theory-il-img-v1')).keys()).length);
   ok(nImg >= 442, `all question images precached (${nImg})`);
   await ctx.setOffline(true); await p.reload(); await p.waitForSelector('.drive');
-  await go(p, '#/signs/go'); await p.waitForSelector('.qimg'); await p.waitForFunction(() => document.querySelector('.qimg').complete);
-  ok(await p.evaluate(() => document.querySelector('.qimg').naturalWidth > 100), 'works offline (shell + images)');
+  await go(p, '#/signs/go'); await p.waitForSelector('.qcard .qimg'); await p.waitForFunction(() => document.querySelector('.qcard .qimg').complete);
+  ok(await p.evaluate(() => document.querySelector('.qcard .qimg').naturalWidth > 100), 'works offline (shell + images)');
   await ctx.setOffline(false);
   ok(!foreign.length, `no third-party requests ${foreign.slice(0, 3).join(' ')}`);
   ok(!errs.length, `no console/page errors ${errs.slice(0, 3).join(' | ')}`);
@@ -153,6 +185,6 @@ async function run(prof, opts) {
 }
 (async () => {
   await run('mobile', { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2, locale: 'he-IL' });
-  await run('desktop', { viewport: { width: 1280, height: 860 }, locale: 'he-IL' });
+  await run('desktop', { viewport: { width: 1280, height: 860 }, locale: 'he-IL', reducedMotion: 'reduce' });
   console.log(`\n${passes} passed, ${fails} failed`); process.exit(fails ? 1 : 0);
 })().catch(e => { console.error(e); process.exit(2); });
