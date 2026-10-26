@@ -160,7 +160,7 @@ export function makeLearn(ctx) {
       l.ex.length ? sec('ex', h('div', { class: 'exs' }, l.ex.filter(x => byId.has(x.q)).map(x => { const v = byId.get(x.q);
         return h('article', { class: 'excard' }, qimg(v), he(h('p', { class: 'qtext sm' }, h('small', { class: 'muted', text: t('ln.q', v.id) + ' · ' }), v.q)),
           opts(v),
-          he(h('p', {}, h('b', { text: t('ln.why') + ' ' }), x.t)), h('p', { class: 'refs' }, ref(x.s), ref('Q:' + x.q))); }))) : null,
+          he(h('p', {}, h('b', { text: t('ln.why') + ' ' }), x.t)), h('p', { class: 'refs' }, ref(x.s), ...(x.also || []).map(ref), ref('Q:' + x.q))); }))) : null,
       // v1.11: B/A questions this lesson covers only partly – official question + answer as published, the covering unit with
       // its own citation, and a separate label that the rest comes from the bank alone (still 'partial' in the coverage figures)
       pb.length ? sec('pbank', he(h('p', { class: 'notice banknote', role: 'note' }, icon('info'), h('span', { text: t('ln.pbankNote') }))),

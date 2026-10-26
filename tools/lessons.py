@@ -145,7 +145,8 @@ for L in LESSONS:
     for i, x in enumerate(EXAMPLES.get(lid, [])):
         if x['q'] not in QS: errors.append(f'{lid}.ex{i}: no Q{x["q"]}')
         source(x['s'], x.get('chk', []), f'{lid}.ex{i}')
-        ex.append({k: v for k, v in x.items() if k != 'chk'})
+        for a_, ch in x.get('also', []): source(a_, ch, f'{lid}.ex{i}.also')
+        ex.append({**{k: v for k, v in x.items() if k not in ('chk', 'also')}, **({'also': [a_ for a_, _ in x['also']]} if x.get('also') else {})})
     quiz = pick(L, dict(L['quiz']), False)
     if COV:  # quiz = the bank questions the coverage map sends to this lesson (taught/likely), regex picks as fallback
         mapped = [int(k) for k, v in COV.items() if v[0] in 'fa' and v[1] and v[1][0] == lid and int(k) in QS

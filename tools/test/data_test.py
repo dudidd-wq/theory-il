@@ -235,7 +235,7 @@ for l, p in PBL:
     for u in exp: u['o'] = PBM.official(u)
     if exp != p['u']: bad.append(p['q'])
 ok(not bad, f'v1.11: partial cards carry only the existing lesson units the verdict cites, with their sources (no new text) {bad[:5]}')
-ok(all(not u['o'] or u['k'] == 'sign' or any(x and not x.startswith('Q:') for x in [u['s']] + (u.get('also', []) if u['k'] != 'ex' else [])) for l, p in PBL for u in p['u']),
+ok(all(not u['o'] or u['k'] == 'sign' or any(x and not x.startswith('Q:') for x in [u['s']] + u.get('also', [])) for l, p in PBL for u in p['u']),
    'v1.11: a unit is labelled "official source" only when it cites a non-bank official source')
 ok("'ln.pbRest'" in JL and "'ln.pbNoOff'" in JL and I18.count("'ln.pbRest'") == 2 and I18.count("'ln.pbankNote'") == 2 and I18.count("'ab.covPart'") == 2, 'v1.11: partial cards label official-source part and bank-only rest apart (he + en), About column')
 ok('shown with the official bank answer' in CM and f"B {CA['class']['B']['partial_shown']} of {CA['class']['B']['partial']}" in CM, 'v1.11: COVERAGE.md reports partial + shown with official bank answer')
@@ -245,6 +245,7 @@ ok(CFQ['978']['v'] == 'full' and 'signs#d702' in CFQ['978']['rule'] and CFQ['985
    and not {'978', '985', '1464'} & set(NS['q']), 'v1.11 (review #8): Q978 taught (sign 702 + light sequence), Q985 and Q1464 partial, none listed as no-source')
 ok(CFQ['1506']['rule'] == ['heavy2#r24'] and CFQ['1322']['rule'] == ['heavy2#r22'] and CFQ['1393']['rule'] == ['heavy2#r17'], 'v1.11 (review #8): C/C1 citations 1506, 1322, 1393 point at the unit that teaches the answer')
 ok('ובאופנוע (A) הכיסוי חלקי' not in I18 and I18.count('{0}.') >= 2 and 'אף רישיון אינו מכוסה במלואו' in I18 and "t('ab.covText', [" in T('js', 'app.js'), 'v1.11 (review #8): About says every class is partial and gives computed per-class full figures')
+ok(not [x['q'] for l in LJ['lessons'] for x in l['ex'] if x['s'].startswith('Q:') or any(a.startswith('Q:') for a in x.get('also', []))], 'v1.11 (review #8): no worked example is sourced from a bank question (signs#x0 re-based on sign table 135/306)')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 

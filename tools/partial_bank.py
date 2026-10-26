@@ -19,7 +19,7 @@ def unit(uid, L, SG):
         return {'k': 'sign', 't': f'תמרור {i}: ' + SG['e'][str(i)], 's': None, 'url': SG['src']['url'], 'n': str(i)}
     l = L[lid]
     if k == 'r': r = l['rules'][i]; return {'k': 'rule', 't': r['t'], 's': r['s'], 'also': r.get('also', [])}
-    if k == 'x': x = l['ex'][i]; return {'k': 'ex', 't': x['t'], 's': x['s'], 'also': ['Q:%d' % x['q']]}
+    if k == 'x': x = l['ex'][i]; return {'k': 'ex', 't': x['t'], 's': x['s'], 'also': x.get('also', []) + ['Q:%d' % x['q']]}
     if k == 'c': c = l['recap'][i]; return {'k': 'recap', 't': c['f'] + ' – ' + c['b'], 's': c['s']}
     if k == 'm': n = l['mnem'][i]; return {'k': 'mnem', 't': n['t'] + (' – ' + n['n'] if n['n'] else ''), 's': n['s']}
     if k == 'g': return {'k': 'gal', 't': None, 's': 'Q:%d' % i}
@@ -28,7 +28,7 @@ def unit(uid, L, SG):
 def official(u):
     """True when the unit itself cites an official state source (not only a bank question, not uncited lesson text)"""
     if u['k'] == 'sign': return True
-    return any(s and not s.startswith('Q:') for s in [u['s']] + [a for a in u.get('also', []) if u['k'] != 'ex'])
+    return any(s and not s.startswith('Q:') for s in [u['s']] + [a for a in u.get('also', []) if u['k'] != 'ex' or not a.startswith('Q:')])
 
 def attach(out, QS):
     """add l['pbank'] = [{'q': id, 'u': [units]}] to the host lesson of every B/A partial question (first verdict unit
