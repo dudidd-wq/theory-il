@@ -41,3 +41,12 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 - [x] SW: banner for an already-waiting worker; data fetch timeout; image cache refresh
 - [x] Drop data/raw from the published site (raw banks + law.json untracked; regenerate with tools/fetch.py / tools/law/fetch.py+parse.py, sha256 in data/raw/meta.json); test hook `window.__theory` removed, e2e reads localStorage + data files (130/130 local)
 - [x] Alt text / screen-reader notice (generic alt + sr-only note per picture question + About section; no invented descriptions); per-class eligibility (js/elig.js, own wording, every line links TR 176–189/221 at pinned revid); search by text/number (#/search); mistakes filter by topic (#/review/all-<topic>)
+
+## v1.2 – coverage audit (are all question topics taught by the lessons?)
+- [ ] tools/coverage.py: lesson knowledge units (rules + cited excerpt, body, recap, examples, gallery) → auto match per question (char n-gram TF-IDF + answer-discrimination) → data/coverage.json
+- [ ] manual judgement sample (seed fixed, ≥150 per class) → tools/coverage/sample.json; before numbers in docs/COVERAGE.md
+- [ ] sign coverage: sign questions → לות"ם sign numbers; gallery/lesson presence
+- [ ] fixes: new law-cited lessons/rules (Wikisource pinned revs, לות"ם only), sign dictionary
+- [ ] "related lesson" link on the explanation screen after answering
+- [ ] build-time test: every question mapped to a lesson
+- [ ] 1.2.0 SW bump, e2e, push, live check; after numbers
