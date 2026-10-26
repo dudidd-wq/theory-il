@@ -89,10 +89,10 @@ async function route() {
 let leaving = false;
 addEventListener('hashchange', () => {
   if (exam && !exam.done && !leaving) {
-    if (!confirm(t('ex.leave'))) { leaving = true; history.back(); setTimeout(() => { leaving = false; }, 50); return; }
+    if (!confirm(t('ex.leave'))) { leaving = true; history.back(); return; }
     exam = null;
   }
-  if (leaving) return;
+  if (leaving) { leaving = false; return; }   // the history.back() that undid a cancelled navigation
   session = null; route();
 });
 
@@ -166,7 +166,7 @@ function home() {
   const cur = stops.findIndex(s => s.f < 0.6);
   kids.push(h('section', { class: 'drive', 'aria-labelledby': 'drv' }, h('h2', { id: 'drv', text: t('home.drive') }), h('p', { class: 'small muted', text: t('home.driveHint') }),
     h('ol', { class: 'road' }, stops.map((s, i) => h('li', { class: 'stop' + (s.f >= 0.6 ? ' done' : '') + (i === cur ? ' cur' : '') },
-      h('a', { href: '#/practice/' + s.k, 'aria-label': `${t('topic.' + s.k)} – ${t('home.mastered', Math.round(s.f * 100))}${i === cur ? ' ◀' : ''}` },
+      h('a', { href: '#/practice/' + s.k, 'aria-current': i === cur ? 'step' : null },
         ring(s.f, 52, 6), h('span', { class: 'stop-t' }, h('b', { text: t('topic.' + s.k) }), h('small', { text: t('pr.stats', s.n, Math.round(s.f * 100)) })), i === cur && icon('car', 'ic car')))),
       h('li', { class: 'stop finish' + (cur === -1 ? ' cur' : '') }, h('a', { href: '#/exam' }, h('span', { class: 'flagdot' }, icon('flag')), h('span', { class: 'stop-t' }, h('b', { text: t('home.finish') }), h('small', { text: t('home.examD') })))))));
   kids.push(h('p', { class: 'row tight center' }, link(t('home.parent'), '#/parent', 'btn ghost small', 'user'), link(t('set.about'), '#/about', 'btn ghost small', 'info')));
@@ -303,7 +303,7 @@ function renderExam() {
   const grid = h('details', { class: 'grid' }, h('summary', { text: t('ex.grid') }), h('div', { class: 'gridb' }, e.ids.map((qid, n) =>
     btn(String(n + 1), () => { e.i = n; renderExam(); }, 'gbtn' + (e.ans[qid] ? ' done' : '') + (n === e.i ? ' cur' : ''), null, { 'aria-label': t('q.of', n + 1, 30), 'aria-current': n === e.i ? 'true' : null }))));
   const answers = h('div', { class: 'answers', role: 'radiogroup', 'aria-labelledby': 'qt' }, e.orders[key].map((ai, n) =>
-    h('button', { type: 'button', role: 'radio', class: 'ans' + (picked === ai ? ' sel' : ''), 'aria-checked': String(picked === ai), lang: v.lang, dir: dirOf(v.lang),
+    h('button', { type: 'button', role: 'radio', class: 'ans' + (picked === ai ? ' sel' : ''), 'aria-checked': String(picked === ai), 'data-i': ai, lang: v.lang, dir: dirOf(v.lang),
       onclick: () => { e.ans[id] = { ai, lang: v.lang, ok: ai === v.c }; renderExam(); } }, h('span', { class: 'ans-n', text: n + 1 }), h('span', { class: 'ans-t', text: v.a[ai] }))));
   const unanswered = e.ids.filter(q => !e.ans[q]).length;
   screen('', h('div', { class: 'qhead' }, btn(t('q.quit'), () => { if (confirm(t('ex.leave'))) { exam = null; stopTimer(); location.hash = '#/home'; } }, 'iconbtn', 'x', { 'aria-label': t('q.quit') }),
@@ -401,19 +401,19 @@ async function settings(sec) {
   const meta = bk.getMeta(), ss = await bk.storageStatus(), af = bk.autoFileState(), undo = await bk.canUndo();
   const out = h('div', { class: 'codeout' });
   const codeIn = h('textarea', { id: 'codein', rows: 3, dir: 'ltr', spellcheck: 'false', autocomplete: 'off' });
-  const fileIn = h('input', { type: 'file', accept: '.json,application/json', class: 'sr', id: 'filein', tabindex: '-1', onchange: async e => { try { await doRestore(await bk.readFile(e.target.files[0])); } catch (err) { toast(err.message, 5000); } e.target.value = ''; } });
+  const fileIn = h('input', { type: 'file', accept: '.json,application/json', class: 'sr', id: 'filein', tabindex: '-1', 'aria-label': t('set.import'), onchange: async e => { try { await doRestore(await bk.readFile(e.target.files[0])); } catch (err) { toast(err.message, 5000); } e.target.value = ''; } });
   const fmtT = ts => new Date(ts).toLocaleString(uiLang() === 'he' ? 'he-IL' : 'en-GB', { dateStyle: 'short', timeStyle: 'short' });
   const bsec = h('section', { class: 'card', id: 'backup' }, h('h2', { text: t('set.backup') }), h('p', { class: 'small', text: t('set.bkHint') }),
     h('p', { class: 'sub', text: meta.lastBackup ? t('set.last', fmtT(meta.lastBackup)) : t('set.lastNever') }),
-    h('div', { class: 'row' }, p ? btn(t('set.export'), async () => { const r = await bk.exportFile(); if (r !== 'cancelled') { toast(t('bk.saved')); checkBadges(); } }, 'btn primary', 'down') : null,
+    h('div', { class: 'row' }, p ? btn(t('set.export'), async () => { const r = await bk.exportFile(); if (r !== 'cancelled') { toast(t('bk.saved')); checkBadges(); } }, 'btn primary', 'down', { id: 'bk-export' }) : null,
       btn(t('set.import'), () => fileIn.click(), 'btn', 'up'), fileIn),
     p ? h('div', { class: 'row' }, btn(t('set.code'), async () => {
       const code = await bk.makeCode(); const ta = h('textarea', { readonly: true, rows: 4, dir: 'ltr', 'aria-label': t('set.codeLabel'), text: code });
       out.replaceChildren(h('p', { class: 'small', text: t('set.codeHint') }), ta, btn(t('set.copy'), async () => { try { await navigator.clipboard.writeText(code); toast(t('set.copied')); } catch { ta.select(); } }, 'btn small')); checkBadges();
-    }, 'btn', 'key')) : null, out,
+    }, 'btn', 'key', { id: 'bk-code' })) : null, out,
     h('label', { for: 'codein', class: 'lbl', text: t('set.enter') }), codeIn,
-    h('div', { class: 'row' }, btn(t('set.restore'), async () => { try { await doRestore(await bk.readCode(codeIn.value)); } catch (err) { toast(err.message, 5000); } }, 'btn')),
-    undo ? h('div', { class: 'row' }, btn(t('set.undo'), async () => { if (await bk.undoRestore()) { toast(t('set.undone')); applyPrefs(); settings(); } }, 'btn ghost', 'repeat')) : null,
+    h('div', { class: 'row' }, btn(t('set.restore'), async () => { try { await doRestore(await bk.readCode(codeIn.value)); } catch (err) { toast(err.message, 5000); } }, 'btn', null, { id: 'bk-restore' })),
+    undo ? h('div', { class: 'row' }, btn(t('set.undo'), async () => { if (await bk.undoRestore()) { toast(t('set.undone')); applyPrefs(); settings(); } }, 'btn ghost', 'repeat', { id: 'bk-undo' })) : null,
     h('h3', { text: t('set.autoFile') }),
     !bk.autoFileSupported() ? h('p', { class: 'small muted', text: t('set.autoNo') }) :
       af.state === 'on' ? h('div', {}, h('p', { class: 'small', text: t('set.autoOn', af.name) }), btn(t('set.autoDisable'), async () => { await bk.disableAutoFile(); settings(); }, 'btn small ghost')) :

@@ -159,9 +159,9 @@ textarea { font-family: ui-monospace, monospace; font-size: .85em; word-break: b
 .exlist li { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; background: var(--surface); padding: 10px 14px; border-radius: 12px; border-inline-start: 4px solid var(--line); }
 .exlist li.pass { border-inline-start-color: var(--ok); } .exlist li.fail { border-inline-start-color: var(--bad); }
 .badges { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
-.badges li { display: grid; gap: 2px; justify-items: center; text-align: center; padding: 12px; border-radius: var(--radius); background: var(--surface); opacity: .55; }
+.badges li { display: grid; gap: 2px; justify-items: center; text-align: center; padding: 12px; border-radius: var(--radius); background: transparent; border: 1.5px dashed var(--line); }
 .badges li .ic { width: 2em; height: 2em; color: var(--muted); }
-.badges li.got { opacity: 1; box-shadow: var(--shadow); } .badges li.got .ic { color: var(--accent); }
+.badges li.got { background: var(--surface); border: 1.5px solid transparent; box-shadow: var(--shadow); } .badges li.got .ic { color: var(--accent); }
 .badges small { color: var(--muted); font-size: .8em; }
 .plist { display: grid; gap: 0; background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); margin: 12px 0; }
 .prow { display: flex; justify-content: space-between; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
@@ -176,8 +176,8 @@ textarea { font-family: ui-monospace, monospace; font-size: .85em; word-break: b
 .nav a { flex: 1; max-width: 120px; display: grid; justify-items: center; gap: 2px; min-height: 56px; padding: 6px 2px; color: var(--muted); text-decoration: none; font-size: .78em; border-radius: 12px; }
 .nav a .ic { width: 1.5em; height: 1.5em; }
 .nav a[aria-current] { color: var(--primary); font-weight: 700; background: var(--surface2); }
-.toast { position: fixed; bottom: calc(86px + env(safe-area-inset-bottom)); inset-inline: 16px; margin: 0 auto; max-width: 480px; background: var(--text); color: var(--bg); padding: 12px 16px; border-radius: 12px; text-align: center; opacity: 0; pointer-events: none; transform: translateY(8px); transition: .2s; z-index: 40; }
-.toast.show { opacity: 1; transform: none; }
+.toast { position: fixed; bottom: calc(86px + env(safe-area-inset-bottom)); inset-inline: 16px; margin: 0 auto; max-width: 480px; background: var(--text); color: var(--bg); padding: 12px 16px; border-radius: 12px; text-align: center; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(8px); transition: opacity .2s, transform .2s, visibility .2s; z-index: 40; }
+.toast.show { opacity: 1; visibility: visible; transform: none; }
 .update { position: fixed; top: 8px; inset-inline: 16px; margin: 0 auto; max-width: 480px; display: flex; gap: 12px; justify-content: space-between; align-items: center; background: var(--surface); border: 1.5px solid var(--primary); padding: 8px 12px; border-radius: 12px; z-index: 45; box-shadow: var(--shadow); }
 .update[hidden] { display: none; }
 @media (min-width: 900px) { .qcard { padding: 24px 28px; } h1 { font-size: 1.9em; } }
