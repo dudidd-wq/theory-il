@@ -95,15 +95,21 @@ for n in SG['e']:
     if int(n) > hi: ok(False, f'sign {n} outside explorer range part {p} (to {hi})'); break
 else: ok(True, 'every table entry falls inside an explorer range')
 
-# 4. eligibility citations exist in TR (needs tools/law/law.json from tools/law/fetch.py + parse.py; skipped if absent)
-lawp = os.path.join(R, 'tools', 'law', 'law.json')
-secs = re.findall(r"\['(\d+[א-ת]?(?:\([^)]+\))*)'(?:, '(\d+[א-ת]?(?:\([^)]+\))*)')*\]", T('js', 'elig.js'))
+# 4. eligibility citations exist in TR. Needs tools/law/law.json: built here from the pinned wikitext (parse.py) when
+#    only that is missing; if the wikitext is missing too the check FAILS (run tools/law/fetch.py, then parse.py) – never skipped.
+LD = os.path.join(R, 'tools', 'law')
+lawp = os.path.join(LD, 'law.json')
 cites = set(re.findall(r"'(\d+[א-ת]?(?:\([^)]+\))*)'", ' '.join(re.findall(r"\[(?:'\d[^\]]*)\]", T('js', 'elig.js')))))
+if not os.path.exists(lawp) and all(os.path.exists(os.path.join(LD, f)) for f in ('תקנות_התעבורה.txt', 'פקודת_התעבורה.txt')):
+    import subprocess
+    subprocess.run([sys.executable, 'parse.py'], cwd=LD, check=True, stdout=subprocess.DEVNULL)
+    print('  built tools/law/law.json from the pinned wikitext')
+ok(os.path.exists(lawp), 'tools/law/law.json present (pinned law; run tools/law/fetch.py then parse.py)')
 if os.path.exists(lawp):
     TR = json.load(open(lawp, encoding='utf-8'))['TR']
     miss = [c for c in sorted(cites) if re.match(r'\d+[א-ת]?', c)[0] not in TR]
     ok(cites and not miss, f'eligibility cites {len(cites)} existing TR sections {miss}')
-else: print('  skip eligibility section check (tools/law/law.json not built)')
+else: ok(False, 'eligibility section check could not run (no law.json)')
 
 # 5. review-2 content fixes
 rs = lambda lid: [r['s'] for r in LB[lid]['rules']]
