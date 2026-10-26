@@ -1,14 +1,14 @@
 {
  "all": {
   "n": 1801,
-  "full": 866,
-  "partial": 230,
-  "none": 705,
-  "full_pct": 48.1,
-  "any_pct": 60.9,
-  "strict_full": 633,
-  "strict_pct": 35.1,
-  "none_teachable": 389,
+  "full": 881,
+  "partial": 237,
+  "none": 683,
+  "full_pct": 48.9,
+  "any_pct": 62.1,
+  "strict_full": 648,
+  "strict_pct": 36.0,
+  "none_teachable": 367,
   "none_nosource": 316
  },
  "class": {
@@ -26,14 +26,14 @@
   },
   "A": {
    "n": 1155,
-   "full": 541,
-   "partial": 145,
-   "none": 469,
-   "full_pct": 46.8,
-   "any_pct": 59.4,
-   "strict_full": 338,
-   "strict_pct": 29.3,
-   "none_teachable": 263,
+   "full": 552,
+   "partial": 152,
+   "none": 451,
+   "full_pct": 47.8,
+   "any_pct": 61.0,
+   "strict_full": 349,
+   "strict_pct": 30.2,
+   "none_teachable": 245,
    "none_nosource": 206
   },
   "C1": {
@@ -74,14 +74,14 @@
   },
   "1": {
    "n": 1127,
-   "full": 526,
+   "full": 530,
    "partial": 137,
-   "none": 464,
-   "full_pct": 46.7,
-   "any_pct": 58.8,
-   "strict_full": 322,
-   "strict_pct": 28.6,
-   "none_teachable": 258,
+   "none": 460,
+   "full_pct": 47.0,
+   "any_pct": 59.2,
+   "strict_full": 326,
+   "strict_pct": 28.9,
+   "none_teachable": 254,
    "none_nosource": 206
   }
  },
@@ -100,14 +100,14 @@
   },
   "A": {
    "n": 88,
-   "full": 34,
-   "partial": 6,
-   "none": 48,
-   "full_pct": 38.6,
-   "any_pct": 45.5,
-   "strict_full": 34,
-   "strict_pct": 38.6,
-   "none_teachable": 24,
+   "full": 45,
+   "partial": 13,
+   "none": 30,
+   "full_pct": 51.1,
+   "any_pct": 65.9,
+   "strict_full": 45,
+   "strict_pct": 51.1,
+   "none_teachable": 6,
    "none_nosource": 24
   },
   "C1": {
@@ -148,28 +148,28 @@
   },
   "1": {
    "n": 43,
-   "full": 12,
+   "full": 16,
    "partial": 1,
-   "none": 30,
-   "full_pct": 27.9,
-   "any_pct": 30.2,
-   "strict_full": 12,
-   "strict_pct": 27.9,
-   "none_teachable": 5,
+   "none": 26,
+   "full_pct": 37.2,
+   "any_pct": 39.5,
+   "strict_full": 16,
+   "strict_pct": 37.2,
+   "none_teachable": 1,
    "none_nosource": 25
   }
  },
  "topic": {
   "law": {
    "n": 901,
-   "full": 448,
-   "partial": 120,
-   "none": 333,
-   "full_pct": 49.7,
-   "any_pct": 63.0,
-   "strict_full": 448,
-   "strict_pct": 49.7,
-   "none_teachable": 305,
+   "full": 457,
+   "partial": 124,
+   "none": 320,
+   "full_pct": 50.7,
+   "any_pct": 64.5,
+   "strict_full": 457,
+   "strict_pct": 50.7,
+   "none_teachable": 292,
    "none_nosource": 28
   },
   "signs": {
@@ -186,14 +186,14 @@
   },
   "safety": {
    "n": 400,
-   "full": 77,
-   "partial": 82,
-   "none": 241,
-   "full_pct": 19.2,
-   "any_pct": 39.8,
-   "strict_full": 77,
-   "strict_pct": 19.2,
-   "none_teachable": 28,
+   "full": 83,
+   "partial": 85,
+   "none": 232,
+   "full_pct": 20.8,
+   "any_pct": 42.0,
+   "strict_full": 83,
+   "strict_pct": 20.8,
+   "none_teachable": 19,
    "none_nosource": 213
   },
   "vehicle": {
@@ -263,14 +263,14 @@
   "A": {
    "law": {
     "n": 429,
-    "full": 174,
-    "partial": 64,
-    "none": 191,
-    "full_pct": 40.6,
-    "any_pct": 55.5,
-    "strict_full": 174,
-    "strict_pct": 40.6,
-    "none_teachable": 187,
+    "full": 179,
+    "partial": 68,
+    "none": 182,
+    "full_pct": 41.7,
+    "any_pct": 57.6,
+    "strict_full": 179,
+    "strict_pct": 41.7,
+    "none_teachable": 178,
     "none_nosource": 4
    },
    "signs": {
@@ -287,14 +287,14 @@
    },
    "safety": {
     "n": 312,
-    "full": 65,
-    "partial": 63,
-    "none": 184,
-    "full_pct": 20.8,
-    "any_pct": 41.0,
-    "strict_full": 65,
-    "strict_pct": 20.8,
-    "none_teachable": 23,
+    "full": 71,
+    "partial": 66,
+    "none": 175,
+    "full_pct": 22.8,
+    "any_pct": 43.9,
+    "strict_full": 71,
+    "strict_pct": 22.8,
+    "none_teachable": 14,
     "none_nosource": 161
    },
    "vehicle": {
@@ -463,14 +463,14 @@
   "1": {
    "law": {
     "n": 436,
-    "full": 168,
+    "full": 172,
     "partial": 63,
-    "none": 205,
-    "full_pct": 38.5,
-    "any_pct": 53.0,
-    "strict_full": 168,
-    "strict_pct": 38.5,
-    "none_teachable": 195,
+    "none": 201,
+    "full_pct": 39.4,
+    "any_pct": 53.9,
+    "strict_full": 172,
+    "strict_pct": 39.4,
+    "none_teachable": 191,
     "none_nosource": 10
    },
    "signs": {
@@ -512,9 +512,9 @@
   }
  },
  "by": {
-  "hand": 1308,
+  "hand": 1286,
   "link": 81,
   "sample": 292,
-  "v1.5": 120
+  "v1.5": 142
  }
 }

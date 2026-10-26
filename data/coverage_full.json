@@ -4,14 +4,14 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 866,
-"partial": 230,
-"none": 705,
-"full_pct": 48.1,
-"any_pct": 60.9,
-"strict_full": 633,
-"strict_pct": 35.1,
-"none_teachable": 389,
+"full": 881,
+"partial": 237,
+"none": 683,
+"full_pct": 48.9,
+"any_pct": 62.1,
+"strict_full": 648,
+"strict_pct": 36.0,
+"none_teachable": 367,
 "none_nosource": 316
 },
 "class": {
@@ -29,14 +29,14 @@
 },
 "A": {
 "n": 1155,
-"full": 541,
-"partial": 145,
-"none": 469,
-"full_pct": 46.8,
-"any_pct": 59.4,
-"strict_full": 338,
-"strict_pct": 29.3,
-"none_teachable": 263,
+"full": 552,
+"partial": 152,
+"none": 451,
+"full_pct": 47.8,
+"any_pct": 61.0,
+"strict_full": 349,
+"strict_pct": 30.2,
+"none_teachable": 245,
 "none_nosource": 206
 },
 "C1": {
@@ -77,14 +77,14 @@
 },
 "1": {
 "n": 1127,
-"full": 526,
+"full": 530,
 "partial": 137,
-"none": 464,
-"full_pct": 46.7,
-"any_pct": 58.8,
-"strict_full": 322,
-"strict_pct": 28.6,
-"none_teachable": 258,
+"none": 460,
+"full_pct": 47.0,
+"any_pct": 59.2,
+"strict_full": 326,
+"strict_pct": 28.9,
+"none_teachable": 254,
 "none_nosource": 206
 }
 },
@@ -103,14 +103,14 @@
 },
 "A": {
 "n": 88,
-"full": 34,
-"partial": 6,
-"none": 48,
-"full_pct": 38.6,
-"any_pct": 45.5,
-"strict_full": 34,
-"strict_pct": 38.6,
-"none_teachable": 24,
+"full": 45,
+"partial": 13,
+"none": 30,
+"full_pct": 51.1,
+"any_pct": 65.9,
+"strict_full": 45,
+"strict_pct": 51.1,
+"none_teachable": 6,
 "none_nosource": 24
 },
 "C1": {
@@ -151,28 +151,28 @@
 },
 "1": {
 "n": 43,
-"full": 12,
+"full": 16,
 "partial": 1,
-"none": 30,
-"full_pct": 27.9,
-"any_pct": 30.2,
-"strict_full": 12,
-"strict_pct": 27.9,
-"none_teachable": 5,
+"none": 26,
+"full_pct": 37.2,
+"any_pct": 39.5,
+"strict_full": 16,
+"strict_pct": 37.2,
+"none_teachable": 1,
 "none_nosource": 25
 }
 },
 "topic": {
 "law": {
 "n": 901,
-"full": 448,
-"partial": 120,
-"none": 333,
-"full_pct": 49.7,
-"any_pct": 63.0,
-"strict_full": 448,
-"strict_pct": 49.7,
-"none_teachable": 305,
+"full": 457,
+"partial": 124,
+"none": 320,
+"full_pct": 50.7,
+"any_pct": 64.5,
+"strict_full": 457,
+"strict_pct": 50.7,
+"none_teachable": 292,
 "none_nosource": 28
 },
 "signs": {
@@ -189,14 +189,14 @@
 },
 "safety": {
 "n": 400,
-"full": 77,
-"partial": 82,
-"none": 241,
-"full_pct": 19.2,
-"any_pct": 39.8,
-"strict_full": 77,
-"strict_pct": 19.2,
-"none_teachable": 28,
+"full": 83,
+"partial": 85,
+"none": 232,
+"full_pct": 20.8,
+"any_pct": 42.0,
+"strict_full": 83,
+"strict_pct": 20.8,
+"none_teachable": 19,
 "none_nosource": 213
 },
 "vehicle": {
@@ -266,14 +266,14 @@
 "A": {
 "law": {
 "n": 429,
-"full": 174,
-"partial": 64,
-"none": 191,
-"full_pct": 40.6,
-"any_pct": 55.5,
-"strict_full": 174,
-"strict_pct": 40.6,
-"none_teachable": 187,
+"full": 179,
+"partial": 68,
+"none": 182,
+"full_pct": 41.7,
+"any_pct": 57.6,
+"strict_full": 179,
+"strict_pct": 41.7,
+"none_teachable": 178,
 "none_nosource": 4
 },
 "signs": {
@@ -290,14 +290,14 @@
 },
 "safety": {
 "n": 312,
-"full": 65,
-"partial": 63,
-"none": 184,
-"full_pct": 20.8,
-"any_pct": 41.0,
-"strict_full": 65,
-"strict_pct": 20.8,
-"none_teachable": 23,
+"full": 71,
+"partial": 66,
+"none": 175,
+"full_pct": 22.8,
+"any_pct": 43.9,
+"strict_full": 71,
+"strict_pct": 22.8,
+"none_teachable": 14,
 "none_nosource": 161
 },
 "vehicle": {
@@ -466,14 +466,14 @@
 "1": {
 "law": {
 "n": 436,
-"full": 168,
+"full": 172,
 "partial": 63,
-"none": 205,
-"full_pct": 38.5,
-"any_pct": 53.0,
-"strict_full": 168,
-"strict_pct": 38.5,
-"none_teachable": 195,
+"none": 201,
+"full_pct": 39.4,
+"any_pct": 53.9,
+"strict_full": 172,
+"strict_pct": 39.4,
+"none_teachable": 191,
 "none_nosource": 10
 },
 "signs": {
@@ -515,10 +515,10 @@
 }
 },
 "by": {
-"hand": 1308,
+"hand": 1286,
 "link": 81,
 "sample": 292,
-"v1.5": 120
+"v1.5": 142
 }
 },
 "q": {
@@ -6583,16 +6583,19 @@
 "by": "hand"
 },
 "340": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR agricultural machine width",
-"src": "T",
+"v": "full",
+"rule": [
+"tractor2#r2"
+],
+"ref": [
+"tractor2#r:מכונה חקלאית נגררת: רוחב מעל 250 ס\"מ"
+],
+"why": "rule written for this question (TR:279(ג)(4))",
 "cls": [
 "1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "341": {
 "v": "none",
@@ -27910,16 +27913,19 @@
 "by": "hand"
 },
 "1579": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR sidecar parking lamps",
-"src": "T",
+"v": "full",
+"rule": [
+"moto3#r6"
+],
+"ref": [
+"moto3#r:אופנוע עם רכב צדי שעומד בזמן תאורה ב"
+],
+"why": "rule written for this question (TR:100(1))",
 "cls": [
 "A"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1580": {
 "v": "none",
@@ -28019,16 +28025,19 @@
 "by": "hand"
 },
 "1587": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus stop parking motorcycle",
-"src": "T",
+"v": "full",
+"rule": [
+"moto3#r5"
+],
+"ref": [
+"moto3#r:אסור לעצור, להעמיד או להחנות בתחום ת"
+],
+"why": "rule written for this question (TR:72(א)(12))",
 "cls": [
 "A"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1588": {
 "v": "none",
@@ -28160,16 +28169,19 @@
 "by": "hand"
 },
 "1597": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "OFF:book speed per conditions",
-"src": "T",
+"v": "full",
+"rule": [
+"moto3#r8"
+],
+"ref": [
+"moto3#r:מהירות: מתאימים אותה לחוק ולתנאי הדר"
+],
+"why": "rule written for this question (OFF:book)",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1598": {
 "v": "full",
@@ -28234,16 +28246,19 @@
 "by": "sample"
 },
 "1602": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "OFF:book paint markings",
-"src": "T",
+"v": "full",
+"rule": [
+"moto3#r12"
+],
+"ref": [
+"moto3#r:החלקה: מאטים בעיקולים ובפניות ונמנעי"
+],
+"why": "rule written for this question (OFF:book)",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1603": {
 "v": "full",
@@ -28443,28 +28458,34 @@
 "by": "hand"
 },
 "1617": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR crossing pavement",
-"src": "T",
+"v": "full",
+"rule": [
+"moto3#r4"
+],
+"ref": [
+"moto3#r:על מדרכה או שביל נוהגים רק כדי לחצות"
+],
+"why": "rule written for this question (TR:38(א))",
 "cls": [
 "A"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1618": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "OFF:book no sharp braking in turns",
-"src": "T",
+"v": "partial",
+"rule": [
+"moto3#r12"
+],
+"ref": [
+"moto3#r:החלקה: מאטים בעיקולים ובפניות ונמנעי"
+],
+"why": "rule covers part of the answer (OFF:book)",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1619": {
 "v": "none",
@@ -28520,40 +28541,49 @@
 "by": "hand"
 },
 "1623": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "OFF:book position+distance",
-"src": "T",
+"v": "partial",
+"rule": [
+"moto3#r11"
+],
+"ref": [
+"moto3#r:מיקום בנתיב: מתמקמים \"חכם\", כך ששדה "
+],
+"why": "rule covers part of the answer (OFF:book)",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1624": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "OFF:book distance to brake/evade",
-"src": "T",
+"v": "full",
+"rule": [
+"moto3#r9"
+],
+"ref": [
+"moto3#r:מרחק מהרכבים מסביב – מלפנים, מאחור ו"
+],
+"why": "rule written for this question (OFF:book)",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1625": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR warning triangle agricultural",
-"src": "T",
+"v": "full",
+"rule": [
+"tractor2#r3"
+],
+"ref": [
+"tractor2#r:בגרור, בנתמך וברכב מנועי (חוץ מאופנו"
+],
+"why": "rule written for this question (TR:367(א))",
 "cls": [
 "1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1626": {
 "v": "none",
@@ -28568,16 +28598,19 @@
 "by": "hand"
 },
 "1627": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "OFF:book be seen eye contact",
-"src": "T",
+"v": "partial",
+"rule": [
+"moto3#r10"
+],
+"ref": [
+"moto3#r:רואים ונראים: לא עוקפים מימין, לא \"מ"
+],
+"why": "rule covers part of the answer (OFF:book)",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1628": {
 "v": "full",
@@ -28634,28 +28667,34 @@
 "by": "hand"
 },
 "1632": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR silencer",
-"src": "T",
+"v": "partial",
+"rule": [
+"moto3#r2"
+],
+"ref": [
+"moto3#r:המנוע לא יגרום לרעש מעל הרגיל, ולא נ"
+],
+"why": "rule covers part of the answer (TR:316)",
 "cls": [
 "A"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1633": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "OFF:book position for field of view",
-"src": "T",
+"v": "full",
+"rule": [
+"moto3#r11"
+],
+"ref": [
+"moto3#r:מיקום בנתיב: מתמקמים \"חכם\", כך ששדה "
+],
+"why": "rule written for this question (OFF:book)",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1634": {
 "v": "full",
@@ -28673,16 +28712,19 @@
 "by": "sample"
 },
 "1635": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR crossing pavement",
-"src": "T",
+"v": "full",
+"rule": [
+"moto3#r4"
+],
+"ref": [
+"moto3#r:על מדרכה או שביל נוהגים רק כדי לחצות"
+],
+"why": "rule written for this question (TR:38(א))",
 "cls": [
 "A"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1636": {
 "v": "full",
@@ -28745,16 +28787,19 @@
 "by": "hand"
 },
 "1640": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "OFF:book no zigzag between lanes",
-"src": "T",
+"v": "full",
+"rule": [
+"moto3#r10"
+],
+"ref": [
+"moto3#r:רואים ונראים: לא עוקפים מימין, לא \"מ"
+],
+"why": "rule written for this question (OFF:book)",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1641": {
 "v": "full",
@@ -28807,16 +28852,19 @@
 "by": "hand"
 },
 "1644": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR motorcycle mirror",
-"src": "T",
+"v": "full",
+"rule": [
+"moto3#r0"
+],
+"ref": [
+"moto3#r:באופנוע מותקנת מראת תשקיף בצדו השמאל"
+],
+"why": "rule written for this question (TR:361(9))",
 "cls": [
 "A"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1645": {
 "v": "full",
@@ -28907,16 +28955,19 @@
 "by": "hand"
 },
 "1651": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR tyre size approval",
-"src": "T",
+"v": "partial",
+"rule": [
+"moto3#r1"
+],
+"ref": [
+"moto3#r:הצמיגים יותאמו לייעוד הרכב ויהיו במב"
+],
+"why": "rule covers part of the answer (TR:322(ב))",
 "cls": [
 "A"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1652": {
 "v": "full",
@@ -29099,16 +29150,19 @@
 "by": "link"
 },
 "1665": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR tractor passenger 3 months",
-"src": "T",
+"v": "full",
+"rule": [
+"tractor2#r0"
+],
+"ref": [
+"tractor2#r:נוהג בטרקטור לא יסיע נוסע על הטרקטור"
+],
+"why": "rule written for this question (TR:39ו(ב))",
 "cls": [
 "1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1666": {
 "v": "none",
@@ -29138,16 +29192,19 @@
 "by": "sample"
 },
 "1668": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 54 motorcycle speeds",
-"src": "T",
+"v": "partial",
+"rule": [
+"moto3#r7"
+],
+"ref": [
+"moto3#r:מהירות מרבית לרכב מנועי (גם אופנוע),"
+],
+"why": "rule covers part of the answer (TR:54(א))",
 "cls": [
 "A"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1669": {
 "v": "full",
@@ -29492,16 +29549,19 @@
 "by": "hand"
 },
 "1689": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR lights defect motorcycle",
-"src": "T",
+"v": "partial",
+"rule": [
+"moto3#r3"
+],
+"ref": [
+"moto3#r:הרכב וכל חלקיו ואביזריו – גם הפנסים "
+],
+"why": "rule covers part of the answer (TR:306)",
 "cls": [
 "A"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1690": {
 "v": "none",
@@ -29859,16 +29919,19 @@
 "by": "hand"
 },
 "1710": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR no driving on pavement",
-"src": "T",
+"v": "full",
+"rule": [
+"tractor2#r1"
+],
+"ref": [
+"tractor2#r:על מדרכה נוהגים רק כדי לחצות אותה בכ"
+],
+"why": "rule written for this question (TR:38(א))",
 "cls": [
 "1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1711": {
 "v": "full",
@@ -30247,16 +30310,19 @@
 "by": "hand"
 },
 "1734": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "OFF:book hazards speed",
-"src": "T",
+"v": "full",
+"rule": [
+"moto3#r8"
+],
+"ref": [
+"moto3#r:מהירות: מתאימים אותה לחוק ולתנאי הדר"
+],
+"why": "rule written for this question (OFF:book)",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1735": {
 "v": "partial",
