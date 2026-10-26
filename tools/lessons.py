@@ -106,6 +106,8 @@ def pick(lesson, spec, img):
         if rx.search(q['q'] + ' ' + q['a'][q['c']]): out.append(q['id'])
     return out
 
+COVF = os.path.join(ROOT, 'data/coverage.json')
+COV = json.load(open(COVF))['q'] if os.path.exists(COVF) and '--regex-quiz' not in sys.argv else {}
 out = []
 used = {}
 for L in LESSONS:
@@ -127,6 +129,13 @@ for L in LESSONS:
         source(x['s'], x.get('chk', []), f'{lid}.ex{i}')
         ex.append({k: v for k, v in x.items() if k != 'chk'})
     quiz = pick(L, dict(L['quiz']), False)
+    if COV:  # quiz = the bank questions the coverage map sends to this lesson (taught/likely), regex picks as fallback
+        mapped = [int(k) for k, v in COV.items() if v[0] in 'fa' and v[1] and v[1][0] == lid and int(k) in QS
+                  and set(QS[int(k)]['t']) & set(L['cls'])]
+        if all(sum(1 for i in mapped if c in QS[i]['t']) >= L.get('quiz_min', 5) for c in L['cls']):
+            quiz = sorted(mapped)
+        else:
+            quiz = sorted(set(mapped) | set(quiz))
     gal = []
     if L.get('gal'):
         cand = pick(L, {'k': ['signs'], 're': L['gal']['re']}, True)
@@ -142,7 +151,7 @@ for L in LESSONS:
             gal = [gal[int(k * step)] for k in range(n)]
     per = {c: sum(1 for i in quiz if c in QS[i]['t']) for c in L['cls']}
     for c, n in per.items():
-        if n < 5: errors.append(f'{lid}: only {n} quiz questions for class {c}')
+        if n < L.get('quiz_min', 5): errors.append(f'{lid}: only {n} quiz questions for class {c}')
     out.append({'id': lid, 'cls': L['cls'], 'icon': L['icon'], 'title': L['title'], 'sub': L['sub'],
                 'body': L['body'], 'rules': rules, 'mnem': [{'t': m[0], 'n': m[1], 's': m[2]} for m in L.get('mnem', [])],
                 'viz': L.get('viz', []), 'gal': gal, 'ex': ex, 'quiz': quiz, 'recap': recap})

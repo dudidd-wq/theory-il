@@ -1,0 +1,408 @@
+{
+"note": "Hand-checked map of bank sign images and questions to לות\"ם numbers (2026-10-26, by eye against the gov.il table). img: single-sign image -> numbers; fix: per-question override of the automatic text match; drop: auto matches rejected.",
+"img": {
+"tq_pic_3015.webp": [
+"433"
+],
+"tq_pic_3093.webp": [
+"703"
+],
+"tq_pic_31007.webp": [
+"602"
+],
+"tq_pic_31073.webp": [
+"611"
+],
+"tq_pic_31123.webp": [
+"614"
+],
+"tq_pic_31269.webp": [
+"501"
+],
+"tq_pic_31348.webp": [
+"216"
+],
+"tq_pic_31390.webp": [
+"505",
+"506"
+],
+"tq_pic_3147.webp": [
+"216"
+],
+"tq_pic_3153.webp": [
+"426"
+],
+"tq_pic_31556.webp": [
+"146",
+"411"
+],
+"tq_pic_3181.webp": [
+"302"
+],
+"tq_pic_3182.webp": [
+"810"
+],
+"tq_pic_3183.webp": [
+"301"
+],
+"tq_pic_3184.webp": [
+"302"
+],
+"tq_pic_3186.webp": [
+"706"
+],
+"tq_pic_3215.webp": [
+"507"
+],
+"tq_pic_3216.webp": [
+"437"
+],
+"tq_pic_3381.webp": [
+"145"
+],
+"tq_pic_3384.webp": [
+"135",
+"306"
+],
+"tq_pic_3386.webp": [
+"421"
+],
+"tq_pic_3409.webp": [
+"102"
+],
+"tq_pic_3411.webp": [
+"104"
+],
+"tq_pic_3414.webp": [
+"110"
+],
+"tq_pic_3415.webp": [
+"109"
+],
+"tq_pic_3416.webp": [
+"901"
+],
+"tq_pic_3418.webp": [
+"416"
+],
+"tq_pic_3419.webp": [
+"137"
+],
+"tq_pic_3423.webp": [
+"116"
+],
+"tq_pic_3428.webp": [
+"119"
+],
+"tq_pic_3434.webp": [
+"123"
+],
+"tq_pic_3435.webp": [
+"124"
+],
+"tq_pic_3436.webp": [
+"125"
+],
+"tq_pic_3439.webp": [
+"127"
+],
+"tq_pic_3443.webp": [
+"301"
+],
+"tq_pic_3448.webp": [
+"142"
+],
+"tq_pic_3449.webp": [
+"130"
+],
+"tq_pic_3451.webp": [
+"131"
+],
+"tq_pic_3453.webp": [
+"132"
+],
+"tq_pic_3459.webp": [
+"134"
+],
+"tq_pic_3482.webp": [
+"632"
+],
+"tq_pic_3483.webp": [
+"140",
+"631"
+],
+"tq_pic_3490.webp": [
+"401"
+],
+"tq_pic_3491.webp": [
+"402"
+],
+"tq_pic_3492.webp": [
+"428"
+],
+"tq_pic_3493.webp": [
+"421"
+],
+"tq_pic_3494.webp": [
+"430"
+],
+"tq_pic_3497.webp": [
+"420"
+],
+"tq_pic_3499.webp": [
+"422"
+],
+"tq_pic_3501.webp": [
+"408"
+],
+"tq_pic_3505.webp": [
+"405"
+],
+"tq_pic_3507.webp": [
+"406"
+],
+"tq_pic_3509.webp": [
+"417"
+],
+"tq_pic_3511.webp": [
+"438"
+],
+"tq_pic_3512.webp": [
+"426"
+],
+"tq_pic_3524.webp": [
+"432"
+],
+"tq_pic_3527.webp": [
+"434"
+],
+"tq_pic_3528.webp": [
+"418"
+],
+"tq_pic_3531.webp": [
+"501"
+],
+"tq_pic_3537.webp": [
+"304"
+],
+"tq_pic_3539.webp": [
+"204"
+],
+"tq_pic_3540.webp": [
+"207"
+],
+"tq_pic_3541.webp": [
+"205"
+],
+"tq_pic_3544.webp": [
+"206"
+],
+"tq_pic_3545.webp": [
+"203"
+],
+"tq_pic_3549.webp": [
+"208"
+],
+"tq_pic_3552.webp": [
+"214"
+],
+"tq_pic_3556.webp": [
+"624"
+],
+"tq_pic_3557.webp": [
+"801"
+],
+"tq_pic_3560.webp": [
+"504"
+],
+"tq_pic_3567.webp": [
+"216"
+],
+"tq_pic_3572.webp": [
+"509"
+],
+"tq_pic_3576.webp": [
+"412"
+],
+"tq_pic_3577.webp": [
+"227"
+],
+"tq_pic_3580.webp": [
+"228"
+],
+"tq_pic_3581.webp": [
+"229"
+],
+"tq_pic_3583.webp": [
+"626"
+],
+"tq_pic_3585.webp": [
+"510"
+],
+"tq_pic_3590.webp": [
+"618"
+],
+"tq_pic_3595.webp": [
+"309"
+],
+"tq_pic_3605.webp": [
+"611"
+],
+"tq_pic_3607.webp": [
+"613"
+],
+"tq_pic_3608.webp": [
+"702"
+],
+"tq_pic_3616.webp": [
+"633"
+],
+"tq_pic_3622.webp": [
+"620"
+],
+"tq_pic_3623.webp": [
+"621"
+],
+"tq_pic_3627.webp": [
+"627"
+],
+"tq_pic_3634.webp": [
+"801"
+],
+"tq_pic_3635.webp": [
+"812"
+],
+"tq_pic_3636.webp": [
+"803"
+],
+"tq_pic_3639.webp": [
+"805"
+],
+"tq_pic_3640.webp": [
+"806"
+],
+"tq_pic_3642.webp": [
+"806"
+],
+"tq_pic_3643.webp": [
+"807"
+],
+"tq_pic_3644.webp": [
+"813"
+],
+"tq_pic_3647.webp": [
+"810"
+],
+"tq_pic_3651.webp": [
+"813"
+],
+"tq_pic_3652.webp": [
+"514"
+],
+"tq_pic_3656.webp": [
+"815"
+],
+"tq_pic_3657.webp": [
+"817"
+],
+"tq_pic_3658.webp": [
+"818"
+],
+"tq_pic_3659.webp": [
+"820"
+],
+"tq_pic_3661.webp": [
+"513"
+],
+"tq_pic_3662.webp": [
+"512"
+],
+"tq_pic_3663.webp": [
+"819"
+],
+"tq_pic_3664.webp": [
+"701"
+],
+"tq_pic_3666.webp": [
+"703"
+],
+"tq_pic_3667.webp": [
+"705"
+],
+"tq_pic_3669.webp": [
+"704"
+],
+"tq_pic_3672.webp": [
+"706"
+],
+"tq_pic_3673.webp": [
+"722"
+],
+"tq_pic_3674.webp": [
+"722"
+],
+"tq_pic_3677.webp": [
+"723"
+],
+"tq_pic_3679.webp": [
+"723"
+],
+"tq_pic_3680.webp": [
+"404"
+],
+"tq_pic_3682.webp": [
+"816"
+],
+"tq_pic_3683.webp": [
+"112"
+],
+"tq_pic_3684.webp": [
+"118"
+],
+"tq_pic_3685.webp": [
+"115"
+],
+"tq_pic_3690.webp": [
+"148"
+],
+"tq_pic_3976.webp": [
+"307"
+]
+},
+"fix": {
+"519": [
+"424"
+],
+"553": [
+"303"
+],
+"628": [
+"220"
+],
+"631": [
+"222"
+],
+"633": [
+"503"
+],
+"694": [
+"435"
+],
+"441": [
+"129"
+],
+"693": [
+"701"
+],
+"1237": [
+"140",
+"631"
+],
+"386": [
+"423"
+]
+},
+"drop": [
+618
+]
+}
