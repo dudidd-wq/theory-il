@@ -23,16 +23,20 @@ export const masteredCount = c => lessonsFor(c).filter(l => (st.lesson(l.id)?.[1
 const ext = (href, text) => h('a', { href, rel: 'noopener noreferrer', target: '_blank', text });
 const srcKey = s => (SRC[s] ? s : s.replace(/\(.*$/, ''));
 /** a law / sign-table / bank reference: a collapsible chip with the cited excerpt and a link to the full text */
-export function ref(s) {
+export function ref(s, own) {
   const k = srcKey(s), x = SRC[k];
+  // v1.13 (review #9 D1): the passage this item itself pinned comes first; without one, only the sign table / bank keep their own entry
+  const mine = (own || []).filter(([sid]) => sid === k).map(([, e]) => e);
+  const shown = mine.length ? mine : (x?.kind === 'LT' || x?.kind === 'LTP' ? (x.ex || []).slice(0, 1) : []);
+  const pg = x && /\.pdf$/i.test(x.url) && /\(עמ׳ (\d+)\)$/.exec(shown[0] || '');
   if (!x) return h('span', { class: 'lawref', text: s });
   const label = x.label + s.slice(k.length);
   return h('details', { class: 'lawref' }, h('summary', {}, icon('book'), h('span', { text: label })),
     h('div', { class: 'lawbox' }, h('p', { class: 'small muted', text: x.doc + (x.title ? ' – ' + x.title : '') + (x.rev ? ` (ויקיטקסט, גרסה ${x.rev})` : '') + (x.accessed ? ` (${t('ln.accessed', x.accessed)}${x.pub ? ', ' + t('ln.updated', x.pub) : ''})` : '') + (x.kind === 'OFF' ? ' · ' + t('ln.noNiqqud') : '') }),
-      ...(x.ex || []).slice(0, 4).map(e => h('blockquote', { text: e })),
-      ext(x.url, x.kind === 'Q' ? t('ln.bank') : t('ln.full'))));
+      ...shown.map(e => h('blockquote', { text: e })),
+      ext(pg ? x.url + '#page=' + pg[1] : x.url, x.kind === 'Q' ? t('ln.bank') : t('ln.full'))));
 }
-const refs = (s, also = []) => h('span', { class: 'refs' }, [s, ...also].map(ref));
+const refs = (s, also = [], own) => h('span', { class: 'refs' }, [s, ...also].map(a => ref(a, own)));
 
 /** why-box data for a bank question: the lesson rule (or sign-table entry) that teaches it.
  *  cov = data/coverage.json, sg = data/signs.json; returns null when nothing in the lessons covers it */
@@ -55,12 +59,12 @@ export function explain(id, c, cov, sg) {
     const m = /^([\w]+)#([rxbc])(\d+)$/.exec(u); if (!m) continue;
     const l = lessonOf(m[1]); if (!l) continue;
     const i = +m[3];
-    const r = m[2] === 'r' ? l.rules[i] && { t: l.rules[i].t, s: l.rules[i].s }
-      : m[2] === 'x' ? l.ex[i] && { t: l.ex[i].t, s: l.ex[i].s }
-      : m[2] === 'c' ? l.recap[i] && { t: l.recap[i].f + ' ' + l.recap[i].b, s: l.recap[i].s }
+    const r = m[2] === 'r' ? l.rules[i] && { t: l.rules[i].t, s: l.rules[i].s, x: l.rules[i].x, also: l.rules[i].also }
+      : m[2] === 'x' ? l.ex[i] && { t: l.ex[i].t, s: l.ex[i].s, x: l.ex[i].x, also: l.ex[i].also }
+      : m[2] === 'c' ? l.recap[i] && { t: l.recap[i].f + ' ' + l.recap[i].b, s: l.recap[i].s, x: l.recap[i].x }
       : l.body[i] && { t: l.body[i], s: null };
     // only explicit links / hand-judged matches ('f') are shown as the answer's reason; word-overlap matches ('a', 'w') as a related rule
-    if (r) return { kind: stt === 'f' ? 'rule' : 'part', t: r.t, s: r.s, lesson: l, note };
+    if (r) return { kind: stt === 'f' ? 'rule' : 'part', t: r.t, s: r.s, x: r.x, also: r.also, lesson: l, note };
   }
   return { kind: 'none', lesson: null, note };
 }
@@ -76,7 +80,7 @@ export function whyBox(x, ok, c) {
     kids.push(h('p', { class: 'refs' }, ...x.lines.map(s => SRC['LT:' + s.n] ? ref('LT:' + s.n) : ext(x.url, t('why.signSrc', s.n)))));
   } else if (x.kind === 'rule' || x.kind === 'part') {
     kids.push(he(h('p', {}, h('b', { text: t(x.kind === 'rule' ? 'ln.why' : 'why.part') + ' ' }), x.t)));
-    if (x.s) kids.push(h('p', { class: 'refs' }, ref(x.s)));
+    if (x.s) kids.push(h('p', { class: 'refs' }, refs(x.s, x.also || [], x.x)));
   } else {
     // nothing in the lessons covers it yet: say so and point to the official sources (or say plainly that none exists)
     kids.push(h('p', { class: 'small muted', text: t(x.nosrc ? 'why.nosrc' : 'why.none') }));
@@ -84,7 +88,7 @@ export function whyBox(x, ok, c) {
   }
   if (x.note) kids.push(he(h('div', { class: 'notice lawnote', role: 'note' }, icon('info'), h('div', {},
     h('p', {}, h('b', { text: t('why.exam') + ' ' }), x.note.exam), h('p', {}, h('b', { text: t(x.note.k === 'tb' ? 'why.tb' : 'why.law') + ' ' }), x.note.law),
-    x.note.s ? h('p', { class: 'refs' }, ref(x.note.s)) : null))));
+    x.note.s ? h('p', { class: 'refs' }, ref(x.note.s, x.note.x)) : null))));
   if (x.lesson) kids.push(h('p', { class: 'row tight' }, h('a', { href: lessonHref(x.lesson, c), class: ok ? 'btn small ghost' : 'btn small primary', 'data-learn': x.lesson.id },
     icon('book'), h('span', { text: t(ok ? 'why.related' : 'why.learn', x.lesson.title) }))));
   return h('div', { class: 'why' + (ok ? '' : ' bad') }, ...kids);
@@ -151,10 +155,10 @@ export function makeLearn(ctx) {
           opts(v),
           h('p', { class: 'small muted banktag', text: t('ln.bankTag') }),
           n ? he(h('div', { class: 'notice lawnote', role: 'note' }, icon('info'), h('div', {}, h('p', {}, h('b', { text: t(n.k === 'tb' ? 'why.tb' : 'why.law') + ' ' }), n.law),
-            n.s ? h('p', { class: 'refs' }, ref(n.s)) : null))) : null); }))) : null,
+            n.s ? h('p', { class: 'refs' }, ref(n.s, n.x)) : null))) : null); }))) : null,
       l.body.length ? sec('explain', he(h('div', { class: 'lbody' }, l.body.map(p => h('p', { text: p }))))) : null,
       l.viz.length ? h('div', { class: 'vizs' }, l.viz.filter(v => VIZ[v]).map(v => he(VIZ[v]({ lesson: l.id, cls: c })))) : null,
-      l.rules.length ? sec('rules', he(h('ol', { class: 'rules' }, l.rules.map(r => h('li', {}, h('span', { text: r.t }), refs(r.s, r.also)))))) : null,
+      l.rules.length ? sec('rules', he(h('ol', { class: 'rules' }, l.rules.map(r => h('li', {}, h('span', { text: r.t }), refs(r.s, r.also, r.x)))))) : null,
       l.gal.length ? sec('gal', h('ul', { class: 'gal' }, l.gal.filter(q => byId.has(q)).map(q => { const v = byId.get(q);
         return h('li', {}, h('img', { src: 'img/q/' + v.i, alt: t('q.img', q), loading: 'lazy', width: 160, height: 90 }), he(h('span', { text: v.a[v.c] })), ref('Q:' + q)); }))) : null,
       l.ex.length ? sec('ex', h('div', { class: 'exs' }, l.ex.filter(x => byId.has(x.q)).map(x => { const v = byId.get(x.q);
@@ -164,7 +168,7 @@ export function makeLearn(ctx) {
           x.tr != null && v.a[x.tr] ? h('div', { class: 'trap' }, he(h('p', {}, h('b', { text: t('ln.trap') + ' ' }), h('span', { class: 'trapopt', text: '«' + v.a[x.tr] + '»' }))),
             (x.qt || []).length ? h('div', {}, h('p', {}, h('b', { text: t('ln.trapSrc') })), he(h('ul', { class: 'qt' }, x.qt.map(p => h('li', {}, h('q', { text: p.t.length > 320 ? p.t.slice(0, 320) + '…' : p.t }), ' ', ref(p.s)))))) : null,
             h('p', { class: 'muted sm', text: t('ln.trapNote') })) : null,
-          he(h('p', {}, h('b', { text: t('ln.why') + ' ' }), x.t)), h('p', { class: 'refs' }, ref(x.s), ...(x.also || []).map(ref), ref('Q:' + x.q))); }))) : null,
+          he(h('p', {}, h('b', { text: t('ln.why') + ' ' }), x.t)), h('p', { class: 'refs' }, ref(x.s, x.x), ...(x.also || []).map(a => ref(a, x.x)), ref('Q:' + x.q))); }))) : null,
       // v1.11: B/A questions this lesson covers only partly – official question + answer as published, the covering unit with
       // its own citation, and a separate label that the rest comes from the bank alone (still 'partial' in the coverage figures)
       pb.length ? sec('pbank', he(h('p', { class: 'notice banknote', role: 'note' }, icon('info'), h('span', { text: t('ln.pbankNote') }))),
@@ -175,12 +179,12 @@ export function makeLearn(ctx) {
           h('p', { class: 'small muted banktag', text: t('ln.bankTag') }),
           ...u.map(x => h('div', { class: 'pbpart' + (x.o ? ' off' : '') }, h('p', { class: 'small' }, h('b', { text: t(x.o ? 'ln.pbOff' : 'ln.pbNoOff') })),
             x.t ? he(h('p', { class: 'sm', text: x.t })) : h('p', { class: 'small muted', text: t('ln.pbGal') }),
-            x.url ? h('p', { class: 'refs' }, ext(x.url, t('why.signSrc', x.n))) : x.s ? refs(x.s, x.also || []) : null)),
+            x.url ? h('p', { class: 'refs' }, ext(x.url, t('why.signSrc', x.n))) : x.s ? refs(x.s, x.also || [], x.x) : null)),
           h('p', { class: 'small pbrest', text: t('ln.pbRest') }),
           L?.notes?.[v.id] ? he(h('div', { class: 'notice lawnote', role: 'note' }, icon('info'), h('div', {}, h('p', {}, h('b', { text: t(L.notes[v.id].k === 'tb' ? 'why.tb' : 'why.law') + ' ' }), L.notes[v.id].law),
-            L.notes[v.id].s ? h('p', { class: 'refs' }, ref(L.notes[v.id].s)) : null))) : null)))) : null,
-      l.mnem.length ? sec('mnem', he(h('ul', { class: 'mnems' }, l.mnem.map(m => h('li', {}, h('b', { text: m.t }), m.n ? h('small', { text: m.n }) : null, ref(m.s)))))) : null,
-      l.recap.length ? sec('recap', h('ul', { class: 'recap' }, l.recap.map((r, n) => { const back = he(h('p', { class: 'back', id: `rc-${n}`, hidden: true }, h('span', { text: r.b }), ref(r.s)));
+            L.notes[v.id].s ? h('p', { class: 'refs' }, ref(L.notes[v.id].s, L.notes[v.id].x)) : null))) : null)))) : null,
+      l.mnem.length ? sec('mnem', he(h('ul', { class: 'mnems' }, l.mnem.map(m => h('li', {}, h('b', { text: m.t }), m.n ? h('small', { text: m.n }) : null, refs(m.s, m.also || [], m.x)))))) : null,
+      l.recap.length ? sec('recap', h('ul', { class: 'recap' }, l.recap.map((r, n) => { const back = he(h('p', { class: 'back', id: `rc-${n}`, hidden: true }, h('span', { text: r.b }), ref(r.s, r.x)));
         const b = h('button', { type: 'button', class: 'flip', 'aria-expanded': 'false', 'aria-controls': `rc-${n}`, onclick: () => { const o = b.getAttribute('aria-expanded') !== 'true'; b.setAttribute('aria-expanded', String(o)); back.hidden = !o; } },
           he(h('span', { text: r.f })), h('small', { class: 'muted', text: t('ln.flip') }));
         return h('li', {}, b, back); }))) : null,

@@ -170,3 +170,6 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - v1.12 item 3: About lists the MoE topics 7/13/17/21 booklets and the Compensation Law s.1 (pinned oldid 2968550); README sources line; e2e check for the new links
 - v1.12.0 release: SW VERSION 1.12.0, data_test passed, local e2e 258/0 (incl. 320/360/390 overflow sweep + axe).
 - v1.12.0 verified live: sw.js 1.12.0, live e2e 258/0; COVERAGE headline label v1.11.0 -> v1.12.0 (docs only)
+- v1.13 D1 (review #9): every rule / mnemonic / recap / example / note pins its OWN passage (x = [source, passage (עמ׳ N)]); the chip shows only that passage (no more "first 4 excerpts of the section"), lesson + practice feedback; PDF links open at #page=N; 95 recap/mnem items got explicit checks (tools/cite_v113.py); signal mnemonic re-cited TR:59 -> TR:58 (the passage it states); data_test: 1014 items' passages are in the pinned source and contain their own checks; e2e: alc2/speed chips + feedback
+- v1.13 D3: the 4 guided examples (Q355, Q183, Q132, Q205) now quote TR 64(ד) / 47(ה)(3) / 72(א)(6) verbatim; "hides children/pedestrians" reasoning removed (not in the regulation); test threshold: 0 uncited examples
+- v1.13 D6 (part): the "לנוסח המלא" link is a ≥44px tap target

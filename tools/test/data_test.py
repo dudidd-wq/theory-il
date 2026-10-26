@@ -258,7 +258,7 @@ _EXBA = [(l['id'], x) for l in LJ['lessons'] if 'B' in l['cls'] or 'A' in l['cls
 _badtr = [x['q'] for _, x in _EXBA if 'tr' in x and not (0 <= x['tr'] < len(byid[x['q']]['a']) and x['tr'] != byid[x['q']]['c'])]
 ok(not _badtr and sum('tr' in x for _, x in _EXBA) >= len(_EXBA) - 2, f'v1.11 (review #8): B/A worked examples name the closest wrong option (index != correct): {sum("tr" in x for _, x in _EXBA)}/{len(_EXBA)} {_badtr[:5]}')
 _badqt = [(x['q'], p['s']) for _, x in _EXBA for p in x.get('qt', []) if not any(_np(p['t'].rstrip('…')) in _np(e) for e in SRC.get(p['s'], {}).get('ex', []))]
-ok(not _badqt and sum(bool(x.get('qt')) for _, x in _EXBA) >= len(_EXBA) - 6 and "'ln.trapNote'" in I18 and 'x.qt.map' in JL, f'v1.11 (review #8): each worked example quotes its own official passage verbatim (from the pinned source excerpts): {sum(bool(x.get("qt")) for _, x in _EXBA)}/{len(_EXBA)} {_badqt[:5]}')
+ok(not _badqt and sum(bool(x.get('qt')) for _, x in _EXBA) == len(_EXBA) and "'ln.trapNote'" in I18 and 'x.qt.map' in JL, f'v1.11+v1.13 (reviews #8, #9 D3): every worked example (0 uncited) quotes its own official passage verbatim (from the pinned source excerpts): {sum(bool(x.get("qt")) for _, x in _EXBA)}/{len(_EXBA)} {_badqt[:5]}')
 # v1.12: MoE topics 7/13/17/21 + Compensation Law s.1 (approved by Dudi 2026-10-26)
 _PG = J('tools', 'official/pages.json'); _NS = J('tools', 'coverage/nosource_ba.json')['q']
 _SH = {'edu07': '0297ccb25afb', 'edu13': '85cce4eea0bf', 'edu17': 'd04c0c507fd3', 'edu21': '43d231c129ee'}
@@ -274,6 +274,39 @@ _AR = [r for L in LALL if L['id'] == 'accident' for r in L['rules'] if 'OFF:pitz
 ok(len(_AR) == 1 and _AR[0]['s'] == 'OFF:edu21', 'v1.12: Q1723 rule combines MoE topic 21 with Compensation Law s.1')
 _N12 = J('data', 'lessons.json')['notes']
 ok(_N12.get('281', {}).get('s') == 'TR:47' and _N12.get('92', {}).get('s') == 'TR:172א' and all('אינה מעודכנת' in _N12[i]['law'] for i in ('281', '92')), 'v1.12: Q281 / Q92 carry the in-app "bank answer may be outdated" note (deleted / cancelled provision)')
+
+# 5f. v1.13 (review #9 D1): every cited item pins its OWN passage, shown first in its chip; the passage is in the pinned
+# source and carries the item's own checks (no more "first excerpts of the section")
+sys.path.insert(0, os.path.join(R, 'tools'))
+from lessons_spec import LESSONS as _LS, EXAMPLES as _EXS
+from cite_v113 import CHK as _CITE
+_LAW = J('tools', 'law/law.json')
+_nm = lambda x: re.sub(r'\s+', ' ', re.sub(r'[״׳"\'`“”„‘’\-–—־.,;:!?()\[\]/]', ' ', re.sub(r'[\u0591-\u05C7]', '', x))).strip()
+_pg = lambda e: re.sub(r'\s*\(עמ׳ \d+\)$', '', e)
+_sid = lambda s: re.match(r'^(TR|TO|LT|LTP|Q|OFF):([^()]+)', s).group(0)
+_LJI = {l['id']: l for l in LJ['lessons']}
+_bad1, _n1 = [], 0
+for _L in _LS:
+    _J = _LJI.get(_L['id'])
+    if not _J: continue
+    _items = [('rule', r, _j, r.get('chk', [])) for r, _j in zip(_L['rules'], _J['rules'])]
+    _items += [('mnem', m, _j, list(m[3]) if len(m) > 3 else _CITE.get(f"{_L['id']}.mnem{i}", [])) for i, (m, _j) in enumerate(zip(_L.get('mnem', []), _J['mnem']))]
+    _items += [('recap', c, _j, c.get('chk') or _CITE.get(f"{_L['id']}.recap{i}", [])) for i, (c, _j) in enumerate(zip(_L['recap'], _J['recap']))]
+    _items += [('ex', x, _j, x.get('chk', [])) for x, _j in zip(_EXS.get(_L['id'], []), _J['ex'])]
+    for _k, _sp_, _j, _ch in _items:
+        _s = _j['s']
+        if _s.startswith('Q:'): continue
+        _n1 += 1; _x = _j.get('x') or []; _sd = _sid(_s); _w = f"{_L['id']}.{_k}:{_s}"
+        if not _x or _x[0][0] != _sd: _bad1.append(_w + ' no own excerpt first'); continue
+        for _xs, _xe in _x:
+            if not any(_nm(_pg(_xe))[:200] in _nm(e) for e in SRC.get(_xs, {}).get('ex', [])): _bad1.append(_w + ' excerpt not pinned')
+            _kd, _ky = _xs.split(':', 1)
+            if _kd in ('TR', 'TO') and any(_nm(_pt) not in _nm(_LAW[_kd][_ky]['text']) for _pt in _pg(_xe).split(' … ')): _bad1.append(_w + ' excerpt not in law text')
+        _own = ' '.join(_nm(e) for xs, e in _x if xs == _sd)
+        if _sd.split(':')[0] in ('TR', 'TO') and not _ch: _bad1.append(_w + ' no checks')
+        _bad1 += [_w + f' check "{c}" not in its own excerpt' for c in _ch if _sd.split(':')[0] in ('TR', 'TO', 'OFF') and _nm(c) not in _own]
+ok(not _bad1 and _n1 > 600, f'v1.13 (review #9 D1): every rule / mnemonic / recap / example pins its own passage, present in the pinned source and containing its own checks ({_n1} items; {_bad1[:4]})')
+ok('mine.length ? mine' in JL and 'slice(0, 4)' not in JL and "'#page=' + pg[1]" in JL, 'v1.13 (review #9 D1): the chip shows the item\'s own passage first')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 

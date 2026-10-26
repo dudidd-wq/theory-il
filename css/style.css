@@ -236,6 +236,7 @@ textarea { font-family: ui-monospace, monospace; font-size: .85em; word-break: b
 .lawbox { margin-top: 6px; padding: 8px 12px; border-inline-start: 3px solid var(--primary); background: var(--surface2); border-radius: 8px; }
 .lawbox blockquote { margin: 4px 0; font-size: .95em; line-height: 1.6; }
 .lawbox p { margin: 0 0 4px; }
+.lawbox > a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; padding: 0 4px; }  /* v1.13 (review #9 D6): full-text link tap target ≥44px */
 .gal { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
 .gal li { display: grid; gap: 4px; justify-items: center; text-align: center; padding: 8px; background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); font-size: .9em; }
 .gal img { max-width: 100%; height: auto; max-height: 90px; width: auto; background: #fff; border-radius: 8px; padding: 4px; }

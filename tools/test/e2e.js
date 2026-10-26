@@ -168,6 +168,19 @@ async function run(prof, opts) {
       const a = m.explain(15, 'B', cov, sg), b = Object.keys(cov.q).find(id => cov.q[id][0] === 'f' && !sg.q[id]), x = m.explain(+b, 'B', cov, sg);
       return { a: a && a.kind + ':' + a.lines[0].n, b: x && x.kind, s: x && x.s, ln: x && x.lesson?.id, all: Object.keys(cov.q).length }; });
     ok(r.a === 'sign:433' && r.b === 'rule' && !!r.s && !!r.ln && r.all === QH.size, `why data: sign question → sign 433, taught question → cited rule (${JSON.stringify(r)})`); }
+  // v1.13 (review #9 D1): a rule's chip shows the passage that rule pinned (with its PDF page), not the section's first excerpts
+  for (const lid of ['alc2', 'speed']) { const L1 = LJ.lessons.find(l => l.id === lid); if (!L1) continue;
+    await go(p, '#/learn/' + lid + '/peek'); await p.waitForSelector('.lsec');
+    const res = [];
+    for (let i = 0; i < L1.rules.length; i++) { const d = p.locator('.rules > li').nth(i).locator('details.lawref').first(); await d.locator('summary').click();
+      const qs = await d.locator('blockquote').allInnerTexts(), a = d.locator('.lawbox > a').first(), bb = await a.boundingBox(), href = await a.getAttribute('href');
+      const want = L1.rules[i].x.filter(([sid]) => L1.rules[i].s.startsWith(sid)).map(([, e]) => e);
+      res.push(JSON.stringify(qs) === JSON.stringify(want) && bb.height >= 44 && (!/\.pdf/.test(href) || /#page=\d+$/.test(href))); }
+    ok(res.length && res.every(Boolean), `v1.13: ${lid}: every rule chip shows that rule's own passage first, a ≥44px full-text link, PDF links open at the page (${res.filter(Boolean).length}/${res.length})`); }
+  { const r = await p.evaluate(async () => { const m = await import('./js/learn.js'); const cov = await fetch('data/coverage.json').then(r => r.json()), sg = await fetch('data/signs.json').then(r => r.json());
+      const ids = Object.keys(cov.q).filter(id => cov.q[id][0] === 'f' && !sg.q[id]).slice(0, 200), xs = ids.map(id => m.explain(+id, 'B', cov, sg)).filter(x => x && x.kind === 'rule' && !/^Q:/.test(x.s));
+      return { n: xs.length, own: xs.filter(x => (x.x || []).some(([sid]) => x.s.startsWith(sid))).length }; });
+    ok(r.n > 50 && r.own === r.n, `v1.13: practice feedback carries the cited rule's own passage (${r.own}/${r.n})`); }
   // v1.10 bank-only lessons: question + answer as published, visible no-explanation label, CC BY attribution, no rules of ours
   { const BKL = LB.filter(l => l.bank), ids = LB.map(l => l.id);
     ok(BKL.length >= 4 && ids.slice(-BKL.length).every(i => i.startsWith('bank_')), `B path ends with ${BKL.length} "מהמאגר הרשמי" lessons`);

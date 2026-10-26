@@ -6,6 +6,7 @@ from urllib.parse import quote
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'tools'))
 from lessons_spec import LESSONS, EXAMPLES, NOTES
+from cite_v113 import CHK as CITE
 
 LAW = json.load(open(os.path.join(ROOT, 'tools/law/law.json')))
 LOT = json.load(open(os.path.join(ROOT, 'tools/law/lotam.json')))
@@ -58,6 +59,10 @@ def excerpt(text, checks):
     return ex[:900]
 
 PASS = []  # v1.11: passages picked by the last source() calls (per-example official wording)
+
+def own():
+    # v1.13 (review #9 D1): the excerpt(s) this item itself pinned – [source id, passage (with page)] – shown first in its chip
+    return [[s_, t_] for s_, t_ in dict.fromkeys(PASS)]
 
 def trap(q):
     # v1.11 (review #8 item 2): the wrong option closest in wording to the correct one (token overlap) – an objective pick, no written text
@@ -150,15 +155,22 @@ for L in LESSONS:
     lid = L['id']
     rules = []
     for i, r in enumerate(L['rules']):
+        PASS.clear()
         source(r['s'], r['chk'], f'{lid}.rule{i}')
         for a, ch in r.get('also', []): source(a, ch, f'{lid}.rule{i}.also')
-        rules.append({'t': r['t'], 's': r['s'], **({'also': [a for a, _ in r['also']]} if r.get('also') else {})})
+        rules.append({'t': r['t'], 's': r['s'], **({'also': [a for a, _ in r['also']]} if r.get('also') else {}), 'x': own()})
+    mnem = []
     for i, m in enumerate(L.get('mnem', [])):
-        source(m[2], list(m[3]) if len(m) > 3 else [], f'{lid}.mnem{i}')
+        PASS.clear()
+        source(m[2], list(m[3]) if len(m) > 3 else CITE.get(f'{lid}.mnem{i}', []), f'{lid}.mnem{i}')
+        mal = CITE.get(f'{lid}.mnem{i}.also', [])
+        for a_, ch in mal: source(a_, ch, f'{lid}.mnem{i}.also')
+        mnem.append({'t': m[0], 'n': m[1], 's': m[2], **({'also': [a_ for a_, _ in mal]} if mal else {}), 'x': own()})
     recap = []
     for i, c in enumerate(L['recap']):
-        source(c['s'], c.get('chk', []), f'{lid}.recap{i}')
-        recap.append({k: v for k, v in c.items() if k != 'chk'})
+        PASS.clear()
+        source(c['s'], c.get('chk') or CITE.get(f'{lid}.recap{i}', []), f'{lid}.recap{i}')
+        recap.append({**{k: v for k, v in c.items() if k != 'chk'}, 'x': own()})
     ex = []
     for i, x in enumerate(EXAMPLES.get(lid, [])):
         if x['q'] not in QS: errors.append(f'{lid}.ex{i}: no Q{x["q"]}')
@@ -168,7 +180,7 @@ for L in LESSONS:
         qt = [{'s': s_, 't': t_} for s_, t_ in dict.fromkeys(PASS)]
         q_ = QS.get(x['q'])
         ex.append({**{k: v for k, v in x.items() if k not in ('chk', 'also')}, **({'also': [a_ for a_, _ in x['also']]} if x.get('also') else {}),
-                   'qt': qt, **({'tr': trap(q_)} if q_ and trap(q_) is not None else {})})
+                   'qt': qt, 'x': [[d['s'], d['t']] for d in qt], **({'tr': trap(q_)} if q_ and trap(q_) is not None else {})})
     quiz = pick(L, dict(L['quiz']), False)
     if COV:  # quiz = the bank questions the coverage map sends to this lesson (taught/likely), regex picks as fallback
         mapped = [int(k) for k, v in COV.items() if v[0] in 'fa' and v[1] and v[1][0] == lid and int(k) in QS
@@ -194,7 +206,7 @@ for L in LESSONS:
     for c, n in per.items():
         if n < L.get('quiz_min', 5): errors.append(f'{lid}: only {n} quiz questions for class {c}')
     out.append({'id': lid, 'cls': L['cls'], 'icon': L['icon'], 'title': L['title'], 'sub': L['sub'],
-                'body': L['body'], 'rules': rules, 'mnem': [{'t': m[0], 'n': m[1], 's': m[2]} for m in L.get('mnem', [])],
+                'body': L['body'], 'rules': rules, 'mnem': mnem,
                 'viz': L.get('viz', []), 'gal': gal, 'ex': ex, 'quiz': quiz, 'recap': recap})
     print(f'{lid:9s} rules={len(rules):2d} gal={len(gal):2d} ex={len(ex)} quiz={len(quiz):3d} per-class={per}')
 
@@ -218,13 +230,13 @@ notes = {}
 for qid, (txt, src, chk) in bank_lessons.BANK_NOTES.items():
     q = QS.get(qid)
     if not q: errors.append(f'bank note {qid}: no such question'); continue
-    source(src, chk, f'banknote{qid}')
-    notes[str(qid)] = {'exam': q['a'][q['c']], 'law': txt, 's': src, 'k': 'tb'}
+    PASS.clear(); source(src, chk, f'banknote{qid}')
+    notes[str(qid)] = {'exam': q['a'][q['c']], 'law': txt, 's': src, 'k': 'tb', 'x': own()}
 for qid, (law, src, chk) in NOTES.items():
     q = QS.get(qid)
     if not q: errors.append(f'note {qid}: no such question'); continue
-    source(src, chk, f'note{qid}')
-    notes[str(qid)] = {'exam': q['a'][q['c']], 'law': law, 's': src}
+    PASS.clear(); source(src, chk, f'note{qid}')
+    notes[str(qid)] = {'exam': q['a'][q['c']], 'law': law, 's': src, 'x': own()}
 
 if errors:
     print('\n'.join('ERROR ' + e for e in errors)); sys.exit(1)

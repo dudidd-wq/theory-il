@@ -18,10 +18,10 @@ def unit(uid, L, SG):
     if k == 'd':
         return {'k': 'sign', 't': f'תמרור {i}: ' + SG['e'][str(i)], 's': None, 'url': SG['src']['url'], 'n': str(i)}
     l = L[lid]
-    if k == 'r': r = l['rules'][i]; return {'k': 'rule', 't': r['t'], 's': r['s'], 'also': r.get('also', [])}
-    if k == 'x': x = l['ex'][i]; return {'k': 'ex', 't': x['t'], 's': x['s'], 'also': x.get('also', []) + ['Q:%d' % x['q']]}
-    if k == 'c': c = l['recap'][i]; return {'k': 'recap', 't': c['f'] + ' – ' + c['b'], 's': c['s']}
-    if k == 'm': n = l['mnem'][i]; return {'k': 'mnem', 't': n['t'] + (' – ' + n['n'] if n['n'] else ''), 's': n['s']}
+    if k == 'r': r = l['rules'][i]; return {'k': 'rule', 't': r['t'], 's': r['s'], 'also': r.get('also', []), 'x': r.get('x', [])}
+    if k == 'x': x = l['ex'][i]; return {'k': 'ex', 't': x['t'], 's': x['s'], 'also': x.get('also', []) + ['Q:%d' % x['q']], 'x': x.get('x', [])}
+    if k == 'c': c = l['recap'][i]; return {'k': 'recap', 't': c['f'] + ' – ' + c['b'], 's': c['s'], 'x': c.get('x', [])}
+    if k == 'm': n = l['mnem'][i]; return {'k': 'mnem', 't': n['t'] + (' – ' + n['n'] if n['n'] else ''), 's': n['s'], 'x': n.get('x', [])}
     if k == 'g': return {'k': 'gal', 't': None, 's': 'Q:%d' % i}
     return {'k': 'body', 't': l['body'][i], 's': None}
 
