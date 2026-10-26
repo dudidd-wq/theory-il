@@ -27,7 +27,7 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 - [x] visuals: own SVG/CSS (priority, following distance slider, speed table, overtaking, parking distances, blind spots, sign shapes, motorcycle) – text alternative, reduced motion
 - [x] store/backup schema 2 (S.les) with v1 migration; readiness includes lessons; parent view
 - [x] About/LICENSE-DATA/README: law + sign-table sources, §6 note
-- [x] 1.1.0 SW bump, e2e learn tests 194/196 local (offline lesson check open)
+- [x] 1.1.0 SW bump, e2e learn tests (path, locks, law chips, viz alt + reduced motion, recap, quiz→mastery→unlock, en note, dark, offline, backup les) 196/196 local
 - [ ] bump SW, e2e learn tests (mobile+desktop, axe, reduced motion), push, live check
 
 ### Review findings 1 (fold-in)

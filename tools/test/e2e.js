@@ -232,8 +232,8 @@ async function run(prof, opts) {
   await ctx.setOffline(true); await p.reload(); await p.waitForSelector('.drive');
   await go(p, '#/signs/go'); await p.waitForSelector('.qcard .qimg'); await p.waitForFunction(() => document.querySelector('.qcard .qimg').complete);
   ok(await p.evaluate(() => document.querySelector('.qcard .qimg').naturalWidth > 100), 'works offline (shell + images)');
-  await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lsec .viz', { timeout: 5000 }).catch(() => {});
-  ok(await p.locator('.lsec .viz').count() > 0 && await p.locator('.rules li').count() === LB[0].rules.length, 'lessons + diagrams work offline');
+  await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.viz', { timeout: 5000 }).catch(() => {});
+  ok(await p.locator('.viz').count() > 0 && await p.locator('.rules li').count() === LB[0].rules.length, 'lessons + diagrams work offline');
   await ctx.setOffline(false);
   ok(!foreign.length, `no third-party requests ${foreign.slice(0, 3).join(' ')}`);
   ok(!errs.length, `no console/page errors ${errs.slice(0, 3).join(' | ')}`);
