@@ -31,3 +31,7 @@
 - קוד: MIT (LICENSE)
 - שאלות ותמונות: © משרד התחבורה והבטיחות בדרכים, CC BY – ראו LICENSE-DATA.md
 - גופן Rubik: SIL OFL 1.1 (fonts/OFL-Rubik.txt)
+
+## Rebuilding the data
+
+The raw official banks (`data/raw/tq*.json`) and the parsed law text (`tools/law/law.json`) are not committed, so they are not served on the site. To regenerate them: `python3 tools/fetch.py && python3 tools/build.py` (the sha256 of each raw file is recorded in `data/raw/meta.json`), and `cd tools/law && python3 fetch.py && python3 parse.py` (pinned Wikisource revision ids in `revs.json`).

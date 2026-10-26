@@ -6,3 +6,5 @@ tools/test/out/
 tools/law/*.txt
 tools/law/תקנות_התעבורה.json
 tools/law/פקודת_התעבורה.json
+data/raw/tq*.json
+tools/law/law.json
