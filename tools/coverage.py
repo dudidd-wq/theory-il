@@ -70,6 +70,7 @@ for c in CLS:
     T['class_topic'][c] = {k: tot([i for i in pool if by[i]['k'] == k], c) for k in TOP}
 for k in TOP: T['topic'][k] = tot([i for i in ALLIDS if by[i]['k'] == k])
 T['by'] = dict(collections.Counter(e['by'] for e in F.values()))
+T['none_ids'] = {c: [i for i in ALLIDS if c in by[i]['t'] and verdict(i, c, False) == 'none'] for c in ('B', 'A')}
 
 # app file: status per question; hand units only (no word-overlap fill, so a weak match is never shown as a reason)
 cov = {}

@@ -1,0 +1,497 @@
+{
+ "v": 1,
+ "groups": {
+  "law": {
+   "title": "No provision in the pinned law",
+   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all 19 pinned official pages (RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook 2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404; law grep for the key terms of the answer",
+   "why": "the answer states a legal rule that the pinned revisions do not contain (or contain only for another case); teaching it would need an unpinned or newer text"
+  },
+  "pic": {
+   "title": "Picture / scene judgement",
+   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all 19 pinned official pages (RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook 2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404; the scene was compared with the taught rules",
+   "why": "the answer depends on reading a specific photo or diagram; no official text describes this scene, and the general rule alone does not give the answer"
+  },
+  "veh": {
+   "title": "Vehicle technology and maintenance",
+   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all 19 pinned official pages (RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook 2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404; textbook pages 16, 124, 127, 141 and edu topic 18 read in full",
+   "why": "official prose does not state this fact (only manuals / commercial theory books do); not written from general knowledge"
+  },
+  "edu": {
+   "title": "Only in a practice question",
+   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all 19 pinned official pages (RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook 2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404; found only inside edu topic 18 or textbook sample-exam questions",
+   "why": "the answer appears only in an official practice question; the source rule forbids citing practice questions"
+  },
+  "drv": {
+   "title": "Driving technique / defensive driving",
+   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all 19 pinned official pages (RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook 2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404; RSA book and textbook defensive-driving chapters read",
+   "why": "official prose covers the topic but not the specific claim the answer makes"
+  },
+  "moto": {
+   "title": "Motorcycle riding technique",
+   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all 19 pinned official pages (RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook 2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404; RSA book motorcycle section (pp. 30-31) and the RSA bikers page read; MOT motorcycle course on campus.gov.il timed out / returned only boilerplate, not citable; no official motorcycle textbook found",
+   "why": "no official state text teaches this riding technique; not written from general knowledge"
+  }
+ },
+ "q": {
+  "92": {
+   "g": "law",
+   "note": "licence not valid > 1 year needs tests: no such provision in pinned TR 173/174/196 or TO",
+   "cls": "BA"
+  },
+  "281": {
+   "g": "law",
+   "note": "tunnel 50 m before/after: not in TR 47 or elsewhere",
+   "cls": "BA"
+  },
+  "273": {
+   "g": "law",
+   "note": "LPG parking: refers to Ministry of Environmental Protection guidance, not in the pinned sources",
+   "cls": "B"
+  },
+  "302": {
+   "g": "law",
+   "note": "beer counts as alcohol: OFF:drunk says any alcohol impairs but never names beer",
+   "cls": "BA"
+  },
+  "1500": {
+   "g": "law",
+   "note": "third-party property insurance: the Motor Vehicle Insurance Ordinance covers bodily injury only",
+   "cls": "BA"
+  },
+  "1723": {
+   "g": "law",
+   "note": "definition of a road accident: in the Road Accident Victims Compensation Law, not pinned",
+   "cls": "BA"
+  },
+  "1730": {
+   "g": "law",
+   "note": "\"pressure exhaust\" ban: TR 318 regulates the exhaust system but has no such ban",
+   "cls": "A"
+  },
+  "1778": {
+   "g": "law",
+   "note": "what the annual test records: not in the pinned regulations",
+   "cls": "BA"
+  },
+  "1792": {
+   "g": "law",
+   "note": "trick question about summer daytime lights: none of the options is a pinned rule",
+   "cls": "BA"
+  },
+  "708": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "725": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "728": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "878": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "885": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "896": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "898": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "909": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "911": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "914": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "923": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "928": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "931": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "942": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "944": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "948": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "953": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "954": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "958": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "968": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "978": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "980": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "985": {
+   "g": "pic",
+   "note": "",
+   "cls": "BA"
+  },
+  "830": {
+   "g": "veh",
+   "note": "hybrid car",
+   "cls": "BA"
+  },
+  "886": {
+   "g": "veh",
+   "note": "hybrid fuel use",
+   "cls": "BA"
+  },
+  "1065": {
+   "g": "veh",
+   "note": "GPS",
+   "cls": "BA"
+  },
+  "1076": {
+   "g": "veh",
+   "note": "panoramic mirror",
+   "cls": "B"
+  },
+  "1699": {
+   "g": "veh",
+   "note": "panoramic mirror",
+   "cls": "BA"
+  },
+  "861": {
+   "g": "veh",
+   "note": "what side mirrors show (textbook p16 only says mirrors complement peripheral vision)",
+   "cls": "B"
+  },
+  "1005": {
+   "g": "veh",
+   "note": "bumpers",
+   "cls": "B"
+  },
+  "1013": {
+   "g": "veh",
+   "note": "head restraint purpose",
+   "cls": "B"
+  },
+  "1765": {
+   "g": "veh",
+   "note": "head restraint height (textbook p16 says centre at skull centre – conflicts)",
+   "cls": "B"
+  },
+  "1016": {
+   "g": "veh",
+   "note": "engine and safety",
+   "cls": "B"
+  },
+  "1020": {
+   "g": "veh",
+   "note": "fast indicator blink",
+   "cls": "B"
+  },
+  "1037": {
+   "g": "veh",
+   "note": "fire extinguisher replacement",
+   "cls": "B"
+  },
+  "1039": {
+   "g": "veh",
+   "note": "exhaust leak",
+   "cls": "B"
+  },
+  "1040": {
+   "g": "veh",
+   "note": "closed car park, engine running",
+   "cls": "BA"
+  },
+  "1061": {
+   "g": "veh",
+   "note": "engine in closed space",
+   "cls": "B"
+  },
+  "1041": {
+   "g": "veh",
+   "note": "fuel economy",
+   "cls": "BA"
+  },
+  "1059": {
+   "g": "veh",
+   "note": "fuel economy",
+   "cls": "BA"
+  },
+  "1287": {
+   "g": "veh",
+   "note": "fuel economy",
+   "cls": "BA"
+  },
+  "1042": {
+   "g": "veh",
+   "note": "exhaust pollution maintenance",
+   "cls": "BA"
+  },
+  "1043": {
+   "g": "veh",
+   "note": "refuelling with engine on",
+   "cls": "BA"
+  },
+  "1066": {
+   "g": "veh",
+   "note": "jack position",
+   "cls": "B"
+  },
+  "1077": {
+   "g": "veh",
+   "note": "before jacking",
+   "cls": "B"
+  },
+  "930": {
+   "g": "veh",
+   "note": "before jacking",
+   "cls": "B"
+  },
+  "1499": {
+   "g": "veh",
+   "note": "before jacking",
+   "cls": "B"
+  },
+  "742": {
+   "g": "veh",
+   "note": "kick-down",
+   "cls": "B"
+  },
+  "1290": {
+   "g": "veh",
+   "note": "manual vs automatic difference",
+   "cls": "BA"
+  },
+  "1048": {
+   "g": "edu",
+   "note": "steering wear on front tyres",
+   "cls": "B"
+  },
+  "1068": {
+   "g": "edu",
+   "note": "pressure gauge",
+   "cls": "BA"
+  },
+  "1069": {
+   "g": "edu",
+   "note": "fuel light",
+   "cls": "BA"
+  },
+  "1562": {
+   "g": "edu",
+   "note": "parking-brake light (only listed)",
+   "cls": "B"
+  },
+  "750": {
+   "g": "drv",
+   "note": "advantage of keeping right",
+   "cls": "BA"
+  },
+  "778": {
+   "g": "drv",
+   "note": "pedestrians near junction",
+   "cls": "BA"
+  },
+  "801": {
+   "g": "drv",
+   "note": "reversing safely",
+   "cls": "B"
+  },
+  "818": {
+   "g": "drv",
+   "note": "safe gap means calmer driving",
+   "cls": "BA"
+  },
+  "833": {
+   "g": "drv",
+   "note": "planned descent to a low shoulder",
+   "cls": "BA"
+  },
+  "869": {
+   "g": "drv",
+   "note": "knowing the cockpit",
+   "cls": "BA"
+  },
+  "1006": {
+   "g": "drv",
+   "note": "flooded road – low gear (textbook only has a photo caption)",
+   "cls": "BA"
+  },
+  "1183": {
+   "g": "drv",
+   "note": "approaching a cyclist",
+   "cls": "BA"
+  },
+  "1296": {
+   "g": "drv",
+   "note": "daytime lights when the sun is behind",
+   "cls": "BA"
+  },
+  "1532": {
+   "g": "drv",
+   "note": "what affects overtaking distance",
+   "cls": "BA"
+  },
+  "1588": {
+   "g": "moto",
+   "note": "side stand",
+   "cls": "A"
+  },
+  "1596": {
+   "g": "moto",
+   "note": "separate brakes",
+   "cls": "A"
+  },
+  "1599": {
+   "g": "moto",
+   "note": "helmet field of view",
+   "cls": "A"
+  },
+  "1609": {
+   "g": "moto",
+   "note": "hazard detection",
+   "cls": "A"
+  },
+  "1614": {
+   "g": "moto",
+   "note": "gaze in a turn",
+   "cls": "A"
+  },
+  "1615": {
+   "g": "moto",
+   "note": "why lean (textbook defines centrifugal force only for cars)",
+   "cls": "A"
+  },
+  "1616": {
+   "g": "moto",
+   "note": "lean into the turn",
+   "cls": "A"
+  },
+  "1619": {
+   "g": "moto",
+   "note": "oily patch in a turn",
+   "cls": "A"
+  },
+  "1620": {
+   "g": "moto",
+   "note": "avoiding an obstacle",
+   "cls": "A"
+  },
+  "1626": {
+   "g": "moto",
+   "note": "safety space responsibility",
+   "cls": "A"
+  },
+  "1629": {
+   "g": "moto",
+   "note": "foot brake fails (edu 18 car prose says use the parking brake – conflicts)",
+   "cls": "A"
+  },
+  "1639": {
+   "g": "moto",
+   "note": "lane splitting",
+   "cls": "A"
+  },
+  "1653": {
+   "g": "moto",
+   "note": "night riding",
+   "cls": "A"
+  },
+  "1654": {
+   "g": "moto",
+   "note": "lean angle and headlight",
+   "cls": "A"
+  },
+  "1655": {
+   "g": "moto",
+   "note": "scratched visor at night",
+   "cls": "A"
+  },
+  "1657": {
+   "g": "moto",
+   "note": "visor in rain",
+   "cls": "A"
+  },
+  "1659": {
+   "g": "moto",
+   "note": "riding two-up",
+   "cls": "A"
+  },
+  "1661": {
+   "g": "moto",
+   "note": "correct braking",
+   "cls": "A"
+  },
+  "1663": {
+   "g": "moto",
+   "note": "obstacle",
+   "cls": "A"
+  },
+  "1670": {
+   "g": "moto",
+   "note": "brake-pad wear mark",
+   "cls": "A"
+  }
+ }
+}
