@@ -177,6 +177,11 @@ async function run(prof, opts) {
       const want = L1.rules[i].x.filter(([sid]) => L1.rules[i].s.startsWith(sid)).map(([, e]) => e);
       res.push(JSON.stringify(qs) === JSON.stringify(want) && bb.height >= 44 && (!/\.pdf/.test(href) || /#page=\d+$/.test(href))); }
     ok(res.length && res.every(Boolean), `v1.13: ${lid}: every rule chip shows that rule's own passage first, a ≥44px full-text link, PDF links open at the page (${res.filter(Boolean).length}/${res.length})`); }
+  // v1.13 (review #9): a rule whose only source is a bank question is labelled as the bank's answer
+  { const L1 = LJ.lessons.find(l => l.id === 'signs'), i = L1 ? L1.rules.findIndex(r => r.s === 'Q:606') : -1;
+    if (i >= 0) { await go(p, '#/learn/signs/peek'); await p.waitForSelector('.lsec');
+      const tx = await p.locator('.rules > li').nth(i).locator('details.lawref summary').first().innerText();
+      ok(tx.includes('תשובת המאגר'), `v1.13: a bank-sourced rule's chip says "תשובת המאגר" (${tx.trim()})`); } }
   { const r = await p.evaluate(async () => { const m = await import('./js/learn.js'); const cov = await fetch('data/coverage.json').then(r => r.json()), sg = await fetch('data/signs.json').then(r => r.json());
       const ids = Object.keys(cov.q).filter(id => cov.q[id][0] === 'f' && !sg.q[id]).slice(0, 200), xs = ids.map(id => m.explain(+id, 'B', cov, sg)).filter(x => x && x.kind === 'rule' && !/^Q:/.test(x.s));
       return { n: xs.length, own: xs.filter(x => (x.x || []).some(([sid]) => x.s.startsWith(sid))).length }; });

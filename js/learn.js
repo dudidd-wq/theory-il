@@ -23,20 +23,21 @@ export const masteredCount = c => lessonsFor(c).filter(l => (st.lesson(l.id)?.[1
 const ext = (href, text) => h('a', { href, rel: 'noopener noreferrer', target: '_blank', text });
 const srcKey = s => (SRC[s] ? s : s.replace(/\(.*$/, ''));
 /** a law / sign-table / bank reference: a collapsible chip with the cited excerpt and a link to the full text */
-export function ref(s, own) {
+export function ref(s, own, cited) {
   const k = srcKey(s), x = SRC[k];
   // v1.13 (review #9 D1): the passage this item itself pinned comes first; without one, only the sign table / bank keep their own entry
   const mine = (own || []).filter(([sid]) => sid === k).map(([, e]) => e);
   const shown = mine.length ? mine : (x?.kind === 'LT' || x?.kind === 'LTP' ? (x.ex || []).slice(0, 1) : []);
   const pg = x && /\.pdf$/i.test(x.url) && /\(עמ׳ (\d+)\)$/.exec(shown[0] || '');
   if (!x) return h('span', { class: 'lawref', text: s });
-  const label = x.label + s.slice(k.length);
+  // v1.13 (review #9): a rule whose only source is a bank question says so – it is the bank's answer, not an official explanation
+  const label = (cited && x.kind === 'Q' ? t('ln.bankAns') + ' – ' : '') + x.label + s.slice(k.length);
   return h('details', { class: 'lawref' }, h('summary', {}, icon('book'), h('span', { text: label })),
     h('div', { class: 'lawbox' }, h('p', { class: 'small muted', text: x.doc + (x.title ? ' – ' + x.title : '') + (x.rev ? ` (ויקיטקסט, גרסה ${x.rev})` : '') + (x.accessed ? ` (${t('ln.accessed', x.accessed)}${x.pub ? ', ' + t('ln.updated', x.pub) : ''})` : '') + (x.kind === 'OFF' ? ' · ' + t('ln.noNiqqud') : '') }),
       ...shown.map(e => h('blockquote', { text: e })),
       ext(pg ? x.url + '#page=' + pg[1] : x.url, x.kind === 'Q' ? t('ln.bank') : t('ln.full'))));
 }
-const refs = (s, also = [], own) => h('span', { class: 'refs' }, [s, ...also].map(a => ref(a, own)));
+const refs = (s, also = [], own) => h('span', { class: 'refs' }, [s, ...also].map(a => ref(a, own, true)));
 
 /** why-box data for a bank question: the lesson rule (or sign-table entry) that teaches it.
  *  cov = data/coverage.json, sg = data/signs.json; returns null when nothing in the lessons covers it */

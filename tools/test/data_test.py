@@ -324,6 +324,11 @@ _NSQ = {int(k) for k, e in CF['q'].items() if e['v'] == 'none' and e.get('src') 
 _inq = sorted({(l['id'], q) for l in LJ['lessons'] if not l.get('bank') for q in l['quiz'] if q in _NSQ})
 _nob = sorted(q for q in _NSQ if not any(q in l.get('bank', []) for l in LJ['lessons']))
 ok(not _inq and not _nob and {92, 909, 914, 923, 1160, 1076, 1699, 1765, 1454, 1455, 1456, 1472} <= _NSQ, f'v1.13 (review #9 D2): {len(_NSQ)} no-source questions: none in a regular lesson quiz {_inq[:5]}, all in a bank-only lesson {_nob[:5]}')
+# v1.13 (review #9): rules whose only source is a bank question (circular) are labelled "תשובת המאגר" in their chip
+_QR = sorted((l['id'], i, r['s']) for l in LALL for i, r in enumerate(l['rules']) if r['s'].startswith('Q:'))
+ok({('signs', 'Q:606'), ('signs', 'Q:477'), ('bus', 'Q:1726')} <= {(a, c) for a, _, c in _QR} and "cited && x.kind === 'Q' ? t('ln.bankAns')" in JL
+   and 'refs = (s, also = [], own) => h(\'span\', { class: \'refs\' }, [s, ...also].map(a => ref(a, own, true)))' in JL
+   and 'תשובת המאגר' in T('js', 'i18n.js'), f'v1.13 (review #9): {len(_QR)} bank-sourced rules are labelled "תשובת המאגר" in their chip')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 
