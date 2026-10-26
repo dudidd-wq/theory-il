@@ -11,6 +11,7 @@
   "none_teachable": 33,
   "none_nosource": 144,
   "bank_only": 144,
+  "partial_shown": 212,
   "full_nobank_pct": 74.7,
   "full_bank_sourced": 18
  },
@@ -27,6 +28,7 @@
    "none_teachable": 0,
    "none_nosource": 56,
    "bank_only": 56,
+   "partial_shown": 194,
    "full_nobank_pct": 80.0,
    "full_bank_sourced": 4
   },
@@ -42,6 +44,7 @@
    "none_teachable": 0,
    "none_nosource": 67,
    "bank_only": 67,
+   "partial_shown": 179,
    "full_nobank_pct": 77.7,
    "full_bank_sourced": 11
   },
@@ -57,6 +60,7 @@
    "none_teachable": 30,
    "none_nosource": 69,
    "bank_only": 69,
+   "partial_shown": 187,
    "full_nobank_pct": 78.1,
    "full_bank_sourced": 4
   },
@@ -72,6 +76,7 @@
    "none_teachable": 34,
    "none_nosource": 60,
    "bank_only": 60,
+   "partial_shown": 153,
    "full_nobank_pct": 79.1,
    "full_bank_sourced": 6
   },
@@ -87,6 +92,7 @@
    "none_teachable": 10,
    "none_nosource": 67,
    "bank_only": 67,
+   "partial_shown": 153,
    "full_nobank_pct": 80.1,
    "full_bank_sourced": 6
   },
@@ -102,6 +108,7 @@
    "none_teachable": 2,
    "none_nosource": 64,
    "bank_only": 64,
+   "partial_shown": 149,
    "full_nobank_pct": 80.2,
    "full_bank_sourced": 7
   }
@@ -119,6 +126,7 @@
    "none_teachable": 0,
    "none_nosource": 1,
    "bank_only": 1,
+   "partial_shown": 3,
    "full_nobank_pct": 55.6,
    "full_bank_sourced": 0
   },
@@ -134,6 +142,7 @@
    "none_teachable": 0,
    "none_nosource": 21,
    "bank_only": 21,
+   "partial_shown": 18,
    "full_nobank_pct": 47.7,
    "full_bank_sourced": 7
   },
@@ -149,6 +158,7 @@
    "none_teachable": 0,
    "none_nosource": 0,
    "bank_only": 0,
+   "partial_shown": 0,
    "full_nobank_pct": 100.0,
    "full_bank_sourced": 0
   },
@@ -164,6 +174,7 @@
    "none_teachable": 1,
    "none_nosource": 6,
    "bank_only": 6,
+   "partial_shown": 0,
    "full_nobank_pct": 76.7,
    "full_bank_sourced": 2
   },
@@ -179,6 +190,7 @@
    "none_teachable": 1,
    "none_nosource": 22,
    "bank_only": 22,
+   "partial_shown": 0,
    "full_nobank_pct": 73.2,
    "full_bank_sourced": 2
   },
@@ -194,6 +206,7 @@
    "none_teachable": 0,
    "none_nosource": 25,
    "bank_only": 25,
+   "partial_shown": 0,
    "full_nobank_pct": 32.6,
    "full_bank_sourced": 3
   }
@@ -211,6 +224,7 @@
    "none_teachable": 31,
    "none_nosource": 39,
    "bank_only": 39,
+   "partial_shown": 81,
    "full_nobank_pct": 77.9,
    "full_bank_sourced": 5
   },
@@ -226,6 +240,7 @@
    "none_teachable": 1,
    "none_nosource": 4,
    "bank_only": 4,
+   "partial_shown": 22,
    "full_nobank_pct": 92.6,
    "full_bank_sourced": 2
   },
@@ -241,6 +256,7 @@
    "none_teachable": 1,
    "none_nosource": 81,
    "bank_only": 81,
+   "partial_shown": 79,
    "full_nobank_pct": 55.8,
    "full_bank_sourced": 11
   },
@@ -256,6 +272,7 @@
    "none_teachable": 0,
    "none_nosource": 20,
    "bank_only": 20,
+   "partial_shown": 30,
    "full_nobank_pct": 54.5,
    "full_bank_sourced": 0
   }
@@ -274,6 +291,7 @@
     "none_teachable": 0,
     "none_nosource": 6,
     "bank_only": 6,
+    "partial_shown": 74,
     "full_nobank_pct": 84.0,
     "full_bank_sourced": 0
    },
@@ -289,6 +307,7 @@
     "none_teachable": 0,
     "none_nosource": 3,
     "bank_only": 3,
+    "partial_shown": 22,
     "full_nobank_pct": 92.5,
     "full_bank_sourced": 2
    },
@@ -304,6 +323,7 @@
     "none_teachable": 0,
     "none_nosource": 29,
     "bank_only": 29,
+    "partial_shown": 68,
     "full_nobank_pct": 67.5,
     "full_bank_sourced": 2
    },
@@ -319,6 +339,7 @@
     "none_teachable": 0,
     "none_nosource": 18,
     "bank_only": 18,
+    "partial_shown": 30,
     "full_nobank_pct": 54.7,
     "full_bank_sourced": 0
    }
@@ -336,6 +357,7 @@
     "none_teachable": 0,
     "none_nosource": 7,
     "bank_only": 7,
+    "partial_shown": 71,
     "full_nobank_pct": 81.8,
     "full_bank_sourced": 0
    },
@@ -351,6 +373,7 @@
     "none_teachable": 0,
     "none_nosource": 3,
     "bank_only": 3,
+    "partial_shown": 22,
     "full_nobank_pct": 92.4,
     "full_bank_sourced": 2
    },
@@ -366,6 +389,7 @@
     "none_teachable": 0,
     "none_nosource": 44,
     "bank_only": 44,
+    "partial_shown": 74,
     "full_nobank_pct": 59.3,
     "full_bank_sourced": 9
    },
@@ -381,6 +405,7 @@
     "none_teachable": 0,
     "none_nosource": 13,
     "bank_only": 13,
+    "partial_shown": 12,
     "full_nobank_pct": 58.3,
     "full_bank_sourced": 0
    }
@@ -398,6 +423,7 @@
     "none_teachable": 29,
     "none_nosource": 15,
     "bank_only": 15,
+    "partial_shown": 73,
     "full_nobank_pct": 78.8,
     "full_bank_sourced": 0
    },
@@ -413,6 +439,7 @@
     "none_teachable": 1,
     "none_nosource": 3,
     "bank_only": 3,
+    "partial_shown": 22,
     "full_nobank_pct": 92.4,
     "full_bank_sourced": 2
    },
@@ -428,6 +455,7 @@
     "none_teachable": 0,
     "none_nosource": 33,
     "bank_only": 33,
+    "partial_shown": 66,
     "full_nobank_pct": 67.0,
     "full_bank_sourced": 2
    },
@@ -443,6 +471,7 @@
     "none_teachable": 0,
     "none_nosource": 18,
     "bank_only": 18,
+    "partial_shown": 26,
     "full_nobank_pct": 56.4,
     "full_bank_sourced": 0
    }
@@ -460,6 +489,7 @@
     "none_teachable": 32,
     "none_nosource": 17,
     "bank_only": 17,
+    "partial_shown": 64,
     "full_nobank_pct": 78.5,
     "full_bank_sourced": 2
    },
@@ -475,6 +505,7 @@
     "none_teachable": 1,
     "none_nosource": 3,
     "bank_only": 3,
+    "partial_shown": 22,
     "full_nobank_pct": 92.3,
     "full_bank_sourced": 2
    },
@@ -490,6 +521,7 @@
     "none_teachable": 1,
     "none_nosource": 36,
     "bank_only": 36,
+    "partial_shown": 65,
     "full_nobank_pct": 65.1,
     "full_bank_sourced": 2
    },
@@ -505,6 +537,7 @@
     "none_teachable": 0,
     "none_nosource": 4,
     "bank_only": 4,
+    "partial_shown": 2,
     "full_nobank_pct": 72.7,
     "full_bank_sourced": 0
    }
@@ -522,6 +555,7 @@
     "none_teachable": 10,
     "none_nosource": 29,
     "bank_only": 29,
+    "partial_shown": 63,
     "full_nobank_pct": 79.1,
     "full_bank_sourced": 2
    },
@@ -537,6 +571,7 @@
     "none_teachable": 0,
     "none_nosource": 4,
     "bank_only": 4,
+    "partial_shown": 22,
     "full_nobank_pct": 92.6,
     "full_bank_sourced": 2
    },
@@ -552,6 +587,7 @@
     "none_teachable": 0,
     "none_nosource": 30,
     "bank_only": 30,
+    "partial_shown": 66,
     "full_nobank_pct": 66.9,
     "full_bank_sourced": 2
    },
@@ -567,6 +603,7 @@
     "none_teachable": 0,
     "none_nosource": 4,
     "bank_only": 4,
+    "partial_shown": 2,
     "full_nobank_pct": 72.7,
     "full_bank_sourced": 0
    }
@@ -584,6 +621,7 @@
     "none_teachable": 2,
     "none_nosource": 7,
     "bank_only": 7,
+    "partial_shown": 63,
     "full_nobank_pct": 83.3,
     "full_bank_sourced": 1
    },
@@ -599,6 +637,7 @@
     "none_teachable": 0,
     "none_nosource": 3,
     "bank_only": 3,
+    "partial_shown": 21,
     "full_nobank_pct": 92.6,
     "full_bank_sourced": 2
    },
@@ -614,6 +653,7 @@
     "none_teachable": 0,
     "none_nosource": 48,
     "bank_only": 48,
+    "partial_shown": 57,
     "full_nobank_pct": 62.7,
     "full_bank_sourced": 4
    },
@@ -629,6 +669,7 @@
     "none_teachable": 0,
     "none_nosource": 6,
     "bank_only": 6,
+    "partial_shown": 8,
     "full_nobank_pct": 67.4,
     "full_bank_sourced": 0
    }

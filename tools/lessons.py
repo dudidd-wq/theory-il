@@ -184,6 +184,13 @@ if os.path.exists(os.path.join(ROOT, 'data/coverage_full.json')):
         if min(per.values()) < 1: errors.append(f"{b['id']}: empty for a class")
         out.append({k: v for k, v in b.items() if k != 'quiz_min'})
         print(f"{b['id']:9s} bank={len(b['bank']):3d} per-class={per}")
+# v1.11: B/A partial questions shown (question + official answer + the partial unit, labelled apart) in their topic lesson
+import partial_bank
+if os.path.exists(os.path.join(ROOT, 'data/coverage_full.json')):
+    PB, PBP = partial_bank.attach(out, QS)
+    miss = sorted(set(PB) - set(PBP))
+    if miss: errors.append(f'partial B/A questions with no host lesson: {miss}')
+    print(f'partial B/A shown in lessons: {len(PBP)}/{len(PB)}; non-official units: {sum(1 for l in out for p in l.get("pbank", []) if not any(u["o"] for u in p["u"]))}')
 notes = {}
 for qid, (txt, src, chk) in bank_lessons.BANK_NOTES.items():
     q = QS.get(qid)

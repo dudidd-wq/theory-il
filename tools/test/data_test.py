@@ -213,10 +213,33 @@ ok(f"{TBC[0]} of the {TBC[1]} lesson rules cite it; {TBC[2]} excerpts from {TBC[
    f'v1.10: LICENSE-DATA textbook counts match the build ({TBC})')
 ok("'ab.tbookText', ...(COV?.tb" in T('js', 'app.js') and I18.count('{0}') >= 2 and 'רוב הכללים' not in I18, 'v1.10: About textbook counts are computed, not "most rules"')
 ok('GitHub Pages' in I18 and I18.count('IP') >= 2 and "'ln.why'" in I18 and 'במבחן אין הסברים' in I18, 'v1.10: About privacy names GitHub Pages logging; law text says practice shows "Why?"')
-ok(all(len(v) == 7 and v[6] <= v[1] for v in CJ.values()), 'v1.10: app coverage table carries the without-bank-sourced figure (<= full)')
+ok(all(len(v) == 9 and v[6] <= v[1] and v[8] <= v[7] for v in CJ.values()), 'v1.10/1.11: app coverage table carries the without-bank-sourced figure (<= full) and partial / shown with bank answer')
 ok(all(CA['class'][c]['full_nobank_pct'] <= CA['class'][c]['full_pct'] and CA['class'][c]['full_bank_sourced'] >= 0 for c in CA['class']), 'v1.10: per-class without-bank-sourced figure recorded')
 CM = T('docs', 'COVERAGE.md')
 ok(f"{CA['all']['full_nobank_pct']}%" in CM and 'bank-sourced' in CM, 'v1.10: COVERAGE.md reports the without-bank-sourced figure next to the headline')
 
+# 5e. v1.11: B/A questions taught only partly are shown in their topic lesson with the official bank answer, before its quiz
+import importlib.util as _iu
+_sp = _iu.spec_from_file_location('partial_bank', os.path.join(R, 'tools', 'partial_bank.py')); PBM = _iu.module_from_spec(_sp); _sp.loader.exec_module(PBM)
+PART = {int(k): e for k, e in CF['q'].items() if e['v'] == 'partial' and set(e['cls']) & {'B', 'A'}}
+PBL = [(l, p) for l in LALL for p in l.get('pbank', [])]
+miss = [(q, c) for q, e in PART.items() for c in set(e['cls']) & {'B', 'A'}
+        if not any(p['q'] == q and c in l['cls'] and q in l['quiz'] for l, p in PBL)]
+ok(not miss, f'v1.11: every B/A partial question is shown in a lesson of its class and is in that lesson\'s quiz ({len(PART)} questions; missing {miss[:5]})')
+ok(all(CA['class'][c]['partial_shown'] == CA['class'][c]['partial'] for c in ('B', 'A')), 'v1.11: B and A: every per-class partial question is shown with the bank answer')
+ok(all(CF['q'][str(p['q'])]['v'] == 'partial' for l, p in PBL), 'v1.11: shown-with-bank-answer questions all stay partial (never counted full)')
+ok(len({p['q'] for l, p in PBL}) == len(PBL), 'v1.11: each partial question is shown once')
+bad = []
+for l, p in PBL:
+    exp = [PBM.unit(u, LB, SG) for u in CF['q'][str(p['q'])]['rule']]
+    for u in exp: u['o'] = PBM.official(u)
+    if exp != p['u']: bad.append(p['q'])
+ok(not bad, f'v1.11: partial cards carry only the existing lesson units the verdict cites, with their sources (no new text) {bad[:5]}')
+ok(all(not u['o'] or u['k'] == 'sign' or any(x and not x.startswith('Q:') for x in [u['s']] + (u.get('also', []) if u['k'] != 'ex' else [])) for l, p in PBL for u in p['u']),
+   'v1.11: a unit is labelled "official source" only when it cites a non-bank official source')
+ok("'ln.pbRest'" in JL and "'ln.pbNoOff'" in JL and I18.count("'ln.pbRest'") == 2 and I18.count("'ln.pbankNote'") == 2 and I18.count("'ab.covPart'") == 2, 'v1.11: partial cards label official-source part and bank-only rest apart (he + en), About column')
+ok('shown with the official bank answer' in CM and f"B {CA['class']['B']['partial_shown']} of {CA['class']['B']['partial']}" in CM, 'v1.11: COVERAGE.md reports partial + shown with official bank answer')
+
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
+

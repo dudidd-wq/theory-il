@@ -297,6 +297,8 @@ textarea { font-family: ui-monospace, monospace; font-size: .85em; word-break: b
 .vz-step rect { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; transition: fill .3s; }
 .vz-step.on rect { fill: var(--accent-bg); stroke: var(--primary); stroke-width: 3; }
 .lawnote { margin-top: 8px; } .lawnote p { margin: 2px 0; }
+.pbpart { border-inline-start: 3px solid var(--line); padding-inline-start: 10px; margin: 8px 0; overflow-wrap: anywhere; } .pbpart.off { border-inline-start-color: var(--primary); } .pbpart p { margin: 2px 0; }
+.pbrest { margin-top: 8px; font-weight: 600; }
 .vz-oil { fill: rgba(150, 110, 40, .55); }
 .vz-center { stroke: #fff; stroke-width: 2; stroke-dasharray: 10 8; }
 .vz-path { fill: none; stroke: var(--ok); stroke-width: 3; stroke-dasharray: 6 4; }

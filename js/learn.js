@@ -121,6 +121,7 @@ export function makeLearn(ctx) {
     const mine = new Set(pool()), qids = l.quiz.filter(q => mine.has(q) && byId.has(q));
     if (sub === 'quiz') { st.markRead(l.id); return startSession('lesson', pick(qids, QUIZ_N), l.title, `#/learn/${l.id}/quiz`, { lesson: l.id }); }
     const i = ls.indexOf(l), nxt = ls[i + 1];
+    const pb = (l.pbank || []).filter(p => mine.has(p.q) && byId.has(p.q)).map(p => ({ v: byId.get(p.q), u: p.u }));
     const bank = l.bank ? l.bank.filter(q => mine.has(q) && byId.has(q)).map(q => byId.get(q)) : null;
     const speakText = bank ? [l.title, ...bank.map(v => v.q + '\n' + v.a[v.c])].join('\n')
       : [l.title, ...l.body, ...l.rules.map(r => r.t), ...l.mnem.map(m => m.t)].join('\n');
@@ -156,6 +157,20 @@ export function makeLearn(ctx) {
         return h('article', { class: 'excard' }, qimg(v), he(h('p', { class: 'qtext sm' }, h('small', { class: 'muted', text: t('ln.q', v.id) + ' · ' }), v.q)),
           he(h('p', { class: 'ans-ok' }, icon('check'), h('span', { text: v.a[v.c] }))),
           he(h('p', {}, h('b', { text: t('ln.why') + ' ' }), x.t)), h('p', { class: 'refs' }, ref(x.s), ref('Q:' + x.q))); }))) : null,
+      // v1.11: B/A questions this lesson covers only partly – official question + answer as published, the covering unit with
+      // its own citation, and a separate label that the rest comes from the bank alone (still 'partial' in the coverage figures)
+      pb.length ? sec('pbank', he(h('p', { class: 'notice banknote', role: 'note' }, icon('info'), h('span', { text: t('ln.pbankNote') }))),
+        h('p', { class: 'small bankattr' }, ext(BANK_URL, t('ln.bankAttr'))),
+        h('div', { class: 'exs' }, pb.map(({ v, u }) => h('article', { class: 'excard bankcard pbcard', 'data-q': v.id }, qimg(v),
+          he(h('p', { class: 'qtext sm' }, h('small', { class: 'muted', text: t('ln.q', v.id) + ' · ' }), v.q)),
+          he(h('p', { class: 'ans-ok' }, icon('check'), h('span', { text: v.a[v.c] }))),
+          h('p', { class: 'small muted banktag', text: t('ln.bankTag') }),
+          ...u.map(x => h('div', { class: 'pbpart' + (x.o ? ' off' : '') }, h('p', { class: 'small' }, h('b', { text: t(x.o ? 'ln.pbOff' : 'ln.pbNoOff') })),
+            x.t ? he(h('p', { class: 'sm', text: x.t })) : h('p', { class: 'small muted', text: t('ln.pbGal') }),
+            x.url ? h('p', { class: 'refs' }, ext(x.url, t('why.signSrc', x.n))) : x.s ? refs(x.s, x.also || []) : null)),
+          h('p', { class: 'small pbrest', text: t('ln.pbRest') }),
+          L?.notes?.[v.id] ? he(h('div', { class: 'notice lawnote', role: 'note' }, icon('info'), h('div', {}, h('p', {}, h('b', { text: t(L.notes[v.id].k === 'tb' ? 'why.tb' : 'why.law') + ' ' }), L.notes[v.id].law),
+            L.notes[v.id].s ? h('p', { class: 'refs' }, ref(L.notes[v.id].s)) : null))) : null)))) : null,
       l.mnem.length ? sec('mnem', he(h('ul', { class: 'mnems' }, l.mnem.map(m => h('li', {}, h('b', { text: m.t }), m.n ? h('small', { text: m.n }) : null, ref(m.s)))))) : null,
       l.recap.length ? sec('recap', h('ul', { class: 'recap' }, l.recap.map((r, n) => { const back = he(h('p', { class: 'back', id: `rc-${n}`, hidden: true }, h('span', { text: r.b }), ref(r.s)));
         const b = h('button', { type: 'button', class: 'flip', 'aria-expanded': 'false', 'aria-controls': `rc-${n}`, onclick: () => { const o = b.getAttribute('aria-expanded') !== 'true'; b.setAttribute('aria-expanded', String(o)); back.hidden = !o; } },

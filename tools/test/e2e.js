@@ -180,6 +180,19 @@ async function run(prof, opts) {
     const nb = r.filter(([id]) => QH.get(+id).t.includes('B'));
     ok(nb.length > 0 && nb.length === new Set(LB.filter(l => l.bank).flatMap(l => l.bank).filter(i => QH.get(i).t.includes("B"))).size && nb.every(([, l]) => l.startsWith('bank_')), `why box: every B no-source question links to its bank lesson (${nb.filter(([, l]) => l).length}/${nb.length})`);
     await axe(p, 'bank-lesson', prof); }
+  // v1.11: B questions a lesson covers only partly – question + official answer as published, the cited unit and the bank-only rest labelled apart
+  { const PL = LB.filter(l => (l.pbank || []).some(x => QH.get(x.q)?.t.includes('B'))), all = PL.flatMap(l => l.pbank.filter(x => QH.get(x.q)?.t.includes('B')).map(x => x.q));
+    ok(PL.length >= 20 && all.length === new Set(all).size && PL.every(l => l.pbank.every(x => !QH.get(x.q)?.t.includes('B') || l.quiz.includes(x.q))), `partial cards: ${all.length} B questions in ${PL.length} lessons, each in its lesson quiz`);
+    const pl = PL.reduce((a, b) => (b.pbank.length > a.pbank.length ? b : a)), want = pl.pbank.filter(x => QH.get(x.q)?.t.includes('B'));
+    await go(p, '#/learn/' + pl.id + '/peek'); await p.waitForSelector('.pbcard');
+    const cards = await p.locator('.pbcard').evaluateAll(es => es.map(e => [+e.dataset.q, e.querySelector('.qtext').textContent, e.querySelector('.ans-ok').textContent, e.querySelectorAll('.pbpart').length, !!e.querySelector('.pbrest')]));
+    ok(cards.length === want.length && cards.every(([i, q, a, n, r], k) => i === want[k].q && q.endsWith(QH.get(i).q) && a === QH.get(i).a[QH.get(i).c] && n === want[k].u.length && r),
+      `partial cards (${pl.id}): ${cards.length} questions with the official text and answer, the cited unit, and a bank-only rest line`);
+    ok(/שאלות מהמאגר שהשיעור מכסה רק חלקית/.test(await text(p)) && await p.locator('#ls-pbank ~ .bankattr a[href*="data.gov.il"]').count() === 1 && await p.locator('.pbcard .pbpart.off .lawref').count() >= 1, 'partial cards: section title, CC BY link, official-source part with its citation chip');
+    const no = LB.find(l => (l.pbank || []).some(x => QH.get(x.q)?.t.includes('B') && x.u.every(u => !u.o)));
+    if (no) { const x = no.pbank.find(x => QH.get(x.q)?.t.includes('B') && x.u.every(u => !u.o)); await go(p, '#/learn/' + no.id + '/peek'); await p.waitForSelector('.pbcard');
+      ok(/בלי מקור רשמי מצוטט/.test(await p.textContent(`.pbcard[data-q="${x.q}"]`)) && await p.locator(`.pbcard[data-q="${x.q}"] .pbpart.off`).count() === 0, `partial card Q${x.q}: covering unit without an official source is labelled so`); }
+    await go(p, '#/learn/' + pl.id + '/peek'); await p.waitForSelector('.pbcard'); await axe(p, 'partial-cards', prof); }
   await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lsec');
   ok(await p.getAttribute('.lbody', 'lang') === 'he' && await p.locator('.rules li').count() === LB[0].rules.length, 'lesson: Hebrew body + all rules');
   ok(await p.locator('.rules details.lawref').count() >= LB[0].rules.length, 'every rule carries a law/sign reference');
