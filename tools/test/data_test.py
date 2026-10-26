@@ -329,6 +329,9 @@ _QR = sorted((l['id'], i, r['s']) for l in LALL for i, r in enumerate(l['rules']
 ok({('signs', 'Q:606'), ('signs', 'Q:477'), ('bus', 'Q:1726')} <= {(a, c) for a, _, c in _QR} and "cited && x.kind === 'Q' ? t('ln.bankAns')" in JL
    and 'refs = (s, also = [], own) => h(\'span\', { class: \'refs\' }, [s, ...also].map(a => ref(a, own, true)))' in JL
    and 'תשובת המאגר' in T('js', 'i18n.js'), f'v1.13 (review #9): {len(_QR)} bank-sourced rules are labelled "תשובת המאגר" in their chip')
+# v1.13 (review #9 D5): maint2's carbon-monoxide rule keeps to the kids_co wording (no "closed car park" inference)
+_CO = [r['t'] for r in LB['maint2']['rules'] if r['s'] == 'OFF:kids_co']
+ok(len(_CO) == 1 and 'חניון' not in _CO[0] and 'אין להשאיר' not in _CO[0] and 'שיכולה להתרחש באזורים סגורים' in _CO[0], 'v1.13 (review #9 D5): maint2 CO rule states only what kids_co says')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 
