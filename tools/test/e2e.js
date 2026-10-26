@@ -170,8 +170,8 @@ async function run(prof, opts) {
     ok(BKL.length >= 4 && ids.slice(-BKL.length).every(i => i.startsWith('bank_')), `B path ends with ${BKL.length} "מהמאגר הרשמי" lessons`);
     const bv = BKL.find(l => l.id === 'bank_veh'), want = bv.bank.filter(i => QH.get(i)?.t.includes('B'));
     await go(p, '#/learn/bank_veh/peek'); await p.waitForSelector('.bankcard');
-    const cards = await p.locator('.bankcard').evaluateAll(es => es.map(e => [+e.dataset.q, e.querySelector('.qtext').textContent, e.querySelector('.ans-ok').textContent]));
-    ok(cards.length === want.length && cards.every(([i, q, a]) => q.endsWith(QH.get(i).q) && a === QH.get(i).a[QH.get(i).c]), `bank lesson: all ${want.length} B questions shown with the official text and correct answer`);
+    const cards = await p.locator('.bankcard').evaluateAll(es => es.map(e => [+e.dataset.q, e.querySelector('.qtext').textContent, e.querySelector('.ans-ok .at').textContent, [...e.querySelectorAll('.opts li .at')].map(x => x.textContent)]));
+    ok(cards.length === want.length && cards.every(([i, q, a, o]) => q.endsWith(QH.get(i).q) && a === QH.get(i).a[QH.get(i).c] && JSON.stringify(o) === JSON.stringify(QH.get(i).a)), `bank lesson: all ${want.length} B questions shown with the official text, all four official options and the correct one marked`);
     ok(/אין לשאלות האלה הסבר רשמי או מקור חוקי/.test(await p.textContent('.banknote')) && await p.locator('.banktag').count() === cards.length, 'bank lesson: visible "no official explanation or legal source" label on the lesson and every card');
     ok(/data\.gov\.il/.test(await p.getAttribute('a:has-text("CC BY")', 'href')) && await p.locator('.rules, .lbody, .recap, .mnems').count() === 0, 'bank lesson: CC BY attribution link to data.gov.il, no rules/explanation/recap of ours');
     ok(/ספר הלימוד הרשמי/.test(await p.textContent('.bankcard[data-q="1765"] .lawnote')) && await p.locator('.bankcard[data-q="1765"] .lawnote details.lawref').count() === 1, 'Q1765: textbook difference stated with its source');
@@ -185,8 +185,8 @@ async function run(prof, opts) {
     ok(PL.length >= 20 && all.length === new Set(all).size && PL.every(l => l.pbank.every(x => !QH.get(x.q)?.t.includes('B') || l.quiz.includes(x.q))), `partial cards: ${all.length} B questions in ${PL.length} lessons, each in its lesson quiz`);
     const pl = PL.reduce((a, b) => (b.pbank.length > a.pbank.length ? b : a)), want = pl.pbank.filter(x => QH.get(x.q)?.t.includes('B'));
     await go(p, '#/learn/' + pl.id + '/peek'); await p.waitForSelector('.pbcard');
-    const cards = await p.locator('.pbcard').evaluateAll(es => es.map(e => [+e.dataset.q, e.querySelector('.qtext').textContent, e.querySelector('.ans-ok').textContent, e.querySelectorAll('.pbpart').length, !!e.querySelector('.pbrest')]));
-    ok(cards.length === want.length && cards.every(([i, q, a, n, r], k) => i === want[k].q && q.endsWith(QH.get(i).q) && a === QH.get(i).a[QH.get(i).c] && n === want[k].u.length && r),
+    const cards = await p.locator('.pbcard').evaluateAll(es => es.map(e => [+e.dataset.q, e.querySelector('.qtext').textContent, e.querySelector('.ans-ok .at').textContent, [...e.querySelectorAll('.opts li .at')].map(x => x.textContent), e.querySelectorAll('.pbpart').length, !!e.querySelector('.pbrest')]));
+    ok(cards.length === want.length && cards.every(([i, q, a, o, n, r], k) => i === want[k].q && q.endsWith(QH.get(i).q) && a === QH.get(i).a[QH.get(i).c] && JSON.stringify(o) === JSON.stringify(QH.get(i).a) && n === want[k].u.length && r),
       `partial cards (${pl.id}): ${cards.length} questions with the official text and answer, the cited unit, and a bank-only rest line`);
     ok(/שאלות מהמאגר שהשיעור מכסה רק חלקית/.test(await text(p)) && await p.locator('#ls-pbank ~ .bankattr a[href*="data.gov.il"]').count() === 1 && await p.locator('.pbcard .pbpart.off .lawref').count() >= 1, 'partial cards: section title, CC BY link, official-source part with its citation chip');
     const no = LB.find(l => (l.pbank || []).some(x => QH.get(x.q)?.t.includes('B') && x.u.every(u => !u.o)));

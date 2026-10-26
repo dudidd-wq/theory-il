@@ -132,6 +132,10 @@ export function makeLearn(ctx) {
       tts.speak(speakText, 'he', prof()?.rate || 1, () => b.setAttribute('aria-pressed', 'false'));
     }, 'btn small', 'vol', { 'aria-pressed': 'false' }) : null;
     const sec = (key, ...kids) => h('section', { class: 'lsec', 'aria-labelledby': 'ls-' + key }, h('h2', { id: 'ls-' + key, text: t('ln.' + key) }), ...kids);
+    // v1.11 (review #8): all four official options in the published order, the official correct one marked (text + icon, not colour only)
+    const opts = v => he(h('ol', { class: 'opts', 'aria-label': t('ln.opts') }, v.a.map((a, k) => h('li', { class: k === v.c ? 'ans-ok' : 'ans-no' },
+      k === v.c ? icon('check') : h('span', { class: 'ic', 'aria-hidden': 'true', text: '·' }), h('span', { class: 'at', text: a }),
+      k === v.c ? h('small', { class: 'okb', text: t('ln.okb') }) : null))));
     const qimg = q => q.i ? h('img', { class: 'qimg', src: 'img/q/' + q.i, alt: t('q.img', q.id), loading: 'lazy', width: 320, height: 180 }) : null;
     const kids = [
       h('p', { class: 'row tight' }, link(t('ln.back'), '#/learn', 'btn small ghost', uiLang() === 'he' ? 'arrowE' : 'arrowS'), listen,
@@ -144,7 +148,7 @@ export function makeLearn(ctx) {
       bank ? h('p', { class: 'small bankattr' }, ext(BANK_URL, t('ln.bankAttr'))) : null,
       bank ? sec('bank', h('div', { class: 'exs' }, bank.map(v => { const n = L?.notes?.[v.id];
         return h('article', { class: 'excard bankcard', 'data-q': v.id }, qimg(v), he(h('p', { class: 'qtext sm' }, h('small', { class: 'muted', text: t('ln.q', v.id) + ' · ' }), v.q)),
-          he(h('p', { class: 'ans-ok' }, icon('check'), h('span', { text: v.a[v.c] }))),
+          opts(v),
           h('p', { class: 'small muted banktag', text: t('ln.bankTag') }),
           n ? he(h('div', { class: 'notice lawnote', role: 'note' }, icon('info'), h('div', {}, h('p', {}, h('b', { text: t(n.k === 'tb' ? 'why.tb' : 'why.law') + ' ' }), n.law),
             n.s ? h('p', { class: 'refs' }, ref(n.s)) : null))) : null); }))) : null,
@@ -155,7 +159,7 @@ export function makeLearn(ctx) {
         return h('li', {}, h('img', { src: 'img/q/' + v.i, alt: t('q.img', q), loading: 'lazy', width: 160, height: 90 }), he(h('span', { text: v.a[v.c] })), ref('Q:' + q)); }))) : null,
       l.ex.length ? sec('ex', h('div', { class: 'exs' }, l.ex.filter(x => byId.has(x.q)).map(x => { const v = byId.get(x.q);
         return h('article', { class: 'excard' }, qimg(v), he(h('p', { class: 'qtext sm' }, h('small', { class: 'muted', text: t('ln.q', v.id) + ' · ' }), v.q)),
-          he(h('p', { class: 'ans-ok' }, icon('check'), h('span', { text: v.a[v.c] }))),
+          opts(v),
           he(h('p', {}, h('b', { text: t('ln.why') + ' ' }), x.t)), h('p', { class: 'refs' }, ref(x.s), ref('Q:' + x.q))); }))) : null,
       // v1.11: B/A questions this lesson covers only partly – official question + answer as published, the covering unit with
       // its own citation, and a separate label that the rest comes from the bank alone (still 'partial' in the coverage figures)
@@ -163,7 +167,7 @@ export function makeLearn(ctx) {
         h('p', { class: 'small bankattr' }, ext(BANK_URL, t('ln.bankAttr'))),
         h('div', { class: 'exs' }, pb.map(({ v, u }) => h('article', { class: 'excard bankcard pbcard', 'data-q': v.id }, qimg(v),
           he(h('p', { class: 'qtext sm' }, h('small', { class: 'muted', text: t('ln.q', v.id) + ' · ' }), v.q)),
-          he(h('p', { class: 'ans-ok' }, icon('check'), h('span', { text: v.a[v.c] }))),
+          opts(v),
           h('p', { class: 'small muted banktag', text: t('ln.bankTag') }),
           ...u.map(x => h('div', { class: 'pbpart' + (x.o ? ' off' : '') }, h('p', { class: 'small' }, h('b', { text: t(x.o ? 'ln.pbOff' : 'ln.pbNoOff') })),
             x.t ? he(h('p', { class: 'sm', text: x.t })) : h('p', { class: 'small muted', text: t('ln.pbGal') }),

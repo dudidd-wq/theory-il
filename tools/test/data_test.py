@@ -240,6 +240,7 @@ ok(all(not u['o'] or u['k'] == 'sign' or any(x and not x.startswith('Q:') for x 
 ok("'ln.pbRest'" in JL and "'ln.pbNoOff'" in JL and I18.count("'ln.pbRest'") == 2 and I18.count("'ln.pbankNote'") == 2 and I18.count("'ab.covPart'") == 2, 'v1.11: partial cards label official-source part and bank-only rest apart (he + en), About column')
 ok('shown with the official bank answer' in CM and f"B {CA['class']['B']['partial_shown']} of {CA['class']['B']['partial']}" in CM, 'v1.11: COVERAGE.md reports partial + shown with official bank answer')
 
+ok(JL.count('opts(v)') >= 3 and "'ln.okb'" in I18 and I18.count("'ln.okb'") == 2, 'v1.11 (review #8): bank cards, partial cards and worked examples show all official options with the correct one marked')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 
