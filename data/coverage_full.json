@@ -4,87 +4,87 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1054,
-"partial": 259,
-"none": 488,
-"full_pct": 58.5,
-"any_pct": 72.9,
-"strict_full": 821,
-"strict_pct": 45.6,
-"none_teachable": 172,
+"full": 1067,
+"partial": 264,
+"none": 470,
+"full_pct": 59.2,
+"any_pct": 73.9,
+"strict_full": 834,
+"strict_pct": 46.3,
+"none_teachable": 154,
 "none_nosource": 316
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 706,
-"partial": 180,
-"none": 386,
-"full_pct": 55.5,
-"any_pct": 69.7,
-"strict_full": 498,
-"strict_pct": 39.2,
-"none_teachable": 127,
+"full": 719,
+"partial": 185,
+"none": 368,
+"full_pct": 56.5,
+"any_pct": 71.1,
+"strict_full": 511,
+"strict_pct": 40.2,
+"none_teachable": 109,
 "none_nosource": 259
 },
 "A": {
 "n": 1155,
-"full": 673,
-"partial": 171,
-"none": 311,
-"full_pct": 58.3,
-"any_pct": 73.1,
-"strict_full": 470,
-"strict_pct": 40.7,
-"none_teachable": 105,
+"full": 685,
+"partial": 176,
+"none": 294,
+"full_pct": 59.3,
+"any_pct": 74.5,
+"strict_full": 482,
+"strict_pct": 41.7,
+"none_teachable": 88,
 "none_nosource": 206
 },
 "C1": {
 "n": 1385,
-"full": 775,
-"partial": 196,
-"none": 414,
-"full_pct": 56.0,
-"any_pct": 70.1,
-"strict_full": 564,
-"strict_pct": 40.7,
-"none_teachable": 156,
+"full": 788,
+"partial": 201,
+"none": 396,
+"full_pct": 56.9,
+"any_pct": 71.4,
+"strict_full": 577,
+"strict_pct": 41.7,
+"none_teachable": 138,
 "none_nosource": 258
 },
 "C": {
 "n": 1314,
-"full": 794,
-"partial": 181,
-"none": 339,
-"full_pct": 60.4,
-"any_pct": 74.2,
-"strict_full": 584,
-"strict_pct": 44.4,
-"none_teachable": 139,
+"full": 806,
+"partial": 186,
+"none": 322,
+"full_pct": 61.3,
+"any_pct": 75.5,
+"strict_full": 596,
+"strict_pct": 45.4,
+"none_teachable": 122,
 "none_nosource": 200
 },
 "D": {
 "n": 1316,
-"full": 813,
-"partial": 182,
-"none": 321,
-"full_pct": 61.8,
-"any_pct": 75.6,
-"strict_full": 591,
-"strict_pct": 44.9,
-"none_teachable": 113,
+"full": 825,
+"partial": 187,
+"none": 304,
+"full_pct": 62.7,
+"any_pct": 76.9,
+"strict_full": 603,
+"strict_pct": 45.8,
+"none_teachable": 96,
 "none_nosource": 208
 },
 "1": {
 "n": 1127,
-"full": 660,
-"partial": 154,
-"none": 313,
-"full_pct": 58.6,
-"any_pct": 72.2,
-"strict_full": 456,
-"strict_pct": 40.5,
-"none_teachable": 107,
+"full": 672,
+"partial": 159,
+"none": 296,
+"full_pct": 59.6,
+"any_pct": 73.7,
+"strict_full": 468,
+"strict_pct": 41.5,
+"none_teachable": 90,
 "none_nosource": 206
 }
 },
@@ -165,14 +165,14 @@
 "topic": {
 "law": {
 "n": 901,
-"full": 592,
-"partial": 142,
-"none": 167,
-"full_pct": 65.7,
-"any_pct": 81.5,
-"strict_full": 592,
-"strict_pct": 65.7,
-"none_teachable": 139,
+"full": 605,
+"partial": 147,
+"none": 149,
+"full_pct": 67.1,
+"any_pct": 83.5,
+"strict_full": 605,
+"strict_pct": 67.1,
+"none_teachable": 121,
 "none_nosource": 28
 },
 "signs": {
@@ -216,14 +216,14 @@
 "B": {
 "law": {
 "n": 501,
-"full": 300,
-"partial": 87,
-"none": 114,
-"full_pct": 59.9,
-"any_pct": 77.2,
-"strict_full": 300,
-"strict_pct": 59.9,
-"none_teachable": 98,
+"full": 313,
+"partial": 92,
+"none": 96,
+"full_pct": 62.5,
+"any_pct": 80.8,
+"strict_full": 313,
+"strict_pct": 62.5,
+"none_teachable": 80,
 "none_nosource": 16
 },
 "signs": {
@@ -266,14 +266,14 @@
 "A": {
 "law": {
 "n": 429,
-"full": 266,
-"partial": 83,
-"none": 80,
-"full_pct": 62.0,
-"any_pct": 81.4,
-"strict_full": 266,
-"strict_pct": 62.0,
-"none_teachable": 76,
+"full": 278,
+"partial": 88,
+"none": 63,
+"full_pct": 64.8,
+"any_pct": 85.3,
+"strict_full": 278,
+"strict_pct": 64.8,
+"none_teachable": 59,
 "none_nosource": 4
 },
 "signs": {
@@ -316,14 +316,14 @@
 "C1": {
 "law": {
 "n": 605,
-"full": 360,
-"partial": 98,
-"none": 147,
-"full_pct": 59.5,
-"any_pct": 75.7,
-"strict_full": 360,
-"strict_pct": 59.5,
-"none_teachable": 126,
+"full": 373,
+"partial": 103,
+"none": 129,
+"full_pct": 61.7,
+"any_pct": 78.7,
+"strict_full": 373,
+"strict_pct": 61.7,
+"none_teachable": 108,
 "none_nosource": 21
 },
 "signs": {
@@ -366,14 +366,14 @@
 "C": {
 "law": {
 "n": 619,
-"full": 391,
-"partial": 97,
-"none": 131,
-"full_pct": 63.2,
-"any_pct": 78.8,
-"strict_full": 391,
-"strict_pct": 63.2,
-"none_teachable": 110,
+"full": 403,
+"partial": 102,
+"none": 114,
+"full_pct": 65.1,
+"any_pct": 81.6,
+"strict_full": 403,
+"strict_pct": 65.1,
+"none_teachable": 93,
 "none_nosource": 21
 },
 "signs": {
@@ -416,14 +416,14 @@
 "D": {
 "law": {
 "n": 618,
-"full": 400,
-"partial": 103,
-"none": 115,
-"full_pct": 64.7,
-"any_pct": 81.4,
-"strict_full": 400,
-"strict_pct": 64.7,
-"none_teachable": 86,
+"full": 412,
+"partial": 108,
+"none": 98,
+"full_pct": 66.7,
+"any_pct": 84.1,
+"strict_full": 412,
+"strict_pct": 66.7,
+"none_teachable": 69,
 "none_nosource": 29
 },
 "signs": {
@@ -466,14 +466,14 @@
 "1": {
 "law": {
 "n": 436,
-"full": 269,
-"partial": 77,
-"none": 90,
-"full_pct": 61.7,
-"any_pct": 79.4,
-"strict_full": 269,
-"strict_pct": 61.7,
-"none_teachable": 80,
+"full": 281,
+"partial": 82,
+"none": 73,
+"full_pct": 64.4,
+"any_pct": 83.3,
+"strict_full": 281,
+"strict_pct": 64.4,
+"none_teachable": 63,
 "none_nosource": 10
 },
 "signs": {
@@ -515,10 +515,10 @@
 }
 },
 "by": {
-"hand": 1096,
-"v1.5": 337,
+"hand": 1079,
+"v1.5": 355,
 "link": 81,
-"sample": 287
+"sample": 286
 }
 },
 "q": {
@@ -583,17 +583,20 @@
 "by": "hand"
 },
 "4": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO 12א/TR 190 מלווה",
-"src": "T",
+"v": "full",
+"rule": [
+"docs#r11"
+],
+"ref": [
+"docs#r:מלווה לנהג חדש צעיר: מי שמחזיק 5 שני"
+],
+"why": "rule written for this question (TO:12א1(ז))",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "5": {
 "v": "none",
@@ -1259,11 +1262,14 @@
 "by": "sample"
 },
 "41": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR הודעת אי שימוש",
-"src": "T",
+"v": "full",
+"rule": [
+"docs#r6"
+],
+"ref": [
+"docs#r:בוחן או שוטר שסבור שהרכב עלול לסכן א"
+],
+"why": "rule written for this question (TR:308(א))",
 "cls": [
 "1",
 "A",
@@ -1273,7 +1279,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "42": {
 "v": "full",
@@ -1406,11 +1412,14 @@
 "by": "v1.5"
 },
 "49": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR documents",
-"src": "T",
+"v": "full",
+"rule": [
+"docs#r0"
+],
+"ref": [
+"docs#r:נוהג חייב שיהיו אתו: אמצעי זיהוי (תע"
+],
+"why": "rule written for this question (TR:9(א))",
 "cls": [
 "1",
 "A",
@@ -1420,7 +1429,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "50": {
 "v": "none",
@@ -1440,11 +1449,14 @@
 "by": "hand"
 },
 "51": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR documents",
-"src": "T",
+"v": "full",
+"rule": [
+"docs#r1"
+],
+"ref": [
+"docs#r:את התעודות מציגים לשוטר או לבוחן לפי"
+],
+"why": "rule written for this question (TR:9(ב))",
 "cls": [
 "1",
 "A",
@@ -1454,7 +1466,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "52": {
 "v": "partial",
@@ -1477,11 +1489,14 @@
 "by": "hand"
 },
 "53": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR documents",
-"src": "T",
+"v": "full",
+"rule": [
+"docs#r2"
+],
+"ref": [
+"docs#r:מחזיקים את התעודות בכל עת במצב נקי ו"
+],
+"why": "rule written for this question (TR:9(ג))",
 "cls": [
 "1",
 "A",
@@ -1491,7 +1506,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "54": {
 "v": "none",
@@ -1540,11 +1555,14 @@
 "by": "hand"
 },
 "57": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR health report",
-"src": "T",
+"v": "full",
+"rule": [
+"docs#r4"
+],
+"ref": [
+"docs#r:בעל רישיון נהיגה שהתגלו אצלו מחלות ל"
+],
+"why": "rule written for this question (TR:13(ב))",
 "cls": [
 "1",
 "A",
@@ -1554,7 +1572,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "58": {
 "v": "full",
@@ -2260,11 +2278,14 @@
 "by": "hand"
 },
 "95": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR הודעת אי שימוש",
-"src": "T",
+"v": "partial",
+"rule": [
+"docs#r6"
+],
+"ref": [
+"docs#r:בוחן או שוטר שסבור שהרכב עלול לסכן א"
+],
+"why": "rule covers part of the answer (TR:308(א))",
 "cls": [
 "1",
 "A",
@@ -2274,7 +2295,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "96": {
 "v": "none",
@@ -3277,11 +3298,14 @@
 "by": "hand"
 },
 "149": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR vehicle test",
-"src": "T",
+"v": "partial",
+"rule": [
+"docs#r9"
+],
+"ref": [
+"docs#r:רישיון רכב ניתן לשנה אחת, או לתקופה "
+],
+"why": "rule covers part of the answer (TR:276)",
 "cls": [
 "1",
 "A",
@@ -3291,7 +3315,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "150": {
 "v": "full",
@@ -5202,11 +5226,14 @@
 "by": "v1.5"
 },
 "251": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO documents",
-"src": "T",
+"v": "partial",
+"rule": [
+"docs#r0"
+],
+"ref": [
+"docs#r:נוהג חייב שיהיו אתו: אמצעי זיהוי (תע"
+],
+"why": "rule covers part of the answer (TR:9(א))",
 "cls": [
 "1",
 "A",
@@ -5216,7 +5243,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "252": {
 "v": "partial",
@@ -6211,11 +6238,14 @@
 "by": "sample"
 },
 "305": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO 64ב evidence",
-"src": "T",
+"v": "full",
+"rule": [
+"docs#r10"
+],
+"ref": [
+"docs#r:אם בדיקת הנשיפה מראה ריכוז אלכוהול מ"
+],
+"why": "rule written for this question (TR:169ד(ב))",
 "cls": [
 "1",
 "A",
@@ -6225,7 +6255,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "306": {
 "v": "full",
@@ -6543,11 +6573,14 @@
 "by": "hand"
 },
 "323": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR address change",
-"src": "T",
+"v": "full",
+"rule": [
+"docs#r3"
+],
+"ref": [
+"docs#r:על שינוי בפרט שרשום בתעודה מודיעים ל"
+],
+"why": "rule written for this question (TR:13(א1))",
 "cls": [
 "1",
 "A",
@@ -6557,7 +6590,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "324": {
 "v": "full",
@@ -6608,11 +6641,14 @@
 "by": "sample"
 },
 "327": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO licence refusal",
-"src": "T",
+"v": "partial",
+"rule": [
+"docs#r5"
+],
+"ref": [
+"docs#r:רישיון נהיגה לא יינתן ולא יחודש למי "
+],
+"why": "rule covers part of the answer (TR:174(ב))",
 "cls": [
 "1",
 "A",
@@ -6622,7 +6658,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "328": {
 "v": "full",
@@ -6770,11 +6806,14 @@
 "by": "hand"
 },
 "337": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO health change notify",
-"src": "T",
+"v": "full",
+"rule": [
+"docs#r4"
+],
+"ref": [
+"docs#r:בעל רישיון נהיגה שהתגלו אצלו מחלות ל"
+],
+"why": "rule written for this question (TR:13(ב))",
 "cls": [
 "1",
 "A",
@@ -6784,7 +6823,7 @@
 "D"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.5"
 },
 "338": {
 "v": "partial",
@@ -6838,11 +6877,14 @@
 "by": "v1.5"
 },
 "341": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR change of ownership",
-"src": "T",
+"v": "full",
+"rule": [
+"docs#r8"
+],
+"ref": [
+"docs#r:שינוי בעלות נרשם רק אחרי שהוכח ששולמ"
+],
+"why": "rule written for this question (TR:283(א))",
 "cls": [
 "1",
 "A",
@@ -6852,7 +6894,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "342": {
 "v": "none",
@@ -6872,11 +6914,14 @@
 "by": "hand"
 },
 "343": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR notice",
-"src": "T",
+"v": "full",
+"rule": [
+"docs#r7"
+],
+"ref": [
+"docs#r:מי שמפסיק להשתמש ברכב ליותר מחודש מו"
+],
+"why": "rule written for this question (TR:290(א))",
 "cls": [
 "1",
 "A",
@@ -6886,7 +6931,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "344": {
 "v": "full",
@@ -6922,11 +6967,14 @@
 "by": "hand"
 },
 "346": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO notice",
-"src": "T",
+"v": "partial",
+"rule": [
+"docs#r6"
+],
+"ref": [
+"docs#r:בוחן או שוטר שסבור שהרכב עלול לסכן א"
+],
+"why": "rule covers part of the answer (TR:308(א))",
 "cls": [
 "1",
 "A",
@@ -6936,7 +6984,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "347": {
 "v": "full",
@@ -24069,11 +24117,14 @@
 "by": "v1.5"
 },
 "1311": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO health change notify",
-"src": "T",
+"v": "full",
+"rule": [
+"docs#r4"
+],
+"ref": [
+"docs#r:בעל רישיון נהיגה שהתגלו אצלו מחלות ל"
+],
+"why": "rule written for this question (TR:13(ב))",
 "cls": [
 "1",
 "A",
@@ -24083,7 +24134,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1312": {
 "v": "full",
@@ -26856,11 +26907,14 @@
 "by": "v1.5"
 },
 "1488": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO non-use notice",
-"src": "T",
+"v": "full",
+"rule": [
+"docs#r6"
+],
+"ref": [
+"docs#r:בוחן או שוטר שסבור שהרכב עלול לסכן א"
+],
+"why": "rule written for this question (TR:308(א))",
 "cls": [
 "1",
 "A",
@@ -26870,7 +26924,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1489": {
 "v": "full",
