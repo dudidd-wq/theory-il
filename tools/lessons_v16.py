@@ -555,6 +555,8 @@ def lessons(R, C):
     return out
 
 EXAMPLES16 = {}
+from examples_v19 import EXAMPLES19
+for _k, _v in EXAMPLES19.items(): EXAMPLES16.setdefault(_k, []).extend(_v)
 NOTES16 = {
  333: ('בבנק השאלות התשובה היא "17 שנים", אבל לפי סעיף 12 לפקודת התעבורה של היום הגיל המינימלי לרישיון לרכב פרטי הוא 16 שנים ו-9 חודשים. בבחינה התשובה היא זו שבבנק.',
       'TO:12', ['לא יינתן רישיון לאדם שלא מלאו לו 16 שנים ותשעה חודשים']),
