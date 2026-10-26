@@ -4581,7 +4581,7 @@
 "rules4#r1"
 ],
 "ref": [
-"rules4#r:נתיב הנסיעה שלך נחסם (למשל רכב בחניי"
+"rules4#r:נתיב הנסיעה שלך נחסם? נותנים זכות קד"
 ],
 "why": "rule written for this question (TR:68)",
 "cls": [
@@ -18186,7 +18186,7 @@
 "rules4#r1"
 ],
 "ref": [
-"rules4#r:נתיב הנסיעה שלך נחסם (למשל רכב בחניי"
+"rules4#r:נתיב הנסיעה שלך נחסם? נותנים זכות קד"
 ],
 "why": "rule written for this question (TR:68)",
 "cls": [
@@ -19844,7 +19844,7 @@
 "law3#r6"
 ],
 "ref": [
-"law3#r:כשהראות לקויה או ששדה הראייה מוגבל ("
+"law3#r:כשהראות לקויה או ששדה הראייה מוגבל, "
 ],
 "why": "rule covers part of the answer (TR:47(ה)(1))",
 "cls": [
