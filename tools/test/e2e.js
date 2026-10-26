@@ -324,6 +324,11 @@ async function overflowSweep() {
     const routes = ['#/home', '#/learn', '#/practice', '#/practice/mix', '#/review', '#/search', '#/bookmarks', '#/signs', '#/signs/go', '#/stats', '#/parent', '#/about', '#/settings', '#/exam',
       ...LJ.lessons.filter(l => l.cls.includes('B') || l.cls.includes('A')).map(l => '#/learn/' + l.id + '/peek')];
     for (const r of routes) { await go(p, r); await p.waitForSelector('h1', { timeout: 5000 }).catch(() => {}); const sw = await over(); if (sw) bad.push(r + '=' + sw); }
+    await go(p, '#/about'); await p.waitForSelector('.tbl.cov td');
+    const cv = await p.evaluate(W => { const w = document.querySelector('.tbl.cov').closest('.tblwrap'); const tds = [...document.querySelectorAll('.tbl.cov tr:first-child td')];
+      return { hid: w.scrollWidth > w.clientWidth + 1, out: tds.filter(td => { const r = td.getBoundingClientRect(); return r.left < -1 || r.right > W + 1; }).length, n: tds.length,
+        lab: tds.every(td => getComputedStyle(td, '::before').content.length > 2), dec: tds.filter(td => /%$/.test(td.textContent)).every(td => /\d\.\d%$/.test(td.textContent)) }; }, W);
+    ok(!cv.hid && !cv.out && cv.n === 8 && cv.lab && cv.dec, `${W}px: About coverage table stacked as cards: all 8 columns visible without hidden scroll, labelled, one-decimal % ${JSON.stringify(cv)}`);
     await go(p, '#/exam'); await p.click('.btn.primary.big'); await p.waitForSelector('#timer'); if (await over()) bad.push('exam-running');
     ok(!bad.length, `${W}px: no horizontal overflow on ${routes.length + 5} screens ${bad.slice(0, 5).join(' ')}`);
     await ctx.close();

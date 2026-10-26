@@ -316,4 +316,13 @@ line.vz-span { stroke: #f3a712; stroke-width: 6; fill: none; }
 .tblwrap { overflow-x: auto; max-width: 100%; margin: 12px 0; border-radius: var(--radius); -webkit-overflow-scrolling: touch; }
 .tblwrap:focus-visible { outline: 3px solid var(--accent, #1a73e8); outline-offset: 2px; }
 .tblwrap > .tbl { margin: 0; }
-@media (max-width: 420px) { .tbl.cov th, .tbl.cov td { padding: 8px 6px; font-size: .86em; } .tbl.cov thead th { font-size: .78em; } }
+/* v1.11 (review #8): at phone widths the coverage table is stacked as one card per class, so no column hides behind a horizontal scroll */
+@media (max-width: 520px) {
+  .tbl.cov thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .tbl.cov, .tbl.cov tbody, .tbl.cov tr, .tbl.cov th, .tbl.cov td { display: block; width: auto; }
+  .tbl.cov tr { border-bottom: 2px solid var(--line); padding: 6px 0; }
+  .tbl.cov tbody th { font-size: 1.05em; padding: 8px 12px 4px; border: 0; }
+  .tbl.cov td { display: flex; justify-content: space-between; gap: 12px; padding: 4px 12px; border: 0; font-size: .92em; }
+  .tbl.cov td::before { content: attr(data-label); color: var(--muted, #555); flex: 1 1 auto; min-width: 0; }
+  .tbl.cov td { white-space: nowrap; } .tbl.cov td::before { white-space: normal; }
+}

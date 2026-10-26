@@ -249,6 +249,8 @@ ok(not [x['q'] for l in LJ['lessons'] for x in l['ex'] if x['s'].startswith('Q:'
 _LB = {l['id']: l for l in LJ['lessons']}
 ok(any('אור מהבהב צהוב' in r['t'] and 'מחווני הכיוון' in r['t'] for r in _LB['bus']['rules']) and not any('אורות מצוקה' in r['t'] for r in _LB['bus']['rules']) and 'אורות מצוקה' not in _LB['bus']['ex'][0]['t'], 'v1.11 (review #8): bus TR 70 rule restates 70(ב)(1) (amber flasher or all indicators), not "hazard lights"')
 ok(any('בבלם ובמצמד' in r['t'] for r in _LB['blind']['rules']), 'v1.11 (review #8): blind stopping-steps rule follows the textbook wording (brake and clutch)')
+_CSS = T('css', 'style.css'); _APP = T('js', 'app.js')
+ok('.tbl.cov td::before { content: attr(data-label)' in _CSS and "'data-label': t(COVH[k + 1]) }, h('bdi'" in _APP and 'pc(nb)' in _APP, 'v1.11 (review #8): About coverage table stacks as labelled cards at phone widths; percentages one decimal')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 

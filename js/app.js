@@ -6,6 +6,8 @@ import * as tts from './tts.js';
 import { VERSION } from './version.js';
 import { ELIG, lawUrl } from './elig.js';
 import { makeLearn, loadLessons, lessonFrac, lessonsFor, masteredCount, explain, whyBox, lessonHref } from './learn.js';
+const COVH = ['ab.covCls', 'ab.covN', 'ab.covFull', 'ab.covStrict', 'ab.covAny', 'ab.covNoSrc', 'ab.covBank', 'ab.covPart', 'ab.covNoBank'];
+const pc = v => v == null || v === '' ? '' : (+v).toFixed(1) + '%';
 const { state: S, save, today, CLASSES, LANGS, EXAM } = st;
 const TOPICS = ['vehicle', 'signs', 'safety', 'law'];
 const LANG_NAMES = { he: 'עברית', en: 'English', ru: 'Русский', fr: 'Français', es: 'Español' };
@@ -581,9 +583,9 @@ function about() {
     h('h2', { text: t('ab.law') }), h('p', { text: t('ab.lawText') }),
     h('h2', { text: t('ab.learn') }), h('p', { text: t('ab.learnText') }), h('p', { class: 'small', id: 'ab-ccbysa' }, h('span', { text: t('ab.wsCC') + ' ' }), ext(CCBYSA, t('ab.ccbysa'))), h('ul', { class: 'srcs' }, h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085628', t('ab.wsTR', 3085628))), h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085764', t('ab.wsTO', 3085764))), h('li', {}, ext('https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf', t('ab.lotam')))),
     ...(COV?.tot ? [h('h2', { text: t('ab.cov') }), h('p', { text: t('ab.covText', ['B', 'A', 'C1', 'C', 'D', '1'].filter(c => COV.tot[c]).map(c => `${c} ${(+COV.tot[c][1]).toFixed(1)}%`).join(', ')) }),
-      h('div', { class: 'tblwrap', role: 'region', tabindex: '0', 'aria-label': t('ab.cov') }, h('table', { class: 'tbl cov' }, h('thead', {}, h('tr', {}, ...['ab.covCls', 'ab.covN', 'ab.covFull', 'ab.covStrict', 'ab.covAny', 'ab.covNoSrc', 'ab.covBank', 'ab.covPart', 'ab.covNoBank'].map(k => h('th', { scope: 'col', text: t(k) })))),
+      h('div', { class: 'tblwrap', role: 'region', tabindex: '0', 'aria-label': t('ab.cov') }, h('table', { class: 'tbl cov' }, h('thead', {}, h('tr', {}, ...COVH.map(k => h('th', { scope: 'col', text: t(k) })))),
         h('tbody', {}, ...['all', 'B', 'A', 'C1', 'C', 'D', '1'].filter(c => COV.tot[c]).map(c => [c, COV.tot[c]]).map(([c, [n, f, s, a, ns, bk, nb, pt, ps]]) => h('tr', {}, h('th', { scope: 'row', text: c === 'all' ? t('ab.covAll') : c }),
-          ...[n, f + '%', s + '%', a + '%', ns, bk ?? '', pt != null ? pt + ' / ' + ps : '', nb != null ? nb + '%' : ''].map(v => h('td', { text: String(v) })))))))] : []),
+          ...[n, pc(f), pc(s), pc(a), ns, bk ?? '', pt != null ? pt + ' / ' + ps : '', pc(nb)].map((v, k) => h('td', { 'data-label': t(COVH[k + 1]) }, h('bdi', { dir: 'ltr', text: String(v) }))))))))] : []),
     h('h2', { text: t('ab.off') }), h('p', { text: t('ab.offText') }), h('ul', { class: 'srcs' }, h('li', {}, ext('https://www.gov.il/he/pages/gov_terms_of_use', t('ab.govTerms'))), h('li', {}, ext('https://www.gov.il/BlobFolder/reports/safety_rules_book/he/publications_safety_rules_book.pdf', t('ab.rsaBook'))), h('li', {}, ext('https://www.gov.il/BlobFolder/reports/driving_textbook/he/publications_2017_nohagim_aheret_nohagim_nachon.pdf', t('ab.tbook'))), h('li', {}, ext('https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s18-operating-safely.pdf', t('ab.edu18'))), h('li', {}, ext('https://kids.gov.il/sababa/sababa_pool/pages/4451', t('ab.kids'))), h('li', {}, ext('https://kids.gov.il/sababa/sababa_pool/terms.html', t('ab.kidsTerms'))), h('li', {}, ext('https://github.com/dudidd-wq/theory-il/blob/main/LICENSE-DATA.md', t('ab.offList')))),
     h('p', { text: t('ab.tbookText', ...(COV?.tb || ['', '', '', '', ''])) }), h('p', { class: 'disc', role: 'note', id: 'ab-perm' }, icon('info'), h('span', { text: t('ab.perm') })),
     h('h2', { text: t('el.all') }), ...CLASSES.map(c => h('div', {}, h('h3', { class: 'h3', text: clsName(c) }), eligCard(c, false))),
