@@ -577,7 +577,7 @@ function about() {
     h('ul', { class: 'srcs' }, LANGS.filter(l => MAN?.langs?.[l]).map(l => { const m = MAN.langs[l];
       return h('li', {}, h('b', { text: LANG_NAMES[l] + ': ' }), ext(m.url || `https://data.gov.il/he/datasets/ministry_of_transport/${m.dataset}`, m.title || m.dataset), h('span', { class: 'muted', text: ' · ' }), ext(CCBY, m.licenceTitle || 'CC BY'), h('span', { class: 'muted', text: ` · ${m.org || ''} · ${(m.resourceModified || '').slice(0, 10)} · ${m.count}${trOld(l) ? ' · ' + t('ab.oldBank', trOld(l)) : ''} ` })); })),
     h('h2', { text: t('ab.lang') }), h('p', { text: t('ab.langText') }),
-    h('h2', { text: t('ab.test') }), h('p', { text: t('ab.testText') }),
+    h('h2', { text: t('ab.test') }), h('p', { text: t('ab.testText') }), h('p', { class: 'disc', role: 'note' }, icon('info'), h('span', { text: t('ab.course') })),
     h('h2', { text: t('ab.law') }), h('p', { text: t('ab.lawText') }),
     h('h2', { text: t('ab.learn') }), h('p', { text: t('ab.learnText') }), h('p', { class: 'small', id: 'ab-ccbysa' }, h('span', { text: t('ab.wsCC') + ' ' }), ext(CCBYSA, t('ab.ccbysa'))), h('ul', { class: 'srcs' }, h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085628', t('ab.wsTR', 3085628))), h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085764', t('ab.wsTO', 3085764))), h('li', {}, ext('https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf', t('ab.lotam')))),
     ...(COV?.tot ? [h('h2', { text: t('ab.cov') }), h('p', { text: t('ab.covText') }),

@@ -161,5 +161,11 @@ sw = T('sw.js'); v = re.search(r"'(\d+\.\d+\.\d+)'", T('js', 'version.js'))[1]
 ok(f"const VERSION = '{v}'" in sw, f'sw.js VERSION = js/version.js ({v})')
 ok(all(f'data/{f}.json' in sw for f in ('q.he', 'lessons', 'sources', 'coverage', 'signs')), 'SW precaches the data files the app needs offline')
 
+# v1.8.0: the site never claims "1,200 questions" (the bank has 1,801); it says it is unofficial and that no course is required
+UI = T('js', 'i18n.js') + T('js', 'app.js') + T('index.html') + ''.join(T('docs', f) for f in os.listdir(os.path.join(R, 'docs')) if f.endswith('.md'))
+ok(not re.search(r'1[,.]?200\s*(שאלות|questions)', UI), 'no "1,200 questions" claim in UI or docs')
+I18 = T('js', 'i18n.js')
+ok(I18.count("'ab.course'") == 2 and 'אתר לא רשמי' in I18 and 'Unofficial site' in I18 and '203(א)' in I18, 'unofficial-site / no-course note in he and en')
+
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
