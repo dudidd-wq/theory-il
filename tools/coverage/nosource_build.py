@@ -5,7 +5,7 @@ import json, os
 R = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 P = lambda p: os.path.join(R, p)
 BASE = ('regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table '
-        '(lotam, 2022), all 19 pinned official pages (RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook '
+        '(lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook '
         '2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404')
 G = {
  'law': ('No provision in the pinned law', BASE + '; law grep for the key terms of the answer',
@@ -40,7 +40,6 @@ Q = {
          861: 'what side mirrors show (textbook p16 only says mirrors complement peripheral vision)',
          1765: 'head restraint height (textbook p16 says centre at skull centre – conflicts)',
          1016: 'engine and safety', 1020: 'fast indicator blink', 1037: 'fire extinguisher replacement',
-         1039: 'exhaust leak; kids.gov.il/sababa/sababa_pool/pages/4451 (Ministry of Environmental Protection, children’s site) says CO from car engines in closed areas can cause acute poisoning; candidate source for Dudi’s decision, not used', 1040: 'closed car park, engine running; kids.gov.il/sababa/sababa_pool/pages/4451 (Ministry of Environmental Protection, children’s site) says CO from car engines in closed areas can cause acute poisoning; candidate source for Dudi’s decision, not used', 1061: 'engine in closed space; kids.gov.il/sababa/sababa_pool/pages/4451 (Ministry of Environmental Protection, children’s site) says CO from car engines in closed areas can cause acute poisoning; candidate source for Dudi’s decision, not used',
          1041: 'fuel economy', 1059: 'fuel economy', 1287: 'fuel economy', 1042: 'exhaust pollution maintenance',
          1066: 'jack position', 742: 'kick-down', 1290: 'manual vs automatic difference'},
  'edu': {1048: 'steering wear on front tyres', 1068: 'pressure gauge', 1069: 'fuel light', 1562: 'parking-brake light (only listed)'},
