@@ -1,6 +1,6 @@
 # Question bank version check (v1.8.0, 2026-10-26)
 
-Checked: data.gov.il CKAN `package_search` (one call, 2026-10-26 ~15:5x UTC+2) and the tqhe metadata fetched the same morning (`data/raw/meta.json`, not committed). gov.il pages answer 403 (bot check) to scripted fetches, so gov.il itself was not re-checked.
+Checked: data.gov.il CKAN `package_search` (one call, 2026-10-26 ~15:23 UTC+2) and the tqhe metadata fetched the same morning (`data/raw/meta.json`, not committed). gov.il pages answer 403 (bot check) to scripted fetches, so gov.il itself was not re-checked.
 
 ## Newer version than 2021?
 No. The CC BY main-test banks are unchanged:

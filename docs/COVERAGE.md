@@ -1,6 +1,6 @@
 # Coverage
 
-**Headline (v1.7.0, whole bank, every question judged):** of all **1,801** questions, **76.0% full**, **63.1% strict full**, **90.3% full or partial**. Classes B and A: every question that has an official state source is taught (fully or partly); the rest are listed with the search done in [NO_SOURCE_B_A.md](NO_SOURCE_B_A.md).
+**Headline (v1.8.0, whole bank, every question judged):** of all **1,801** questions, **76.5% full**, **63.5% strict full**, **90.4% full or partial**. Classes B and A: every question that has an official state source is taught (fully or partly); the rest are listed with the search done in [NO_SOURCE_B_A.md](NO_SOURCE_B_A.md).
 
 Definitions:
 - **full**: a lesson rule, example, recap or the sign dictionary teaches the answer.
@@ -14,13 +14,13 @@ Method: `tools/coverage/verdicts.txt` holds one verdict per question (hand judge
 
 | | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source |
 |---|---|---|---|---|---|---|
-| whole bank | 1801 | 76.0 | 63.1 | 90.3 | 33 | 142 |
-| B private car | 1272 | 80.5 | 64.2 | 95.6 | 0 | 56 |
-| A motorcycle | 1155 | 79.2 | 61.6 | 94.3 | 0 | 66 |
-| C1 truck ≤12 t | 1385 | 78.6 | 63.3 | 92.9 | 30 | 69 |
-| C heavy truck | 1314 | 79.9 | 63.9 | 92.8 | 32 | 62 |
-| D bus | 1316 | 81.1 | 64.2 | 94.3 | 5 | 70 |
-| 1 tractor | 1127 | 81.3 | 63.2 | 94.1 | 1 | 65 |
+| whole bank | 1801 | 76.5 | 63.5 | 90.4 | 33 | 140 |
+| B private car | 1272 | 81.1 | 64.8 | 95.8 | 0 | 54 |
+| A motorcycle | 1155 | 79.7 | 62.1 | 94.4 | 0 | 65 |
+| C1 truck ≤12 t | 1385 | 79.1 | 63.9 | 93.0 | 30 | 67 |
+| C heavy truck | 1314 | 80.4 | 64.4 | 93.0 | 32 | 60 |
+| D bus | 1316 | 81.5 | 64.6 | 94.5 | 5 | 68 |
+| 1 tractor | 1127 | 81.7 | 63.6 | 94.3 | 1 | 63 |
 
 ## Class-only questions (questions that belong to that class alone)
 
@@ -37,9 +37,9 @@ Method: `tools/coverage/verdicts.txt` holds one verdict per question (hand judge
 
 | | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source |
 |---|---|---|---|---|---|---|
-| law | 901 | 77.8 | 77.8 | 92.3 | 31 | 38 |
-| signs | 390 | 95.6 | 35.9 | 99.5 | 1 | 1 |
-| safety | 400 | 58.8 | 58.8 | 79.0 | 1 | 83 |
+| law | 901 | 78.6 | 78.6 | 92.3 | 31 | 38 |
+| signs | 390 | 95.9 | 36.2 | 99.5 | 1 | 1 |
+| safety | 400 | 58.8 | 58.8 | 79.5 | 1 | 81 |
 | vehicle | 110 | 54.5 | 54.5 | 81.8 | 0 | 20 |
 
 ## Recommendation on classes
