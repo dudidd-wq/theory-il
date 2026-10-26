@@ -43,10 +43,23 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 - [x] Alt text / screen-reader notice (generic alt + sr-only note per picture question + About section; no invented descriptions); per-class eligibility (js/elig.js, own wording, every line links TR 176–189/221 at pinned revid); search by text/number (#/search); mistakes filter by topic (#/review/all-<topic>)
 
 ## v1.2 – coverage audit (are all question topics taught by the lessons?)
-- [ ] tools/coverage.py: lesson knowledge units (rules + cited excerpt, body, recap, examples, gallery) → auto match per question (char n-gram TF-IDF + answer-discrimination) → data/coverage.json
-- [ ] manual judgement sample (seed fixed, ≥150 per class) → tools/coverage/sample.json; before numbers in docs/COVERAGE.md
+- [x] tools/coverage.py: lesson knowledge units (rules + cited excerpt, body, recap, examples, gallery) → auto match per question (char n-gram TF-IDF + answer-discrimination) → data/coverage.json
+- [x] manual judgement sample (seed 20261026, 270 Qs, 166–215 per class) → tools/coverage/judged.json; before numbers docs/coverage_before.json (full 21–25%, full+partial 36–42% per class)
 - [ ] sign coverage: sign questions → לות"ם sign numbers; gallery/lesson presence
 - [ ] fixes: new law-cited lessons/rules (Wikisource pinned revs, לות"ם only), sign dictionary
 - [ ] "related lesson" link on the explanation screen after answering
 - [ ] build-time test: every question mapped to a lesson
 - [ ] 1.2.0 SW bump, e2e, push, live check; after numbers
+
+### review #2 findings (theory_review_findings_2.md), by severity
+- [ ] HIGH bus/heavy headlights: 97(ג) season 1.11–31.3 also for bus/taxi/>14,999 (Q1155)
+- [ ] new-driver definition per TO 12א(א) (exception is about the *previous* licence); newdrv lesson on A and 1 paths
+- [ ] per-answer "why" (matching rule + citation) after each answer
+- [ ] "learn this" link on wrong answers and in mistakes list
+- [ ] alcohol/fatigue/drugs/belts lesson; vehicle basics lesson (only citable sources)
+- [ ] lesson quizzes drawn from questions mapped to that lesson
+- [ ] Q180 example: 125 is an upright triangle
+- [ ] citations: Q207→72(א)(7); Q88→48(ג); overtake 47(ו)(1) exception; rail 117(ב) condition + 117(ג)
+- [ ] 189(ט) minibus 18; A1 line in elig.js
+- [ ] low: diagram focus at last step; no achievement toast on wrong answer; blind-spot starts on lesson vehicle; red ring speed sign; Wikisource CC BY-SA in About; image precache retry + "X of N saved"; signs explorer parts 5 & 9
+- [ ] restore: merge option
