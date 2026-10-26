@@ -13,6 +13,8 @@ LOT = json.load(open(os.path.join(ROOT, 'tools/law/lotam.json')))
 OFF = json.load(open(os.path.join(ROOT, 'tools/official/pages.json')))  # pinned RSA/gov.il pages (tools/official/pin.py)
 QS = {q['id']: q for q in json.load(open(os.path.join(ROOT, 'data/q.he.json')))}
 META = LAW['_meta']
+import bank_lessons as _bl
+NOSRC = set(_bl.nosource_ids(QS))  # v1.13 D2
 TITLES = {'TR': 'תקנות_התעבורה', 'TO': 'פקודת_התעבורה'}
 NAMES = {'TR': 'תקנות התעבורה, התשכ"א–1961', 'TO': 'פקודת התעבורה [נוסח חדש]'}
 BANK_URL = 'https://data.gov.il/he/datasets/ministry_of_transport/tqhe'
@@ -189,6 +191,9 @@ for L in LESSONS:
             quiz = sorted(mapped)
         else:
             quiz = sorted(set(mapped) | set(quiz))
+    # v1.13 (review #9 D2): questions with no official source are never practised as regular lesson items –
+    # they appear only in the 'מהמאגר הרשמי' bank-only lessons (question + published answer, no explanation)
+    quiz = [i for i in quiz if i not in NOSRC]
     gal = []
     if L.get('gal'):
         cand = pick(L, {'k': ['signs'], 're': L['gal']['re']}, True)

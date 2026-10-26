@@ -307,6 +307,12 @@ for _L in _LS:
         _bad1 += [_w + f' check "{c}" not in its own excerpt' for c in _ch if _sd.split(':')[0] in ('TR', 'TO', 'OFF') and _nm(c) not in _own]
 ok(not _bad1 and _n1 > 600, f'v1.13 (review #9 D1): every rule / mnemonic / recap / example pins its own passage, present in the pinned source and containing its own checks ({_n1} items; {_bad1[:4]})')
 ok('mine.length ? mine' in JL and 'slice(0, 4)' not in JL and "'#page=' + pg[1]" in JL, 'v1.13 (review #9 D1): the chip shows the item\'s own passage first')
+
+# v1.13 (review #9 D2): no-source questions are never regular lesson-quiz items; each is in a 'מהמאגר הרשמי' bank-only lesson
+_NSQ = {int(k) for k, e in CF['q'].items() if e['v'] == 'none' and e.get('src') == 'S'}
+_inq = sorted({(l['id'], q) for l in LJ['lessons'] if not l.get('bank') for q in l['quiz'] if q in _NSQ})
+_nob = sorted(q for q in _NSQ if not any(q in l.get('bank', []) for l in LJ['lessons']))
+ok(not _inq and not _nob and {92, 909, 914, 923, 1160, 1076, 1699, 1765, 1454, 1455, 1456, 1472} <= _NSQ, f'v1.13 (review #9 D2): {len(_NSQ)} no-source questions: none in a regular lesson quiz {_inq[:5]}, all in a bank-only lesson {_nob[:5]}')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 
