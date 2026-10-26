@@ -1,0 +1,114 @@
+{
+ "version": "20261026",
+ "built": "2026-10-26T06:20Z",
+ "total": 1801,
+ "classes": {
+  "1": 1127,
+  "A": 1155,
+  "B": 1272,
+  "C": 1314,
+  "C1": 1385,
+  "D": 1316
+ },
+ "topics": {
+  "law": 901,
+  "signs": 390,
+  "safety": 400,
+  "vehicle": 110
+ },
+ "images": 442,
+ "langs": {
+  "he": {
+   "count": 1801,
+   "dataset": "tqhe",
+   "title": "מאגר השאלות והתשובות הרשמי למבחן נהיגה עיוני ממוחשב",
+   "datasetId": "618dd157-8df3-43e7-bf9a-00974b4919e9",
+   "resourceId": "8c0f314f-583d-48b6-9f5f-4483d95f6848",
+   "licence": "cc-by",
+   "licenceTitle": "Creative Commons Attribution",
+   "org": "משרד התחבורה והבטיחות בדרכים",
+   "resourceModified": "2021-12-05T14:52:38.930481",
+   "metadataModified": "2023-03-21T18:32:47.687636",
+   "records": 1802,
+   "sha256": "240f89eb89207250cf30dfbeff140c5fcdfb72d6442bba64e65d86f31151475c",
+   "fetched": "2026-10-26T06:17Z",
+   "url": "https://data.gov.il/dataset/tqhe"
+  },
+  "en": {
+   "count": 1801,
+   "dataset": "tqen",
+   "title": "The complete pool of questions and answers for the computerized driving theory test",
+   "datasetId": "98e9fc82-6035-4f6c-9160-ed7d254da78f",
+   "resourceId": "9a197011-adf9-45a2-81b9-d17dabdf990b",
+   "licence": "cc-by",
+   "licenceTitle": "Creative Commons Attribution",
+   "org": "משרד התחבורה והבטיחות בדרכים",
+   "resourceModified": "2021-12-13T10:21:50.624161",
+   "metadataModified": "2023-03-21T18:32:47.687636",
+   "records": 1803,
+   "sha256": "91e369f4711505111f981cf97a541e486a7e09dada89db7db707e0cfaef743c5",
+   "fetched": "2026-10-26T06:17Z",
+   "url": "https://data.gov.il/dataset/tqen"
+  },
+  "ru": {
+   "count": 1801,
+   "dataset": "tqru",
+   "title": "Вопросы и ответы квалификационного экзамена на знание Правил Дорожного Движения",
+   "datasetId": "606c6ab9-a46e-401b-85d0-1d6167a93720",
+   "resourceId": "ca264280-1669-45ce-a96f-a4c9ed71e812",
+   "licence": "cc-by",
+   "licenceTitle": "Creative Commons Attribution",
+   "org": "משרד התחבורה והבטיחות בדרכים",
+   "resourceModified": "2019-09-05T05:04:40.709302",
+   "metadataModified": "2023-03-21T18:32:47.687636",
+   "records": 1802,
+   "sha256": "3a11de4d4aaf1ce6119a77db3df2d216f2a0981d9a719e289722b5e2a7ee7e9d",
+   "fetched": "2026-10-26T06:17Z",
+   "url": "https://data.gov.il/dataset/tqru"
+  },
+  "fr": {
+   "count": 1800,
+   "dataset": "tqfr",
+   "title": "Questions et réponses de l'examen de conduite théorique informatisé",
+   "datasetId": "fbb35f2a-2cc9-49c6-b2ce-23581d750362",
+   "resourceId": "a106ea08-ff97-4971-8720-c85bdd3d2264",
+   "licence": "cc-by",
+   "licenceTitle": "Creative Commons Attribution",
+   "org": "משרד התחבורה והבטיחות בדרכים",
+   "resourceModified": "2021-12-13T10:26:32.575269",
+   "metadataModified": "2023-03-21T18:32:47.687636",
+   "records": 1802,
+   "sha256": "0588addad5870bf9d68feeb8b042e71e9fedd57a2768bf8d3f2c42d4e5f8e304",
+   "fetched": "2026-10-26T06:17Z",
+   "url": "https://data.gov.il/dataset/tqfr"
+  },
+  "es": {
+   "count": 1801,
+   "dataset": "tqes",
+   "title": "Banco de preguntas del examen teórico a tomarse en el Ministerio de Transporte para y renovar licencias de conducción",
+   "datasetId": "80228026-5a7a-4cec-84f0-f2001381ec1f",
+   "resourceId": "e8da3b53-cdd0-4ef9-ae19-ff78c773e882",
+   "licence": "cc-by",
+   "licenceTitle": "Creative Commons Attribution",
+   "org": "משרד התחבורה והבטיחות בדרכים",
+   "resourceModified": "2019-09-05T05:09:58.420961",
+   "metadataModified": "2023-03-21T18:32:47.687636",
+   "records": 1803,
+   "sha256": "1960246a64127615653f8da609780191a4eeaf209b1a25dc78b359f382c75dfd",
+   "fetched": "2026-10-26T06:17Z",
+   "url": "https://data.gov.il/dataset/tqes"
+  }
+ },
+ "excluded": {
+  "ar": "tqar – licence on data.gov.il is \"other-open\", excluded until clarified",
+  "a3": "A3 banks – licence \"other-open\", excluded until clarified",
+  "am": "no Amharic bank for the main test on data.gov.il"
+ },
+ "problems": {
+  "he:excluded": 1,
+  "fr:mismatch": 1
+ },
+ "excludedQuestions": [
+  "he 574 excluded"
+ ]
+}
