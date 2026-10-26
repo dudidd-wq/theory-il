@@ -45,21 +45,21 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 ## v1.2 – coverage audit (are all question topics taught by the lessons?)
 - [x] tools/coverage.py: lesson knowledge units (rules + cited excerpt, body, recap, examples, gallery) → auto match per question (char n-gram TF-IDF + answer-discrimination) → data/coverage.json
 - [x] manual judgement sample (seed 20261026, 270 Qs, 166–215 per class) → tools/coverage/judged.json; before numbers docs/coverage_before.json (full 21–25%, full+partial 36–42% per class)
-- [ ] sign coverage: sign questions → לות"ם sign numbers; gallery/lesson presence
-- [ ] fixes: new law-cited lessons/rules (Wikisource pinned revs, לות"ם only), sign dictionary
-- [ ] "related lesson" link on the explanation screen after answering
-- [ ] build-time test: every question mapped to a lesson
-- [ ] 1.2.0 SW bump, e2e, push, live check; after numbers
+- [x] sign coverage: sign questions → לות"ם numbers (data/signs.json, 276 entries, parts 1–9); sample sign questions full 12→47 of 57
+- [x] fixes: 6 new law-cited lessons (signal, duty, sober, accident, terms, cargo) + bus rules + sign dictionary; 22 lessons / 108 sources, all TR/TO pinned Wikisource or gov.il לות"ם
+- [x] "why" box + "related lesson"/"learn this" link after answering (no link when the topic is not taught)
+- [x] build-time test: tools/coverage.py exits 1 on unmapped; tools/test/data_test.py (mapping, units, quizzes, sources, signs, elig, review fixes, SW)
+- [x] 1.2.0 SW bump, e2e, push, live check; after numbers in docs/COVERAGE.md (sample full 19→44%, full+partial 33→60%)
 
 ### review #2 findings (theory_review_findings_2.md), by severity
-- [ ] HIGH bus/heavy headlights: 97(ג) season 1.11–31.3 also for bus/taxi/>14,999 (Q1155)
-- [ ] new-driver definition per TO 12א(א) (exception is about the *previous* licence); newdrv lesson on A and 1 paths
-- [ ] per-answer "why" (matching rule + citation) after each answer
-- [ ] "learn this" link on wrong answers and in mistakes list
-- [ ] alcohol/fatigue/drugs/belts lesson; vehicle basics lesson (only citable sources)
-- [ ] lesson quizzes drawn from questions mapped to that lesson
-- [ ] Q180 example: 125 is an upright triangle
-- [ ] citations: Q207→72(א)(7); Q88→48(ג); overtake 47(ו)(1) exception; rail 117(ב) condition + 117(ג)
-- [ ] 189(ט) minibus 18; A1 line in elig.js
-- [ ] low: diagram focus at last step; no achievement toast on wrong answer; blind-spot starts on lesson vehicle; red ring speed sign; Wikisource CC BY-SA in About; image precache retry + "X of N saved"; signs explorer parts 5 & 9
-- [ ] restore: merge option
+- [x] HIGH bus/heavy headlights: 97(ג) season 1.11–31.3 also for bus/taxi/>14,999 (Q1155)
+- [x] new-driver definition per TO 12א(א) (exception is about the *previous* licence); newdrv lesson on A and 1 paths
+- [x] per-answer "why" (matching rule + citation) after each answer
+- [x] "learn this" link on wrong answers and in mistakes list (grouped by lesson + practise per lesson)
+- [x] alcohol/accident/duties lessons from law; vehicle-basics lesson NOT added – no citable official source (see docs/COVERAGE.md)
+- [x] lesson quizzes drawn from questions mapped to that lesson
+- [x] Q180 example: 125 is an upright triangle
+- [x] citations: Q207→72(א)(7); Q88→48(ג); overtake 47(ו)(1) exception; rail 117(ב) condition + 117(ג)
+- [x] 189(ט) minibus 18; A1 line in elig.js
+- [x] low: diagram focus at last step; no achievement toast on wrong answer; blind-spot starts on lesson vehicle; red ring speed sign; Wikisource CC BY-SA in About; image precache retry + "X of N saved"; signs explorer parts 5 & 9; aria-valuetext
+- [x] restore: merge option (opt-in checkbox)

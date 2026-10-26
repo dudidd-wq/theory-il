@@ -176,6 +176,14 @@
   "tn": 97,
   "accuracy": 77.4
  },
+ "all": {
+  "n": 270,
+  "full": 120,
+  "partial": 41,
+  "none": 109,
+  "full_pct": 44.4,
+  "any_pct": 59.6
+ },
  "signs": {
   "n": 57,
   "full": 47,

@@ -27,6 +27,8 @@
 ## פיתוח
 - `python3 tools/bump.py` בכל שינוי (גרסה ב-js/version.js וב-sw.js)
 - בדיקות: `python3 -m http.server 8787 --bind 127.0.0.1` ואז `node tools/test/e2e.js` (Playwright, נייד+מחשב, axe-core)
+- בדיקות נתונים (נכשלות אם יש שאלה שלא ממופה לשיעור): `python3 tools/lessons.py && python3 tools/coverage.py --label after && python3 tools/lessons.py && python3 tools/test/data_test.py`
+- דוח כיסוי שאלות↔שיעורים: [docs/COVERAGE.md](docs/COVERAGE.md)
 
 ## רישיונות
 - קוד: MIT (LICENSE)

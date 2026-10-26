@@ -89,6 +89,8 @@ for c in CLS:
     ac = collections.Counter('f' if autoclass[q['id']] in 'fa' else autoclass[q['id']] for q in pool
                              if any(c in lcls[ul[u]] for u in cov[q['id']][2]) or autoclass[q['id']] == 'n')
     stats['auto'][c] = {'pool': len(pool), **{k: round(100 * v / len(pool), 1) for k, v in ac.items()}}
+n = collections.Counter(man[str(i)]['v'] for i in SAMPLE)
+stats['all'] = {'n': len(SAMPLE), **dict(n), 'full_pct': round(100 * n['full'] / len(SAMPLE), 1), 'any_pct': round(100 * (n['full'] + n['partial']) / len(SAMPLE), 1)}
 for k in TOP:
     ids = [i for i in SAMPLE if by[i]['k'] == k]
     n = collections.Counter(man[str(i)]['v'] for i in ids)

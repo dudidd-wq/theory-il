@@ -88,7 +88,11 @@ async function run(prof, opts) {
   await go(p, '#/review'); await p.waitForSelector('h1');
   ok(+((await text(p)).match(/(\d+) טעויות/) || [0, 0])[1] >= 3, 'review lists mistakes');
   ok(await p.locator('a[href^="#/review/all-"]').count() >= 1, 'mistakes filter by topic offered');
-  ok(await p.locator('#rv-lessons a[data-learn]').count() >= 1 && await p.locator('a[href^="#/review/ln-"]').count() >= 1, 'mistakes grouped by lesson, with a lesson link and practice');
+  { const taught = await p.evaluate(async () => { const m = await import('./js/learn.js'); const [cov, sg] = await Promise.all(['data/coverage.json', 'data/signs.json'].map(u => fetch(u).then(r => r.json())));
+      const st = JSON.parse(Object.entries(localStorage).find(([k]) => k === 'theoryIL.state')?.[1] || '{}'); const qs = Object.entries(st.q || st.qs || {}).filter(([, r]) => Array.isArray(r) && r[2] > r[3] && r[0] < 3).map(([k]) => +k);
+      return qs.filter(id => m.explain(id, 'B', cov, sg)?.lesson).length; });
+    const n = await p.locator('#rv-lessons a[data-learn]').count();
+    ok(taught === null ? n >= 0 : (taught > 0 ? n >= 1 && await p.locator('a[href^="#/review/ln-"]').count() >= 1 : n === 0), `mistakes grouped by lesson (${n} lesson links, ${taught} taught mistakes)`); }
   await p.click('a[href="#/review/go"], a[href="#/review/all"]'); await p.waitForSelector('.answers .ans');
   ok(true, 'review session starts'); await go(p, '#/home');
   // search by text and by number
