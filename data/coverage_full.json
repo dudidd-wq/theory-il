@@ -4,102 +4,102 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1361,
-"partial": 252,
-"none": 188,
-"full_pct": 75.6,
-"any_pct": 89.6,
-"strict_full": 1128,
-"strict_pct": 62.6,
+"full": 1368,
+"partial": 254,
+"none": 179,
+"full_pct": 76.0,
+"any_pct": 90.1,
+"strict_full": 1135,
+"strict_pct": 63.0,
 "none_teachable": 37,
-"none_nosource": 151
+"none_nosource": 142
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 1016,
-"partial": 187,
-"none": 69,
-"full_pct": 79.9,
-"any_pct": 94.6,
-"strict_full": 808,
-"strict_pct": 63.5,
+"full": 1023,
+"partial": 189,
+"none": 60,
+"full_pct": 80.4,
+"any_pct": 95.3,
+"strict_full": 815,
+"strict_pct": 64.1,
 "none_teachable": 4,
-"none_nosource": 65
+"none_nosource": 56
 },
 "A": {
 "n": 1155,
-"full": 912,
-"partial": 172,
-"none": 71,
-"full_pct": 79.0,
-"any_pct": 93.9,
-"strict_full": 709,
-"strict_pct": 61.4,
+"full": 915,
+"partial": 173,
+"none": 67,
+"full_pct": 79.2,
+"any_pct": 94.2,
+"strict_full": 712,
+"strict_pct": 61.6,
 "none_teachable": 4,
-"none_nosource": 67
+"none_nosource": 63
 },
 "C1": {
 "n": 1385,
-"full": 1081,
-"partial": 196,
-"none": 108,
-"full_pct": 78.1,
-"any_pct": 92.2,
-"strict_full": 870,
-"strict_pct": 62.8,
+"full": 1087,
+"partial": 197,
+"none": 101,
+"full_pct": 78.5,
+"any_pct": 92.7,
+"strict_full": 876,
+"strict_pct": 63.2,
 "none_teachable": 34,
-"none_nosource": 74
+"none_nosource": 67
 },
 "C": {
 "n": 1314,
-"full": 1044,
+"full": 1049,
 "partial": 170,
-"none": 100,
-"full_pct": 79.5,
-"any_pct": 92.4,
-"strict_full": 834,
-"strict_pct": 63.5,
+"none": 95,
+"full_pct": 79.8,
+"any_pct": 92.8,
+"strict_full": 839,
+"strict_pct": 63.9,
 "none_teachable": 36,
-"none_nosource": 64
+"none_nosource": 59
 },
 "D": {
 "n": 1316,
-"full": 1061,
+"full": 1066,
 "partial": 174,
-"none": 81,
-"full_pct": 80.6,
-"any_pct": 93.8,
-"strict_full": 839,
-"strict_pct": 63.8,
+"none": 76,
+"full_pct": 81.0,
+"any_pct": 94.2,
+"strict_full": 844,
+"strict_pct": 64.1,
 "none_teachable": 9,
-"none_nosource": 72
+"none_nosource": 67
 },
 "1": {
 "n": 1127,
-"full": 911,
+"full": 915,
 "partial": 145,
-"none": 71,
-"full_pct": 80.8,
-"any_pct": 93.7,
-"strict_full": 707,
-"strict_pct": 62.7,
+"none": 67,
+"full_pct": 81.2,
+"any_pct": 94.1,
+"strict_full": 711,
+"strict_pct": 63.1,
 "none_teachable": 5,
-"none_nosource": 66
+"none_nosource": 62
 }
 },
 "class_only": {
 "B": {
 "n": 9,
-"full": 4,
+"full": 5,
 "partial": 2,
-"none": 3,
-"full_pct": 44.4,
-"any_pct": 66.7,
-"strict_full": 4,
-"strict_pct": 44.4,
+"none": 2,
+"full_pct": 55.6,
+"any_pct": 77.8,
+"strict_full": 5,
+"strict_pct": 55.6,
 "none_teachable": 0,
-"none_nosource": 3
+"none_nosource": 2
 },
 "A": {
 "n": 88,
@@ -189,27 +189,27 @@
 },
 "safety": {
 "n": 400,
-"full": 229,
-"partial": 80,
-"none": 91,
-"full_pct": 57.2,
-"any_pct": 77.2,
-"strict_full": 229,
-"strict_pct": 57.2,
+"full": 234,
+"partial": 81,
+"none": 85,
+"full_pct": 58.5,
+"any_pct": 78.8,
+"strict_full": 234,
+"strict_pct": 58.5,
 "none_teachable": 2,
-"none_nosource": 89
+"none_nosource": 83
 },
 "vehicle": {
 "n": 110,
-"full": 58,
-"partial": 26,
-"none": 26,
-"full_pct": 52.7,
-"any_pct": 76.4,
-"strict_full": 58,
-"strict_pct": 52.7,
+"full": 60,
+"partial": 27,
+"none": 23,
+"full_pct": 54.5,
+"any_pct": 79.1,
+"strict_full": 60,
+"strict_pct": 54.5,
 "none_teachable": 0,
-"none_nosource": 26
+"none_nosource": 23
 }
 },
 "class_topic": {
@@ -240,27 +240,27 @@
 },
 "safety": {
 "n": 305,
-"full": 202,
-"partial": 65,
-"none": 38,
-"full_pct": 66.2,
-"any_pct": 87.5,
-"strict_full": 202,
-"strict_pct": 66.2,
+"full": 207,
+"partial": 66,
+"none": 32,
+"full_pct": 67.9,
+"any_pct": 89.5,
+"strict_full": 207,
+"strict_pct": 67.9,
 "none_teachable": 1,
-"none_nosource": 37
+"none_nosource": 31
 },
 "vehicle": {
 "n": 106,
-"full": 56,
-"partial": 26,
-"none": 24,
-"full_pct": 52.8,
-"any_pct": 77.4,
-"strict_full": 56,
-"strict_pct": 52.8,
+"full": 58,
+"partial": 27,
+"none": 21,
+"full_pct": 54.7,
+"any_pct": 80.2,
+"strict_full": 58,
+"strict_pct": 54.7,
 "none_teachable": 0,
-"none_nosource": 24
+"none_nosource": 21
 }
 },
 "A": {
@@ -290,15 +290,15 @@
 },
 "safety": {
 "n": 312,
-"full": 192,
-"partial": 71,
-"none": 49,
-"full_pct": 61.5,
-"any_pct": 84.3,
-"strict_full": 192,
-"strict_pct": 61.5,
+"full": 195,
+"partial": 72,
+"none": 45,
+"full_pct": 62.5,
+"any_pct": 85.6,
+"strict_full": 195,
+"strict_pct": 62.5,
 "none_teachable": 1,
-"none_nosource": 48
+"none_nosource": 44
 },
 "vehicle": {
 "n": 60,
@@ -340,27 +340,27 @@
 },
 "safety": {
 "n": 312,
-"full": 205,
+"full": 210,
 "partial": 66,
-"none": 41,
-"full_pct": 65.7,
-"any_pct": 86.9,
-"strict_full": 205,
-"strict_pct": 65.7,
+"none": 36,
+"full_pct": 67.3,
+"any_pct": 88.5,
+"strict_full": 210,
+"strict_pct": 67.3,
 "none_teachable": 1,
-"none_nosource": 40
+"none_nosource": 35
 },
 "vehicle": {
 "n": 101,
-"full": 56,
-"partial": 24,
-"none": 21,
-"full_pct": 55.4,
-"any_pct": 79.2,
-"strict_full": 56,
-"strict_pct": 55.4,
+"full": 57,
+"partial": 25,
+"none": 19,
+"full_pct": 56.4,
+"any_pct": 81.2,
+"strict_full": 57,
+"strict_pct": 56.4,
 "none_teachable": 0,
-"none_nosource": 21
+"none_nosource": 19
 }
 },
 "C": {
@@ -390,15 +390,15 @@
 },
 "safety": {
 "n": 307,
-"full": 196,
+"full": 201,
 "partial": 66,
-"none": 45,
-"full_pct": 63.8,
-"any_pct": 85.3,
-"strict_full": 196,
-"strict_pct": 63.8,
+"none": 40,
+"full_pct": 65.5,
+"any_pct": 87.0,
+"strict_full": 201,
+"strict_pct": 65.5,
 "none_teachable": 2,
-"none_nosource": 43
+"none_nosource": 38
 },
 "vehicle": {
 "n": 22,
@@ -440,15 +440,15 @@
 },
 "safety": {
 "n": 299,
-"full": 196,
+"full": 201,
 "partial": 65,
-"none": 38,
-"full_pct": 65.6,
-"any_pct": 87.3,
-"strict_full": 196,
-"strict_pct": 65.6,
+"none": 33,
+"full_pct": 67.2,
+"any_pct": 89.0,
+"strict_full": 201,
+"strict_pct": 67.2,
 "none_teachable": 1,
-"none_nosource": 37
+"none_nosource": 32
 },
 "vehicle": {
 "n": 22,
@@ -490,15 +490,15 @@
 },
 "safety": {
 "n": 295,
-"full": 184,
+"full": 188,
 "partial": 56,
-"none": 55,
-"full_pct": 62.4,
-"any_pct": 81.4,
-"strict_full": 184,
-"strict_pct": 62.4,
+"none": 51,
+"full_pct": 63.7,
+"any_pct": 82.7,
+"strict_full": 188,
+"strict_pct": 63.7,
 "none_teachable": 1,
-"none_nosource": 54
+"none_nosource": 50
 },
 "vehicle": {
 "n": 43,
@@ -515,10 +515,10 @@
 }
 },
 "by": {
-"hand": 765,
-"v1.5": 709,
+"hand": 757,
+"v1.5": 718,
 "link": 80,
-"sample": 247
+"sample": 246
 },
 "none_ids": {
 "B": [
@@ -530,12 +530,8 @@
 708,
 728,
 742,
-750,
 778,
-801,
-818,
 830,
-833,
 861,
 869,
 878,
@@ -547,7 +543,6 @@
 911,
 914,
 923,
-930,
 931,
 942,
 944,
@@ -561,7 +556,6 @@
 985,
 1005,
 1006,
-1013,
 1016,
 1020,
 1037,
@@ -569,7 +563,6 @@
 1040,
 1041,
 1042,
-1043,
 1048,
 1059,
 1061,
@@ -578,12 +571,10 @@
 1068,
 1069,
 1076,
-1077,
 1183,
 1287,
 1290,
 1296,
-1499,
 1500,
 1532,
 1562,
@@ -599,11 +590,8 @@
 699,
 708,
 728,
-750,
 778,
-818,
 830,
-833,
 869,
 878,
 885,
@@ -629,7 +617,6 @@
 1040,
 1041,
 1042,
-1043,
 1059,
 1065,
 1068,
@@ -15381,11 +15368,14 @@
 "by": "v1.5"
 },
 "750": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "keep right rationale",
-"src": "S",
+"v": "full",
+"rule": [
+"lanes#r9"
+],
+"ref": [
+"lanes#r:נוסעים בימין הכביש: כך נוצר ריחוק מה"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -15395,7 +15385,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "751": {
 "v": "full",
@@ -16387,11 +16377,14 @@
 "by": "link"
 },
 "801": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "reversing technique",
-"src": "S",
+"v": "full",
+"rule": [
+"lanes#r10"
+],
+"ref": [
+"lanes#r:לפני נסיעה לאחור בודקים את השטח שמאח"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "B",
@@ -16400,7 +16393,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "802": {
 "v": "full",
@@ -16722,11 +16715,14 @@
 "by": "v1.5"
 },
 "818": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "spacing stress",
-"src": "S",
+"v": "full",
+"rule": [
+"gap2#r6"
+],
+"ref": [
+"gap2#r:שמירת רווח מהרכב שלפנים מונעת תאונות"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -16736,7 +16732,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "819": {
 "v": "full",
@@ -17016,11 +17012,14 @@
 "by": "v1.5"
 },
 "833": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "shoulder",
-"src": "S",
+"v": "full",
+"rule": [
+"shoulder2#r8"
+],
+"ref": [
+"shoulder2#r:ירידה לשול במהירות גבוהה, או במקום ש"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -17030,7 +17029,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "834": {
 "v": "full",
@@ -18891,11 +18890,14 @@
 "by": "sample"
 },
 "930": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "wheel change",
-"src": "S",
+"v": "full",
+"rule": [
+"maint2#r9"
+],
+"ref": [
+"maint2#r:לפני החלפת גלגל: מרחיקים את הרכב משפ"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "B",
 "C",
@@ -18903,7 +18905,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "931": {
 "v": "none",
@@ -20422,16 +20424,19 @@
 "by": "v1.5"
 },
 "1013": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "head restraints",
-"src": "S",
+"v": "full",
+"rule": [
+"safety2#r7"
+],
+"ref": [
+"safety2#r:בתאונה מלפנים או מאחור הראש נוטה לנו"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "B"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1014": {
 "v": "partial",
@@ -20906,17 +20911,20 @@
 "by": "hand"
 },
 "1043": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "refuelling spark",
-"src": "S",
+"v": "partial",
+"rule": [
+"maint2#r10"
+],
+"ref": [
+"maint2#r:לא ממלאים דלק ולא פותחים את מכסה מיכ"
+],
+"why": "rule covers part of the answer (TR:160)",
 "cls": [
 "A",
 "B"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1044": {
 "v": "full",
@@ -21472,17 +21480,20 @@
 "by": "hand"
 },
 "1077": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "jack safety",
-"src": "S",
+"v": "partial",
+"rule": [
+"maint2#r9"
+],
+"ref": [
+"maint2#r:לפני החלפת גלגל: מרחיקים את הרכב משפ"
+],
+"why": "rule covers part of the answer (OFF:textbook)",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "sample"
+"by": "v1.5"
 },
 "1078": {
 "v": "full",
@@ -28015,17 +28026,20 @@
 "by": "v1.5"
 },
 "1499": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "wheel change",
-"src": "S",
+"v": "full",
+"rule": [
+"maint2#r9"
+],
+"ref": [
+"maint2#r:לפני החלפת גלגל: מרחיקים את הרכב משפ"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1500": {
 "v": "none",

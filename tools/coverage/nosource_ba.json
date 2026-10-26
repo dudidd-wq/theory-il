@@ -218,11 +218,6 @@
    "note": "bumpers",
    "cls": "B"
   },
-  "1013": {
-   "g": "veh",
-   "note": "head restraint purpose",
-   "cls": "B"
-  },
   "1765": {
    "g": "veh",
    "note": "head restraint height (textbook p16 says centre at skull centre – conflicts)",
@@ -278,29 +273,9 @@
    "note": "exhaust pollution maintenance",
    "cls": "BA"
   },
-  "1043": {
-   "g": "veh",
-   "note": "refuelling with engine on",
-   "cls": "BA"
-  },
   "1066": {
    "g": "veh",
    "note": "jack position",
-   "cls": "B"
-  },
-  "1077": {
-   "g": "veh",
-   "note": "before jacking",
-   "cls": "B"
-  },
-  "930": {
-   "g": "veh",
-   "note": "before jacking",
-   "cls": "B"
-  },
-  "1499": {
-   "g": "veh",
-   "note": "before jacking",
    "cls": "B"
   },
   "742": {
@@ -333,29 +308,9 @@
    "note": "parking-brake light (only listed)",
    "cls": "B"
   },
-  "750": {
-   "g": "drv",
-   "note": "advantage of keeping right",
-   "cls": "BA"
-  },
   "778": {
    "g": "drv",
    "note": "pedestrians near junction",
-   "cls": "BA"
-  },
-  "801": {
-   "g": "drv",
-   "note": "reversing safely",
-   "cls": "B"
-  },
-  "818": {
-   "g": "drv",
-   "note": "safe gap means calmer driving",
-   "cls": "BA"
-  },
-  "833": {
-   "g": "drv",
-   "note": "planned descent to a low shoulder",
    "cls": "BA"
   },
   "869": {
