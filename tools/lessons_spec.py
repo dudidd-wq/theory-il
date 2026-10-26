@@ -807,7 +807,7 @@ add_v15()
 def add_v16():
     import lessons_v16 as m
     for after, L in m.lessons(R, C):
-        if any(x['id'] == L['id'] for x in LESSONS): continue
+        assert not any(x['id'] == L['id'] for x in LESSONS), f"v1.6 lesson id {L['id']} already exists"  # never drop silently
         i = next(i for i, x in enumerate(LESSONS) if x['id'] == after)
         LESSONS.insert(i + 1, L)
     for k, v in m.EXAMPLES16.items(): EXAMPLES.setdefault(k, []).extend(X(*e) for e in v)

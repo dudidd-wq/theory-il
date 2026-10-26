@@ -4,101 +4,101 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1320,
-"partial": 256,
-"none": 225,
-"full_pct": 73.3,
-"any_pct": 87.5,
-"strict_full": 1087,
-"strict_pct": 60.4,
-"none_teachable": 57,
+"full": 1337,
+"partial": 253,
+"none": 211,
+"full_pct": 74.2,
+"any_pct": 88.3,
+"strict_full": 1104,
+"strict_pct": 61.3,
+"none_teachable": 43,
 "none_nosource": 168
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 968,
-"partial": 181,
-"none": 123,
-"full_pct": 76.1,
-"any_pct": 90.3,
-"strict_full": 760,
-"strict_pct": 59.7,
-"none_teachable": 24,
-"none_nosource": 99
+"full": 985,
+"partial": 180,
+"none": 107,
+"full_pct": 77.4,
+"any_pct": 91.6,
+"strict_full": 777,
+"strict_pct": 61.1,
+"none_teachable": 10,
+"none_nosource": 97
 },
 "A": {
 "n": 1155,
-"full": 881,
-"partial": 168,
-"none": 106,
-"full_pct": 76.3,
-"any_pct": 90.8,
-"strict_full": 678,
-"strict_pct": 58.7,
-"none_teachable": 17,
-"none_nosource": 89
+"full": 890,
+"partial": 167,
+"none": 98,
+"full_pct": 77.1,
+"any_pct": 91.5,
+"strict_full": 687,
+"strict_pct": 59.5,
+"none_teachable": 10,
+"none_nosource": 88
 },
 "C1": {
 "n": 1385,
-"full": 1036,
-"partial": 197,
-"none": 152,
-"full_pct": 74.8,
-"any_pct": 89.0,
-"strict_full": 825,
-"strict_pct": 59.6,
-"none_teachable": 53,
-"none_nosource": 99
+"full": 1053,
+"partial": 195,
+"none": 137,
+"full_pct": 76.0,
+"any_pct": 90.1,
+"strict_full": 842,
+"strict_pct": 60.8,
+"none_teachable": 40,
+"none_nosource": 97
 },
 "C": {
 "n": 1314,
-"full": 1013,
-"partial": 172,
-"none": 129,
-"full_pct": 77.1,
-"any_pct": 90.2,
-"strict_full": 803,
-"strict_pct": 61.1,
-"none_teachable": 51,
-"none_nosource": 78
+"full": 1026,
+"partial": 170,
+"none": 118,
+"full_pct": 78.1,
+"any_pct": 91.0,
+"strict_full": 816,
+"strict_pct": 62.1,
+"none_teachable": 42,
+"none_nosource": 76
 },
 "D": {
 "n": 1316,
-"full": 1031,
-"partial": 175,
-"none": 110,
-"full_pct": 78.3,
-"any_pct": 91.6,
-"strict_full": 809,
-"strict_pct": 61.5,
-"none_teachable": 23,
+"full": 1043,
+"partial": 171,
+"none": 102,
+"full_pct": 79.3,
+"any_pct": 92.2,
+"strict_full": 821,
+"strict_pct": 62.4,
+"none_teachable": 15,
 "none_nosource": 87
 },
 "1": {
 "n": 1127,
-"full": 879,
-"partial": 145,
-"none": 103,
-"full_pct": 78.0,
-"any_pct": 90.9,
-"strict_full": 675,
-"strict_pct": 59.9,
-"none_teachable": 20,
-"none_nosource": 83
+"full": 891,
+"partial": 144,
+"none": 92,
+"full_pct": 79.1,
+"any_pct": 91.8,
+"strict_full": 687,
+"strict_pct": 61.0,
+"none_teachable": 11,
+"none_nosource": 81
 }
 },
 "class_only": {
 "B": {
 "n": 9,
 "full": 4,
-"partial": 1,
-"none": 4,
+"partial": 2,
+"none": 3,
 "full_pct": 44.4,
-"any_pct": 55.6,
+"any_pct": 66.7,
 "strict_full": 4,
 "strict_pct": 44.4,
-"none_teachable": 1,
+"none_teachable": 0,
 "none_nosource": 3
 },
 "A": {
@@ -165,14 +165,14 @@
 "topic": {
 "law": {
 "n": 901,
-"full": 679,
-"partial": 134,
-"none": 88,
-"full_pct": 75.4,
-"any_pct": 90.2,
-"strict_full": 679,
-"strict_pct": 75.4,
-"none_teachable": 51,
+"full": 695,
+"partial": 131,
+"none": 75,
+"full_pct": 77.1,
+"any_pct": 91.7,
+"strict_full": 695,
+"strict_pct": 77.1,
+"none_teachable": 38,
 "none_nosource": 37
 },
 "signs": {
@@ -201,14 +201,14 @@
 },
 "vehicle": {
 "n": 110,
-"full": 50,
+"full": 51,
 "partial": 26,
-"none": 34,
-"full_pct": 45.5,
-"any_pct": 69.1,
-"strict_full": 50,
-"strict_pct": 45.5,
-"none_teachable": 1,
+"none": 33,
+"full_pct": 46.4,
+"any_pct": 70.0,
+"strict_full": 51,
+"strict_pct": 46.4,
+"none_teachable": 0,
 "none_nosource": 33
 }
 },
@@ -216,15 +216,15 @@
 "B": {
 "law": {
 "n": 501,
-"full": 386,
-"partial": 80,
-"none": 35,
-"full_pct": 77.0,
-"any_pct": 93.0,
-"strict_full": 386,
-"strict_pct": 77.0,
-"none_teachable": 20,
-"none_nosource": 15
+"full": 402,
+"partial": 79,
+"none": 20,
+"full_pct": 80.2,
+"any_pct": 96.0,
+"strict_full": 402,
+"strict_pct": 80.2,
+"none_teachable": 7,
+"none_nosource": 13
 },
 "signs": {
 "n": 360,
@@ -252,29 +252,29 @@
 },
 "vehicle": {
 "n": 106,
-"full": 48,
+"full": 49,
 "partial": 26,
-"none": 32,
-"full_pct": 45.3,
-"any_pct": 69.8,
-"strict_full": 48,
-"strict_pct": 45.3,
-"none_teachable": 1,
+"none": 31,
+"full_pct": 46.2,
+"any_pct": 70.8,
+"strict_full": 49,
+"strict_pct": 46.2,
+"none_teachable": 0,
 "none_nosource": 31
 }
 },
 "A": {
 "law": {
 "n": 429,
-"full": 333,
-"partial": 74,
-"none": 22,
-"full_pct": 77.6,
-"any_pct": 94.9,
-"strict_full": 333,
-"strict_pct": 77.6,
-"none_teachable": 14,
-"none_nosource": 8
+"full": 342,
+"partial": 73,
+"none": 14,
+"full_pct": 79.7,
+"any_pct": 96.7,
+"strict_full": 342,
+"strict_pct": 79.7,
+"none_teachable": 7,
+"none_nosource": 7
 },
 "signs": {
 "n": 354,
@@ -316,15 +316,15 @@
 "C1": {
 "law": {
 "n": 605,
-"full": 445,
-"partial": 92,
-"none": 68,
-"full_pct": 73.6,
-"any_pct": 88.8,
-"strict_full": 445,
-"strict_pct": 73.6,
-"none_teachable": 48,
-"none_nosource": 20
+"full": 461,
+"partial": 90,
+"none": 54,
+"full_pct": 76.2,
+"any_pct": 91.1,
+"strict_full": 461,
+"strict_pct": 76.2,
+"none_teachable": 36,
+"none_nosource": 18
 },
 "signs": {
 "n": 367,
@@ -352,29 +352,29 @@
 },
 "vehicle": {
 "n": 101,
-"full": 48,
+"full": 49,
 "partial": 24,
-"none": 29,
-"full_pct": 47.5,
-"any_pct": 71.3,
-"strict_full": 48,
-"strict_pct": 47.5,
-"none_teachable": 1,
+"none": 28,
+"full_pct": 48.5,
+"any_pct": 72.3,
+"strict_full": 49,
+"strict_pct": 48.5,
+"none_teachable": 0,
 "none_nosource": 28
 }
 },
 "C": {
 "law": {
 "n": 619,
-"full": 465,
-"partial": 88,
-"none": 66,
-"full_pct": 75.1,
-"any_pct": 89.3,
-"strict_full": 465,
-"strict_pct": 75.1,
-"none_teachable": 46,
-"none_nosource": 20
+"full": 478,
+"partial": 86,
+"none": 55,
+"full_pct": 77.2,
+"any_pct": 91.1,
+"strict_full": 478,
+"strict_pct": 77.2,
+"none_teachable": 37,
+"none_nosource": 18
 },
 "signs": {
 "n": 366,
@@ -416,14 +416,14 @@
 "D": {
 "law": {
 "n": 618,
-"full": 471,
-"partial": 95,
-"none": 52,
-"full_pct": 76.2,
-"any_pct": 91.6,
-"strict_full": 471,
-"strict_pct": 76.2,
-"none_teachable": 20,
+"full": 483,
+"partial": 91,
+"none": 44,
+"full_pct": 78.2,
+"any_pct": 92.9,
+"strict_full": 483,
+"strict_pct": 78.2,
+"none_teachable": 12,
 "none_nosource": 32
 },
 "signs": {
@@ -466,15 +466,15 @@
 "1": {
 "law": {
 "n": 436,
-"full": 343,
-"partial": 69,
-"none": 24,
-"full_pct": 78.7,
-"any_pct": 94.5,
-"strict_full": 343,
-"strict_pct": 78.7,
-"none_teachable": 16,
-"none_nosource": 8
+"full": 354,
+"partial": 68,
+"none": 14,
+"full_pct": 81.2,
+"any_pct": 96.8,
+"strict_full": 354,
+"strict_pct": 81.2,
+"none_teachable": 8,
+"none_nosource": 6
 },
 "signs": {
 "n": 353,
@@ -502,21 +502,21 @@
 },
 "vehicle": {
 "n": 43,
-"full": 24,
+"full": 25,
 "partial": 8,
-"none": 11,
-"full_pct": 55.8,
-"any_pct": 74.4,
-"strict_full": 24,
-"strict_pct": 55.8,
-"none_teachable": 1,
+"none": 10,
+"full_pct": 58.1,
+"any_pct": 76.7,
+"strict_full": 25,
+"strict_pct": 58.1,
+"none_teachable": 0,
 "none_nosource": 10
 }
 }
 },
 "by": {
-"hand": 821,
-"v1.5": 649,
+"hand": 802,
+"v1.5": 668,
 "link": 81,
 "sample": 250
 }
@@ -599,11 +599,14 @@
 "by": "v1.5"
 },
 "5": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO arrest powers",
-"src": "T",
+"v": "full",
+"rule": [
+"law4#r0"
+],
+"ref": [
+"law4#r:שוטר רשאי לעכב בלי צו נהג שעבר עבירה"
+],
+"why": "rule written for this question (TO:28)",
 "cls": [
 "1",
 "A",
@@ -613,7 +616,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "6": {
 "v": "partial",
@@ -4357,14 +4360,14 @@
 "by": "hand"
 },
 "198": {
-"v": "partial",
+"v": "full",
 "rule": [
-"bus#r6"
+"parking3#r0"
 ],
 "ref": [
-"bus#r:אוטובוס שנאלץ לעמוד בלילה מחוץ לעיר:"
+"parking3#r:רכב שהיה הכרח להשאירו עומד על הדרך –"
 ],
-"why": "bus rule (D only) – generic rule not taught",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "B",
@@ -4373,7 +4376,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "199": {
 "v": "full",
@@ -4475,9 +4478,11 @@
 "204": {
 "v": "full",
 "rule": [
+"parking3#r1",
 "law3#r2"
 ],
 "ref": [
+"parking3#r:אסור לעצור או להעמיד רכב בתחום 2 מטר",
 "law3#r:אסור להעמיד רכב בתחום 2 מטרים מברז כ"
 ],
 "why": "rule written for this question (OFF:textbook)",
@@ -4513,14 +4518,14 @@
 "by": "link"
 },
 "206": {
-"v": "partial",
+"v": "full",
 "rule": [
-"peds#x1"
+"parking3#r1"
 ],
 "ref": [
-"peds#x:Q205"
+"parking3#r:אסור לעצור או להעמיד רכב בתחום 2 מטר"
 ],
-"why": "before-crosswalk only",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -4530,7 +4535,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "207": {
 "v": "full",
@@ -4716,12 +4721,14 @@
 "216": {
 "v": "full",
 "rule": [
+"parking3#r2",
 "law3#r1"
 ],
 "ref": [
+"parking3#r:ליד תמרור חניית נכה (משותק רגליים) מ",
 "law3#r:ליד תמרור 437 חונה רק רכב של נכה שנו"
 ],
-"why": "rule written for this question (LT:437)",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -4831,14 +4838,14 @@
 "by": "hand"
 },
 "222": {
-"v": "partial",
+"v": "full",
 "rule": [
-"parking#r9"
+"parking3#r3"
 ],
 "ref": [
-"parking#r:חונים במקביל לשפה, והגלגלים הקרובים "
+"parking3#r:חונים במקביל לשפת הכביש. חנייה זווית"
 ],
-"why": "related rule only",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "B",
@@ -4847,7 +4854,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "223": {
 "v": "full",
@@ -5223,14 +5230,14 @@
 "by": "v1.5"
 },
 "244": {
-"v": "partial",
+"v": "full",
 "rule": [
-"parking#b2"
+"parking3#r3"
 ],
 "ref": [
-"parking#b:כשמותר לחנות – עומדים במקביל לשפת הכ"
+"parking3#r:חונים במקביל לשפת הכביש. חנייה זווית"
 ],
-"why": "related rule only",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "A",
 "B",
@@ -5239,7 +5246,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "245": {
 "v": "full",
@@ -6863,18 +6870,21 @@
 "by": "hand"
 },
 "331": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR permit security vehicle",
-"src": "T",
+"v": "full",
+"rule": [
+"law4#r10"
+],
+"ref": [
+"law4#r:ברכב ביטחון וברכב חילוץ נוהג רק מי ש"
+],
+"why": "rule written for this question (TR:190)",
 "cls": [
 "B",
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "332": {
 "v": "full",
@@ -6897,16 +6907,19 @@
 "by": "hand"
 },
 "333": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 180 age 17",
-"src": "T",
+"v": "partial",
+"rule": [
+"law4#r12"
+],
+"ref": [
+"law4#r:לפי הפקודה, רישיון לרכב פרטי לא ניתן"
+],
+"why": "rule covers part of the answer (TO:12)",
 "cls": [
 "B"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "334": {
 "v": "full",
@@ -6984,14 +6997,14 @@
 "by": "v1.5"
 },
 "338": {
-"v": "partial",
+"v": "full",
 "rule": [
-"bus#x0"
+"parking3#r0"
 ],
 "ref": [
-"bus#x:Q1206"
+"parking3#r:רכב שהיה הכרח להשאירו עומד על הדרך –"
 ],
-"why": "bus only",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -7001,7 +7014,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "339": {
 "v": "full",
@@ -7055,11 +7068,14 @@
 "by": "v1.5"
 },
 "342": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR change of ownership",
-"src": "T",
+"v": "full",
+"rule": [
+"law4#r1"
+],
+"ref": [
+"law4#r:כשמוכרים רכב, בעל הרכב והקונה פונים "
+],
+"why": "rule written for this question (TR:284(א)(1))",
 "cls": [
 "1",
 "A",
@@ -7069,7 +7085,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "343": {
 "v": "full",
@@ -7108,11 +7124,14 @@
 "by": "v1.5"
 },
 "345": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO vehicle inspection",
-"src": "T",
+"v": "full",
+"rule": [
+"law4#r2"
+],
+"ref": [
+"law4#r:בוחן של רשות הרישוי, וכן שוטר שיש לו"
+],
+"why": "rule written for this question (TR:307(א))",
 "cls": [
 "1",
 "A",
@@ -7122,7 +7141,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "346": {
 "v": "partial",
@@ -7264,17 +7283,20 @@
 "by": "v1.5"
 },
 "353": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bins",
-"src": "T",
+"v": "full",
+"rule": [
+"law4#r8"
+],
+"ref": [
+"law4#r:ברכב נוסעים פרטי וברכב מסחרי חובה לה"
+],
+"why": "rule written for this question (TR:370ב)",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "354": {
 "v": "partial",
@@ -15649,12 +15671,14 @@
 "773": {
 "v": "full",
 "rule": [
+"parking3#r2",
 "law3#r1"
 ],
 "ref": [
+"parking3#r:ליד תמרור חניית נכה (משותק רגליים) מ",
 "law3#r:ליד תמרור 437 חונה רק רכב של נכה שנו"
 ],
-"why": "rule written for this question (LT:437)",
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -20731,18 +20755,21 @@
 "by": "v1.5"
 },
 "1046": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR annual test emissions",
-"src": "T",
+"v": "full",
+"rule": [
+"law4#r5"
+],
+"ref": [
+"law4#r:רישיון הרכב לא מחודש אם הרכב לא עמד "
+],
+"why": "rule written for this question (TR:318א(א))",
 "cls": [
 "1",
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1047": {
 "v": "full",
@@ -23407,17 +23434,20 @@
 "by": "v1.5"
 },
 "1225": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR private minibus B licence",
-"src": "T",
+"v": "full",
+"rule": [
+"law4#r9"
+],
+"ref": [
+"law4#r:רישיון B מתיר לנהוג ברכב עד 3,500 ק\""
+],
+"why": "rule written for this question (TR:180(א)(1))",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1226": {
 "v": "partial",
@@ -24313,11 +24343,14 @@
 "by": "hand"
 },
 "1285": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR combined policing lights",
-"src": "T",
+"v": "full",
+"rule": [
+"law4#r13"
+],
+"ref": [
+"law4#r:ברכב שיטור משולב מותר להפעיל אור מהב"
+],
+"why": "rule written for this question (TR:62)",
 "cls": [
 "1",
 "A",
@@ -24327,7 +24360,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1286": {
 "v": "full",
@@ -24471,11 +24504,14 @@
 "by": "hand"
 },
 "1294": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR police detain emissions",
-"src": "T",
+"v": "partial",
+"rule": [
+"law4#r3"
+],
+"ref": [
+"law4#r:מנוע שפולט עשן מעל הרגיל אינו תקין ל"
+],
+"why": "rule covers part of the answer (TR:316)",
 "cls": [
 "1",
 "A",
@@ -24485,14 +24521,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1295": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR non-use notice",
-"src": "T",
+"v": "full",
+"rule": [
+"law4#r4"
+],
+"ref": [
+"law4#r:בוחן או שוטר שסבור שרכב מסכן את התנו"
+],
+"why": "rule written for this question (TR:308(א))",
 "cls": [
 "1",
 "A",
@@ -24502,7 +24541,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1296": {
 "v": "none",
@@ -25623,11 +25662,14 @@
 "by": "hand"
 },
 "1366": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR mudguards",
-"src": "T",
+"v": "full",
+"rule": [
+"law4#r7"
+],
+"ref": [
+"law4#r:ברכב שגלגליו האחוריים אינם מוגנים בכ"
+],
+"why": "rule written for this question (TR:364)",
 "cls": [
 "1",
 "B",
@@ -25636,7 +25678,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1367": {
 "v": "none",
@@ -28966,11 +29008,14 @@
 "by": "hand"
 },
 "1568": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR vehicle modification approval",
-"src": "T",
+"v": "full",
+"rule": [
+"law4#r6"
+],
+"ref": [
+"law4#r:אסור לשנות את מבנה הרכב בלי היתר בכת"
+],
+"why": "rule written for this question (TR:380(א))",
 "cls": [
 "1",
 "A",
@@ -28980,7 +29025,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1569": {
 "v": "full",
@@ -30551,17 +30596,20 @@
 "by": "hand"
 },
 "1674": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO new driver conviction retest",
-"src": "T",
+"v": "full",
+"rule": [
+"law4#r11"
+],
+"ref": [
+"law4#r:נהג חדש שהורשע בעבירה מהתוספת השלישי"
+],
+"why": "rule written for this question (TO:12א(ד))",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1675": {
 "v": "full",
