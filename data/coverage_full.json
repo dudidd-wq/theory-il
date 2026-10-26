@@ -4,123 +4,123 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1371,
-"partial": 264,
+"full": 1358,
+"partial": 277,
 "none": 166,
-"full_pct": 76.1,
+"full_pct": 75.4,
 "any_pct": 90.8,
-"strict_full": 1080,
-"strict_pct": 60.0,
+"strict_full": 1067,
+"strict_pct": 59.2,
 "none_teachable": 33,
 "none_nosource": 132,
 "conflict": 1,
 "bank_only": 133,
-"partial_shown": 215,
-"full_nobank_pct": 75.1,
-"full_bank_sourced": 18
+"partial_shown": 228,
+"full_nobank_pct": 74.5,
+"full_bank_sourced": 16
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 1027,
-"partial": 191,
+"full": 1016,
+"partial": 202,
 "none": 54,
-"full_pct": 80.7,
+"full_pct": 79.9,
 "any_pct": 95.8,
-"strict_full": 763,
-"strict_pct": 60.0,
+"strict_full": 752,
+"strict_pct": 59.1,
 "none_teachable": 0,
 "none_nosource": 53,
 "conflict": 1,
 "bank_only": 54,
-"partial_shown": 191,
-"full_nobank_pct": 80.4,
-"full_bank_sourced": 4
+"partial_shown": 202,
+"full_nobank_pct": 79.6,
+"full_bank_sourced": 3
 },
 "A": {
 "n": 1155,
-"full": 916,
-"partial": 184,
+"full": 906,
+"partial": 194,
 "none": 55,
-"full_pct": 79.3,
+"full_pct": 78.4,
 "any_pct": 95.2,
-"strict_full": 657,
-"strict_pct": 56.9,
+"strict_full": 647,
+"strict_pct": 56.0,
 "none_teachable": 0,
 "none_nosource": 55,
 "conflict": 0,
 "bank_only": 55,
-"partial_shown": 184,
-"full_nobank_pct": 78.4,
-"full_bank_sourced": 11
+"partial_shown": 194,
+"full_nobank_pct": 77.7,
+"full_bank_sourced": 9
 },
 "C1": {
 "n": 1385,
-"full": 1091,
-"partial": 198,
+"full": 1080,
+"partial": 209,
 "none": 96,
-"full_pct": 78.8,
+"full_pct": 78.0,
 "any_pct": 93.1,
-"strict_full": 822,
-"strict_pct": 59.4,
+"strict_full": 811,
+"strict_pct": 58.6,
 "none_teachable": 30,
 "none_nosource": 65,
 "conflict": 1,
 "bank_only": 66,
-"partial_shown": 184,
-"full_nobank_pct": 78.5,
-"full_bank_sourced": 4
+"partial_shown": 195,
+"full_nobank_pct": 77.8,
+"full_bank_sourced": 3
 },
 "C": {
 "n": 1314,
-"full": 1050,
-"partial": 176,
+"full": 1042,
+"partial": 184,
 "none": 88,
-"full_pct": 79.9,
+"full_pct": 79.3,
 "any_pct": 93.3,
-"strict_full": 782,
-"strict_pct": 59.5,
+"strict_full": 774,
+"strict_pct": 58.9,
 "none_teachable": 34,
 "none_nosource": 54,
 "conflict": 0,
 "bank_only": 54,
-"partial_shown": 154,
-"full_nobank_pct": 79.5,
-"full_bank_sourced": 6
+"partial_shown": 162,
+"full_nobank_pct": 78.9,
+"full_bank_sourced": 5
 },
 "D": {
 "n": 1316,
-"full": 1064,
-"partial": 180,
+"full": 1055,
+"partial": 189,
 "none": 72,
-"full_pct": 80.9,
+"full_pct": 80.2,
 "any_pct": 94.5,
-"strict_full": 784,
-"strict_pct": 59.6,
+"strict_full": 775,
+"strict_pct": 58.9,
 "none_teachable": 10,
 "none_nosource": 62,
 "conflict": 0,
 "bank_only": 62,
-"partial_shown": 154,
-"full_nobank_pct": 80.4,
-"full_bank_sourced": 6
+"partial_shown": 163,
+"full_nobank_pct": 79.8,
+"full_bank_sourced": 5
 },
 "1": {
 "n": 1127,
-"full": 913,
-"partial": 150,
+"full": 905,
+"partial": 158,
 "none": 64,
-"full_pct": 81.0,
+"full_pct": 80.3,
 "any_pct": 94.3,
-"strict_full": 654,
-"strict_pct": 58.0,
+"strict_full": 646,
+"strict_pct": 57.3,
 "none_teachable": 2,
 "none_nosource": 61,
 "conflict": 1,
 "bank_only": 62,
-"partial_shown": 149,
-"full_nobank_pct": 80.4,
-"full_bank_sourced": 7
+"partial_shown": 157,
+"full_nobank_pct": 79.8,
+"full_bank_sourced": 6
 }
 },
 "class_only": {
@@ -143,20 +143,20 @@
 },
 "A": {
 "n": 88,
-"full": 51,
-"partial": 24,
+"full": 49,
+"partial": 26,
 "none": 13,
-"full_pct": 58.0,
+"full_pct": 55.7,
 "any_pct": 85.2,
-"strict_full": 51,
-"strict_pct": 58.0,
+"strict_full": 49,
+"strict_pct": 55.7,
 "none_teachable": 0,
 "none_nosource": 13,
 "conflict": 0,
 "bank_only": 13,
-"partial_shown": 24,
-"full_nobank_pct": 50.0,
-"full_bank_sourced": 7
+"partial_shown": 26,
+"full_nobank_pct": 48.9,
+"full_bank_sourced": 6
 },
 "C1": {
 "n": 1,
@@ -230,19 +230,19 @@
 "topic": {
 "law": {
 "n": 901,
-"full": 707,
-"partial": 122,
+"full": 701,
+"partial": 128,
 "none": 72,
-"full_pct": 78.5,
+"full_pct": 77.8,
 "any_pct": 92.0,
-"strict_full": 705,
-"strict_pct": 78.2,
+"strict_full": 699,
+"strict_pct": 77.6,
 "none_teachable": 31,
 "none_nosource": 40,
 "conflict": 1,
 "bank_only": 41,
-"partial_shown": 79,
-"full_nobank_pct": 77.9,
+"partial_shown": 85,
+"full_nobank_pct": 77.2,
 "full_bank_sourced": 5
 },
 "signs": {
@@ -264,36 +264,36 @@
 },
 "safety": {
 "n": 400,
-"full": 240,
-"partial": 92,
+"full": 234,
+"partial": 98,
 "none": 68,
-"full_pct": 60.0,
+"full_pct": 58.5,
 "any_pct": 83.0,
-"strict_full": 240,
-"strict_pct": 60.0,
+"strict_full": 234,
+"strict_pct": 58.5,
 "none_teachable": 1,
 "none_nosource": 67,
 "conflict": 0,
 "bank_only": 67,
-"partial_shown": 86,
-"full_nobank_pct": 57.2,
-"full_bank_sourced": 11
+"partial_shown": 92,
+"full_nobank_pct": 56.2,
+"full_bank_sourced": 9
 },
 "vehicle": {
 "n": 110,
-"full": 61,
-"partial": 28,
+"full": 60,
+"partial": 29,
 "none": 21,
-"full_pct": 55.5,
+"full_pct": 54.5,
 "any_pct": 80.9,
-"strict_full": 61,
-"strict_pct": 55.5,
+"strict_full": 60,
+"strict_pct": 54.5,
 "none_teachable": 0,
 "none_nosource": 21,
 "conflict": 0,
 "bank_only": 21,
-"partial_shown": 28,
-"full_nobank_pct": 55.5,
+"partial_shown": 29,
+"full_nobank_pct": 54.5,
 "full_bank_sourced": 0
 }
 },
@@ -301,19 +301,19 @@
 "B": {
 "law": {
 "n": 501,
-"full": 421,
-"partial": 72,
+"full": 416,
+"partial": 77,
 "none": 8,
-"full_pct": 84.0,
+"full_pct": 83.0,
 "any_pct": 98.4,
-"strict_full": 419,
-"strict_pct": 83.6,
+"strict_full": 414,
+"strict_pct": 82.6,
 "none_teachable": 0,
 "none_nosource": 7,
 "conflict": 1,
 "bank_only": 8,
-"partial_shown": 72,
-"full_nobank_pct": 84.0,
+"partial_shown": 77,
+"full_nobank_pct": 83.0,
 "full_bank_sourced": 0
 },
 "signs": {
@@ -335,55 +335,55 @@
 },
 "safety": {
 "n": 305,
-"full": 212,
-"partial": 69,
+"full": 207,
+"partial": 74,
 "none": 24,
-"full_pct": 69.5,
+"full_pct": 67.9,
 "any_pct": 92.1,
-"strict_full": 212,
-"strict_pct": 69.5,
+"strict_full": 207,
+"strict_pct": 67.9,
 "none_teachable": 0,
 "none_nosource": 24,
 "conflict": 0,
 "bank_only": 24,
-"partial_shown": 69,
-"full_nobank_pct": 68.9,
-"full_bank_sourced": 2
+"partial_shown": 74,
+"full_nobank_pct": 67.5,
+"full_bank_sourced": 1
 },
 "vehicle": {
 "n": 106,
-"full": 59,
-"partial": 28,
+"full": 58,
+"partial": 29,
 "none": 19,
-"full_pct": 55.7,
+"full_pct": 54.7,
 "any_pct": 82.1,
-"strict_full": 59,
-"strict_pct": 55.7,
+"strict_full": 58,
+"strict_pct": 54.7,
 "none_teachable": 0,
 "none_nosource": 19,
 "conflict": 0,
 "bank_only": 19,
-"partial_shown": 28,
-"full_nobank_pct": 55.7,
+"partial_shown": 29,
+"full_nobank_pct": 54.7,
 "full_bank_sourced": 0
 }
 },
 "A": {
 "law": {
 "n": 429,
-"full": 351,
-"partial": 70,
+"full": 346,
+"partial": 75,
 "none": 8,
-"full_pct": 81.8,
+"full_pct": 80.7,
 "any_pct": 98.1,
-"strict_full": 349,
-"strict_pct": 81.4,
+"strict_full": 344,
+"strict_pct": 80.2,
 "none_teachable": 0,
 "none_nosource": 8,
 "conflict": 0,
 "bank_only": 8,
-"partial_shown": 70,
-"full_nobank_pct": 81.8,
+"partial_shown": 75,
+"full_nobank_pct": 80.7,
 "full_bank_sourced": 0
 },
 "signs": {
@@ -405,55 +405,55 @@
 },
 "safety": {
 "n": 312,
-"full": 200,
-"partial": 81,
+"full": 196,
+"partial": 85,
 "none": 31,
-"full_pct": 64.1,
+"full_pct": 62.8,
 "any_pct": 90.1,
-"strict_full": 200,
-"strict_pct": 64.1,
+"strict_full": 196,
+"strict_pct": 62.8,
 "none_teachable": 0,
 "none_nosource": 31,
 "conflict": 0,
 "bank_only": 31,
-"partial_shown": 81,
-"full_nobank_pct": 61.2,
-"full_bank_sourced": 9
+"partial_shown": 85,
+"full_nobank_pct": 60.6,
+"full_bank_sourced": 7
 },
 "vehicle": {
 "n": 60,
-"full": 36,
-"partial": 11,
+"full": 35,
+"partial": 12,
 "none": 13,
-"full_pct": 60.0,
+"full_pct": 58.3,
 "any_pct": 78.3,
-"strict_full": 36,
-"strict_pct": 60.0,
+"strict_full": 35,
+"strict_pct": 58.3,
 "none_teachable": 0,
 "none_nosource": 13,
 "conflict": 0,
 "bank_only": 13,
-"partial_shown": 11,
-"full_nobank_pct": 60.0,
+"partial_shown": 12,
+"full_nobank_pct": 58.3,
 "full_bank_sourced": 0
 }
 },
 "C1": {
 "law": {
 "n": 605,
-"full": 477,
-"partial": 82,
+"full": 472,
+"partial": 87,
 "none": 46,
-"full_pct": 78.8,
+"full_pct": 78.0,
 "any_pct": 92.4,
-"strict_full": 475,
-"strict_pct": 78.5,
+"strict_full": 470,
+"strict_pct": 77.7,
 "none_teachable": 29,
 "none_nosource": 16,
 "conflict": 1,
 "bank_only": 17,
-"partial_shown": 71,
-"full_nobank_pct": 78.8,
+"partial_shown": 76,
+"full_nobank_pct": 78.0,
 "full_bank_sourced": 0
 },
 "signs": {
@@ -475,55 +475,55 @@
 },
 "safety": {
 "n": 312,
-"full": 215,
-"partial": 70,
+"full": 210,
+"partial": 75,
 "none": 27,
-"full_pct": 68.9,
+"full_pct": 67.3,
 "any_pct": 91.3,
-"strict_full": 215,
-"strict_pct": 68.9,
+"strict_full": 210,
+"strict_pct": 67.3,
 "none_teachable": 0,
 "none_nosource": 27,
 "conflict": 0,
 "bank_only": 27,
-"partial_shown": 67,
-"full_nobank_pct": 68.3,
-"full_bank_sourced": 2
+"partial_shown": 72,
+"full_nobank_pct": 67.0,
+"full_bank_sourced": 1
 },
 "vehicle": {
 "n": 101,
-"full": 58,
-"partial": 24,
+"full": 57,
+"partial": 25,
 "none": 19,
-"full_pct": 57.4,
+"full_pct": 56.4,
 "any_pct": 81.2,
-"strict_full": 58,
-"strict_pct": 57.4,
+"strict_full": 57,
+"strict_pct": 56.4,
 "none_teachable": 0,
 "none_nosource": 19,
 "conflict": 0,
 "bank_only": 19,
-"partial_shown": 24,
-"full_nobank_pct": 57.4,
+"partial_shown": 25,
+"full_nobank_pct": 56.4,
 "full_bank_sourced": 0
 }
 },
 "C": {
 "law": {
 "n": 619,
-"full": 488,
-"partial": 82,
+"full": 484,
+"partial": 86,
 "none": 49,
-"full_pct": 78.8,
+"full_pct": 78.2,
 "any_pct": 92.1,
-"strict_full": 486,
-"strict_pct": 78.5,
+"strict_full": 482,
+"strict_pct": 77.9,
 "none_teachable": 32,
 "none_nosource": 17,
 "conflict": 0,
 "bank_only": 17,
-"partial_shown": 64,
-"full_nobank_pct": 78.5,
+"partial_shown": 68,
+"full_nobank_pct": 77.9,
 "full_bank_sourced": 2
 },
 "signs": {
@@ -545,20 +545,20 @@
 },
 "safety": {
 "n": 307,
-"full": 206,
-"partial": 70,
+"full": 202,
+"partial": 74,
 "none": 31,
-"full_pct": 67.1,
+"full_pct": 65.8,
 "any_pct": 89.9,
-"strict_full": 206,
-"strict_pct": 67.1,
+"strict_full": 202,
+"strict_pct": 65.8,
 "none_teachable": 1,
 "none_nosource": 30,
 "conflict": 0,
 "bank_only": 30,
-"partial_shown": 66,
-"full_nobank_pct": 66.4,
-"full_bank_sourced": 2
+"partial_shown": 70,
+"full_nobank_pct": 65.5,
+"full_bank_sourced": 1
 },
 "vehicle": {
 "n": 22,
@@ -581,19 +581,19 @@
 "D": {
 "law": {
 "n": 618,
-"full": 491,
-"partial": 88,
+"full": 487,
+"partial": 92,
 "none": 39,
-"full_pct": 79.4,
+"full_pct": 78.8,
 "any_pct": 93.7,
-"strict_full": 489,
-"strict_pct": 79.1,
+"strict_full": 485,
+"strict_pct": 78.5,
 "none_teachable": 10,
 "none_nosource": 29,
 "conflict": 0,
 "bank_only": 29,
-"partial_shown": 63,
-"full_nobank_pct": 79.1,
+"partial_shown": 67,
+"full_nobank_pct": 78.5,
 "full_bank_sourced": 2
 },
 "signs": {
@@ -615,20 +615,20 @@
 },
 "safety": {
 "n": 299,
-"full": 206,
-"partial": 68,
+"full": 201,
+"partial": 73,
 "none": 25,
-"full_pct": 68.9,
+"full_pct": 67.2,
 "any_pct": 91.6,
-"strict_full": 206,
-"strict_pct": 68.9,
+"strict_full": 201,
+"strict_pct": 67.2,
 "none_teachable": 0,
 "none_nosource": 25,
 "conflict": 0,
 "bank_only": 25,
-"partial_shown": 67,
-"full_nobank_pct": 68.2,
-"full_bank_sourced": 2
+"partial_shown": 72,
+"full_nobank_pct": 66.9,
+"full_bank_sourced": 1
 },
 "vehicle": {
 "n": 22,
@@ -651,19 +651,19 @@
 "1": {
 "law": {
 "n": 436,
-"full": 363,
-"partial": 62,
+"full": 359,
+"partial": 66,
 "none": 11,
-"full_pct": 83.3,
+"full_pct": 82.3,
 "any_pct": 97.5,
-"strict_full": 362,
-"strict_pct": 83.0,
+"strict_full": 358,
+"strict_pct": 82.1,
 "none_teachable": 2,
 "none_nosource": 8,
 "conflict": 1,
 "bank_only": 9,
-"partial_shown": 62,
-"full_nobank_pct": 83.0,
+"partial_shown": 66,
+"full_nobank_pct": 82.1,
 "full_bank_sourced": 1
 },
 "signs": {
@@ -685,20 +685,20 @@
 },
 "safety": {
 "n": 295,
-"full": 192,
-"partial": 59,
+"full": 188,
+"partial": 63,
 "none": 44,
-"full_pct": 65.1,
+"full_pct": 63.7,
 "any_pct": 85.1,
-"strict_full": 192,
-"strict_pct": 65.1,
+"strict_full": 188,
+"strict_pct": 63.7,
 "none_teachable": 0,
 "none_nosource": 44,
 "conflict": 0,
 "bank_only": 44,
-"partial_shown": 58,
-"full_nobank_pct": 63.7,
-"full_bank_sourced": 4
+"partial_shown": 62,
+"full_nobank_pct": 62.7,
+"full_bank_sourced": 3
 },
 "vehicle": {
 "n": 43,
@@ -720,11 +720,11 @@
 }
 },
 "by": {
-"hand": 687,
-"spec": 745,
-"v1.13": 5,
+"hand": 680,
+"spec": 740,
+"v1.13": 18,
 "rejudge": 96,
-"sample": 232,
+"sample": 231,
 "link": 28,
 "rebase": 8
 },
@@ -2973,7 +2973,7 @@
 "by": "spec"
 },
 "112": {
-"v": "full",
+"v": "partial",
 "rule": [
 "turns#r3",
 "turns#r4"
@@ -2982,7 +2982,7 @@
 "turns#r:פנייה שמאלה – יציאה: מכביש חד־סטרי מ",
 "turns#r:פנייה שמאלה – כניסה: לכביש חד־סטרי ל"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "rule gives the lane to turn left from; the lane to enter (5) is not stated",
 "cls": [
 "1",
 "A",
@@ -2992,7 +2992,7 @@
 "D"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.13"
 },
 "113": {
 "v": "full",
@@ -4713,14 +4713,14 @@
 "by": "spec"
 },
 "199": {
-"v": "full",
+"v": "partial",
 "rule": [
 "parking#b0"
 ],
 "ref": [
 "parking#b:החוק אוסר לעצור או לחנות במקומות שבה"
 ],
-"why": "the cited rule states the correct answer",
+"why": "body lists places where a stopped car hides or blocks; \"hides a sign / disturbs traffic\" as the rule is not stated",
 "cls": [
 "1",
 "A",
@@ -4730,7 +4730,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.13"
 },
 "200": {
 "v": "full",
@@ -15393,21 +15393,21 @@
 "by": "spec"
 },
 "738": {
-"v": "full",
+"v": "partial",
 "rule": [
 "cockpit#r8"
 ],
 "ref": [
 "cockpit#r:ברכב אוטומטי: כדי להזיז את הידית ממצ"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "rule: \"in many vehicles also the brake pedal\"; the answer's foot brake before moving the selector is not stated as a rule",
 "cls": [
 "B",
 "C1",
 "D"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.13"
 },
 "739": {
 "v": "full",
@@ -16018,14 +16018,14 @@
 "by": "spec"
 },
 "770": {
-"v": "full",
+"v": "partial",
 "rule": [
 "junction2#r2"
 ],
 "ref": [
 "junction2#r:בהתקרבות לצומת מוטלות על הנהג משימות"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "rule: slow before a junction; peripheral observation and avoiding non-driving activity are not stated",
 "cls": [
 "1",
 "A",
@@ -16035,7 +16035,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.13"
 },
 "771": {
 "v": "full",
@@ -16845,14 +16845,14 @@
 "by": "sample"
 },
 "812": {
-"v": "full",
+"v": "partial",
 "rule": [
 "distance#r3"
 ],
 "ref": [
 "distance#r:מרחק התגובה תלוי בזמן התגובה של הנהג"
 ],
-"why": "the cited rule states the correct answer",
+"why": "rule: reaction distance depends on reaction time and speed; it does not define it (from seeing the danger to reacting)",
 "cls": [
 "1",
 "A",
@@ -16862,7 +16862,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.13"
 },
 "813": {
 "v": "full",
@@ -17854,14 +17854,14 @@
 "by": "hand"
 },
 "863": {
-"v": "full",
+"v": "partial",
 "rule": [
 "cockpit#r6"
 ],
 "ref": [
 "cockpit#r:לפני התנעה ברכב ידני: לוחצים על המצמ"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "rule: clutch, neutral, parking brake; the foot brake pressed is not stated",
 "cls": [
 "1",
 "B",
@@ -17870,7 +17870,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.13"
 },
 "864": {
 "v": "full",
@@ -18927,14 +18927,14 @@
 "by": "spec"
 },
 "919": {
-"v": "full",
+"v": "partial",
 "rule": [
 "lanes#r6"
 ],
 "ref": [
 "lanes#r:לפני שעוקפים רכב חונה: שומרים ממנו ר"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "rule: watch for a door about to open; slowing and preparing to stop is not stated",
 "cls": [
 "1",
 "A",
@@ -18944,7 +18944,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.13"
 },
 "920": {
 "v": "full",
@@ -20368,21 +20368,23 @@
 "by": "hand"
 },
 "994": {
-"v": "full",
+"v": "partial",
 "rule": [
-"vehicle#r9"
+"vehicle#r9",
+"brakes3#r11"
 ],
 "ref": [
-"vehicle#r:ABS מונע נעילת גלגלים בבלימה חזקה: ל"
+"vehicle#r:ABS מונע נעילת גלגלים בבלימה חזקה: ל",
+"brakes3#r:בבלימת חירום, בלחיצה חזקה וממושכת על"
 ],
-"why": "the cited rule states the correct answer",
+"why": "edu 18 says hard, sustained braking locks the wheels; \"wheels stop turning\" as a definition is not stated",
 "cls": [
 "A",
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.13"
 },
 "995": {
 "v": "full",
@@ -28744,14 +28746,14 @@
 "by": "hand"
 },
 "1525": {
-"v": "full",
+"v": "partial",
 "rule": [
 "sober#b0"
 ],
 "ref": [
 "sober#b:החוק אוסר לנהוג כשאתה במצב שעלול לסכ"
 ],
-"why": "the cited rule states the correct answer",
+"why": "body: no driving when your state is unsafe or under drugs; sedatives and the prescription / doctor condition are not stated",
 "cls": [
 "1",
 "A",
@@ -28761,7 +28763,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.13"
 },
 "1526": {
 "v": "none",
@@ -29924,19 +29926,19 @@
 "by": "hand"
 },
 "1593": {
-"v": "full",
+"v": "partial",
 "rule": [
 "moto2#r2"
 ],
 "ref": [
 "moto2#r:A: גם אופנוע שהספקו מעל 35 קילוואט."
 ],
-"why": "the cited rule states the correct answer",
+"why": "rule: A for over 35 kW; the 25 kW (33 hp) threshold in the answer is not stated",
 "cls": [
 "A"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.13"
 },
 "1594": {
 "v": "full",
@@ -30124,19 +30126,19 @@
 "by": "link"
 },
 "1606": {
-"v": "full",
+"v": "partial",
 "rule": [
 "moto#r5"
 ],
 "ref": [
 "moto#r:על כתם שמנוני: בקו ישר, בלי להאיץ וב"
 ],
-"why": "the cited rule states the correct answer",
+"why": "rule: straight line, no throttle, no brake; pulling the clutch is not stated",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.13"
 },
 "1607": {
 "v": "partial",
@@ -32007,14 +32009,14 @@
 "by": "spec"
 },
 "1720": {
-"v": "full",
+"v": "partial",
 "rule": [
 "sober#b0"
 ],
 "ref": [
 "sober#b:החוק אוסר לנהוג כשאתה במצב שעלול לסכ"
 ],
-"why": "the cited rule states the correct answer",
+"why": "body: no driving when your state is unsafe or under drugs; sedatives and the prescription exception are not stated",
 "cls": [
 "1",
 "A",
@@ -32024,7 +32026,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.13"
 },
 "1721": {
 "v": "full",
@@ -32131,20 +32133,20 @@
 "by": "link"
 },
 "1727": {
-"v": "full",
+"v": "partial",
 "rule": [
 "terms#r8"
 ],
 "ref": [
 "terms#r:רישיון B: רכב מנועי עד 3,500 ק\"ג ועד"
 ],
-"why": "v1.3: TR 180(א)(1)",
+"why": "rule B: up to 3,500 kg and 8 passengers; it does not say a private minibus is included",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.13"
 },
 "1728": {
 "v": "full",

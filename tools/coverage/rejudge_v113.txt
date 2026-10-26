@@ -5,3 +5,17 @@
 1021 none-S | only "service per manufacturer instructions" is stated; no official source on choosing a replacement bulb
 1688 none-S | the answer is not stated in TO 12א/12א1/12א2 or schedule 3; no official source found that decides it
 587 why | official sign meaning (sign dictionary, sign 624)
+994 partial +brakes3#r11 | edu 18 says hard, sustained braking locks the wheels; "wheels stop turning" as a definition is not stated
+# strict re-sample of 64 'full' B/A verdicts (seed 913, tools/coverage/rejudge_v113_sample.md): 12 downgraded
+1727 partial | rule B: up to 3,500 kg and 8 passengers; it does not say a private minibus is included
+1606 partial | rule: straight line, no throttle, no brake; pulling the clutch is not stated
+863 partial | rule: clutch, neutral, parking brake; the foot brake pressed is not stated
+112 partial | rule gives the lane to turn left from; the lane to enter (5) is not stated
+1720 partial | body: no driving when your state is unsafe or under drugs; sedatives and the prescription exception are not stated
+1525 partial | body: no driving when your state is unsafe or under drugs; sedatives and the prescription / doctor condition are not stated
+1593 partial | rule: A for over 35 kW; the 25 kW (33 hp) threshold in the answer is not stated
+738 partial | rule: "in many vehicles also the brake pedal"; the answer's foot brake before moving the selector is not stated as a rule
+199 partial | body lists places where a stopped car hides or blocks; "hides a sign / disturbs traffic" as the rule is not stated
+919 partial | rule: watch for a door about to open; slowing and preparing to stop is not stated
+812 partial | rule: reaction distance depends on reaction time and speed; it does not define it (from seeing the danger to reacting)
+770 partial | rule: slow before a junction; peripheral observation and avoiding non-driving activity are not stated

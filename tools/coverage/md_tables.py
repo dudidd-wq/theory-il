@@ -19,8 +19,10 @@ sect('## Class-only questions', [row(L[c], d['class_only'][c]) for c in L if c i
 sect('## Per topic', [row(t, d['topic'][t]) for t in ['law', 'signs', 'safety', 'vehicle'] if t in d['topic']])
 # headline paragraph, generated from the same figures (v1.11, review #8: no hand-copied numbers)
 a, C = d['all'], d['class']; pc = lambda x, n: f'{100 * x / n:.1f}%'
-hl = (f"**Headline (v1.13.0, whole bank, every question judged):** of all **{a['n']:,}** questions, **{a['full_pct']:.1f}% full**, **{a['strict_pct']:.1f}% strict full**, "
-      f"**{a['any_pct']:.1f}% full or partial**. **Without bank-sourced rules: {a['full_nobank_pct']:.1f}% full** (B {C['B']['full_nobank_pct']:.1f}%, A {C['A']['full_nobank_pct']:.1f}%; see below). "
+hl = (f"**Headline (v1.13.0, whole bank, every question judged; strict figure first, as review #9 asked):** of all **{a['n']:,}** questions, **{a['strict_pct']:.1f}% strict full** "
+      f"(a sign-dictionary meaning is not counted as teaching; v1.13 strict re-judgement applied, [rejudge_v113_sample.md](../tools/coverage/rejudge_v113_sample.md)), "
+      f"**{a['full_pct']:.1f}% full** as judged, **{a['any_pct']:.1f}% full or partial**. **Without bank-sourced rules: {a['full_nobank_pct']:.1f}% full** (B {C['B']['full_nobank_pct']:.1f}%, A {C['A']['full_nobank_pct']:.1f}%; see below). "
+      f"**Bank answer contradicts the law ('סתירה בין המאגר לחוק'): {a['conflict']}** (Q13; neither full nor cited, shown only in a bank lesson next to the law text). "
       f"**Taught from the official bank only, no official explanation: {a['bank_only']}** questions (" + ', '.join(f"{'tractor' if c == '1' else c} {C[c]['bank_only']}" for c in L) + "); these are *not* counted as full or partial. "
       f"**Partial + shown with the official bank answer: B {C['B']['partial_shown']} of {C['B']['partial']} partial ({pc(C['B']['partial'], C['B']['n'])} of B), A {C['A']['partial_shown']} of {C['A']['partial']} ({pc(C['A']['partial'], C['A']['n'])} of A)**; "
       f"whole bank {a['partial_shown']} of {a['partial']} partial (every partial question that belongs to B or A); these stay *partial* and are not counted as full. "
