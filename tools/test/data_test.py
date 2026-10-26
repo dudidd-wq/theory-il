@@ -2,7 +2,7 @@
 """Build-time data checks (run after tools/lessons.py + tools/coverage.py; exit 1 on any failure):
 every bank question is mapped to a lesson, lesson quizzes / sources / sign table are consistent,
 eligibility lines cite existing sections, the review-2 content fixes are in place, SW lists the data files."""
-import json, os, re, sys
+import sys, json, os, re
 R = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 J = lambda *p: json.load(open(os.path.join(R, *p), encoding='utf-8'))
 T = lambda *p: open(os.path.join(R, *p), encoding='utf-8').read()
@@ -17,8 +17,8 @@ SRC = J('data', 'sources.json'); COV = J('data', 'coverage.json'); SG = J('data'
 
 # 1. every question mapped
 cq = COV['q']
-unm = [i for i in ids if str(i) not in cq or not cq[str(i)][1]]
-ok(not unm, f'every question mapped to a lesson ({len(ids)} questions, unmapped {sorted(unm)[:10]})')
+unm = [i for i in ids if str(i) not in cq or (cq[str(i)][0] != 'n' and not cq[str(i)][1])]
+ok(not unm, f'every taught / partly taught question is mapped to a lesson ({len(ids)} questions, unmapped {sorted(unm)[:10]})')
 ok(set(map(int, cq)) == ids, 'coverage.json has exactly the bank ids')
 bad = [(i, l) for i, e in cq.items() for l in e[1] if l not in LB]
 ok(not bad, f'coverage lessons exist {bad[:5]}')
@@ -33,7 +33,32 @@ for i, e in cq.items():
         l, k, n = LB[m[1]], m[2], int(m[3])
         if k in 'rxbcm' and n >= len({'r': l['rules'], 'x': l['ex'], 'b': l['body'], 'c': l['recap'], 'm': l['mnem']}.get(k, [])): badu.append(u)
 ok(not badu, f'coverage units point at existing lesson parts {badu[:5]}')
-ok(set(cq[str(i)][0] for i in ids) <= set('fawn'), 'coverage status in f/a/w/n')
+ok(set(cq[str(i)][0] for i in ids) <= set('fwn'), 'coverage status in f/w/n (hand verdicts only, no automatic matches)')
+ok(all(len(e) == 3 or (e[0] == 'n' and e[3] == 'S') for e in cq.values()), 'only untaught questions carry the no-official-source flag')
+# whole-bank record: one verdict per question, every stable reference resolves, reasons present
+sys.path.insert(0, os.path.join(R, "tools", "coverage"))
+from units import load as uload, resolve
+from overlap import overlap
+CF = J('data', 'coverage_full.json')
+ok(set(map(int, CF['q'])) == ids, f"coverage_full.json has a verdict for every one of the {len(ids)} questions")
+ok(all(e['v'] in ('full', 'partial', 'none') and e['why'] for e in CF['q'].values()), 'every verdict has a one-line reason')
+ok(all(e['v'] != 'none' or e['src'] in 'TS' for e in CF['q'].values()), 'every untaught question is marked teachable (T) or no official source (S)')
+_Q, _LS, _S, _U, _D = uload()
+bad = []
+for i, e in CF['q'].items():
+    for r in e['ref']:
+        try: resolve(_LS, r)
+        except ValueError as x: bad.append((i, str(x)))
+ok(not bad, f'every stored unit reference resolves to exactly one unit {bad[:3]}')
+# keyword overlap: the cited unit must share a content word with the question or its answer (stale-pointer guard);
+# the allowlist holds checked pairs whose overlap is a synonym only
+OVL_OK = {('981', 'overtake'): 'ימין / ימני', ('1064', 'defensive'): 'הסחת / היסח דעת'}
+ut = {u['id']: u['text'] for u in _U}; bad = []
+for i, e in cq.items():
+    if e[0] == 'n': continue
+    for u in e[2]:
+        if u in ut and not overlap(byid[int(i)], ut[u]) and (i, u.split('#')[0]) not in OVL_OK: bad.append((i, u))
+ok(not bad, f'cited units share a keyword with their question {bad[:5]}')
 
 # 2. lessons: quizzes, sources
 for l in L:

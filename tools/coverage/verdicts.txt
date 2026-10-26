@@ -246,21 +246,21 @@
 297 f1
 298 p1
 300 f1
-302 n T OFF:drunk beer?
+302 n T OFF:drunk any amount
 303 f1
 305 n T TO 64ב evidence
 306 n T TO 64ד blood
 307 f2
 308 f1
-309 n T OFF:drunk?
+309 n T TO שיכור concentration
 310 n T sign shapes 301/302
 311 f2
-312 n T OFF:drunk?
+312 n T OFF:drunk risky behaviour
 314 p1 alcohol impairs – vision not named
 315 p1
 316 p1
 317 p1
-318 n T OFF:drunk?
+318 n S OFF:drunk (not in gov.il booklet)
 320 n T TR 364 wheel chocks
 321 n T TR 313 length 12
 322 p2 8 passengers non-integral – answer is 6 + front
@@ -532,9 +532,9 @@
 683 d
 685 d
 686 d
-687 n S? handbrake always
+687 n S handbrake always
 688 n T TR tyres same size
-689 n S? handbrake purpose
+689 n S handbrake purpose
 690 d
 691 f1
 692 f3
@@ -796,7 +796,7 @@
 1015 n S wipers
 1016 n S engine safety
 1017 f1
-1018 n S? tyre pressure cold
+1018 n S tyre pressure cold
 1020 n S indicator flashing
 1021 p1 manufacturer instructions
 1022 d
@@ -813,7 +813,7 @@
 1035 n T TR tyre size change approval
 1036 d
 1037 n S extinguisher replacement
-1038 n S? tyre pressure cold
+1038 n S tyre pressure cold
 1040 n S closed garage
 1041 n S fuel economy
 1042 n S emissions maintenance
@@ -1090,7 +1090,7 @@
 1385 n T TR brake check 16,000
 1386 n T TR 1 סרן
 1388 n T TR 1 משקל כולל לסרן
-1389 n T OFF RSA medicines?
+1389 n T OFF:book medicines
 1391 n T TR 1 רוחק סרנים picture
 1392 n T TR 1 רכב משא
 1393 f1
@@ -1189,7 +1189,7 @@
 1514 n S safety pin towing
 1516 p1 blind spot general
 1517 f3
-1518 n T OFF RSA fatigue stop?
+1518 n T OFF:fatigue stop and rest
 1519 d
 1520 f1
 1521 f2
@@ -1247,7 +1247,7 @@
 1585 f1
 1586 n T TR two-wheel side by side
 1587 n T TR bus stop parking motorcycle
-1588 n T BOOK? side stand
+1588 n S side stand (not in gov.il booklet)
 1589 f1
 1590 f1
 1591 f1
@@ -1255,62 +1255,62 @@
 1593 f1
 1594 f1
 1595 f1
-1596 n T BOOK? separate brakes
-1597 n T BOOK? safe speed motorcycle
+1596 n S separate brakes (not in gov.il booklet)
+1597 n T OFF:book speed per conditions
 1598 f2
-1599 n T BOOK? helmet field of view
+1599 n S helmet field of view (not in gov.il booklet)
 1600 f1
-1602 n T BOOK? road markings slippery
+1602 n T OFF:book paint markings
 1604 f1
 1606 f1
 1607 n T TR 1 שלוחה אחורית picture
 1608 n S dirty headlamps
-1609 n T BOOK? obstacle detection
+1609 n S obstacle detection (not in gov.il booklet)
 1610 f1
 1613 n T TR passenger per licence
-1614 n T BOOK? look through turn
-1615 n T BOOK? lean in turn
-1616 n T BOOK? lean in turn
+1614 n S look through turn (not in gov.il booklet)
+1615 n S lean in turn (not in gov.il booklet)
+1616 n S lean in turn (not in gov.il booklet)
 1617 n T TR crossing pavement
-1618 n T BOOK? braking in turn
-1619 n T BOOK? oily patch in turn
-1620 n T BOOK? obstacle avoidance
-1621 n T BOOK? maintenance
+1618 n T OFF:book no sharp braking in turns
+1619 n S oily patch in turn (not in gov.il booklet)
+1620 n S obstacle avoidance (not in gov.il booklet)
+1621 n T OFF:emergency maintenance
 1622 n T TR headlamp range 100/30
-1623 n T BOOK? space cushion
-1624 n T BOOK? space cushion
+1623 n T OFF:book position+distance
+1624 n T OFF:book distance to brake/evade
 1625 n T TR warning triangle agricultural
-1626 n T BOOK? space responsibility
-1627 n T BOOK? early detection
-1630 n T BOOK? overtaking motorcycle
+1626 n S space responsibility (not in gov.il booklet)
+1627 n T OFF:book be seen eye contact
+1630 n T OFF:book no overtaking right
 1631 p1 mirror-shoulder check
 1632 n T TR silencer
-1633 n T BOOK? position in lane
+1633 n T OFF:book position for field of view
 1635 n T TR crossing pavement
 1636 f3
 1638 d
-1639 n T BOOK? lane filtering
-1640 n T BOOK? lane filtering
+1639 n S lane filtering (not in gov.il booklet)
+1640 n T OFF:book no zigzag between lanes
 1643 f1
 1644 n T TR motorcycle mirror
 1645 f1
 1646 n S brake fade
 1647 p1 boots in protection list
-1648 n T BOOK? load placement
+1648 n S load placement (not in gov.il booklet)
 1649 p2 slippery road
 1650 n T TR quad passenger licence
 1651 n T TR tyre size approval
-1653 n T BOOK? night riding
-1654 n T BOOK? lean headlamp
-1655 n T BOOK? visor at night
+1653 n S night riding (not in gov.il booklet)
+1654 n S lean headlamp (not in gov.il booklet)
+1655 n S visor at night (not in gov.il booklet)
 1656 f1
-1657 n T BOOK? visor rain
+1657 n S visor rain (not in gov.il booklet)
 1658 f1
-1659 n T BOOK? passenger briefing
+1659 n S passenger briefing (not in gov.il booklet)
 1660 f2
-1661 n T BOOK? combined braking
+1661 n S combined braking (not in gov.il booklet)
 1662 f1
-1663 n T BOOK? obstacle slow
+1663 n S obstacle slow (not in gov.il booklet)
 1665 n T TR tractor passenger 3 months
 1666 n S junction check motorcycle
 1668 n T TR 54 motorcycle speeds
@@ -1365,7 +1365,7 @@
 1730 n T TR exhaust motorcycle
 1732 n T TO medical certificate doctor
 1733 n S brake failure motorcycle
-1734 n T BOOK? rough road
+1734 n T OFF:book hazards speed
 1735 p1 picture left-turn rule
 1736 n T TO owner liability parking
 1737 f3

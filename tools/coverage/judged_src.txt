@@ -1,0 +1,67 @@
+# source class for hand-judged 'none' questions (judged.json): T = official state source exists (teachable), S = none found
+109 T TR 41 right turn check
+114 T TR 41 turn lanes picture
+115 T TR 41 turn lanes picture
+116 T TR 41 turn lanes picture
+273 S other-law LPG parking
+290 T TO owner liability
+337 T TO health change notify
+446 T sign-link pedestrian zone
+467 T sign-link slippery road
+746 S keep right advantage
+765 S spacing fuel
+767 T TR 65 security vehicle
+786 T sign part 9 work site
+838 S shoulder braking
+840 S mountain road
+845 S centrifugal
+868 S look far ahead
+869 S cab systems
+873 S gear choice
+919 S picture hazard door
+948 S picture bus bay
+960 T sign-link expressway picture
+977 S picture hazard bin
+1012 S seatback
+1019 S lamp fuse
+1023 S broken headlamp
+1039 S exhaust leak
+1059 S smooth driving fuel
+1061 S engine closed space
+1062 S clutch
+1077 S jack safety
+1079 S engine temperature
+1085 S tractor mechanics
+1088 S tractor mechanics
+1092 S tractor mechanics
+1095 S tractor mechanics
+1098 S tractor mechanics
+1100 S tractor mechanics
+1102 S tractor mechanics
+1103 S tractor mechanics
+1104 S tractor mechanics
+1106 S tractor mechanics
+1107 S tractor mechanics
+1127 T TR bus pavement parking
+1160 S other-law taxi fare order
+1167 S other-law taxi fare order
+1168 T TR meter seal
+1239 T TR driver smoking
+1250 T TR taxi licence suspension
+1290 S gearbox fuel
+1354 T TR coupling clearance
+1357 T TR trailer chains 90 degrees
+1417 S flooded road brakes
+1447 T TR overtaking ban heavy
+1457 S other-law transport services
+1461 S coupling brake check
+1469 S coupling technique
+1476 S sand on road
+1481 S centrifugal
+1565 S air tank fill
+1629 S brake failure motorcycle
+1708 S tread grooves
+1723 S accident definition
+1770 T TR 1 רכב משא concrete mixer
+1801 S EV sign not in TR schedule
+1802 S EV sign not in TR schedule
