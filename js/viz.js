@@ -382,4 +382,16 @@ function roadparts() {
   });
 }
 
-export const VIZ = { roadparts, priority, signs, speed, gap, overtake, crosswalk, parking, rail, blind, moto, signdict, duty, newdrv, accident, brakes, blowout, bac, dims, motojx, lamps, hands, load, kids, taxi, tractor };
+const TB = 'לפי ספר הלימוד הרשמי "נוהגים אחרת – נוהגים נכון" (הרשות הלאומית לבטיחות בדרכים ומשרד התחבורה)';
+const startcar = flow('לפני שמתניעים', TB + ', עמ׳ 16, 20', [
+  ['בלם\nרגל', 'מיד אחרי הכניסה לרכב לוחצים על בלם הרגל – עוד לפני כיוון הכיסא.'],
+  ['בלם יד\nמשוך', 'בודקים שבלם היד משוך, כדי שהרכב לא יזוז.'],
+  ['N או P', 'ידית ההילוכים במצב סרק (N) ברכב ידני, ובמצב P או N ברכב אוטומטי. ברכב ידני לוחצים גם על המצמד.'],
+  ['מתניעים', 'מסובבים את המפתח לשלב הקפיצי, ומרפים מיד כשהמנוע מתניע – כדי לא לפגוע במתנע.']]);
+const stopdist = flow('מרחק העצירה', TB + ', עמ׳ 22–23', [
+  ['רואים\nסכנה', 'הנהג מבחין בסכנה. מכאן מתחיל מרחק העצירה.'],
+  ['מרחק\nתגובה', 'מרחק התגובה: מה שהרכב עובר עד שהנהג מגיב. עייפות, אלכוהול, סמים ותרופות מאריכים אותו.'],
+  ['מרחק\nבלימה', 'מרחק הבלימה: מהלחיצה על הבלם ועד שהרכב נעצר. תלוי בצמיגים ובמצב הכביש.'],
+  ['50 / 100', 'ב־50 קמ"ש מרחק העצירה כ־24 מטר; ב־100 קמ"ש כ־77 מטר. מהירות כפולה – מרחק עצירה בערך משולש.']]);
+
+export const VIZ = { roadparts, startcar, stopdist, priority, signs, speed, gap, overtake, crosswalk, parking, rail, blind, moto, signdict, duty, newdrv, accident, brakes, blowout, bac, dims, motojx, lamps, hands, load, kids, taxi, tractor };

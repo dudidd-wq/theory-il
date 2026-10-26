@@ -102,3 +102,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - build order: `python3 tools/official/sync_textbook_quotes.py && python3 tools/official/pin.py` → compile_verdicts → signs_build → lessons → coverage → lessons → data_test
 - lessons live in tools/lessons_v16.py (merged by lessons_spec.add_v16); lesson↔question map = data/coverage.json `q`
 - [x] batch 1: law rules – road parts (+ `roadparts` diagram), quad / tractor passengers, signal, blocked lane, stopping, belts in reverse, towed vehicle, accident report, breakdown 24h, escort, paid rides, bus-stop parking, documents, temporary police sign, NOTE Q91
+- batch 2 (14:01 UTC+2): textbook ch.1–3 lessons cockpit, moveoff, downhill, lanes, junction2 (+startcar/stopdist diagrams). B full 64.3%, A 64.8%.
