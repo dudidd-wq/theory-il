@@ -115,7 +115,8 @@ export function makeLearn(ctx) {
     const c = cls(), ls = lessonsFor(c), l = ls.find(x => x.id === id);
     if (!l) { location.hash = '#/learn'; return; }
     const s = status(l, ls);
-    if (!s.unlocked && sub !== 'peek') { toast(t('ln.locked')); location.hash = '#/learn'; return; }
+    // v1.10: a direct link to a locked lesson (or its quiz) opens it read-only instead of bouncing to the path
+    if (!s.unlocked && sub !== 'peek') { location.replace('#/learn/' + l.id + '/peek'); return; }
     const peek = !s.unlocked;
     const mine = new Set(pool()), qids = l.quiz.filter(q => mine.has(q) && byId.has(q));
     if (sub === 'quiz') { st.markRead(l.id); return startSession('lesson', pick(qids, QUIZ_N), l.title, `#/learn/${l.id}/quiz`, { lesson: l.id }); }

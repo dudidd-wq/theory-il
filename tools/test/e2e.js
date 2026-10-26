@@ -155,7 +155,10 @@ async function run(prof, opts) {
   await go(p, '#/learn'); await p.waitForSelector('.lessons');
   ok(await p.locator('.lessons li').count() === LB.length && await p.locator('.lessons li:nth-child(1) a').count() === 1 && await p.locator('.lessons li:nth-child(2) [aria-disabled="true"]').count() === 1, `learn path: ${LB.length} lessons for B, only the first open`);
   await axe(p, 'learn-path', prof);
-  await go(p, '#/learn/' + LB[2].id); ok((await p.evaluate(() => location.hash)) === '#/learn', 'locked lesson redirects to the path');
+  await go(p, '#/learn/' + LB[2].id); await p.waitForSelector('.lsec');
+  ok((await p.evaluate(() => location.hash)) === '#/learn/' + LB[2].id + '/peek' && /מצב קריאה/.test(await text(p)) && await p.locator('.lend a.btn.primary').count() === 0, 'direct link to a locked lesson opens the read-only preview');
+  await go(p, '#/learn/' + LB[2].id + '/quiz'); await p.waitForSelector('.lsec');
+  ok((await p.evaluate(() => location.hash)) === '#/learn/' + LB[2].id + '/peek', 'direct link to a locked lesson quiz opens the preview, not the quiz');
   await go(p, '#/learn/' + LB[2].id + '/peek'); await p.waitForSelector('.lsec');
   ok(/מצב קריאה/.test(await text(p)) && await p.locator('.lend a.btn.primary').count() === 0 && await p.locator('.rules li').count() === LB[2].rules.length, 'locked lesson opens read-only from a "learn this" link (no quiz)');
   { const r = await p.evaluate(async () => { const m = await import('./js/learn.js'); const [cov, sg] = await Promise.all(['data/coverage.json', 'data/signs.json'].map(u => fetch(u).then(r => r.json())));

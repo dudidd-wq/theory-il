@@ -151,3 +151,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - Review #7 item 1 — CORRECTION to the v1.9 item 3 line above (line 140): Q1305/Q1520 were NOT fixed in v1.9. Now fixed in tools/coverage/rejudge_v110.txt: Q1305 → heavy2#r2/cargo2#r0 (TR 313(א)(3), 12.00 m), Q1520 → equip#r2 (TR 368); data_test checks both.
 - Review #7 item 6: image questions without a text description (e.g. Q616) keep the "no description" disclosure — no official source describes those images, so no alt text was invented.
 - Review #7 item 8: e2e overflow sweep already covers 320/360/390 px (confirmed).
+- Review #7 item 5: a direct link to a locked lesson (or its quiz) now opens the read-only preview (#/learn/<id>/peek) instead of redirecting to the list; e2e checks both.
