@@ -4,88 +4,88 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1240,
-"partial": 233,
-"none": 328,
-"full_pct": 68.9,
-"any_pct": 81.8,
-"strict_full": 1007,
-"strict_pct": 55.9,
+"full": 1268,
+"partial": 240,
+"none": 293,
+"full_pct": 70.4,
+"any_pct": 83.7,
+"strict_full": 1035,
+"strict_pct": 57.5,
 "none_teachable": 96,
-"none_nosource": 232
+"none_nosource": 197
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 890,
-"partial": 159,
-"none": 223,
-"full_pct": 70.0,
-"any_pct": 82.5,
-"strict_full": 682,
-"strict_pct": 53.6,
+"full": 918,
+"partial": 165,
+"none": 189,
+"full_pct": 72.2,
+"any_pct": 85.1,
+"strict_full": 710,
+"strict_pct": 55.8,
 "none_teachable": 62,
-"none_nosource": 161
+"none_nosource": 127
 },
 "A": {
 "n": 1155,
-"full": 816,
-"partial": 154,
-"none": 185,
-"full_pct": 70.6,
-"any_pct": 84.0,
-"strict_full": 613,
-"strict_pct": 53.1,
+"full": 844,
+"partial": 160,
+"none": 151,
+"full_pct": 73.1,
+"any_pct": 86.9,
+"strict_full": 641,
+"strict_pct": 55.5,
 "none_teachable": 51,
-"none_nosource": 134
+"none_nosource": 100
 },
 "C1": {
 "n": 1385,
-"full": 958,
-"partial": 175,
-"none": 252,
-"full_pct": 69.2,
-"any_pct": 81.8,
-"strict_full": 747,
-"strict_pct": 53.9,
+"full": 986,
+"partial": 181,
+"none": 218,
+"full_pct": 71.2,
+"any_pct": 84.3,
+"strict_full": 775,
+"strict_pct": 56.0,
 "none_teachable": 91,
-"none_nosource": 161
+"none_nosource": 127
 },
 "C": {
 "n": 1314,
-"full": 951,
-"partial": 159,
-"none": 204,
-"full_pct": 72.4,
-"any_pct": 84.5,
-"strict_full": 741,
-"strict_pct": 56.4,
+"full": 976,
+"partial": 163,
+"none": 175,
+"full_pct": 74.3,
+"any_pct": 86.7,
+"strict_full": 766,
+"strict_pct": 58.3,
 "none_teachable": 84,
-"none_nosource": 120
+"none_nosource": 91
 },
 "D": {
 "n": 1316,
-"full": 969,
-"partial": 162,
-"none": 185,
-"full_pct": 73.6,
-"any_pct": 85.9,
-"strict_full": 747,
-"strict_pct": 56.8,
+"full": 994,
+"partial": 166,
+"none": 156,
+"full_pct": 75.5,
+"any_pct": 88.1,
+"strict_full": 772,
+"strict_pct": 58.7,
 "none_teachable": 56,
-"none_nosource": 129
+"none_nosource": 100
 },
 "1": {
 "n": 1127,
-"full": 818,
-"partial": 131,
-"none": 178,
-"full_pct": 72.6,
-"any_pct": 84.2,
-"strict_full": 614,
-"strict_pct": 54.5,
+"full": 843,
+"partial": 136,
+"none": 148,
+"full_pct": 74.8,
+"any_pct": 86.9,
+"strict_full": 639,
+"strict_pct": 56.7,
 "none_teachable": 52,
-"none_nosource": 126
+"none_nosource": 96
 }
 },
 "class_only": {
@@ -104,14 +104,14 @@
 "A": {
 "n": 88,
 "full": 46,
-"partial": 14,
-"none": 28,
+"partial": 15,
+"none": 27,
 "full_pct": 52.3,
-"any_pct": 68.2,
+"any_pct": 69.3,
 "strict_full": 46,
 "strict_pct": 52.3,
 "none_teachable": 1,
-"none_nosource": 27
+"none_nosource": 26
 },
 "C1": {
 "n": 1,
@@ -189,27 +189,27 @@
 },
 "safety": {
 "n": 400,
-"full": 186,
-"partial": 74,
-"none": 140,
-"full_pct": 46.5,
-"any_pct": 65.0,
-"strict_full": 186,
-"strict_pct": 46.5,
+"full": 210,
+"partial": 79,
+"none": 111,
+"full_pct": 52.5,
+"any_pct": 72.2,
+"strict_full": 210,
+"strict_pct": 52.5,
 "none_teachable": 7,
-"none_nosource": 133
+"none_nosource": 104
 },
 "vehicle": {
 "n": 110,
-"full": 31,
-"partial": 19,
-"none": 60,
-"full_pct": 28.2,
-"any_pct": 45.5,
-"strict_full": 31,
-"strict_pct": 28.2,
+"full": 35,
+"partial": 21,
+"none": 54,
+"full_pct": 31.8,
+"any_pct": 50.9,
+"strict_full": 35,
+"strict_pct": 31.8,
 "none_teachable": 3,
-"none_nosource": 57
+"none_nosource": 51
 }
 },
 "class_topic": {
@@ -240,27 +240,27 @@
 },
 "safety": {
 "n": 305,
-"full": 159,
-"partial": 54,
-"none": 92,
-"full_pct": 52.1,
-"any_pct": 69.8,
-"strict_full": 159,
-"strict_pct": 52.1,
+"full": 183,
+"partial": 58,
+"none": 64,
+"full_pct": 60.0,
+"any_pct": 79.0,
+"strict_full": 183,
+"strict_pct": 60.0,
 "none_teachable": 6,
-"none_nosource": 86
+"none_nosource": 58
 },
 "vehicle": {
 "n": 106,
-"full": 30,
-"partial": 19,
-"none": 57,
-"full_pct": 28.3,
-"any_pct": 46.2,
-"strict_full": 30,
-"strict_pct": 28.3,
+"full": 34,
+"partial": 21,
+"none": 51,
+"full_pct": 32.1,
+"any_pct": 51.9,
+"strict_full": 34,
+"strict_pct": 32.1,
 "none_teachable": 2,
-"none_nosource": 55
+"none_nosource": 49
 }
 },
 "A": {
@@ -290,27 +290,27 @@
 },
 "safety": {
 "n": 312,
-"full": 151,
-"partial": 62,
-"none": 99,
-"full_pct": 48.4,
-"any_pct": 68.3,
-"strict_full": 151,
-"strict_pct": 48.4,
+"full": 175,
+"partial": 67,
+"none": 70,
+"full_pct": 56.1,
+"any_pct": 77.6,
+"strict_full": 175,
+"strict_pct": 56.1,
 "none_teachable": 6,
-"none_nosource": 93
+"none_nosource": 64
 },
 "vehicle": {
 "n": 60,
-"full": 19,
-"partial": 10,
-"none": 31,
-"full_pct": 31.7,
-"any_pct": 48.3,
-"strict_full": 19,
-"strict_pct": 31.7,
+"full": 23,
+"partial": 11,
+"none": 26,
+"full_pct": 38.3,
+"any_pct": 56.7,
+"strict_full": 23,
+"strict_pct": 38.3,
 "none_teachable": 2,
-"none_nosource": 29
+"none_nosource": 24
 }
 },
 "C1": {
@@ -340,27 +340,27 @@
 },
 "safety": {
 "n": 312,
-"full": 162,
-"partial": 60,
-"none": 90,
-"full_pct": 51.9,
-"any_pct": 71.2,
-"strict_full": 162,
-"strict_pct": 51.9,
+"full": 186,
+"partial": 64,
+"none": 62,
+"full_pct": 59.6,
+"any_pct": 80.1,
+"strict_full": 186,
+"strict_pct": 59.6,
 "none_teachable": 6,
-"none_nosource": 84
+"none_nosource": 56
 },
 "vehicle": {
 "n": 101,
-"full": 30,
-"partial": 17,
-"none": 54,
-"full_pct": 29.7,
-"any_pct": 46.5,
-"strict_full": 30,
-"strict_pct": 29.7,
+"full": 34,
+"partial": 19,
+"none": 48,
+"full_pct": 33.7,
+"any_pct": 52.5,
+"strict_full": 34,
+"strict_pct": 33.7,
 "none_teachable": 2,
-"none_nosource": 52
+"none_nosource": 46
 }
 },
 "C": {
@@ -390,27 +390,27 @@
 },
 "safety": {
 "n": 307,
-"full": 153,
-"partial": 61,
-"none": 93,
-"full_pct": 49.8,
-"any_pct": 69.7,
-"strict_full": 153,
-"strict_pct": 49.8,
+"full": 177,
+"partial": 65,
+"none": 65,
+"full_pct": 57.7,
+"any_pct": 78.8,
+"strict_full": 177,
+"strict_pct": 57.7,
 "none_teachable": 7,
-"none_nosource": 86
+"none_nosource": 58
 },
 "vehicle": {
 "n": 22,
-"full": 11,
+"full": 12,
 "partial": 2,
-"none": 9,
-"full_pct": 50.0,
-"any_pct": 59.1,
-"strict_full": 11,
-"strict_pct": 50.0,
+"none": 8,
+"full_pct": 54.5,
+"any_pct": 63.6,
+"strict_full": 12,
+"strict_pct": 54.5,
 "none_teachable": 0,
-"none_nosource": 9
+"none_nosource": 8
 }
 },
 "D": {
@@ -440,27 +440,27 @@
 },
 "safety": {
 "n": 299,
-"full": 153,
-"partial": 57,
-"none": 89,
-"full_pct": 51.2,
-"any_pct": 70.2,
-"strict_full": 153,
-"strict_pct": 51.2,
+"full": 177,
+"partial": 61,
+"none": 61,
+"full_pct": 59.2,
+"any_pct": 79.6,
+"strict_full": 177,
+"strict_pct": 59.2,
 "none_teachable": 6,
-"none_nosource": 83
+"none_nosource": 55
 },
 "vehicle": {
 "n": 22,
-"full": 11,
+"full": 12,
 "partial": 2,
-"none": 9,
-"full_pct": 50.0,
-"any_pct": 59.1,
-"strict_full": 11,
-"strict_pct": 50.0,
+"none": 8,
+"full_pct": 54.5,
+"any_pct": 63.6,
+"strict_full": 12,
+"strict_pct": 54.5,
 "none_teachable": 0,
-"none_nosource": 9
+"none_nosource": 8
 }
 },
 "1": {
@@ -490,35 +490,35 @@
 },
 "safety": {
 "n": 295,
-"full": 148,
-"partial": 49,
-"none": 98,
-"full_pct": 50.2,
-"any_pct": 66.8,
-"strict_full": 148,
-"strict_pct": 50.2,
+"full": 169,
+"partial": 53,
+"none": 73,
+"full_pct": 57.3,
+"any_pct": 75.3,
+"strict_full": 169,
+"strict_pct": 57.3,
 "none_teachable": 6,
-"none_nosource": 92
+"none_nosource": 67
 },
 "vehicle": {
 "n": 43,
-"full": 14,
-"partial": 6,
-"none": 23,
-"full_pct": 32.6,
-"any_pct": 46.5,
-"strict_full": 14,
-"strict_pct": 32.6,
+"full": 18,
+"partial": 7,
+"none": 18,
+"full_pct": 41.9,
+"any_pct": 58.1,
+"strict_full": 18,
+"strict_pct": 41.9,
 "none_teachable": 2,
-"none_nosource": 21
+"none_nosource": 16
 }
 }
 },
 "by": {
-"hand": 909,
-"v1.5": 546,
+"hand": 882,
+"v1.5": 581,
 "link": 81,
-"sample": 265
+"sample": 257
 }
 },
 "q": {
@@ -15037,11 +15037,14 @@
 "by": "v1.5"
 },
 "746": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "keep right advantage",
-"src": "S",
+"v": "full",
+"rule": [
+"shoulder2#r5"
+],
+"ref": [
+"shoulder2#r:נסיעה בימין הכביש משאירה לך את השול "
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -15051,7 +15054,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "sample"
+"by": "v1.5"
 },
 "747": {
 "v": "partial",
@@ -15589,11 +15592,14 @@
 "by": "hand"
 },
 "774": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "junction wet road",
-"src": "S",
+"v": "full",
+"rule": [
+"skid2#r2"
+],
+"ref": [
+"skid2#r:מים, שמן, בוץ, חול וחצץ מקטינים את א"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -15603,7 +15609,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "775": {
 "v": "full",
@@ -16715,11 +16721,14 @@
 "by": "sample"
 },
 "832": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "shoulder",
-"src": "S",
+"v": "full",
+"rule": [
+"shoulder2#r1"
+],
+"ref": [
+"shoulder2#r:ירידה מתוכננת לשול: בוחרים מקום עם ר"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -16729,7 +16738,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "833": {
 "v": "none",
@@ -16749,11 +16758,14 @@
 "by": "hand"
 },
 "834": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "shoulder",
-"src": "S",
+"v": "full",
+"rule": [
+"shoulder2#r1"
+],
+"ref": [
+"shoulder2#r:ירידה מתוכננת לשול: בוחרים מקום עם ר"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -16763,14 +16775,17 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "835": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "shoulder",
-"src": "S",
+"v": "full",
+"rule": [
+"shoulder2#r3"
+],
+"ref": [
+"shoulder2#r:עלייה מהשול לכביש: בודקים את התנועה "
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -16780,7 +16795,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "836": {
 "v": "full",
@@ -16803,11 +16818,14 @@
 "by": "sample"
 },
 "837": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "shoulder",
-"src": "S",
+"v": "full",
+"rule": [
+"shoulder2#r2"
+],
+"ref": [
+"shoulder2#r:ירידה בלתי מתוכננת לשול מוצדקת כשמופ"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -16817,14 +16835,17 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "838": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "shoulder braking",
-"src": "S",
+"v": "full",
+"rule": [
+"shoulder2#r4"
+],
+"ref": [
+"shoulder2#r:בירידת חירום לשול, הגלגלים הימניים נ"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -16834,7 +16855,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "sample"
+"by": "v1.5"
 },
 "839": {
 "v": "full",
@@ -16857,11 +16878,14 @@
 "by": "v1.5"
 },
 "840": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "mountain road",
-"src": "S",
+"v": "partial",
+"rule": [
+"shoulder2#r0"
+],
+"ref": [
+"shoulder2#r:בדרך הררית צרה נשקפת סכנת תאונה חזית"
+],
+"why": "rule covers part of the answer (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -16871,7 +16895,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "sample"
+"by": "v1.5"
 },
 "841": {
 "v": "full",
@@ -16914,11 +16938,14 @@
 "by": "v1.5"
 },
 "843": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "skid physics",
-"src": "S",
+"v": "full",
+"rule": [
+"skid2#r1"
+],
+"ref": [
+"skid2#r:החלקה היא אובדן האחיזה של הצמיג בכבי"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -16928,14 +16955,17 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "844": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "physics",
-"src": "S",
+"v": "full",
+"rule": [
+"skid2#r5"
+],
+"ref": [
+"skid2#r:בעקומה פועל על הרכב הכוח הצנטריפוגלי"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -16945,14 +16975,17 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "845": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "centrifugal",
-"src": "S",
+"v": "full",
+"rule": [
+"skid2#r5"
+],
+"ref": [
+"skid2#r:בעקומה פועל על הרכב הכוח הצנטריפוגלי"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -16962,14 +16995,17 @@
 "D"
 ],
 "topic": "safety",
-"by": "sample"
+"by": "v1.5"
 },
 "846": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "skid",
-"src": "S",
+"v": "full",
+"rule": [
+"skid2#r2"
+],
+"ref": [
+"skid2#r:מים, שמן, בוץ, חול וחצץ מקטינים את א"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -16979,7 +17015,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "847": {
 "v": "partial",
@@ -17022,11 +17058,14 @@
 "by": "sample"
 },
 "849": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "skid",
-"src": "S",
+"v": "full",
+"rule": [
+"skid2#r0"
+],
+"ref": [
+"skid2#r:מערכות השליטה ברכב הן הבלם, הדלק (הא"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -17036,7 +17075,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "850": {
 "v": "partial",
@@ -17059,11 +17098,14 @@
 "by": "sample"
 },
 "851": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "night driving",
-"src": "S",
+"v": "full",
+"rule": [
+"night2#r0"
+],
+"ref": [
+"night2#r:הבעיות המיוחדות בלילה: שדה ראייה מוג"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -17073,14 +17115,17 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "852": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "glare",
-"src": "S",
+"v": "full",
+"rule": [
+"night2#r2"
+],
+"ref": [
+"night2#r:רכב ממול מסנוור אותך: מאטים ומפנים א"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -17090,14 +17135,17 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "853": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "night driving",
-"src": "S",
+"v": "full",
+"rule": [
+"night2#r1"
+],
+"ref": [
+"night2#r:בלילה מתאימים את המהירות כך שתוכל לע"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -17107,7 +17155,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "854": {
 "v": "partial",
@@ -17790,11 +17838,14 @@
 "by": "v1.5"
 },
 "890": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "shoulder expressway",
-"src": "S",
+"v": "full",
+"rule": [
+"shoulder2#r5"
+],
+"ref": [
+"shoulder2#r:נסיעה בימין הכביש משאירה לך את השול "
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "A",
 "B",
@@ -17803,7 +17854,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "891": {
 "v": "full",
@@ -18015,11 +18066,14 @@
 "by": "hand"
 },
 "902": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "curve technique",
-"src": "S",
+"v": "full",
+"rule": [
+"skid2#r3"
+],
+"ref": [
+"skid2#r:מאטים לפני הכניסה לעקומה חדה, ולא בת"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -18029,7 +18083,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "903": {
 "v": "full",
@@ -18132,11 +18186,14 @@
 "by": "v1.5"
 },
 "908": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "picture children",
-"src": "S",
+"v": "partial",
+"rule": [
+"shoulder2#r6"
+],
+"ref": [
+"shoulder2#r:הולך רגל (או ילד) מתפרץ לכביש: עושים"
+],
+"why": "rule covers part of the answer (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -18146,7 +18203,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "909": {
 "v": "none",
@@ -18320,11 +18377,14 @@
 "by": "v1.5"
 },
 "918": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "picture",
-"src": "S",
+"v": "partial",
+"rule": [
+"shoulder2#r6"
+],
+"ref": [
+"shoulder2#r:הולך רגל (או ילד) מתפרץ לכביש: עושים"
+],
+"why": "rule covers part of the answer (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -18334,7 +18394,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "919": {
 "v": "full",
@@ -20182,11 +20242,14 @@
 "by": "hand"
 },
 "1023": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "broken headlamp",
-"src": "S",
+"v": "partial",
+"rule": [
+"night2#r4"
+],
+"ref": [
+"night2#r:הכיוון של פנסי החזית והניקיון שלהם ו"
+],
+"why": "rule covers part of the answer (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -20194,7 +20257,7 @@
 "C1"
 ],
 "topic": "vehicle",
-"by": "sample"
+"by": "v1.5"
 },
 "1024": {
 "v": "none",
@@ -20550,17 +20613,20 @@
 "by": "hand"
 },
 "1047": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "tyre pressure steering",
-"src": "S",
+"v": "partial",
+"rule": [
+"skid2#r4"
+],
+"ref": [
+"skid2#r:רכב לא תקין מגביר את סכנת ההחלקה: צמ"
+],
+"why": "rule covers part of the answer (OFF:textbook)",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1048": {
 "v": "none",
@@ -24314,11 +24380,14 @@
 "by": "v1.5"
 },
 "1298": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "headlamp aim",
-"src": "S",
+"v": "full",
+"rule": [
+"night2#r4"
+],
+"ref": [
+"night2#r:הכיוון של פנסי החזית והניקיון שלהם ו"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "A",
 "B",
@@ -24327,7 +24396,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1299": {
 "v": "full",
@@ -26221,11 +26290,14 @@
 "by": "sample"
 },
 "1417": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "flooded road brakes",
-"src": "S",
+"v": "partial",
+"rule": [
+"skid2#r4"
+],
+"ref": [
+"skid2#r:רכב לא תקין מגביר את סכנת ההחלקה: צמ"
+],
+"why": "rule covers part of the answer (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -26235,7 +26307,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "sample"
+"by": "v1.5"
 },
 "1418": {
 "v": "full",
@@ -27109,11 +27181,14 @@
 "by": "hand"
 },
 "1476": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sand on road",
-"src": "S",
+"v": "full",
+"rule": [
+"skid2#r2"
+],
+"ref": [
+"skid2#r:מים, שמן, בוץ, חול וחצץ מקטינים את א"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "A",
 "B",
@@ -27122,7 +27197,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "sample"
+"by": "v1.5"
 },
 "1477": {
 "v": "full",
@@ -28889,11 +28964,14 @@
 "by": "sample"
 },
 "1578": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "control systems",
-"src": "S",
+"v": "full",
+"rule": [
+"skid2#r0"
+],
+"ref": [
+"skid2#r:מערכות השליטה ברכב הן הבלם, הדלק (הא"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -28901,7 +28979,7 @@
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1579": {
 "v": "full",
@@ -29330,11 +29408,14 @@
 "by": "v1.5"
 },
 "1608": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "dirty headlamps",
-"src": "S",
+"v": "full",
+"rule": [
+"night2#r4"
+],
+"ref": [
+"night2#r:הכיוון של פנסי החזית והניקיון שלהם ו"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -29344,7 +29425,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1609": {
 "v": "none",
@@ -29917,16 +29998,19 @@
 "by": "hand"
 },
 "1648": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "load placement (not in gov.il booklet)",
-"src": "S",
+"v": "partial",
+"rule": [
+"skid2#r7"
+],
+"ref": [
+"skid2#r:מטען גבוה (למשל על הגג) מגביה את מרכ"
+],
+"why": "rule covers part of the answer (OFF:textbook)",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1649": {
 "v": "partial",
@@ -30375,11 +30459,14 @@
 "by": "hand"
 },
 "1679": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "curve technique",
-"src": "S",
+"v": "full",
+"rule": [
+"skid2#r3"
+],
+"ref": [
+"skid2#r:מאטים לפני הכניסה לעקומה חדה, ולא בת"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -30389,7 +30476,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1680": {
 "v": "full",
@@ -30642,11 +30729,14 @@
 "by": "hand"
 },
 "1694": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "headlamp aim",
-"src": "S",
+"v": "full",
+"rule": [
+"night2#r4"
+],
+"ref": [
+"night2#r:הכיוון של פנסי החזית והניקיון שלהם ו"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -30654,14 +30744,17 @@
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1695": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "clean windows glare",
-"src": "S",
+"v": "full",
+"rule": [
+"night2#r4"
+],
+"ref": [
+"night2#r:הכיוון של פנסי החזית והניקיון שלהם ו"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -30671,7 +30764,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1696": {
 "v": "full",
@@ -30694,11 +30787,14 @@
 "by": "v1.5"
 },
 "1697": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "night driving",
-"src": "S",
+"v": "full",
+"rule": [
+"night2#r0"
+],
+"ref": [
+"night2#r:הבעיות המיוחדות בלילה: שדה ראייה מוג"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -30708,7 +30804,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1698": {
 "v": "partial",
@@ -30862,11 +30958,14 @@
 "by": "hand"
 },
 "1706": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "dashboard lamp",
-"src": "S",
+"v": "full",
+"rule": [
+"night2#r3"
+],
+"ref": [
+"night2#r:האור הנמוך מאיר לפחות 30 מטר, והאור "
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -30876,7 +30975,7 @@
 "D"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1707": {
 "v": "full",
@@ -30899,11 +30998,14 @@
 "by": "sample"
 },
 "1708": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "tread grooves",
-"src": "S",
+"v": "full",
+"rule": [
+"skid2#r4"
+],
+"ref": [
+"skid2#r:רכב לא תקין מגביר את סכנת ההחלקה: צמ"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -30911,7 +31013,7 @@
 "C1"
 ],
 "topic": "vehicle",
-"by": "sample"
+"by": "v1.5"
 },
 "1709": {
 "v": "full",
@@ -31098,11 +31200,14 @@
 "by": "hand"
 },
 "1719": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "loss of control",
-"src": "S",
+"v": "full",
+"rule": [
+"skid2#r6"
+],
+"ref": [
+"skid2#r:גורם מרכזי לאובדן שליטה: נהיגה במהיר"
+],
+"why": "rule written for this question (OFF:textbook)",
 "cls": [
 "1",
 "A",
@@ -31112,7 +31217,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1720": {
 "v": "full",
