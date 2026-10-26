@@ -37,7 +37,7 @@ Q = {
          1730: '"pressure exhaust" ban: TR 318 regulates the exhaust system but has no such ban',
          1778: 'what the annual test records: not in the pinned regulations'},
  'pic': {i: '' for i in (699, 708, 728, 878, 885, 896, 898, 909, 911, 914, 923, 931, 942, 944, 948, 953, 954,
-                         958, 968, 978, 980, 985)},
+                         958, 968, 980)},  # v1.11 (review #8): 978 now taught (sign 702 + light sequence), 985 partial (keep right),
  'veh': {830: 'hybrid car', 886: 'hybrid fuel use', 1065: 'GPS', 1076: 'panoramic mirror', 1699: 'panoramic mirror',
          1765: 'head restraint height (textbook p133 says set it at the height of the centre of the skull, which conflicts with the bank answer)',
          1016: 'engine and safety', 1020: 'fast indicator blink', 1037: 'fire extinguisher replacement',

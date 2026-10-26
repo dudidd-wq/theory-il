@@ -7880,11 +7880,13 @@
 "src": "S"
 },
 "978": {
-"by": "hand",
-"v": "none",
-"u": [],
-"src": "S",
-"why": "picture"
+"by": "rejudge",
+"why": "sign table 702 (red + yellow together: \"היכון לנסיעה עם התחלף האור\") and the textbook light sequence red, red+yellow, green (was: none/no source)",
+"v": "full",
+"u": [
+"lights2#r:סדר מופעי הרמזור: אדום, אדום וצהוב י",
+"signs#d702"
+]
 },
 "979": {
 "by": "hand",
@@ -7932,11 +7934,12 @@
 "why": "picture curve"
 },
 "985": {
-"by": "hand",
-"v": "none",
-"u": [],
-"src": "S",
-"why": "picture"
+"by": "rejudge",
+"why": "textbook keep-right rule (OFF:textbook); judging the tanker in the picture is from the bank picture alone (was: none/no source)",
+"v": "partial",
+"u": [
+"lanes#r:נוסעים בימין הכביש: כך נוצר ריחוק מה"
+]
 },
 "986": {
 "by": "hand",
@@ -11519,11 +11522,13 @@
 "why": "TR air brake warnings"
 },
 "1464": {
-"by": "hand",
-"v": "none",
-"u": [],
-"src": "S",
-"why": "curve stability"
+"by": "rejudge",
+"why": "textbook: high load raises the centre of gravity and lowers stability; speed matched to the curve radius – the full list of factors is from the bank alone (was: none/no source)",
+"v": "partial",
+"u": [
+"skid2#r:מטען גבוה (למשל על הגג) מגביה את מרכ",
+"lanes#r:בעקומה חדה: מאטים לפני הכניסה, מתאימ"
+]
 },
 "1465": {
 "by": "hand",

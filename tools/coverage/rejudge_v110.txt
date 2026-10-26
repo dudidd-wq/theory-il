@@ -1,3 +1,7 @@
 # v1.10 re-judgement (review #7 item 1): mis-mapped verdicts left over from v1.9 (same format as rejudge_v19.txt, applied after it)
 1305 full heavy2#r2,cargo2#r0 TR 313(א)(3): maximum length of a commercial vehicle 12.00 m (was: heavy2#r0, the 2.55 m width rule)
 1520 full equip#r2 TR 368: two wheel chocks above 5,000 kg (was: heavy2#r19, the licence-class rule)
+# v1.11 (review #8 item 3): no-source picture questions whose answer an official unit does teach
+978 full lights2#r5,signs#d702 sign table 702 (red + yellow together: "היכון לנסיעה עם התחלף האור") and the textbook light sequence red, red+yellow, green (was: none/no source)
+985 partial lanes#r9 textbook keep-right rule (OFF:textbook); judging the tanker in the picture is from the bank picture alone (was: none/no source)
+1464 partial skid2#r8,lanes#r2 textbook: high load raises the centre of gravity and lowers stability; speed matched to the curve radius – the full list of factors is from the bank alone (was: none/no source)
