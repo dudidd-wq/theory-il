@@ -36,6 +36,9 @@ const refs = (s, also = []) => h('span', { class: 'refs' }, [s, ...also].map(ref
 
 /** why-box data for a bank question: the lesson rule (or sign-table entry) that teaches it.
  *  cov = data/coverage.json, sg = data/signs.json; returns null when nothing in the lessons covers it */
+const BANK_URL = 'https://data.gov.il/he/datasets/ministry_of_transport/tqhe';
+const CLASS_URL = { _: 'https://www.gov.il/he/service/apply_for_new_driver_drivers_license',
+  C: 'https://www.gov.il/he/Departments/General/truck_drivers_background', D: 'https://www.gov.il/he/departments/general/bus_drivers_rules' };
 export function explain(id, c, cov, sg) {
   const ls = lessonsFor(c), mine = new Map(ls.map(l => [l.id, l]));
   const lessonOf = lid => mine.get(lid) || null;
@@ -46,7 +49,7 @@ export function explain(id, c, cov, sg) {
   const note = L?.notes?.[id] || null;   // the bank's answer differs from (or is narrower than) the current law text
   const e = cov?.q?.[id]; if (!e) return note ? { kind: 'none', lesson: null, note } : null;
   const [stt, lids, units] = e;
-  if (stt === 'n') return { kind: 'none', lesson: null, note };   // nearest-by-words lessons are often unrelated: no link, just say so
+  if (stt === 'n') return { kind: 'none', lesson: null, note, nosrc: e[3] === 'S' };   // nearest-by-words lessons are often unrelated: no link, just say so
   for (const u of units || []) {
     const m = /^([\w]+)#([rxbc])(\d+)$/.exec(u); if (!m) continue;
     const l = lessonOf(m[1]); if (!l) continue;
@@ -73,7 +76,11 @@ export function whyBox(x, ok, c) {
   } else if (x.kind === 'rule' || x.kind === 'part') {
     kids.push(he(h('p', {}, h('b', { text: t(x.kind === 'rule' ? 'ln.why' : 'why.part') + ' ' }), x.t)));
     if (x.s) kids.push(h('p', { class: 'refs' }, ref(x.s)));
-  } else kids.push(h('p', { class: 'small muted', text: t('why.none') }));
+  } else {
+    // nothing in the lessons covers it yet: say so and point to the official sources (or say plainly that none exists)
+    kids.push(h('p', { class: 'small muted', text: t(x.nosrc ? 'why.nosrc' : 'why.none') }));
+    kids.push(h('p', { class: 'refs small' }, ext(BANK_URL, t('why.bank')), h('span', { class: 'muted', text: ' · ' }), ext(CLASS_URL[c] || CLASS_URL._, t('why.classPage'))));
+  }
   if (x.note) kids.push(he(h('div', { class: 'notice lawnote', role: 'note' }, icon('info'), h('div', {},
     h('p', {}, h('b', { text: t('why.exam') + ' ' }), x.note.exam), h('p', {}, h('b', { text: t('why.law') + ' ' }), x.note.law),
     x.note.s ? h('p', { class: 'refs' }, ref(x.note.s)) : null))));

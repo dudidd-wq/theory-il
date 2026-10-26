@@ -4,14 +4,14 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1067,
+"full": 1068,
 "partial": 264,
-"none": 470,
-"full_pct": 59.2,
-"any_pct": 73.9,
-"strict_full": 834,
-"strict_pct": 46.3,
-"none_teachable": 154,
+"none": 469,
+"full_pct": 59.3,
+"any_pct": 74.0,
+"strict_full": 835,
+"strict_pct": 46.4,
+"none_teachable": 153,
 "none_nosource": 316
 },
 "class": {
@@ -24,8 +24,8 @@
 "any_pct": 71.1,
 "strict_full": 511,
 "strict_pct": 40.2,
-"none_teachable": 109,
-"none_nosource": 259
+"none_teachable": 108,
+"none_nosource": 260
 },
 "A": {
 "n": 1155,
@@ -48,8 +48,8 @@
 "any_pct": 71.4,
 "strict_full": 577,
 "strict_pct": 41.7,
-"none_teachable": 138,
-"none_nosource": 258
+"none_teachable": 137,
+"none_nosource": 259
 },
 "C": {
 "n": 1314,
@@ -77,14 +77,14 @@
 },
 "1": {
 "n": 1127,
-"full": 672,
+"full": 673,
 "partial": 159,
-"none": 296,
-"full_pct": 59.6,
-"any_pct": 73.7,
-"strict_full": 468,
-"strict_pct": 41.5,
-"none_teachable": 90,
+"none": 295,
+"full_pct": 59.7,
+"any_pct": 73.8,
+"strict_full": 469,
+"strict_pct": 41.6,
+"none_teachable": 89,
 "none_nosource": 206
 }
 },
@@ -165,14 +165,14 @@
 "topic": {
 "law": {
 "n": 901,
-"full": 605,
+"full": 606,
 "partial": 147,
-"none": 149,
-"full_pct": 67.1,
-"any_pct": 83.5,
-"strict_full": 605,
-"strict_pct": 67.1,
-"none_teachable": 121,
+"none": 148,
+"full_pct": 67.3,
+"any_pct": 83.6,
+"strict_full": 606,
+"strict_pct": 67.3,
+"none_teachable": 120,
 "none_nosource": 28
 },
 "signs": {
@@ -223,8 +223,8 @@
 "any_pct": 80.8,
 "strict_full": 313,
 "strict_pct": 62.5,
-"none_teachable": 80,
-"none_nosource": 16
+"none_teachable": 79,
+"none_nosource": 17
 },
 "signs": {
 "n": 360,
@@ -323,8 +323,8 @@
 "any_pct": 78.7,
 "strict_full": 373,
 "strict_pct": 61.7,
-"none_teachable": 108,
-"none_nosource": 21
+"none_teachable": 107,
+"none_nosource": 22
 },
 "signs": {
 "n": 367,
@@ -466,14 +466,14 @@
 "1": {
 "law": {
 "n": 436,
-"full": 281,
+"full": 282,
 "partial": 82,
-"none": 73,
-"full_pct": 64.4,
-"any_pct": 83.3,
-"strict_full": 281,
-"strict_pct": 64.4,
-"none_teachable": 63,
+"none": 72,
+"full_pct": 64.7,
+"any_pct": 83.5,
+"strict_full": 282,
+"strict_pct": 64.7,
+"none_teachable": 62,
 "none_nosource": 10
 },
 "signs": {
@@ -515,8 +515,8 @@
 }
 },
 "by": {
-"hand": 1079,
-"v1.5": 355,
+"hand": 1078,
+"v1.5": 356,
 "link": 81,
 "sample": 286
 }
@@ -756,18 +756,21 @@
 "by": "v1.5"
 },
 "13": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 טרקטור משא",
-"src": "T",
+"v": "full",
+"rule": [
+"tractor2#r0"
+],
+"ref": [
+"tractor2#r:טרקטור משא: טרקטור שנע על 4 גלגלים ל"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "1",
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "14": {
 "v": "none",
@@ -6864,7 +6867,7 @@
 "340": {
 "v": "full",
 "rule": [
-"tractor2#r2"
+"tractor2#r3"
 ],
 "ref": [
 "tractor2#r:מכונה חקלאית נגררת: רוחב מעל 250 ס\"מ"
@@ -29149,7 +29152,7 @@
 "1625": {
 "v": "full",
 "rule": [
-"tractor2#r3"
+"tractor2#r4"
 ],
 "ref": [
 "tractor2#r:בגרור, בנתמך וברכב מנועי (חוץ מאופנו"
@@ -29728,7 +29731,7 @@
 "1665": {
 "v": "full",
 "rule": [
-"tractor2#r0"
+"tractor2#r1"
 ],
 "ref": [
 "tractor2#r:נוהג בטרקטור לא יסיע נוסע על הטרקטור"
@@ -30506,7 +30509,7 @@
 "1710": {
 "v": "full",
 "rule": [
-"tractor2#r1"
+"tractor2#r2"
 ],
 "ref": [
 "tractor2#r:על מדרכה נוהגים רק כדי לחצות אותה בכ"

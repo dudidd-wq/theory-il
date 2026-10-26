@@ -591,7 +591,6 @@ function about() {
       h('li', {}, ext('https://data.gov.il/he/terms-of-use', 'data.gov.il – תנאי שימוש')),
       h('li', {}, ext('https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf', 'gov.il – לוח התמרורים (PDF)')),
       h('li', {}, ext('https://www.gov.il/en/service/apply_for_new_driver_drivers_license', 'gov.il – Apply for a new driver licence')),
-      h('li', {}, ext('https://www.kolzchut.org.il/he/%D7%9E%D7%91%D7%97%D7%9F_%D7%A0%D7%94%D7%99%D7%92%D7%94_%D7%A2%D7%99%D7%95%D7%A0%D7%99_(%D7%AA%D7%99%D7%90%D7%95%D7%A8%D7%99%D7%94)', 'כל זכות – מבחן נהיגה עיוני (תיאוריה)')),
       h('li', {}, h('span', { text: t('ab.code') + ': ' }), ext('https://github.com/dudidd-wq/theory-il', 'github.com/dudidd-wq/theory-il'))),
     h('p', { class: 'small muted', text: 'Font: Rubik – SIL Open Font License 1.1 (fonts/OFL-Rubik.txt).' }));
 }
