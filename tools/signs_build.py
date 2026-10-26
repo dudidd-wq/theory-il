@@ -4,11 +4,13 @@ which bank questions/images show which sign. Sources per question, in order:
   1. the correct answer is a sign number ("302")            -> that number
   2. tools/signs/manual.json fix / img (checked by eye)
   3. char n-gram match of the correct answer to the meaning (sim>=0.55, margin>=0.1), minus manual drops
-No meaning text is written by hand: every entry is the table's own wording (pdf text order repaired)."""
+No meaning text is written by hand: every entry is the table's own wording (pdf text order repaired by
+tools/signs_tidy.py; the few cells it cannot repair are read by eye from the pdf into manual.json "text")."""
 import json, re, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'coverage'))
 from signs_dict import parse, LOT, ROOT
+from signs_tidy import vocab, tidy
 from units import norm
 
 PARTS = [(1, 'תמרורי אזהרה והתראה'), (2, 'תמרורי הוריה'), (3, 'תמרורי זכות קדימה'), (4, 'תמרורי איסורים והגבלות'),
@@ -17,8 +19,9 @@ PARTS = [(1, 'תמרורי אזהרה והתראה'), (2, 'תמרורי הורי
 
 def build():
     from sklearn.feature_extraction.text import TfidfVectorizer
-    E = parse(); keys = sorted(E, key=int)
     man = json.load(open(os.path.join(ROOT, 'tools/signs/manual.json')))
+    E = parse(); V = vocab(E.values()); keys = sorted(E, key=int)
+    E = {k: man.get('text', {}).get(k) or tidy(E[k], V, k) for k in keys}   # extraction repaired; hand-read cells from manual.json
     Q = [q for q in json.load(open(os.path.join(ROOT, 'data/q.he.json'))) if q['k'] == 'signs']
     v = TfidfVectorizer(analyzer='char_wb', ngram_range=(3, 5), sublinear_tf=True).fit([norm(E[k]) for k in keys] + [norm(q['a'][q['c']]) for q in Q])
     M = v.transform([norm(E[k][:200]) for k in keys])

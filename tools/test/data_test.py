@@ -91,6 +91,20 @@ ok((207, 'TR:72(א)(7)') in exs and (88, 'TR:48(ג)') in exs, 'citations: Q207�
 ok('TR:47(ו)' in rs('overtake') and {'TR:117(ב)', 'TR:117(ג)'} <= set(rs('rail')), 'overtake 47(ו) exception; rail 117(ב)+(ג)')
 ok("A1" in T('js', 'elig.js') and '221(א)(1)' in T('js', 'elig.js'), 'A1 line in elig.js')
 
+# 5b. v1.3: official sources, notes, diagrams, sign texts
+LJ = J('data', 'lessons.json'); NT = LJ.get('notes', {})
+ok(all(k in NT for k in ('1192', '40', '592')), 'bank-vs-law notes for Q1192, Q40, Q592')
+ok(all(NT[k]['exam'] == next(q['a'][q['c']] for q in Q if q['id'] == int(k)) for k in NT), 'notes quote the bank answer unchanged')
+vz = set(re.search(r'export const VIZ = \{([^}]*)\}', viz)[1].replace(' ', '').split(','))
+ok(all(v in vz for l in L for v in l['viz']), f'every lesson diagram exists in js/viz.js')
+ok(sum(1 for l in L if not l['viz']) <= 2, f"lessons without a diagram: {[l['id'] for l in L if not l['viz']]}")
+ok(all(i in LB for i in ('vehicle', 'defensive', 'moto2', 'heavy2')), 'v1.3 lessons: vehicle, defensive, moto2, heavy2')
+ok(set(LB['moto2']['cls']) == {'A'} and set(LB['heavy2']['cls']) == {'C1', 'C'}, 'moto2 is A-only, heavy2 C1/C')
+ok(all(v['kind'] != 'OFF' or ('sha256' in v and v.get('accessed')) for v in SRC.values()), 'official pages pinned with sha256 + access date')
+bad = [k for k, t in SG['e'].items() if re.search(r'(?<!\S)[\u05d0-\u05ea](?!\S)', t) or re.search(r'\)[^()]*\(', t)]
+ok(len(bad) <= 3, f'sign texts without split letters / mirrored brackets (left: {bad})')
+ok(SG['q'].get('592') == ['504'], 'Q592 → sign 504 (white + yellow arrow)')
+
 # 6. SW + version
 sw = T('sw.js'); v = re.search(r"'(\d+\.\d+\.\d+)'", T('js', 'version.js'))[1]
 ok(f"const VERSION = '{v}'" in sw, f'sw.js VERSION = js/version.js ({v})')

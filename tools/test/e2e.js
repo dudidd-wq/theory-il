@@ -13,9 +13,9 @@ async function axe(p, name, prof) {
   await p.waitForFunction(() => { const e = document.getElementById('toast'); return !e.classList.contains('show') && getComputedStyle(e).opacity === '0'; }, null, { timeout: 6000 });
   await p.evaluate(AXE);
   const r = await p.evaluate(() => axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] } }));
-  const v = r.violations.filter(x => x.impact === 'serious' || x.impact === 'critical' || x.impact === 'moderate');
+  const v = r.violations;   // every impact, minor included (review #3 finding 10)
   if (v.length && process.env.AXEDBG) console.log(JSON.stringify(v.map(x => x.nodes.map(n => [n.html, n.failureSummary]))));
-  ok(!v.length, `axe ${name}: ${v.length ? v.map(x => `${x.id}(${x.impact}) ${x.nodes.slice(0, 2).map(n => n.target.join(' ')).join(' | ')}`).join('; ') : 'no serious/moderate violations'}`);
+  ok(!v.length, `axe ${name}: ${v.length ? v.map(x => `${x.id}(${x.impact}) ${x.nodes.slice(0, 2).map(n => n.target.join(' ')).join(' | ')}`).join('; ') : 'no violations'}`);
   await p.screenshot({ path: path.join(OUT, `${prof}-${name}.png`), fullPage: true });
 }
 const go = async (p, hash) => { await p.evaluate(h => { location.hash = h; }, hash); await p.waitForTimeout(250); };
@@ -186,6 +186,14 @@ async function run(prof, opts) {
   ok((await p.textContent('.viz .vz-alt')) !== alt0, 'step diagram: text alternative follows each step');
   const dur = await p.evaluate(() => getComputedStyle(document.querySelector('.vz-car')).transitionDuration);
   ok(opts.reducedMotion === 'reduce' ? dur === '0s' : dur !== '0s', `diagram motion respects prefers-reduced-motion (${dur})`);
+  // every B lesson read-only: each diagram renders with a text alternative, and the page passes axe
+  { let bad = [];
+    for (const l of LB) { await go(p, '#/learn/' + l.id + '/peek'); await p.waitForSelector('.lsec');
+      const n = await p.locator('.viz').count(), alts = await p.locator('.viz .vz-alt').evaluateAll(es => es.filter(e => e.textContent.trim().length > 10).length);
+      if (n !== l.viz.length || alts !== n) bad.push(`${l.id}(${n}/${l.viz.length}/${alts})`);
+      const r = await p.evaluate(() => axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] } }));
+      if (r.violations.length) bad.push(l.id + ':' + r.violations.map(x => x.id).join(',')); }
+    ok(!bad.length, `all ${LB.length} B lessons: diagrams + text alternative + axe clean ${bad.join(' ')}`); }
   await go(p, '#/learn'); await p.waitForSelector('.lessons');
   ok(await p.locator('.lessons li:nth-child(2) a').count() === 1, 'reading lesson 1 unlocked lesson 2');
   await go(p, '#/parent'); ok(new RegExp(`שיעורים שנשלטו\\s*1/${LB.length}`).test(await text(p)), 'parent view lists lessons mastered');

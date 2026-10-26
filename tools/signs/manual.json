@@ -1,5 +1,5 @@
 {
-"note": "Hand-checked map of bank sign images and questions to לות\"ם numbers (2026-10-26, by eye against the gov.il table). img: single-sign image -> numbers; fix: per-question override of the automatic text match; drop: auto matches rejected.",
+"note": "Hand-checked map of bank sign images and questions to לות\"ם numbers (2026-10-26, by eye against the gov.il table). img: single-sign image -> numbers; fix: per-question override of the automatic text match; drop: auto matches rejected. text: cells whose pdf extraction tidy() cannot repair, re-typed in reading order from the table itself (same words, 2026-10-26).",
 "img": {
 "tq_pic_3015.webp": [
 "433"
@@ -400,9 +400,23 @@
 ],
 "386": [
 "423"
+],
+"597": [
+"310"
+],
+"530": [
+"419"
 ]
 },
 "drop": [
 618
-]
+],
+"text": {
+"119": "צמתי קמץ: ימינה ולאחר מכן שמאלה או שמאלה ולאחר מכן ימינה, בהתאמה. בצמתים שלפניך",
+"120": "צמתי קמץ: ימינה ולאחר מכן שמאלה או שמאלה ולאחר מכן ימינה, בהתאמה. בצמתים שלפניך",
+"142": "אבנים מידרדרות מימין או משמאל, בהתאמה. בדרך שלפניך",
+"143": "אבנים מידרדרות מימין או משמאל, בהתאמה. בדרך שלפניך",
+"705": "אור צהוב: עצור כאמור ב-701. אם אינך יכול לעצור לפני הצומת בבטחה או שנכנסת אליו – השלם את מעבר הצומת ופנהו מיד כאמור ב-703 או 704. נוהג רכב",
+"716": "אור לבן עגול: עצור כאמור ב-708. אם אינך יכול לעצור לפני הצומת בבטחה, או נכנסת אליו – השלם את מעבר הצומת ופנהו מיד כאמור ב-710, 711, 712, 713, 714 או 715. נוהג ברכבת מקומית או ברכב"
+}
 }
