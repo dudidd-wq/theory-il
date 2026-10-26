@@ -28,6 +28,8 @@ PDFS = {'book': ('book.pdf', '03.2026'), 'textbook': ('textbook.pdf', '2017'), '
 # joined by \f. Its practice-question blocks ('שאלות (ל)תרגול לקראת מבחן בתיאוריה' up to the 'תשובות לשאלות'
 # line, possibly spanning pages) are excluded: only the explanatory prose is citable.
 EDU18_URL = 'https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s18-operating-safely.pdf'
+KIDS_PUB = 'המשרד להגנת הסביבה – סבבה, מאגר מידע סביבתי (kids.gov.il)'
+# kids_co: Ministry of Environmental Protection page on carbon monoxide, approved as an official source by Dudi on 2026-10-26 (15:05 UTC+2).
 EDU_PUB = 'משרד החינוך – תוכנית הלימודים בחינוך תעבורתי לחטיבה העליונה (meyda.education.gov.il)'
 def edu_prose(raw):
     """The edu PDF text with its practice-question blocks blanked (page breaks kept). TOC lines (dot leaders) skipped."""
@@ -153,6 +155,12 @@ P = {
   'מסייעים לנהגים אחרים לראות אתכם: מדליקים אורות, לא עוקפים מימין, לא "מזגזגים" בין הנתיבים, ובמידת האפשר יוצרים קשר עין עם הנהגים.',
   'מקפידים על מהירות נסיעה התואמת את החוק ואת תנאי הדרך (שדה ראייה, מזג אוויר ומצב הכביש).',
   'בהתקרבות לצומת וביציאה מצומת מאטים, מתמקמים בנתיב כך ששדה הראייה רחב יותר ושנהגים אחרים יכולים להבחין בכם, מוודאים שהצומת פנוי ומצייתים לרמזורים ולתמרורים.']),
+ 'kids_co': ('https://kids.gov.il/sababa/sababa_pool/pages/4451', 'מה מזהם את האוויר? (מאגר מידע סביבתי – זיהום אוויר)', 'kids_co', [
+  'פחמן חד-חמצני הוא גז חסר צבע וריח, הנוצר בעיקר משרפת דלק עם כמות בלתי מספקת של חמצן (שרפה לא שלמה) במנועים של כלי רכב.',
+  'הוא חודר דרך הריאות למערכת הדם ופוגע בהובלת החמצן בגוף.',
+  'חשיפה לכמויות קטנות של פחמן חד-חמצני גורמת לסחרחורות, לבחילות, לכאבי ראש, לפגיעה בערנות ועוד.',
+  'חשיפה לכמויות גדולות, שיכולה להתרחש באזורים סגורים, עלולה לגרום להרעלה חריפה - לאובדן הכרה ואף למוות מחנק.',
+  'כיוון שגז זה חסר צבע, חסר ריח וחסר טעם - אנו עלולים לא לחוש בו']),
 }
 P['edu18'] = (EDU18_URL, 'חינוך תעבורתי, נושא 18: הפעלת הרכב בבטחה', 'edu_s18', [
   'החיכוך נוצר בין הדסקית לרפידת הבלם ברכב בעת לחיצה על דוושת הבלם',
@@ -192,7 +200,7 @@ def build(verify_only=False):
         if not os.path.exists(fn): errs.append(f'{pid}: no cached text {fn}'); continue
         raw = open(fn, encoding='utf-8').read(); nt = norm(raw)
         pages = raw.split('\f')
-        rec = {'url': url, 'title': title, 'publisher': {'terms': 'מערך הדיגיטל הלאומי (gov.il)', 'textbook': TEXTBOOK_PUB, 'edu18': EDU_PUB}.get(pid, PUB),
+        rec = {'url': url, 'title': title, 'publisher': {'terms': 'מערך הדיגיטל הלאומי (gov.il)', 'textbook': TEXTBOOK_PUB, 'edu18': EDU_PUB, 'kids_co': KIDS_PUB}.get(pid, PUB),
                'accessed': ACCESSED, 'sha256': hashlib.sha256(raw.encode()).hexdigest(), 'archive': ARCHIVE, 'quotes': []}
         if f in PDFS:
             rec['pdf_sha256'] = hashlib.sha256(open(os.path.join(CACHE, PDFS[f][0]), 'rb').read()).hexdigest()
