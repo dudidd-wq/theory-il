@@ -23,4 +23,19 @@ Excluded: Hebrew question 574 (its image is broken in the source).
 
 Not included because the open-data licence is marked *other-open* (not CC BY): the Arabic bank and the A3 (e-bike/e-scooter) bank.
 
+## Lessons (שלב הלימוד) – sources
+
+Lesson explanations, recaps and mnemonics in `data/lessons.json` are **our own wording** (not copied from books or apps).
+Every rule shown in a lesson cites a recorded source (`data/sources.json`, with the exact excerpt that the build checks against):
+
+| Source | Edition used | Licence / status |
+|---|---|---|
+| תקנות התעבורה, התשכ"א–1961 | [Wikisource revision 3085628](https://he.wikisource.org/w/index.php?oldid=3085628) | Legislation – no copyright (Israeli Copyright Act 2007, §6); Wikisource transcription CC BY-SA |
+| פקודת התעבורה [נוסח חדש] | [Wikisource revision 3085764](https://he.wikisource.org/w/index.php?oldid=3085764) | as above |
+| לוח התמרורים (הודעת התעבורה (קביעת תמרורים), התשע"א–2010, נוסח משולב 09/2022) | [gov.il PDF](https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf) (sha256 7cdd8369…) | Official publication (§6) |
+| Question-bank items used as sign images, worked examples and mini-quizzes | tqhe (above) | CC BY |
+
+Lesson diagrams (`js/viz.js`) are drawn locally in SVG; their numbers come only from the cited sections. Fines and penalty points are not shown (no citable source was recorded).
+Wikisource may lag recent amendments – always check the current official text.
+
 This project is **not an official product** and is not endorsed by the Ministry. Verify against official sources.
