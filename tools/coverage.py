@@ -60,6 +60,27 @@ for ln in open(P('tools/coverage/rejudge_v113.txt'), encoding='utf-8'):
         e['u'] += plus
     else:
         e.update(v='none', u=[], src={'none-T': 'T', 'none-S': 'S', 'conflict': 'X'}[v]); e.pop('dict', None); e.pop('strict_u', None)
+# v1.14 (review #10): second strict re-judgement, applied after v1.13. Same line format; here 'full' may also raise a partial
+# (with +refs, the cited rules that decide the answer) and 'partial' may also re-point a partial (+refs replace its units).
+for ln in open(P('tools/coverage/rejudge_v114.txt'), encoding='utf-8'):
+    ln = '' if ln.lstrip().startswith('#') else ln.strip()
+    if not ln: continue
+    head, why = (x.strip() for x in ln.split('|', 1)); qid, v, *add = head.split()
+    e = F[qid]; e['why'] = why; e['by'] = 'v1.14'
+    plus = [ref_of(LS, a[1:]) for a in add if a.startswith('+')]
+    e.pop('dict', None); e.pop('strict_u', None)
+    if v == 'full':
+        assert e['v'] in ('full', 'partial') and plus, qid; e['v'] = 'full'; e['u'] = plus
+    elif v == 'partial':
+        assert e['v'] in ('full', 'partial'), qid; e['v'] = 'partial'
+        if plus: e['u'] = plus
+    else:
+        e.update(v='none', u=[], src={'none-T': 'T', 'none-S': 'S', 'conflict': 'X'}[v])
+# v1.14 (review #10 N5): uncited lesson-body prose ('#b:' units) never counts – every taught / partly taught verdict rests on a cited item
+for qid, e in F.items():
+    e['u'] = [u for u in e['u'] if '#b:' not in u]
+    if 'strict_u' in e: e['strict_u'] = [u for u in e['strict_u'] if '#b:' not in u]
+    assert e['v'] == 'none' or e['u'], f'Q{qid}: verdict {e["v"]} rests only on lesson-body prose – re-judge it in rejudge_v114.txt'
 for e in F.values():
     e['ids'] = [resolve(LS, r) for r in e['u']]
     e['sids'] = [resolve(LS, r) for r in e.get('strict_u', [])]
@@ -124,7 +145,7 @@ for q in Q:
     ls = []
     for u in units:
         if ul[u] not in ls and lcls[ul[u]] & set(q['t']): ls.append(ul[u])
-    if e.get('dict') and 'signs' not in ls: ls.append('signs')
+    if (e.get('dict') or any(u.startswith('signs#d') for u in e['ids'])) and 'signs' not in ls: ls.append('signs')
     cov[q['id']] = [st, ls[:3], units[:3]] + ([e.get('src') or 'S'] if e['v'] == 'none' and e.get('src') != 'T' else [])
 _t = lambda x: [x['n'], x['full_pct'], x['strict_pct'], x['any_pct'], x['none_nosource'], x['bank_only'], x['full_nobank_pct'], x['partial'], x['partial_shown']]
 json.dump({'v': 2, 'legend': {'f': 'taught', 'w': 'partly', 'n': 'not taught yet', 'S': 'no official state source', 'X': 'bank answer contradicts the law'},

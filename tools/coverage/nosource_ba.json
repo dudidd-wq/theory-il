@@ -188,6 +188,11 @@
    "note": "hybrid car",
    "cls": "BA"
   },
+  "1064": {
+   "g": "veh",
+   "note": "GPS distraction (v1.14: was partial via lesson-body prose)",
+   "cls": "BA"
+  },
   "886": {
    "g": "veh",
    "note": "hybrid fuel use",
@@ -293,9 +298,39 @@
    "note": "\"טרקטור משא\": bank answer 1,500 kg; TR 1 says 1,800 kg (v1.13, review #9 D4)",
    "cls": "B"
   },
+  "333": {
+   "g": "conf",
+   "note": "minimum age for B: bank answer 17 years; TO s.12 says 16 years and 9 months (v1.14, review #10 N6)",
+   "cls": "B"
+  },
+  "330": {
+   "g": "conf",
+   "note": "B trailer: bank answer trailer up to 1,500 kg; TR 180(ב) sets 5,000 kg for the combination (v1.14)",
+   "cls": "B"
+  },
+  "91": {
+   "g": "conf",
+   "note": "B special medical vehicle: bank answer up to 4,000 kg; TR 180(א)(5) says 5,000 kg (v1.14)",
+   "cls": "B"
+  },
   "778": {
    "g": "drv",
    "note": "pedestrians near junction",
+   "cls": "BA"
+  },
+  "257": {
+   "g": "drv",
+   "note": "aborting an overtake (v1.14: was partial via lesson-body prose)",
+   "cls": "BA"
+  },
+  "611": {
+   "g": "drv",
+   "note": "wet road: textbook p.101 names a skid hazard only, not roll-over growing with speed (v1.14: was partial)",
+   "cls": "BA"
+  },
+  "964": {
+   "g": "drv",
+   "note": "yellow temporary sign is binding: not stated in the law or sign table (v1.14: was partial via lesson-body prose)",
    "cls": "BA"
   },
   "869": {
@@ -316,6 +351,11 @@
   "1588": {
    "g": "moto",
    "note": "side stand",
+   "cls": "A"
+  },
+  "1631": {
+   "g": "moto",
+   "note": "mirror + shoulder check ending an overtake (v1.14: was partial via lesson-body prose)",
    "cls": "A"
   },
   "1609": {

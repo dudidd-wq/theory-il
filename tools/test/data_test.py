@@ -46,11 +46,25 @@ ok(all(e['v'] in ('full', 'partial', 'none') and e['why'] for e in CF['q'].value
 ok(all(e['v'] != 'none' or e['src'] in ('T', 'S', 'X') for e in CF['q'].values()), 'every untaught question is marked teachable (T), no official source (S) or bank-vs-law conflict (X)')
 # v1.13 (review #9 D4): Q13's bank answer contradicts TR 1 – conflict status, not taught, not cited, never in a regular quiz
 _X = sorted(int(k) for k, e in CF['q'].items() if e.get('src') == 'X')
-ok(_X == [13] and not CF['q']['13']['rule'] and all(13 not in l['quiz'] for l in J('data', 'lessons.json')['lessons'] if not l.get('bank'))
-   and any(13 in l.get('bank', []) for l in J('data', 'lessons.json')['lessons']) and '1,800' in J('data', 'lessons.json')['notes']['13']['x'][0][1]
-   if '13' in J('data', 'lessons.json')['notes'] and J('data', 'lessons.json')['notes']['13'].get('x') else False,
-   f'v1.13: bank-vs-law conflict status {_X}: Q13 uncited, only in a bank lesson, its note quotes TR 1 (1,800 kg)')
-_RJ = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v113.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
+_LJ = J('data', 'lessons.json')
+# v1.14 (review #10 N6): every bank-vs-law conflict – uncited, only in a bank lesson, with a note quoting the law
+_XOK = [q for q in _X if not CF['q'][str(q)]['rule'] and all(q not in l['quiz'] for l in _LJ['lessons'] if not l.get('bank'))
+        and any(q in l.get('bank', []) for l in _LJ['lessons']) and _LJ['notes'].get(str(q), {}).get('x')]
+ok(_X == [13, 91, 330, 333, 1327, 1793] and _XOK == _X and '1,800' in _LJ['notes']['13']['x'][0][1],
+   f'v1.14: bank-vs-law conflict status {_X}: uncited, only in a bank lesson, each note quotes the law')
+# v1.14 (review #10 N6): a note or rule that says the bank's answer differs from the law marks a conflict (generic scan)
+_BD = re.compile(r'הבנק כותב|בבנק השאלות|תשובת המאגר|התשובה במאגר')
+_bdn = [int(k) for k, n in _LJ['notes'].items() if _BD.search(n.get('law', '')) and CF['q'].get(k, {}).get('src') != 'X'
+        and k not in ('281', '92', '1765')]
+_bdr = [(k, r) for k, e in CF['q'].items() if e['v'] != 'none' for r in e['rule']
+        if r.split('#')[1][0] == 'r' and _BD.search(next(l for l in _LJ['lessons'] if l['id'] == r.split('#')[0])['rules'][int(r.split('#r')[1])]['t'])]
+ok(not _bdn and not _bdr, f'v1.14: a note saying the bank differs is a conflict (X) {_bdn[:5]}; no verdict cites a rule that says the bank differs {_bdr[:5]}')
+# v1.14 (review #10 N5): coverage never rests on uncited lesson-body prose
+ok(not [k for k, e in CF['q'].items() for r in e['rule'] + e['ref'] if '#b' in r], 'v1.14: no verdict cites lesson-body prose (#b units)')
+_RJ4 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v114.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
+_RJ = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v113.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ4}
+ok(all(CF['q'][q]['by'] == 'v1.14' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none')
+       and (v != 'conflict' or CF['q'][q].get('src') == 'X') for q, v in _RJ4.items()), f'v1.14: every re-judgement of review #10 ({len(_RJ4)}) is applied')
 ok(all(CF['q'][q]['by'] == 'v1.13' and (v in ('why',) or CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none')) for q, v in _RJ.items()),
    f'v1.13: every strict re-judgement ({len(_RJ)}) is applied')
 ok(not any(e['by'] == 'v1.5' and e.get('why', '').startswith('rule written for this question') for e in CF['q'].values()), 'v1.13: spec links are not labelled v1.5')

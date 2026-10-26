@@ -1,0 +1,43 @@
+# v1.14 (review #10) strict re-judgement, applied after rejudge_v113.txt. Line: "qid verdict [+lesson#rN ...] | why"
+# verdict: full (+refs = the cited items that decide the answer; raises a partial or re-points a full) | partial [+refs] |
+# none-T | none-S | conflict (bank answer contradicts the pinned law: not taught, not cited, bank lesson shows the law text)
+#
+# N5: verdicts that rested on uncited lesson-body prose ('#b' units) – re-judged on cited items only
+768 full +rules4#r0 +signal#r0 | TR 58(א): signal "בזמן וממרחק מספיקים" before deviating (rules4#r0), by indicator (signal#r0, TR 59)
+28 partial +overtake#r4 +overtake#r5 | TR 47(ד)/(ה): overtake only when it can be completed safely and no prohibition applies; nothing cited on two vehicles at once
+142 partial +speed#r7 | picture question: TR 52 duty to slow near a hazard; the pictured hazard is not taught as such
+144 partial +speed#r7 | picture question: TR 52 duty to slow near a hazard; the pictured hazard is not taught as such
+199 full +parking#r11 | TR 71: no stopping or parking so as to obstruct traffic or hide a sign (new rule parking#r11)
+257 none-S | no official passage on aborting an overtake when an oncoming vehicle appears (law, textbook ch. overtaking, RSA pages searched)
+326 partial +law3#r4 +cargo#r3 | TR 85(א) binds the carrier and the owner ("לא יוביל אדם … ובעל רכב … לא ירשה"); the cited rules teach the load conditions, not who is responsible
+711 partial +priority#r0 +priority#r1 | picture question: TR 64(א) yield to the right / left-turner yields; the pictured layout is not taught
+717 partial +priority#r0 +priority#r1 | picture question: TR 64(א) order at an unsigned junction; the pictured layout is not taught
+854 partial +night2#r2 | textbook: slow and look to the right shoulder when dazzled; "keep right" not stated
+943 partial +speed#r7 | TR 52 slow at a sharp curve; keeping right at the curve not stated
+964 none-S | no official passage stating that a yellow (temporary) sign is binding (law and sign table searched)
+1064 none-S | no official passage on GPS / navigation-device distraction (textbook mentions GPS only in a sample question)
+1291 partial +defensive#r1 +speed#r6 | excessive speed limits the ability to react (OFF:speed), TR 51 full control; "control higher at lower speed" not stated as such
+1327 conflict | TR 85(א) puts the load duty on the carrier and on the owner/person in control; bank answer "הנהג בלבד" contradicts it (cf. Q326 "הנהג ובעל הרכב")
+1525 partial +alc2#r2 +defensive#r10 | textbook: read the leaflet before driving on a medicine; "forbidden if the prescription says so" not stated
+1631 none-S | no official passage on the motorcycle mirror + right-shoulder check when ending an overtake
+1720 partial +alc2#r2 +defensive#r10 | textbook: read the leaflet before driving on a medicine; "unless the prescription says otherwise" not stated
+1774 full +defensive#r11 | TR 107(ד): fog lights only in fog, heavy rain or snow (new rule defensive#r11)
+#
+# N6: bank answer contradicts the pinned law (the lesson note says the bank differs) – conflict, not counted, bank lesson only
+333 conflict | bank "17 שנים" vs TO s.12 "16 שנים ותשעה חודשים"
+1793 conflict | bank "16 נוסעים" vs TR 1 אוטובוס זעיר "עד תשעה עשר נוסעים בנוסף לנהג"
+330 conflict | bank "גרור … עד 1,500 ק"ג" vs TR 180(ב) (combined permitted weight up to 5,000 ק"ג)
+91 conflict | bank "רכב רפואי מיוחד … עד 4,000 ק"ג" vs TR 180(א)(5) 5,000 ק"ג
+#
+# review #10 inflation findings
+467 partial | signs2#r0 gives the sign's meaning; "gentle slowing, no sudden braking or sharp turn" is not in its passage
+654 partial | distance#r2 (stopping = reaction + braking distance) does not define braking distance
+644 partial | sign-table meaning of 813 only; "change of the left lane's designation" not decided by a cited rule
+993 full +brakes3#r11 | textbook p.8 (edu18) / brakes3#r11: locked wheels – steering control stops
+1558 full +emerg2#r2 | textbook p.149: puncture – hold the wheel firmly, slow with the brakes (emerg2#r2); vehicle#r4 dropped
+1058 full +maint2#r2 | textbook p.127: periodic service per the manufacturer's instructions (maint2#r2); vehicle#r4 dropped
+611 none-S | textbook p.101 names a wet road as a skid hazard; skid AND roll-over growing with speed not stated; vehicle#r10 does not decide it
+# review #10 under-claims
+795 full +signal#r10 +signal#r11 | TR 44: not near a curve/crest, not where unseen, not where a sign forbids – all options taught
+780 full +law3#r0 +speed#r5 | TO 71א1 lane permission for the disabled-badge holder; speed limit applies (TR 54)
+1024 full +maint2#r0 | textbook: tyre pressure is the one set by the manufacturer
