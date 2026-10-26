@@ -14,6 +14,8 @@
 
 **v1.13 – re-judged after review #9 (strict):** Q13 is now *'סתירה בין המאגר לחוק'* (the bank answer 1,500 kg contradicts TR 1's 1,800 kg): neither full nor cited, shown only in a bank lesson next to the law text. Q1297, Q994 and Q935 are *partial* (the cited unit states only part of the answer); Q1021 and Q1688 had only a related rule and are now bank-only (no official explanation). Q22, Q34, Q1029 and Q1773 got their own official rule (TR 83ב(א), TR 1 "רחוב משולב", MoE topics 18 and 17). A strict re-sample of 64 other *full* B/A verdicts (seed 913, [rejudge_v113_sample.md](../tools/coverage/rejudge_v113_sample.md)) kept 52 and downgraded 12 to partial (19%). Because the unsampled full verdicts may hold similar over-generous ones, the **strict** figure is the headline. 15 *full* verdicts rested only on uncited lesson-body prose: 8 now point to the cited rule that decides them, 5 are partial, and Q1199 and Q1759 (class D) are bank-only. Before → after (whole bank): full 76.1% → 75.0%, strict 59.9% → 58.8%, full or partial 90.9% → 90.7%, without bank-sourced 75.1% → 74.1%, bank-only 130 → 135 (incl. the 1 conflict). Rules whose only source is a bank question (e.g. signs Q606/Q477, bus Q1726) are labelled "תשובת המאגר" in their chip.
 
+**v1.14 – re-judged after review #10 (strict):** uncited lesson-body prose no longer counts at all (19 questions re-judged: Q768 full via TR 58; 12 stay partial on cited rules; Q199 and Q1774 got their own official rule (TR 71, TR 107(ד)); Q257, Q964, Q1064, Q1631 untaught, no official source found; Q1327 conflict). Bank-vs-law conflicts 1 → 6: Q333 (bank 17 years vs TO s.12 16 years 9 months) and, from a scan of every note saying the bank differs, Q91, Q330, Q1327, Q1793 (see below). Inflation fixes: Q467, Q654, Q644 full→partial; Q993 re-pointed to brakes3#r11; Q611 untaught; Q1558 and Q1058 now rest on their own textbook passage (p.149, p.127). A second strict re-sample of 66 other full B/A verdicts (seed 1014, [rejudge_v114_sample.md](../tools/coverage/rejudge_v114_sample.md)) kept 59 and downgraded 6 to partial (9%); the unsampled full verdicts may still hold a similar share, so the **strict** figure stays the headline. Before → after (whole bank): strict 58.8% → 58.7%, full 75.0% → 74.8%, full or partial 90.7% → 90.1%, without bank-sourced 74.1% → 74.0%, bank-only 135 → 145 (incl. the 6 conflicts); B full 79.4% → 79.3% (strict 58.6%), A 78.1% → 77.7% (strict 55.7% → 55.4%). Chips: the TR 54 speed table is shown row by row (each number next to its road type); truncated chips carry the clause they teach; textbook chips shorter than 45 characters 77/327 → 27/343 (all whole list items); no wikitext residue; a test checks that every number a rule states appears in its displayed passage.
+
 **v1.11 – re-judged after review #8:** Q978 (picture: red + yellow) is now *full* – sign table 702 ("היכון לנסיעה עם התחלף האור", unit signs#d702) and the textbook light sequence (lights2#r5); Q985 (picture: tanker not keeping right) and Q1464 (C/C1: what affects a loaded truck's stability in a curve) are now *partial* (lanes#r9 keep right; skid2#r8 centre of gravity and lanes#r2 speed for the curve radius). None of the three had been counted as taught before. No-source questions: 144 → 141 (B/A 77 → 75). Three C/C1 citations were corrected to the unit that teaches the answer (1506 → heavy2#r24, 1322 → heavy2#r22, 1393 → heavy2#r17); their verdicts were already *full*.
 
 Definitions:
@@ -78,6 +80,9 @@ No class is removed. Suggested labels: **tractor (1)** partial – its 43 class-
   - every rule, example and recap has a known source, and every rule's check passage is a verbatim substring of the pinned law or the pinned official page
   - the sign table, the explorer ranges and the tidied sign texts
   - the review fixes are present
+  - every number a rule, example, mnemonic or recap states appears in its displayed passage, and a page named in a rule matches its chip (v1.14)
+  - no verdict rests on uncited lesson-body prose; a note saying the bank differs is a conflict (v1.14)
+  - no wikitext residue in any chip (v1.14)
   - the gov.il terms of use are linked in About and quoted in LICENSE-DATA.md
   - the SW version and data precache are correct
 - `node tools/test/e2e.js`: 218+ checks, including axe (all impacts) on every B lesson, and that every lesson's diagrams have alt text.
@@ -153,6 +158,12 @@ The bank text is never changed. Where it differs from the pinned law, the why‑
 - **Q592:** checked in the third review. The mapping is correct, and a note was added.
 - **Q1667** (A2 power): the bank says 14.6 hp, and TR 176 gives 14.916 hp (11 kW). A note is shown.
 - **Q13** (v1.13): the bank answer is 1,500 kg; the pinned TR 1 says 1,800 kg. Status 'סתירה בין המאגר לחוק' – not counted as full or partial, not cited; the bank lesson shows a note that quotes both.
+- **Q333** (v1.14): minimum age for B – bank 17 years; TO s.12 says 16 years and 9 months. Conflict.
+- **Q91** (v1.14): special medical vehicle on a B licence – bank up to 4,000 kg; TR 180(א)(5) says 5,000 kg. Conflict.
+- **Q330** (v1.14): trailer on a B licence – bank trailer up to 1,500 kg; TR 180(ב) sets the combination limit (5,000 kg). Conflict.
+- **Q1327** (v1.14): who must secure the load – bank "הנהג בלבד"; TR 85(א) also binds the owner/person in control (cf. Q326). Conflict.
+- **Q1793** (v1.14): minibus – bank 16 passengers; TR 1 "אוטובוס זעיר" says up to 19 besides the driver. Conflict.
+- These 6 are 'סתירה בין המאגר לחוק': not counted as full or partial and not cited; a build test marks any rule or note saying the bank differs as a conflict.
 
 ## v1.4 changes (fourth review)
 - **D-only and tractor material:** 10 bus rules (TR 361/482, 408(א), 483א, 83(ג)–(ה), 432א, 1 "רכב מדברי", 418, 324/330 brake terms), taxi rules (TR 506, 281(ב), 266, 501, 511), tractor age 16 (TR 188(א)) and indicators (TR 344(א)); TR 159(ג) (use the retarder on a dangerous descent) in bus and heavy2.
