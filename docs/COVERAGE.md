@@ -1,6 +1,6 @@
 # Coverage
 
-**Headline (v1.12.0, whole bank, every question judged):** of all **1,801** questions, **76.1% full**, **59.9% strict full**, **90.9% full or partial**. **Without bank-sourced rules: 75.1% full** (B 80.3%, A 78.3%; see below). **Taught from the official bank only, no official explanation: 130** questions (B 51, A 54, C1 63, C 54, D 62, tractor 60); these are *not* counted as full or partial. **Partial + shown with the official bank answer: B 195 of 195 partial (15.3% of B), A 186 of 186 (16.1% of A)**; whole bank 219 of 268 partial (every partial question that belongs to B or A); these stay *partial* and are not counted as full. Classes B and A: every question that has an official state source is taught (fully or partly); the rest are listed with the search done in [NO_SOURCE_B_A.md](NO_SOURCE_B_A.md).
+**Headline (v1.13.0, whole bank, every question judged):** of all **1,801** questions, **76.1% full**, **60.0% strict full**, **90.8% full or partial**. **Without bank-sourced rules: 75.1% full** (B 80.4%, A 78.4%; see below). **Taught from the official bank only, no official explanation: 133** questions (B 54, A 55, C1 66, C 54, D 62, tractor 62); these are *not* counted as full or partial. **Partial + shown with the official bank answer: B 191 of 191 partial (15.0% of B), A 184 of 184 (15.9% of A)**; whole bank 215 of 264 partial (every partial question that belongs to B or A); these stay *partial* and are not counted as full. Classes B and A: every question that has an official state source is taught (fully or partly); the rest are listed with the search done in [NO_SOURCE_B_A.md](NO_SOURCE_B_A.md).
 
 **v1.9 re-judgement (review #6):** a bank picture shown with its own bank answer (a sign-gallery tile) no longer counts as teaching. 54 questions that were full only via a gallery tile are now full only via the official sign-table meaning of their sign (so they count as partial under *strict*); 36 more were re-judged by hand in `tools/coverage/rejudge_v19.txt` (applied last by `compile_verdicts.py`, one-line reason each): 16 re-based on a cited rule (3 new textbook rules: ABS keeps steering, p.140; traffic-light phase order, p.71–72; flashing green, p.72), 5 on the sign table, 11 downgraded to partial (e.g. Q93, Q983, Q1580) and 4 to untaught (Q520, Q1307 for B/A; Q1257, Q1435 for C/D). Disclosure (v1.9 figures; superseded by the v1.10 bank-sourced section below): some lesson worked examples and 25 rules (14 used by B/A questions) are sourced from a bank question itself (`Q:<id>` in their source); 42 full verdicts rest only on a worked example built on that same question or on a rule sourced from it; the worked examples were kept after a hand check that their explanation states the rule and cites the law or an official page, while the `Q:<id>`-sourced rules are bank-derived and are disclosed here rather than counted as independent official sources.
 
@@ -26,13 +26,13 @@ Method: `tools/coverage/verdicts.txt` holds one verdict per question (hand judge
 
 | | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source | of these: taught from the official bank only, no official explanation | partial (counted as partial) | of these: shown in a lesson with the official bank answer | full % without bank-sourced rules |
 |---|---|---|---|---|---|---|---|---|---|---|
-| whole bank | 1801 | 76.1 | 59.9 | 90.9 | 33 | 130 | 130 | 268 | 219 | 75.1 |
-| B private car | 1272 | 80.7 | 59.9 | 96.0 | 0 | 51 | 51 | 195 | 195 | 80.3 |
-| A motorcycle | 1155 | 79.2 | 56.8 | 95.3 | 0 | 54 | 54 | 186 | 186 | 78.3 |
-| C1 truck ≤12 t | 1385 | 78.7 | 59.3 | 93.3 | 30 | 63 | 63 | 202 | 188 | 78.4 |
+| whole bank | 1801 | 76.1 | 60.0 | 90.8 | 33 | 132 | 133 | 264 | 215 | 75.1 |
+| B private car | 1272 | 80.7 | 60.0 | 95.8 | 0 | 53 | 54 | 191 | 191 | 80.4 |
+| A motorcycle | 1155 | 79.3 | 56.9 | 95.2 | 0 | 55 | 55 | 184 | 184 | 78.4 |
+| C1 truck ≤12 t | 1385 | 78.8 | 59.4 | 93.1 | 30 | 65 | 66 | 198 | 184 | 78.5 |
 | C heavy truck | 1314 | 79.9 | 59.5 | 93.3 | 34 | 54 | 54 | 176 | 154 | 79.5 |
 | D bus | 1316 | 80.9 | 59.6 | 94.5 | 10 | 62 | 62 | 180 | 154 | 80.4 |
-| 1 tractor | 1127 | 81.1 | 58.1 | 94.5 | 2 | 60 | 60 | 151 | 150 | 80.5 |
+| 1 tractor | 1127 | 81.0 | 58.0 | 94.3 | 2 | 61 | 62 | 150 | 149 | 80.4 |
 
 ## Class-only questions (questions that belong to that class alone)
 
@@ -49,10 +49,10 @@ Method: `tools/coverage/verdicts.txt` holds one verdict per question (hand judge
 
 | | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source | of these: taught from the official bank only, no official explanation | partial (counted as partial) | of these: shown in a lesson with the official bank answer | full % without bank-sourced rules |
 |---|---|---|---|---|---|---|---|---|---|---|
-| law | 901 | 78.5 | 78.2 | 92.2 | 31 | 39 | 39 | 124 | 81 | 77.9 |
+| law | 901 | 78.5 | 78.2 | 92.0 | 31 | 40 | 41 | 122 | 79 | 77.9 |
 | signs | 390 | 93.1 | 19.0 | 98.7 | 1 | 4 | 4 | 22 | 22 | 92.6 |
 | safety | 400 | 60.0 | 60.0 | 83.0 | 1 | 67 | 67 | 92 | 86 | 57.2 |
-| vehicle | 110 | 54.5 | 54.5 | 81.8 | 0 | 20 | 20 | 30 | 30 | 54.5 |
+| vehicle | 110 | 55.5 | 55.5 | 80.9 | 0 | 21 | 21 | 28 | 28 | 55.5 |
 
 ## Recommendation on classes
 

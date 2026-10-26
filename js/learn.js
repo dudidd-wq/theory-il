@@ -54,7 +54,8 @@ export function explain(id, c, cov, sg) {
   const e = cov?.q?.[id]; if (!e) return note ? { kind: 'none', lesson: null, note } : null;
   const [stt, lids, units] = e;
   // no official source: point to the bank-only lesson that shows the question and answer as published (no explanation)
-  if (stt === 'n') return { kind: 'none', lesson: e[3] === 'S' ? ls.find(l => l.bank?.includes(id)) || null : null, note, nosrc: e[3] === 'S' };   // nearest-by-words lessons are often unrelated: no link, just say so
+  // v1.13: 'X' = the bank answer contradicts the pinned law (status 'סתירה בין המאגר לחוק'): bank lesson + the law note
+  if (stt === 'n') return { kind: 'none', lesson: e[3] === 'S' || e[3] === 'X' ? ls.find(l => l.bank?.includes(id)) || null : null, note, nosrc: e[3] === 'S', conflict: e[3] === 'X' };   // nearest-by-words lessons are often unrelated: no link, just say so
   for (const u of units || []) {
     const m = /^([\w]+)#([rxbc])(\d+)$/.exec(u); if (!m) continue;
     const l = lessonOf(m[1]); if (!l) continue;
@@ -83,7 +84,7 @@ export function whyBox(x, ok, c) {
     if (x.s) kids.push(h('p', { class: 'refs' }, refs(x.s, x.also || [], x.x)));
   } else {
     // nothing in the lessons covers it yet: say so and point to the official sources (or say plainly that none exists)
-    kids.push(h('p', { class: 'small muted', text: t(x.nosrc ? 'why.nosrc' : 'why.none') }));
+    kids.push(h('p', { class: 'small muted', text: t(x.conflict ? 'why.conflict' : x.nosrc ? 'why.nosrc' : 'why.none') }));
     kids.push(h('p', { class: 'refs small' }, ext(BANK_URL, t('why.bank')), h('span', { class: 'muted', text: ' · ' }), ext(CLASS_URL[c] || CLASS_URL._, t('why.classPage'))));
   }
   if (x.note) kids.push(he(h('div', { class: 'notice lawnote', role: 'note' }, icon('info'), h('div', {},

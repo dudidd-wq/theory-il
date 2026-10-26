@@ -1,0 +1,7 @@
+# v1.13 strict re-judgement (review #9 D4, plus the >=60-verdict re-sample in rejudge_v113_sample.md).
+# qid verdict | why      verdict: partial | none-T | none-S | conflict | why (reason text only)
+13 conflict | bank answer (1,500 kg) contradicts TR 1 "טרקטור משא" (1,800 kg): not taught or cited; bank lesson shows the law text
+1297 partial | the textbook keeps right to escape to the shoulder; slowing down when a car comes at you in your lane is not stated
+1021 none-S | only "service per manufacturer instructions" is stated; no official source on choosing a replacement bulb
+1688 none-S | the answer is not stated in TO 12א/12א1/12א2 or schedule 3; no official source found that decides it
+587 why | official sign meaning (sign dictionary, sign 624)

@@ -12,20 +12,21 @@ NS = importlib.util.module_from_spec(_s); _s.loader.exec_module(NS)
 GROUPS = {'law': ('חוק ותקנות', 'book'), 'pic': ('תמונות ומצבי דרך', 'mirror'), 'veh': ('הרכב, מחוונים ותחזוקה', 'gauge'),
           'drv': ('טכניקת נהיגה', 'gap'), 'moto': ('רכיבה על אופנוע', 'info'), 'heavy': ('רכב כבד וציבורי', 'bus'),
           'trac': ('טרקטור', 'info')}
-MERGE = {'edu': 'veh'}
+MERGE = {'edu': 'veh', 'conf': 'law'}
 SUB = 'השאלה והתשובה הנכונה כפי שפורסמו במאגר הרשמי – אין להן הסבר רשמי או מקור חוקי'
 # qid → (text, source, checks): the official textbook differs from the bank answer (stated, not explained)
 BANK_NOTES = {
     1765: ('בספר הלימוד הרשמי, בפרק "משענת ראש" ותרומתה לבטיחות הנוסעים, כתוב שאפשר לכוון את משענת הראש "כך שתהיה בגובה מרכז '
            'הגולגולת". תשובת המאגר שונה: השפה העליונה של המשענת בקו אחד עם הקצה העליון של ראש הנהג.',
            'OFF:textbook', ['ואפשר לכוונה כך שתהיה בגובה מרכז הגולגולת']),
+    # Q13 (v1.13, status 'סתירה בין המאגר לחוק'): its TR 1 note is in lessons_spec NOTES (shown beside the bank answer)
 }
 
 def nosource_ids(QS):
     """bank questions judged 'none' with no official state source (final verdicts written by tools/coverage.py;
     bank lessons never change a verdict, so the second lessons.py pass in build.sh reads the current ones)"""
     F = json.load(open(os.path.join(R, 'data/coverage_full.json')))['q']
-    return sorted(int(k) for k, e in F.items() if e['v'] == 'none' and e.get('src') == 'S' and int(k) in QS)
+    return sorted(int(k) for k, e in F.items() if e['v'] == 'none' and e.get('src') in ('S', 'X') and int(k) in QS)
 
 def group_of(q):
     for g, m in NS.Q.items():

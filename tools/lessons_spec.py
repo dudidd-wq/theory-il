@@ -830,3 +830,12 @@ def add_v112():
         assert not any(r['t'] == x['t'] for r in rs for x in L['rules'])
         L['rules'].extend(rs)
 add_v112()
+
+# v1.13 (review #9 D4): rules for re-judged questions (tools/lessons_v113.py)
+def add_v113():
+    from lessons_v113 import extra
+    for lid, rs in extra(R).items():
+        L = next(x for x in LESSONS if x['id'] == lid)
+        assert not any(r['t'] == x['t'] for r in rs for x in L['rules'])
+        L['rules'].extend(rs)
+add_v113()

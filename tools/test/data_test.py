@@ -35,7 +35,7 @@ for i, e in cq.items():
         if k in 'rxbcm' and n >= len({'r': l['rules'], 'x': l['ex'], 'b': l['body'], 'c': l['recap'], 'm': l['mnem']}.get(k, [])): badu.append(u)
 ok(not badu, f'coverage units point at existing lesson parts {badu[:5]}')
 ok(set(cq[str(i)][0] for i in ids) <= set('fwn'), 'coverage status in f/w/n (hand verdicts only, no automatic matches)')
-ok(all(len(e) == 3 or (e[0] == 'n' and e[3] == 'S') for e in cq.values()), 'only untaught questions carry the no-official-source flag')
+ok(all(len(e) == 3 or (e[0] == 'n' and e[3] in ('S', 'X')) for e in cq.values()), 'only untaught questions carry the no-official-source / bank-vs-law flag')
 # whole-bank record: one verdict per question, every stable reference resolves, reasons present
 sys.path.insert(0, os.path.join(R, "tools", "coverage"))
 from units import load as uload, resolve
@@ -43,7 +43,17 @@ from overlap import overlap
 CF = J('data', 'coverage_full.json')
 ok(set(map(int, CF['q'])) == ids, f"coverage_full.json has a verdict for every one of the {len(ids)} questions")
 ok(all(e['v'] in ('full', 'partial', 'none') and e['why'] for e in CF['q'].values()), 'every verdict has a one-line reason')
-ok(all(e['v'] != 'none' or e['src'] in 'TS' for e in CF['q'].values()), 'every untaught question is marked teachable (T) or no official source (S)')
+ok(all(e['v'] != 'none' or e['src'] in ('T', 'S', 'X') for e in CF['q'].values()), 'every untaught question is marked teachable (T), no official source (S) or bank-vs-law conflict (X)')
+# v1.13 (review #9 D4): Q13's bank answer contradicts TR 1 – conflict status, not taught, not cited, never in a regular quiz
+_X = sorted(int(k) for k, e in CF['q'].items() if e.get('src') == 'X')
+ok(_X == [13] and not CF['q']['13']['rule'] and all(13 not in l['quiz'] for l in J('data', 'lessons.json')['lessons'] if not l.get('bank'))
+   and any(13 in l.get('bank', []) for l in J('data', 'lessons.json')['lessons']) and '1,800' in J('data', 'lessons.json')['notes']['13']['x'][0][1]
+   if '13' in J('data', 'lessons.json')['notes'] and J('data', 'lessons.json')['notes']['13'].get('x') else False,
+   f'v1.13: bank-vs-law conflict status {_X}: Q13 uncited, only in a bank lesson, its note quotes TR 1 (1,800 kg)')
+_RJ = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v113.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
+ok(all(CF['q'][q]['by'] == 'v1.13' and (v in ('why',) or CF['q'][q]['v'] == {'partial': 'partial'}.get(v, 'none')) for q, v in _RJ.items()),
+   f'v1.13: every strict re-judgement ({len(_RJ)}) is applied')
+ok(not any(e['by'] == 'v1.5' and e.get('why', '').startswith('rule written for this question') for e in CF['q'].values()), 'v1.13: spec links are not labelled v1.5')
 _Q, _LS, _S, _U, _D = uload()
 bad = []
 for i, e in CF['q'].items():
@@ -183,7 +193,7 @@ ok(I18.count("'ab.perm'") == 2 and I18.count("'ab.tbook'") == 2 and I18.count("'
 # 5c. v1.10: bank-only lessons ("מהמאגר הרשמי") – every question with no official source is shown in one, before its quiz
 BK = [l for l in LALL if 'bank' in l]
 QB = {q['id']: q for q in Q}
-NOSRC = {int(k) for k, e in CF['q'].items() if e['v'] == 'none' and e.get('src') == 'S'}
+NOSRC = {int(k) for k, e in CF['q'].items() if e['v'] == 'none' and e.get('src') in ('S', 'X')}
 inbank = {i for l in BK for i in l['bank']}
 ok(NOSRC == inbank, f'v1.10: every no-source question is in a bank lesson, and only those ({len(NOSRC)} vs {len(inbank)})')
 ok(all(set(l['quiz']) == set(l['bank']) for l in BK), 'v1.10: a bank lesson quizzes exactly the questions it shows')
@@ -195,7 +205,8 @@ for c in ('B', 'A', 'C1', 'C', 'D', '1'):
     path = [l['id'] for l in LALL if c in l['cls']]; nb = [i for i, x in enumerate(path) if x.startswith('bank_')]
     ok(not nb or nb[0] == len(path) - len(nb), f'v1.10: class {c} bank lessons come after all taught lessons')
     ok(J('docs', 'coverage_after.json')['class'][c]['bank_only'] == sum(1 for i in inbank if c in QB[i]['t']) ==
-       J('docs', 'coverage_after.json')['class'][c]['none_nosource'], f'v1.10: class {c} bank-only figure = its no-source questions')
+       J('docs', 'coverage_after.json')['class'][c]['none_nosource'] + J('docs', 'coverage_after.json')['class'][c]['conflict'],
+       f'v1.10: class {c} bank-only figure = its no-source (+ v1.13 bank-vs-law conflict) questions')
 NT = J('data', 'lessons.json')['notes']
 ok(all(int(k) in inbank for k, v in NT.items() if v.get('k') == 'tb'), 'v1.10: textbook-differs notes only on bank questions')
 ok(NT.get('1765', {}).get('k') == 'tb' and NT['1765']['s'] == 'OFF:textbook', 'v1.10: Q1765 states the textbook difference with its source')
@@ -309,7 +320,7 @@ ok(not _bad1 and _n1 > 600, f'v1.13 (review #9 D1): every rule / mnemonic / reca
 ok('mine.length ? mine' in JL and 'slice(0, 4)' not in JL and "'#page=' + pg[1]" in JL, 'v1.13 (review #9 D1): the chip shows the item\'s own passage first')
 
 # v1.13 (review #9 D2): no-source questions are never regular lesson-quiz items; each is in a 'מהמאגר הרשמי' bank-only lesson
-_NSQ = {int(k) for k, e in CF['q'].items() if e['v'] == 'none' and e.get('src') == 'S'}
+_NSQ = {int(k) for k, e in CF['q'].items() if e['v'] == 'none' and e.get('src') in ('S', 'X')}
 _inq = sorted({(l['id'], q) for l in LJ['lessons'] if not l.get('bank') for q in l['quiz'] if q in _NSQ})
 _nob = sorted(q for q in _NSQ if not any(q in l.get('bank', []) for l in LJ['lessons']))
 ok(not _inq and not _nob and {92, 909, 914, 923, 1160, 1076, 1699, 1765, 1454, 1455, 1456, 1472} <= _NSQ, f'v1.13 (review #9 D2): {len(_NSQ)} no-source questions: none in a regular lesson quiz {_inq[:5]}, all in a bank-only lesson {_nob[:5]}')

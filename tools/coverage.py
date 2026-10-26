@@ -37,10 +37,23 @@ for L in S.LESSONS:
                 i = next(i for i, x in enumerate(lj['rules']) if x['t'] == r['t'])
                 ref = ref_of(LS, f"{L['id']}#r{i}"); e = F[str(qid)]
                 if e['v'] == 'full' and not e.get('dict') and v == 'partial': continue
-                if e.get('by') == 'v1.5' and e['v'] == 'full': e['u'].append(ref); continue
-                if e['v'] == v and not e.get('dict'): e['u'].append(ref); e['by'] = 'v1.5'; continue
-                F[str(qid)] = {'by': 'v1.5', 'v': v, 'u': [ref], 'why': ('rule written for this question' if v == 'full' else 'rule covers part of the answer') + f" ({r['s']})",
+                if e.get('by') == 'spec' and e['v'] == 'full': e['u'].append(ref); continue
+                if e['v'] == v and not e.get('dict'): e['u'].append(ref); e['by'] = 'spec'; continue
+                F[str(qid)] = {'by': 'spec', 'v': v, 'u': [ref], 'why': ('rule written for this question' if v == 'full' else 'rule covers part of the answer') + f" ({r['s']})",
                                **({'strict_u': e['u'], 'dict': True} if e.get('dict') and v == 'partial' else {}), **({'src': e.get('src')} if v == 'partial' and e.get('src') else {})}
+# v1.13 (review #9 D4): strict re-judgement, applied last. Line: "qid verdict | why"; verdict partial | none-T | none-S |
+# conflict (bank answer contradicts the pinned law: not taught, not cited, shown only in a bank lesson with the law's text)
+# | why (reason text only). A partial keeps its units; none/conflict drop them.
+for ln in open(P('tools/coverage/rejudge_v113.txt'), encoding='utf-8'):
+    ln = ln.split('#', 1)[0].strip() if not ln.lstrip().startswith('#') else ''
+    if not ln: continue
+    head, why = (x.strip() for x in ln.split('|', 1)); qid, v = head.split()
+    e = F[qid]; e['why'] = why; e['by'] = 'v1.13'
+    if v == 'why': continue
+    if v == 'partial':
+        assert e['v'] == 'full', qid; e['v'] = 'partial'; e.pop('dict', None); e.pop('strict_u', None)
+    else:
+        e.update(v='none', u=[], src={'none-T': 'T', 'none-S': 'S', 'conflict': 'X'}[v]); e.pop('dict', None); e.pop('strict_u', None)
 for e in F.values():
     e['ids'] = [resolve(LS, r) for r in e['u']]
     e['sids'] = [resolve(LS, r) for r in e.get('strict_u', [])]
@@ -77,8 +90,9 @@ def tot(ids, c=None):
     pc = lambda k: round(100 * k / N, 1) if N else 0
     # a question taught only in a lesson not shown to this class has an official source: count it as T, not S
     src = collections.Counter((F[str(i)].get('src') or 'S') if F[str(i)]['v'] == 'none' else 'T' for i in ids if f(i, False) == 'none')
+    # 'X' (v1.13): bank answer contradicts the pinned law – counted apart from T/S
     return {'n': N, 'full': v['full'], 'partial': v['partial'], 'none': v['none'], 'full_pct': pc(v['full']), 'any_pct': pc(v['full'] + v['partial']),
-            'strict_full': s['full'], 'strict_pct': pc(s['full']), 'none_teachable': src['T'], 'none_nosource': src['S'],
+            'strict_full': s['full'], 'strict_pct': pc(s['full']), 'none_teachable': src['T'], 'none_nosource': src['S'], 'conflict': src['X'],
             'bank_only': sum(1 for i in ids if f(i, False) == 'none' and i in BANK[c]),
             'partial_shown': sum(1 for i in ids if f(i, False) == 'partial' and i in PBANK[c]),
             'full_nobank_pct': pc(sum(1 for i in ids if f(i, False, True) == 'full')),
@@ -105,9 +119,9 @@ for q in Q:
     for u in units:
         if ul[u] not in ls and lcls[ul[u]] & set(q['t']): ls.append(ul[u])
     if e.get('dict') and 'signs' not in ls: ls.append('signs')
-    cov[q['id']] = [st, ls[:3], units[:3]] + (['S'] if e['v'] == 'none' and e.get('src') != 'T' else [])
+    cov[q['id']] = [st, ls[:3], units[:3]] + ([e.get('src') or 'S'] if e['v'] == 'none' and e.get('src') != 'T' else [])
 _t = lambda x: [x['n'], x['full_pct'], x['strict_pct'], x['any_pct'], x['none_nosource'], x['bank_only'], x['full_nobank_pct'], x['partial'], x['partial_shown']]
-json.dump({'v': 2, 'legend': {'f': 'taught', 'w': 'partly', 'n': 'not taught yet', 'S': 'no official state source'},
+json.dump({'v': 2, 'legend': {'f': 'taught', 'w': 'partly', 'n': 'not taught yet', 'S': 'no official state source', 'X': 'bank answer contradicts the law'},
            'tot': {'all': _t(T['all']), **{c: _t(T['class'][c]) for c in CLS}},
            # v1.10: textbook use, computed (About text): [rules citing it, all rules, excerpts, pages, % of the book's ~45,600 words]
            'tb': (lambda R, TQ: [sum(1 for r in R if 'OFF:textbook' in [r['s']] + r.get('also', [])), len(R), len(TQ), len({z['p'] for z in TQ}),
@@ -116,7 +130,7 @@ json.dump({'v': 2, 'legend': {'f': 'taught', 'w': 'partly', 'n': 'not taught yet
            'q': {str(k): v for k, v in sorted(cov.items())}}, open(P('data/coverage.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 full = {'v': 1, 'note': 'Whole-bank hand judgement of theory-il lessons against every official bank question. v: full|partial|none; '
         'rule: lesson unit(s) carrying the answer (current id; ref = stable reference); why: one-line reason; src (untaught only): '
-        'T = official state source exists (teachable), S = no official state source found (law pinned on Wikisource, gov.il/mot.gov.il, '
+        'T = official state source exists (teachable), S = no official state source found, X = the bank answer contradicts the pinned law (law pinned on Wikisource, gov.il/mot.gov.il, '
         'rsa.org.il). strict = sign dictionary not counted as teaching. Per-class figures count a rule only if its lesson is shown to that class.',
         'totals': T,
         'q': {str(i): {'v': F[str(i)]['v'], **({'dict': True} if F[str(i)].get('dict') else {}), 'rule': F[str(i)]['ids'], 'ref': F[str(i)]['u'],
