@@ -148,6 +148,8 @@ async function run(prof, opts) {
   ok(/CC|Creative Commons/.test(await (async () => { await go(p, '#/about'); return text(p); })()), 'about credits CC BY');
   ok(await p.locator('#ab-ccbysa a[href="https://creativecommons.org/licenses/by-sa/4.0/"]').count() === 1, 'about credits Wikisource CC BY-SA 4.0 with a link');
   ok(/משרד התחבורה/.test(await text(p)), 'about names the ministry as source');
+  { const CV = await p.evaluate(() => fetch('data/coverage.json').then(r => r.json())); const tx = await text(p);
+    ok(['B', 'A', 'C1', 'C', 'D', '1'].every(c => tx.includes(`${c} ${(+CV.tot[c][1]).toFixed(1)}%`)) && /אף רישיון אינו מכוסה במלואו/.test(tx), 'about: every class partial, computed per-class full figures'); }
   ok(/לא כולל תיאור מילולי/.test(await text(p)) && (await p.locator('.elig').count()) === 6, 'about: picture-question accessibility note + eligibility for all 6 classes');
   ok(/כל המאגר/.test(await text(p)) && (await p.locator('table.tbl tbody tr').count()) >= 7 && !/kolzchut/.test(await p.content()), 'about: whole-bank coverage table for all classes, no Kol Zchut link');
   // learning stage: path → lesson (law chips, diagram + text alternative, recap) → mini-quiz → mastery → unlock
