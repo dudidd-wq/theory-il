@@ -3,3 +3,6 @@ node_modules/
 test-results/
 *.log.tmp
 tools/test/out/
+tools/law/*.txt
+tools/law/תקנות_התעבורה.json
+tools/law/פקודת_התעבורה.json
