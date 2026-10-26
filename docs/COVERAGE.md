@@ -1,12 +1,12 @@
 # Coverage
 
-**Headline (v1.6.0, whole bank, every question judged):** of all **1,801** questions, **76.0% full**, **63.0% strict full**, **90.1% full or partial**. Classes B and A: every question that has an official state source is taught (fully or partly); the rest are listed with the search done in [NO_SOURCE_B_A.md](NO_SOURCE_B_A.md).
+**Headline (v1.7.0, whole bank, every question judged):** of all **1,801** questions, **76.0% full**, **63.1% strict full**, **90.3% full or partial**. Classes B and A: every question that has an official state source is taught (fully or partly); the rest are listed with the search done in [NO_SOURCE_B_A.md](NO_SOURCE_B_A.md).
 
 Definitions:
 - **full**: a lesson rule, example, recap or the sign dictionary teaches the answer.
 - **strict**: as full, but the sign dictionary alone does not count as teaching (such a question counts as partial).
 - **full or partial**: at least part of the answer is taught.
-- **no official source**: the pinned law (Wikisource TR oldid 3085628, TO oldid 3085764), the cached gov.il / mot.gov.il pages including the sign table, rsa.org.il, the RSA/MoT textbook and the MoE traffic-education curriculum were searched and no passage supports the answer. These are left unexplained on purpose; nothing is written from general knowledge.
+- **no official source**: the pinned law (Wikisource TR oldid 3085628, TO oldid 3085764), the cached gov.il / mot.gov.il pages including the sign table, rsa.org.il, the RSA/MoT textbook, the MoE traffic-education curriculum and (from v1.7.0) the Ministry of Environmental Protection carbon-monoxide page approved by Dudi were searched and no passage supports the answer. These are left unexplained on purpose; nothing is written from general knowledge.
 
 Method: `tools/coverage/verdicts.txt` holds one verdict per question (hand judgement, or the v1.4 sample judgement where one exists). `tools/coverage/compile_verdicts.py` checks that each cited rule still exists and shares keywords with the question; `tools/coverage.py` writes `data/coverage_full.json` (verdict, mapped rule id and one-line reason per question, plus every total below). The old 270-question sample is kept only as a working set; its figures are no longer the headline. The fifth review's independent estimate (full 44.6 / strict 31.7 / any 59.0) was made on v1.4.0, before the v1.5 lessons; the v1.4 whole-bank figure from the same verdicts was about 42.4 / 29.5 / 54.2, in line with it.
 
@@ -14,13 +14,13 @@ Method: `tools/coverage/verdicts.txt` holds one verdict per question (hand judge
 
 | | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source |
 |---|---|---|---|---|---|---|
-| whole bank | 1801 | 76.0 | 63.0 | 90.1 | 33 | 145 |
-| B private car | 1272 | 80.4 | 64.1 | 95.4 | 0 | 59 |
-| A motorcycle | 1155 | 79.2 | 61.6 | 94.2 | 0 | 67 |
-| C1 truck ≤12 t | 1385 | 78.5 | 63.2 | 92.7 | 30 | 71 |
-| C heavy truck | 1314 | 79.8 | 63.9 | 92.8 | 32 | 63 |
-| D bus | 1316 | 81.0 | 64.1 | 94.2 | 5 | 71 |
-| 1 tractor | 1127 | 81.2 | 63.1 | 94.1 | 1 | 66 |
+| whole bank | 1801 | 76.0 | 63.1 | 90.3 | 33 | 142 |
+| B private car | 1272 | 80.5 | 64.2 | 95.6 | 0 | 56 |
+| A motorcycle | 1155 | 79.2 | 61.6 | 94.3 | 0 | 66 |
+| C1 truck ≤12 t | 1385 | 78.6 | 63.3 | 92.9 | 30 | 69 |
+| C heavy truck | 1314 | 79.9 | 63.9 | 92.8 | 32 | 62 |
+| D bus | 1316 | 81.1 | 64.2 | 94.3 | 5 | 70 |
+| 1 tractor | 1127 | 81.3 | 63.2 | 94.1 | 1 | 65 |
 
 ## Class-only questions (questions that belong to that class alone)
 
@@ -39,8 +39,8 @@ Method: `tools/coverage/verdicts.txt` holds one verdict per question (hand judge
 |---|---|---|---|---|---|---|
 | law | 901 | 77.8 | 77.8 | 92.3 | 31 | 38 |
 | signs | 390 | 95.6 | 35.9 | 99.5 | 1 | 1 |
-| safety | 400 | 58.5 | 58.5 | 78.8 | 1 | 84 |
-| vehicle | 110 | 54.5 | 54.5 | 80.0 | 0 | 22 |
+| safety | 400 | 58.8 | 58.8 | 79.0 | 1 | 83 |
+| vehicle | 110 | 54.5 | 54.5 | 81.8 | 0 | 20 |
 
 ## Recommendation on classes
 
