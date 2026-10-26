@@ -5,14 +5,14 @@
 "all": {
 "n": 1801,
 "full": 1068,
-"partial": 264,
-"none": 469,
+"partial": 265,
+"none": 468,
 "full_pct": 59.3,
 "any_pct": 74.0,
 "strict_full": 835,
 "strict_pct": 46.4,
-"none_teachable": 153,
-"none_nosource": 316
+"none_teachable": 140,
+"none_nosource": 328
 },
 "class": {
 "B": {
@@ -24,20 +24,20 @@
 "any_pct": 71.1,
 "strict_full": 511,
 "strict_pct": 40.2,
-"none_teachable": 108,
-"none_nosource": 260
+"none_teachable": 106,
+"none_nosource": 262
 },
 "A": {
 "n": 1155,
 "full": 685,
-"partial": 176,
-"none": 294,
+"partial": 177,
+"none": 293,
 "full_pct": 59.3,
-"any_pct": 74.5,
+"any_pct": 74.6,
 "strict_full": 482,
 "strict_pct": 41.7,
-"none_teachable": 88,
-"none_nosource": 206
+"none_teachable": 81,
+"none_nosource": 212
 },
 "C1": {
 "n": 1385,
@@ -48,8 +48,8 @@
 "any_pct": 71.4,
 "strict_full": 577,
 "strict_pct": 41.7,
-"none_teachable": 137,
-"none_nosource": 259
+"none_teachable": 135,
+"none_nosource": 261
 },
 "C": {
 "n": 1314,
@@ -60,8 +60,8 @@
 "any_pct": 75.5,
 "strict_full": 596,
 "strict_pct": 45.4,
-"none_teachable": 122,
-"none_nosource": 200
+"none_teachable": 119,
+"none_nosource": 203
 },
 "D": {
 "n": 1316,
@@ -72,8 +72,8 @@
 "any_pct": 76.9,
 "strict_full": 603,
 "strict_pct": 45.8,
-"none_teachable": 96,
-"none_nosource": 208
+"none_teachable": 89,
+"none_nosource": 215
 },
 "1": {
 "n": 1127,
@@ -84,8 +84,8 @@
 "any_pct": 73.8,
 "strict_full": 469,
 "strict_pct": 41.6,
-"none_teachable": 89,
-"none_nosource": 206
+"none_teachable": 87,
+"none_nosource": 208
 }
 },
 "class_only": {
@@ -104,14 +104,14 @@
 "A": {
 "n": 88,
 "full": 45,
-"partial": 13,
-"none": 30,
+"partial": 14,
+"none": 29,
 "full_pct": 51.1,
-"any_pct": 65.9,
+"any_pct": 67.0,
 "strict_full": 45,
 "strict_pct": 51.1,
-"none_teachable": 6,
-"none_nosource": 24
+"none_teachable": 1,
+"none_nosource": 28
 },
 "C1": {
 "n": 1,
@@ -134,8 +134,8 @@
 "any_pct": 90.4,
 "strict_full": 58,
 "strict_pct": 79.5,
-"none_teachable": 2,
-"none_nosource": 5
+"none_teachable": 1,
+"none_nosource": 6
 },
 "D": {
 "n": 190,
@@ -146,8 +146,8 @@
 "any_pct": 88.4,
 "strict_full": 124,
 "strict_pct": 65.3,
-"none_teachable": 6,
-"none_nosource": 16
+"none_teachable": 1,
+"none_nosource": 21
 },
 "1": {
 "n": 43,
@@ -172,8 +172,8 @@
 "any_pct": 83.6,
 "strict_full": 606,
 "strict_pct": 67.3,
-"none_teachable": 120,
-"none_nosource": 28
+"none_teachable": 108,
+"none_nosource": 40
 },
 "signs": {
 "n": 390,
@@ -190,13 +190,13 @@
 "safety": {
 "n": 400,
 "full": 91,
-"partial": 85,
-"none": 224,
+"partial": 86,
+"none": 223,
 "full_pct": 22.8,
-"any_pct": 44.0,
+"any_pct": 44.2,
 "strict_full": 91,
 "strict_pct": 22.8,
-"none_teachable": 11,
+"none_teachable": 10,
 "none_nosource": 213
 },
 "vehicle": {
@@ -223,8 +223,8 @@
 "any_pct": 80.8,
 "strict_full": 313,
 "strict_pct": 62.5,
-"none_teachable": 79,
-"none_nosource": 17
+"none_teachable": 77,
+"none_nosource": 19
 },
 "signs": {
 "n": 360,
@@ -273,8 +273,8 @@
 "any_pct": 85.3,
 "strict_full": 278,
 "strict_pct": 64.8,
-"none_teachable": 59,
-"none_nosource": 4
+"none_teachable": 53,
+"none_nosource": 10
 },
 "signs": {
 "n": 354,
@@ -291,13 +291,13 @@
 "safety": {
 "n": 312,
 "full": 75,
-"partial": 66,
-"none": 171,
+"partial": 67,
+"none": 170,
 "full_pct": 24.0,
-"any_pct": 45.2,
+"any_pct": 45.5,
 "strict_full": 75,
 "strict_pct": 24.0,
-"none_teachable": 10,
+"none_teachable": 9,
 "none_nosource": 161
 },
 "vehicle": {
@@ -323,8 +323,8 @@
 "any_pct": 78.7,
 "strict_full": 373,
 "strict_pct": 61.7,
-"none_teachable": 107,
-"none_nosource": 22
+"none_teachable": 105,
+"none_nosource": 24
 },
 "signs": {
 "n": 367,
@@ -373,8 +373,8 @@
 "any_pct": 81.6,
 "strict_full": 403,
 "strict_pct": 65.1,
-"none_teachable": 93,
-"none_nosource": 21
+"none_teachable": 90,
+"none_nosource": 24
 },
 "signs": {
 "n": 366,
@@ -423,8 +423,8 @@
 "any_pct": 84.1,
 "strict_full": 412,
 "strict_pct": 66.7,
-"none_teachable": 69,
-"none_nosource": 29
+"none_teachable": 62,
+"none_nosource": 36
 },
 "signs": {
 "n": 377,
@@ -473,8 +473,8 @@
 "any_pct": 83.5,
 "strict_full": 282,
 "strict_pct": 64.7,
-"none_teachable": 62,
-"none_nosource": 10
+"none_teachable": 60,
+"none_nosource": 12
 },
 "signs": {
 "n": 353,
@@ -515,8 +515,8 @@
 }
 },
 "by": {
-"hand": 1078,
-"v1.5": 356,
+"hand": 1077,
+"v1.5": 357,
 "link": 81,
 "sample": 286
 }
@@ -4372,8 +4372,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR 72 hydrant",
-"src": "T",
+"why": "TR 72 hydrant – searched pinned TR/TO, lotam and cached gov.il pages: no provision found",
+"src": "S",
 "cls": [
 "1",
 "A",
@@ -5800,8 +5800,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR 47 tunnel overtaking",
-"src": "T",
+"why": "TR 47 tunnel overtaking – searched pinned TR/TO, lotam and cached gov.il pages: no provision found",
+"src": "S",
 "cls": [
 "1",
 "A",
@@ -22229,8 +22229,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR 1 עצירה",
-"src": "T",
+"why": "TR 1 עצירה – searched pinned TR/TO, lotam and cached gov.il pages: no provision found",
+"src": "S",
 "cls": [
 "D"
 ],
@@ -22258,8 +22258,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR public vehicle lanes",
-"src": "T",
+"why": "TR public vehicle lanes – searched pinned TR/TO, lotam and cached gov.il pages: no provision found",
+"src": "S",
 "cls": [
 "D"
 ],
@@ -23019,8 +23019,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR brawl police",
-"src": "T",
+"why": "TR brawl police – searched pinned TR/TO, lotam and cached gov.il pages: no provision found",
+"src": "S",
 "cls": [
 "D"
 ],
@@ -23130,8 +23130,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR wheelchair taxi",
-"src": "T",
+"why": "TR wheelchair taxi – searched pinned TR/TO, lotam and cached gov.il pages: no provision found",
+"src": "S",
 "cls": [
 "D"
 ],
@@ -26655,8 +26655,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR bus parking line licence",
-"src": "T",
+"why": "TR bus parking line licence – searched pinned TR/TO, lotam and cached gov.il pages: no provision found",
+"src": "S",
 "cls": [
 "D"
 ],
@@ -28491,7 +28491,7 @@
 "1579": {
 "v": "full",
 "rule": [
-"moto3#r6"
+"moto3#r7"
 ],
 "ref": [
 "moto3#r:אופנוע עם רכב צדי שעומד בזמן תאורה ב"
@@ -28565,8 +28565,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR passengers per licence motorcycle",
-"src": "T",
+"why": "TR passengers per licence motorcycle – searched pinned TR/TO, lotam and cached gov.il pages: no provision found",
+"src": "S",
 "cls": [
 "A"
 ],
@@ -28592,8 +28592,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR two-wheel side by side",
-"src": "T",
+"why": "TR two-wheel side by side – searched pinned TR/TO, lotam and cached gov.il pages: no provision found",
+"src": "S",
 "cls": [
 "A"
 ],
@@ -28603,7 +28603,7 @@
 "1587": {
 "v": "full",
 "rule": [
-"moto3#r5"
+"moto3#r6"
 ],
 "ref": [
 "moto3#r:אסור לעצור, להעמיד או להחנות בתחום ת"
@@ -28747,7 +28747,7 @@
 "1597": {
 "v": "full",
 "rule": [
-"moto3#r8"
+"moto3#r9"
 ],
 "ref": [
 "moto3#r:מהירות: מתאימים אותה לחוק ולתנאי הדר"
@@ -28824,7 +28824,7 @@
 "1602": {
 "v": "full",
 "rule": [
-"moto3#r12"
+"moto3#r13"
 ],
 "ref": [
 "moto3#r:החלקה: מאטים בעיקולים ובפניות ונמנעי"
@@ -28989,8 +28989,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR passenger per licence",
-"src": "T",
+"why": "TR passenger per licence – searched pinned TR/TO, lotam and cached gov.il pages: no provision found",
+"src": "S",
 "cls": [
 "A"
 ],
@@ -29036,7 +29036,7 @@
 "1617": {
 "v": "full",
 "rule": [
-"moto3#r4"
+"moto3#r5"
 ],
 "ref": [
 "moto3#r:על מדרכה או שביל נוהגים רק כדי לחצות"
@@ -29051,7 +29051,7 @@
 "1618": {
 "v": "partial",
 "rule": [
-"moto3#r12"
+"moto3#r13"
 ],
 "ref": [
 "moto3#r:החלקה: מאטים בעיקולים ובפניות ונמנעי"
@@ -29122,7 +29122,7 @@
 "1623": {
 "v": "partial",
 "rule": [
-"moto3#r11"
+"moto3#r12"
 ],
 "ref": [
 "moto3#r:מיקום בנתיב: מתמקמים \"חכם\", כך ששדה "
@@ -29137,7 +29137,7 @@
 "1624": {
 "v": "full",
 "rule": [
-"moto3#r9"
+"moto3#r10"
 ],
 "ref": [
 "moto3#r:מרחק מהרכבים מסביב – מלפנים, מאחור ו"
@@ -29179,7 +29179,7 @@
 "1627": {
 "v": "partial",
 "rule": [
-"moto3#r10"
+"moto3#r11"
 ],
 "ref": [
 "moto3#r:רואים ונראים: לא עוקפים מימין, לא \"מ"
@@ -29219,16 +29219,19 @@
 "by": "sample"
 },
 "1630": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "OFF:book no overtaking right",
-"src": "T",
+"v": "partial",
+"rule": [
+"moto3#r0"
+],
+"ref": [
+"moto3#r:גם על אופנוע עוקפים רכב אחר רק מצדו "
+],
+"why": "rule covers part of the answer (TR:47(א))",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1631": {
 "v": "partial",
@@ -29248,7 +29251,7 @@
 "1632": {
 "v": "partial",
 "rule": [
-"moto3#r2"
+"moto3#r3"
 ],
 "ref": [
 "moto3#r:המנוע לא יגרום לרעש מעל הרגיל, ולא נ"
@@ -29263,7 +29266,7 @@
 "1633": {
 "v": "full",
 "rule": [
-"moto3#r11"
+"moto3#r12"
 ],
 "ref": [
 "moto3#r:מיקום בנתיב: מתמקמים \"חכם\", כך ששדה "
@@ -29293,7 +29296,7 @@
 "1635": {
 "v": "full",
 "rule": [
-"moto3#r4"
+"moto3#r5"
 ],
 "ref": [
 "moto3#r:על מדרכה או שביל נוהגים רק כדי לחצות"
@@ -29368,7 +29371,7 @@
 "1640": {
 "v": "full",
 "rule": [
-"moto3#r10"
+"moto3#r11"
 ],
 "ref": [
 "moto3#r:רואים ונראים: לא עוקפים מימין, לא \"מ"
@@ -29433,7 +29436,7 @@
 "1644": {
 "v": "full",
 "rule": [
-"moto3#r0"
+"moto3#r1"
 ],
 "ref": [
 "moto3#r:באופנוע מותקנת מראת תשקיף בצדו השמאל"
@@ -29536,7 +29539,7 @@
 "1651": {
 "v": "partial",
 "rule": [
-"moto3#r1"
+"moto3#r2"
 ],
 "ref": [
 "moto3#r:הצמיגים יותאמו לייעוד הרכב ויהיו במב"
@@ -29773,7 +29776,7 @@
 "1668": {
 "v": "partial",
 "rule": [
-"moto3#r7"
+"moto3#r8"
 ],
 "ref": [
 "moto3#r:מהירות מרבית לרכב מנועי (גם אופנוע),"
@@ -29816,8 +29819,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR 1 picture semi-trailer axles",
-"src": "T",
+"why": "TR 1 picture semi-trailer axles – searched pinned TR/TO, lotam and cached gov.il pages: no provision found",
+"src": "S",
 "cls": [
 "C"
 ],
@@ -30133,7 +30136,7 @@
 "1689": {
 "v": "partial",
 "rule": [
-"moto3#r3"
+"moto3#r4"
 ],
 "ref": [
 "moto3#r:הרכב וכל חלקיו ואביזריו – גם הפנסים "
@@ -30847,8 +30850,8 @@
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR exhaust motorcycle",
-"src": "T",
+"why": "TR exhaust motorcycle – searched pinned TR/TO, lotam and cached gov.il pages: no provision found",
+"src": "S",
 "cls": [
 "A"
 ],
@@ -30903,7 +30906,7 @@
 "1734": {
 "v": "full",
 "rule": [
-"moto3#r8"
+"moto3#r9"
 ],
 "ref": [
 "moto3#r:מהירות: מתאימים אותה לחוק ולתנאי הדר"

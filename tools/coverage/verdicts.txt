@@ -164,7 +164,7 @@
 200 n T TR 69 left side
 202 f1
 203 f1
-204 n T TR 72 hydrant
+204 n S TR 72 hydrant – searched pinned TR/TO, lotam and cached gov.il pages: no provision found
 206 p1 before-crosswalk only
 208 f1
 209 n T TR 72 solid line
@@ -228,7 +228,7 @@
 278 f1
 279 n T TR 144 police on scene
 280 f1
-281 n T TR 47 tunnel overtaking
+281 n S TR 47 tunnel overtaking – searched pinned TR/TO, lotam and cached gov.il pages: no provision found
 282 n T TR 2 objects on road
 283 n T TR 74 24h
 284 n T TR noise
@@ -927,8 +927,8 @@
 1185 n T TR children in taxi
 1186 n S other-law taxi fare order
 1187 n T TR 1 זוטובוס
-1188 n T TR 1 עצירה
-1190 n T TR public vehicle lanes
+1188 n S TR 1 עצירה – searched pinned TR/TO, lotam and cached gov.il pages: no provision found
+1190 n S TR public vehicle lanes – searched pinned TR/TO, lotam and cached gov.il pages: no provision found
 1191 p1 everyone belted
 1193 f1
 1194 n T TR bus signal before moving
@@ -966,14 +966,14 @@
 1236 n T TR disabled seat
 1237 d
 1238 n T TR 1 אוטובוס
-1240 n T TR brawl police
+1240 n S TR brawl police – searched pinned TR/TO, lotam and cached gov.il pages: no provision found
 1242 n T TR meter recalibration 48h
 1243 n T TR bus interior light
 1244 n S other-law: smoking ban (smoking law, not in TR)
 1245 n S other-law fare fine
 1246 n T TR skates refused
 1247 n T TR special taxi service trip
-1248 n T TR wheelchair taxi
+1248 n S TR wheelchair taxi – searched pinned TR/TO, lotam and cached gov.il pages: no provision found
 1249 f1
 1251 n T TR bus cargo
 1252 n T TR passenger rules taxis
@@ -1153,7 +1153,7 @@
 1468 f1
 1470 n S jackknife
 1471 f2
-1472 n T TR bus parking line licence
+1472 n S TR bus parking line licence – searched pinned TR/TO, lotam and cached gov.il pages: no provision found
 1475 f1
 1477 d
 1478 f1
@@ -1243,9 +1243,9 @@
 1580 n S automatic gearbox
 1582 f1
 1583 f2
-1584 n T TR passengers per licence motorcycle
+1584 n S TR passengers per licence motorcycle – searched pinned TR/TO, lotam and cached gov.il pages: no provision found
 1585 f1
-1586 n T TR two-wheel side by side
+1586 n S TR two-wheel side by side – searched pinned TR/TO, lotam and cached gov.il pages: no provision found
 1587 n T TR bus stop parking motorcycle
 1588 n S side stand (not in gov.il booklet)
 1589 f1
@@ -1267,7 +1267,7 @@
 1608 n S dirty headlamps
 1609 n S obstacle detection (not in gov.il booklet)
 1610 f1
-1613 n T TR passenger per licence
+1613 n S TR passenger per licence – searched pinned TR/TO, lotam and cached gov.il pages: no provision found
 1614 n S look through turn (not in gov.il booklet)
 1615 n S lean in turn (not in gov.il booklet)
 1616 n S lean in turn (not in gov.il booklet)
@@ -1315,7 +1315,7 @@
 1666 n S junction check motorcycle
 1668 n T TR 54 motorcycle speeds
 1670 n S brake pads
-1671 n T TR 1 picture semi-trailer axles
+1671 n S TR 1 picture semi-trailer axles – searched pinned TR/TO, lotam and cached gov.il pages: no provision found
 1672 p1 combined vehicle 16.50 listed; 17 variant not
 1673 f1
 1674 n T TO new driver conviction retest
@@ -1362,7 +1362,7 @@
 1725 n T TR 1 אוטובוס פרטי
 1728 n S clutch
 1729 d
-1730 n T TR exhaust motorcycle
+1730 n S TR exhaust motorcycle – searched pinned TR/TO, lotam and cached gov.il pages: no provision found
 1732 n T TO medical certificate doctor
 1733 n S brake failure motorcycle
 1734 n T OFF:book hazards speed
