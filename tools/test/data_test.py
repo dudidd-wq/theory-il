@@ -368,6 +368,30 @@ _bad54 = [(a, b, c) for a, b, c, p in _T54 if p.startswith('דרך עירוני�
 ok(len(_T54) > 15 and not _bad54 and all(' – ' in p for _, _, _, p in _T54 if 'מהירות מרבית מותרת בקילומטרים לשעה' in p), f'v1.14 (review #10 N2): TR 54 chips show the table row with headings, not bare column headers or 54(ה1) ({len(_T54)} passages; {_bad54[:4]})')
 _L7 = LB['law3']['rules'][7]['x'][0][1]
 ok('דרך שאינה עירונית עם שטח הפרדה בנוי – 90' in _L7 and 'רכב מנועי למעט' in _L7, 'v1.14 (review #10 N2): law3#r7 chip states "…עם שטח הפרדה בנוי – 90" for its row')
+
+# v1.14 (review #10 N3): textbook chips are whole sentences/list items, not fragments
+_TBP = [re.sub(r'\s+', ' ', p if isinstance(p, str) else p.get('t', '')) for p in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'official', 'cache', 'textbook_pages.json')))]
+_frag = []; _nt = 0
+for _l in LB.values():
+    for _i, _r in enumerate(_l.get('rules', [])):
+        for _x in _r.get('x') or []:
+            if _x[0] != 'OFF:textbook': continue
+            _m = re.match(r'(.*) \(עמ׳ (\d+)\)$', _x[1]); _c = _m.group(1); _nt += 1
+            if len(_c) >= 45: continue
+            _t = _TBP[int(_m.group(2)) - 1]; _k = _t.find(_c); _e = _t[_k + len(_c):_k + len(_c) + 2]
+            if not (_c.rstrip().endswith(('.', '!', ':')) or _e.strip()[:1] in ('.', '•', '!', ':', '')): _frag.append(f"{_l['id']}#r{_i}")
+ok(not _frag and _nt >= 340, f'v1.14 (review #10 N3): every short textbook chip ends at a sentence/list-item boundary ({_nt} chips; fragments: {_frag[:8]})')
+_smp = []
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'official')); import pin as _pin
+_RAW = [p if isinstance(p, str) else p.get('t', '') for p in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'official', 'cache', 'textbook_pages.json')))]
+for _l in LB.values():
+    for _i, _r in enumerate(_l.get('rules', [])):
+        for _x in _r.get('x') or []:
+            if _x[0] != 'OFF:textbook': continue
+            _m = re.match(r'(.*) \(עמ׳ (\d+)\)$', _x[1]); _pg = _RAW[int(_m.group(2)) - 1]
+            for _z in _pin.quiz_spans(_pg): _pg = _pg.replace(_z, '')
+            if _pin.norm(_m.group(1)) not in _pin.norm(_pg): _smp.append(f"{_l['id']}#r{_i}")
+ok(not _smp, f'v1.14: every textbook chip occurs in the explanatory prose (not a sample-exam block) of the page its tag names ({_smp[:8]})')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 
