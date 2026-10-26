@@ -2101,6 +2101,29 @@
    "v": "none",
    "u": [],
    "why": "v1.4: not taught – single-wheel braking: no official source"
+  },
+  "324": {
+   "v": "full",
+   "u": [
+    "bus#r30",
+    "heavy2#r30"
+   ],
+   "why": "v1.4: TR 159(ג) – a retarder must be used on a descent marked by a dangerous-descent sign"
+  },
+  "1396": {
+   "v": "full",
+   "u": [
+    "bus#r30",
+    "heavy2#r30"
+   ],
+   "why": "v1.4: TR 159(ג) – retarder obligatory where a steep-descent warning sign is posted"
+  },
+  "1637": {
+   "v": "partial",
+   "u": [
+    "heavy2#r27"
+   ],
+   "why": "v1.4: TR 313(ב) defines the rear overhang; the answer is a number on the picture"
   }
  }
 }

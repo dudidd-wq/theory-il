@@ -28,7 +28,7 @@ export function ref(s) {
   if (!x) return h('span', { class: 'lawref', text: s });
   const label = x.label + s.slice(k.length);
   return h('details', { class: 'lawref' }, h('summary', {}, icon('book'), h('span', { text: label })),
-    h('div', { class: 'lawbox' }, h('p', { class: 'small muted', text: x.doc + (x.title ? ' – ' + x.title : '') + (x.rev ? ` (ויקיטקסט, גרסה ${x.rev})` : '') + (x.accessed ? ` (${t('ln.accessed', x.accessed)}${x.pub ? ', ' + t('ln.updated', x.pub) : ''})` : '') }),
+    h('div', { class: 'lawbox' }, h('p', { class: 'small muted', text: x.doc + (x.title ? ' – ' + x.title : '') + (x.rev ? ` (ויקיטקסט, גרסה ${x.rev})` : '') + (x.accessed ? ` (${t('ln.accessed', x.accessed)}${x.pub ? ', ' + t('ln.updated', x.pub) : ''})` : '') + (x.kind === 'OFF' ? ' · ' + t('ln.noNiqqud') : '') }),
       ...(x.ex || []).slice(0, 4).map(e => h('blockquote', { text: e })),
       ext(x.url, x.kind === 'Q' ? t('ln.bank') : t('ln.full'))));
 }

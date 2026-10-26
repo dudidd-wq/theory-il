@@ -103,6 +103,8 @@ ok(set(LB['moto2']['cls']) == {'A'} and set(LB['heavy2']['cls']) == {'C1', 'C'},
 ok(all(v['kind'] != 'OFF' or ('sha256' in v and v.get('accessed')) for v in SRC.values()), 'official pages pinned with sha256 + access date')
 bad = [k for k, t in SG['e'].items() if re.search(r'(?<!\S)[\u05d0-\u05ea](?!\S)', t) or re.search(r'\)[^()]*\(', t)]
 ok(len(bad) <= 3, f'sign texts without split letters / mirrored brackets (left: {bad})')
+ok('ללא ניקוד' in T('js', 'i18n.js') and "t('ln.noNiqqud')" in T('js', 'learn.js'), 'gov.il excerpts marked "ללא ניקוד" (chip + About)')
+ok(all(x in viz for x in ('שלוחה אחורית', "'רוחב וגובה'", '313(א)(3)(ב1)')), 'v1.4: heavy2 size diagram has length / width-height / rear-overhang views')
 ok(SG['e']['701'].startswith('אור אדום – ') and SG['e']['623'] == 'כביש ללא מוצא – בכביש שלפניך', 'sign title and meaning separated by " – " (701, 623)')
 ok(sum(' – ' in t for t in SG['e'].values()) >= 200, 'most sign entries show "title – meaning"')
 RS = lambda i: [r['s'] for r in LB[i]['rules']] + [x for r in LB[i]['rules'] for x in r.get('also', [])]
