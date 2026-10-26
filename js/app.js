@@ -32,6 +32,7 @@ function pick(ids, n) {
   const rest = shuffle(ids.filter(id => st.info(id) && !due.includes(id))).sort((a, b) => st.info(a)[0] - st.info(b)[0]);
   return shuffle([...new Set([...due, ...fresh, ...rest])].slice(0, n));
 }
+const trOld = l => { const m = MAN?.langs?.[l]?.resourceModified; return m && m < '2021' ? m.slice(0, 4) : ''; };
 const dirOf = l => (l === 'he' ? 'rtl' : 'ltr');
 
 // ---------- gamification ----------
@@ -232,7 +233,8 @@ function qBody(v) {
   return [h('p', { class: 'qmeta' }, h('span', { class: 'tag', text: t('topic.' + v.k) }), h('span', { class: 'muted', text: t('q.id', v.id) })),
     h('h2', { class: 'qtext', id: 'qt', lang: v.lang, dir: dirOf(v.lang), text: v.q }),
     v.i && h('img', { class: 'qimg', src: 'img/q/' + v.i, alt: t('q.img', v.id), width: 320, height: 180 }),
-    v.tr && h('p', { class: 'small muted', text: t('q.trNote') })];
+    v.tr && h('p', { class: 'small muted', text: t('q.trNote') }),
+    v.tr && trOld(v.lang) && h('p', { class: 'small warn-note', text: t('q.trOld', trOld(v.lang)) })];
 }
 function renderQ() {
   const s = session; if (!s) return;

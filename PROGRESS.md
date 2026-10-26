@@ -17,3 +17,14 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 - every change: `python3 tools/bump.py` (patch) → syncs js/version.js + sw.js VERSION, regenerates sw-assets.js (image precache list)
 - SW caches are prefixed `theory-il-` (activate only deletes its own; github.io origin is shared)
 - test hook `window.__theory` (S, view, pool, exam) – read-only, used by e2e.js
+
+## v1.1 – learning phase (שלב הלימוד) + review fixes
+- [x] review fix: cross-language consistency gate in build.py (numbers in q + correct answer, length ratios vs language median) – drops en 89 / ru 161 / fr 52 / es 70 suspect translations (shown in Hebrew instead); catches en/fr #257, fr #108, es #1400, en #1776
+- [x] review fix: build.py docstring no longer claims a "same correct position" check (banks shuffle answers); "older bank version" note for ru/es (2019) questions
+- [ ] law sources: Wikisource "ספר החוקים הפתוח" (תקנות התעבורה, פקודת התעבורה) → tools/law/law.json; official לוח התמרורים PDF (gov.il) → tools/law/lotam.json
+- [ ] lessons spec + validator (every rule cites a section; check strings must occur in the cited text) → data/lessons.json, data/sources.json
+- [ ] learn UI: path per class, lesson view (intro, rules + law chips, visual, sign gallery, examples, mini-quiz, recap, mnemonic), mastery + unlocks, TTS
+- [ ] visuals: own SVG/CSS (priority, following distance slider, speed table, overtaking, parking distances, blind spots, sign shapes, motorcycle) – text alternative, reduced motion
+- [ ] store/backup schema 2 (S.les) with v1 migration; readiness includes lessons; parent view
+- [ ] About/LICENSE-DATA/README: law + sign-table sources, §6 note
+- [ ] bump SW, e2e learn tests (mobile+desktop, axe, reduced motion), push, live check
