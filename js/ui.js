@@ -14,6 +14,7 @@ export function h(tag, props, ...kids) {
 }
 const P = {   // 24×24 line icons (own drawings)
   home: 'M3 11l9-7 9 7M5 10v10h5v-6h4v6h5V10',
+  learn: 'M2 9l10-5 10 5-10 5zM6 11v5c3 2.5 9 2.5 12 0v-5M22 9v6',
   book: 'M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2zM4 21V5M8 7h7',
   exam: 'M9 4h6v3H9zM7 5H5v16h14V5h-2M8 12l2 2 4-4M8 17h8',
   chart: 'M4 20V10M10 20V4M16 20v-7M22 20H2',

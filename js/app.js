@@ -5,6 +5,7 @@ import * as bk from './backup.js';
 import * as tts from './tts.js';
 import { VERSION } from './version.js';
 import { ELIG, lawUrl } from './elig.js';
+import { makeLearn, loadLessons, lessonFrac, lessonsFor, masteredCount } from './learn.js';
 const { state: S, save, today, CLASSES, LANGS } = st;
 const TOPICS = ['vehicle', 'signs', 'safety', 'law'];
 const LANG_NAMES = { he: 'עברית', en: 'English', ru: 'Русский', fr: 'Français', es: 'Español' };
@@ -16,7 +17,7 @@ async function getJSON(u, ms = 15000) {   // timeout so a stalled network never 
   const ac = new AbortController(), tm = setTimeout(() => ac.abort(), ms);
   try { const r = await fetch(u, { signal: ac.signal }); if (!r.ok) throw new Error(u); return await r.json(); } finally { clearTimeout(tm); }
 }
-async function loadData() { [Q, MAN] = await Promise.all([getJSON('data/q.he.json'), getJSON('data/manifest.json')]); byId = new Map(Q.map(p => [p.id, p])); }
+async function loadData() { [Q, MAN] = await Promise.all([getJSON('data/q.he.json'), getJSON('data/manifest.json'), loadLessons(getJSON)]); byId = new Map(Q.map(p => [p.id, p])); }
 async function loadLang(l) { if (l !== 'he' && !TR[l]) { try { TR[l] = await getJSON(`data/q.${l}.json`); } catch { TR[l] = {}; } } }
 const prof = () => S().profile;
 const cls = () => prof()?.cls || 'B';
@@ -54,9 +55,11 @@ function checkBadges() {
   for (const [k, f] of BADGES) if (!S().badges[k] && f()) { S().badges[k] = Date.now(); got.push(k); }
   if (got.length) { save(); toast(t('bd.new', t('bd.' + got[0]))); }
 }
+/** an estimate only: 15% lessons mastered (when the class has lessons), 50% questions mastered, 35% the last 3 exams */
 function readiness() {
-  const m = frac(pool()), ex = S().ex.filter(e => e[1] === cls()).slice(-3);
-  return ex.length ? 0.6 * m + 0.4 * (ex.reduce((a, e) => a + e[2], 0) / ex.length / 30) : m;
+  const m = frac(pool()), ex = S().ex.filter(e => e[1] === cls()).slice(-3), hasL = lessonsFor(cls()).length > 0;
+  const wl = hasL ? 0.15 : 0, base = wl * lessonFrac(cls()) + 0.5 * m;
+  return ex.length ? base + 0.35 * (ex.reduce((a, e) => a + e[2], 0) / ex.length / 30) : base / (wl + 0.5);
 }
 
 // ---------- shell ----------
@@ -67,7 +70,7 @@ function applyPrefs() {
   document.title = t('app.title');
   document.querySelectorAll('[data-t]').forEach(el => { el.textContent = t(el.dataset.t); });
   const nav = document.getElementById('nav'); nav.setAttribute('aria-label', t('nav.main')); nav.replaceChildren(...[
-    ['home', 'home', 'nav.home'], ['practice', 'book', 'nav.practice'], ['exam', 'exam', 'nav.exam'], ['stats', 'chart', 'nav.stats'], ['settings', 'more', 'nav.more']]
+    ['home', 'home', 'nav.home'], ['learn', 'learn', 'nav.learn'], ['practice', 'book', 'nav.practice'], ['exam', 'exam', 'nav.exam'], ['stats', 'chart', 'nav.stats'], ['settings', 'more', 'nav.more']]
     .map(([r, i, k]) => h('a', { href: '#/' + r, 'data-route': r }, icon(i), h('span', { text: t(k) }))));
   nav.hidden = !p.cls;
 }
@@ -82,15 +85,17 @@ const link = (label, href, cls = 'btn', ic) => h('a', { class: cls, href }, ic &
 const clsName = c => `${t('cls.' + c)} (${c === '1' ? '1' : c})`;
 
 // ---------- router ----------
-const routes = { welcome, onboard, home, practice, signs, exam: examIntro, review, bookmarks, search, stats, parent, settings, about };
+const routes = { welcome, onboard, home, learn: (a, b) => LRN.route(a, b), practice, signs, exam: examIntro, review, bookmarks, search, stats, parent, settings, about };
 async function route() {
   stopTimer(); tts.stop();
-  const [r, arg] = location.hash.replace(/^#\/?/, '').split('/');
+  const [r, arg, sub] = location.hash.replace(/^#\/?/, '').split('/');
   if (!prof()?.cls && r !== 'onboard' && r !== 'about' && r !== 'settings') return welcome();
   if (prof()?.cls && (r === 'welcome' || r === 'onboard')) { location.hash = '#/home'; return; }
   markNav(r || 'home');
-  (routes[r] || home)(arg);
+  (routes[r] || home)(arg, sub);
 }
+const LRN = makeLearn({ screen, btn, link, view, pool, cls, prof, pick, clsName, byId: { has: k => byId.has(k), get: k => byId.get(k) },
+  startSession: (...a) => startSession(...a) });
 let leaving = false;
 addEventListener('hashchange', () => {
   if (exam && !exam.done && !leaving) {
@@ -172,10 +177,12 @@ function home() {
     h('div', { class: 'kpi' }, icon('award', 'ic accent'), h('b', { text: lv.lv }), h('span', { text: t('home.level', '') }),
       h('div', { class: 'bar', role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': lv.need, 'aria-valuenow': lv.into, 'aria-label': t('home.level', lv.lv) }, h('i', { style: { width: (100 * lv.into / lv.need) + '%' } }))),
     h('div', { class: 'kpi goal' }, ring(d[0] / p.goal, 56, 6, t('home.goalOf', d[0], p.goal)), h('span', { text: t('home.goalOf', d[0], p.goal) }))));
+  const nL = lessonsFor(p.cls).length;
   const tiles = h('section', { class: 'tiles' },
+    nL ? tile('#/learn', 'learn', t('home.learn'), t('home.learnD', masteredCount(p.cls), nL), masteredCount(p.cls) < nL ? 'hl' : '') : null,
     tile('#/practice/mix', 'repeat', t('home.quick'), t('home.quickD')),
     tile('#/signs', 'sign', t('home.signs'), t('home.signsD', signPool().length)),
-    tile('#/exam', 'exam', t('home.exam'), t('home.examD'), 'hl'),
+    tile('#/exam', 'exam', t('home.exam'), t('home.examD'), nL && masteredCount(p.cls) < nL ? '' : 'hl'),
     tile('#/review', 'repeat', t('home.review'), due ? t('home.reviewD', due) : (mist ? t('rv.due', 0, mist) : t('home.reviewNone')), due ? 'warn' : ''),
     tile('#/bookmarks', 'star', t('home.bm'), t('home.bmD', S().bm.length)));
   const cols = h('div', { class: 'cols' }, tiles); kids.push(cols);
@@ -230,9 +237,9 @@ function bookmarks(go) {
       h('p', { class: 'ans-ok', lang: v.lang, dir: dirOf(v.lang) }, icon('check'), h('span', { text: v.a[v.c] })),
       btn(t('bm.remove'), () => { st.toggleBookmark(id); bookmarks(); }, 'btn small ghost')); }))]);
 }
-function startSession(kind, ids, title, again) {
+function startSession(kind, ids, title, again, extra = {}) {
   if (!ids.length) { location.hash = '#/home'; return; }
-  session = { kind, ids, i: 0, ok: 0, xp0: S().xp, wrong: [], title, again, he: false };
+  session = { kind, ids, i: 0, ok: 0, xp0: S().xp, wrong: [], title, again, he: false, ...extra };
   renderQ();
 }
 function qHeader(i, n, title, onquit) {
@@ -291,8 +298,9 @@ function renderQ() {
 function summary() {
   const s = session, n = s.ids.length;
   if (s.kind === 'review') { S().badges.review ||= Date.now(); save(); }
+  const les = s.lesson ? LRN.afterQuiz(s.lesson, s.ok, n) : [];
   checkBadges();
-  screen(t('sum.title'), h('div', { class: 'result' }, ring(s.ok / n, 120, 10, t('sum.score', s.ok, n)), h('p', { class: 'big-t', text: t('sum.score', s.ok, n) }), h('p', { class: 'accent', text: t('sum.xp', S().xp - s.xp0) })),
+  screen(t('sum.title'), h('div', { class: 'result' }, ring(s.ok / n, 120, 10, t('sum.score', s.ok, n)), h('p', { class: 'big-t', text: t('sum.score', s.ok, n) }), h('p', { class: 'accent', text: t('sum.xp', S().xp - s.xp0) })), ...les,
     h('div', { class: 'row' }, s.wrong.length ? btn(t('sum.mist'), () => startSession('review', s.wrong.slice(), t('rv.title'), '#/review'), 'btn primary', 'repeat') : null,
       btn(t('sum.again'), () => { location.hash = s.again; route(); }, 'btn', 'repeat'), link(t('sum.home'), '#/home', 'btn ghost', 'home')));
 }
@@ -463,7 +471,7 @@ function parent() {
   const fmt = d => new Date(d * 864e5).toLocaleDateString(uiLang() === 'he' ? 'he-IL' : 'en-GB', { timeZone: 'UTC' });
   screen(t('pa.title'), h('p', { class: 'small', text: t('pa.hint') }),
     h('dl', { class: 'plist' }, row(t('set.name'), p.name || '—'), row(t('set.cls'), clsName(p.cls)), row(t('pa.last'), lastDay ? fmt(lastDay) : t('pa.never')),
-      row(t('pa.active'), `${active}/14`), row(t('home.streak'), String(st.streak())), row(t('pa.total'), `${Object.keys(S().q).length}/${pool().length}`),
+      row(t('pa.active'), `${active}/14`), row(t('home.streak'), String(st.streak())), row(t('pa.lessons'), `${masteredCount(p.cls)}/${lessonsFor(p.cls).length}`), row(t('pa.total'), `${Object.keys(S().q).length}/${pool().length}`),
       row(t('pa.open'), String(mistakes().length)), row(t('st.ready'), Math.round(readiness() * 100) + '%'),
       row(t('pa.lastEx'), ex.length ? ex.map(e => `${e[2]}/30 ${e[2] >= 26 ? '✓' : '✗'}`).join(' · ') : t('st.noEx'))),
     topicTable(), h('h2', { text: t('st.days') }), daysChart(),
@@ -549,6 +557,7 @@ function about() {
     h('h2', { text: t('ab.lang') }), h('p', { text: t('ab.langText') }),
     h('h2', { text: t('ab.test') }), h('p', { text: t('ab.testText') }),
     h('h2', { text: t('ab.law') }), h('p', { text: t('ab.lawText') }),
+    h('h2', { text: t('ab.learn') }), h('p', { text: t('ab.learnText') }), h('ul', { class: 'srcs' }, h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085628', t('ab.wsTR', 3085628))), h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085764', t('ab.wsTO', 3085764))), h('li', {}, ext('https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf', t('ab.lotam')))),
     h('h2', { text: t('el.all') }), ...CLASSES.map(c => h('div', {}, h('h3', { class: 'h3', text: clsName(c) }), eligCard(c, false))),
     h('h2', { text: t('ab.a11y') }), h('p', { text: t('ab.a11yText', Q.filter(p => p.i).length) }),
     h('h2', { text: t('ab.priv') }), h('p', { text: t('ab.privText') }),
