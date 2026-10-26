@@ -143,7 +143,8 @@ ok(SG['q'].get('592') == ['504'], 'Q592 → sign 504 (white + yellow arrow)')
 # 5b. v1.6: B / A coverage – every pool question is taught or listed in docs/NO_SOURCE_B_A.md with its search
 NS = J('tools', 'coverage', 'nosource_ba.json')
 ba = {str(q['id']) for q in Q if {'A', 'B'} & set(q['t'])}
-unt = {i for i in ba if cq[i][0] == 'n'}
+NI = J('docs', 'coverage_after.json')['none_ids']
+unt = {str(i) for c in ('B', 'A') for i in NI[c]}  # untaught for the class itself (lessons shown to B / A)
 ok(set(NS['q']) == unt, f'v1.6: NO_SOURCE_B_A list = untaught B/A questions (missing {sorted(unt - set(NS["q"]), key=int)[:8]}, extra {sorted(set(NS["q"]) - unt, key=int)[:8]})')
 ok(all(e['g'] in NS['groups'] and NS['groups'][e['g']]['search'] and NS['groups'][e['g']]['why'] for e in NS['q'].values()), 'v1.6: every NO_SOURCE entry has a search done and a reason')
 nsmd = T('docs', 'NO_SOURCE_B_A.md'); lm = T('docs', 'LESSON_MAP_B_A.md')
@@ -151,7 +152,7 @@ ok(all(f'| {i} |' in nsmd for i in NS['q']), 'v1.6: docs/NO_SOURCE_B_A.md lists 
 ok(all(f'| {i} |' in lm for i in ba), f'v1.6: docs/LESSON_MAP_B_A.md maps every B/A question ({len(ba)})')
 for c, lim in (('B', 92.5), ('A', 92.5)):
     pool = [str(q['id']) for q in Q if c in q['t']]
-    anyp = 100 * sum(cq[i][0] != 'n' for i in pool) / len(pool)
+    anyp = 100 * (len(pool) - len(NI[c])) / len(pool)
     ok(anyp >= lim, f'v1.6: class {c} any-coverage {anyp:.1f}% >= {lim}%')
 
 # 6. SW + version

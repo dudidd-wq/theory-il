@@ -38,6 +38,7 @@ for L in S.LESSONS:
                 ref = ref_of(LS, f"{L['id']}#r{i}"); e = F[str(qid)]
                 if e['v'] == 'full' and not e.get('dict') and v == 'partial': continue
                 if e.get('by') == 'v1.5' and e['v'] == 'full': e['u'].append(ref); continue
+                if e['v'] == v and not e.get('dict'): e['u'].append(ref); e['by'] = 'v1.5'; continue
                 F[str(qid)] = {'by': 'v1.5', 'v': v, 'u': [ref], 'why': ('rule written for this question' if v == 'full' else 'rule covers part of the answer') + f" ({r['s']})",
                                **({'strict_u': e['u'], 'dict': True} if e.get('dict') and v == 'partial' else {}), **({'src': e.get('src')} if v == 'partial' and e.get('src') else {})}
 for e in F.values():

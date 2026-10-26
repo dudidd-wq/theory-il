@@ -35,7 +35,7 @@ Q = {
          1730: '"pressure exhaust" ban: TR 318 regulates the exhaust system but has no such ban',
          1778: 'what the annual test records: not in the pinned regulations',
          1792: 'trick question about summer daytime lights: none of the options is a pinned rule'},
- 'pic': {i: '' for i in (708, 725, 728, 878, 885, 896, 898, 909, 911, 914, 923, 928, 931, 942, 944, 948, 953, 954,
+ 'pic': {i: '' for i in (699, 708, 725, 728, 878, 885, 896, 898, 909, 911, 914, 923, 928, 931, 942, 944, 948, 953, 954,
                          958, 968, 978, 980, 985)},
  'veh': {830: 'hybrid car', 886: 'hybrid fuel use', 1065: 'GPS', 1076: 'panoramic mirror', 1699: 'panoramic mirror',
          861: 'what side mirrors show (textbook p16 only says mirrors complement peripheral vision)',
@@ -92,7 +92,7 @@ def main():
         cl = ''.join(c for c in ('B', 'A') if c in q['t'])
         if not cl: continue
         v = cov[str(i)]; n += 1
-        if v[0] == 'n':
+        if v[0] == 'n' or str(i) in out['q']:
             assert str(i) in out['q'], i
             M.append(f'| {i} | {cl} | no official source | see NO_SOURCE_B_A.md |')
         else:

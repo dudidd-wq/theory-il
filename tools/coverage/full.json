@@ -5586,11 +5586,10 @@
 },
 "699": {
 "by": "hand",
-"v": "partial",
-"u": [
-"moto2#r:לא מובילים על אופנוע חפץ שמפריע לשלי"
-],
-"why": "picture scenario"
+"v": "none",
+"u": [],
+"src": "S",
+"why": "picture scenario; the bank has no picture for this question, so the scene cannot be checked against a rule (re-judged v1.6)"
 },
 "700": {
 "by": "hand",

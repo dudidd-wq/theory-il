@@ -542,7 +542,7 @@
 695 n T sign-link
 696 p1 seat belts only
 698 p2 picture scenario; right-hand rule taught
-699 p2 picture scenario
+699 n S picture scenario; the bank has no picture for this question, so the scene cannot be checked against a rule (re-judged v1.6)
 700 p2 picture scenario
 702 p2 picture scenario
 703 p2 picture scenario
