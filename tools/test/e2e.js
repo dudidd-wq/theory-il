@@ -9,7 +9,8 @@ let fails = 0, passes = 0;
 const ok = (c, msg) => { if (c) { passes++; console.log('  ✓ ' + msg); } else { fails++; console.log('  ✗ ' + msg); } };
 async function axe(p, name, prof) {
   await p.waitForTimeout(350);   // let the .18s fade-in finish so contrast is measured at full opacity
-  await p.waitForFunction(() => ['0', '1'].includes(getComputedStyle(document.getElementById('toast')).opacity));  // not mid-fade
+  // a toast that fades out while axe runs gives a bogus contrast result: let any toast finish first (its contrast is checked on its own below)
+  await p.waitForFunction(() => { const e = document.getElementById('toast'); return !e.classList.contains('show') && getComputedStyle(e).opacity === '0'; }, null, { timeout: 6000 });
   await p.evaluate(AXE);
   const r = await p.evaluate(() => axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] } }));
   const v = r.violations.filter(x => x.impact === 'serious' || x.impact === 'critical' || x.impact === 'moderate');
@@ -45,7 +46,10 @@ async function run(prof, opts) {
   await p.click('a[href="#/onboard/1"]'); await p.waitForSelector('input[value="B"]');
   ok(await p.isDisabled('.row .btn.primary'), 'next disabled until class chosen');
   await axe(p, 'onboard-class', prof);
-  await p.click('label:has(input[value="B"])'); await p.click('.row .btn.primary');
+  await p.click('label:has(input[value="B"])'); await p.waitForSelector('.elig');
+  ok(/15 וחצי/.test(await p.textContent('.elig')) && (await p.getAttribute('.elig a', 'href')).includes('oldid=3085628'), 'eligibility for class B with a cited law link');
+  await axe(p, 'onboard-elig', prof);
+  await p.click('.row .btn.primary');
   await p.waitForSelector('input[value="en"]'); await axe(p, 'onboard-lang', prof);
   await p.click('a[href="#/onboard/3"]'); await p.fill('#nm', 'נועה<script>');
   await p.click('.row .btn.primary.big'); await p.waitForSelector('.drive');
@@ -81,6 +85,15 @@ async function run(prof, opts) {
   ok(await p.locator('a[href^="#/review/all-"]').count() >= 1, 'mistakes filter by topic offered');
   await p.click('a[href="#/review/go"], a[href="#/review/all"]'); await p.waitForSelector('.answers .ans');
   ok(true, 'review session starts'); await go(p, '#/home');
+  // search by text and by number
+  await go(p, '#/search'); await p.waitForSelector('#sq'); await p.fill('#sq', 'חגורת בטיחות'); await p.waitForTimeout(400);
+  const nRes = +((await text(p)).match(/(\d+) תוצאות/) || [0, 0])[1];
+  ok(nRes > 3 && (await p.locator('.sres .qlist li').count()) === Math.min(40, nRes) && !/null/.test(await p.textContent('.sres')), `search by text (${nRes})`);
+  await axe(p, 'search', prof);
+  await p.fill('#sq', '1535'); await p.waitForTimeout(400);
+  ok(/1 תוצאות/.test(await text(p)) && /1535/.test(await p.textContent('.sres .qlist li')), 'search by question number');
+  await p.click('a[href="#/search/go"]'); await p.waitForSelector('.answers .ans'); ok((await curId(p)) === 1535, 'practise search results');
+  await go(p, '#/home');
   // bookmarks
   await go(p, '#/bookmarks'); await p.waitForSelector('.qlist li'); await axe(p, 'bookmarks', prof);
   // exam: leave guard
@@ -119,8 +132,12 @@ async function run(prof, opts) {
   ok(/לא נענו/.test(await text(p)), 'unanswered note on result');
   // stats / parent / about / settings
   for (const r of ['stats', 'parent', 'about', 'settings']) { await go(p, '#/' + r); await p.waitForSelector('h1'); await axe(p, r, prof); }
+  await p.evaluate(() => { const e = document.getElementById('toast'); e.textContent = 'בדיקה'; e.classList.add('show'); }); await p.waitForTimeout(450); await p.evaluate(AXE);
+  ok(!(await p.evaluate(() => axe.run(document.getElementById('toast'), { runOnly: ['color-contrast'] }).then(r => r.violations.length))), 'toast contrast');
+  await p.evaluate(() => document.getElementById('toast').classList.remove('show'));
   ok(/CC|Creative Commons/.test(await (async () => { await go(p, '#/about'); return text(p); })()), 'about credits CC BY');
   ok(/משרד התחבורה/.test(await text(p)), 'about names the ministry as source');
+  ok(/לא כולל תיאור מילולי/.test(await text(p)) && (await p.locator('.elig').count()) === 6, 'about: picture-question accessibility note + eligibility for all 6 classes');
   // backup code → reset → restore → undo
   await go(p, '#/settings');
   await p.click('#bk-code'); await p.waitForSelector('.codeout textarea');

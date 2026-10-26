@@ -39,4 +39,4 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 - [x] Backup reminder only after real copy/share/download
 - [x] SW: banner for an already-waiting worker; data fetch timeout; image cache refresh
 - [x] Drop data/raw from the published site (raw banks + law.json untracked; regenerate with tools/fetch.py / tools/law/fetch.py+parse.py, sha256 in data/raw/meta.json); test hook `window.__theory` removed, e2e reads localStorage + data files (130/130 local)
-- [ ] Alt text / screen-reader notice; per-class eligibility info (cited); search by text/number; mistakes filter by topic
+- [x] Alt text / screen-reader notice (generic alt + sr-only note per picture question + About section; no invented descriptions); per-class eligibility (js/elig.js, own wording, every line links TR 176–189/221 at pinned revid); search by text/number (#/search); mistakes filter by topic (#/review/all-<topic>)

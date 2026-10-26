@@ -8,7 +8,7 @@ const IMGS = self.IMGS || {};
 const imgKey = path => { const k = path.replace(/^.*?(img\/q\/)/, '$1'); return IMGS[k] ? new URL(k + '?h=' + IMGS[k], self.registration.scope).href : null; };
 const ASSETS = [
   './', 'index.html', 'manifest.webmanifest', 'css/style.css', 'fonts/rubik.woff2',
-  'js/app.js', 'js/ui.js', 'js/store.js', 'js/backup.js', 'js/i18n.js', 'js/tts.js', 'js/version.js', 'img/hero.svg',
+  'js/app.js', 'js/ui.js', 'js/store.js', 'js/backup.js', 'js/i18n.js', 'js/tts.js', 'js/version.js', 'js/elig.js', 'img/hero.svg',
   'data/q.he.json', 'data/manifest.json',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png',
 ];

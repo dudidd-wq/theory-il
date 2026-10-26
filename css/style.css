@@ -203,3 +203,10 @@ textarea { font-family: ui-monospace, monospace; font-size: .85em; word-break: b
   .qcard.has-img > .qimg { grid-column: 2; grid-row: 1 / span 9; max-height: 420px; margin-top: 0; }
   .welcome-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 }
+/* eligibility card (onboarding + About) and search */
+.elig { margin: 12px 0; }
+.elig .points { margin: 6px 0; }
+.h3 { font-size: 1.02rem; margin: 6px 0; }
+.refs a { white-space: nowrap; }
+#sq { width: 100%; font-size: 1.05rem; }
+.sres .qlist .qimg.sm { display: block; margin: 6px 0; }

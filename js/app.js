@@ -4,6 +4,7 @@ import * as st from './store.js';
 import * as bk from './backup.js';
 import * as tts from './tts.js';
 import { VERSION } from './version.js';
+import { ELIG, lawUrl } from './elig.js';
 const { state: S, save, today, CLASSES, LANGS } = st;
 const TOPICS = ['vehicle', 'signs', 'safety', 'law'];
 const LANG_NAMES = { he: 'עברית', en: 'English', ru: 'Русский', fr: 'Français', es: 'Español' };
@@ -81,7 +82,7 @@ const link = (label, href, cls = 'btn', ic) => h('a', { class: cls, href }, ic &
 const clsName = c => `${t('cls.' + c)} (${c === '1' ? '1' : c})`;
 
 // ---------- router ----------
-const routes = { welcome, onboard, home, practice, signs, exam: examIntro, review, bookmarks, stats, parent, settings, about };
+const routes = { welcome, onboard, home, practice, signs, exam: examIntro, review, bookmarks, search, stats, parent, settings, about };
 async function route() {
   stopTimer(); tts.stop();
   const [r, arg] = location.hash.replace(/^#\/?/, '').split('/');
@@ -114,6 +115,14 @@ function welcome() {
     h('div', { class: 'ui-switch' }, ['he', 'en'].map(l => btn(l === 'he' ? 'עברית' : 'English', () => { draft.ui = l; setUi(l); applyPrefs(); welcome(); }, 'chip', null, { 'aria-pressed': String(uiLang() === l), lang: l }))));
 }
 const draft = { cls: null, lang: 'he', name: '', ui: 'he' };
+/** who may get this licence class – each line links to the cited section of the regulations */
+function eligCard(c, head = true) {
+  const en = uiLang() !== 'he', ext = (href, text) => h('a', { href, rel: 'noopener noreferrer', target: '_blank', text });
+  return h('section', { class: 'card elig', 'aria-label': t('el.title', clsName(c)) }, head && h('h2', { class: 'h3', text: t('el.title', clsName(c)) }),
+    h('ul', { class: 'points' }, ELIG[c].map(([he, enT, refs]) => h('li', {}, icon('check'), h('span', {}, h('span', { text: en ? enT + ' ' : he + ' ' }),
+      h('span', { class: 'refs small' }, refs.map((r, i) => [i ? ', ' : '', ext(lawUrl(r.match(/^\d+[א-ת]?/)[0]), t('el.ref', r))])))))),
+    h('p', { class: 'small muted', text: t('el.note') }));
+}
 function onboard(step = '1') {
   const n = +step || 1;
   const steps = h('p', { class: 'step', text: t('ob.step', n) });
@@ -122,6 +131,7 @@ function onboard(step = '1') {
       h('input', { type: 'radio', name: 'cls', value: c, checked: draft.cls === c, onchange: () => { draft.cls = c; onboard('1'); document.querySelector(`input[value="${c}"]`)?.focus(); } }),
       h('span', { class: 'opt-badge', text: c }), h('span', { class: 'opt-t' }, h('b', { text: t('cls.' + c) }), h('small', { text: t('cls.' + c + 'd') }))));
     screen(t('ob.cls'), steps, h('fieldset', { class: 'opts' }, h('legend', { class: 'sr', text: t('ob.cls') }), opts),
+      draft.cls ? eligCard(draft.cls) : null,
       h('p', { class: 'small', text: t('ob.clsHint') }), h('p', { class: 'small muted', text: t('cls.note') }),
       h('div', { class: 'row' }, link(t('ob.back'), '#/welcome', 'btn ghost'), btn(t('ob.next'), () => { location.hash = '#/onboard/2'; }, 'btn primary', null, { disabled: !draft.cls })));
   } else if (n === 2) {
@@ -178,7 +188,7 @@ function home() {
       h('a', { href: '#/practice/' + s.k, 'aria-current': i === cur ? 'step' : null },
         ring(s.f, 52, 6), h('span', { class: 'stop-t' }, h('b', { text: t('topic.' + s.k) }), h('small', { text: t('pr.stats', s.n, Math.round(s.f * 100)) })), i === cur && icon('car', 'ic car')))),
       h('li', { class: 'stop finish' + (cur === -1 ? ' cur' : '') }, h('a', { href: '#/exam' }, h('span', { class: 'flagdot' }, icon('flag')), h('span', { class: 'stop-t' }, h('b', { text: t('home.finish') }), h('small', { text: t('home.examD') })))))));
-  kids.push(h('p', { class: 'row tight center' }, link(t('home.parent'), '#/parent', 'btn ghost small', 'user'), link(t('set.about'), '#/about', 'btn ghost small', 'info')));
+  kids.push(h('p', { class: 'row tight center' }, link(t('se.title'), '#/search', 'btn ghost small', 'search'), link(t('home.parent'), '#/parent', 'btn ghost small', 'user'), link(t('set.about'), '#/about', 'btn ghost small', 'info')));
   kids.push(h('p', { class: 'disc small', role: 'note', text: t('disc.short') }));
   screen(t('home.hi', p.name ? ', ' + p.name : ''), ...kids);
 }
@@ -187,7 +197,7 @@ const tile = (href, ic, title, sub, cls = '') => h('a', { class: 'tile ' + cls, 
 // ---------- practice / signs / review / bookmarks ----------
 function practice(k) {
   if (k && (TOPICS.includes(k) || k === 'mix')) return startSession('practice', k === 'mix' ? pick(pool(), 10) : pick(topicPool(k), 10), t('topic.' + k), '#/practice/' + k);
-  screen(t('pr.title'), h('p', { class: 'small', text: t('pr.hint') }),
+  screen(t('pr.title'), h('p', { class: 'small', text: t('pr.hint') }), h('p', {}, link(t('se.title'), '#/search', 'btn ghost small', 'search')),
     h('div', { class: 'list' }, [...TOPICS, 'mix'].map(k => { const ids = k === 'mix' ? pool() : topicPool(k), f = frac(ids);
       return h('a', { class: 'item', href: '#/practice/' + k }, ring(f, 48, 5), h('span', {}, h('b', { text: t('topic.' + k) }), h('small', { text: t('pr.stats', ids.length, Math.round(f * 100)) })), icon(uiLang() === 'he' ? 'arrowS' : 'arrowE')); })));
 }
@@ -245,6 +255,7 @@ function qBody(v) {
   return [h('p', { class: 'qmeta' }, h('span', { class: 'tag', text: t('topic.' + v.k) }), h('span', { class: 'muted', text: t('q.id', v.id) })),
     h('h2', { class: 'qtext', id: 'qt', lang: v.lang, dir: dirOf(v.lang), text: v.q }),
     v.i && h('img', { class: 'qimg', src: 'img/q/' + v.i, alt: t('q.img', v.id), width: 320, height: 180 }),
+    v.i && h('p', { class: 'sr', text: t('q.imgSr') }),
     v.tr && h('p', { class: 'small muted', text: t('q.trNote') }),
     v.tr && trOld(v.lang) && h('p', { class: 'small warn-note', text: t('q.trOld', trOld(v.lang)) })];
 }
@@ -284,6 +295,42 @@ function summary() {
   screen(t('sum.title'), h('div', { class: 'result' }, ring(s.ok / n, 120, 10, t('sum.score', s.ok, n)), h('p', { class: 'big-t', text: t('sum.score', s.ok, n) }), h('p', { class: 'accent', text: t('sum.xp', S().xp - s.xp0) })),
     h('div', { class: 'row' }, s.wrong.length ? btn(t('sum.mist'), () => startSession('review', s.wrong.slice(), t('rv.title'), '#/review'), 'btn primary', 'repeat') : null,
       btn(t('sum.again'), () => { location.hash = s.again; route(); }, 'btn', 'repeat'), link(t('sum.home'), '#/home', 'btn ghost', 'home')));
+}
+
+// ---------- search (question text, answers or bank number) ----------
+const norm = s => String(s).toLowerCase().replace(/[\u0591-\u05C7]/g, '').replace(/[״"׳'`.,?!:;()\[\]\-–—/]/g, ' ').replace(/\s+/g, ' ').trim();
+let IDX = null, lastQ = '';
+function searchIdx() {
+  const l = prof()?.lang;
+  if (!IDX || IDX.l !== l) IDX = { l, m: new Map(Q.map(p => [p.id, norm([p.q, ...p.a, ...(TR[l]?.[p.id] ? [TR[l][p.id][0], ...TR[l][p.id][1]] : [])].join(' '))])) };
+  return IDX.m;
+}
+function findQ(q) {
+  const s = q.trim(); if (/^\d{1,4}$/.test(s)) return byId.has(+s) ? [+s] : [];
+  const words = norm(s).split(' ').filter(w => w.length > 1); if (!words.length) return null;
+  const idx = searchIdx(), mine = new Set(pool());
+  return Q.map(p => p.id).filter(id => { const x = idx.get(id); return words.every(w => x.includes(w)); }).sort((a, b) => mine.has(b) - mine.has(a));
+}
+function search(go) {
+  if (go === 'go') { const ids = findQ(lastQ) || []; return startSession('search', ids.slice(0, 20), t('se.title'), '#/search'); }
+  const out = h('div', { class: 'sres', 'aria-live': 'polite' });
+  const inp = h('input', { id: 'sq', type: 'search', value: lastQ, maxlength: '60', autocomplete: 'off', enterkeyhint: 'search', 'aria-describedby': 'sqh' });
+  const mine = new Set(pool());
+  const run = () => {
+    lastQ = inp.value; const ids = findQ(lastQ);
+    if (ids === null) { out.replaceChildren(); return; }
+    out.replaceChildren(...[h('p', { class: 'sub', text: t('se.count', ids.length) }),
+      ids.length ? h('div', { class: 'row' }, link(t('se.practice', Math.min(20, ids.length)), '#/search/go', 'btn primary', 'repeat')) : h('p', { class: 'empty', text: t('se.none') }),
+      h('ul', { class: 'qlist' }, ids.slice(0, 40).map(id => { const v = view(id), bm = st.isBookmarked(id);
+        return h('li', {}, h('p', { lang: v.lang, dir: dirOf(v.lang) }, h('small', { class: 'muted', text: t('q.id', id) + ' · ' + t('topic.' + v.k) + (mine.has(id) ? '' : ' · ' + t('se.other')) + ' · ' }), v.q),
+          v.i ? h('img', { class: 'qimg sm', src: 'img/q/' + v.i, alt: t('q.img', id), loading: 'lazy', width: 240, height: 135 }) : null,
+          h('p', { class: 'ans-ok', lang: v.lang, dir: dirOf(v.lang) }, icon('check'), h('span', { text: v.a[v.c] })),
+          btn(t('q.bm'), e => { const on = st.toggleBookmark(id); e.currentTarget.setAttribute('aria-pressed', String(on)); e.currentTarget.classList.toggle('on', on); }, 'btn small ghost' + (bm ? ' on' : ''), 'star', { 'aria-pressed': String(bm) })); })),
+      ids.length > 40 ? h('p', { class: 'small muted', text: t('se.more', ids.length - 40) }) : null].filter(Boolean));
+  };
+  let tm = 0; inp.addEventListener('input', () => { clearTimeout(tm); tm = setTimeout(run, 180); });
+  screen(t('se.title'), h('label', { for: 'sq', class: 'lbl', text: t('se.label') }), inp, h('p', { id: 'sqh', class: 'small muted', text: t('se.hint') }), out);
+  run(); inp.focus();
 }
 
 // ---------- full exam ----------
@@ -502,6 +549,8 @@ function about() {
     h('h2', { text: t('ab.lang') }), h('p', { text: t('ab.langText') }),
     h('h2', { text: t('ab.test') }), h('p', { text: t('ab.testText') }),
     h('h2', { text: t('ab.law') }), h('p', { text: t('ab.lawText') }),
+    h('h2', { text: t('el.all') }), ...CLASSES.map(c => h('div', {}, h('h3', { class: 'h3', text: clsName(c) }), eligCard(c, false))),
+    h('h2', { text: t('ab.a11y') }), h('p', { text: t('ab.a11yText', Q.filter(p => p.i).length) }),
     h('h2', { text: t('ab.priv') }), h('p', { text: t('ab.privText') }),
     h('h2', { text: t('ab.links') }), h('ul', { class: 'srcs' },
       h('li', {}, ext('https://data.gov.il/he/datasets/ministry_of_transport/tqhe', 'data.gov.il – מאגר השאלות והתשובות הרשמי (tqhe)')),
