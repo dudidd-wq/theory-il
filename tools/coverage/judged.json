@@ -1,5 +1,5 @@
 {
-"note": "manual judgement of the fixed sample (tools/coverage/sample.py). v=full|partial|none, u=lesson units that carry the knowledge. Class-specific: a unit only counts for classes its lesson is shown to.",
+"note": "manual judgement of the fixed sample (tools/coverage/sample.py). v=full|partial|none, u=lesson units that carry the knowledge. Class-specific: a unit only counts for classes its lesson is shown to. | after: deltas re-judged 2026-10-26 against v1.2.0 lessons (signal, duty, sober, accident, terms, cargo, bus additions); unlisted ids keep the before label; sign questions mapped in data/signs.json count as full.",
 "before": {
 "18": {
 "v": "none",
@@ -1265,6 +1265,276 @@
 "1802": {
 "v": "none",
 "u": []
+}
+},
+"after": {
+"18": {
+"v": "full",
+"u": [
+"terms#r0"
+]
+},
+"25": {
+"v": "full",
+"u": [
+"terms#r2"
+]
+},
+"40": {
+"v": "partial",
+"u": [
+"terms#r6"
+],
+"why": "bank answer uses the old definition (up to 8 passengers); TR:1 now defines it by class M1"
+},
+"73": {
+"v": "full",
+"u": [
+"duty#r5"
+]
+},
+"118": {
+"v": "full",
+"u": [
+"signal#r10"
+]
+},
+"164": {
+"v": "full",
+"u": [
+"signal#r0"
+]
+},
+"166": {
+"v": "full",
+"u": [
+"signal#r0"
+]
+},
+"167": {
+"v": "full",
+"u": [
+"signal#r1"
+]
+},
+"171": {
+"v": "full",
+"u": [
+"signal#r8"
+]
+},
+"188": {
+"v": "full",
+"u": [
+"signal#r2",
+"signal#r0"
+]
+},
+"196": {
+"v": "full",
+"u": [
+"duty#r13"
+]
+},
+"226": {
+"v": "full",
+"u": [
+"duty#r10"
+]
+},
+"229": {
+"v": "full",
+"u": [
+"duty#r12"
+]
+},
+"276": {
+"v": "full",
+"u": [
+"accident#r2"
+]
+},
+"299": {
+"v": "partial",
+"u": [
+"sober#r5"
+],
+"why": "refusal = deemed drunk is not taught"
+},
+"304": {
+"v": "full",
+"u": [
+"duty#r6"
+]
+},
+"379": {
+"v": "full",
+"u": [
+"duty#r17"
+]
+},
+"731": {
+"v": "partial",
+"u": [
+"signal#r2"
+]
+},
+"734": {
+"v": "full",
+"u": [
+"duty#r15"
+]
+},
+"736": {
+"v": "full",
+"u": [
+"duty#r3"
+]
+},
+"757": {
+"v": "full",
+"u": [
+"cargo#r8"
+]
+},
+"796": {
+"v": "partial",
+"u": [
+"signal#r11"
+]
+},
+"831": {
+"v": "partial",
+"u": [
+"signal#r0"
+]
+},
+"836": {
+"v": "full",
+"u": [
+"signal#r2"
+]
+},
+"927": {
+"v": "full",
+"u": [
+"signal#r8"
+]
+},
+"1144": {
+"v": "full",
+"u": [
+"bus#r7"
+]
+},
+"1189": {
+"v": "full",
+"u": [
+"bus#r9",
+"duty#r8"
+]
+},
+"1218": {
+"v": "full",
+"u": [
+"duty#r13"
+]
+},
+"1241": {
+"v": "partial",
+"u": [
+"bus#r7"
+]
+},
+"1312": {
+"v": "full",
+"u": [
+"cargo#r5"
+]
+},
+"1323": {
+"v": "full",
+"u": [
+"cargo#r5"
+]
+},
+"1379": {
+"v": "full",
+"u": [
+"terms#r1"
+]
+},
+"1381": {
+"v": "full",
+"u": [
+"duty#r14"
+]
+},
+"1398": {
+"v": "partial",
+"u": [
+"duty#r13"
+]
+},
+"1415": {
+"v": "partial",
+"u": [
+"cargo#r7"
+]
+},
+"1416": {
+"v": "partial",
+"u": [
+"cargo#r7"
+]
+},
+"1446": {
+"v": "full",
+"u": [
+"terms#r4"
+]
+},
+"1527": {
+"v": "full",
+"u": [
+"cargo#r1"
+]
+},
+"1539": {
+"v": "partial",
+"u": [
+"cargo#r6"
+]
+},
+"1550": {
+"v": "partial",
+"u": [
+"sober#r1"
+]
+},
+"1552": {
+"v": "full",
+"u": [
+"sober#r0"
+]
+},
+"1571": {
+"v": "full",
+"u": [
+"terms#r7"
+]
+},
+"1641": {
+"v": "full",
+"u": [
+"duty#r7"
+]
+},
+"1768": {
+"v": "full",
+"u": [
+"duty#r0"
+]
 }
 }
 }

@@ -22,7 +22,15 @@ by = {q['id']: q for q in Q}
 ul = {u['id']: u['lesson'] for u in U}
 lcls = {L['id']: set(L['cls']) for L in LS}
 J = json.load(open(os.path.join(ROOT, 'tools/coverage/judged.json')))
-man = J.get(LABEL) or J['before']
+# 'after' = the before labels plus re-judged deltas (questions whose material was added since)
+man = J['before'] if LABEL == 'before' else {**J['before'], **J.get('after', {})}
+# signs dictionary (data/signs.json, gov.il לות"ם): a sign question whose sign is identified is taught by the
+# dictionary in the signs lesson (official meaning, cited LT:n) – unit id 'signs#d<num>'
+SG = json.load(open(os.path.join(ROOT, 'data/signs.json'))) if LABEL != 'before' else {'q': {}, 'e': {}}
+for n in SG['e']: ul['signs#d' + n] = 'signs'
+for qid, nums in SG['q'].items():
+    if qid not in man or man[qid]['v'] != 'full':
+        man[qid] = {'v': 'full', 'u': ['signs#d' + n for n in nums], 'why': 'sign dictionary'}
 m = Matcher(U, Q)
 uidx = {u['id']: i for i, u in enumerate(U)}
 
@@ -40,6 +48,7 @@ for q in Q:
     autoclass[q['id']] = st
     j = man.get(str(q['id']))
     units = links or [u for u, _ in top[:2]]
+    if str(q['id']) in SG['q']: autoclass[q['id']] = st = 'f'
     if j:
         st = {'full': 'f', 'partial': 'w', 'none': 'n'}[j['v']]
         if j['u']: units = j['u'] + [u for u in units if u not in j['u']]
