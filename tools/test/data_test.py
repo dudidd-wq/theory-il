@@ -392,6 +392,39 @@ for _l in LB.values():
             for _z in _pin.quiz_spans(_pg): _pg = _pg.replace(_z, '')
             if _pin.norm(_m.group(1)) not in _pin.norm(_pg): _smp.append(f"{_l['id']}#r{_i}")
 ok(not _smp, f'v1.14: every textbook chip occurs in the explanatory prose (not a sample-exam block) of the page its tag names ({_smp[:8]})')
+# v1.14 (review #10 item 8 / N2): every number a rule/example/mnemonic/recap states appears in its displayed passages
+_W = {'1': ['אחת', 'אחד'], '2': ['שתי', 'שני', 'שנתיים', 'חודשיים'], '3': ['שלוש'], '4': ['ארבע'], '5': ['חמש', 'חמישה'], '6': ['שש', 'שישה'], '7': ['שבע'], '8': ['שמונה'], '9': ['תשע'], '10': ['עשר'], '11': ['אחד־עשר', 'אחד עשר', 'אחת עשרה'], '12': ['שנים עשר', 'שתים עשרה'], '14': ['ארבע עשרה'], '15': ['חמש עשרה', 'חמישה עשר'], '16': ['שש עשרה', 'שישה עשר', 'שש־עשרה'], '17': ['שבע עשרה', 'שבע־עשרה'], '18': ['שמונה עשרה', 'שמונה־עשרה'], '19': ['תשעה עשר', 'תשע עשרה'], '20': ['עשרים'], '21': ['עשרים ואחת'], '24': ['עשרים וארבע'], '30': ['שלושים'], '40': ['ארבעים'], '48': ['ארבעים ושמונה'], '50': ['חמישים'], '60': ['שישים'], '100': ['מאה'], '8.5': ['8 שעות ו־30 דקות']}
+def _nums(s):
+    s = re.sub(r'(תקנה|תקנות|תקנת|סעיף|סעיפים|תמרור|תמרורים|פקודה|שורה|פרט|חלק|ס׳|תק׳)\s*[\d]+[א-ת]?(\([^)]*\))*', '', s)
+    s = re.sub(r'\(\d+[א-ת]?(\([^)]*\))+\)', '', s); s = re.sub(r'\d+[א-ת]?\([א-ת0-9]+\)', '', s)
+    s = re.sub(r'\(בבנק[^)]*\)', '', s); s = re.sub(r'עמ׳\s*\d+(–\d+)?', '', s)
+    s = re.sub(r'\((\d{3}[א-ת]?(\([^)]*\))?(,\s*)?)+( ועוד)?\)', '', s)   # sign numbers (511), (909, 914 ועוד)
+    s = re.sub(r'[A-Za-z]+\d+|\d+[א-ת]\d+|\b\d(-\d)+\b', '', s)          # classes A1/C1, refs 12א1, mnemonic chains 1-2-3
+    s = re.sub(r'(?<![\d.])\d{1,2}\.\d{1,2}\.\d{4}(?!\d)', '', s); s = re.sub(r'\b(19|20)\d\d\b', '', s)
+    s = re.sub(r'(\d+)\s*(טון|אלף)', lambda m: str(int(m.group(1)) * 1000), s)
+    return set(re.findall(r'\d+(?:\.\d+)?', s.replace(',', '')))
+_nm = []; _nn = 0
+for _l in LB.values():
+    for _k, _F in (('rules', ('t',)), ('ex', ('t',)), ('mnem', ('t', 'n')), ('recap', ('b',))):
+        for _i, _r in enumerate(_l.get(_k, [])):
+            if not _r.get('x') or any(_x[0].startswith('Q:') for _x in _r['x']): continue
+            _t = ' '.join(str(_r.get(_f, '')) for _f in _F); _nn += 1
+            _P = ' '.join(_x[1] for _x in _r['x']).replace('(,)', '').replace(',', '')
+            _pf = {float(v) for v in re.findall(r'(?<![\d.])\d+(?:\.\d+)?(?![\d])', _P)}
+            for _n in _nums(_t):
+                if float(_n) in _pf or any(w in _P for w in _W.get(_n, [])): continue
+                _dm = re.fullmatch(r'(\d{1,2})\.(\d{1,2})', _n)
+                if _dm and re.search(r'(?<!\d)' + _dm.group(1) + r' ב', _P): continue   # date 1.11 ↔ "1 בנובמבר"
+                _nm.append(f"{_l['id']}#{_k}{_i}:{_n}")
+ok(not _nm and _nn >= 1000, f'v1.14 (review #10 item 8): every number stated in a rule/example/mnemonic/recap appears in its displayed passages ({_nn} items; missing: {_nm[:8]})')
+_pr = []
+for _l in LB.values():
+    for _k in ('rules', 'ex', 'mnem', 'recap'):
+        for _i, _r in enumerate(_l.get(_k, [])):
+            _pg = [int(p) for _x in _r.get('x') or [] for p in re.findall(r'\(עמ׳ (\d+)\)$', _x[1])]
+            for _m in re.finditer(r'עמ׳\s*(\d+)(?:[–-](\d+))?', ' '.join(str(_r.get(f, '')) for f in ('t', 'n', 'b'))):
+                if not any(int(_m.group(1)) <= p <= int(_m.group(2) or _m.group(1)) for p in _pg): _pr.append(f"{_l['id']}#{_k}{_i}")
+ok(not _pr, f'v1.14 (review #10 N3): a page cited in a rule text ("עמ׳ N") matches the page tag of one of its chips ({_pr[:8]})')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 
