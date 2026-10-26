@@ -75,3 +75,13 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 - [x] review #3, all 10 findings: Q1192 note, Q40 wording-only, Q592 note, "כלל קשור" label, honest figures in COVERAGE.md, moto2/heavy2/vehicle lessons, 109 sign texts tidied, Q1767/Q88 mapping, sober 547, axe aria-allowed-role
 - [x] still uncovered (no official source): tractor PTO/differential/spark arrester/levelling, mechanics, vehicle dynamics, taxi tariff/meter seal – see docs/COVERAGE.md
 - [x] sample 44→60% full, 60→77% any; whole bank labels f+a 33%, any 50%
+
+## v1.4.0 (review #4)
+- [x] D-only rules: Q1214, 1145, 1221, 1280, 613, 1229, 1341, 1137 taught (TR 361/482, 408(א), 483א, 83(ג)–(ה), 432א, 1, 418, 506); 1160 – no official source
+- [x] brake terms (TR 324/330: Q1377, 1676) in the bus lesson; TR 159(ג) retarder on dangerous descents (Q324, 1396)
+- [x] tractor: age 16 (TR 188(א), Q334), indicators (TR 344(א), Q1109); 1100, 1102, 1092, 1085, 1107, 1104, 1106, 1088, 1095 – no official source, listed in COVERAGE.md
+- [x] legal wording: vehicle R3 (316), R13 (97(א)), heavy2 R0 2.60 m, taxi R6 281(ב), taxi R8 קו שירות; 313(ב) rear overhang
+- [x] matcher misses Q1443, 1072, 1515, 768 hand-judged
+- [x] sign dictionary "title – meaning"; "ללא ניקוד" on gov.il quotes and in About
+- [x] taxi mnem + 3 bank examples; heavy2 size diagram (lengths / width-height / rear overhang)
+- [x] sample union 60.4→61.5% full, 77.4→78.9% any; strict (dictionary = partial) 48.5% full; reviewer's own strict estimate 35–38%
