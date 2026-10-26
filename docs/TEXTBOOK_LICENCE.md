@@ -25,3 +25,4 @@ Checked on 2026-10-26 at 15:20 UTC+2.
   - Short verbatim phrases are kept only to verify the rules and to show the source.
   - No images from the book are used.
 - **Open point for Dudi:** about 300 short quotations are stored in `pages.json` and shown as source excerpts. Each one is short, but their total size is a judgement call. Written RSA permission would remove the doubt. This is not legal advice.
+- **Permission status (2026-10-26):** written permission from the National Road Safety Authority has not been requested and has not been obtained. The About page says so.

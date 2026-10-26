@@ -166,6 +166,9 @@ UI = T('js', 'i18n.js') + T('js', 'app.js') + T('index.html') + ''.join(T('docs'
 ok(not re.search(r'1[,.]?200\s*(שאלות|questions)', UI), 'no "1,200 questions" claim in UI or docs')
 I18 = T('js', 'i18n.js')
 ok(I18.count("'ab.course'") == 2 and 'אתר לא רשמי' in I18 and 'Unofficial site' in I18 and '203(א)' in I18, 'unofficial-site / no-course note in he and en')
+LD = T('LICENSE-DATA.md')
+ok(all(k in LD for k in ('OFF:textbook', 'OFF:edu18', 'OFF:kids_co', 'has not been requested', 'stays CC BY-SA', 'version caveat')), 'LICENSE-DATA lists textbook/edu18/kids, permission status, CC BY-SA and CC BY version notes')
+ok(I18.count("'ab.perm'") == 2 and I18.count("'ab.tbook'") == 2 and I18.count("'ab.kidsTerms'") == 2, 'About lists textbook/edu18/kids sources and the permission notice in he and en')
 
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)

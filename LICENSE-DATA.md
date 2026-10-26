@@ -60,6 +60,9 @@ the archive lookup was rate-limited (HTTP 429), and Save Page Now was deliberate
 | נהגים מבוגרים | הרשות הלאומית לבטיחות בדרכים, חטיבת חינוך והסברה (gov.il) | [elderly_drivers](https://www.gov.il/he/departments/general/elderly_drivers) | 2026-10-26 | `998773eb0068…` |
 | היסח דעת בנהיגה | הרשות הלאומית לבטיחות בדרכים, חטיבת חינוך והסברה (gov.il) | [distraction_while_driving](https://www.gov.il/he/Departments/General/distraction_while_driving) | 2026-10-26 | `95ae9d62b411…` |
 | כללי בטיחות בדרכים (חוברת, מרץ 2026) | הרשות הלאומית לבטיחות בדרכים, חטיבת חינוך והסברה (gov.il) | [publications_safety_rules_book.pdf](https://www.gov.il/BlobFolder/reports/safety_rules_book/he/publications_safety_rules_book.pdf) | 2026-10-26 | `282189364e7a…` |
+| נוהגים אחרת – נוהגים נכון: ספר הלימוד הרשמי לתיאוריה (2017) | הרשות הלאומית לבטיחות בדרכים ומשרד התחבורה (gov.il) | [PDF](https://www.gov.il/BlobFolder/reports/driving_textbook/he/publications_2017_nohagim_aheret_nohagim_nachon.pdf) (landing page [driving_textbook](https://www.gov.il/he/pages/driving_textbook)) | 2026-10-26 | `7ea6a255ec79…` (PDF) |
+| חינוך תעבורתי, נושא 18: הפעלת הרכב בבטחה (12.2019) | משרד החינוך – תוכנית הלימודים בחינוך תעבורתי (meyda.education.gov.il) | [traffic-s18-operating-safely.pdf](https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s18-operating-safely.pdf) | 2026-10-26 | `3a72a445481a…` |
+| מה מזהם את האוויר? (מאגר מידע סביבתי) | המשרד להגנת הסביבה – סבבה (kids.gov.il) | [sababa_pool/pages/4451](https://kids.gov.il/sababa/sababa_pool/pages/4451) | 2026-10-26 | `2d5bc0efeda8…` |
 
 **Reuse terms (gov.il).** The gov.il terms of use ([תנאי שימוש באתר gov.il](https://www.gov.il/he/pages/gov_terms_of_use), published 25.10.2022,
 updated 25.06.2026, accessed 2026-10-26, sha256 `b189cb45d196…`) say, under "זכויות יוצרים":
@@ -70,6 +73,34 @@ needs the ministry's prior written consent. These pages are **not** CC BY (unlik
 How this app complies: lesson text is our own wording; from these pages we keep only short verbatim excerpts (the cited passage,
 shown with its source title, publisher, URL and access date) and never copy page text, pictures or layout. The question banks stay under CC BY
 (data.gov.il), and legislation stays free of copyright (§6). If the ministry objects to any excerpt we will remove it.
+
+### The official textbook "נוהגים אחרת – נוהגים נכון" (`OFF:textbook`)
+
+- **Its own copyright notice (p. 3):** "אין לשכפל, להעתיק, לצלם, להקליט, לתרגם, לאחסן במאגר מידע, לשדר או לקלוט … כל חלק שהוא מהחומר שבספר הדרכה זה, אלא ברשות מפורשת בכתב ומראש מהרשות הלאומית לבטיחות בדרכים." (no copying without prior written permission of the National Road Safety Authority).
+- **How the site uses it:** every rule is our own paraphrase, labelled with the book's name and page. Short unaltered phrases are kept as the cited excerpt (to verify the rule and show the source). The book, its pictures and its layout are not hosted or copied; the PDF is cached only in the gitignored `tools/official/cache/`. Quotes from the book's sample-exam questions are never used.
+- **Counts (v1.9.0):** 173 lesson rules cite it; 312 excerpts from 95 of its 170 pages; 2,615 words in total (at most 20 per excerpt), about 5.7 % of the book's ~45,600 words. Every excerpt is checked verbatim against the pinned text at build time.
+- **Basis:** reasonable quotation with the source named and without change ("fair use", Copyright Act 2007 §19, as the gov.il terms allow). Because the book asks for written permission and the total number of excerpts is substantial, this is a judgement call, not a certainty (details: `docs/TEXTBOOK_LICENCE.md`; not legal advice).
+- **Permission status:** written permission from the National Road Safety Authority **has not been requested and has not been obtained**. If the Authority objects, the excerpts will be removed.
+
+### Ministry of Education traffic-education topic 18 (`OFF:edu18`)
+
+- 10 lesson rules, 15 short excerpts. Used as prose only (its practice questions are never cited).
+- **Own terms:** the PDF carries no copyright or licence notice (checked 2026-10-26). Ministry of Education portal pages show "© כל הזכויות שמורות למשרד החינוך". We did not find a separate terms-of-use page that governs meyda.education.gov.il files, so none is pinned. We treat it like the gov.il pages: State copyright, short quotation with the source named, no change.
+
+### kids.gov.il "סבבה" environmental information pool (`OFF:kids_co`)
+
+- 1 lesson rule, 3 short excerpts.
+- **Own terms:** [תנאי שימוש במידע באתר המשרד להגנת הסביבה](https://kids.gov.il/sababa/sababa_pool/terms.html) (read 2026-10-26; a direct download returned HTTP 403, so the page is not pinned by sha256). It says copyright belongs to the State of Israel; "המשתמש רשאי לעשות 'שימוש הוגן' בחומר המוגן … שימוש הוגן כולל ציטוט סביר מתוך החומר המוגן. המצטט כאמור חייב לציין את המקור"; no change or distortion; copying or republishing needs prior written consent. The footer reads "© כל הזכויות במאגר מידע סביבתי שמורות למשרד להגנת הסביבה". Same approach: short excerpts with the source named.
+
+## Licences of the repository contents
+
+- **Code** (`js/`, `tools/`, `sw.js`, HTML/CSS): MIT (`LICENSE`). The MIT licence covers only the code written for this project.
+- **Question banks and their images** (`data/q*.json`, `img/q/`): © Ministry of Transport and Road Safety, CC BY (see above). Not MIT.
+- **Wikisource excerpts** (the law-text excerpts in `data/sources.json`, kinds TR/TO): the legislation itself has no copyright (§6), but the Wikisource transcription is **CC BY-SA 4.0** (https://creativecommons.org/licenses/by-sa/4.0/) and **stays CC BY-SA** when this repository is reused, even though the repo is MIT. Attribution: he.wikisource.org contributors, revisions 3085628 (TR) and 3085764 (TO).
+- **Excerpts from official pages and booklets** (kind `OFF`, including the textbook, edu18 and kids.gov.il): not CC BY and not MIT; quoted under fair use / reasonable quotation subject to each publisher's terms above. Reusers must make their own fair-use assessment.
+
+**CC BY version caveat.** data.gov.il marks the banks "Creative Commons Attribution" (`cc-by`) without stating a version. We link CC BY 4.0, the current version, and follow its attribution and change-notice terms; the portal does not say which version it intends.
+
 
 Lesson diagrams (`js/viz.js`) are drawn locally in SVG; their numbers come only from the cited sections. Fines and penalty points are not shown (no citable source was recorded).
 Wikisource may lag recent amendments – always check the current official text.

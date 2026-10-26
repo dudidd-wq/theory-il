@@ -135,3 +135,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - 2026-10-26 15:24 (UTC+2) v1.8 item 3b: docs/BANK_VERSION.md – no newer CC BY bank than 2021-12 on data.gov.il; 1,802 vs 1,801 = Q574 (broken sign image, excluded). Report only, no data swap.
 - 2026-10-26 15:25 (UTC+2) v1.8.0: bump (js/version.js, sw.js), COVERAGE headline 76.5% full / 63.5% strict / 90.4% any; data_test passed.
 - v1.8.0 live (sw VERSION 1.8.0); live e2e 220/220. Flake cause: offline-images toast ("442/442") follows the bookmark toast on live, so axe toast-wait raised 6s→15s (test only).
+- v1.9 item 1 (review #6): LICENSE-DATA.md + About list the textbook (p.3 no-copy clause, 173 rules/312 excerpts/95 pages/~5.7% words), edu18 and kids.gov.il with their own terms; Wikisource excerpts stay CC BY-SA; CC BY version caveat; visible note that RSA written permission was not requested/obtained.
