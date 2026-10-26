@@ -50,6 +50,7 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 - [x] "why" box + "related lesson"/"learn this" link after answering (no link when the topic is not taught)
 - [x] build-time test: tools/coverage.py exits 1 on unmapped; tools/test/data_test.py (mapping, units, quizzes, sources, signs, elig, review fixes, SW)
 - [x] 1.2.0 SW bump, e2e, push, live check; after numbers in docs/COVERAGE.md (sample full 19→44%, full+partial 33→60%)
+- [x] pushed f0d14e0, Pages built, live e2e 216/216, data_test all passed (2026-10-26 10:50 IST)
 
 ### review #2 findings (theory_review_findings_2.md), by severity
 - [x] HIGH bus/heavy headlights: 97(ג) season 1.11–31.3 also for bus/taxi/>14,999 (Q1155)
