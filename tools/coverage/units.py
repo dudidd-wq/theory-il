@@ -44,6 +44,35 @@ def load():
                     direct.setdefault(o['id'], []).append(f'{lid}#g{qid}')
     return Q, LS, SRC, units, direct
 
+# ---- stable unit references (judged.json) -------------------------------------------------------------
+# A judgement must survive rules being inserted, so it never stores a position (lesson#r7). It stores
+#   lesson#r:<start of the rule text>   (also #b body, #c recap front, #m mnemonic)
+#   lesson#x:Q<qid>   worked example,   lesson#g<qid> gallery item,   signs#d<num> sign dictionary entry
+# resolve() maps a reference to the current position id; a reference that matches nothing (or two units) is an error.
+PREFIX = 36
+def _texts(L):
+    return {'r': [r['t'] for r in L['rules']], 'b': list(L['body']), 'c': [c['f'] for c in L['recap']], 'm': [m['t'] for m in L['mnem']]}
+def ref_of(LS, uid):
+    lid, k = uid.split('#'); kind = k[0]
+    if kind in 'gd': return uid
+    L = {l['id']: l for l in LS}[lid]
+    if kind == 'x': return f"{lid}#x:Q{L['ex'][int(k[1:])]['q']}"
+    T = _texts(L)[kind]; t = T[int(k[1:])]; n = PREFIX
+    while n < len(t) and sum(o.startswith(t[:n]) for o in T) > 1: n += 8
+    return f'{lid}#{kind}:{t[:n]}'
+def resolve(LS, ref):
+    lid, k = ref.split('#', 1); kind = k[0]
+    if kind in 'gd': return ref
+    if k[1] != ':': raise ValueError(f'positional unit id in judged.json: {ref}')
+    L = {l['id']: l for l in LS}.get(lid)
+    if L is None: raise ValueError(f'no lesson for {ref}')
+    if kind == 'x':
+        hit = [i for i, x in enumerate(L['ex']) if f"Q{x['q']}" == k[2:]]
+    else:
+        hit = [i for i, t in enumerate(_texts(L)[kind]) if t.startswith(k[2:])]
+    if len(hit) != 1: raise ValueError(f'{len(hit)} units match {ref}')
+    return f'{lid}#{kind}{hit[0]}'
+
 class Matcher:
     def __init__(self, units, Q):
         self.units = units

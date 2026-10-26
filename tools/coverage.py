@@ -8,7 +8,7 @@ usage: coverage.py [--label before|after] [--report]"""
 import sys, os, json, math, collections
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'coverage'))
 import numpy as np
-from units import load, Matcher, ROOT
+from units import load, Matcher, ROOT, resolve
 from sample import SAMPLE
 
 LABEL = sys.argv[sys.argv.index('--label') + 1] if '--label' in sys.argv else 'after'
@@ -24,6 +24,8 @@ lcls = {L['id']: set(L['cls']) for L in LS}
 J = json.load(open(os.path.join(ROOT, 'tools/coverage/judged.json')))
 # 'after' = the before labels plus re-judged deltas (questions whose material was added since)
 man = J['before'] if LABEL == 'before' else {**J['before'], **J.get('after', {})}
+# judged units are stored as stable references (text start / qid), resolved to current position ids here
+man = {k: {**e, 'u': [resolve(LS, r) for r in e['u']]} for k, e in man.items()}
 # signs dictionary (data/signs.json, gov.il לות"ם): a sign question whose sign is identified is taught by the
 # dictionary in the signs lesson (official meaning, cited LT:n) – unit id 'signs#d<num>'
 SG = json.load(open(os.path.join(ROOT, 'data/signs.json'))) if LABEL != 'before' else {'q': {}, 'e': {}}

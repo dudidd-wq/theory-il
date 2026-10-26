@@ -1,0 +1,1427 @@
+# full-bank hand judgement, one line per question: qid code [note]
+# code: f<k> full via candidate k | p<k> partial | d full only via the sign dictionary (strict: partial) | n not taught
+# for n: T = teachable (official source exists, source hint follows) | S = no official state source
+1 p1 general duty of care; "every road user must know the law" not stated
+2 f1
+3 f1
+4 n T TO 12א/TR 190 מלווה
+5 n T TO arrest powers
+6 n T TO 47 administrative suspension
+7 n T TO 47
+8 n T TO 47
+9 n T TO 67
+10 n T TO 1 דרך
+11 n T TR 1 זמן תאורה
+12 n T TR 1 חנייה
+13 n T TR 1 טרקטור משא
+14 n T TR 1 טרקטורון
+16 n T TR 1 כביש חד-סטרי
+17 n T TR 1 זמן הלילה
+19 n T TR 1 מחלף
+20 n T TR 1 מטען מורשה
+21 n T TR 1 צומת
+23 p1 crosswalk is part of the roadway; definition not given
+24 p1 warning signs only
+26 n T TR 1 משקל עצמי
+27 n T TR 1 מתן זכות קדימה
+28 p3 general overtaking safety
+29 n T TR 1 סרן
+30 n T TO 1 עובר דרך
+31 n T TR 1 עמעום אורות
+32 n T TR 1 צומת
+33 n T TR 1 קו עצירה
+34 p1 speed 30 only
+35 n T TR 1 מרכב אחוד
+36 p1 tractor 40 only
+37 n T TR 1 רכב ביטחון
+38 n T TR passengers for hire
+39 n T TR 1 רכב מיושן
+41 n T TR הודעת אי שימוש
+42 n T TR 1 שביל
+43 n T TR 45 reversing
+44 n T TR 79 opening doors
+45 n T TR 1 שטח הפרדה בנוי
+46 p1 when to use it, not the definition
+47 p2 when to use it, not the definition
+48 n T TO 1 רכב מנועי
+49 n T TR documents
+50 n T TR documents copies
+51 n T TR documents
+52 p1 points taught, definition not
+53 n T TR documents
+54 n T TR new-driver sign
+55 p1 new-driver period, sign not
+56 n T TR documents
+57 n T TR health report
+58 n T TR 22 obey signs
+59 n T TR 22 lights over signs
+60 f1
+61 p1 police in uniform taught, appointment card not
+62 n T TR 23 inspector
+63 n T TR 23 works
+64 p1 civilian police only
+65 f1
+66 p1 civilian police only
+67 n T TR 23 inspector
+68 n T TR temporary sign
+69 p1 order of precedence not given
+70 f1
+71 f3
+72 n T TR 26 medicines
+74 n T TR vision field
+75 f2
+77 f2
+78 p1 speed only
+79 n T TR 37 roadway
+80 n T TR public-transport lane, bicycles
+81 f1
+82 n T TR 1 picture of road parts
+83 n T TR 1 שטח הפרדה
+84 n T TR 36 separation
+85 n T TR 36 solid line
+86 n T TR one-way
+87 f1
+89 n T TR 36 obstacle
+90 n T TR 36 obstacle
+91 n T TR 180 B licence
+92 n T TR licence renewal
+94 n T TR ATV roads
+95 n T TR הודעת אי שימוש
+96 n T TR ATV passenger
+98 n T TR tractor passenger
+99 f1
+101 n T TR 1 picture
+102 n T TR 1 picture
+103 n T TR 1 picture
+104 n T TR one-way
+105 f2
+106 f2
+107 p1 lane-change rule, right-turn method not
+108 n T TR 42 turning lanes picture
+110 n T TR 42 picture
+111 n T TR 42 picture
+112 n T TR 42 picture
+113 n T TR 42 picture
+117 f1
+119 f1
+120 n T TR 45 reversing
+121 n T TR 51 narrow road
+122 n T TR 52 steep road
+123 f2
+124 f1
+126 f1
+127 n T TO points scheme
+128 p1 right-passing cases; right-turn lane case not named
+129 f2
+130 f2
+131 f2
+133 f1
+134 p3 overtaking bans listed; stopped vehicle before crossing not named
+135 f1
+136 f1
+137 f1
+139 f1
+140 f2
+141 f2
+143 p2 duty to slow listed; animals not named
+145 n T TR 50 braking
+146 n T TR 50 braking
+147 f1
+148 p1 tractor 40, ATV not named
+149 n T TR vehicle test
+150 n T TR 54 expressway 110
+152 f1
+155 f1
+156 p2 slowing duties; crossing with barrier not named
+157 f1
+159 f1
+162 f1
+163 f3
+165 n T TR 43 signalling
+168 f1
+169 f2
+170 f1
+172 n T TR 1 picture
+173 f1
+175 f2
+176 n T TR 1 picture one-way
+177 f1
+178 f2
+179 p3 stop/yield taught, picture scene
+181 f1
+182 d
+185 p1 picture
+187 p2
+189 f1
+191 p1 police signals only
+192 n T TR 51 obstruction
+193 n T TR 69 stopping allowed
+194 f3
+195 n T TR 70 shoulder
+197 f1
+198 p2 bus rule (D only) – generic rule not taught
+199 f1
+200 n T TR 69 left side
+202 f1
+203 f1
+204 n T TR 72 hydrant
+206 p1 before-crosswalk only
+208 f1
+209 n T TR 72 solid line
+211 n T TR 72 bridge/tunnel
+212 f2
+213 n T TR 72 opposite bus stop
+214 n T TR 72 railing
+215 d
+216 n T TR sign 
+217 n T TR 73 securing vehicle
+218 n T TR 73
+219 f1
+220 p1 points taught, tests not
+221 f1
+222 p2
+223 f1
+224 n T TR 83 body outside
+225 n T TR 83 door open
+227 p2
+228 p2
+232 f3
+234 n T sign
+235 f1
+236 n T TR 83א exemption
+237 n T TO penalties
+238 n T TR 85 passengers commercial
+239 n T TR passengers for hire
+240 n T TR 85 cargo private
+241 n T TR towing
+242 p3 22 points only
+243 n T TR 86 towing one vehicle
+244 p1
+245 n T TR towing agricultural trailer
+246 f1
+247 n T TR 1 רכב ביטחון
+248 n T TR 62 security vehicle
+249 n T TR 62 100 m
+250 n T TR noise
+251 n T TO documents
+252 p3 roadworthy vehicle; lights not named
+253 f1
+254 f1
+255 f1
+256 f2
+257 p1
+258 n T TR 54 speed limit during overtaking
+259 n T TR spotlight
+260 f2
+261 n T TR reversing lamp
+263 f2
+264 n T TO 27א owner liability
+266 f1
+267 f2
+268 f1
+269 n T TO points 36
+271 p1 drunk driving banned; new-driver renewal rule not
+272 n T TR bicycles right edge
+274 f1
+275 f2
+277 f1
+278 f1
+279 n T TR 144 police on scene
+280 f1
+281 n T TR 47 tunnel overtaking
+282 n T TR 2 objects on road
+283 n T TR 74 24h
+284 n T TR noise
+285 n T TR 160 neutral downhill
+286 n T TR 160
+287 f1
+288 n T TR refuelling
+289 n T TR refuelling passengers
+291 n T TO 1 pushing vehicle
+292 p3 3.5 for 3,501–8,000; 4 m over 8,000 – check cargo rule
+293 n T TR 315 overhang cargo
+294 n T TR bus stop sign
+295 f2
+296 n T TR 190 companion sober
+297 f1
+298 p1
+300 f1
+302 n T OFF:drunk beer?
+303 f1
+305 n T TO 64ב evidence
+306 n T TO 64ד blood
+307 f2
+308 f1
+309 n T OFF:drunk?
+310 n T sign shapes 301/302
+311 f2
+312 n T OFF:drunk?
+314 p1 alcohol impairs – vision not named
+315 p1
+316 p1
+317 p1
+318 n T OFF:drunk?
+320 n T TR 364 wheel chocks
+321 n T TR 313 length 12
+322 p2 8 passengers non-integral – answer is 6 + front
+323 n T TR address change
+325 n T TO overweight
+327 n T TO licence refusal
+329 f2
+330 p2 B licence taught, trailer 1,500 not
+331 n T TR permit security vehicle
+332 f3
+333 n T TR 180 age 17
+335 n T TO licence suspension
+336 n T TO training
+338 p1 bus only
+339 f1
+340 n T TR agricultural machine width
+341 n T TR change of ownership
+342 n T TR change of ownership
+343 n T TR notice
+344 n T TR plates
+345 n T TO vehicle inspection
+346 n T TO notice
+347 n T TR extra lamps
+348 n T TR speedometer
+349 d
+350 n T TR 1 one-way
+351 n T TR 1 זמן תאורה
+352 n T TR fire extinguisher
+353 n T TR bins
+354 p3 phone rules; display not named
+356 d
+357 n T TR 36 obstacle
+359 d
+360 d
+361 d
+363 n T sign pair
+364 f1
+365 d
+366 n T TO points
+369 d
+370 d
+372 d
+373 n T sign 618 one-way pair 402
+374 f1
+375 f1
+376 f1
+377 d
+378 d
+380 d
+381 d
+382 d
+383 d
+386 f1
+387 f1
+388 p1 30 km/h zone end sign only
+389 n T TR 72 railing
+390 d
+391 d
+392 f1
+396 d
+397 d
+401 p1 sign family only
+402 d
+403 d
+404 f1
+405 d
+407 d
+408 n T sign-link 101
+409 d
+411 d
+412 d
+413 d
+414 d
+415 d
+416 d
+417 d
+418 d
+420 d
+421 f1
+422 f1
+423 d
+425 f1
+426 d
+427 n T sign-link 117
+428 d
+429 f1
+431 n T sign-link 121
+432 d
+433 n T sign-link 122
+434 d
+435 d
+437 f1
+439 d
+440 d
+444 p3 reasonable speed general
+445 d
+450 d
+452 f1
+453 d
+454 d
+455 p2 meaning only; overtaking ban from the sign taught in rail lesson
+456 d
+461 d
+462 d
+463 n T sign-link 139
+464 d
+465 n T sign-link 140
+466 d
+468 d
+469 p1 sign-link 135
+470 d
+472 n T sign-link 136
+473 n T sign-link 145
+474 n T sign-link 145
+475 d
+476 n T sign-link 150
+478 n T TR 27 roadworthiness owner
+479 f2
+480 p2 slow for danger; children not named
+481 f1
+482 d
+484 d
+485 n T sign-link 144
+486 d
+487 n T sign-link 147
+488 d
+489 d
+490 d
+491 d
+494 d
+495 d
+496 n T sign-link 307
+497 d
+498 d
+499 d
+500 d
+501 d
+502 d
+503 d
+504 f1
+505 d
+506 d
+507 d
+508 d
+509 d
+510 d
+513 n T sign-link 
+514 d
+515 f1
+516 f1
+517 n T TR 313 bus length 13.50
+519 d
+522 d
+523 d
+524 d
+525 f1
+526 d
+527 d
+528 d
+529 d
+530 d
+532 d
+533 f1
+534 d
+535 d
+536 n T sign 302 left side
+538 d
+539 d
+540 d
+541 d
+542 d
+543 d
+544 d
+545 d
+546 d
+548 n T sign-link park and ride
+549 d
+551 f1
+552 d
+553 f1
+554 d
+555 d
+557 d
+558 d
+559 f1
+560 d
+561 d
+563 n T sign-link
+565 n T sign-link
+566 d
+567 d
+568 d
+570 d
+571 d
+575 n T sign-link
+576 d
+577 d
+578 d
+579 d
+581 d
+582 d
+583 d
+584 d
+586 f1
+588 n T sign-link 308
+589 n T sign-link 308
+590 d
+591 n T TR one-way left turn
+592 d
+593 f2
+594 p1 sign-link 306
+596 f1
+598 n T sign-link service sign
+599 n T sign-link service sign
+600 n T sign-link service sign
+601 n T TR 313 articulated bus length
+602 n T sign-link service sign
+603 n T sign-link service sign
+605 d
+607 d
+609 n T sign-link kerb marking 818
+610 f1
+611 p3 skid control only
+615 n T TR school transport standing
+616 f1
+618 n T sign-link
+622 d
+623 d
+624 n T sign-link service sign
+625 n T sign-link service sign
+626 f1
+627 d
+628 d
+630 d
+633 d
+637 f1
+638 n T sign-link
+639 d
+640 f1
+641 f1
+642 f1
+643 d
+644 d
+646 d
+647 d
+649 d
+650 d
+652 d
+654 f2
+655 n T TR rear fog lamp
+656 d
+657 d
+659 d
+661 d
+664 d
+665 d
+667 d
+668 f1
+669 d
+670 f1
+671 p1 tyre checks; wet-road skid not stated
+672 d
+675 d
+676 d
+677 d
+680 d
+681 d
+682 d
+683 d
+685 d
+686 d
+687 n S? handbrake always
+688 n T TR tyres same size
+689 n S? handbrake purpose
+690 d
+691 f1
+692 f3
+693 p2 stop line; crosswalk fallback not stated
+695 n T sign-link
+696 p1 seat belts only
+698 p2 picture scenario; right-hand rule taught
+699 p2 picture scenario
+700 p2 picture scenario
+702 p2 picture scenario
+703 p2 picture scenario
+704 p1 picture scenario
+706 p2 picture scenario roundabout
+708 n T TR 64 picture
+709 p2 picture scenario
+710 p2 picture scenario
+711 p2 picture scenario
+712 p3 picture scenario
+714 p2 picture scenario
+715 p3 picture scenario
+716 p3 picture scenario
+717 p2 picture scenario
+718 p1 picture scenario
+719 p3 picture scenario
+720 p1 picture scenario
+721 f1
+722 f1
+725 n T TR 41 right turn bicycle
+726 n T sign-link lanes
+727 n T TR 41 left turn lane
+728 n T sign-link lanes
+730 n S scanning ahead
+732 n S pre-drive checks
+735 n S gear choice
+737 n S automatic gearbox
+738 n S automatic gearbox
+739 n S automatic gearbox
+740 n S automatic gearbox
+741 n S automatic gearbox
+742 n S automatic gearbox
+743 n S automatic gearbox
+744 n T TR 52 narrow downhill
+745 n S keep right rationale
+747 p1 enter on green only; security-vehicle exception not
+749 n S keep right rationale
+750 n S keep right rationale
+751 f3
+753 n T TR 36 keep right
+754 p3
+755 f1
+756 n T TR 36 right lane
+758 n T TR 1 נתיב
+759 d
+760 p1
+761 n S lane change technique
+763 n S lane change technique
+764 f2
+766 n S stopping technique
+769 n S junction workload
+770 n S junction workload
+771 n S junction workload
+772 f1
+773 n T sign disabled parking
+774 n S junction wet road
+775 n S pedestrian anticipation
+776 n S junction hazards
+777 n T TR 38 shoulder users
+778 n S pedestrian behaviour
+779 n S junction sequence
+780 n T TR public-transport lane disabled
+781 n T TR 41 right turn near edge
+782 n S right-turn hazard two-wheeler
+783 n T TR 41 multiple right-turn lanes
+784 n T TR 42 picture
+787 n T TR 313 articulated bus 18.75
+788 n T sign-link 308
+790 n T TR 1 נתיב unmarked
+791 n T TR 41 multiple left-turn lanes
+792 p1 solid line
+793 n T TR 1 פניית פרסה
+794 n S U-turn hazards
+795 p2 U-turn bans partly
+797 f2
+798 n T TR 45 reversing
+799 n S reversing blind spots
+801 n S reversing technique
+802 f1
+804 p1 speed risks partly (defe)
+806 p1
+807 f1
+810 f2
+812 f1
+813 f1
+814 p1
+815 f1
+816 n S spacing benefits
+817 n S spacing fuel
+818 n S spacing stress
+819 n S tailgater
+820 f1
+821 p2
+822 f2
+824 n S overtaking speed difference
+825 n S spacing for overtaker
+826 n S overtaking risk
+827 n T TR horn outside town
+828 n S overtaking one-way
+829 f1
+830 n S hybrid
+832 n S shoulder
+833 n S shoulder
+834 n S shoulder
+835 n S shoulder
+837 n S shoulder
+839 n S mountain road
+841 p1 downhill gear
+842 n S mountain road
+843 n S skid physics
+844 n S physics
+846 n S skid
+847 n S skid
+849 n S skid
+851 n S night driving
+852 n S glare
+853 n S night driving
+854 p1 high beam glare
+855 f1
+856 p1
+857 p1
+858 n S entering vehicle
+860 n S mirrors
+861 n S mirrors
+862 f1
+863 n S starting procedure
+864 n S starting
+865 n S starting
+866 p1 signalling, no right gained
+867 n S steering
+870 p3 seat adjust
+871 f1
+872 p1
+874 n S slowing sequence
+875 n S reversing
+876 n S reversing
+877 n T TR 45 reversing
+878 n S picture
+879 n S right turn cyclist
+880 n T TR 51 obstruction
+881 f1
+883 n S side wind
+884 n S overtaking gap
+885 n S picture
+886 n S hybrid
+888 n S picture
+889 n S picture
+890 n S shoulder expressway
+891 p1
+892 n S picture
+893 p2
+894 f1
+896 n S picture
+897 f1
+898 n S picture cyclist
+899 n S picture
+900 p1 picture crosswalk parking
+901 p1 reasonable speed; scanning not
+902 n S curve technique
+903 n S defensive priority
+904 n S picture
+905 n S picture
+906 p1 mirrors before slowing; picture
+907 n S picture cyclist
+908 n S picture children
+909 n S picture children
+910 n S picture children
+911 n S picture conflicting signs
+913 p1 rail stop; picture
+914 n S picture
+915 n S picture
+916 n S picture
+917 n S picture
+918 n S picture
+920 n S picture
+921 n S picture
+922 n S picture school bus
+923 n S picture
+925 n S picture
+928 n T TR 72 separation area picture
+930 n S wheel change
+931 n S picture
+933 p1 keep right; picture
+934 n S picture
+935 n S warning lamp
+936 p1 keep right; picture
+938 f1
+940 p1 keep right; picture
+941 n T sign-link speed 90 picture
+942 n S picture
+943 p2 keep right; picture
+944 n S picture
+946 n S curve technique
+947 p1 keep right; picture
+949 p2 keep right; picture
+950 p1 fog lamps in fog; heavy rain not
+951 n T TR 79 opening doors
+952 p3 poor visibility; picture
+953 n S picture
+954 n S picture cyclist
+955 n S picture lanes
+956 n T sign-link 621
+957 n T sign 302 left side picture
+958 n S picture works
+961 n T sign-link picture
+962 n T sign-link picture
+963 n T TR 54 expressway 110
+965 n T sign-link picture
+966 n T sign-link picture
+967 n T sign-link picture
+968 n S picture
+969 n S picture
+970 p1 spacing; picture
+971 p1 low gear downhill; picture
+972 n S picture
+973 p1 picture right-hand rule
+974 n S picture
+975 p1 picture
+976 d
+978 n S picture
+979 n S picture curve
+980 n S picture curve
+983 n S sign text picture
+984 n S picture curve
+985 n S picture
+986 n S brake mechanics
+987 n S brake mechanics
+989 n S brake mechanics
+990 n S brake mechanics
+991 n S brake mechanics
+992 f2
+993 f2
+994 f1
+995 n S starter
+996 p1 fluid checks
+997 n S parking brake
+999 n S brake fault
+1000 n S gears downhill
+1001 f2
+1002 f1
+1003 p1 ESP purpose only
+1004 f1
+1005 n S bumpers
+1006 n S flooded road
+1008 n S interior fittings
+1009 p2
+1010 f1
+1011 n S airbags
+1013 n S head restraints
+1014 p1 adjust head restraint
+1015 n S wipers
+1016 n S engine safety
+1017 f1
+1018 n S? tyre pressure cold
+1020 n S indicator flashing
+1021 p1 manufacturer instructions
+1022 d
+1024 n S spare tyre pressure
+1025 p2 tyre pressure matters; manufacturer value not stated
+1026 p1
+1027 p1
+1028 n S owner manual
+1029 p1
+1030 n S tyre pressure fuel
+1032 n T TR tyre size licence
+1033 n S wheel change
+1034 n S oil check
+1035 n T TR tyre size change approval
+1036 d
+1037 n S extinguisher replacement
+1038 n S? tyre pressure cold
+1040 n S closed garage
+1041 n S fuel economy
+1042 n S emissions maintenance
+1043 n S refuelling spark
+1044 n S pre-start
+1045 n S parking brake
+1046 n T TR annual test emissions
+1047 n S tyre pressure steering
+1048 n S steering wear
+1049 n S tyre pressure steering
+1050 n S wheel change
+1051 n S tyre placard
+1052 n S dashboard
+1053 d
+1054 n S warning lamps
+1055 n T TR 27 defect stop driving
+1056 n T TR repairs licensed garage
+1057 n S maintenance
+1058 p1 manufacturer schedule
+1060 n S wet brakes
+1063 n S handbrake
+1064 p1 distraction
+1065 n S GPS
+1066 n S jack
+1067 n S parking brake
+1068 n S pressure gauge
+1069 n S warning lamps
+1070 n T TO/TR public transport line licence
+1071 p3 seat adjust
+1073 d
+1074 f1
+1075 n S windows
+1076 n S panoramic mirror
+1078 d
+1080 p2
+1082 p1 belts only
+1083 n S tractor mechanics
+1084 n S tractor mechanics
+1087 n S tractor mechanics
+1089 n S tractor mechanics
+1090 n S tractor mechanics
+1091 n S tractor mechanics
+1093 n S tractor mechanics
+1094 n S tractor mechanics
+1099 n S tractor mechanics
+1101 n S tractor mechanics
+1105 n S tractor mechanics
+1108 n S tractor mechanics
+1110 n S tractor mechanics
+1111 n S tractor mechanics
+1113 n T TR 1 אוטובוס
+1114 n T TR 1 אוטובוס פרטי
+1115 n T TR minibus passengers
+1116 n T TR 1 אוטובוס זעיר 5,000
+1117 f1
+1119 f1
+1120 p2 rail stop; open door not
+1121 f1
+1122 n T TR bus parking
+1123 d
+1124 n T TR school transport permit
+1125 f1
+1126 n T TR bus parking 20
+1128 n T TR desert vehicle passengers
+1129 p1 C1/B classes; D class not stated
+1130 n T TR bus passengers licence
+1131 n T TR 183א minibus 16
+1132 n T TR public vehicle brake check 6 months
+1134 n T TR public bus must carry
+1135 n T TR bus radio
+1136 n T TR courtesy
+1138 n T TR tickets in motion
+1139 n T TR driver ID
+1140 p2 equipment list; first aid not
+1141 n T TR security check
+1142 f3
+1143 n T TR announce stops
+1146 n T TR change
+1147 f1
+1148 n T TR refuse dirty passenger
+1149 n T TR gas cylinders tour
+1150 n T TR extra seats
+1151 f1
+1152 f1
+1153 n T TR stops line licence
+1154 n T TR line signs
+1155 f1
+1156 f1
+1159 n T TR taxi trip types
+1161 n T TR taxi extra passenger
+1162 n T TR taxi luggage help
+1163 p2 school transport definition; equipment not
+1164 n T TR taxi plates
+1165 n T TR taxi air conditioner
+1166 n S other-law taxi fare order
+1169 n T TR taxi meter repair
+1170 n T TR 1 זוטובוס
+1171 f1
+1172 f1
+1173 n T TR taxi passengers licence
+1174 n T TR זוטובוס ten
+1175 n S other-law taxi fare order
+1176 n T TR bus stop inspector
+1177 n T TR animals on bus
+1178 n T TR bus disinfection
+1179 n T TR 1 נסיעת סיור
+1181 n T TR no refuel with passengers
+1182 n S other-law taxi fare order wheelchair
+1183 n S passing cyclist
+1184 n T TR remove taxi meter
+1185 n T TR children in taxi
+1186 n S other-law taxi fare order
+1187 n T TR 1 זוטובוס
+1188 n T TR 1 עצירה
+1190 n T TR public vehicle lanes
+1191 p1 everyone belted
+1193 f1
+1194 n T TR bus signal before moving
+1195 n T TR bus stop duration
+1197 f2
+1198 n T TR disabled seats bus
+1200 n T TR loaded weapons
+1201 n T TR luggage in bus
+1202 n T TR pram refusal
+1205 n T TR school transport flashing lamps
+1207 n T TR bus interior light
+1208 n T TR bus cleanliness
+1209 n S other-law smoking
+1210 n T TR public-transport lane disabled
+1211 n T TR public-transport lane disabled
+1213 n T TR last passenger
+1215 n T TR explosives bus
+1216 n T TR 1 school transport vehicle
+1217 n T TR lost property
+1219 d
+1220 f1
+1222 f2
+1223 n T TR fare display
+1224 n T TR stops line licence
+1225 n T TR private minibus B licence
+1226 n T TR meter calibration
+1227 p1 taxi stop in city
+1228 n S other-law tourism
+1230 n T TR 313 bus length 13.50
+1231 n T TR parcels bus
+1232 n S other-law smoking
+1233 f1
+1234 n T TR 1 taxi roof sign
+1235 f3
+1236 n T TR disabled seat
+1237 d
+1238 n T TR 1 אוטובוס
+1240 n T TR brawl police
+1242 n T TR meter recalibration 48h
+1243 n T TR bus interior light
+1244 n T TR driver smoking
+1245 n S other-law fare fine
+1246 n T TR skates refused
+1247 n T TR special taxi service trip
+1248 n T TR wheelchair taxi
+1249 f1
+1251 n T TR bus cargo
+1252 n T TR passenger rules taxis
+1253 n S other-law taxi fare order
+1254 n S other-law taxi fare order
+1255 n S other-law taxi fare order
+1256 n T TR taxi licence transfer
+1257 f1
+1258 d
+1259 d
+1260 d
+1261 d
+1262 d
+1263 d
+1264 d
+1265 d
+1266 d
+1267 d
+1268 d
+1269 d
+1270 d
+1272 d
+1273 n T TR bus security check
+1274 p1 bus blind spots
+1275 f3
+1277 n S bus braking
+1279 n T TR semi-trailer rear stickers
+1281 f1
+1282 p1 school transport; standing not
+1283 n T TR warning triangle
+1284 f1
+1285 n T TR combined policing lights
+1286 n T TR extinguisher location
+1287 n S fuel economy
+1289 n S maintenance fuel
+1291 p1
+1292 n S oil patch
+1293 f1
+1294 n T TR police detain emissions
+1295 n T TR non-use notice
+1296 n S lights by day sun
+1297 n S oncoming in lane
+1298 n S headlamp aim
+1299 f2
+1300 n T TR long load permit 20 m
+1301 f1
+1302 n T TR wide load sign
+1303 f1
+1304 f1
+1305 f2
+1306 f2
+1308 n T TR 1 מטען מורשה
+1309 n T TR rear overhang third
+1310 n T TR container trailer 29,000
+1311 n T TO health change notify
+1313 n T TR high load permit 4.80
+1314 n T TR load height 4.80
+1315 n T TR load height 4.00
+1316 n T TR amber beacon 20 m
+1317 n T TR bus age 20
+1318 f1
+1319 n T TR rest days 52
+1320 f2
+1321 n T sign-link work site
+1322 f2
+1324 n T TR chains and flags
+1325 n T TR extinguisher which vehicles
+1328 n T TR speed limiter responsibility
+1329 n T TR high load permit
+1330 f1
+1333 n T TR tow truck age 19
+1334 n T TR load height 3.00
+1335 f2
+1336 f1
+1337 n T TR amber beacon wide load
+1338 n T TR 1 גובה כולל
+1339 f1
+1340 f3
+1342 n T TR 1 רכב משא
+1343 f2
+1344 p2 C speed; expressway list partial
+1345 f1
+1346 f1
+1347 f1
+1348 d
+1349 n T TR 1 רכב מסחרי
+1350 n T TR 1 רכב עבודה
+1351 n T TR extra plate trailer
+1352 n T TR rear reflective plates
+1353 n T TR rear reflective plates 7,500
+1355 n T TR fifth wheel
+1356 n T TR headlamp colour
+1358 n T TR coupling gap 150 cm
+1359 n T TR towing permit 10,000
+1360 n T TR extinguisher which vehicles
+1361 n T TR chains lamps trailer
+1362 f1
+1363 n T TR portable amber lamp
+1364 n T TR portable amber lamp 150 m
+1365 f3
+1366 n T TR mudguards
+1367 n T TR underrun protection
+1368 n T TO 1 רכב ציבורי
+1369 n T TR third plate
+1370 f1
+1372 n T TR side lamps parking lamps
+1373 n T TR independent brake trailer
+1374 n T TR ABS commercial
+1378 f1
+1380 n T TR permit oversize
+1382 d
+1383 n T TR 51 crest slow
+1384 n T TR winter check
+1385 n T TR brake check 16,000
+1386 n T TR 1 סרן
+1388 n T TR 1 משקל כולל לסרן
+1389 n T OFF RSA medicines?
+1391 n T TR 1 רוחק סרנים picture
+1392 n T TR 1 רכב משא
+1393 f1
+1394 n T TR controller responsibility hours
+1395 n T TR gear engaged downhill
+1397 p1
+1399 n T TR 1 שביל
+1400 f2
+1401 n T TR trailer wheels contact
+1402 n T TR more than one trailer permit
+1403 n T sign-link bus stop parking Shabbat
+1405 n T TR waybill weight proof
+1406 n T TR weighing costs
+1407 n T TR weighing order
+1408 n T TR police stop overload
+1409 p1 marking how; always-duty not stated
+1410 p1
+1411 f1
+1412 n S other-law dangerous goods
+1414 n T TR partition cargo
+1418 n T TR 1 מכולה
+1420 n T TR container no overhang
+1421 f2
+1422 n T TR 1 תאורה היקפית
+1423 n T TR escort vehicle signs
+1424 n T TR escort distance
+1425 n T TR escort position
+1427 f1
+1428 n T TR height 4.00
+1430 n T TR passengers sign commercial
+1431 p1 8 passengers unit; 6 not
+1432 n T TR hazmat parking 400 m
+1433 n T TR parking uphill heavy
+1434 f1
+1435 f1
+1436 n T TR parking width 2.50
+1437 n T TR detached trailer
+1438 f3
+1440 f1
+1441 f1
+1442 f2
+1444 f2
+1448 n T TR right lane heavy 10,000
+1449 f1
+1450 n T TR commercial equals goods
+1452 n T TR 1 רכב מסחרי
+1453 f2
+1454 n S other-law transport services
+1455 n S other-law transport services
+1456 n S other-law transport services
+1458 f2
+1459 p1 low gear downhill
+1460 n S heavy gear change
+1462 f1
+1463 n T TR air brake warnings
+1464 n S curve stability
+1465 n T TR taxi ABS
+1466 n S centre of gravity
+1467 d
+1468 f1
+1470 n S jackknife
+1471 f2
+1472 n T TR bus parking line licence
+1475 f1
+1477 d
+1478 f1
+1479 n T TR rear plates 12,000
+1480 n S physics
+1483 p1
+1484 n T TR 54 no speeding when overtaking
+1485 n S hazard lamps
+1486 f1
+1487 n T TR 54 no speeding when overtaking
+1488 n T TO non-use notice
+1491 f1
+1492 n S signal anticipation
+1493 p1
+1494 n S other-law dangerous goods
+1495 n S other-law dangerous goods
+1496 f2
+1497 f1
+1498 n S clutch
+1499 n S wheel change
+1500 n S other-law insurance
+1501 n T TR tread depth 2 mm
+1503 n S wind resistance
+1504 f1
+1505 f1
+1506 f2
+1508 f1
+1509 p1
+1510 p1
+1511 n S long truck hazards
+1512 f1
+1513 f1
+1514 n S safety pin towing
+1516 p1 blind spot general
+1517 f3
+1518 n T OFF RSA fatigue stop?
+1519 d
+1520 f1
+1521 f2
+1522 f1
+1523 n T TR 51 narrow bridge
+1524 f1
+1525 f1
+1526 n T TR goods length 12
+1528 n T TR 52 narrow road oncoming
+1530 n T TR 51 curves slow
+1531 p2 spacing; large vehicle not
+1532 n S overtaking distance
+1533 n T TR towing one vehicle
+1534 p1
+1535 d
+1536 f1
+1537 f2
+1538 f1
+1540 f3
+1541 n T TR tow truck age 19
+1543 n T TR no driving on pavement
+1544 f3
+1545 f3
+1546 n T TR fallen load
+1547 n T TR sudden braking
+1549 n T TR first aid kit check
+1551 n T TR work vehicle passengers
+1553 f1
+1554 f3
+1555 f3
+1557 n T TR police stop load
+1558 p1 tyre burst
+1559 n S sun glare
+1560 n T TR 45 reversing need
+1561 f1
+1562 n S parking brake lamp
+1563 n S sun glare
+1564 p3 dipping; glare reaction not
+1566 n S air brake pressure
+1567 n T TR air brake minimum
+1568 n T TR vehicle modification approval
+1569 d
+1570 f1
+1572 d
+1573 f1
+1574 f1
+1575 p2 A2 definition; urban 50 not in moto
+1576 f1
+1578 n S control systems
+1579 n T TR sidecar parking lamps
+1580 n S automatic gearbox
+1582 f1
+1583 f2
+1584 n T TR passengers per licence motorcycle
+1585 f1
+1586 n T TR two-wheel side by side
+1587 n T TR bus stop parking motorcycle
+1588 n T BOOK? side stand
+1589 f1
+1590 f1
+1591 f1
+1592 f1
+1593 f1
+1594 f1
+1595 f1
+1596 n T BOOK? separate brakes
+1597 n T BOOK? safe speed motorcycle
+1598 f2
+1599 n T BOOK? helmet field of view
+1600 f1
+1602 n T BOOK? road markings slippery
+1604 f1
+1606 f1
+1607 n T TR 1 שלוחה אחורית picture
+1608 n S dirty headlamps
+1609 n T BOOK? obstacle detection
+1610 f1
+1613 n T TR passenger per licence
+1614 n T BOOK? look through turn
+1615 n T BOOK? lean in turn
+1616 n T BOOK? lean in turn
+1617 n T TR crossing pavement
+1618 n T BOOK? braking in turn
+1619 n T BOOK? oily patch in turn
+1620 n T BOOK? obstacle avoidance
+1621 n T BOOK? maintenance
+1622 n T TR headlamp range 100/30
+1623 n T BOOK? space cushion
+1624 n T BOOK? space cushion
+1625 n T TR warning triangle agricultural
+1626 n T BOOK? space responsibility
+1627 n T BOOK? early detection
+1630 n T BOOK? overtaking motorcycle
+1631 p1 mirror-shoulder check
+1632 n T TR silencer
+1633 n T BOOK? position in lane
+1635 n T TR crossing pavement
+1636 f3
+1638 d
+1639 n T BOOK? lane filtering
+1640 n T BOOK? lane filtering
+1643 f1
+1644 n T TR motorcycle mirror
+1645 f1
+1646 n S brake fade
+1647 p1 boots in protection list
+1648 n T BOOK? load placement
+1649 p2 slippery road
+1650 n T TR quad passenger licence
+1651 n T TR tyre size approval
+1653 n T BOOK? night riding
+1654 n T BOOK? lean headlamp
+1655 n T BOOK? visor at night
+1656 f1
+1657 n T BOOK? visor rain
+1658 f1
+1659 n T BOOK? passenger briefing
+1660 f2
+1661 n T BOOK? combined braking
+1662 f1
+1663 n T BOOK? obstacle slow
+1665 n T TR tractor passenger 3 months
+1666 n S junction check motorcycle
+1668 n T TR 54 motorcycle speeds
+1670 n S brake pads
+1671 n T TR 1 picture semi-trailer axles
+1672 p1 combined vehicle 16.50 listed; 17 variant not
+1673 f1
+1674 n T TO new driver conviction retest
+1675 n S oil warning lamp
+1677 f1
+1678 f1
+1679 n S curve technique
+1681 f1
+1682 f1
+1683 f1
+1684 p2 vest; other options partial
+1687 n T TR 54 private minibus 110
+1688 p1 new driver periods
+1689 n T TR lights defect motorcycle
+1690 n S wet brakes
+1692 n T TR bus overtaking ban
+1693 f2
+1694 n S headlamp aim
+1695 n S clean windows glare
+1696 n T TR 51 narrow bridge
+1697 n S night driving
+1698 p2 high beam urban rule
+1699 n S panoramic mirror
+1700 n T TR reversing lamp
+1702 p1 ABS use
+1703 n S fog vision
+1704 p1 fatigue
+1705 f1
+1706 n S dashboard lamp
+1709 f2
+1710 n T TR no driving on pavement
+1711 d
+1713 n S brake warning lamp
+1714 f1
+1715 n S rough road
+1716 n T TR tractor passenger licence
+1717 p1 two hands rule; exception not
+1718 f2
+1719 n S loss of control
+1720 f2
+1721 n S parking brake
+1722 n T TR neutral downhill
+1724 f1
+1725 n T TR 1 אוטובוס פרטי
+1728 n S clutch
+1729 d
+1730 n T TR exhaust motorcycle
+1732 n T TO medical certificate doctor
+1733 n S brake failure motorcycle
+1734 n T BOOK? rough road
+1735 p1 picture left-turn rule
+1736 n T TO owner liability parking
+1737 f3
+1738 p1 slow for danger
+1740 n T TR pushing equals driving
+1741 f1
+1742 f1
+1743 f1
+1744 p1 ESP purpose
+1745 n T TR overtaking shoulder vehicle
+1746 n T TR 38 shoulder users
+1749 n T TO bus licence authority
+1750 n T sign 705 yellow steady
+1751 f1
+1752 n T TR 52 narrow road
+1753 f1
+1754 n S reversing camera
+1755 f1
+1756 f2
+1757 n T TR 72 no stopping with solid line
+1759 f3
+1760 d
+1761 n T sign 302 one-way both lanes
+1763 n T TR civil guard sign
+1764 f2
+1765 n S head restraint adjust
+1766 f2
+1769 d
+1771 n T TR car transporter 4.80
+1772 n T TO 1 תמרור includes markings
+1773 f1
+1774 p1 fog lamps in fog; rain/snow not
+1775 n T TO disqualification authorities
+1776 n T TR separation area
+1777 n T TR repairs on road
+1778 n S annual test odometer
+1779 f2
+1780 p2 solid line; slow vehicle not
+1781 n T TR traffic island right
+1782 n T TR 52 narrow steep road
+1783 p2 U-turn rule
+1784 f2
+1785 f1
+1786 n T TR articulated bus rear stickers
+1787 n T sign 703 flashing green
+1788 n T TO renewal fines
+1789 n S oil check
+1790 p2 alcohol and drugs judgment
+1791 f1
+1792 n T TR summer day lights trick
+1793 n T TR 1 אוטובוס זעיר note
+1794 n T TR 1 אוטובוס זעיר 5,000
+1795 n T TR pavement cleaning vehicle
+1796 f1
+1797 n T TR 51 tunnel slow
+1798 n T TR 51 traffic-calming slow
+1799 f1
+1800 n T TR car transporter 4.40
+1803 d
