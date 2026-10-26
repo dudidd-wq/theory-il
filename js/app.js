@@ -580,6 +580,7 @@ function about() {
     h('h2', { text: t('ab.test') }), h('p', { text: t('ab.testText') }),
     h('h2', { text: t('ab.law') }), h('p', { text: t('ab.lawText') }),
     h('h2', { text: t('ab.learn') }), h('p', { text: t('ab.learnText') }), h('p', { class: 'small', id: 'ab-ccbysa' }, h('span', { text: t('ab.wsCC') + ' ' }), ext(CCBYSA, t('ab.ccbysa'))), h('ul', { class: 'srcs' }, h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085628', t('ab.wsTR', 3085628))), h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085764', t('ab.wsTO', 3085764))), h('li', {}, ext('https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf', t('ab.lotam')))),
+    h('h2', { text: t('ab.off') }), h('p', { text: t('ab.offText') }), h('ul', { class: 'srcs' }, h('li', {}, ext('https://www.gov.il/he/pages/gov_terms_of_use', t('ab.govTerms'))), h('li', {}, ext('https://www.gov.il/BlobFolder/reports/safety_rules_book/he/publications_safety_rules_book.pdf', t('ab.rsaBook'))), h('li', {}, ext('https://github.com/dudidd-wq/theory-il/blob/main/LICENSE-DATA.md', t('ab.offList')))),
     h('h2', { text: t('el.all') }), ...CLASSES.map(c => h('div', {}, h('h3', { class: 'h3', text: clsName(c) }), eligCard(c, false))),
     h('h2', { text: t('ab.a11y') }), h('p', { text: t('ab.a11yText', Q.filter(p => p.i).length) }),
     h('h2', { text: t('ab.priv') }), h('p', { text: t('ab.privText') }),

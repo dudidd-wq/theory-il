@@ -105,12 +105,43 @@ stats['agree'] = {'tp': tp, 'fp': fp, 'fn': fn, 'tn': tn, 'accuracy': round(100 
 # signs: share of sign questions whose picture/meaning appears in a lesson
 sg = [i for i in SAMPLE if by[i]['k'] == 'signs']
 stats['signs'] = {'n': len(sg), 'full': sum(man[str(i)]['v'] == 'full' for i in sg), 'partial': sum(man[str(i)]['v'] == 'partial' for i in sg)}
+# whole-bank labels as the app shows them (status per question; f/a = "taught", w = related rule only, n = not taught yet)
+def labels(pool):
+    c = collections.Counter(cov[q['id']][0] for q in pool); N = len(pool)
+    return {'n': N, **{k: round(100 * c[k] / N, 1) for k in 'fawn'}, 'fa': round(100 * (c['f'] + c['a']) / N, 1), 'any': round(100 * (N - c['n']) / N, 1)}
+stats['bank'] = {'all': labels(Q), **{c: labels([q for q in Q if c in q['t']]) for c in CLS}}
+# the sample is a simple random draw from the whole bank, so per-class figures are already weighted by the bank mix;
+# the sign/non-sign split re-weights them explicitly by each class's share of sign questions in the bank (as the reviewer did)
+stats['weighted'] = {}
+for c in CLS:
+    ids = [i for i in SAMPLE if c in by[i]['t']]; pool = [q for q in Q if c in q['t']]
+    w = sum(q['k'] == 'signs' for q in pool) / len(pool); r = {'sign_share': round(100 * w, 1)}
+    for part, sel in (('signs', lambda i: by[i]['k'] == 'signs'), ('other', lambda i: by[i]['k'] != 'signs')):
+        v = collections.Counter(verdict(i, c) for i in ids if sel(i)); n = sum(v.values())
+        r[part] = {'n': n, 'full': round(100 * v['full'] / n, 1), 'any': round(100 * (v['full'] + v['partial']) / n, 1)}
+    r['full'] = round(w * r['signs']['full'] + (1 - w) * r['other']['full'], 1); r['any'] = round(w * r['signs']['any'] + (1 - w) * r['other']['any'], 1)
+    stats['weighted'][c] = r
+# class-only questions (in exactly one class) and the union by number of classes
+stats['only'] = {}
+for c in CLS:
+    ids = [i for i in SAMPLE if by[i]['t'] == [c] or set(by[i]['t']) == {c}]
+    v = collections.Counter(verdict(i, c) for i in ids); n = len(ids)
+    if n: stats['only'][c] = {'n': n, 'full': v['full'], 'partial': v['partial'], 'full_pct': round(100 * v['full'] / n, 1), 'any_pct': round(100 * (v['full'] + v['partial']) / n, 1)}
+stats['by_ncls'] = {}
+for k in sorted({len(set(by[i]['t'])) for i in SAMPLE}):
+    ids = [i for i in SAMPLE if len(set(by[i]['t'])) == k]
+    v = collections.Counter(max((verdict(i, c) for c in set(by[i]['t'])), key=['none', 'partial', 'full'].index) for i in ids)
+    stats['by_ncls'][k] = {'n': len(ids), 'full_pct': round(100 * v['full'] / len(ids), 1), 'any_pct': round(100 * (v['full'] + v['partial']) / len(ids), 1)}
 os.makedirs(os.path.join(ROOT, 'docs'), exist_ok=True)
 json.dump(stats, open(os.path.join(ROOT, f'docs/coverage_{LABEL}.json'), 'w'), ensure_ascii=False, indent=1)
 for c, s in stats['class'].items():
     print(f"{NAMES[c]:18s} n={s['n']:3d} full {s['full_pct']:5.1f}% {s['full_ci']}  full+partial {s['any_pct']:5.1f}% {s['any_ci']}  auto {stats['auto'][c]}")
 for k, s in stats['topic'].items(): print(TOP[k], s)
 print('signs', stats['signs'], 'agree', stats['agree'])
+print('bank labels', stats['bank'])
+print('weighted', {c: (w['full'], w['any']) for c, w in stats['weighted'].items()})
+print('class-only', stats['only'])
+print('by number of classes', stats['by_ncls'], 'union', stats['all'])
 missing = [q['id'] for q in Q if not cov[q['id']][1]]
 print('mapped', len(cov), 'unmapped', missing[:10])
 if missing: sys.exit(f'FAIL: {len(missing)} questions not mapped to any lesson')

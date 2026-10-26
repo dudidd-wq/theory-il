@@ -1444,8 +1444,9 @@
   "1241": {
    "v": "partial",
    "u": [
-    "bus#r7"
-   ]
+    "taxi#r11"
+   ],
+   "why": "TR 369א: טיולית only; intercity line bus not stated"
   },
   "1312": {
    "v": "full",
@@ -1808,6 +1809,125 @@
     "defensive#r1"
    ],
    "why": "reaction ability"
+  },
+  "1413": {
+   "v": "full",
+   "u": [
+    "heavy2#r26"
+   ],
+   "why": "TR 86"
+  },
+  "1331": {
+   "v": "partial",
+   "u": [
+    "heavy2#r22"
+   ],
+   "why": "TR 85א(ג)/(ד): 6.10 m on a semi-trailer; \"rear part\" not stated"
+  },
+  "1426": {
+   "v": "full",
+   "u": [
+    "tractor#r9"
+   ],
+   "why": "TR 359א(א)"
+  },
+  "1628": {
+   "v": "full",
+   "u": [
+    "tractor#r10"
+   ],
+   "why": "TR 38(א)"
+  },
+  "1642": {
+   "v": "full",
+   "u": [
+    "moto2#r16"
+   ],
+   "why": "TR 34(א)"
+  },
+  "1157": {
+   "v": "full",
+   "u": [
+    "taxi#r1"
+   ],
+   "why": "TR 511"
+  },
+  "1180": {
+   "v": "full",
+   "u": [
+    "taxi#r2"
+   ],
+   "why": "TR 485"
+  },
+  "1158": {
+   "v": "full",
+   "u": [
+    "taxi#r5"
+   ],
+   "why": "TR 517"
+  },
+  "1712": {
+   "v": "full",
+   "u": [
+    "taxi#r6"
+   ],
+   "why": "TR 281(א)(2)"
+  },
+  "619": {
+   "v": "full",
+   "u": [
+    "taxi#r7"
+   ],
+   "why": "TR 1 + 184(א)(2)"
+  },
+  "620": {
+   "v": "partial",
+   "u": [
+    "taxi#r7"
+   ],
+   "why": "licence D1/D taught; tour-guide condition not in the pinned law"
+  },
+  "614": {
+   "v": "full",
+   "u": [
+    "taxi#r8"
+   ],
+   "why": "TR 1 + 83(א)"
+  },
+  "612": {
+   "v": "partial",
+   "u": [
+    "taxi#r8"
+   ],
+   "why": "TR 83(א) related"
+  },
+  "1196": {
+   "v": "full",
+   "u": [
+    "taxi#r9"
+   ],
+   "why": "TR 385א"
+  },
+  "1212": {
+   "v": "full",
+   "u": [
+    "taxi#r10"
+   ],
+   "why": "TR 447"
+  },
+  "789": {
+   "v": "full",
+   "u": [
+    "priority#r10"
+   ],
+   "why": "TR 65"
+  },
+  "1376": {
+   "v": "full",
+   "u": [
+    "vehicle#r18"
+   ],
+   "why": "TR 324"
   }
  }
 }
