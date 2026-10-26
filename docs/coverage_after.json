@@ -2,27 +2,27 @@
  "all": {
   "n": 1801,
   "full": 1368,
-  "partial": 254,
-  "none": 179,
+  "partial": 255,
+  "none": 178,
   "full_pct": 76.0,
   "any_pct": 90.1,
   "strict_full": 1135,
   "strict_pct": 63.0,
   "none_teachable": 37,
-  "none_nosource": 142
+  "none_nosource": 141
  },
  "class": {
   "B": {
    "n": 1272,
    "full": 1023,
-   "partial": 189,
-   "none": 60,
+   "partial": 190,
+   "none": 59,
    "full_pct": 80.4,
-   "any_pct": 95.3,
+   "any_pct": 95.4,
    "strict_full": 815,
    "strict_pct": 64.1,
    "none_teachable": 4,
-   "none_nosource": 56
+   "none_nosource": 55
   },
   "A": {
    "n": 1155,
@@ -89,14 +89,14 @@
   "B": {
    "n": 9,
    "full": 5,
-   "partial": 2,
-   "none": 2,
+   "partial": 3,
+   "none": 1,
    "full_pct": 55.6,
-   "any_pct": 77.8,
+   "any_pct": 88.9,
    "strict_full": 5,
    "strict_pct": 55.6,
    "none_teachable": 0,
-   "none_nosource": 2
+   "none_nosource": 1
   },
   "A": {
    "n": 88,
@@ -199,14 +199,14 @@
   "vehicle": {
    "n": 110,
    "full": 60,
-   "partial": 27,
-   "none": 23,
+   "partial": 28,
+   "none": 22,
    "full_pct": 54.5,
-   "any_pct": 79.1,
+   "any_pct": 80.0,
    "strict_full": 60,
    "strict_pct": 54.5,
    "none_teachable": 0,
-   "none_nosource": 23
+   "none_nosource": 22
   }
  },
  "class_topic": {
@@ -250,14 +250,14 @@
    "vehicle": {
     "n": 106,
     "full": 58,
-    "partial": 27,
-    "none": 21,
+    "partial": 28,
+    "none": 20,
     "full_pct": 54.7,
-    "any_pct": 80.2,
+    "any_pct": 81.1,
     "strict_full": 58,
     "strict_pct": 54.7,
     "none_teachable": 0,
-    "none_nosource": 21
+    "none_nosource": 20
    }
   },
   "A": {
@@ -512,8 +512,8 @@
   }
  },
  "by": {
-  "hand": 757,
-  "v1.5": 718,
+  "hand": 756,
+  "v1.5": 719,
   "link": 80,
   "sample": 246
  },
@@ -551,7 +551,6 @@
    978,
    980,
    985,
-   1005,
    1006,
    1016,
    1020,

@@ -35,12 +35,12 @@
  "q": {
   "92": {
    "g": "law",
-   "note": "licence not valid > 1 year needs tests: no such provision in pinned TR 173/174/196 or TO",
+   "note": "licence not valid > 1 year needs tests: no such provision in pinned TR 173/174/196/203 or TO",
    "cls": "BA"
   },
   "281": {
    "g": "law",
-   "note": "tunnel 50 m before/after: not in TR 47 or elsewhere",
+   "note": "tunnel 50 m before/after: TR 47 and textbook p54 ban overtaking only on a bridge or inside a tunnel, no 50 m",
    "cls": "BA"
   },
   "273": {
@@ -55,7 +55,7 @@
   },
   "1500": {
    "g": "law",
-   "note": "third-party property insurance: the Motor Vehicle Insurance Ordinance covers bodily injury only",
+   "note": "third-party property insurance: the Motor Vehicle Insurance Ordinance covers bodily injury only. Candidates for Dudi: Knesset Research Center paper (fs.knesset.gov.il, 2024) and the standard-policy regulations (תקנות הפיקוח על עסקי ביטוח (תנאי חוזה לביטוח רכב פרטי), part B), not pinned",
    "cls": "BA"
   },
   "1723": {
@@ -213,11 +213,6 @@
    "note": "what side mirrors show (textbook p16 only says mirrors complement peripheral vision)",
    "cls": "B"
   },
-  "1005": {
-   "g": "veh",
-   "note": "bumpers",
-   "cls": "B"
-  },
   "1765": {
    "g": "veh",
    "note": "head restraint height (textbook p16 says centre at skull centre – conflicts)",
@@ -240,17 +235,17 @@
   },
   "1039": {
    "g": "veh",
-   "note": "exhaust leak",
+   "note": "exhaust leak; kids.gov.il/sababa/sababa_pool/pages/4451 (Ministry of Environmental Protection, children’s site) says CO from car engines in closed areas can cause acute poisoning; candidate source for Dudi’s decision, not used",
    "cls": "B"
   },
   "1040": {
    "g": "veh",
-   "note": "closed car park, engine running",
+   "note": "closed car park, engine running; kids.gov.il/sababa/sababa_pool/pages/4451 (Ministry of Environmental Protection, children’s site) says CO from car engines in closed areas can cause acute poisoning; candidate source for Dudi’s decision, not used",
    "cls": "BA"
   },
   "1061": {
    "g": "veh",
-   "note": "engine in closed space",
+   "note": "engine in closed space; kids.gov.il/sababa/sababa_pool/pages/4451 (Ministry of Environmental Protection, children’s site) says CO from car engines in closed areas can cause acute poisoning; candidate source for Dudi’s decision, not used",
    "cls": "B"
   },
   "1041": {
