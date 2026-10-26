@@ -104,3 +104,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - [x] batch 1: law rules – road parts (+ `roadparts` diagram), quad / tractor passengers, signal, blocked lane, stopping, belts in reverse, towed vehicle, accident report, breakdown 24h, escort, paid rides, bus-stop parking, documents, temporary police sign, NOTE Q91
 - batch 2 (14:01 UTC+2): textbook ch.1–3 lessons cockpit, moveoff, downhill, lanes, junction2 (+startcar/stopdist diagrams). B full 64.3%, A 64.8%.
 - batch 3 (14:02 UTC+2): textbook ch.3 lessons turns (+leftturn diagram), parking2; lanes/junction extended. B full 66.1%, A 66.6%.
+- 2026-10-26 14:04 UTC+2 — v1.6 batch 4: yield2 (right of way, TB pp.60–68) + lights2 (traffic light stop line, hazard lights, stop/park order). B full 67.3% / A 67.8%.
