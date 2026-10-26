@@ -64,3 +64,14 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 - [x] 189(ט) minibus 18; A1 line in elig.js
 - [x] low: diagram focus at last step; no achievement toast on wrong answer; blind-spot starts on lesson vehicle; red ring speed sign; Wikisource CC BY-SA in About; image precache retry + "X of N saved"; signs explorer parts 5 & 9; aria-valuetext
 - [x] restore: merge option (opt-in checkbox)
+
+## v1.3 – official sources (law + MOT + National Road Safety Authority) and review #3
+- [x] 17 official gov.il pages pinned (tools/official/pages.json: access date + sha256; no archive copy – archive.org 429, Save Page Now not used)
+- [x] gov.il terms of use checked; recorded in About ("מקורות רשמיים") and LICENSE-DATA.md (fair use / ציטוט סביר with source; no alteration; not CC BY)
+- [x] alcohol, fatigue, speed, distance, tyres, winter/summer, shoulder, emergency, truck/bus drivers – cited RSA rules in sober/defensive/vehicle/heavy2/bus
+- [x] headlight failure (TR 97), new-driver renewal (TO 12א + 3rd schedule), tachograph/rest (TR 364ד, 168), trailer/container (TR 85א, 313)
+- [x] new lesson taxi (D): TR 501, 503, 510, 511, 485, 517, 281, 83(א), 184, 385א, 447, 369א + taxi-ride diagram
+- [x] class-only: TR 86 (bulk cargo), 34(א) (moto2), 38, 359א (tractor), 65 (junction), 324 (service brakes); tractor diagram
+- [x] review #3, all 10 findings: Q1192 note, Q40 wording-only, Q592 note, "כלל קשור" label, honest figures in COVERAGE.md, moto2/heavy2/vehicle lessons, 109 sign texts tidied, Q1767/Q88 mapping, sober 547, axe aria-allowed-role
+- [x] still uncovered (no official source): tractor PTO/differential/spark arrester/levelling, mechanics, vehicle dynamics, taxi tariff/meter seal – see docs/COVERAGE.md
+- [x] sample 44→60% full, 60→77% any; whole bank labels f+a 33%, any 50%
