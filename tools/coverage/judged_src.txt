@@ -46,7 +46,7 @@
 1160 S other-law taxi fare order
 1167 S other-law taxi fare order
 1168 T TR meter seal
-1239 T TR driver smoking
+1239 S other-law: smoking ban (smoking law, not in TR)
 1250 T TR taxi licence suspension
 1290 S gearbox fuel
 1354 T TR coupling clearance

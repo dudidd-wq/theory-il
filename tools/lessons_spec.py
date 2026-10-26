@@ -8,8 +8,9 @@ check substrings that tools/lessons.py verifies against the source text:
   Q:id  official theory question bank item id (data.gov.il, CC BY)
 A label after the key, e.g. 'TR:64(א)(1)', is the sub-section shown to the user."""
 
-def R(text, src, *checks, also=()):
-    return {'t': text, 's': src, 'chk': list(checks), 'also': list(also)}
+def R(text, src, *checks, also=(), q=(), qp=()):
+    # q / qp: bank questions this rule was written to teach fully / in part (read by tools/coverage.py)
+    return {'t': text, 's': src, 'chk': list(checks), 'also': list(also), **({'q': list(q)} if q else {}), **({'qp': list(qp)} if qp else {})}
 
 def C(front, back, src, *checks):
     return {'f': front, 'b': back, 's': src, **({'chk': list(checks)} if checks else {})}
@@ -772,6 +773,8 @@ EXAMPLES = {
 # Bank answer vs today's law text: shown under the question's why-box ("for the exam X; the regulation says Y").
 # The bank text is never edited; 'law' is own wording, verified by the check substrings against the cited source.
 NOTES = {
+ 1793: ('הבנק כותב "עד 16 נוסעים", אבל בהגדרה שבתקנה 1 אוטובוס זעיר מיועד להסעת עד 19 נוסעים נוסף על הנהג (ומשקלו הכולל עד 5,000 ק"ג). המספר 16 מופיע בתקנות 183א–183ב – הוא הגבול לנהיגה ברישיון D2/D3.',
+       'TR:1', ['להסעת עד תשעה עשר נוסעים בנוסף לנהג']),
  1192: ('חובת החגירה חלה על כל נוסע (83ב(א)); החריג הוא שבמונית שתלוי בה שלט גלוי על חובת החגירה, הנהג רשאי להסיע גם נוסעים שלא חגרו (83ב(ג)) – זה היתר לנהג, לא פטור כללי מהחגירה.',
         'TR:83ב(ג)', ['מונית ואוטובוס', 'רשאי הנוהג בהם להסיעם גם אם הם אינם חגורים']),
  40: ('אין סתירה בתוכן, רק ניסוח שונה: היום התקנות מגדירות רכב נוסעים פרטי לפי הסיווג M1 – רכב שיש בו עד 8 מושבים נוסף על מושב הנהג ומשקלו הכולל המותר עד 3,500 ק"ג.',
@@ -788,3 +791,12 @@ NOTES = {
       'LT:504', ['לרכב שנסיעתו הותרה לפי תמרור 501', 'בכוון הנגדי']),
  1575: ('בתקנה ההספק המרבי ל־A2 הוא 11 קילוואט = 14.916 כ"ס (הבנק כותב 14.6); הגבול בקילוואט זהה.', 'TR:176', ['11 קילווט', '14.916']),
 }
+
+# v1.5: lessons written for questions the whole-bank review found untaught (tools/lessons_v15.py)
+def add_v15():
+    from lessons_v15 import lessons
+    for after, L in lessons(R, C):
+        if any(x['id'] == L['id'] for x in LESSONS): continue
+        i = next(i for i, x in enumerate(LESSONS) if x['id'] == after)
+        LESSONS.insert(i + 1, L)
+add_v15()

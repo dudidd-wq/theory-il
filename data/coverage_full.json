@@ -4,15 +4,15 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 764,
-"partial": 212,
-"none": 825,
-"full_pct": 42.4,
-"any_pct": 54.2,
-"strict_full": 531,
-"strict_pct": 29.5,
-"none_teachable": 511,
-"none_nosource": 314
+"full": 839,
+"partial": 226,
+"none": 736,
+"full_pct": 46.6,
+"any_pct": 59.1,
+"strict_full": 606,
+"strict_pct": 33.6,
+"none_teachable": 420,
+"none_nosource": 316
 },
 "class": {
 "B": {
@@ -65,15 +65,15 @@
 },
 "D": {
 "n": 1316,
-"full": 593,
-"partial": 150,
-"none": 573,
-"full_pct": 45.1,
-"any_pct": 56.5,
-"strict_full": 371,
-"strict_pct": 28.2,
-"none_teachable": 367,
-"none_nosource": 206
+"full": 668,
+"partial": 164,
+"none": 484,
+"full_pct": 50.8,
+"any_pct": 63.2,
+"strict_full": 446,
+"strict_pct": 33.9,
+"none_teachable": 276,
+"none_nosource": 208
 },
 "1": {
 "n": 1127,
@@ -139,15 +139,15 @@
 },
 "D": {
 "n": 190,
-"full": 67,
-"partial": 12,
-"none": 111,
-"full_pct": 35.3,
-"any_pct": 41.6,
-"strict_full": 49,
-"strict_pct": 25.8,
-"none_teachable": 97,
-"none_nosource": 14
+"full": 142,
+"partial": 26,
+"none": 22,
+"full_pct": 74.7,
+"any_pct": 88.4,
+"strict_full": 124,
+"strict_pct": 65.3,
+"none_teachable": 6,
+"none_nosource": 16
 },
 "1": {
 "n": 43,
@@ -165,15 +165,15 @@
 "topic": {
 "law": {
 "n": 901,
-"full": 346,
-"partial": 102,
-"none": 453,
-"full_pct": 38.4,
-"any_pct": 49.7,
-"strict_full": 346,
-"strict_pct": 38.4,
-"none_teachable": 427,
-"none_nosource": 26
+"full": 421,
+"partial": 116,
+"none": 364,
+"full_pct": 46.7,
+"any_pct": 59.6,
+"strict_full": 421,
+"strict_pct": 46.7,
+"none_teachable": 336,
+"none_nosource": 28
 },
 "signs": {
 "n": 390,
@@ -416,15 +416,15 @@
 "D": {
 "law": {
 "n": 618,
-"full": 216,
-"partial": 74,
-"none": 328,
-"full_pct": 35.0,
-"any_pct": 46.9,
-"strict_full": 216,
-"strict_pct": 35.0,
-"none_teachable": 301,
-"none_nosource": 27
+"full": 291,
+"partial": 88,
+"none": 239,
+"full_pct": 47.1,
+"any_pct": 61.3,
+"strict_full": 291,
+"strict_pct": 47.1,
+"none_teachable": 210,
+"none_nosource": 29
 },
 "signs": {
 "n": 377,
@@ -515,9 +515,10 @@
 }
 },
 "by": {
-"hand": 1424,
+"hand": 1338,
 "link": 81,
-"sample": 296
+"sample": 293,
+"v1.5": 89
 }
 },
 "q": {
@@ -5692,16 +5693,19 @@
 "by": "hand"
 },
 "289": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR refuelling passengers",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r30"
+],
+"ref": [
+"busline#r:לא מתדלקים אוטובוס (או רכב שמוביל יו"
+],
+"why": "rule written for this question (TR:160(3))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "290": {
 "v": "none",
@@ -10036,16 +10040,19 @@
 "by": "hand"
 },
 "517": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 313 bus length 13.50",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r4"
+],
+"ref": [
+"busline#r:אורך כולל מרבי: אוטובוס בעל שני סרני"
+],
+"why": "rule written for this question (TR:313(א)(3))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "518": {
 "v": "full",
@@ -11709,16 +11716,19 @@
 "by": "hand"
 },
 "601": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 313 articulated bus length",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r4"
+],
+"ref": [
+"busline#r:אורך כולל מרבי: אוטובוס בעל שני סרני"
+],
+"why": "rule written for this question (TR:313(א)(3))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "602": {
 "v": "none",
@@ -11963,16 +11973,19 @@
 "by": "sample"
 },
 "615": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR school transport standing",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r35"
+],
+"ref": [
+"busline#r:בהסעת תלמידים לא מסיעים ילדים בעמידה"
+],
+"why": "rule written for this question (TR:83(ב1))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "616": {
 "v": "full",
@@ -15195,16 +15208,19 @@
 "by": "sample"
 },
 "787": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 313 articulated bus 18.75",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r4"
+],
+"ref": [
+"busline#r:אורך כולל מרבי: אוטובוס בעל שני סרני"
+],
+"why": "rule written for this question (TR:313(א)(3))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "788": {
 "v": "none",
@@ -20030,16 +20046,19 @@
 "by": "hand"
 },
 "1070": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO/TR public transport line licence",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r37"
+],
+"ref": [
+"busline#r:את השירות בקו מפעילים רק לפי רישיון "
+],
+"why": "rule written for this question (TR:385)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1071": {
 "v": "partial",
@@ -20619,52 +20638,64 @@
 "by": "sample"
 },
 "1113": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 אוטובוס",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r0"
+],
+"ref": [
+"busline#r:\"אוטובוס\" – רכב מנועי להסעת 8 אנשים "
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1114": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 אוטובוס פרטי",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r3"
+],
+"ref": [
+"busline#r:\"אוטובוס פרטי\" – אוטובוס שאינו רכב צ"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1115": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR minibus passengers",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r7"
+],
+"ref": [
+"busline#r:לא מסיעים יותר נוסעים מהמספר שנקבע ב"
+],
+"why": "rule written for this question (TR:431)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1116": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 אוטובוס זעיר 5,000",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r1"
+],
+"ref": [
+"busline#r:\"אוטובוס זעיר\" – אוטובוס להסעת עד 19"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1117": {
 "v": "full",
@@ -20744,16 +20775,19 @@
 "by": "hand"
 },
 "1122": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus parking",
-"src": "T",
+"v": "partial",
+"rule": [
+"busline#r31"
+],
+"ref": [
+"busline#r:אוטובוס ל־20 נוסעים או יותר לא מעמיד"
+],
+"why": "rule covers part of the answer (TR:72(ב))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1123": {
 "v": "full",
@@ -20777,16 +20811,19 @@
 "by": "hand"
 },
 "1124": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR school transport permit",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r34"
+],
+"ref": [
+"busline#r:\"רכב להסעת תלמידים\" – אוטובוס פרטי א"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1125": {
 "v": "full",
@@ -20804,40 +20841,49 @@
 "by": "hand"
 },
 "1126": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus parking 20",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r31"
+],
+"ref": [
+"busline#r:אוטובוס ל־20 נוסעים או יותר לא מעמיד"
+],
+"why": "rule written for this question (TR:72(ב))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1127": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus pavement parking",
-"src": "T",
+"v": "partial",
+"rule": [
+"busline#r31"
+],
+"ref": [
+"busline#r:אוטובוס ל־20 נוסעים או יותר לא מעמיד"
+],
+"why": "rule covers part of the answer (TR:72(ב))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.5"
 },
 "1128": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR desert vehicle passengers",
-"src": "T",
+"v": "partial",
+"rule": [
+"busline#r7"
+],
+"ref": [
+"busline#r:לא מסיעים יותר נוסעים מהמספר שנקבע ב"
+],
+"why": "rule covers part of the answer (TR:431)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1129": {
 "v": "partial",
@@ -20855,40 +20901,49 @@
 "by": "hand"
 },
 "1130": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus passengers licence",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r7"
+],
+"ref": [
+"busline#r:לא מסיעים יותר נוסעים מהמספר שנקבע ב"
+],
+"why": "rule written for this question (TR:431)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1131": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 183א minibus 16",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r2"
+],
+"ref": [
+"busline#r:רישיון D3 (כמו רישיון מונית) מתיר לנ"
+],
+"why": "rule written for this question (TR:183ב)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1132": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR public vehicle brake check 6 months",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r32"
+],
+"ref": [
+"busline#r:בלמים של אוטובוס, מונית, רכב סיור, ט"
+],
+"why": "rule written for this question (TR:273ב(א))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1133": {
 "v": "full",
@@ -20910,40 +20965,49 @@
 "by": "sample"
 },
 "1134": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR public bus must carry",
-"src": "T",
+"v": "partial",
+"rule": [
+"busline#r19"
+],
+"ref": [
+"busline#r:חייבים להסיע כל נוסע שמוכן לשלם, וגם"
+],
+"why": "rule covers part of the answer (TR:434)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1135": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus radio",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r13"
+],
+"ref": [
+"busline#r:רדיו באוטובוס – לא בקול רם; לפי דריש"
+],
+"why": "rule written for this question (TR:422)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1136": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR courtesy",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r11"
+],
+"ref": [
+"busline#r:הנהג והכרטיסן מתנהגים כלפי הנוסעים ב"
+],
+"why": "rule written for this question (TR:416)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1137": {
 "v": "full",
@@ -20961,28 +21025,34 @@
 "by": "sample"
 },
 "1138": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR tickets in motion",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r12"
+],
+"ref": [
+"busline#r:לא מוכרים כרטיסים ולא נותנים עודף בז"
+],
+"why": "rule written for this question (TR:420)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1139": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR driver ID",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r14"
+],
+"ref": [
+"busline#r:לפי דרישת נוסע, הנהג מציג תו זיהוי, "
+],
+"why": "rule written for this question (TR:423)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1140": {
 "v": "partial",
@@ -21000,16 +21070,19 @@
 "by": "hand"
 },
 "1141": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR security check",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r9"
+],
+"ref": [
+"busline#r:נהג האוטובוס בודק אם יש באוטובוס, על"
+],
+"why": "rule written for this question (TR:425א(א))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1142": {
 "v": "full",
@@ -21027,16 +21100,19 @@
 "by": "hand"
 },
 "1143": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR announce stops",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r15"
+],
+"ref": [
+"busline#r:מכריזים את שם כל תחנה בהתקרבות אליה "
+],
+"why": "rule written for this question (TR:427)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1144": {
 "v": "full",
@@ -21069,16 +21145,19 @@
 "by": "sample"
 },
 "1146": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR change",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r19"
+],
+"ref": [
+"busline#r:חייבים להסיע כל נוסע שמוכן לשלם, וגם"
+],
+"why": "rule written for this question (TR:434)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1147": {
 "v": "full",
@@ -21096,40 +21175,49 @@
 "by": "hand"
 },
 "1148": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR refuse dirty passenger",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r24"
+],
+"ref": [
+"busline#r:מותר למנוע עלייה של נוסע שבגדיו עלול"
+],
+"why": "rule written for this question (TR:461)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1149": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR gas cylinders tour",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r29"
+],
+"ref": [
+"busline#r:לא מסיעים אדם עם נשק טעון (אלא בתפקי"
+],
+"why": "rule written for this question (TR:466)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1150": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR extra seats",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r28"
+],
+"ref": [
+"busline#r:לא מכניסים לאוטובוס כיסאות נוסף על ה"
+],
+"why": "rule written for this question (TR:465)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1151": {
 "v": "full",
@@ -21162,28 +21250,34 @@
 "by": "hand"
 },
 "1153": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR stops line licence",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r16"
+],
+"ref": [
+"busline#r:נהג אוטובוס בקו שירות עוצר רק בתחנות"
+],
+"why": "rule written for this question (TR:428(א))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1154": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR line signs",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r8"
+],
+"ref": [
+"busline#r:לפני תחילת התפקיד בקו: מספר הקו בחזי"
+],
+"why": "rule written for this question (TR:425(ב))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1155": {
 "v": "full",
@@ -21248,16 +21342,19 @@
 "by": "sample"
 },
 "1159": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR taxi trip types",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r1"
+],
+"ref": [
+"taxi2#r:רישיון הסעה למונית הוא לנסיעה מיוחדת"
+],
+"why": "rule written for this question (TR:490)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1160": {
 "v": "none",
@@ -21284,16 +21381,19 @@
 "by": "hand"
 },
 "1162": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR taxi luggage help",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r4"
+],
+"ref": [
+"taxi2#r:נהג מונית עוזר לנוסע במידת הצורך לעל"
+],
+"why": "rule written for this question (TR:504)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1163": {
 "v": "partial",
@@ -21311,28 +21411,34 @@
 "by": "hand"
 },
 "1164": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR taxi plates",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r6"
+],
+"ref": [
+"taxi2#r:בתוך המונית: לוחית עם מספר רישיון הה"
+],
+"why": "rule written for this question (TR:500)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1165": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR taxi air conditioner",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r13"
+],
+"ref": [
+"taxi2#r:במונית שנפח מנועה 1,750 סמ\"ק או יותר"
+],
+"why": "rule written for this question (TR:364ג(א))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1166": {
 "v": "none",
@@ -21359,40 +21465,49 @@
 "by": "sample"
 },
 "1168": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR meter seal",
-"src": "T",
+"v": "partial",
+"rule": [
+"taxi2#r9"
+],
+"ref": [
+"taxi2#r:המונה מותקן במרכז לוח השעונים וגלוי "
+],
+"why": "rule covers part of the answer (TR:513)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.5"
 },
 "1169": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR taxi meter repair",
-"src": "T",
+"v": "partial",
+"rule": [
+"taxi2#r9"
+],
+"ref": [
+"taxi2#r:המונה מותקן במרכז לוח השעונים וגלוי "
+],
+"why": "rule covers part of the answer (TR:513)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1170": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 זוטובוס",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r2"
+],
+"ref": [
+"taxi2#r:\"זוטובוס\" – מונית עם מרכב אחוד וחלונ"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1171": {
 "v": "full",
@@ -21425,28 +21540,34 @@
 "by": "hand"
 },
 "1173": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR taxi passengers licence",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r3"
+],
+"ref": [
+"taxi2#r:לא מסיעים יותר נוסעים ממה שנקבע בריש"
+],
+"why": "rule written for this question (TR:502)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1174": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR זוטובוס ten",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r2"
+],
+"ref": [
+"taxi2#r:\"זוטובוס\" – מונית עם מרכב אחוד וחלונ"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1175": {
 "v": "none",
@@ -21461,52 +21582,64 @@
 "by": "hand"
 },
 "1176": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus stop inspector",
-"src": "T",
+"v": "partial",
+"rule": [
+"busline#r16"
+],
+"ref": [
+"busline#r:נהג אוטובוס בקו שירות עוצר רק בתחנות"
+],
+"why": "rule covers part of the answer (TR:428(א))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1177": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR animals on bus",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r25"
+],
+"ref": [
+"busline#r:בעל חיים – רק אם אפשר להניחו על הברכ"
+],
+"why": "rule written for this question (TR:462)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1178": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus disinfection",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r10"
+],
+"ref": [
+"busline#r:בעל רישיון הקו מבטיח חיטוי של כל אוט"
+],
+"why": "rule written for this question (TR:406)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1179": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 נסיעת סיור",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r0"
+],
+"ref": [
+"taxi2#r:\"נסיעת סיור\" – נסיעה במונית שעומדת כ"
+],
+"why": "rule written for this question (TR:485)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1180": {
 "v": "full",
@@ -21524,16 +21657,19 @@
 "by": "sample"
 },
 "1181": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR no refuel with passengers",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r30"
+],
+"ref": [
+"busline#r:לא מתדלקים אוטובוס (או רכב שמוביל יו"
+],
+"why": "rule written for this question (TR:160(3))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1182": {
 "v": "none",
@@ -21565,28 +21701,34 @@
 "by": "hand"
 },
 "1184": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR remove taxi meter",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r10"
+],
+"ref": [
+"taxi2#r:מונית שאין עליה רישיון הסעה בתוקף וה"
+],
+"why": "rule written for this question (TR:515)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1185": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR children in taxi",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r3"
+],
+"ref": [
+"taxi2#r:לא מסיעים יותר נוסעים ממה שנקבע בריש"
+],
+"why": "rule written for this question (TR:502)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1186": {
 "v": "none",
@@ -21601,16 +21743,19 @@
 "by": "hand"
 },
 "1187": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 זוטובוס",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r2"
+],
+"ref": [
+"taxi2#r:\"זוטובוס\" – מונית עם מרכב אחוד וחלונ"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1188": {
 "v": "none",
@@ -21699,28 +21844,34 @@
 "by": "hand"
 },
 "1194": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus signal before moving",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r17"
+],
+"ref": [
+"busline#r:יוצאים מהתחנה רק אחרי הפעלת מחוון הכ"
+],
+"why": "rule written for this question (TR:429)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1195": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus stop duration",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r16"
+],
+"ref": [
+"busline#r:נהג אוטובוס בקו שירות עוצר רק בתחנות"
+],
+"why": "rule written for this question (TR:428(א))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1196": {
 "v": "full",
@@ -21753,16 +21904,19 @@
 "by": "hand"
 },
 "1198": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR disabled seats bus",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r18"
+],
+"ref": [
+"busline#r:עלה נכה – הנהג מבקש, לפי פנייתו, לפנ"
+],
+"why": "rule written for this question (TR:432)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1199": {
 "v": "full",
@@ -21780,40 +21934,49 @@
 "by": "sample"
 },
 "1200": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR loaded weapons",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r29"
+],
+"ref": [
+"busline#r:לא מסיעים אדם עם נשק טעון (אלא בתפקי"
+],
+"why": "rule written for this question (TR:466)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1201": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR luggage in bus",
-"src": "T",
+"v": "partial",
+"rule": [
+"busline#r27"
+],
+"ref": [
+"busline#r:מטען הנוסעים מניחים ככל האפשר בסורג "
+],
+"why": "rule covers part of the answer (TR:464)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1202": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR pram refusal",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r27"
+],
+"ref": [
+"busline#r:מטען הנוסעים מניחים ככל האפשר בסורג "
+],
+"why": "rule written for this question (TR:464)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1203": {
 "v": "full",
@@ -21852,16 +22015,19 @@
 "by": "sample"
 },
 "1205": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR school transport flashing lamps",
-"src": "T",
+"v": "partial",
+"rule": [
+"busline#r35"
+],
+"ref": [
+"busline#r:בהסעת תלמידים לא מסיעים ילדים בעמידה"
+],
+"why": "rule covers part of the answer (TR:83(ב1))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1206": {
 "v": "full",
@@ -21881,28 +22047,34 @@
 "by": "link"
 },
 "1207": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus interior light",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r20"
+],
+"ref": [
+"busline#r:בזמן תאורה מאירים את פנים האוטובוס."
+],
+"why": "rule written for this question (TR:440)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1208": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus cleanliness",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r21"
+],
+"ref": [
+"busline#r:הנהג מבטיח את ניקיון האוטובוס לפני ה"
+],
+"why": "rule written for this question (TR:441)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1209": {
 "v": "none",
@@ -21963,16 +22135,19 @@
 "by": "sample"
 },
 "1213": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR last passenger",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r22"
+],
+"ref": [
+"busline#r:בתחנת היעד הנהג לא עוזב את האוטובוס "
+],
+"why": "rule written for this question (TR:443)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1214": {
 "v": "full",
@@ -21990,40 +22165,49 @@
 "by": "sample"
 },
 "1215": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR explosives bus",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r29"
+],
+"ref": [
+"busline#r:לא מסיעים אדם עם נשק טעון (אלא בתפקי"
+],
+"why": "rule written for this question (TR:466)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1216": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 school transport vehicle",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r34"
+],
+"ref": [
+"busline#r:\"רכב להסעת תלמידים\" – אוטובוס פרטי א"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1217": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR lost property",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r23"
+],
+"ref": [
+"busline#r:חפצים שנשכחו באוטובוס מעבירים להנהלת"
+],
+"why": "rule written for this question (TR:444)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1218": {
 "v": "full",
@@ -22112,28 +22296,34 @@
 "by": "hand"
 },
 "1223": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR fare display",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r8"
+],
+"ref": [
+"taxi2#r:בעל המונית (או מי שהמונית בשליטתו) מ"
+],
+"why": "rule written for this question (TR:514)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1224": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR stops line licence",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r16"
+],
+"ref": [
+"busline#r:נהג אוטובוס בקו שירות עוצר רק בתחנות"
+],
+"why": "rule written for this question (TR:428(א))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1225": {
 "v": "none",
@@ -22149,16 +22339,19 @@
 "by": "hand"
 },
 "1226": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR meter calibration",
-"src": "T",
+"v": "partial",
+"rule": [
+"taxi2#r9"
+],
+"ref": [
+"taxi2#r:המונה מותקן במרכז לוח השעונים וגלוי "
+],
+"why": "rule covers part of the answer (TR:513)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1227": {
 "v": "partial",
@@ -22203,28 +22396,34 @@
 "by": "sample"
 },
 "1230": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 313 bus length 13.50",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r4"
+],
+"ref": [
+"busline#r:אורך כולל מרבי: אוטובוס בעל שני סרני"
+],
+"why": "rule written for this question (TR:313(א)(3))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1231": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR parcels bus",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r26"
+],
+"ref": [
+"busline#r:בלי היתר לא מכניסים לאוטובוס מטען שג"
+],
+"why": "rule written for this question (TR:463)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1232": {
 "v": "none",
@@ -22254,16 +22453,19 @@
 "by": "hand"
 },
 "1234": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 taxi roof sign",
-"src": "T",
+"v": "partial",
+"rule": [
+"taxi2#r7"
+],
+"ref": [
+"taxi2#r:סימני ההיכר של מונית: קופסה על הגג ("
+],
+"why": "rule covers part of the answer (TR:תוספת3פרט3)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1235": {
 "v": "full",
@@ -22281,16 +22483,19 @@
 "by": "hand"
 },
 "1236": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR disabled seat",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r18"
+],
+"ref": [
+"busline#r:עלה נכה – הנהג מבקש, לפי פנייתו, לפנ"
+],
+"why": "rule written for this question (TR:432)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1237": {
 "v": "full",
@@ -22316,23 +22521,26 @@
 "by": "hand"
 },
 "1238": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 אוטובוס",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r0"
+],
+"ref": [
+"busline#r:\"אוטובוס\" – רכב מנועי להסעת 8 אנשים "
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1239": {
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR driver smoking",
-"src": "T",
+"why": "other-law: smoking ban (smoking law, not in TR)",
+"src": "S",
 "cls": [
 "D"
 ],
@@ -22367,35 +22575,41 @@
 "by": "sample"
 },
 "1242": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR meter recalibration 48h",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r9"
+],
+"ref": [
+"taxi2#r:המונה מותקן במרכז לוח השעונים וגלוי "
+],
+"why": "rule written for this question (TR:513)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1243": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus interior light",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r20"
+],
+"ref": [
+"busline#r:בזמן תאורה מאירים את פנים האוטובוס."
+],
+"why": "rule written for this question (TR:440)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1244": {
 "v": "none",
 "rule": [],
 "ref": [],
-"why": "TR driver smoking",
-"src": "T",
+"why": "other-law: smoking ban (smoking law, not in TR)",
+"src": "S",
 "cls": [
 "D"
 ],
@@ -22415,28 +22629,34 @@
 "by": "hand"
 },
 "1246": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR skates refused",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r24"
+],
+"ref": [
+"busline#r:מותר למנוע עלייה של נוסע שבגדיו עלול"
+],
+"why": "rule written for this question (TR:461)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1247": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR special taxi service trip",
-"src": "T",
+"v": "partial",
+"rule": [
+"taxi2#r1"
+],
+"ref": [
+"taxi2#r:רישיון הסעה למונית הוא לנסיעה מיוחדת"
+],
+"why": "rule covers part of the answer (TR:490)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1248": {
 "v": "none",
@@ -22466,40 +22686,49 @@
 "by": "hand"
 },
 "1250": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR taxi licence suspension",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r12"
+],
+"ref": [
+"taxi2#r:בעל רישיון שהוזמן להתייצב ולא התייצב"
+],
+"why": "rule written for this question (TR:505ב)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.5"
 },
 "1251": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus cargo",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r26"
+],
+"ref": [
+"busline#r:בלי היתר לא מכניסים לאוטובוס מטען שג"
+],
+"why": "rule written for this question (TR:463)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1252": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR passenger rules taxis",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r5"
+],
+"ref": [
+"taxi2#r:כללי ההתנהגות של נוסעי אוטובוס (בעלי"
+],
+"why": "rule written for this question (TR:508)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1253": {
 "v": "none",
@@ -22538,16 +22767,19 @@
 "by": "hand"
 },
 "1256": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR taxi licence transfer",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r11"
+],
+"ref": [
+"taxi2#r:לא מעבירים רישיון שירות לאחר אלא בהי"
+],
+"why": "rule written for this question (TR:497)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1257": {
 "v": "full",
@@ -22806,16 +23038,19 @@
 "by": "hand"
 },
 "1273": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus security check",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r9"
+],
+"ref": [
+"busline#r:נהג האוטובוס בודק אם יש באוטובוס, על"
+],
+"why": "rule written for this question (TR:425א(א))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1274": {
 "v": "partial",
@@ -23477,16 +23712,19 @@
 "by": "hand"
 },
 "1317": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus age 20",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r6"
+],
+"ref": [
+"busline#r:לאוטובוס לא נותנים ולא מחדשים רישיון"
+],
+"why": "rule written for this question (TR:281)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1318": {
 "v": "full",
@@ -24222,16 +24460,19 @@
 "by": "hand"
 },
 "1368": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO 1 רכב ציבורי",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r3"
+],
+"ref": [
+"busline#r:\"אוטובוס פרטי\" – אוטובוס שאינו רכב צ"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1369": {
 "v": "none",
@@ -25671,16 +25912,19 @@
 "by": "hand"
 },
 "1465": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR taxi ABS",
-"src": "T",
+"v": "full",
+"rule": [
+"taxi2#r14"
+],
+"ref": [
+"taxi2#r:מונית לא נרשמת ולא משמשת אם לא הותקן"
+],
+"why": "rule written for this question (TR:330א)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1466": {
 "v": "none",
@@ -27068,16 +27312,19 @@
 "by": "sample"
 },
 "1549": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR first aid kit check",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r8"
+],
+"ref": [
+"busline#r:לפני תחילת התפקיד בקו: מספר הקו בחזי"
+],
+"why": "rule written for this question (TR:425(ב))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1550": {
 "v": "full",
@@ -27972,16 +28219,19 @@
 "by": "hand"
 },
 "1607": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 שלוחה אחורית picture",
-"src": "T",
+"v": "partial",
+"rule": [
+"busline#r5"
+],
+"ref": [
+"busline#r:\"אורך שלוחה אחורית\" – המרחק ממרכז הס"
+],
+"why": "rule covers part of the answer (TR:266)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1608": {
 "v": "none",
@@ -29201,16 +29451,19 @@
 "by": "sample"
 },
 "1692": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR bus overtaking ban",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r33"
+],
+"ref": [
+"busline#r:אוטובוס (שאינו זעיר) לא עוקף רכב עוק"
+],
+"why": "rule written for this question (TR:47(ח))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1693": {
 "v": "full",
@@ -29776,16 +30029,19 @@
 "by": "hand"
 },
 "1725": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 אוטובוס פרטי",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r3"
+],
+"ref": [
+"busline#r:\"אוטובוס פרטי\" – אוטובוס שאינו רכב צ"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1726": {
 "v": "full",
@@ -30174,16 +30430,19 @@
 "by": "sample"
 },
 "1749": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TO bus licence authority",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r37"
+],
+"ref": [
+"busline#r:את השירות בקו מפעילים רק לפי רישיון "
+],
+"why": "rule written for this question (TR:385)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1750": {
 "v": "none",
@@ -30835,16 +31094,19 @@
 "by": "hand"
 },
 "1786": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR articulated bus rear stickers",
-"src": "T",
+"v": "partial",
+"rule": [
+"busline#r36"
+],
+"ref": [
+"busline#r:אוטובוס (M2/M3): בצדו האחורי מודבקים"
+],
+"why": "rule covers part of the answer (TR:383א(ב))",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1787": {
 "v": "none",
@@ -30951,28 +31213,34 @@
 "by": "hand"
 },
 "1793": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 אוטובוס זעיר note",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r1"
+],
+"ref": [
+"busline#r:\"אוטובוס זעיר\" – אוטובוס להסעת עד 19"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1794": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 אוטובוס זעיר 5,000",
-"src": "T",
+"v": "full",
+"rule": [
+"busline#r1"
+],
+"ref": [
+"busline#r:\"אוטובוס זעיר\" – אוטובוס להסעת עד 19"
+],
+"why": "rule written for this question (TR:1)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1795": {
 "v": "none",

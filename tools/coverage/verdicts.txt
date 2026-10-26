@@ -969,7 +969,7 @@
 1240 n T TR brawl police
 1242 n T TR meter recalibration 48h
 1243 n T TR bus interior light
-1244 n T TR driver smoking
+1244 n S other-law: smoking ban (smoking law, not in TR)
 1245 n S other-law fare fine
 1246 n T TR skates refused
 1247 n T TR special taxi service trip

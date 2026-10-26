@@ -9589,8 +9589,8 @@
 "by": "sample",
 "v": "none",
 "u": [],
-"why": "TR driver smoking",
-"src": "T"
+"why": "other-law: smoking ban (smoking law, not in TR)",
+"src": "S"
 },
 "1240": {
 "by": "hand",
@@ -9625,8 +9625,8 @@
 "by": "hand",
 "v": "none",
 "u": [],
-"src": "T",
-"why": "TR driver smoking"
+"src": "S",
+"why": "other-law: smoking ban (smoking law, not in TR)"
 },
 "1245": {
 "by": "hand",
