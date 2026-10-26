@@ -28,7 +28,8 @@ START = LOT_ALL.find('לוח ה תמרורים')
 
 def lt_windows(num):
     out = []
-    for m in re.finditer(r'(?<![\d,])' + re.escape(num) + r'(?![\d,])', LOT_ALL[START:]):
+    pat = (r'ס\s*-\s*' + num[2:] if num.startswith('ס-') else re.escape(num)) + r'(?![\d,])'
+    for m in re.finditer(r'(?<![\d,])' + pat, LOT_ALL[START:]):
         i = START + m.start()
         out.append(LOT_ALL[i:i + 400])
     return out

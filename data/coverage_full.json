@@ -4,87 +4,87 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 986,
-"partial": 252,
-"none": 563,
-"full_pct": 54.7,
-"any_pct": 68.7,
-"strict_full": 753,
-"strict_pct": 41.8,
-"none_teachable": 247,
+"full": 1011,
+"partial": 256,
+"none": 534,
+"full_pct": 56.1,
+"any_pct": 70.3,
+"strict_full": 778,
+"strict_pct": 43.2,
+"none_teachable": 218,
 "none_nosource": 316
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 646,
-"partial": 174,
-"none": 452,
-"full_pct": 50.8,
-"any_pct": 64.5,
-"strict_full": 438,
-"strict_pct": 34.4,
-"none_teachable": 193,
+"full": 671,
+"partial": 178,
+"none": 423,
+"full_pct": 52.8,
+"any_pct": 66.7,
+"strict_full": 463,
+"strict_pct": 36.4,
+"none_teachable": 164,
 "none_nosource": 259
 },
 "A": {
 "n": 1155,
-"full": 628,
-"partial": 165,
-"none": 362,
-"full_pct": 54.4,
-"any_pct": 68.7,
-"strict_full": 425,
-"strict_pct": 36.8,
-"none_teachable": 156,
+"full": 653,
+"partial": 169,
+"none": 333,
+"full_pct": 56.5,
+"any_pct": 71.2,
+"strict_full": 450,
+"strict_pct": 39.0,
+"none_teachable": 127,
 "none_nosource": 206
 },
 "C1": {
 "n": 1385,
-"full": 710,
-"partial": 189,
-"none": 486,
-"full_pct": 51.3,
-"any_pct": 64.9,
-"strict_full": 499,
-"strict_pct": 36.0,
-"none_teachable": 228,
+"full": 735,
+"partial": 193,
+"none": 457,
+"full_pct": 53.1,
+"any_pct": 67.0,
+"strict_full": 524,
+"strict_pct": 37.8,
+"none_teachable": 199,
 "none_nosource": 258
 },
 "C": {
 "n": 1314,
-"full": 732,
-"partial": 175,
-"none": 407,
-"full_pct": 55.7,
-"any_pct": 69.0,
-"strict_full": 522,
-"strict_pct": 39.7,
-"none_teachable": 207,
+"full": 757,
+"partial": 179,
+"none": 378,
+"full_pct": 57.6,
+"any_pct": 71.2,
+"strict_full": 547,
+"strict_pct": 41.6,
+"none_teachable": 178,
 "none_nosource": 200
 },
 "D": {
 "n": 1316,
-"full": 758,
-"partial": 177,
-"none": 381,
-"full_pct": 57.6,
-"any_pct": 71.0,
-"strict_full": 536,
-"strict_pct": 40.7,
-"none_teachable": 173,
+"full": 783,
+"partial": 181,
+"none": 352,
+"full_pct": 59.5,
+"any_pct": 73.3,
+"strict_full": 561,
+"strict_pct": 42.6,
+"none_teachable": 144,
 "none_nosource": 208
 },
 "1": {
 "n": 1127,
-"full": 610,
-"partial": 149,
-"none": 368,
-"full_pct": 54.1,
-"any_pct": 67.3,
-"strict_full": 406,
-"strict_pct": 36.0,
-"none_teachable": 162,
+"full": 635,
+"partial": 153,
+"none": 339,
+"full_pct": 56.3,
+"any_pct": 69.9,
+"strict_full": 431,
+"strict_pct": 38.2,
+"none_teachable": 133,
 "none_nosource": 206
 }
 },
@@ -177,26 +177,26 @@
 },
 "signs": {
 "n": 390,
-"full": 331,
-"partial": 9,
-"none": 50,
-"full_pct": 84.9,
-"any_pct": 87.2,
-"strict_full": 98,
-"strict_pct": 25.1,
-"none_teachable": 47,
+"full": 355,
+"partial": 13,
+"none": 22,
+"full_pct": 91.0,
+"any_pct": 94.4,
+"strict_full": 122,
+"strict_pct": 31.3,
+"none_teachable": 19,
 "none_nosource": 3
 },
 "safety": {
 "n": 400,
-"full": 88,
+"full": 89,
 "partial": 85,
-"none": 227,
-"full_pct": 22.0,
-"any_pct": 43.2,
-"strict_full": 88,
-"strict_pct": 22.0,
-"none_teachable": 14,
+"none": 226,
+"full_pct": 22.2,
+"any_pct": 43.5,
+"strict_full": 89,
+"strict_pct": 22.2,
+"none_teachable": 13,
 "none_nosource": 213
 },
 "vehicle": {
@@ -228,26 +228,26 @@
 },
 "signs": {
 "n": 360,
-"full": 302,
-"partial": 9,
-"none": 49,
-"full_pct": 83.9,
-"any_pct": 86.4,
-"strict_full": 94,
-"strict_pct": 26.1,
-"none_teachable": 46,
+"full": 326,
+"partial": 13,
+"none": 21,
+"full_pct": 90.6,
+"any_pct": 94.2,
+"strict_full": 118,
+"strict_pct": 32.8,
+"none_teachable": 18,
 "none_nosource": 3
 },
 "safety": {
 "n": 305,
-"full": 62,
+"full": 63,
 "partial": 62,
-"none": 181,
-"full_pct": 20.3,
-"any_pct": 40.7,
-"strict_full": 62,
-"strict_pct": 20.3,
-"none_teachable": 11,
+"none": 180,
+"full_pct": 20.7,
+"any_pct": 41.0,
+"strict_full": 63,
+"strict_pct": 20.7,
+"none_teachable": 10,
 "none_nosource": 170
 },
 "vehicle": {
@@ -278,26 +278,26 @@
 },
 "signs": {
 "n": 354,
-"full": 297,
-"partial": 9,
-"none": 48,
-"full_pct": 83.9,
-"any_pct": 86.4,
-"strict_full": 94,
-"strict_pct": 26.6,
-"none_teachable": 45,
+"full": 321,
+"partial": 13,
+"none": 20,
+"full_pct": 90.7,
+"any_pct": 94.4,
+"strict_full": 118,
+"strict_pct": 33.3,
+"none_teachable": 17,
 "none_nosource": 3
 },
 "safety": {
 "n": 312,
-"full": 74,
+"full": 75,
 "partial": 66,
-"none": 172,
-"full_pct": 23.7,
-"any_pct": 44.9,
-"strict_full": 74,
-"strict_pct": 23.7,
-"none_teachable": 11,
+"none": 171,
+"full_pct": 24.0,
+"any_pct": 45.2,
+"strict_full": 75,
+"strict_pct": 24.0,
+"none_teachable": 10,
 "none_nosource": 161
 },
 "vehicle": {
@@ -328,26 +328,26 @@
 },
 "signs": {
 "n": 367,
-"full": 308,
-"partial": 9,
-"none": 50,
-"full_pct": 83.9,
-"any_pct": 86.4,
-"strict_full": 97,
-"strict_pct": 26.4,
-"none_teachable": 47,
+"full": 332,
+"partial": 13,
+"none": 22,
+"full_pct": 90.5,
+"any_pct": 94.0,
+"strict_full": 121,
+"strict_pct": 33.0,
+"none_teachable": 19,
 "none_nosource": 3
 },
 "safety": {
 "n": 312,
-"full": 64,
+"full": 65,
 "partial": 69,
-"none": 179,
-"full_pct": 20.5,
-"any_pct": 42.6,
-"strict_full": 64,
-"strict_pct": 20.5,
-"none_teachable": 12,
+"none": 178,
+"full_pct": 20.8,
+"any_pct": 42.9,
+"strict_full": 65,
+"strict_pct": 20.8,
+"none_teachable": 11,
 "none_nosource": 167
 },
 "vehicle": {
@@ -378,26 +378,26 @@
 },
 "signs": {
 "n": 366,
-"full": 307,
-"partial": 9,
-"none": 50,
-"full_pct": 83.9,
-"any_pct": 86.3,
-"strict_full": 97,
-"strict_pct": 26.5,
-"none_teachable": 47,
+"full": 331,
+"partial": 13,
+"none": 22,
+"full_pct": 90.4,
+"any_pct": 94.0,
+"strict_full": 121,
+"strict_pct": 33.1,
+"none_teachable": 19,
 "none_nosource": 3
 },
 "safety": {
 "n": 307,
-"full": 63,
+"full": 64,
 "partial": 69,
-"none": 175,
-"full_pct": 20.5,
-"any_pct": 43.0,
-"strict_full": 63,
-"strict_pct": 20.5,
-"none_teachable": 13,
+"none": 174,
+"full_pct": 20.8,
+"any_pct": 43.3,
+"strict_full": 64,
+"strict_pct": 20.8,
+"none_teachable": 12,
 "none_nosource": 162
 },
 "vehicle": {
@@ -428,26 +428,26 @@
 },
 "signs": {
 "n": 377,
-"full": 319,
-"partial": 9,
-"none": 49,
-"full_pct": 84.6,
-"any_pct": 87.0,
-"strict_full": 97,
-"strict_pct": 25.7,
-"none_teachable": 46,
+"full": 343,
+"partial": 13,
+"none": 21,
+"full_pct": 91.0,
+"any_pct": 94.4,
+"strict_full": 121,
+"strict_pct": 32.1,
+"none_teachable": 18,
 "none_nosource": 3
 },
 "safety": {
 "n": 299,
-"full": 61,
+"full": 62,
 "partial": 64,
-"none": 174,
-"full_pct": 20.4,
-"any_pct": 41.8,
-"strict_full": 61,
-"strict_pct": 20.4,
-"none_teachable": 12,
+"none": 173,
+"full_pct": 20.7,
+"any_pct": 42.1,
+"strict_full": 62,
+"strict_pct": 20.7,
+"none_teachable": 11,
 "none_nosource": 162
 },
 "vehicle": {
@@ -478,26 +478,26 @@
 },
 "signs": {
 "n": 353,
-"full": 298,
-"partial": 8,
-"none": 47,
-"full_pct": 84.4,
-"any_pct": 86.7,
-"strict_full": 94,
-"strict_pct": 26.6,
-"none_teachable": 44,
+"full": 322,
+"partial": 12,
+"none": 19,
+"full_pct": 91.2,
+"any_pct": 94.6,
+"strict_full": 118,
+"strict_pct": 33.4,
+"none_teachable": 16,
 "none_nosource": 3
 },
 "safety": {
 "n": 295,
-"full": 61,
+"full": 62,
 "partial": 59,
-"none": 175,
-"full_pct": 20.7,
-"any_pct": 40.7,
-"strict_full": 61,
-"strict_pct": 20.7,
-"none_teachable": 10,
+"none": 174,
+"full_pct": 21.0,
+"any_pct": 41.0,
+"strict_full": 62,
+"strict_pct": 21.0,
+"none_teachable": 9,
 "none_nosource": 165
 },
 "vehicle": {
@@ -515,10 +515,10 @@
 }
 },
 "by": {
-"hand": 1169,
-"v1.5": 262,
+"hand": 1141,
+"v1.5": 291,
 "link": 81,
-"sample": 289
+"sample": 288
 }
 },
 "q": {
@@ -8108,11 +8108,14 @@
 "by": "hand"
 },
 "408": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 101",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r0"
+],
+"ref": [
+"signs2#r:תמרורי אזהרה מודיעים על סכנה בדרך של"
+],
+"why": "rule written for this question (TR:52)",
 "cls": [
 "1",
 "A",
@@ -8122,7 +8125,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "409": {
 "v": "full",
@@ -8575,11 +8578,14 @@
 "by": "link"
 },
 "431": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 121",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r0"
+],
+"ref": [
+"signs2#r:תמרורי אזהרה מודיעים על סכנה בדרך של"
+],
+"why": "rule written for this question (TR:52)",
 "cls": [
 "1",
 "A",
@@ -8589,7 +8595,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "432": {
 "v": "full",
@@ -8613,11 +8619,14 @@
 "by": "hand"
 },
 "433": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 122",
-"src": "T",
+"v": "partial",
+"rule": [
+"signs2#r2"
+],
+"ref": [
+"signs2#r:תמרור 122: רמזור בדרך שלפניך."
+],
+"why": "rule covers part of the answer (LT:122)",
 "cls": [
 "1",
 "A",
@@ -8627,7 +8636,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "434": {
 "v": "full",
@@ -9221,11 +9230,14 @@
 "by": "hand"
 },
 "463": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 139",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r4"
+],
+"ref": [
+"signs2#r:תמרור 139: תמרור \"עצור\" (302) בהמשך "
+],
+"why": "rule written for this question (LT:139)",
 "cls": [
 "1",
 "A",
@@ -9235,7 +9247,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "464": {
 "v": "full",
@@ -9259,11 +9271,14 @@
 "by": "hand"
 },
 "465": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 140",
-"src": "T",
+"v": "partial",
+"rule": [
+"signs2#r1"
+],
+"ref": [
+"signs2#r:תמרור 140: ירידה תלולה לפניך – ובירי"
+],
+"why": "rule covers part of the answer (LT:140)",
 "cls": [
 "1",
 "A",
@@ -9273,7 +9288,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "466": {
 "v": "full",
@@ -9297,11 +9312,14 @@
 "by": "hand"
 },
 "467": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link slippery road",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r0"
+],
+"ref": [
+"signs2#r:תמרורי אזהרה מודיעים על סכנה בדרך של"
+],
+"why": "rule written for this question (TR:52)",
 "cls": [
 "1",
 "A",
@@ -9311,7 +9329,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "sample"
+"by": "v1.5"
 },
 "468": {
 "v": "full",
@@ -9396,11 +9414,14 @@
 "by": "link"
 },
 "472": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 136",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r0"
+],
+"ref": [
+"signs2#r:תמרורי אזהרה מודיעים על סכנה בדרך של"
+],
+"why": "rule written for this question (TR:52)",
 "cls": [
 "1",
 "A",
@@ -9410,14 +9431,17 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "473": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 145",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r3"
+],
+"ref": [
+"signs2#r:תמרור 145: תנועה דו־סטרית בדרך שלפני"
+],
+"why": "rule written for this question (LT:145)",
 "cls": [
 "1",
 "A",
@@ -9427,14 +9451,17 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "474": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 145",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r3"
+],
+"ref": [
+"signs2#r:תמרור 145: תנועה דו־סטרית בדרך שלפני"
+],
+"why": "rule written for this question (LT:145)",
 "cls": [
 "1",
 "A",
@@ -9444,7 +9471,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "475": {
 "v": "full",
@@ -9468,11 +9495,14 @@
 "by": "hand"
 },
 "476": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 150",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r0"
+],
+"ref": [
+"signs2#r:תמרורי אזהרה מודיעים על סכנה בדרך של"
+],
+"why": "rule written for this question (TR:52)",
 "cls": [
 "1",
 "A",
@@ -9482,7 +9512,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "477": {
 "v": "full",
@@ -9644,11 +9674,14 @@
 "by": "hand"
 },
 "485": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 144",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r0"
+],
+"ref": [
+"signs2#r:תמרורי אזהרה מודיעים על סכנה בדרך של"
+],
+"why": "rule written for this question (TR:52)",
 "cls": [
 "1",
 "A",
@@ -9658,7 +9691,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "486": {
 "v": "full",
@@ -9682,11 +9715,14 @@
 "by": "hand"
 },
 "487": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 147",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r0"
+],
+"ref": [
+"signs2#r:תמרורי אזהרה מודיעים על סכנה בדרך של"
+],
+"why": "rule written for this question (TR:52)",
 "cls": [
 "1",
 "A",
@@ -9696,7 +9732,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "488": {
 "v": "full",
@@ -9865,11 +9901,14 @@
 "by": "hand"
 },
 "496": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 307",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r5"
+],
+"ref": [
+"signs2#r:תמרור 307: בקטע דרך צרה נותנים זכות "
+],
+"why": "rule written for this question (LT:307)",
 "cls": [
 "1",
 "A",
@@ -9879,7 +9918,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "497": {
 "v": "full",
@@ -10898,11 +10937,14 @@
 "by": "sample"
 },
 "548": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link park and ride",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r10"
+],
+"ref": [
+"signs2#r:סמלי שירות בלוח התמרורים: ס־30 תחנת "
+],
+"why": "rule written for this question (LT:ס-30)",
 "cls": [
 "1",
 "A",
@@ -10912,7 +10954,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "549": {
 "v": "full",
@@ -11687,11 +11729,14 @@
 "by": "sample"
 },
 "588": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 308",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r5"
+],
+"ref": [
+"signs2#r:תמרור 307: בקטע דרך צרה נותנים זכות "
+],
+"why": "rule written for this question (LT:307)",
 "cls": [
 "1",
 "A",
@@ -11701,14 +11746,17 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "589": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 308",
-"src": "T",
+"v": "partial",
+"rule": [
+"signs2#r5"
+],
+"ref": [
+"signs2#r:תמרור 307: בקטע דרך צרה נותנים זכות "
+],
+"why": "rule covers part of the answer (LT:307)",
 "cls": [
 "1",
 "A",
@@ -11718,7 +11766,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "590": {
 "v": "full",
@@ -11884,11 +11932,14 @@
 "by": "link"
 },
 "598": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link service sign",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r10"
+],
+"ref": [
+"signs2#r:סמלי שירות בלוח התמרורים: ס־30 תחנת "
+],
+"why": "rule written for this question (LT:ס-30)",
 "cls": [
 "1",
 "A",
@@ -11898,14 +11949,17 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "599": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link service sign",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r10"
+],
+"ref": [
+"signs2#r:סמלי שירות בלוח התמרורים: ס־30 תחנת "
+],
+"why": "rule written for this question (LT:ס-30)",
 "cls": [
 "1",
 "A",
@@ -11915,14 +11969,17 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "600": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link service sign",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r10"
+],
+"ref": [
+"signs2#r:סמלי שירות בלוח התמרורים: ס־30 תחנת "
+],
+"why": "rule written for this question (LT:ס-30)",
 "cls": [
 "1",
 "A",
@@ -11932,7 +11989,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "601": {
 "v": "full",
@@ -11950,11 +12007,14 @@
 "by": "v1.5"
 },
 "602": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link service sign",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r10"
+],
+"ref": [
+"signs2#r:סמלי שירות בלוח התמרורים: ס־30 תחנת "
+],
+"why": "rule written for this question (LT:ס-30)",
 "cls": [
 "1",
 "A",
@@ -11964,14 +12024,17 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "603": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link service sign",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r10"
+],
+"ref": [
+"signs2#r:סמלי שירות בלוח התמרורים: ס־30 תחנת "
+],
+"why": "rule written for this question (LT:ס-30)",
 "cls": [
 "1",
 "A",
@@ -11981,7 +12044,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "604": {
 "v": "full",
@@ -12357,11 +12420,14 @@
 "by": "hand"
 },
 "624": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link service sign",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r10"
+],
+"ref": [
+"signs2#r:סמלי שירות בלוח התמרורים: ס־30 תחנת "
+],
+"why": "rule written for this question (LT:ס-30)",
 "cls": [
 "1",
 "A",
@@ -12371,14 +12437,17 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "625": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link service sign",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r10"
+],
+"ref": [
+"signs2#r:סמלי שירות בלוח התמרורים: ס־30 תחנת "
+],
+"why": "rule written for this question (LT:ס-30)",
 "cls": [
 "1",
 "A",
@@ -12388,7 +12457,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "626": {
 "v": "full",
@@ -15463,11 +15532,14 @@
 "by": "v1.5"
 },
 "788": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 308",
-"src": "T",
+"v": "partial",
+"rule": [
+"signs2#r5"
+],
+"ref": [
+"signs2#r:תמרור 307: בקטע דרך צרה נותנים זכות "
+],
+"why": "rule covers part of the answer (LT:307)",
 "cls": [
 "1",
 "A",
@@ -15477,7 +15549,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "789": {
 "v": "full",
@@ -18503,11 +18575,14 @@
 "by": "hand"
 },
 "956": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign-link 621",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r6"
+],
+"ref": [
+"signs2#r:תמרור 621: מספר הנתיבים הולך וקטן – "
+],
+"why": "rule written for this question (LT:621)",
 "cls": [
 "1",
 "A",
@@ -18517,14 +18592,17 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "957": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign 302 left side picture",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r9"
+],
+"ref": [
+"signs2#r:\"עצור\" (302) חל על כל הנתיבים בכביש;"
+],
+"why": "rule written for this question (LT:302)",
 "cls": [
 "1",
 "A",
@@ -18534,7 +18612,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "958": {
 "v": "none",
@@ -30928,11 +31006,14 @@
 "by": "v1.5"
 },
 "1750": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign 705 yellow steady",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r8"
+],
+"ref": [
+"signs2#r:אור צהוב (705): עוצרים; מי שאינו יכו"
+],
+"why": "rule written for this question (LT:705)",
 "cls": [
 "1",
 "A",
@@ -30942,7 +31023,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "1751": {
 "v": "full",
@@ -31132,11 +31213,14 @@
 "by": "hand"
 },
 "1761": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign 302 one-way both lanes",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r9"
+],
+"ref": [
+"signs2#r:\"עצור\" (302) חל על כל הנתיבים בכביש;"
+],
+"why": "rule written for this question (LT:302)",
 "cls": [
 "1",
 "A",
@@ -31146,7 +31230,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "1762": {
 "v": "full",
@@ -31616,11 +31700,14 @@
 "by": "v1.5"
 },
 "1787": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "sign 703 flashing green",
-"src": "T",
+"v": "full",
+"rule": [
+"signs2#r7"
+],
+"ref": [
+"signs2#r:אור ירוק מהבהב (703) אומר שהירוק מסת"
+],
+"why": "rule written for this question (LT:703)",
 "cls": [
 "1",
 "A",
@@ -31630,7 +31717,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.5"
 },
 "1788": {
 "v": "full",
