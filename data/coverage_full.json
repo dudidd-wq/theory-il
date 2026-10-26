@@ -4,88 +4,88 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1377,
-"partial": 251,
-"none": 173,
-"full_pct": 76.5,
-"any_pct": 90.4,
-"strict_full": 1144,
-"strict_pct": 63.5,
+"full": 1364,
+"partial": 260,
+"none": 177,
+"full_pct": 75.7,
+"any_pct": 90.2,
+"strict_full": 1073,
+"strict_pct": 59.6,
 "none_teachable": 33,
-"none_nosource": 140
+"none_nosource": 144
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 1032,
-"partial": 186,
-"none": 54,
-"full_pct": 81.1,
-"any_pct": 95.8,
-"strict_full": 824,
-"strict_pct": 64.8,
+"full": 1022,
+"partial": 194,
+"none": 56,
+"full_pct": 80.3,
+"any_pct": 95.6,
+"strict_full": 758,
+"strict_pct": 59.6,
 "none_teachable": 0,
-"none_nosource": 54
+"none_nosource": 56
 },
 "A": {
 "n": 1155,
-"full": 920,
-"partial": 170,
-"none": 65,
-"full_pct": 79.7,
-"any_pct": 94.4,
-"strict_full": 717,
-"strict_pct": 62.1,
+"full": 909,
+"partial": 179,
+"none": 67,
+"full_pct": 78.7,
+"any_pct": 94.2,
+"strict_full": 650,
+"strict_pct": 56.3,
 "none_teachable": 0,
-"none_nosource": 65
+"none_nosource": 67
 },
 "C1": {
 "n": 1385,
-"full": 1096,
-"partial": 192,
-"none": 97,
-"full_pct": 79.1,
-"any_pct": 93.0,
-"strict_full": 885,
-"strict_pct": 63.9,
+"full": 1086,
+"partial": 200,
+"none": 99,
+"full_pct": 78.4,
+"any_pct": 92.9,
+"strict_full": 817,
+"strict_pct": 59.0,
 "none_teachable": 30,
-"none_nosource": 67
+"none_nosource": 69
 },
 "C": {
 "n": 1314,
-"full": 1056,
-"partial": 166,
-"none": 92,
-"full_pct": 80.4,
-"any_pct": 93.0,
-"strict_full": 846,
-"strict_pct": 64.4,
+"full": 1046,
+"partial": 174,
+"none": 94,
+"full_pct": 79.6,
+"any_pct": 92.8,
+"strict_full": 778,
+"strict_pct": 59.2,
 "none_teachable": 32,
-"none_nosource": 60
+"none_nosource": 62
 },
 "D": {
 "n": 1316,
-"full": 1072,
-"partial": 171,
-"none": 73,
-"full_pct": 81.5,
-"any_pct": 94.5,
-"strict_full": 850,
-"strict_pct": 64.6,
+"full": 1060,
+"partial": 179,
+"none": 77,
+"full_pct": 80.5,
+"any_pct": 94.1,
+"strict_full": 780,
+"strict_pct": 59.3,
 "none_teachable": 5,
-"none_nosource": 68
+"none_nosource": 72
 },
 "1": {
 "n": 1127,
-"full": 921,
-"partial": 142,
-"none": 64,
-"full_pct": 81.7,
-"any_pct": 94.3,
-"strict_full": 717,
-"strict_pct": 63.6,
+"full": 911,
+"partial": 150,
+"none": 66,
+"full_pct": 80.8,
+"any_pct": 94.1,
+"strict_full": 652,
+"strict_pct": 57.9,
 "none_teachable": 1,
-"none_nosource": 63
+"none_nosource": 65
 }
 },
 "class_only": {
@@ -103,13 +103,13 @@
 },
 "A": {
 "n": 88,
-"full": 50,
-"partial": 17,
+"full": 49,
+"partial": 18,
 "none": 21,
-"full_pct": 56.8,
+"full_pct": 55.7,
 "any_pct": 76.1,
-"strict_full": 50,
-"strict_pct": 56.8,
+"strict_full": 49,
+"strict_pct": 55.7,
 "none_teachable": 0,
 "none_nosource": 21
 },
@@ -139,15 +139,15 @@
 },
 "D": {
 "n": 190,
-"full": 142,
+"full": 141,
 "partial": 26,
-"none": 22,
-"full_pct": 74.7,
-"any_pct": 88.4,
-"strict_full": 124,
-"strict_pct": 65.3,
+"none": 23,
+"full_pct": 74.2,
+"any_pct": 87.9,
+"strict_full": 123,
+"strict_pct": 64.7,
 "none_teachable": 1,
-"none_nosource": 21
+"none_nosource": 22
 },
 "1": {
 "n": 43,
@@ -165,37 +165,37 @@
 "topic": {
 "law": {
 "n": 901,
-"full": 708,
+"full": 707,
 "partial": 124,
-"none": 69,
-"full_pct": 78.6,
-"any_pct": 92.3,
-"strict_full": 708,
-"strict_pct": 78.6,
+"none": 70,
+"full_pct": 78.5,
+"any_pct": 92.2,
+"strict_full": 705,
+"strict_pct": 78.2,
 "none_teachable": 31,
-"none_nosource": 38
+"none_nosource": 39
 },
 "signs": {
 "n": 390,
-"full": 374,
-"partial": 14,
-"none": 2,
-"full_pct": 95.9,
-"any_pct": 99.5,
-"strict_full": 141,
-"strict_pct": 36.2,
+"full": 363,
+"partial": 22,
+"none": 5,
+"full_pct": 93.1,
+"any_pct": 98.7,
+"strict_full": 74,
+"strict_pct": 19.0,
 "none_teachable": 1,
-"none_nosource": 1
+"none_nosource": 4
 },
 "safety": {
 "n": 400,
-"full": 235,
-"partial": 83,
+"full": 234,
+"partial": 84,
 "none": 82,
-"full_pct": 58.8,
+"full_pct": 58.5,
 "any_pct": 79.5,
-"strict_full": 235,
-"strict_pct": 58.8,
+"strict_full": 234,
+"strict_pct": 58.5,
 "none_teachable": 1,
 "none_nosource": 81
 },
@@ -221,22 +221,22 @@
 "none": 6,
 "full_pct": 84.0,
 "any_pct": 98.8,
-"strict_full": 421,
-"strict_pct": 84.0,
+"strict_full": 419,
+"strict_pct": 83.6,
 "none_teachable": 0,
 "none_nosource": 6
 },
 "signs": {
 "n": 360,
-"full": 345,
-"partial": 14,
-"none": 1,
-"full_pct": 95.8,
-"any_pct": 99.7,
-"strict_full": 137,
-"strict_pct": 38.1,
+"full": 335,
+"partial": 22,
+"none": 3,
+"full_pct": 93.1,
+"any_pct": 99.2,
+"strict_full": 73,
+"strict_pct": 20.3,
 "none_teachable": 0,
-"none_nosource": 1
+"none_nosource": 3
 },
 "safety": {
 "n": 305,
@@ -271,32 +271,32 @@
 "none": 7,
 "full_pct": 81.8,
 "any_pct": 98.4,
-"strict_full": 351,
-"strict_pct": 81.8,
+"strict_full": 349,
+"strict_pct": 81.4,
 "none_teachable": 0,
 "none_nosource": 7
 },
 "signs": {
 "n": 354,
-"full": 339,
-"partial": 14,
-"none": 1,
-"full_pct": 95.8,
-"any_pct": 99.7,
-"strict_full": 136,
-"strict_pct": 38.4,
+"full": 329,
+"partial": 22,
+"none": 3,
+"full_pct": 92.9,
+"any_pct": 99.2,
+"strict_full": 72,
+"strict_pct": 20.3,
 "none_teachable": 0,
-"none_nosource": 1
+"none_nosource": 3
 },
 "safety": {
 "n": 312,
-"full": 195,
-"partial": 73,
+"full": 194,
+"partial": 74,
 "none": 44,
-"full_pct": 62.5,
+"full_pct": 62.2,
 "any_pct": 85.9,
-"strict_full": 195,
-"strict_pct": 62.5,
+"strict_full": 194,
+"strict_pct": 62.2,
 "none_teachable": 0,
 "none_nosource": 44
 },
@@ -321,22 +321,22 @@
 "none": 44,
 "full_pct": 78.8,
 "any_pct": 92.7,
-"strict_full": 477,
-"strict_pct": 78.8,
+"strict_full": 475,
+"strict_pct": 78.5,
 "none_teachable": 29,
 "none_nosource": 15
 },
 "signs": {
 "n": 367,
-"full": 351,
-"partial": 14,
-"none": 2,
-"full_pct": 95.6,
-"any_pct": 99.5,
-"strict_full": 140,
-"strict_pct": 38.1,
+"full": 341,
+"partial": 22,
+"none": 4,
+"full_pct": 92.9,
+"any_pct": 98.9,
+"strict_full": 74,
+"strict_pct": 20.2,
 "none_teachable": 1,
-"none_nosource": 1
+"none_nosource": 3
 },
 "safety": {
 "n": 312,
@@ -371,22 +371,22 @@
 "none": 49,
 "full_pct": 78.8,
 "any_pct": 92.1,
-"strict_full": 488,
-"strict_pct": 78.8,
+"strict_full": 486,
+"strict_pct": 78.5,
 "none_teachable": 30,
 "none_nosource": 19
 },
 "signs": {
 "n": 366,
-"full": 350,
-"partial": 14,
-"none": 2,
-"full_pct": 95.6,
-"any_pct": 99.5,
-"strict_full": 140,
-"strict_pct": 38.3,
+"full": 340,
+"partial": 22,
+"none": 4,
+"full_pct": 92.9,
+"any_pct": 98.9,
+"strict_full": 74,
+"strict_pct": 20.2,
 "none_teachable": 1,
-"none_nosource": 1
+"none_nosource": 3
 },
 "safety": {
 "n": 307,
@@ -416,27 +416,27 @@
 "D": {
 "law": {
 "n": 618,
-"full": 492,
+"full": 491,
 "partial": 88,
-"none": 38,
-"full_pct": 79.6,
-"any_pct": 93.9,
-"strict_full": 492,
-"strict_pct": 79.6,
+"none": 39,
+"full_pct": 79.4,
+"any_pct": 93.7,
+"strict_full": 489,
+"strict_pct": 79.1,
 "none_teachable": 5,
-"none_nosource": 33
+"none_nosource": 34
 },
 "signs": {
 "n": 377,
-"full": 362,
-"partial": 14,
-"none": 1,
-"full_pct": 96.0,
-"any_pct": 99.7,
-"strict_full": 140,
-"strict_pct": 37.1,
+"full": 351,
+"partial": 22,
+"none": 4,
+"full_pct": 93.1,
+"any_pct": 98.9,
+"strict_full": 73,
+"strict_pct": 19.4,
 "none_teachable": 0,
-"none_nosource": 1
+"none_nosource": 4
 },
 "safety": {
 "n": 299,
@@ -471,22 +471,22 @@
 "none": 9,
 "full_pct": 83.5,
 "any_pct": 97.9,
-"strict_full": 364,
-"strict_pct": 83.5,
+"strict_full": 363,
+"strict_pct": 83.3,
 "none_teachable": 1,
 "none_nosource": 8
 },
 "signs": {
 "n": 353,
-"full": 339,
-"partial": 13,
-"none": 1,
-"full_pct": 96.0,
-"any_pct": 99.7,
-"strict_full": 135,
-"strict_pct": 38.2,
+"full": 329,
+"partial": 21,
+"none": 3,
+"full_pct": 93.2,
+"any_pct": 99.2,
+"strict_full": 71,
+"strict_pct": 20.1,
 "none_teachable": 0,
-"none_nosource": 1
+"none_nosource": 3
 },
 "safety": {
 "n": 295,
@@ -515,10 +515,11 @@
 }
 },
 "by": {
-"hand": 745,
+"hand": 710,
 "v1.5": 732,
-"link": 80,
-"sample": 244
+"rejudge": 88,
+"sample": 235,
+"link": 36
 },
 "none_ids": {
 "B": [
@@ -526,6 +527,7 @@
 273,
 281,
 302,
+520,
 699,
 708,
 728,
@@ -570,6 +572,7 @@
 1287,
 1290,
 1296,
+1307,
 1500,
 1562,
 1699,
@@ -581,6 +584,7 @@
 92,
 281,
 302,
+520,
 699,
 708,
 728,
@@ -618,6 +622,7 @@
 1287,
 1290,
 1296,
+1307,
 1500,
 1588,
 1596,
@@ -921,15 +926,14 @@
 },
 "15": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g15",
-"parking#g15"
+"signs#d433"
 ],
 "ref": [
-"signs#g15",
-"parking#g15"
+"signs#d433"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -939,7 +943,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "16": {
 "v": "full",
@@ -2411,14 +2415,14 @@
 "by": "hand"
 },
 "93": {
-"v": "full",
+"v": "partial",
 "rule": [
-"lights#g93"
+"lights2#r6"
 ],
 "ref": [
-"lights#g93"
+"lights2#r:ירוק מהבהב: משמעותו כמו ירוק רגיל, ו"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "textbook says flashing green warns of the last three seconds; \"three flashes\" is not stated",
 "cls": [
 "1",
 "A",
@@ -2428,7 +2432,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "94": {
 "v": "full",
@@ -3490,13 +3494,14 @@
 },
 "147": {
 "v": "full",
+"dict": true,
 "rule": [
-"speed#g564"
+"signs#d218"
 ],
 "ref": [
-"speed#g564"
+"signs#d218"
 ],
-"why": "the cited rule states the correct answer",
+"why": "sign 218 meaning in the official sign table states the answer (was gallery tile only)",
 "cls": [
 "A",
 "B",
@@ -3505,7 +3510,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "rejudge"
 },
 "148": {
 "v": "full",
@@ -3581,28 +3586,29 @@
 "152": {
 "v": "full",
 "rule": [
-"speed#x0"
+"speed#r0"
 ],
 "ref": [
-"speed#x:Q151"
+"speed#r:רכב מנועי רגיל: 50 בדרך עירונית, 80 "
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 54(א) table: 50 urban / 80 non-urban (was mapped to the q151 example)",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "rejudge"
 },
 "153": {
 "v": "full",
+"dict": true,
 "rule": [
-"speed#g153"
+"signs#d426"
 ],
 "ref": [
-"speed#g153"
+"signs#d426"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -3612,7 +3618,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "154": {
 "v": "full",
@@ -3637,12 +3643,12 @@
 "155": {
 "v": "full",
 "rule": [
-"parking#g442"
+"rail2#r0"
 ],
 "ref": [
-"parking#g442"
+"rail2#r:לפני מפגש מסילת ברזל חייבים להאט, גם"
 ],
-"why": "the cited rule states the correct answer",
+"why": "textbook: must slow before a level crossing (was gallery tile only)",
 "cls": [
 "1",
 "A",
@@ -3652,7 +3658,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "rejudge"
 },
 "156": {
 "v": "full",
@@ -3775,12 +3781,12 @@
 "162": {
 "v": "full",
 "rule": [
-"lights#g674"
+"rail#r0"
 ],
 "ref": [
-"lights#g674"
+"rail#r:עוצרים לפני קו העצירה, או לפני המחסו"
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 56(א): stop before the crossing when a warning signal is given (was gallery tile only)",
 "cls": [
 "1",
 "A",
@@ -3790,7 +3796,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "rejudge"
 },
 "163": {
 "v": "full",
@@ -4258,13 +4264,14 @@
 },
 "186": {
 "v": "full",
+"dict": true,
 "rule": [
-"priority#g186"
+"signs#d706"
 ],
 "ref": [
-"priority#g186"
+"signs#d706"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -4274,7 +4281,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "187": {
 "v": "partial",
@@ -5404,13 +5411,14 @@
 },
 "246": {
 "v": "full",
+"dict": true,
 "rule": [
-"priority#g424"
+"signs#d706"
 ],
 "ref": [
-"priority#g424"
+"signs#d706"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -5420,7 +5428,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "247": {
 "v": "full",
@@ -7518,13 +7526,14 @@
 },
 "358": {
 "v": "full",
+"dict": true,
 "rule": [
-"overtake#g358"
+"signs#d622"
 ],
 "ref": [
-"overtake#g358"
+"signs#d622"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -7534,7 +7543,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "359": {
 "v": "full",
@@ -7700,13 +7709,14 @@
 },
 "367": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g367"
+"signs#d122"
 ],
 "ref": [
-"signs#g367"
+"signs#d122"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -7716,17 +7726,18 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "368": {
 "v": "full",
+"dict": true,
 "rule": [
-"peds#g368"
+"signs#d136"
 ],
 "ref": [
-"peds#g368"
+"signs#d136"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -7736,7 +7747,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "369": {
 "v": "full",
@@ -7782,13 +7793,14 @@
 },
 "371": {
 "v": "full",
+"dict": true,
 "rule": [
-"rail#g371"
+"signs#d130"
 ],
 "ref": [
-"rail#g371"
+"signs#d130"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -7798,7 +7810,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "372": {
 "v": "full",
@@ -7844,13 +7856,14 @@
 },
 "374": {
 "v": "full",
+"dict": true,
 "rule": [
-"rail#g459"
+"signs#d133"
 ],
 "ref": [
-"rail#g459"
+"signs#d133"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -7860,17 +7873,18 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "375": {
 "v": "full",
+"dict": true,
 "rule": [
-"peds#g384"
+"signs#d306"
 ],
 "ref": [
-"peds#g384"
+"signs#d306"
 ],
-"why": "the cited rule states the correct answer",
+"why": "as 384",
 "cls": [
 "1",
 "A",
@@ -7880,17 +7894,18 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "376": {
 "v": "full",
+"dict": true,
 "rule": [
-"peds#g384"
+"signs#d306"
 ],
 "ref": [
-"peds#g384"
+"signs#d306"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -7900,7 +7915,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "377": {
 "v": "full",
@@ -8050,15 +8065,16 @@
 },
 "384": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#x0",
-"peds#g384"
+"signs#d135",
+"signs#d306"
 ],
 "ref": [
-"signs#x:Q384",
-"peds#g384"
+"signs#d135",
+"signs#d306"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "signs 135 and 306 in the official sign table (the example is sourced from the bank question itself)",
 "cls": [
 "1",
 "A",
@@ -8068,17 +8084,18 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "385": {
 "v": "full",
+"dict": true,
 "rule": [
-"speed#g385"
+"signs#d427"
 ],
 "ref": [
-"speed#g385"
+"signs#d427"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -8088,17 +8105,18 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "386": {
 "v": "full",
+"dict": true,
 "rule": [
-"overtake#g493"
+"signs#d423"
 ],
 "ref": [
-"overtake#g493"
+"signs#d423"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -8108,7 +8126,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "387": {
 "v": "full",
@@ -8233,13 +8251,14 @@
 },
 "393": {
 "v": "full",
+"dict": true,
 "rule": [
-"parking#g393"
+"signs#d433"
 ],
 "ref": [
-"parking#g393"
+"signs#d433"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -8249,17 +8268,19 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "394": {
 "v": "full",
 "rule": [
-"signs#g394"
+"overtake#r5",
+"rail#r4"
 ],
 "ref": [
-"signs#g394"
+"overtake#r:אסור לעקוף: בראות לקויה, לפני מפגש מ",
+"rail#r:תמרורים 130, 131, 132 מזהירים ממפגש "
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 47(ה) no overtaking before a level crossing; sign 132 = ~100 m before it",
 "cls": [
 "1",
 "A",
@@ -8269,7 +8290,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "sample"
+"by": "rejudge"
 },
 "395": {
 "v": "full",
@@ -8473,14 +8494,13 @@
 },
 "405": {
 "v": "full",
-"dict": true,
 "rule": [
-"signs#d701"
+"lights2#r5"
 ],
 "ref": [
-"signs#d701"
+"lights2#r:סדר מופעי הרמזור: אדום, אדום וצהוב י"
 ],
-"why": "official sign meaning (sign dictionary, gov.il)",
+"why": "textbook p.71-72: phase order and \"עם הופעת האור האדום\" after yellow (was: dictionary 701 only)",
 "cls": [
 "1",
 "A",
@@ -8490,7 +8510,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "406": {
 "v": "full",
@@ -8576,14 +8596,14 @@
 "by": "hand"
 },
 "410": {
-"v": "full",
+"v": "partial",
 "rule": [
-"speed#g410"
+"lanes#r2"
 ],
 "ref": [
-"speed#g410"
+"lanes#r:בעקומה חדה: מאטים לפני הכניסה, מתאימ"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "slowing before the curve is taught; \"accelerate gradually toward the exit\" is not",
 "cls": [
 "1",
 "A",
@@ -8593,7 +8613,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "411": {
 "v": "full",
@@ -8805,14 +8825,16 @@
 "by": "hand"
 },
 "421": {
-"v": "full",
+"v": "partial",
 "rule": [
-"priority#g424"
+"priority#r0",
+"priority#r4"
 ],
 "ref": [
-"priority#g424"
+"priority#r:בלי תמרור: נותנים זכות קדימה לרכב שב",
+"priority#r:תמרור \"תן זכות קדימה\": מאטים, ואם צר"
 ],
-"why": "the cited rule states the correct answer",
+"why": "the priority rules are taught; that this junction-warning sign does not itself set priority is not stated",
 "cls": [
 "1",
 "A",
@@ -8822,17 +8844,19 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "422": {
-"v": "full",
+"v": "partial",
 "rule": [
-"priority#g424"
+"priority#r0",
+"priority#r4"
 ],
 "ref": [
-"priority#g424"
+"priority#r:בלי תמרור: נותנים זכות קדימה לרכב שב",
+"priority#r:תמרור \"תן זכות קדימה\": מאטים, ואם צר"
 ],
-"why": "the cited rule states the correct answer",
+"why": "as 421",
 "cls": [
 "1",
 "A",
@@ -8842,7 +8866,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "423": {
 "v": "full",
@@ -8866,14 +8890,16 @@
 "by": "hand"
 },
 "424": {
-"v": "full",
+"v": "partial",
 "rule": [
-"priority#g424"
+"signs#d116",
+"priority#r0"
 ],
 "ref": [
-"priority#g424"
+"signs#d116",
+"priority#r:בלי תמרור: נותנים זכות קדימה לרכב שב"
 ],
-"why": "the cited rule states the correct answer",
+"why": "sign 116 = junction ahead; that it does not set priority is not stated",
 "cls": [
 "1",
 "A",
@@ -8883,17 +8909,19 @@
 "D"
 ],
 "topic": "signs",
-"by": "sample"
+"by": "rejudge"
 },
 "425": {
-"v": "full",
+"v": "partial",
 "rule": [
-"priority#g424"
+"signs#d116",
+"priority#r0"
 ],
 "ref": [
-"priority#g424"
+"signs#d116",
+"priority#r:בלי תמרור: נותנים זכות קדימה לרכב שב"
 ],
-"why": "the cited rule states the correct answer",
+"why": "as 424",
 "cls": [
 "1",
 "A",
@@ -8903,7 +8931,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "426": {
 "v": "full",
@@ -8968,14 +8996,16 @@
 "by": "hand"
 },
 "429": {
-"v": "full",
+"v": "partial",
 "rule": [
-"priority#g424"
+"signs#d119",
+"priority#r0"
 ],
 "ref": [
-"priority#g424"
+"signs#d119",
+"priority#r:בלי תמרור: נותנים זכות קדימה לרכב שב"
 ],
-"why": "the cited rule states the correct answer",
+"why": "sign 119 = staggered junctions; that it does not set priority is not stated",
 "cls": [
 "1",
 "A",
@@ -8985,17 +9015,18 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "430": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g430"
+"signs#d121"
 ],
 "ref": [
-"signs#g430"
+"signs#d121"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -9005,7 +9036,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "431": {
 "v": "full",
@@ -9112,13 +9143,14 @@
 },
 "436": {
 "v": "full",
+"dict": true,
 "rule": [
-"priority#g436"
+"signs#d125"
 ],
 "ref": [
-"priority#g436"
+"signs#d125"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -9128,17 +9160,18 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "437": {
 "v": "full",
+"dict": true,
 "rule": [
-"priority#g436"
+"signs#d125"
 ],
 "ref": [
-"priority#g436"
+"signs#d125"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -9148,7 +9181,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "438": {
 "v": "full",
@@ -9215,13 +9248,14 @@
 },
 "441": {
 "v": "full",
+"dict": true,
 "rule": [
-"rail#g441"
+"signs#d129"
 ],
 "ref": [
-"rail#g441"
+"signs#d129"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -9231,17 +9265,17 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "442": {
 "v": "full",
 "rule": [
-"parking#g442"
+"rail2#r0"
 ],
 "ref": [
-"parking#g442"
+"rail2#r:לפני מפגש מסילת ברזל חייבים להאט, גם"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "textbook: must slow before a level crossing (was gallery tile only)",
 "cls": [
 "1",
 "A",
@@ -9251,7 +9285,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "443": {
 "v": "full",
@@ -9419,13 +9453,14 @@
 },
 "451": {
 "v": "full",
+"dict": true,
 "rule": [
-"rail#g451"
+"signs#d131"
 ],
 "ref": [
-"rail#g451"
+"signs#d131"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -9435,17 +9470,17 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "452": {
 "v": "full",
 "rule": [
-"parking#g457"
+"rail2#r0"
 ],
 "ref": [
-"parking#g457"
+"rail2#r:לפני מפגש מסילת ברזל חייבים להאט, גם"
 ],
-"why": "the cited rule states the correct answer",
+"why": "textbook: must slow before a level crossing (was gallery tile only)",
 "cls": [
 "1",
 "A",
@@ -9455,7 +9490,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "453": {
 "v": "full",
@@ -9543,12 +9578,12 @@
 "457": {
 "v": "full",
 "rule": [
-"parking#g457"
+"rail2#r0"
 ],
 "ref": [
-"parking#g457"
+"rail2#r:לפני מפגש מסילת ברזל חייבים להאט, גם"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "textbook: must slow before a level crossing (was gallery tile only)",
 "cls": [
 "1",
 "A",
@@ -9558,7 +9593,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "458": {
 "v": "full",
@@ -9582,13 +9617,14 @@
 },
 "459": {
 "v": "full",
+"dict": true,
 "rule": [
-"rail#g459"
+"signs#d134"
 ],
 "ref": [
-"rail#g459"
+"signs#d134"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -9598,17 +9634,17 @@
 "D"
 ],
 "topic": "signs",
-"by": "sample"
+"by": "rejudge"
 },
 "460": {
 "v": "full",
 "rule": [
-"priority#g460"
+"priority#r10"
 ],
 "ref": [
-"priority#g460"
+"priority#r:לא נכנסים לצומת או למפגש מסילת ברזל "
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "TR 65: do not enter a level crossing unless it can be passed without stopping",
 "cls": [
 "1",
 "A",
@@ -9618,7 +9654,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "461": {
 "v": "full",
@@ -9830,13 +9866,14 @@
 },
 "471": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g471"
+"signs#d136"
 ],
 "ref": [
-"signs#g471"
+"signs#d136"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -9846,7 +9883,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "472": {
 "v": "full",
@@ -10072,13 +10109,16 @@
 },
 "483": {
 "v": "full",
+"dict": true,
 "rule": [
-"lights#g483"
+"signs#d140",
+"signs#d631"
 ],
 "ref": [
-"lights#g483"
+"signs#d140",
+"signs#d631"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -10088,7 +10128,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "484": {
 "v": "full",
@@ -10278,13 +10318,14 @@
 },
 "493": {
 "v": "full",
+"dict": true,
 "rule": [
-"overtake#g493"
+"signs#d421"
 ],
 "ref": [
-"overtake#g493"
+"signs#d421"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -10294,7 +10335,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "494": {
 "v": "full",
@@ -10495,13 +10536,14 @@
 },
 "504": {
 "v": "full",
+"dict": true,
 "rule": [
-"overtake#g358"
+"signs#d622"
 ],
 "ref": [
-"overtake#g358"
+"signs#d622"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -10511,7 +10553,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "505": {
 "v": "full",
@@ -10625,30 +10667,32 @@
 },
 "511": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g511"
+"signs#d438"
 ],
 "ref": [
-"signs#g511"
+"signs#d438"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "C",
 "C1",
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "512": {
 "v": "full",
+"dict": true,
 "rule": [
-"speed#g512"
+"signs#d426"
 ],
 "ref": [
-"speed#g512"
+"signs#d426"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -10658,7 +10702,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "513": {
 "v": "full",
@@ -10703,20 +10747,21 @@
 },
 "515": {
 "v": "full",
+"dict": true,
 "rule": [
-"speed#g385"
+"signs#d427"
 ],
 "ref": [
-"speed#g385"
+"signs#d427"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "C",
 "C1",
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "516": {
 "v": "full",
@@ -10795,14 +10840,11 @@
 "by": "hand"
 },
 "520": {
-"v": "full",
-"rule": [
-"peds#g520"
-],
-"ref": [
-"peds#g520"
-],
-"why": "the cited rule states the correct answer",
+"v": "none",
+"rule": [],
+"ref": [],
+"why": "no official source found that states what this sign marks (gallery tile only; not in the sign table used)",
+"src": "S",
 "cls": [
 "1",
 "A",
@@ -10812,17 +10854,17 @@
 "D"
 ],
 "topic": "signs",
-"by": "sample"
+"by": "rejudge"
 },
 "521": {
-"v": "full",
+"v": "partial",
 "rule": [
-"speed#g521"
+"speed#r0"
 ],
 "ref": [
-"speed#g521"
+"speed#r:רכב מנועי רגיל: 50 בדרך עירונית, 80 "
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "50 km/h in an urban road is taught; that this sign marks an urban area is shown only on the gallery tile",
 "cls": [
 "1",
 "A",
@@ -10832,7 +10874,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "522": {
 "v": "full",
@@ -11024,13 +11066,14 @@
 },
 "531": {
 "v": "full",
+"dict": true,
 "rule": [
-"overtake#g531"
+"signs#d501"
 ],
 "ref": [
-"overtake#g531"
+"signs#d501"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -11040,7 +11083,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "532": {
 "v": "full",
@@ -11065,13 +11108,14 @@
 },
 "533": {
 "v": "full",
+"dict": true,
 "rule": [
-"priority#g550"
+"signs#d301"
 ],
 "ref": [
-"priority#g550"
+"signs#d301"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -11081,7 +11125,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "534": {
 "v": "full",
@@ -11419,13 +11463,14 @@
 },
 "550": {
 "v": "full",
+"dict": true,
 "rule": [
-"priority#g550"
+"signs#d303"
 ],
 "ref": [
-"priority#g550"
+"signs#d303"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -11435,17 +11480,18 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "551": {
 "v": "full",
+"dict": true,
 "rule": [
-"priority#g550"
+"signs#d303"
 ],
 "ref": [
-"priority#g550"
+"signs#d303"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -11455,7 +11501,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "552": {
 "v": "full",
@@ -11480,13 +11526,14 @@
 },
 "553": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g430"
+"signs#d303"
 ],
 "ref": [
-"signs#g430"
+"signs#d303"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -11496,7 +11543,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "554": {
 "v": "full",
@@ -11542,13 +11589,14 @@
 },
 "556": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g556"
+"signs#d624"
 ],
 "ref": [
-"signs#g556"
+"signs#d624"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -11558,7 +11606,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "sample"
+"by": "rejudge"
 },
 "557": {
 "v": "full",
@@ -11707,13 +11755,14 @@
 },
 "564": {
 "v": "full",
+"dict": true,
 "rule": [
-"speed#g564"
+"signs#d218"
 ],
 "ref": [
-"speed#g564"
+"signs#d218"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -11723,7 +11772,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "565": {
 "v": "full",
@@ -11894,13 +11943,14 @@
 },
 "573": {
 "v": "full",
+"dict": true,
 "rule": [
-"parking#g573"
+"signs#d509"
 ],
 "ref": [
-"parking#g573"
+"signs#d509"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -11910,7 +11960,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "575": {
 "v": "full",
@@ -12018,13 +12068,14 @@
 },
 "580": {
 "v": "full",
+"dict": true,
 "rule": [
-"peds#g580"
+"signs#d228"
 ],
 "ref": [
-"peds#g580"
+"signs#d228"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -12034,7 +12085,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "581": {
 "v": "full",
@@ -12139,13 +12190,14 @@
 },
 "586": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g556"
+"signs#d623"
 ],
 "ref": [
-"signs#g556"
+"signs#d623"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -12155,7 +12207,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "587": {
 "v": "full",
@@ -12325,13 +12377,14 @@
 },
 "595": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g595"
+"signs#d309"
 ],
 "ref": [
-"signs#g595"
+"signs#d309"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -12341,17 +12394,18 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "596": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g595"
+"signs#d309"
 ],
 "ref": [
-"signs#g595"
+"signs#d309"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -12361,17 +12415,18 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "597": {
 "v": "full",
+"dict": true,
 "rule": [
-"priority#g597"
+"signs#d310"
 ],
 "ref": [
-"priority#g597"
+"signs#d310"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -12381,7 +12436,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "598": {
 "v": "full",
@@ -12624,13 +12679,14 @@
 },
 "610": {
 "v": "full",
+"dict": true,
 "rule": [
-"overtake#g493"
+"signs#d421"
 ],
 "ref": [
-"overtake#g493"
+"signs#d421"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -12640,7 +12696,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "611": {
 "v": "partial",
@@ -12817,13 +12873,14 @@
 },
 "621": {
 "v": "full",
+"dict": true,
 "rule": [
-"parking#g621"
+"signs#d437"
 ],
 "ref": [
-"parking#g621"
+"signs#d437"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -12833,7 +12890,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "622": {
 "v": "full",
@@ -13045,13 +13102,14 @@
 },
 "632": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g632"
+"signs#d223"
 ],
 "ref": [
-"signs#g632"
+"signs#d223"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -13061,7 +13119,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "sample"
+"by": "rejudge"
 },
 "633": {
 "v": "full",
@@ -13086,13 +13144,14 @@
 },
 "634": {
 "v": "full",
+"dict": true,
 "rule": [
-"overtake#g634"
+"signs#d801"
 ],
 "ref": [
-"overtake#g634"
+"signs#d801"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -13102,17 +13161,18 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "635": {
 "v": "full",
+"dict": true,
 "rule": [
-"peds#g635"
+"signs#d812"
 ],
 "ref": [
-"peds#g635"
+"signs#d812"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -13122,7 +13182,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "636": {
 "v": "full",
@@ -13430,13 +13490,14 @@
 },
 "651": {
 "v": "full",
+"dict": true,
 "rule": [
-"overtake#g651"
+"signs#d813"
 ],
 "ref": [
-"overtake#g651"
+"signs#d813"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -13446,7 +13507,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "652": {
 "v": "full",
@@ -13567,13 +13628,14 @@
 },
 "658": {
 "v": "full",
+"dict": true,
 "rule": [
-"parking#g658"
+"signs#d818"
 ],
 "ref": [
-"parking#g658"
+"signs#d818"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -13583,7 +13645,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "659": {
 "v": "full",
@@ -13670,15 +13732,14 @@
 },
 "663": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g663",
-"parking#g663"
+"signs#d819"
 ],
 "ref": [
-"signs#g663",
-"parking#g663"
+"signs#d819"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -13688,7 +13749,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "664": {
 "v": "full",
@@ -13735,12 +13796,12 @@
 "666": {
 "v": "full",
 "rule": [
-"lights#g666"
+"priority#r10"
 ],
 "ref": [
-"lights#g666"
+"priority#r:לא נכנסים לצומת או למפגש מסילת ברזל "
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "TR 65: enter the junction on green only if it is clear (was gallery tile only)",
 "cls": [
 "1",
 "A",
@@ -13750,7 +13811,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "667": {
 "v": "full",
@@ -13775,13 +13836,14 @@
 },
 "668": {
 "v": "full",
+"dict": true,
 "rule": [
-"priority#g424"
+"signs#d706"
 ],
 "ref": [
-"priority#g424"
+"signs#d706"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -13791,7 +13853,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "669": {
 "v": "full",
@@ -13816,13 +13878,14 @@
 },
 "670": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g785"
+"signs#d725"
 ],
 "ref": [
-"signs#g785"
+"signs#d725"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -13832,7 +13895,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "671": {
 "v": "partial",
@@ -13876,15 +13939,14 @@
 },
 "673": {
 "v": "full",
+"dict": true,
 "rule": [
-"priority#g673",
-"rail#g673"
+"signs#d722"
 ],
 "ref": [
-"priority#g673",
-"rail#g673"
+"signs#d722"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -13894,17 +13956,18 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "674": {
 "v": "full",
+"dict": true,
 "rule": [
-"lights#g674"
+"signs#d722"
 ],
 "ref": [
-"lights#g674"
+"signs#d722"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -13914,7 +13977,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "675": {
 "v": "full",
@@ -13981,13 +14044,14 @@
 },
 "678": {
 "v": "full",
+"dict": true,
 "rule": [
-"overtake#g679"
+"signs#d723"
 ],
 "ref": [
-"overtake#g679"
+"signs#d723"
 ],
-"why": "the cited rule states the correct answer",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -13997,17 +14061,18 @@
 "D"
 ],
 "topic": "signs",
-"by": "sample"
+"by": "rejudge"
 },
 "679": {
 "v": "full",
+"dict": true,
 "rule": [
-"overtake#g679"
+"signs#d723"
 ],
 "ref": [
-"overtake#g679"
+"signs#d723"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -14017,7 +14082,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "680": {
 "v": "full",
@@ -14811,12 +14876,12 @@
 "721": {
 "v": "full",
 "rule": [
-"priority#g550"
+"priority#r8"
 ],
 "ref": [
-"priority#g550"
+"priority#r:מעגל תנועה עם תמרור 303: נותנים זכות"
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 64(ז): give way to vehicles already in the roundabout (was gallery tile only)",
 "cls": [
 "1",
 "A",
@@ -14826,7 +14891,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "rejudge"
 },
 "722": {
 "v": "full",
@@ -14962,13 +15027,14 @@
 },
 "729": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g785"
+"signs#d725"
 ],
 "ref": [
-"signs#g785"
+"signs#d725"
 ],
-"why": "the cited rule states the correct answer",
+"why": "sign 725 meaning in the official sign table states the answer (was gallery tile only)",
 "cls": [
 "1",
 "A",
@@ -14978,7 +15044,7 @@
 "D"
 ],
 "topic": "law",
-"by": "sample"
+"by": "rejudge"
 },
 "730": {
 "v": "full",
@@ -16057,13 +16123,14 @@
 },
 "785": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#g785"
+"signs#d725"
 ],
 "ref": [
-"signs#g785"
+"signs#d725"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
 "cls": [
 "1",
 "A",
@@ -16073,7 +16140,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "786": {
 "v": "full",
@@ -19170,12 +19237,12 @@
 "945": {
 "v": "full",
 "rule": [
-"speed#g410"
+"lanes#r2"
 ],
 "ref": [
-"speed#g410"
+"lanes#r:בעקומה חדה: מאטים לפני הכניסה, מתאימ"
 ],
-"why": "the cited rule states the correct answer",
+"why": "textbook: slow before a sharp curve and keep right (was gallery tile only)",
 "cls": [
 "A",
 "B",
@@ -19184,7 +19251,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "sample"
+"by": "rejudge"
 },
 "946": {
 "v": "full",
@@ -20227,19 +20294,19 @@
 "1001": {
 "v": "full",
 "rule": [
-"sober#r3"
+"safety2#r10"
 ],
 "ref": [
-"sober#r:אלכוהול פוגע בכישורי הנהיגה: בקשב, ב"
+"safety2#r:ABS מונעת נעילת גלגלים ומאפשרת להמשי"
 ],
-"why": "the cited rule states the correct answer",
+"why": "textbook p.139: ABS \"מונעת נעילת גלגלי הרכב ומאפשרת היגוי\" (was: irrelevant sober#r3)",
 "cls": [
 "A",
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "rejudge"
 },
 "1002": {
 "v": "full",
@@ -24116,19 +24183,16 @@
 "by": "v1.5"
 },
 "1257": {
-"v": "full",
-"rule": [
-"speed#x0"
-],
-"ref": [
-"speed#x:Q151"
-],
-"why": "the cited rule states the correct answer",
+"v": "none",
+"rule": [],
+"ref": [],
+"why": "no rule on taxi stopping inside the sign's zone (was mapped to an unrelated speed example)",
+"src": "S",
 "cls": [
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "1258": {
 "v": "full",
@@ -24946,14 +25010,11 @@
 "by": "hand"
 },
 "1307": {
-"v": "full",
-"rule": [
-"signs#g1307"
-],
-"ref": [
-"signs#g1307"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"v": "none",
+"rule": [],
+"ref": [],
+"why": "city-centre guide sign: not in the sign table used, no rule (gallery tile only)",
+"src": "S",
 "cls": [
 "1",
 "A",
@@ -24963,7 +25024,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "rejudge"
 },
 "1308": {
 "v": "none",
@@ -26999,21 +27060,18 @@
 "by": "hand"
 },
 "1435": {
-"v": "full",
-"rule": [
-"bus#x0"
-],
-"ref": [
-"bus#x:Q1206"
-],
-"why": "the cited rule states the correct answer",
+"v": "none",
+"rule": [],
+"ref": [],
+"why": "only an example sourced from another bank question (Q:1206); no cited rule",
+"src": "S",
 "cls": [
 "C",
 "C1",
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "rejudge"
 },
 "1436": {
 "v": "full",
@@ -28706,17 +28764,17 @@
 "1537": {
 "v": "full",
 "rule": [
-"heavy#x0"
+"cargo2#r5"
 ],
 "ref": [
-"heavy#x:Q1502"
+"cargo2#r:רוחב מטען מעל 3.40 מ': רכב ליווי – מ"
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 85(ג)(2): load wider than 3.40 m needs an escort vehicle (was mapped to the q1502 example)",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "rejudge"
 },
 "1538": {
 "v": "full",
@@ -29293,13 +29351,14 @@
 },
 "1570": {
 "v": "full",
+"dict": true,
 "rule": [
-"signs#x0"
+"signs#d306"
 ],
 "ref": [
-"signs#x:Q384"
+"signs#d306"
 ],
-"why": "the cited rule states the correct answer",
+"why": "as 384",
 "cls": [
 "1",
 "A",
@@ -29309,7 +29368,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "rejudge"
 },
 "1571": {
 "v": "full",
@@ -29350,12 +29409,14 @@
 "1573": {
 "v": "full",
 "rule": [
-"overtake#x0"
+"law3#r5",
+"overtake#r5"
 ],
 "ref": [
-"overtake#x:Q447"
+"law3#r:קו הפרדה רצוף אוסר רק עקיפה שחוצה או",
+"overtake#r:אסור לעקוף: בראות לקויה, לפני מפגש מ"
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 47(ה)(5): overtaking is allowed if the solid line is not crossed",
 "cls": [
 "1",
 "A",
@@ -29365,7 +29426,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "rejudge"
 },
 "1574": {
 "v": "full",
@@ -30625,19 +30686,19 @@
 "by": "hand"
 },
 "1658": {
-"v": "full",
+"v": "partial",
 "rule": [
 "moto#x0"
 ],
 "ref": [
 "moto#x:Q959"
 ],
-"why": "the cited rule states the correct answer",
+"why": "example teaches feet on footrests; the handhold part of the answer is not taught",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "rejudge"
 },
 "1659": {
 "v": "none",
@@ -32366,12 +32427,12 @@
 "1756": {
 "v": "full",
 "rule": [
-"rail#x0"
+"rail#r6"
 ],
 "ref": [
-"rail#x:Q449"
+"rail#r:לא עוקפים מתמרור האזהרה שלפני המפגש "
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 47(ה)(2): no overtaking from the warning sign before the crossing until after it",
 "cls": [
 "1",
 "A",
@@ -32381,7 +32442,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "rejudge"
 },
 "1757": {
 "v": "full",

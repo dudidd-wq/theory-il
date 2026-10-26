@@ -56,6 +56,27 @@ for q in Q:
     links = D.get(q['id'])
     assert links, f'unjudged question {k}'
     out[k] = {'by': 'link', 'v': 'full', 'u': [ref_of(LS, u) for u in links], 'why': 'rule written for this question (explicit citation / worked example / same sign picture)'}
+# v1.9 re-judgement: over-claims and gallery-only verdicts (tools/coverage/rejudge_v19.txt), applied last
+for l in open(P('tools/coverage/rejudge_v19.txt')):
+    l = l.strip()
+    if not l or l.startswith('#'): continue
+    qid, v, units, why = l.split(' ', 3)
+    assert qid in out and v in ('full', 'partial', 'none', 'dict'), l
+    us = [] if units == '-' else units.split(',')
+    e = {'by': 'rejudge', 'why': why}
+    if v == 'dict':
+        e.update(v='full', dict=True, u=us or ['signs#d' + n for n in SG['q'][qid]])
+    elif v == 'none':
+        e.update(v='none', u=[], src='S')
+    else:
+        e.update(v=v, u=[ref_of(LS, u) for u in us])
+    out[qid] = e
+# remaining gallery-only full verdicts: re-based on the question's own sign-table entry (official meaning; strict: partial)
+GAL = re.compile(r'#g\d+$')
+for qid, e in out.items():
+    if e['v'] == 'full' and not e.get('dict') and e['u'] and all(GAL.search(u) for u in e['u']):
+        assert qid in SG['q'], f'gallery-only full verdict without a sign-table entry: {qid}'
+        e.update(by='rejudge', dict=True, gal=e['u'], u=['signs#d' + n for n in SG['q'][qid]], why='official sign meaning (sign table); the gallery tile alone is not counted')
 assert len(out) == len(Q), (len(out), len(Q))
 for e in out.values():
     for r in e['u']: resolve(LS, r)

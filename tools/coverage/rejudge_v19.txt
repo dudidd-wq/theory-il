@@ -1,0 +1,42 @@
+# v1.9 re-judgement (independent review #6): over-claims and self-referential "full" verdicts.
+# qid verdict units why      verdict: full | partial | none | dict (full via the official sign dictionary only; strict: partial)
+# units: current unit ids, comma-separated ('-' = none; for dict, '-' = the question's own sign-dictionary entries)
+# Policy: a full verdict may not rest only on a gallery tile (bank picture + bank answer). It is re-based on a cited
+# lesson rule that states the answer, or on the official sign-table meaning (dict), or downgraded to partial.
+# Worked examples stay valid only when the example text itself states the answer with a cited source.
+1001 full safety2#r10 textbook p.139: ABS "מונעת נעילת גלגלי הרכב ומאפשרת היגוי" (was: irrelevant sober#r3)
+93 partial lights2#r6 textbook says flashing green warns of the last three seconds; "three flashes" is not stated
+405 full lights2#r5 textbook p.71-72: phase order and "עם הופעת האור האדום" after yellow (was: dictionary 701 only)
+983 partial overtake2#r5 mountain-road rule only; the sign's own text (narrow, no escape shoulders) is not taught
+1580 partial cockpit#r8 textbook hedges ("בכמה כלי-רכב יש גם צורך ללחוץ על דוושת הבלם"); the bank's "must press hard" is not stated
+152 full speed#r0 TR 54(א) table: 50 urban / 80 non-urban (was mapped to the q151 example)
+1537 full cargo2#r5 TR 85(ג)(2): load wider than 3.40 m needs an escort vehicle (was mapped to the q1502 example)
+1257 none - no rule on taxi stopping inside the sign's zone (was mapped to an unrelated speed example)
+1435 none - only an example sourced from another bank question (Q:1206); no cited rule
+1658 partial moto#x0 example teaches feet on footrests; the handhold part of the answer is not taught
+1573 full law3#r5,overtake#r5 TR 47(ה)(5): overtaking is allowed if the solid line is not crossed
+1756 full rail#r6 TR 47(ה)(2): no overtaking from the warning sign before the crossing until after it
+155 full rail2#r0 textbook: must slow before a level crossing (was gallery tile only)
+442 full rail2#r0 textbook: must slow before a level crossing (was gallery tile only)
+457 full rail2#r0 textbook: must slow before a level crossing (was gallery tile only)
+452 full rail2#r0 textbook: must slow before a level crossing (was gallery tile only)
+460 full priority#r10 TR 65: do not enter a level crossing unless it can be passed without stopping
+162 full rail#r0 TR 56(א): stop before the crossing when a warning signal is given (was gallery tile only)
+721 full priority#r8 TR 64(ז): give way to vehicles already in the roundabout (was gallery tile only)
+945 full lanes#r2 textbook: slow before a sharp curve and keep right (was gallery tile only)
+666 full priority#r10 TR 65: enter the junction on green only if it is clear (was gallery tile only)
+394 full overtake#r5,rail#r4 TR 47(ה) no overtaking before a level crossing; sign 132 = ~100 m before it
+410 partial lanes#r2 slowing before the curve is taught; "accelerate gradually toward the exit" is not
+424 partial signs#d116,priority#r0 sign 116 = junction ahead; that it does not set priority is not stated
+425 partial signs#d116,priority#r0 as 424
+429 partial signs#d119,priority#r0 sign 119 = staggered junctions; that it does not set priority is not stated
+421 partial priority#r0,priority#r4 the priority rules are taught; that this junction-warning sign does not itself set priority is not stated
+422 partial priority#r0,priority#r4 as 421
+520 none - no official source found that states what this sign marks (gallery tile only; not in the sign table used)
+521 partial speed#r0 50 km/h in an urban road is taught; that this sign marks an urban area is shown only on the gallery tile
+1307 none - city-centre guide sign: not in the sign table used, no rule (gallery tile only)
+147 dict signs#d218 sign 218 meaning in the official sign table states the answer (was gallery tile only)
+729 dict signs#d725 sign 725 meaning in the official sign table states the answer (was gallery tile only)
+384 dict - signs 135 and 306 in the official sign table (the example is sourced from the bank question itself)
+1570 dict - as 384
+375 dict - as 384

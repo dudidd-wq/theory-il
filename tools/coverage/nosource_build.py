@@ -26,7 +26,9 @@ G = {
           'no official state text teaches this riding technique; not written from general knowledge'),
 }
 Q = {
- 'law': {92: 'licence not valid > 1 year needs tests: no such provision in pinned TR 173/174/196/203 or TO',
+ 'law': {520: 'urban-area guide sign: meaning not stated in the sign table entries or any rule (v1.9 re-judgement; was gallery tile only)',
+         1307: 'city-centre guide sign: not in the sign table used, no rule (v1.9 re-judgement; was gallery tile only)',
+         92: 'licence not valid > 1 year needs tests: no such provision in pinned TR 173/174/196/203 or TO',
          281: 'tunnel 50 m before/after: TR 47 and textbook p54 ban overtaking only on a bridge or inside a tunnel, no 50 m',
          273: 'LPG parking: refers to Ministry of Environmental Protection guidance, not in the pinned sources',
          302: 'beer counts as alcohol: OFF:drunk says any alcohol impairs but never names beer',

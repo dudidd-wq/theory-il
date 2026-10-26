@@ -33,6 +33,16 @@
   }
  },
  "q": {
+  "520": {
+   "g": "law",
+   "note": "urban-area guide sign: meaning not stated in the sign table entries or any rule (v1.9 re-judgement; was gallery tile only)",
+   "cls": "BA"
+  },
+  "1307": {
+   "g": "law",
+   "note": "city-centre guide sign: not in the sign table used, no rule (v1.9 re-judgement; was gallery tile only)",
+   "cls": "BA"
+  },
   "92": {
    "g": "law",
    "note": "licence not valid > 1 year needs tests: no such provision in pinned TR 173/174/196/203 or TO",

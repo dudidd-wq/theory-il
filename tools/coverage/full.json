@@ -103,13 +103,17 @@
 "why": "TR 1 טרקטורון"
 },
 "15": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
+"signs#d433"
+],
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
 "signs#g15",
 "parking#g15"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+]
 },
 "16": {
 "by": "hand",
@@ -681,12 +685,12 @@
 "why": "searched TR 173/174/196/203, TO: no 1-year renewal provision (see NO_SOURCE_B_A.md)"
 },
 "93": {
-"by": "link",
-"v": "full",
+"by": "rejudge",
+"why": "textbook says flashing green warns of the last three seconds; \"three flashes\" is not stated",
+"v": "partial",
 "u": [
-"lights#g93"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"lights2#r:ירוק מהבהב: משמעותו כמו ירוק רגיל, ו"
+]
 },
 "94": {
 "by": "hand",
@@ -1091,12 +1095,13 @@
 "why": "TR 50 braking"
 },
 "147": {
-"by": "hand",
+"by": "rejudge",
+"why": "sign 218 meaning in the official sign table states the answer (was gallery tile only)",
 "v": "full",
+"dict": true,
 "u": [
-"speed#g564"
-],
-"why": "the cited rule states the correct answer"
+"signs#d218"
+]
 },
 "148": {
 "by": "hand",
@@ -1129,20 +1134,24 @@
 "why": "rule written for this question (explicit citation / worked example / same sign picture)"
 },
 "152": {
-"by": "hand",
+"by": "rejudge",
+"why": "TR 54(א) table: 50 urban / 80 non-urban (was mapped to the q151 example)",
 "v": "full",
 "u": [
-"speed#x:Q151"
-],
-"why": "the cited rule states the correct answer"
+"speed#r:רכב מנועי רגיל: 50 בדרך עירונית, 80 "
+]
 },
 "153": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"speed#g153"
+"signs#d426"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"speed#g153"
+]
 },
 "154": {
 "by": "link",
@@ -1153,12 +1162,12 @@
 "why": "rule written for this question (explicit citation / worked example / same sign picture)"
 },
 "155": {
-"by": "hand",
+"by": "rejudge",
+"why": "textbook: must slow before a level crossing (was gallery tile only)",
 "v": "full",
 "u": [
-"parking#g442"
-],
-"why": "the cited rule states the correct answer"
+"rail2#r:לפני מפגש מסילת ברזל חייבים להאט, גם"
+]
 },
 "156": {
 "by": "hand",
@@ -1209,12 +1218,12 @@
 "why": "the cited rule states the correct answer"
 },
 "162": {
-"by": "hand",
+"by": "rejudge",
+"why": "TR 56(א): stop before the crossing when a warning signal is given (was gallery tile only)",
 "v": "full",
 "u": [
-"lights#g674"
-],
-"why": "the cited rule states the correct answer"
+"rail#r:עוצרים לפני קו העצירה, או לפני המחסו"
+]
 },
 "163": {
 "by": "hand",
@@ -1405,12 +1414,16 @@
 "why": "picture"
 },
 "186": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"priority#g186"
+"signs#d706"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"priority#g186"
+]
 },
 "187": {
 "by": "hand",
@@ -1864,12 +1877,16 @@
 "why": "TR towing agricultural trailer"
 },
 "246": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"priority#g424"
+"signs#d706"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"priority#g424"
+]
 },
 "247": {
 "by": "hand",
@@ -2708,12 +2725,16 @@
 "why": "TR 36 obstacle"
 },
 "358": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"overtake#g358"
+"signs#d622"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"overtake#g358"
+]
 },
 "359": {
 "by": "hand",
@@ -2783,20 +2804,28 @@
 "why": "TO points"
 },
 "367": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"signs#g367"
+"signs#d122"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"signs#g367"
+]
 },
 "368": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"peds#g368"
+"signs#d136"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"peds#g368"
+]
 },
 "369": {
 "by": "hand",
@@ -2817,12 +2846,16 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "371": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"rail#g371"
+"signs#d130"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"rail#g371"
+]
 },
 "372": {
 "by": "hand",
@@ -2844,28 +2877,37 @@
 "dict": true
 },
 "374": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"rail#g459"
+"signs#d133"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"rail#g459"
+]
 },
 "375": {
-"by": "hand",
+"by": "rejudge",
+"why": "as 384",
 "v": "full",
+"dict": true,
 "u": [
-"peds#g384"
-],
-"why": "the cited rule states the correct answer"
+"signs#d306"
+]
 },
 "376": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"peds#g384"
+"signs#d306"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"peds#g384"
+]
 },
 "377": {
 "by": "hand",
@@ -2930,29 +2972,38 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "384": {
-"by": "link",
+"by": "rejudge",
+"why": "signs 135 and 306 in the official sign table (the example is sourced from the bank question itself)",
 "v": "full",
+"dict": true,
 "u": [
-"signs#x:Q384",
-"peds#g384"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"signs#d135",
+"signs#d306"
+]
 },
 "385": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"speed#g385"
+"signs#d427"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"speed#g385"
+]
 },
 "386": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"overtake#g493"
+"signs#d423"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"overtake#g493"
+]
 },
 "387": {
 "by": "hand",
@@ -3004,20 +3055,25 @@
 "why": "the cited rule states the correct answer"
 },
 "393": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"parking#g393"
+"signs#d433"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"parking#g393"
+]
 },
 "394": {
-"by": "sample",
+"by": "rejudge",
+"why": "TR 47(ה) no overtaking before a level crossing; sign 132 = ~100 m before it",
 "v": "full",
 "u": [
-"signs#g394"
-],
-"why": "the cited rule states the correct answer"
+"overtake#r:אסור לעקוף: בראות לקויה, לפני מפגש מ",
+"rail#r:תמרורים 130, 131, 132 מזהירים ממפגש "
+]
 },
 "395": {
 "by": "sample",
@@ -3107,13 +3163,12 @@
 "why": "the cited rule states the correct answer"
 },
 "405": {
-"by": "hand",
+"by": "rejudge",
+"why": "textbook p.71-72: phase order and \"עם הופעת האור האדום\" after yellow (was: dictionary 701 only)",
 "v": "full",
-"dict": true,
 "u": [
-"signs#d701"
-],
-"why": "official sign meaning (sign dictionary, gov.il)"
+"lights2#r:סדר מופעי הרמזור: אדום, אדום וצהוב י"
+]
 },
 "406": {
 "by": "sample",
@@ -3150,12 +3205,12 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "410": {
-"by": "link",
-"v": "full",
+"by": "rejudge",
+"why": "slowing before the curve is taught; \"accelerate gradually toward the exit\" is not",
+"v": "partial",
 "u": [
-"speed#g410"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"lanes#r:בעקומה חדה: מאטים לפני הכניסה, מתאימ"
+]
 },
 "411": {
 "by": "hand",
@@ -3248,20 +3303,22 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "421": {
-"by": "hand",
-"v": "full",
+"by": "rejudge",
+"why": "the priority rules are taught; that this junction-warning sign does not itself set priority is not stated",
+"v": "partial",
 "u": [
-"priority#g424"
-],
-"why": "the cited rule states the correct answer"
+"priority#r:בלי תמרור: נותנים זכות קדימה לרכב שב",
+"priority#r:תמרור \"תן זכות קדימה\": מאטים, ואם צר"
+]
 },
 "422": {
-"by": "hand",
-"v": "full",
+"by": "rejudge",
+"why": "as 421",
+"v": "partial",
 "u": [
-"priority#g424"
-],
-"why": "the cited rule states the correct answer"
+"priority#r:בלי תמרור: נותנים זכות קדימה לרכב שב",
+"priority#r:תמרור \"תן זכות קדימה\": מאטים, ואם צר"
+]
 },
 "423": {
 "by": "hand",
@@ -3273,20 +3330,22 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "424": {
-"by": "sample",
-"v": "full",
+"by": "rejudge",
+"why": "sign 116 = junction ahead; that it does not set priority is not stated",
+"v": "partial",
 "u": [
-"priority#g424"
-],
-"why": "the cited rule states the correct answer"
+"signs#d116",
+"priority#r:בלי תמרור: נותנים זכות קדימה לרכב שב"
+]
 },
 "425": {
-"by": "hand",
-"v": "full",
+"by": "rejudge",
+"why": "as 424",
+"v": "partial",
 "u": [
-"priority#g424"
-],
-"why": "the cited rule states the correct answer"
+"signs#d116",
+"priority#r:בלי תמרור: נותנים זכות קדימה לרכב שב"
+]
 },
 "426": {
 "by": "hand",
@@ -3314,20 +3373,25 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "429": {
-"by": "hand",
-"v": "full",
+"by": "rejudge",
+"why": "sign 119 = staggered junctions; that it does not set priority is not stated",
+"v": "partial",
 "u": [
-"priority#g424"
-],
-"why": "the cited rule states the correct answer"
+"signs#d119",
+"priority#r:בלי תמרור: נותנים זכות קדימה לרכב שב"
+]
 },
 "430": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"signs#g430"
+"signs#d121"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"signs#g430"
+]
 },
 "431": {
 "by": "hand",
@@ -3371,20 +3435,28 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "436": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"priority#g436"
+"signs#d125"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"priority#g436"
+]
 },
 "437": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"priority#g436"
+"signs#d125"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"priority#g436"
+]
 },
 "438": {
 "by": "sample",
@@ -3414,20 +3486,24 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "441": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"rail#g441"
+"signs#d129"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"rail#g441"
+]
 },
 "442": {
-"by": "link",
+"by": "rejudge",
+"why": "textbook: must slow before a level crossing (was gallery tile only)",
 "v": "full",
 "u": [
-"parking#g442"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"rail2#r:לפני מפגש מסילת ברזל חייבים להאט, גם"
+]
 },
 "443": {
 "by": "sample",
@@ -3500,20 +3576,24 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "451": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"rail#g451"
+"signs#d131"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"rail#g451"
+]
 },
 "452": {
-"by": "hand",
+"by": "rejudge",
+"why": "textbook: must slow before a level crossing (was gallery tile only)",
 "v": "full",
 "u": [
-"parking#g457"
-],
-"why": "the cited rule states the correct answer"
+"rail2#r:לפני מפגש מסילת ברזל חייבים להאט, גם"
+]
 },
 "453": {
 "by": "hand",
@@ -3551,12 +3631,12 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "457": {
-"by": "link",
+"by": "rejudge",
+"why": "textbook: must slow before a level crossing (was gallery tile only)",
 "v": "full",
 "u": [
-"parking#g457"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"rail2#r:לפני מפגש מסילת ברזל חייבים להאט, גם"
+]
 },
 "458": {
 "by": "sample",
@@ -3567,20 +3647,24 @@
 "why": "related rule only"
 },
 "459": {
-"by": "sample",
+"by": "rejudge",
 "v": "full",
 "u": [
-"rail#g459"
+"signs#d134"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"rail#g459"
+]
 },
 "460": {
-"by": "link",
+"by": "rejudge",
+"why": "TR 65: do not enter a level crossing unless it can be passed without stopping",
 "v": "full",
 "u": [
-"priority#g460"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"priority#r:לא נכנסים לצומת או למפגש מסילת ברזל "
+]
 },
 "461": {
 "by": "hand",
@@ -3666,12 +3750,16 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "471": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"signs#g471"
+"signs#d136"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"signs#g471"
+]
 },
 "472": {
 "by": "hand",
@@ -3759,12 +3847,17 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "483": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"lights#g483"
+"signs#d140",
+"signs#d631"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"lights#g483"
+]
 },
 "484": {
 "by": "hand",
@@ -3844,12 +3937,16 @@
 "dict": true
 },
 "493": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"overtake#g493"
+"signs#d421"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"overtake#g493"
+]
 },
 "494": {
 "by": "hand",
@@ -3940,12 +4037,16 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "504": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"overtake#g358"
+"signs#d622"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"overtake#g358"
+]
 },
 "505": {
 "by": "hand",
@@ -4002,20 +4103,28 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "511": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"signs#g511"
+"signs#d438"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"signs#g511"
+]
 },
 "512": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"speed#g512"
+"signs#d426"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"speed#g512"
+]
 },
 "513": {
 "by": "hand",
@@ -4034,12 +4143,16 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "515": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"speed#g385"
+"signs#d427"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"speed#g385"
+]
 },
 "516": {
 "by": "hand",
@@ -4074,20 +4187,19 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "520": {
-"by": "sample",
-"v": "full",
-"u": [
-"peds#g520"
-],
-"why": "the cited rule states the correct answer"
+"by": "rejudge",
+"why": "no official source found that states what this sign marks (gallery tile only; not in the sign table used)",
+"v": "none",
+"u": [],
+"src": "S"
 },
 "521": {
-"by": "link",
-"v": "full",
+"by": "rejudge",
+"why": "50 km/h in an urban road is taught; that this sign marks an urban area is shown only on the gallery tile",
+"v": "partial",
 "u": [
-"speed#g521"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"speed#r:רכב מנועי רגיל: 50 בדרך עירונית, 80 "
+]
 },
 "522": {
 "by": "hand",
@@ -4170,12 +4282,16 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "531": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"overtake#g531"
+"signs#d501"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"overtake#g531"
+]
 },
 "532": {
 "by": "hand",
@@ -4187,12 +4303,16 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "533": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"priority#g550"
+"signs#d301"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"priority#g550"
+]
 },
 "534": {
 "by": "hand",
@@ -4338,20 +4458,28 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "550": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"priority#g550"
+"signs#d303"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"priority#g550"
+]
 },
 "551": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"priority#g550"
+"signs#d303"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"priority#g550"
+]
 },
 "552": {
 "by": "hand",
@@ -4363,12 +4491,16 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "553": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"signs#g430"
+"signs#d303"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"signs#g430"
+]
 },
 "554": {
 "by": "hand",
@@ -4389,12 +4521,16 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "556": {
-"by": "sample",
+"by": "rejudge",
 "v": "full",
 "u": [
-"signs#g556"
+"signs#d624"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"signs#g556"
+]
 },
 "557": {
 "by": "hand",
@@ -4457,12 +4593,16 @@
 "why": "sign-link"
 },
 "564": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"speed#g564"
+"signs#d218"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"speed#g564"
+]
 },
 "565": {
 "by": "hand",
@@ -4538,12 +4678,16 @@
 "dict": true
 },
 "573": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"parking#g573"
+"signs#d509"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"parking#g573"
+]
 },
 "575": {
 "by": "hand",
@@ -4589,12 +4733,16 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "580": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"peds#g580"
+"signs#d228"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"peds#g580"
+]
 },
 "581": {
 "by": "hand",
@@ -4642,12 +4790,16 @@
 "dict": true
 },
 "586": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"signs#g556"
+"signs#d623"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"signs#g556"
+]
 },
 "587": {
 "by": "sample",
@@ -4720,28 +4872,40 @@
 "why": "sign-link 306"
 },
 "595": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"signs#g595"
+"signs#d309"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"signs#g595"
+]
 },
 "596": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"signs#g595"
+"signs#d309"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"signs#g595"
+]
 },
 "597": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"priority#g597"
+"signs#d310"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"priority#g597"
+]
 },
 "598": {
 "by": "hand",
@@ -4837,12 +5001,16 @@
 "why": "sign-link kerb marking 818"
 },
 "610": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"overtake#g493"
+"signs#d421"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"overtake#g493"
+]
 },
 "611": {
 "by": "hand",
@@ -4925,12 +5093,16 @@
 "why": "licence D1/D taught; tour-guide condition not in the pinned law"
 },
 "621": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"parking#g621"
+"signs#d437"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"parking#g621"
+]
 },
 "622": {
 "by": "hand",
@@ -5021,12 +5193,16 @@
 ]
 },
 "632": {
-"by": "sample",
+"by": "rejudge",
 "v": "full",
 "u": [
-"signs#g632"
+"signs#d223"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"signs#g632"
+]
 },
 "633": {
 "by": "hand",
@@ -5038,20 +5214,28 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "634": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"overtake#g634"
+"signs#d801"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"overtake#g634"
+]
 },
 "635": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"peds#g635"
+"signs#d812"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"peds#g635"
+]
 },
 "636": {
 "by": "sample",
@@ -5182,12 +5366,16 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "651": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"overtake#g651"
+"signs#d813"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"overtake#g651"
+]
 },
 "652": {
 "by": "hand",
@@ -5240,12 +5428,16 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "658": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"parking#g658"
+"signs#d818"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"parking#g658"
+]
 },
 "659": {
 "by": "hand",
@@ -5283,13 +5475,17 @@
 "dict": true
 },
 "663": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
+"signs#d819"
+],
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
 "signs#g663",
 "parking#g663"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+]
 },
 "664": {
 "by": "hand",
@@ -5310,12 +5506,12 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "666": {
-"by": "link",
+"by": "rejudge",
+"why": "TR 65: enter the junction on green only if it is clear (was gallery tile only)",
 "v": "full",
 "u": [
-"lights#g666"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"priority#r:לא נכנסים לצומת או למפגש מסילת ברזל "
+]
 },
 "667": {
 "by": "hand",
@@ -5327,12 +5523,16 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "668": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"priority#g424"
+"signs#d706"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"priority#g424"
+]
 },
 "669": {
 "by": "hand",
@@ -5344,12 +5544,16 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "670": {
-"by": "hand",
+"by": "rejudge",
 "v": "full",
 "u": [
-"signs#g785"
+"signs#d725"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"signs#g785"
+]
 },
 "671": {
 "by": "hand",
@@ -5369,21 +5573,29 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "673": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
+"signs#d722"
+],
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
 "priority#g673",
 "rail#g673"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+]
 },
 "674": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"lights#g674"
+"signs#d722"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"lights#g674"
+]
 },
 "675": {
 "by": "hand",
@@ -5413,20 +5625,28 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "678": {
-"by": "sample",
+"by": "rejudge",
 "v": "full",
 "u": [
-"overtake#g679"
+"signs#d723"
 ],
-"why": "the cited rule states the correct answer"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"overtake#g679"
+]
 },
 "679": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"overtake#g679"
+"signs#d723"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"overtake#g679"
+]
 },
 "680": {
 "by": "hand",
@@ -5751,12 +5971,12 @@
 "why": "picture scenario"
 },
 "721": {
-"by": "hand",
+"by": "rejudge",
+"why": "TR 64(ז): give way to vehicles already in the roundabout (was gallery tile only)",
 "v": "full",
 "u": [
-"priority#g550"
-],
-"why": "the cited rule states the correct answer"
+"priority#r:מעגל תנועה עם תמרור 303: נותנים זכות"
+]
 },
 "722": {
 "by": "hand",
@@ -5811,12 +6031,13 @@
 "why": "picture scene; see NO_SOURCE_B_A.md"
 },
 "729": {
-"by": "sample",
+"by": "rejudge",
+"why": "sign 725 meaning in the official sign table states the answer (was gallery tile only)",
 "v": "full",
+"dict": true,
 "u": [
-"signs#g785"
-],
-"why": "the cited rule states the correct answer"
+"signs#d725"
+]
 },
 "730": {
 "by": "hand",
@@ -6224,12 +6445,16 @@
 "why": "TR 42 picture"
 },
 "785": {
-"by": "link",
+"by": "rejudge",
 "v": "full",
 "u": [
-"signs#g785"
+"signs#d725"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "official sign meaning (sign table); the gallery tile alone is not counted",
+"dict": true,
+"gal": [
+"signs#g785"
+]
 },
 "786": {
 "by": "sample",
@@ -7411,12 +7636,12 @@
 "why": "picture"
 },
 "945": {
-"by": "sample",
+"by": "rejudge",
+"why": "textbook: slow before a sharp curve and keep right (was gallery tile only)",
 "v": "full",
 "u": [
-"speed#g410"
-],
-"why": "the cited rule states the correct answer"
+"lanes#r:בעקומה חדה: מאטים לפני הכניסה, מתאימ"
+]
 },
 "946": {
 "by": "hand",
@@ -7692,11 +7917,12 @@
 "why": "related rule only"
 },
 "983": {
-"by": "hand",
-"v": "none",
-"u": [],
-"src": "S",
-"why": "sign text picture"
+"by": "rejudge",
+"why": "mountain-road rule only; the sign's own text (narrow, no escape shoulders) is not taught",
+"v": "partial",
+"u": [
+"overtake2#r:דרך הררית: כביש צר, עקומות חדות שמגב"
+]
 },
 "984": {
 "by": "hand",
@@ -7824,12 +8050,12 @@
 "why": "gears downhill"
 },
 "1001": {
-"by": "hand",
+"by": "rejudge",
+"why": "textbook p.139: ABS \"מונעת נעילת גלגלי הרכב ומאפשרת היגוי\" (was: irrelevant sober#r3)",
 "v": "full",
 "u": [
-"sober#r:אלכוהול פוגע בכישורי הנהיגה: בקשב, ב"
-],
-"why": "the cited rule states the correct answer"
+"safety2#r:ABS מונעת נעילת גלגלים ומאפשרת להמשי"
+]
 },
 "1002": {
 "by": "hand",
@@ -9713,12 +9939,11 @@
 "why": "TR taxi licence transfer"
 },
 "1257": {
-"by": "hand",
-"v": "full",
-"u": [
-"speed#x:Q151"
-],
-"why": "the cited rule states the correct answer"
+"by": "rejudge",
+"why": "no rule on taxi stopping inside the sign's zone (was mapped to an unrelated speed example)",
+"v": "none",
+"u": [],
+"src": "S"
 },
 "1258": {
 "by": "hand",
@@ -10116,12 +10341,11 @@
 "why": "the cited rule states the correct answer"
 },
 "1307": {
-"by": "link",
-"v": "full",
-"u": [
-"signs#g1307"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"by": "rejudge",
+"why": "city-centre guide sign: not in the sign table used, no rule (gallery tile only)",
+"v": "none",
+"u": [],
+"src": "S"
 },
 "1308": {
 "by": "hand",
@@ -11076,12 +11300,11 @@
 "why": "the cited rule states the correct answer"
 },
 "1435": {
-"by": "hand",
-"v": "full",
-"u": [
-"bus#x:Q1206"
-],
-"why": "the cited rule states the correct answer"
+"by": "rejudge",
+"why": "only an example sourced from another bank question (Q:1206); no cited rule",
+"v": "none",
+"u": [],
+"src": "S"
 },
 "1436": {
 "by": "hand",
@@ -11856,12 +12079,12 @@
 "why": "the cited rule states the correct answer"
 },
 "1537": {
-"by": "hand",
+"by": "rejudge",
+"why": "TR 85(ג)(2): load wider than 3.40 m needs an escort vehicle (was mapped to the q1502 example)",
 "v": "full",
 "u": [
-"heavy#x:Q1502"
-],
-"why": "the cited rule states the correct answer"
+"cargo2#r:רוחב מטען מעל 3.40 מ': רכב ליווי – מ"
+]
 },
 "1538": {
 "by": "hand",
@@ -12108,12 +12331,13 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "1570": {
-"by": "hand",
+"by": "rejudge",
+"why": "as 384",
 "v": "full",
+"dict": true,
 "u": [
-"signs#x:Q384"
-],
-"why": "the cited rule states the correct answer"
+"signs#d306"
+]
 },
 "1571": {
 "by": "sample",
@@ -12133,12 +12357,13 @@
 "why": "official sign meaning (sign dictionary, gov.il)"
 },
 "1573": {
-"by": "hand",
+"by": "rejudge",
+"why": "TR 47(ה)(5): overtaking is allowed if the solid line is not crossed",
 "v": "full",
 "u": [
-"overtake#x:Q447"
-],
-"why": "the cited rule states the correct answer"
+"law3#r:קו הפרדה רצוף אוסר רק עקיפה שחוצה או",
+"overtake#r:אסור לעקוף: בראות לקויה, לפני מפגש מ"
+]
 },
 "1574": {
 "by": "hand",
@@ -12187,11 +12412,12 @@
 "why": "TR sidecar parking lamps"
 },
 "1580": {
-"by": "hand",
-"v": "none",
-"u": [],
-"src": "S",
-"why": "automatic gearbox"
+"by": "rejudge",
+"why": "textbook hedges (\"בכמה כלי-רכב יש גם צורך ללחוץ על דוושת הבלם\"); the bank's \"must press hard\" is not stated",
+"v": "partial",
+"u": [
+"cockpit#r:ברכב אוטומטי: כדי להזיז את הידית ממצ"
+]
 },
 "1581": {
 "by": "sample",
@@ -12769,12 +12995,12 @@
 "why": "visor rain (not in gov.il booklet)"
 },
 "1658": {
-"by": "hand",
-"v": "full",
+"by": "rejudge",
+"why": "example teaches feet on footrests; the handhold part of the answer is not taught",
+"v": "partial",
 "u": [
 "moto#x:Q959"
-],
-"why": "the cited rule states the correct answer"
+]
 },
 "1659": {
 "by": "hand",
@@ -13513,12 +13739,12 @@
 "why": "the cited rule states the correct answer"
 },
 "1756": {
-"by": "hand",
+"by": "rejudge",
+"why": "TR 47(ה)(2): no overtaking from the warning sign before the crossing until after it",
 "v": "full",
 "u": [
-"rail#x:Q449"
-],
-"why": "the cited rule states the correct answer"
+"rail#r:לא עוקפים מתמרור האזהרה שלפני המפגש "
+]
 },
 "1757": {
 "by": "hand",

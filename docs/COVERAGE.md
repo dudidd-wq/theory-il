@@ -1,6 +1,8 @@
 # Coverage
 
-**Headline (v1.8.0, whole bank, every question judged):** of all **1,801** questions, **76.5% full**, **63.5% strict full**, **90.4% full or partial**. Classes B and A: every question that has an official state source is taught (fully or partly); the rest are listed with the search done in [NO_SOURCE_B_A.md](NO_SOURCE_B_A.md).
+**Headline (v1.9.0, whole bank, every question judged):** of all **1,801** questions, **75.7% full**, **59.6% strict full**, **90.2% full or partial** (v1.8.0: 76.5 / 63.5 / 90.4 – the drop is the v1.9 re-judgement below, not lost content). Classes B and A: every question that has an official state source is taught (fully or partly); the rest are listed with the search done in [NO_SOURCE_B_A.md](NO_SOURCE_B_A.md).
+
+**v1.9 re-judgement (review #6):** a bank picture shown with its own bank answer (a sign-gallery tile) no longer counts as teaching. 54 questions that were full only via a gallery tile are now full only via the official sign-table meaning of their sign (so they count as partial under *strict*); 36 more were re-judged by hand in `tools/coverage/rejudge_v19.txt` (applied last by `compile_verdicts.py`, one-line reason each): 16 re-based on a cited rule (3 new textbook rules: ABS keeps steering, p.139; traffic-light phase order, p.71–72; flashing green, p.72), 5 on the sign table, 11 downgraded to partial (e.g. Q93, Q983, Q1580) and 4 to untaught (Q520, Q1307 for B/A; Q1257, Q1435 for C/D). Disclosure: some lesson worked examples and 25 rules (14 used by B/A questions) are sourced from a bank question itself (`Q:<id>` in their source); 42 full verdicts rest only on a worked example built on that same question or on a rule sourced from it; the worked examples were kept after a hand check that their explanation states the rule and cites the law or an official page, while the `Q:<id>`-sourced rules are bank-derived and are disclosed here rather than counted as independent official sources.
 
 Definitions:
 - **full**: a lesson rule, example, recap or the sign dictionary teaches the answer.
@@ -14,32 +16,32 @@ Method: `tools/coverage/verdicts.txt` holds one verdict per question (hand judge
 
 | | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source |
 |---|---|---|---|---|---|---|
-| whole bank | 1801 | 76.5 | 63.5 | 90.4 | 33 | 140 |
-| B private car | 1272 | 81.1 | 64.8 | 95.8 | 0 | 54 |
-| A motorcycle | 1155 | 79.7 | 62.1 | 94.4 | 0 | 65 |
-| C1 truck ≤12 t | 1385 | 79.1 | 63.9 | 93.0 | 30 | 67 |
-| C heavy truck | 1314 | 80.4 | 64.4 | 93.0 | 32 | 60 |
-| D bus | 1316 | 81.5 | 64.6 | 94.5 | 5 | 68 |
-| 1 tractor | 1127 | 81.7 | 63.6 | 94.3 | 1 | 63 |
+| whole bank | 1801 | 75.7 | 59.6 | 90.2 | 33 | 144 |
+| B private car | 1272 | 80.3 | 59.6 | 95.6 | 0 | 56 |
+| A motorcycle | 1155 | 78.7 | 56.3 | 94.2 | 0 | 67 |
+| C1 truck ≤12 t | 1385 | 78.4 | 59.0 | 92.9 | 30 | 69 |
+| C heavy truck | 1314 | 79.6 | 59.2 | 92.8 | 32 | 62 |
+| D bus | 1316 | 80.5 | 59.3 | 94.1 | 5 | 72 |
+| 1 tractor | 1127 | 80.8 | 57.9 | 94.1 | 1 | 65 |
 
 ## Class-only questions (questions that belong to that class alone)
 
 | | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source |
 |---|---|---|---|---|---|---|
 | B private car | 9 | 55.6 | 55.6 | 88.9 | 0 | 1 |
-| A motorcycle | 88 | 56.8 | 56.8 | 76.1 | 0 | 21 |
+| A motorcycle | 88 | 55.7 | 55.7 | 76.1 | 0 | 21 |
 | C1 truck ≤12 t | 1 | 100.0 | 100.0 | 100.0 | 0 | 0 |
 | C heavy truck | 73 | 79.5 | 79.5 | 90.4 | 1 | 6 |
-| D bus | 190 | 74.7 | 65.3 | 88.4 | 1 | 21 |
+| D bus | 190 | 74.2 | 64.7 | 87.9 | 1 | 22 |
 | 1 tractor | 43 | 39.5 | 39.5 | 41.9 | 0 | 25 |
 
 ## Per topic (whole bank)
 
 | | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source |
 |---|---|---|---|---|---|---|
-| law | 901 | 78.6 | 78.6 | 92.3 | 31 | 38 |
-| signs | 390 | 95.9 | 36.2 | 99.5 | 1 | 1 |
-| safety | 400 | 58.8 | 58.8 | 79.5 | 1 | 81 |
+| law | 901 | 78.5 | 78.2 | 92.2 | 31 | 39 |
+| signs | 390 | 93.1 | 19.0 | 98.7 | 1 | 4 |
+| safety | 400 | 58.5 | 58.5 | 79.5 | 1 | 81 |
 | vehicle | 110 | 54.5 | 54.5 | 81.8 | 0 | 20 |
 
 ## Recommendation on classes
