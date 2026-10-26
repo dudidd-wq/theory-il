@@ -5,3 +5,7 @@
 978 full lights2#r5,signs#d702 sign table 702 (red + yellow together: "היכון לנסיעה עם התחלף האור") and the textbook light sequence red, red+yellow, green (was: none/no source)
 985 partial lanes#r9 textbook keep-right rule (OFF:textbook); judging the tanker in the picture is from the bank picture alone (was: none/no source)
 1464 partial skid2#r8,lanes#r2 textbook: high load raises the centre of gravity and lowers stability; speed matched to the curve radius – the full list of factors is from the bank alone (was: none/no source)
+# v1.11 (review #8 item 4): C/C1 citations pointed at a unit that does not teach the answer
+1506 full heavy2#r24 OFF:truck: heavy load at the front of the load bed (was: overtake#c1, an overtaking recap)
+1322 full heavy2#r22 TR 85א(ג): twist-lock container devices only on a commercial vehicle of 16,000 kg or more (was: heavy2#r18)
+1393 full heavy2#r17 TR 168(ג): "driving" for rest-hours purposes includes loading, arranging and unloading cargo (was: vehicle#m0, a mnemonic)

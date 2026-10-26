@@ -10453,12 +10453,12 @@
 "why": "sign-link work site"
 },
 "1322": {
-"by": "hand",
+"by": "rejudge",
+"why": "TR 85א(ג): twist-lock container devices only on a commercial vehicle of 16,000 kg or more (was: heavy2#r18)",
 "v": "full",
 "u": [
-"heavy2#r:C1: רכב מסחרי או רכב עבודה מעל 3,500"
-],
-"why": "the cited rule states the correct answer"
+"heavy2#r:התקני חיבור סובב – רק ברכב מסחרי של "
+]
 },
 "1323": {
 "by": "sample",
@@ -10990,12 +10990,12 @@
 "why": "TR 1 רכב משא"
 },
 "1393": {
-"by": "hand",
+"by": "rejudge",
+"why": "TR 168(ג): \"driving\" for rest-hours purposes includes loading, arranging and unloading cargo (was: vehicle#m0, a mnemonic)",
 "v": "full",
 "u": [
-"vehicle#m:\"שנה או 15 אלף\""
-],
-"why": "the cited rule states the correct answer"
+"heavy2#r:\"נהיגה\" לעניין שעות המנוחה כוללת גם "
+]
 },
 "1394": {
 "by": "hand",
@@ -11840,12 +11840,12 @@
 "why": "the cited rule states the correct answer"
 },
 "1506": {
-"by": "hand",
+"by": "rejudge",
+"why": "OFF:truck: heavy load at the front of the load bed (was: overtake#c1, an overtaking recap)",
 "v": "full",
 "u": [
-"overtake#c:מותר לעקוף בתוך צומת בכביש עם נתיב א"
-],
-"why": "the cited rule states the correct answer"
+"heavy2#r:מעמיסים נכון: מטען כבד בקדמת משטח הה"
+]
 },
 "1507": {
 "by": "sample",

@@ -679,9 +679,9 @@
 }
 },
 "by": {
-"hand": 705,
+"hand": 702,
 "v1.5": 732,
-"rejudge": 93,
+"rejudge": 96,
 "sample": 235,
 "link": 28,
 "rebase": 8
@@ -25423,17 +25423,17 @@
 "1322": {
 "v": "full",
 "rule": [
-"heavy2#r18"
+"heavy2#r22"
 ],
 "ref": [
-"heavy2#r:C1: רכב מסחרי או רכב עבודה מעל 3,500"
+"heavy2#r:התקני חיבור סובב – רק ברכב מסחרי של "
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 85א(ג): twist-lock container devices only on a commercial vehicle of 16,000 kg or more (was: heavy2#r18)",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "rejudge"
 },
 "1323": {
 "v": "full",
@@ -26575,18 +26575,18 @@
 "1393": {
 "v": "full",
 "rule": [
-"vehicle#m0"
+"heavy2#r17"
 ],
 "ref": [
-"vehicle#m:\"שנה או 15 אלף\""
+"heavy2#r:\"נהיגה\" לעניין שעות המנוחה כוללת גם "
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 168(ג): \"driving\" for rest-hours purposes includes loading, arranging and unloading cargo (was: vehicle#m0, a mnemonic)",
 "cls": [
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "rejudge"
 },
 "1394": {
 "v": "none",
@@ -28387,18 +28387,18 @@
 "1506": {
 "v": "full",
 "rule": [
-"overtake#c1"
+"heavy2#r24"
 ],
 "ref": [
-"overtake#c:מותר לעקוף בתוך צומת בכביש עם נתיב א"
+"heavy2#r:מעמיסים נכון: מטען כבד בקדמת משטח הה"
 ],
-"why": "the cited rule states the correct answer",
+"why": "OFF:truck: heavy load at the front of the load bed (was: overtake#c1, an overtaking recap)",
 "cls": [
 "C",
 "C1"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "rejudge"
 },
 "1507": {
 "v": "full",

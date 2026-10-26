@@ -243,6 +243,7 @@ ok('shown with the official bank answer' in CM and f"B {CA['class']['B']['partia
 ok(JL.count('opts(v)') >= 3 and "'ln.okb'" in I18 and I18.count("'ln.okb'") == 2, 'v1.11 (review #8): bank cards, partial cards and worked examples show all official options with the correct one marked')
 ok(CFQ['978']['v'] == 'full' and 'signs#d702' in CFQ['978']['rule'] and CFQ['985']['v'] == 'partial' and CFQ['1464']['v'] == 'partial'
    and not {'978', '985', '1464'} & set(NS['q']), 'v1.11 (review #8): Q978 taught (sign 702 + light sequence), Q985 and Q1464 partial, none listed as no-source')
+ok(CFQ['1506']['rule'] == ['heavy2#r24'] and CFQ['1322']['rule'] == ['heavy2#r22'] and CFQ['1393']['rule'] == ['heavy2#r17'], 'v1.11 (review #8): C/C1 citations 1506, 1322, 1393 point at the unit that teaches the answer')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 
