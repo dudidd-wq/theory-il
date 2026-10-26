@@ -109,3 +109,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - 2026-10-26 14:07 UTC+2 — v1.6 batch 6: gap2 + overtake2 (TB pp.91–106). B full 70.0% any 82.5% / A full 70.6% any 84.0%.
 - 2026-10-26 14:08 UTC+2 — v1.6 batch 7: shoulder2, skid2, night2 (TB pp.107–124).
 - 2026-10-26 14:10 UTC+2 — v1.6 batch 8: maint2, safety2, winter2, docs2 (TB pp.126–145). B full 74.0% any 87.3% / A full 74.0% any 87.9%.
+- 2026-10-26 14:12 UTC+2 — v1.6 batch 9: emerg2, licence2, alc2 (TB pp.145–157). B full 74.5% any 88.1% / A full 74.6% any 88.6%.
