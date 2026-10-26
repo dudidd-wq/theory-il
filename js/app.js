@@ -5,19 +5,27 @@ import * as bk from './backup.js';
 import * as tts from './tts.js';
 import { VERSION } from './version.js';
 import { ELIG, lawUrl } from './elig.js';
-import { makeLearn, loadLessons, lessonFrac, lessonsFor, masteredCount } from './learn.js';
+import { makeLearn, loadLessons, lessonFrac, lessonsFor, masteredCount, explain, whyBox, lessonHref } from './learn.js';
 const { state: S, save, today, CLASSES, LANGS } = st;
 const TOPICS = ['vehicle', 'signs', 'safety', 'law'];
 const LANG_NAMES = { he: 'עברית', en: 'English', ru: 'Русский', fr: 'Français', es: 'Español' };
 const app = () => document.getElementById('app');
-let Q = [], byId = new Map(), TR = {}, MAN = null, session = null, exam = null, timer = 0;
+let Q = [], byId = new Map(), TR = {}, MAN = null, COV = null, SG = null, session = null, exam = null, timer = 0;
 
 // ---------- data ----------
 async function getJSON(u, ms = 15000) {   // timeout so a stalled network never leaves the loading screen forever
   const ac = new AbortController(), tm = setTimeout(() => ac.abort(), ms);
   try { const r = await fetch(u, { signal: ac.signal }); if (!r.ok) throw new Error(u); return await r.json(); } finally { clearTimeout(tm); }
 }
-async function loadData() { [Q, MAN] = await Promise.all([getJSON('data/q.he.json'), getJSON('data/manifest.json'), loadLessons(getJSON)]); byId = new Map(Q.map(p => [p.id, p])); }
+async function loadData() {
+  [Q, MAN] = await Promise.all([getJSON('data/q.he.json'), getJSON('data/manifest.json'), loadLessons(getJSON),
+    // question → lesson map and the sign dictionary: optional, the app works without them (no why box)
+    getJSON('data/coverage.json').then(x => { COV = x; }, () => {}), getJSON('data/signs.json').then(x => { SG = x; }, () => {})]);
+  byId = new Map(Q.map(p => [p.id, p]));
+}
+const why = id => explain(id, cls(), COV, SG);
+/** lesson that teaches a question (for "learn this" links), or null */
+const lessonFor = id => why(id)?.lesson || null;
 async function loadLang(l) { if (l !== 'he' && !TR[l]) { try { TR[l] = await getJSON(`data/q.${l}.json`); } catch { TR[l] = {}; } } }
 const prof = () => S().profile;
 const cls = () => prof()?.cls || 'B';
@@ -221,12 +229,19 @@ function review(go) {
   if (go === 'go') return startSession('review', shuffle(due).slice(0, 15), t('rv.title'), '#/review');
   if (go === 'all') return startSession('review', shuffle(all).slice(0, 15), t('rv.title'), '#/review');
   const tk = go?.startsWith('all-') && go.slice(4);
+  const lk = go?.startsWith('ln-') && go.slice(3);
+  if (lk) { const l = lessonsFor(cls()).find(x => x.id === lk); return startSession('review', shuffle(all.filter(id => lessonFor(id)?.id === lk)).slice(0, 15), t('rv.title') + (l ? ' · ' + l.title : ''), '#/review'); }
   if (TOPICS.includes(tk)) return startSession('review', shuffle(all.filter(id => byId.get(id).k === tk)).slice(0, 15), t('rv.title') + ' · ' + t('topic.' + tk), '#/review');
+  const byL = new Map(); for (const id of all) { const l = lessonFor(id); if (l) byL.set(l.id, [l, (byL.get(l.id)?.[1] || 0) + 1]); }
   const byT = TOPICS.map(k => [k, all.filter(id => byId.get(id).k === k).length]).filter(x => x[1]);
   screen(t('rv.title'), h('p', { class: 'small', text: t('rv.hint') }), h('p', { class: 'sub', text: t('rv.due', due.length, all.length) }),
     !all.length && !due.length ? h('p', { class: 'empty', text: t('rv.empty') }) :
       h('div', { class: 'row' }, due.length ? link(t('rv.start'), '#/review/go', 'btn primary big', 'repeat') : null, all.length ? link(t('rv.early'), '#/review/all', 'btn ghost') : null),
-    byT.length ? h('section', {}, h('h2', { text: t('rv.byTopic') }), h('div', { class: 'row tight' }, byT.map(([k, n]) => link(t('rv.chip', t('topic.' + k), n), '#/review/all-' + k, 'chip')))) : null);
+    byT.length ? h('section', {}, h('h2', { text: t('rv.byTopic') }), h('div', { class: 'row tight' }, byT.map(([k, n]) => link(t('rv.chip', t('topic.' + k), n), '#/review/all-' + k, 'chip')))) : null,
+    byL.size ? h('section', { id: 'rv-lessons' }, h('h2', { text: t('rv.byLesson') }), h('p', { class: 'small muted', text: t('rv.byLessonHint') }),
+      h('ul', { class: 'qlist lnlist' }, [...byL.values()].sort((a, b) => b[1] - a[1]).map(([l, n]) => h('li', { class: 'row tight' },
+        h('a', { href: lessonHref(l, cls()), class: 'btn small', 'data-learn': l.id, lang: 'he', dir: 'rtl' }, icon('book'), h('span', { text: t('rv.lessonChip', l.title, n) })),
+        link(t('rv.practiceThese'), '#/review/ln-' + l.id, 'btn small ghost', 'repeat'))))) : null);
 }
 function bookmarks(go) {
   const ids = S().bm.filter(id => byId.has(id));
@@ -271,15 +286,15 @@ function renderQ() {
   if (s.i >= s.ids.length) return summary();
   const id = s.ids[s.i], v = view(id, s.he), order = s.order?.id === id && s.order.lang === v.lang ? s.order.o : shuffle([0, 1, 2, 3]);
   s.order = { id, lang: v.lang, o: order }; s.render = renderQ;
-  const fb = h('p', { class: 'fb', role: 'status', 'aria-live': 'polite' });
-  const next = btn(s.i + 1 < s.ids.length ? t('q.next') : t('q.finish'), () => { s.i++; s.answered = null; s.order = null; tts.stop(); renderQ(); }, 'btn primary big next', null, { hidden: true });
+  const fb = h('p', { class: 'fb', role: 'status', 'aria-live': 'polite' }), whyHost = h('div', { class: 'whyhost' });
+  const next = btn(s.i + 1 < s.ids.length ? t('q.next') : t('q.finish'), () => { s.i++; s.answered = null; s.order = null; tts.stop(); if (s.badgeLater) { s.badgeLater = false; checkBadges(); } renderQ(); }, 'btn primary big next', null, { hidden: true });
   const answers = h('div', { class: 'answers', role: 'group', 'aria-labelledby': 'qt' }, order.map((ai, n) => h('button', { type: 'button', class: 'ans', lang: v.lang, dir: dirOf(v.lang), 'data-i': ai, onclick: () => answer(ai) },
     h('span', { class: 'ans-n', text: n + 1 }), h('span', { class: 'ans-t', text: v.a[ai] }))));
   function answer(ai) {
     if (s.answered) return;
     const ok = ai === v.c; s.answered = { ai, ok };
     st.record(id, ok); if (ok) s.ok++; else s.wrong.push(id);
-    paint(); checkBadges();
+    paint(); if (ok) checkBadges(); else s.badgeLater = true;
   }
   function paint() {
     if (!s.answered) return;
@@ -288,10 +303,11 @@ function renderQ() {
       else if (i === s.answered.ai && !s.answered.ok) { b.classList.add('bad'); b.append(icon('x', 'ic mark')); } });
     fb.textContent = s.answered.ok ? t('q.correct') : t('q.wrong') + ' ' + v.a[v.c];
     fb.className = 'fb ' + (s.answered.ok ? 'good' : 'bad');
+    const wb = whyBox(why(id), s.answered.ok, cls()); whyHost.replaceChildren(...(wb ? [wb] : []));
     next.hidden = false; next.focus();
   }
   screen('', qHeader(s.i, s.ids.length, s.title, () => { if (confirm(t('q.quitAsk'))) { session = null; location.hash = '#/home'; } }),
-    h('article', { class: 'qcard' + (v.i ? ' has-img' : '') }, qTools(v, s), ...qBody(v), answers, fb, next));
+    h('article', { class: 'qcard' + (v.i ? ' has-img' : '') }, qTools(v, s), ...qBody(v), answers, fb, whyHost, next));
   app().querySelector('h1').classList.add('sr'); app().querySelector('h1').textContent = s.title;
   if (s.answered) paint();
 }
@@ -431,8 +447,12 @@ function submitExam() {
       return h('li', {}, h('p', { lang: v.lang, dir: dirOf(v.lang) }, h('small', { class: 'muted', text: t('q.id', id) + ' · ' }), v.q),
         v.i && h('img', { class: 'qimg sm', src: 'img/q/' + v.i, alt: t('q.img', id), loading: 'lazy', width: 240, height: 135 }),
         h('p', { class: 'ans-bad' }, icon('x'), h('span', { text: a ? t('ex.yours', va.a[a.ai]) : t('ex.none') })),
-        h('p', { class: 'ans-ok' }, icon('check'), h('span', { text: t('ex.right', v.a[v.c]) }))); })));
+        h('p', { class: 'ans-ok' }, icon('check'), h('span', { text: t('ex.right', v.a[v.c]) })), learnLink(id)); })));
   exam = null; checkBadges();
+}
+function learnLink(id) {
+  const l = lessonFor(id); if (!l) return null;
+  return h('p', { class: 'small' }, h('a', { href: lessonHref(l, cls()), class: 'btn small ghost', 'data-learn': l.id }, icon('book'), h('span', { text: t('why.learn', l.title) })));
 }
 function confetti() {   // CSS-only celebration; with prefers-reduced-motion it is a static burst (see css)
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) navigator.vibrate?.([60, 40, 60]);
@@ -520,6 +540,7 @@ async function settings(sec) {
       out.replaceChildren(h('p', { class: 'small', text: t('set.codeHint') }), ta, btn(t('set.copy'), async () => { try { await navigator.clipboard.writeText(code); toast(t('set.copied')); copied(); } catch { ta.select(); toast(t('set.copyManual')); } }, 'btn small', null, { id: 'bk-copy' }));
     }, 'btn', 'key', { id: 'bk-code' })) : null, out,
     h('label', { for: 'codein', class: 'lbl', text: t('set.enter') }), codeIn,
+    h('label', { class: 'check' }, h('input', { type: 'checkbox', id: 'bk-merge' }), h('span', { text: t('set.merge') })),
     h('div', { class: 'row' }, btn(t('set.restore'), async () => { try { await doRestore(await bk.readCode(codeIn.value)); } catch (err) { toast(err.message, 5000); } }, 'btn', null, { id: 'bk-restore' })),
     undo ? h('div', { class: 'row' }, btn(t('set.undo'), async () => { if (await bk.undoRestore()) { toast(t('set.undone')); applyPrefs(); settings(); } }, 'btn ghost', 'repeat', { id: 'bk-undo' })) : null,
     h('h3', { text: t('set.autoFile') }),
@@ -539,13 +560,14 @@ async function settings(sec) {
   if (sec === 'backup') requestAnimationFrame(() => document.getElementById('backup')?.scrollIntoView());
 }
 async function doRestore(b) {
-  if (!confirm(t('set.restoreAsk'))) return;
-  await bk.applyBackup(b); if (prof()?.lang) await loadLang(prof().lang);
-  applyPrefs(); toast(t('set.restored')); location.hash = prof()?.cls ? '#/home' : '#/welcome'; route();
+  const merge = !!document.getElementById('bk-merge')?.checked && !!prof();
+  if (!confirm(t(merge ? 'set.mergeAsk' : 'set.restoreAsk'))) return;
+  await bk.applyBackup(b, merge); if (prof()?.lang) await loadLang(prof().lang);
+  applyPrefs(); toast(t(merge ? 'set.merged' : 'set.restored')); location.hash = prof()?.cls ? '#/home' : '#/welcome'; route();
 }
 
 // ---------- about ----------
-const CCBY = 'https://creativecommons.org/licenses/by/4.0/';
+const CCBY = 'https://creativecommons.org/licenses/by/4.0/', CCBYSA = 'https://creativecommons.org/licenses/by-sa/4.0/';
 function about() {
   const he = MAN?.langs?.he || {};
   const ext = (href, text) => h('a', { href, rel: 'noopener noreferrer', target: '_blank', text });
@@ -557,13 +579,14 @@ function about() {
     h('h2', { text: t('ab.lang') }), h('p', { text: t('ab.langText') }),
     h('h2', { text: t('ab.test') }), h('p', { text: t('ab.testText') }),
     h('h2', { text: t('ab.law') }), h('p', { text: t('ab.lawText') }),
-    h('h2', { text: t('ab.learn') }), h('p', { text: t('ab.learnText') }), h('ul', { class: 'srcs' }, h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085628', t('ab.wsTR', 3085628))), h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085764', t('ab.wsTO', 3085764))), h('li', {}, ext('https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf', t('ab.lotam')))),
+    h('h2', { text: t('ab.learn') }), h('p', { text: t('ab.learnText') }), h('p', { class: 'small', id: 'ab-ccbysa' }, h('span', { text: t('ab.wsCC') + ' ' }), ext(CCBYSA, t('ab.ccbysa'))), h('ul', { class: 'srcs' }, h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085628', t('ab.wsTR', 3085628))), h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085764', t('ab.wsTO', 3085764))), h('li', {}, ext('https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf', t('ab.lotam')))),
     h('h2', { text: t('el.all') }), ...CLASSES.map(c => h('div', {}, h('h3', { class: 'h3', text: clsName(c) }), eligCard(c, false))),
     h('h2', { text: t('ab.a11y') }), h('p', { text: t('ab.a11yText', Q.filter(p => p.i).length) }),
     h('h2', { text: t('ab.priv') }), h('p', { text: t('ab.privText') }),
     h('h2', { text: t('ab.links') }), h('ul', { class: 'srcs' },
       h('li', {}, ext('https://data.gov.il/he/datasets/ministry_of_transport/tqhe', 'data.gov.il – מאגר השאלות והתשובות הרשמי (tqhe)')),
       h('li', {}, ext(CCBY, 'Creative Commons Attribution (CC BY) 4.0')),
+      h('li', {}, ext(CCBYSA, 'Creative Commons Attribution-ShareAlike (CC BY-SA) 4.0 – ויקיטקסט')),
       h('li', {}, ext('https://data.gov.il/he/terms-of-use', 'data.gov.il – תנאי שימוש')),
       h('li', {}, ext('https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf', 'gov.il – לוח התמרורים (PDF)')),
       h('li', {}, ext('https://www.gov.il/en/service/apply_for_new_driver_drivers_license', 'gov.il – Apply for a new driver licence')),
@@ -583,6 +606,7 @@ async function boot() {
   if (rec === 'restored') toast(t('restored'), 5000);
   route();
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname))) {
+    navigator.serviceWorker.addEventListener('message', e => { const d = e.data; if (d?.type === 'imgs') { toast(t(d.ok >= d.n ? 'off.saved' : 'off.partial', d.ok, d.n), 5000); window.__imgs = d; } });
     navigator.serviceWorker?.register('sw.js').then(reg => {
       if (reg.waiting && navigator.serviceWorker.controller) showUpdate(reg.waiting);     // an update that was already waiting at load
       reg.addEventListener('updatefound', () => { const w = reg.installing; w?.addEventListener('statechange', () => { if (w.state === 'installed' && navigator.serviceWorker.controller) showUpdate(w); }); });

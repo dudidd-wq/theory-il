@@ -1,5 +1,11 @@
 // UI strings. Interface: Hebrew (default) or English. Question text always comes verbatim from the official banks.
 const he = {
+  'why.sign': 'תמרור {0}:', 'why.signSrc': 'לוח התמרורים, תמרור {0}', 'why.part': 'כלל קשור:', 'why.none': 'הנושא של השאלה הזו עדיין לא מוסבר בשיעורים, ולכן אין כאן הפניה לשיעור.',
+  'why.learn': 'ללמוד את זה: {0}', 'why.related': 'שיעור קשור: {0}', 'ln.peek': 'מצב קריאה: השיעור עוד נעול במסלול, אבל אפשר לקרוא אותו. הבוחן ייפתח כשתגיעו אליו.',
+  'rv.byLesson': 'הטעויות לפי שיעור', 'rv.byLessonHint': 'כדאי לקרוא שוב את השיעור, ואז לתרגל רק את השאלות שלו.', 'rv.lessonChip': '{0} · {1} טעויות', 'rv.practiceThese': 'תרגול',
+  'set.merge': 'למזג עם ההתקדמות הנוכחית במקום להחליף', 'set.mergeAsk': 'הגיבוי ימוזג עם ההתקדמות שבמכשיר: לכל שאלה נשמר הניסיון האחרון, וסימניות, מבחנים והישגים מצטרפים. אפשר לבטל אחר כך. להמשיך?', 'set.merged': 'המיזוג הושלם',
+  'ab.wsCC': 'טקסט החקיקה מוויקיטקסט מוצג ומצוטט לפי רישיון CC BY-SA 4.0. הציטוטים בשיעורים הם קטעים מהגרסאות הקבועות שלמטה.', 'ab.ccbysa': 'Creative Commons ייחוס-שיתוף זהה (CC BY-SA) 4.0',
+  'off.saved': 'נשמרו לשימוש בלי אינטרנט {0} מתוך {1} תמונות.', 'off.partial': 'נשמרו {0} מתוך {1} תמונות. החסרות ייטענו כשיהיה חיבור.',
   'app.title': 'תאוריה לנהיגה', 'app.sub': 'תרגול למבחן התאוריה – מבוסס על מאגר השאלות הרשמי',
   'disc.bank': 'מאגר השאלות הרשמי עודכן לאחרונה ב־{0} (data.gov.il). במבחן האמיתי עשויות להופיע שאלות חדשות יותר או נוסח מעודכן – כדאי לבדוק גם במקורות הרשמיים.',
   'ex.resumeQ': 'יש מבחן שלא הסתיים: ענית על {0} מתוך 30, נשארו {1}. השעון המשיך לרוץ.', 'ex.resumeLate': 'יש מבחן שלא הסתיים והזמן שלו נגמר (ענית על {0}). אפשר להגיש אותו עכשיו.',
@@ -103,6 +109,12 @@ const he = {
   'bk.errOld': 'הדפדפן הזה ישן מדי לקוד – השתמשו בקובץ', 'bk.errNoFile': 'לא נבחר קובץ', 'bk.saved': 'קובץ הגיבוי נשמר',
 };
 const en = {
+  'why.sign': 'Sign {0}:', 'why.signSrc': 'Sign table, sign {0}', 'why.part': 'Related rule:', 'why.none': 'This question’s topic is not explained in the lessons yet, so there is no lesson link.',
+  'why.learn': 'Learn this: {0}', 'why.related': 'Related lesson: {0}', 'ln.peek': 'Read-only: this lesson is still locked on the path, but you can read it. Its quiz opens when you get there.',
+  'rv.byLesson': 'Mistakes by lesson', 'rv.byLessonHint': 'Re-read the lesson, then practise only its questions.', 'rv.lessonChip': '{0} · {1} mistakes', 'rv.practiceThese': 'Practise',
+  'set.merge': 'Merge with the current progress instead of replacing it', 'set.mergeAsk': 'The backup will be merged with this device: each question keeps its latest attempt; bookmarks, exams and achievements are combined. You can undo it. Continue?', 'set.merged': 'Merge complete',
+  'ab.wsCC': 'Legal text from Wikisource is shown and quoted under CC BY-SA 4.0. Lesson quotes are excerpts of the pinned revisions below.', 'ab.ccbysa': 'Creative Commons Attribution-ShareAlike (CC BY-SA) 4.0',
+  'off.saved': '{0} of {1} images saved for offline use.', 'off.partial': '{0} of {1} images saved. The missing ones load when you are online.',
   'nav.learn': 'Learn', 'home.learn': 'Learning', 'home.learnD': '{0} of {1} lessons mastered', 'pa.lessons': 'Lessons mastered',
   'ln.title': 'Learning', 'ln.hint': 'Short lessons for your licence class: read, play with the diagram, see bank examples, then take a mini-quiz. A lesson opens after you have read the previous one and counts as mastered at 80% in its quiz.',
   'ln.count': '{0} lessons · {1} mastered', 'ln.locked': 'Locked – read the previous lesson first', 'ln.new': 'New', 'ln.read': 'Read', 'ln.best': 'Quiz: {0}%', 'ln.mastered': 'Mastered',

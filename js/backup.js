@@ -108,7 +108,26 @@ export async function readFile(file) {
 }
 
 // ---------- restore (keeps an undo copy in IndexedDB) ----------
-export async function applyBackup(b) { await idbSet('preRestore', wrap()); replaceState(b.state); await mirrorNow(); }
+/** merge two progress states (pure). Per question the record with the later last-answer time wins;
+ *  bookmarks, exams, freeze days are unions; per day / lesson the larger counts win; xp, freezes = max.
+ *  The current profile (class, language, settings) is kept; the backup's is used only when this device has none. */
+export function mergeStates(cur, inc) {
+  const a = { ...blank(), ...cur }, b = { ...blank(), ...inc }, o = { ...a };
+  o.profile = a.profile || b.profile;
+  o.q = { ...a.q }; for (const [id, r] of Object.entries(b.q || {})) { const m = o.q[id]; if (!m || (r?.[4] || 0) > (m?.[4] || 0)) o.q[id] = r; }
+  o.bm = [...new Set([...(a.bm || []), ...(b.bm || [])])];
+  const ek = e => JSON.stringify(e.slice(0, 4)); const seen = new Set((a.ex || []).map(ek));
+  o.ex = [...(a.ex || []), ...(b.ex || []).filter(e => !seen.has(ek(e)))].sort((x, y) => x[0] - y[0]).slice(-200);
+  o.days = { ...a.days }; for (const [d, v] of Object.entries(b.days || {})) { const m = o.days[d]; o.days[d] = m ? [Math.max(m[0], v[0]), Math.max(m[1], v[1])] : v; }
+  o.badges = { ...b.badges, ...a.badges }; for (const [k, ts] of Object.entries(b.badges || {})) if (a.badges?.[k]) o.badges[k] = Math.min(a.badges[k], ts);
+  o.les = { ...a.les }; for (const [id, r] of Object.entries(b.les || {})) { const m = o.les[id];
+    o.les[id] = m ? [m[0] && r[0] ? Math.min(m[0], r[0]) : (m[0] || r[0]), Math.max(m[1], r[1]), Math.max(m[2], r[2])] : r; }
+  o.xp = Math.max(a.xp || 0, b.xp || 0); o.fz = Math.max(a.fz || 0, b.fz || 0);
+  o.frz = [...new Set([...(a.frz || []), ...(b.frz || [])])].sort((x, y) => x - y);
+  o.created = Math.min(a.created || Date.now(), b.created || Date.now());
+  return o;
+}
+export async function applyBackup(b, merge = false) { await idbSet('preRestore', wrap()); replaceState(merge ? mergeStates(state(), b.state) : b.state); await mirrorNow(); }
 export async function undoRestore() { const w = await idbGet('preRestore'); if (!w) return false; const b = parseBackup(JSON.stringify(w)); replaceState(b.state); await idbDel('preRestore'); await mirrorNow(true); return true; }
 export const canUndo = async () => !!(await idbGet('preRestore'));
 

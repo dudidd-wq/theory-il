@@ -9,7 +9,7 @@ const imgKey = path => { const k = path.replace(/^.*?(img\/q\/)/, '$1'); return 
 const ASSETS = [
   './', 'index.html', 'manifest.webmanifest', 'css/style.css', 'fonts/rubik.woff2',
   'js/app.js', 'js/ui.js', 'js/store.js', 'js/backup.js', 'js/i18n.js', 'js/tts.js', 'js/version.js', 'js/elig.js', 'js/learn.js', 'js/viz.js', 'img/hero.svg',
-  'data/q.he.json', 'data/manifest.json', 'data/lessons.json', 'data/sources.json',
+  'data/q.he.json', 'data/manifest.json', 'data/lessons.json', 'data/sources.json', 'data/coverage.json', 'data/signs.json',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png',
 ];
 self.addEventListener('install', e => {
@@ -19,7 +19,14 @@ self.addEventListener('install', e => {
     // images: best effort, so a flaky network doesn't block the shell; missing ones are fetched on demand later
     const ic = await caches.open(IMG); const have = new Set((await ic.keys()).map(r => r.url));
     const todo = Object.keys(IMGS).map(imgKey).filter(k => !have.has(k));
-    for (let i = 0; i < todo.length; i += 20) await Promise.allSettled(todo.slice(i, i + 20).map(k => ic.add(new Request(k, { cache: 'reload' }))));
+    const batch = async list => { const bad = []; for (let i = 0; i < list.length; i += 20) { const part = list.slice(i, i + 20);
+      (await Promise.allSettled(part.map(k => ic.add(new Request(k, { cache: 'reload' }))))).forEach((r, j) => { if (r.status !== 'fulfilled') bad.push(part[j]); }); } return bad; };
+    let bad = await batch(todo);
+    if (bad.length) bad = await batch(bad);          // one retry for images that failed (flaky network)
+    if (todo.length) {                               // tell open pages the true count ("X of N saved")
+      const n = Object.keys(IMGS).length, ok = n - bad.length;
+      for (const c of await self.clients.matchAll({ includeUncontrolled: true })) c.postMessage({ type: 'imgs', ok, n });
+    }
   })());
 });
 self.addEventListener('message', e => { if (e.data === 'skip') self.skipWaiting(); });

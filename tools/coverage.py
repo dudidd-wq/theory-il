@@ -111,3 +111,4 @@ for k, s in stats['topic'].items(): print(TOP[k], s)
 print('signs', stats['signs'], 'agree', stats['agree'])
 missing = [q['id'] for q in Q if not cov[q['id']][1]]
 print('mapped', len(cov), 'unmapped', missing[:10])
+if missing: sys.exit(f'FAIL: {len(missing)} questions not mapped to any lesson')

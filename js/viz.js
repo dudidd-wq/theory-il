@@ -35,17 +35,20 @@ function priority() {
         steps: [[[175, 150, 0], [145, 45, 180], 'אתה בכניסה לצומת עם איתות שמאלה; הרכב ממול מתקרב.'], [[175, 150, 0], [145, 190, 180], 'הרכב שממול עובר ראשון – מי שפונה שמאלה ממתין לו.'], [[165, 95, -45], [145, 190, 180], 'הדרך פנויה ואתה מתחיל לפנות.'], [[20, 85, -90], [145, 190, 180], 'סיימת את הפנייה שמאלה.']] },
     };
     let sc = 'right', i = 0;
-    const show = () => { const s = SC[sc].steps[i]; place(me, s[0]); place(other, s[1]); say(`${SC[sc].intro} צעד ${i + 1} מתוך ${SC[sc].steps.length}: ${s[2]}`); next.disabled = i >= SC[sc].steps.length - 1; };
+    const show = () => { const s = SC[sc].steps[i]; place(me, s[0]); place(other, s[1]); say(`${SC[sc].intro} צעד ${i + 1} מתוך ${SC[sc].steps.length}: ${s[2]}`); next.disabled = i >= SC[sc].steps.length - 1; if (next.disabled && document.activeElement === next) again.focus(); };
     const chips = Object.keys(SC).map(k => chip(SC[k].label, k === sc, () => { sc = k; i = 0; chips.forEach((c, j) => c.setAttribute('aria-pressed', String(Object.keys(SC)[j] === k))); show(); }));
     const next = vbtn('הצעד הבא', () => { i++; show(); }, 'btn small primary');
-    ctl.append(h('div', { class: 'row tight' }, chips), h('div', { class: 'row tight' }, next, vbtn('מההתחלה', () => { i = 0; show(); })));
+    const again = vbtn('מההתחלה', () => { i = 0; show(); });
+    ctl.append(h('div', { class: 'row tight' }, chips), h('div', { class: 'row tight' }, next, again));
     show();
   });
 }
 
 // ---------- sign families (LTP parts, Q:606, Q:477) ----------
-const PARTS = [[101, 152, 'חלק 1 – תמרורי אזהרה והתראה'], [201, 231, 'חלק 2 – תמרורי הוריה'], [301, 310, 'חלק 3 – תמרורי זכות קדימה'], [401, 441, 'חלק 4 – תמרורי איסורים והגבלות'],
-  [601, 637, 'חלק 6 – תמרורי מודיעין והדרכה'], [701, 729, 'חלק 7 – רמזורים ובקרת נתיבים'], [801, 821, 'חלק 8 – סימון על פני הדרך']];
+// ranges as in the part headings of the 2022 consolidated table; parts 1 and 6 have entries past the heading range (153, 638–640)
+export const PARTS = [[101, 153, 'חלק 1 – תמרורי אזהרה והתראה'], [201, 231, 'חלק 2 – תמרורי הוריה'], [301, 310, 'חלק 3 – תמרורי זכות קדימה'], [401, 441, 'חלק 4 – תמרורי איסורים והגבלות'],
+  [501, 516, 'חלק 5 – תמרורי תחבורה ציבורית'], [601, 640, 'חלק 6 – תמרורי מודיעין והדרכה'], [701, 729, 'חלק 7 – רמזורים ובקרת נתיבים'], [801, 821, 'חלק 8 – סימון על פני הדרך'],
+  [901, 935, 'חלק 9 – תמרורים באתר עבודה']];
 function signs() {
   return fig('המספר מגלה את המשפחה', 'לפי לוח התמרורים (gov.il) ושאלות 606, 477 במאגר', ({ stage, ctl, say }) => {
     const tri = S('path', { class: 'vz-shape', d: 'M60 20 L100 90 L20 90 Z' }), circ = S('circle', { class: 'vz-shape', cx: 200, cy: 58, r: 36 });
@@ -53,7 +56,7 @@ function signs() {
     const inp = h('input', { id: 'vz-num', type: 'number', inputmode: 'numeric', min: 100, max: 999, value: 135 });
     const out = h('p', { class: 'vz-out', 'aria-live': 'polite' });
     const run = () => { const n = +inp.value, p = PARTS.find(([a, b]) => n >= a && n <= b);
-      out.textContent = p ? `${n}: ${p[2]} (מספרים ${p[0]} עד ${p[1]})` : `${n || '?'}: לא בטווחים שבשיעור הזה – בודקים בלוח התמרורים.`; };
+      out.textContent = p ? `${n}: ${p[2]} (מספרים ${p[0]} עד ${p[1]})` : `${n || '?'}: אין מספר כזה באף חלק של לוח התמרורים.`; };
     inp.addEventListener('input', run);
     ctl.append(h('label', { for: 'vz-num', class: 'lbl', text: 'הקלידו מספר תמרור:' }), inp, out); run();
     say('משולש שקודקודו למעלה הוא בדרך כלל תמרור אזהרה. עיגול הוא בדרך כלל תמרור הוריה או איסור. הספרה הראשונה במספר התמרור אומרת לאיזה חלק בלוח הוא שייך: ' + PARTS.map(p => `${p[0]} עד ${p[1]} – ${p[2].split('– ')[1]}`).join('; ') + '.');
@@ -65,8 +68,8 @@ const ROADS = [['city', 'דרך עירונית'], ['rural', 'דרך שאינה �
 const VEH = [['car', 'רכב מנועי רגיל', [50, 80, 90, 110]], ['bus', 'אוטובוס (לא זעיר)', [50, 80, 90, 100]], ['heavy', 'רכב מסחרי מעל 12,000 ק"ג', [50, 80, 80, 80]], ['slow', 'רכב איטי וטרקטור', [40, 40, 40, 0]]];
 function speed() {
   return fig('כמה מותר כאן?', 'לפי תקנה 54(א) ו־54(ב) – כשאין תמרור מהירות אחר', ({ stage, ctl, say }) => {
-    const num = txt(70, 79, '', 'vz-num huge'), cap = txt(195, 72, '', 'vz-t mid');
-    stage.append(svg('0 0 280 130', S('circle', { class: 'vz-shape', cx: 70, cy: 66, r: 48 }), num, cap));
+    const num = txt(70, 79, '', 'vz-num huge onsign'), cap = txt(195, 72, '', 'vz-t mid');
+    stage.append(svg('0 0 280 130', S('circle', { class: 'vz-ring', cx: 70, cy: 66, r: 46 }), num, cap));
     const sel = (id, opts) => h('select', { id, onchange: run }, opts.map(([v, l]) => h('option', { value: v, text: l })));
     const sv = sel('vz-veh', VEH), sr = sel('vz-road', ROADS);
     const shared = h('input', { type: 'checkbox', id: 'vz-shared', onchange: run });
@@ -130,9 +133,9 @@ function crosswalk() {
       [[205, 122, 90], [205, 67, 90], [243, 88], 'אתה עומד לפני המעבר. הולך רגל יוצא מאחורי הרכב שעצר וחוצה.'],
       [[205, 122, 90], [205, 67, 90], [243, 150], 'הולך הרגל סיים לחצות בבטחה. רק עכשיו ממשיכים.']];
     let i = 0;
-    const show = () => { const s = ST[i]; place(me, s[0]); place(other, s[1]); ped.style.transform = `translate(${s[2][0]}px,${s[2][1]}px)`; say(`צעד ${i + 1} מתוך ${ST.length}: ${s[3]}`); next.disabled = i >= ST.length - 1; };
-    const next = vbtn('הצעד הבא', () => { i++; show(); }, 'btn small primary');
-    ctl.append(h('div', { class: 'row tight' }, next, vbtn('מההתחלה', () => { i = 0; show(); }))); show();
+    const show = () => { const s = ST[i]; place(me, s[0]); place(other, s[1]); ped.style.transform = `translate(${s[2][0]}px,${s[2][1]}px)`; say(`צעד ${i + 1} מתוך ${ST.length}: ${s[3]}`); next.disabled = i >= ST.length - 1; if (next.disabled && document.activeElement === next) again.focus(); };
+    const next = vbtn('הצעד הבא', () => { i++; show(); }, 'btn small primary'), again = vbtn('מההתחלה', () => { i = 0; show(); });
+    ctl.append(h('div', { class: 'row tight' }, next, again)); show();
   });
 }
 
@@ -177,18 +180,19 @@ const BL = {
   truck: ['משאית או אוטובוס', 22, 70, [[-60, -10, 46, 60], [14, -40, 50, 110], [-11, -72, 22, 36], [-11, 35, 22, 40]]],
   moto: ['אופנוע', 7, 18, [[-55, 2, 48, 28], [7, 2, 48, 28]]],
 };
-function blind() {
+function blind(ctx = {}) {
   return fig('השטח המת: מי לא נראה במראה?', 'לפי שאלות 800 ו־733 במאגר ותקנה 40(א); גודל השטחים באיור להמחשה בלבד', ({ stage, ctl, say }) => {
     const zones = S('g', {}), me = S('g', { class: 'vz-car me' }), rider = S('g', { class: 'vz-car other' }, S('rect', { x: -4, y: -9, width: 8, height: 18, rx: 3 }));
     stage.append(svg('0 0 200 220', road(30, 0, 140, 220), line(76, 0, 76, 220, 'vz-mark dash'), line(124, 0, 124, 220, 'vz-mark dash'), S('g', { transform: 'translate(100 110)' }, zones, me), rider));
     const r = h('input', { id: 'vz-pos', type: 'range', min: 0, max: 100, value: 70, 'aria-label': 'מיקום הרוכב בנתיב הימני' });
-    let k = 'car';
+    let k = ctx.lesson === 'moto' || (ctx.lesson === 'blind' && ctx.cls === 'A') ? 'moto' : ['heavy', 'bus'].includes(ctx.lesson) || (ctx.lesson === 'blind' && ['C1', 'C', 'D'].includes(ctx.cls)) ? 'truck' : 'car';
     const run = () => { const [name, w, l, zs] = BL[k];
       me.replaceChildren(S('rect', { x: -w / 2, y: -l / 2, width: w, height: l, rx: 4 }));
       zones.replaceChildren(...zs.map(([x, y, ww, hh]) => S('rect', { class: 'vz-zone', x, y, width: ww, height: hh })));
       const y = 215 - +r.value * 2.1; rider.style.transform = `translate(148px,${y}px)`;
       const ry = y - 110, inZ = zs.some(([x, zy, ww, hh]) => 48 >= x && 48 <= x + ww && ry >= zy && ry <= zy + hh);
       rider.classList.toggle('hid', inZ);
+      r.setAttribute('aria-valuetext', `הרוכב ${ry > l / 2 ? 'מאחוריך' : ry < -l / 2 ? 'לפניך' : 'לצידך'}${inZ ? ', בשטח המת' : ', נראה'}`);
       say(`אתה ב${name} בנתיב האמצעי. רוכב בנתיב הימני ${ry > l / 2 ? 'מאחוריך' : ry < -l / 2 ? 'לפניך' : 'לצידך'}. ${inZ ? 'הוא בשטח המת – לא תראה אותו במראה. לפני סטייה או פנייה מסובבים את הראש ובודקים.' : 'כרגע אפשר לראות אותו – במראה או ישירות.'}`); };
     const keys = Object.keys(BL), chips = keys.map(x => chip(BL[x][0], x === k, () => { k = x; chips.forEach((c, j) => c.setAttribute('aria-pressed', String(keys[j] === x))); run(); }));
     r.addEventListener('input', run);
@@ -210,4 +214,27 @@ function moto() {
   });
 }
 
-export const VIZ = { priority, signs, speed, gap, overtake, crosswalk, parking, rail, blind, moto };
+// ---------- sign dictionary: every entry of the 2022 table (data/signs.json, built by tools/signs_build.py) ----------
+function signdict() {
+  return fig('מילון התמרורים', 'לפי לוח התמרורים (gov.il, נוסח משולב 2022); התמונות מתוך מאגר השאלות', ({ stage, ctl, say }) => {
+    const inp = h('input', { id: 'vz-sd', type: 'search', placeholder: 'מספר או מילה, למשל 302 או חנייה', autocomplete: 'off' });
+    const out = h('ul', { class: 'sdict', 'aria-live': 'polite' });
+    let D = null;
+    const run = () => {
+      if (!D) return;
+      const q = inp.value.trim(), all = Object.entries(D.e);
+      const hits = !q ? [] : /^\d+$/.test(q) ? all.filter(([n]) => n.startsWith(q)) : all.filter(([, t]) => t.includes(q));
+      out.replaceChildren(...hits.slice(0, 12).map(([n, t]) => { const p = PARTS.find(([a, b]) => +n >= a && +n <= b);
+        return h('li', {}, D.img?.[n] ? h('img', { src: 'img/q/' + D.img[n], alt: '', loading: 'lazy', width: 64, height: 36 }) : null,
+          h('b', { text: n + ' ' }), h('span', { text: t }), p ? h('small', { class: 'muted', text: ' · ' + p[2] }) : null); }));
+      say(!q ? `יש בלוח ${all.length} תמרורים. הקלידו מספר או מילה כדי לראות את משמעות התמרור.` : hits.length ? `נמצאו ${hits.length} תמרורים${hits.length > 12 ? ', מוצגים 12 הראשונים' : ''}.` : 'לא נמצא תמרור מתאים.');
+    };
+    inp.addEventListener('input', run);
+    stage.append(h('label', { for: 'vz-sd', class: 'lbl', text: 'חיפוש בלוח התמרורים:' }), inp);
+    ctl.append(out);
+    say('טוען את לוח התמרורים…');
+    fetch('data/signs.json').then(r => r.json()).then(x => { D = x; run(); }, () => say('לא הצלחנו לטעון את המילון. נסו שוב כשיש חיבור.'));
+  });
+}
+
+export const VIZ = { priority, signs, speed, gap, overtake, crosswalk, parking, rail, blind, moto, signdict };

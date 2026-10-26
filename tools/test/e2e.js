@@ -66,6 +66,10 @@ async function run(prof, opts) {
     const sel = i < 3 ? `.answers .ans:not([data-i="${c}"])` : `.answers .ans[data-i="${c}"]`;
     await p.click(sel);
     if (i === 0) { ok(await p.isVisible('.ans.ok') && await p.isVisible('.ans.bad'), 'wrong answer: shows correct + wrong'); await axe(p, 'question-answered', prof); }
+    if (i === 0) { const k = await p.evaluate(async id => { const m = await import('./js/learn.js'); const [cov, sg] = await Promise.all(['data/coverage.json', 'data/signs.json'].map(u => fetch(u).then(r => r.json()))); return m.explain(id, 'B', cov, sg)?.kind; }, await curId(p));
+      ok(await p.isVisible('.why') && await p.locator('.why a.btn.primary[data-learn]').count() === (k === 'none' ? 0 : 1), `wrong answer: why box + "learn this" lesson link when taught (${k})`);
+      ok(!/הישג/.test(await p.textContent('#toast')), 'no achievement toast on a wrong answer'); }
+    if (i === 3 && await p.locator('.why').count()) ok(await p.locator('.why a.btn.primary').count() === 0, 'right answer: related lesson is a quiet link');
     await p.click('.next');
   }
   await p.waitForSelector('.result');
@@ -84,6 +88,7 @@ async function run(prof, opts) {
   await go(p, '#/review'); await p.waitForSelector('h1');
   ok(+((await text(p)).match(/(\d+) טעויות/) || [0, 0])[1] >= 3, 'review lists mistakes');
   ok(await p.locator('a[href^="#/review/all-"]').count() >= 1, 'mistakes filter by topic offered');
+  ok(await p.locator('#rv-lessons a[data-learn]').count() >= 1 && await p.locator('a[href^="#/review/ln-"]').count() >= 1, 'mistakes grouped by lesson, with a lesson link and practice');
   await p.click('a[href="#/review/go"], a[href="#/review/all"]'); await p.waitForSelector('.answers .ans');
   ok(true, 'review session starts'); await go(p, '#/home');
   // search by text and by number
@@ -137,6 +142,7 @@ async function run(prof, opts) {
   ok(!(await p.evaluate(() => axe.run(document.getElementById('toast'), { runOnly: ['color-contrast'] }).then(r => r.violations.length))), 'toast contrast');
   await p.evaluate(() => document.getElementById('toast').classList.remove('show'));
   ok(/CC|Creative Commons/.test(await (async () => { await go(p, '#/about'); return text(p); })()), 'about credits CC BY');
+  ok(await p.locator('#ab-ccbysa a[href="https://creativecommons.org/licenses/by-sa/4.0/"]').count() === 1, 'about credits Wikisource CC BY-SA 4.0 with a link');
   ok(/משרד התחבורה/.test(await text(p)), 'about names the ministry as source');
   ok(/לא כולל תיאור מילולי/.test(await text(p)) && (await p.locator('.elig').count()) === 6, 'about: picture-question accessibility note + eligibility for all 6 classes');
   // learning stage: path → lesson (law chips, diagram + text alternative, recap) → mini-quiz → mastery → unlock
@@ -145,6 +151,12 @@ async function run(prof, opts) {
   ok(await p.locator('.lessons li').count() === LB.length && await p.locator('.lessons li:nth-child(1) a').count() === 1 && await p.locator('.lessons li:nth-child(2) [aria-disabled="true"]').count() === 1, `learn path: ${LB.length} lessons for B, only the first open`);
   await axe(p, 'learn-path', prof);
   await go(p, '#/learn/' + LB[2].id); ok((await p.evaluate(() => location.hash)) === '#/learn', 'locked lesson redirects to the path');
+  await go(p, '#/learn/' + LB[2].id + '/peek'); await p.waitForSelector('.lsec');
+  ok(/מצב קריאה/.test(await text(p)) && await p.locator('.lend a.btn.primary').count() === 0 && await p.locator('.rules li').count() === LB[2].rules.length, 'locked lesson opens read-only from a "learn this" link (no quiz)');
+  { const r = await p.evaluate(async () => { const m = await import('./js/learn.js'); const [cov, sg] = await Promise.all(['data/coverage.json', 'data/signs.json'].map(u => fetch(u).then(r => r.json())));
+      const a = m.explain(15, 'B', cov, sg), b = Object.keys(cov.q).find(id => cov.q[id][0] === 'f' && !sg.q[id]), x = m.explain(+b, 'B', cov, sg);
+      return { a: a && a.kind + ':' + a.lines[0].n, b: x && x.kind, s: x && x.s, ln: x && x.lesson?.id, all: Object.keys(cov.q).length }; });
+    ok(r.a === 'sign:433' && r.b === 'rule' && !!r.s && !!r.ln && r.all === QH.size, `why data: sign question → sign 433, taught question → cited rule (${JSON.stringify(r)})`); }
   await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lsec');
   ok(await p.getAttribute('.lbody', 'lang') === 'he' && await p.locator('.rules li').count() === LB[0].rules.length, 'lesson: Hebrew body + all rules');
   ok(await p.locator('.rules details.lawref').count() >= LB[0].rules.length, 'every rule carries a law/sign reference');
@@ -152,6 +164,9 @@ async function run(prof, opts) {
   ok(await p.isVisible('.rules details.lawref[open] blockquote') && /noopener/.test(await p.getAttribute('.rules details.lawref[open] a', 'rel')), 'law chip opens the cited excerpt + external link');
   ok(await p.locator('.viz svg[aria-hidden="true"]').count() >= 1 && (await p.textContent('.viz .vz-alt')).length > 40, 'diagram is aria-hidden with a text alternative');
   await p.fill('#vz-num', '305'); ok(/חלק 3/.test(await p.textContent('.vz-out')), 'sign-number diagram reacts (305 → part 3)');
+  await p.fill('#vz-num', '905'); ok(/חלק 9/.test(await p.textContent('.vz-out')), 'sign-number diagram knows parts 5 and 9 (905 → part 9)');
+  await p.waitForSelector('#vz-sd'); await p.fill('#vz-sd', '433'); await p.waitForSelector('.sdict li');
+  ok(/433/.test(await p.textContent('.sdict')), 'sign dictionary finds 433');
   await p.click('.recap .flip >> nth=0'); ok(await p.getAttribute('.recap .flip >> nth=0', 'aria-expanded') === 'true' && await p.isVisible('.recap .back >> nth=0'), 'recap card flips (aria-expanded)');
   ok(await p.locator('.gal img').count() > 0 && await p.locator('.excard').count() > 0, 'sign gallery + worked examples with images');
   await axe(p, 'lesson', prof);
@@ -201,6 +216,10 @@ async function run(prof, opts) {
   await p.setInputFiles('#filein', f2); await p.waitForSelector('.drive');
   const ev = await (async () => { const s = await S(p); return { name: s.profile.name, cls: s.profile.cls, evil: 'evil' in s, abc: 'abc' in s.q, xp: s.xp, imgs: await p.evaluate(() => document.querySelectorAll('img[src="x"]').length) }; })();
   ok(!/[<>]/.test(ev.name) && ev.cls === 'B' && !ev.evil && !ev.abc && ev.xp === 0 && !ev.imgs, `sanitised import ${JSON.stringify(ev)}`);
+  { const before = await S(p), j3 = JSON.parse(fs.readFileSync(f, 'utf8')); j3.state.bm = [1801]; j3.state.xp = 7; j3.state.profile.name = 'אחר';
+    const f3 = path.join(OUT, 'merge.json'); fs.writeFileSync(f3, JSON.stringify(j3));
+    await go(p, '#/settings'); await p.check('#bk-merge'); await p.setInputFiles('#filein', f3); await p.waitForSelector('.drive');
+    const s = await S(p); ok(s.bm.includes(1801) && before.bm.every(x => s.bm.includes(x)) && s.xp === 7 && s.profile.name === before.profile.name && Object.keys(s.q).length >= Object.keys(before.q).length, `restore can merge (bookmarks united, profile kept) ${JSON.stringify({ bm: s.bm, xp: s.xp })}`); }
   // translations + UI language + theme
   await go(p, '#/settings'); await p.selectOption('#sl', 'en'); await p.waitForTimeout(400);
   await go(p, '#/practice/signs'); await p.waitForSelector('.qtext');

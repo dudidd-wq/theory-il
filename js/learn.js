@@ -34,6 +34,49 @@ export function ref(s) {
 }
 const refs = (s, also = []) => h('span', { class: 'refs' }, [s, ...also].map(ref));
 
+/** why-box data for a bank question: the lesson rule (or sign-table entry) that teaches it.
+ *  cov = data/coverage.json, sg = data/signs.json; returns null when nothing in the lessons covers it */
+export function explain(id, c, cov, sg) {
+  const ls = lessonsFor(c), mine = new Map(ls.map(l => [l.id, l]));
+  const lessonOf = lid => mine.get(lid) || null;
+  const nums = sg?.q?.[id];
+  if (nums?.length && nums.every(n => sg.e?.[n])) {
+    return { kind: 'sign', lines: nums.map(n => ({ n, t: sg.e[n] })), url: sg.src?.url, lesson: lessonOf('signs') };
+  }
+  const e = cov?.q?.[id]; if (!e) return null;
+  const [stt, lids, units] = e;
+  if (stt === 'n') return { kind: 'none', lesson: null };   // nearest-by-words lessons are often unrelated: no link, just say so
+  for (const u of units || []) {
+    const m = /^([\w]+)#([rxbc])(\d+)$/.exec(u); if (!m) continue;
+    const l = lessonOf(m[1]); if (!l) continue;
+    const i = +m[3];
+    const r = m[2] === 'r' ? l.rules[i] && { t: l.rules[i].t, s: l.rules[i].s }
+      : m[2] === 'x' ? l.ex[i] && { t: l.ex[i].t, s: l.ex[i].s }
+      : m[2] === 'c' ? l.recap[i] && { t: l.recap[i].f + ' ' + l.recap[i].b, s: l.recap[i].s }
+      : l.body[i] && { t: l.body[i], s: null };
+    if (r) return { kind: stt === 'w' ? 'part' : 'rule', t: r.t, s: r.s, lesson: l };
+  }
+  return { kind: 'none', lesson: null };
+}
+/** link target for a lesson: locked lessons open in read-only "peek" mode */
+export function lessonHref(l, c) { const ls = lessonsFor(c); return '#/learn/' + l.id + (status(l, ls).unlocked ? '' : '/peek'); }
+/** the why box shown under the feedback line */
+export function whyBox(x, ok, c) {
+  if (!x) return null;
+  const he = n => { n.lang = 'he'; n.dir = 'rtl'; return n; };
+  const kids = [];
+  if (x.kind === 'sign') {
+    kids.push(he(h('p', {}, h('b', { text: t('ln.why') + ' ' }), x.lines.map((s, i) => h('span', { text: (i ? ' · ' : '') + t('why.sign', s.n) + ' ' + (s.t.length > 220 ? s.t.slice(0, 220) + '…' : s.t) })))));
+    kids.push(h('p', { class: 'refs' }, ...x.lines.map(s => SRC['LT:' + s.n] ? ref('LT:' + s.n) : ext(x.url, t('why.signSrc', s.n)))));
+  } else if (x.kind === 'rule' || x.kind === 'part') {
+    kids.push(he(h('p', {}, h('b', { text: t(x.kind === 'rule' ? 'ln.why' : 'why.part') + ' ' }), x.t)));
+    if (x.s) kids.push(h('p', { class: 'refs' }, ref(x.s)));
+  } else kids.push(h('p', { class: 'small muted', text: t('why.none') }));
+  if (x.lesson) kids.push(h('p', { class: 'row tight' }, h('a', { href: lessonHref(x.lesson, c), class: ok ? 'btn small ghost' : 'btn small primary', 'data-learn': x.lesson.id },
+    icon('book'), h('span', { text: t(ok ? 'why.related' : 'why.learn', x.lesson.title) }))));
+  return h('div', { class: 'why' + (ok ? '' : ' bad') }, ...kids);
+}
+
 export function makeLearn(ctx) {
   const { screen, btn, link, byId, view, pool, cls, prof, pick, startSession, clsName } = ctx;
   const he = node => { node.lang = 'he'; node.dir = 'rtl'; return node; };
@@ -59,7 +102,8 @@ export function makeLearn(ctx) {
     const c = cls(), ls = lessonsFor(c), l = ls.find(x => x.id === id);
     if (!l) { location.hash = '#/learn'; return; }
     const s = status(l, ls);
-    if (!s.unlocked) { toast(t('ln.locked')); location.hash = '#/learn'; return; }
+    if (!s.unlocked && sub !== 'peek') { toast(t('ln.locked')); location.hash = '#/learn'; return; }
+    const peek = !s.unlocked;
     const mine = new Set(pool()), qids = l.quiz.filter(q => mine.has(q) && byId.has(q));
     if (sub === 'quiz') { st.markRead(l.id); return startSession('lesson', pick(qids, QUIZ_N), l.title, `#/learn/${l.id}/quiz`, { lesson: l.id }); }
     const i = ls.indexOf(l), nxt = ls[i + 1];
@@ -75,10 +119,11 @@ export function makeLearn(ctx) {
     const kids = [
       h('p', { class: 'row tight' }, link(t('ln.back'), '#/learn', 'btn small ghost', uiLang() === 'he' ? 'arrowE' : 'arrowS'), listen,
         h('span', { class: 'small muted', text: s.mastered ? t('ln.mastered') + ' · ' + t('ln.best', s.best) : s.read ? t('ln.read') : t('ln.new') })),
+      peek ? h('p', { class: 'notice', role: 'note' }, icon('key'), h('span', { text: t('ln.peek') })) : null,
       he(h('p', { class: 'sub', text: l.sub })),
       uiLang() !== 'he' ? h('p', { class: 'notice', role: 'note' }, icon('info'), h('span', { text: t('ln.heOnly') })) : null,
       sec('explain', he(h('div', { class: 'lbody' }, l.body.map(p => h('p', { text: p }))))),
-      l.viz.length ? h('div', { class: 'vizs' }, l.viz.filter(v => VIZ[v]).map(v => he(VIZ[v]()))) : null,
+      l.viz.length ? h('div', { class: 'vizs' }, l.viz.filter(v => VIZ[v]).map(v => he(VIZ[v]({ lesson: l.id, cls: c })))) : null,
       sec('rules', he(h('ol', { class: 'rules' }, l.rules.map(r => h('li', {}, h('span', { text: r.t }), refs(r.s, r.also)))))),
       l.gal.length ? sec('gal', h('ul', { class: 'gal' }, l.gal.filter(q => byId.has(q)).map(q => { const v = byId.get(q);
         return h('li', {}, h('img', { src: 'img/q/' + v.i, alt: t('q.img', q), loading: 'lazy', width: 160, height: 90 }), he(h('span', { text: v.a[v.c] })), ref('Q:' + q)); }))) : null,
@@ -92,8 +137,8 @@ export function makeLearn(ctx) {
           he(h('span', { text: r.f })), h('small', { class: 'muted', text: t('ln.flip') }));
         return h('li', {}, b, back); }))) : null,
       h('div', { class: 'row lend' },
-        qids.length ? link(t('ln.quiz', Math.min(QUIZ_N, qids.length)), `#/learn/${l.id}/quiz`, 'btn primary big', 'exam') : null,
-        !s.read ? btn(t('ln.markRead'), e => { st.markRead(l.id); e.currentTarget.replaceWith(h('span', { class: 'small accent', role: 'status', text: t('ln.isRead') })); }, 'btn', 'check') : null,
+        qids.length && !peek ? link(t('ln.quiz', Math.min(QUIZ_N, qids.length)), `#/learn/${l.id}/quiz`, 'btn primary big', 'exam') : null,
+        !s.read && !peek ? btn(t('ln.markRead'), e => { st.markRead(l.id); e.currentTarget.replaceWith(h('span', { class: 'small accent', role: 'status', text: t('ln.isRead') })); }, 'btn', 'check') : null,
         nxt ? link(t('ln.next', nxt.title), '#/learn/' + nxt.id, 'btn ghost') : null),
       h('p', { class: 'small muted', text: t('ln.own') }),
     ];
