@@ -310,3 +310,7 @@ textarea { font-family: ui-monospace, monospace; font-size: .85em; word-break: b
 .vz-t.mid { font-size: 15px; font-weight: 700; }
 line.vz-span { stroke: #f3a712; stroke-width: 6; fill: none; }
 .vz-num.onsign { fill: #111; }
+.tblwrap { overflow-x: auto; max-width: 100%; margin: 12px 0; border-radius: var(--radius); -webkit-overflow-scrolling: touch; }
+.tblwrap:focus-visible { outline: 3px solid var(--accent, #1a73e8); outline-offset: 2px; }
+.tblwrap > .tbl { margin: 0; }
+@media (max-width: 420px) { .tbl.cov th, .tbl.cov td { padding: 8px 6px; font-size: .86em; } .tbl.cov thead th { font-size: .78em; } }

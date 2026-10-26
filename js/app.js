@@ -467,9 +467,9 @@ function examHistory(n) {
 
 // ---------- stats / parent ----------
 function topicTable() {
-  return h('table', { class: 'tbl' }, h('thead', {}, h('tr', {}, [t('st.topic'), t('st.seen'), t('st.acc'), t('st.mast')].map(x => h('th', { scope: 'col', text: x })))),
+  return h('div', { class: 'tblwrap', role: 'region', tabindex: '0', 'aria-label': t('st.topic') }, h('table', { class: 'tbl' }, h('thead', {}, h('tr', {}, [t('st.topic'), t('st.seen'), t('st.acc'), t('st.mast')].map(x => h('th', { scope: 'col', text: x })))),
     h('tbody', {}, TOPICS.map(k => { const ids = topicPool(k), rs = ids.map(st.info).filter(Boolean), seen = rs.reduce((a, r) => a + r[2], 0), right = rs.reduce((a, r) => a + r[3], 0);
-      return h('tr', {}, h('th', { scope: 'row', text: t('topic.' + k) }), h('td', { text: `${rs.length}/${ids.length}` }), h('td', { text: seen ? Math.round(100 * right / seen) + '%' : '–' }), h('td', { text: Math.round(100 * frac(ids)) + '%' })); })));
+      return h('tr', {}, h('th', { scope: 'row', text: t('topic.' + k) }), h('td', { text: `${rs.length}/${ids.length}` }), h('td', { text: seen ? Math.round(100 * right / seen) + '%' : '–' }), h('td', { text: Math.round(100 * frac(ids)) + '%' })); }))));
 }
 function daysChart() {
   const d0 = today(), days = Array.from({ length: 14 }, (_, i) => d0 - 13 + i), max = Math.max(10, ...days.map(d => S().days[d]?.[0] || 0));
@@ -581,9 +581,9 @@ function about() {
     h('h2', { text: t('ab.law') }), h('p', { text: t('ab.lawText') }),
     h('h2', { text: t('ab.learn') }), h('p', { text: t('ab.learnText') }), h('p', { class: 'small', id: 'ab-ccbysa' }, h('span', { text: t('ab.wsCC') + ' ' }), ext(CCBYSA, t('ab.ccbysa'))), h('ul', { class: 'srcs' }, h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085628', t('ab.wsTR', 3085628))), h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085764', t('ab.wsTO', 3085764))), h('li', {}, ext('https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf', t('ab.lotam')))),
     ...(COV?.tot ? [h('h2', { text: t('ab.cov') }), h('p', { text: t('ab.covText') }),
-      h('table', { class: 'tbl' }, h('thead', {}, h('tr', {}, ...['ab.covCls', 'ab.covN', 'ab.covFull', 'ab.covStrict', 'ab.covAny', 'ab.covNoSrc'].map(k => h('th', { scope: 'col', text: t(k) })))),
+      h('div', { class: 'tblwrap', role: 'region', tabindex: '0', 'aria-label': t('ab.cov') }, h('table', { class: 'tbl cov' }, h('thead', {}, h('tr', {}, ...['ab.covCls', 'ab.covN', 'ab.covFull', 'ab.covStrict', 'ab.covAny', 'ab.covNoSrc'].map(k => h('th', { scope: 'col', text: t(k) })))),
         h('tbody', {}, ...Object.entries(COV.tot).map(([c, [n, f, s, a, ns]]) => h('tr', {}, h('th', { scope: 'row', text: c === 'all' ? t('ab.covAll') : c }),
-          ...[n, f + '%', s + '%', a + '%', ns].map(v => h('td', { text: String(v) }))))))] : []),
+          ...[n, f + '%', s + '%', a + '%', ns].map(v => h('td', { text: String(v) })))))))] : []),
     h('h2', { text: t('ab.off') }), h('p', { text: t('ab.offText') }), h('ul', { class: 'srcs' }, h('li', {}, ext('https://www.gov.il/he/pages/gov_terms_of_use', t('ab.govTerms'))), h('li', {}, ext('https://www.gov.il/BlobFolder/reports/safety_rules_book/he/publications_safety_rules_book.pdf', t('ab.rsaBook'))), h('li', {}, ext('https://www.gov.il/BlobFolder/reports/driving_textbook/he/publications_2017_nohagim_aheret_nohagim_nachon.pdf', t('ab.tbook'))), h('li', {}, ext('https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s18-operating-safely.pdf', t('ab.edu18'))), h('li', {}, ext('https://kids.gov.il/sababa/sababa_pool/pages/4451', t('ab.kids'))), h('li', {}, ext('https://kids.gov.il/sababa/sababa_pool/terms.html', t('ab.kidsTerms'))), h('li', {}, ext('https://github.com/dudidd-wq/theory-il/blob/main/LICENSE-DATA.md', t('ab.offList')))),
     h('p', { text: t('ab.tbookText') }), h('p', { class: 'disc', role: 'note', id: 'ab-perm' }, icon('info'), h('span', { text: t('ab.perm') })),
     h('h2', { text: t('el.all') }), ...CLASSES.map(c => h('div', {}, h('h3', { class: 'h3', text: clsName(c) }), eligCard(c, false))),

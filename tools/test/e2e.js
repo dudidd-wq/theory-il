@@ -273,8 +273,33 @@ async function run(prof, opts) {
   ok(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'no horizontal overflow');
   await b.close();
 }
+// Horizontal-overflow sweep: fixed layout viewport (isMobile off, so innerWidth cannot grow with content);
+// every screen at 320/360/390 px must have documentElement.scrollWidth <= the fixed width.
+async function overflowSweep() {
+  console.log('\n== overflow sweep (320/360/390)');
+  const b = await chromium.launch({ executablePath: '/usr/bin/google-chrome', args: ['--no-sandbox'] });
+  for (const W of [320, 360, 390]) {
+    const ctx = await b.newContext({ viewport: { width: W, height: 800 }, hasTouch: true, locale: 'he-IL', serviceWorkers: 'block' });
+    const p = await ctx.newPage(); p.on('dialog', d => d.accept());
+    const over = async () => p.evaluate(W => { const d = document.documentElement; return d.scrollWidth > W + 1 || document.body.scrollWidth > W + 1 ? d.scrollWidth : 0; }, W);
+    const bad = [];
+    await p.goto(BASE); await p.waitForSelector('h1'); if (await over()) bad.push('welcome');
+    await p.click('a[href="#/onboard/1"]'); await p.click('label:has(input[value="B"])'); if (await over()) bad.push('onboard1');
+    await p.click('.row .btn.primary'); await p.click('a[href="#/onboard/3"]'); if (await over()) bad.push('onboard3');
+    await p.click('.row .btn.primary.big'); await p.waitForSelector('.drive');
+    const LJ = await p.evaluate(() => fetch('data/lessons.json').then(r => r.json()));
+    const routes = ['#/home', '#/learn', '#/practice', '#/practice/mix', '#/review', '#/search', '#/bookmarks', '#/signs', '#/signs/go', '#/stats', '#/parent', '#/about', '#/settings', '#/exam',
+      ...LJ.lessons.filter(l => l.cls.includes('B') || l.cls.includes('A')).map(l => '#/learn/' + l.id + '/peek')];
+    for (const r of routes) { await go(p, r); await p.waitForSelector('h1', { timeout: 5000 }).catch(() => {}); const sw = await over(); if (sw) bad.push(r + '=' + sw); }
+    await go(p, '#/exam'); await p.click('.btn.primary.big'); await p.waitForSelector('#timer'); if (await over()) bad.push('exam-running');
+    ok(!bad.length, `${W}px: no horizontal overflow on ${routes.length + 5} screens ${bad.slice(0, 5).join(' ')}`);
+    await ctx.close();
+  }
+  await b.close();
+}
 (async () => {
   await run('mobile', { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2, locale: 'he-IL' });
   await run('desktop', { viewport: { width: 1280, height: 860 }, locale: 'he-IL', reducedMotion: 'reduce' });
+  await overflowSweep();
   console.log(`\n${passes} passed, ${fails} failed`); process.exit(fails ? 1 : 0);
 })().catch(e => { console.error(e); process.exit(2); });
