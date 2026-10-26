@@ -562,6 +562,134 @@
   "pdf_sha256": "c795fb691dcda8b78c44dff837748f8a82a6edf94fdf7ed88a10b590af841c67",
   "published": "12.2019"
  },
+ "edu07": {
+  "url": "https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s07-two-wheeled.pdf",
+  "title": "חינוך תעבורתי, נושא 7: רכב דו-גלגלי",
+  "publisher": "משרד החינוך – תוכנית הלימודים בחינוך תעבורתי לחטיבה העליונה (meyda.education.gov.il)",
+  "accessed": "2026-10-26",
+  "sha256": "451b096b02b7ac3353a4d3c11be23e516a53c70219b046f289257e7c4ad4c3ae",
+  "archive": "web.archive.org lookup rate-limited (HTTP 429) on 2026-10-26; pinned by sha256 of the text as fetched",
+  "quotes": [
+   {
+    "t": "בלימת חירום עם בלם אחורי בלבד",
+    "p": 28
+   },
+   {
+    "t": "סחרור האופנוע",
+    "p": 28
+   },
+   {
+    "t": "בלימה בשני הבלמים",
+    "p": 28
+   },
+   {
+    "t": "בו-בזמן",
+    "p": 22
+   },
+   {
+    "t": "דבר זה בולט במיוחד בחשכה, כשפרטים רבים היכולים לעזור לרוכב \"לקרוא\" את הדרך אינם נראים",
+    "p": 21
+   },
+   {
+    "t": "בלמים – בדקו את הבלם הקדמי והאחורי, כל אחד בנפרד. ודאו שכל בלם עוצר את האופנוע",
+    "p": 24
+   },
+   {
+    "t": "קסדה תקנית אינה מגבילה את ראות הרוכב, היא מאפשרת שדה ראייה מספיק",
+    "p": 23
+   },
+   {
+    "t": "ללא שריטות",
+    "p": 23
+   },
+   {
+    "t": "משקף את תמונת הדרך ללא הסתרות או עיוותים",
+    "p": 23
+   },
+   {
+    "t": "מאפשר לאוויר לזרום דרכו, כדי למנוע הצטברות אדים",
+    "p": 23
+   },
+   {
+    "t": "היגוי בעזרת הטיית הגוף",
+    "p": 12
+   }
+  ],
+  "pdf_sha256": "0297ccb25afb698889bcfb6112be26aa38518b3866c444579e668ce5b6bcfb0e",
+  "published": "09.2019"
+ },
+ "edu13": {
+  "url": "https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s13-alcohol-and-driving.pdf",
+  "title": "חינוך תעבורתי, נושא 13: אלכוהול ונהיגה",
+  "publisher": "משרד החינוך – תוכנית הלימודים בחינוך תעבורתי לחטיבה העליונה (meyda.education.gov.il)",
+  "accessed": "2026-10-26",
+  "sha256": "0eb7fd97701d9dbd4cbf27fe67930e722adf3d2f86fd2b77cef1b474da003552",
+  "archive": "web.archive.org lookup rate-limited (HTTP 429) on 2026-10-26; pinned by sha256 of the text as fetched",
+  "quotes": [
+   {
+    "t": "לאחר שתיית מנה אחת של משקה אלכוהולי (פחית בירה, חצי כוס יין או כוסית משקה חריף) יש להמתין כשעתיים",
+    "p": 22
+   },
+   {
+    "t": "מנת משקה שווה לפחית בירה, כ-1/2 כוס יין, או כוסית משקה חריף",
+    "p": 64
+   }
+  ],
+  "pdf_sha256": "85cce4eea0bfd2ed26cf6c728dd92b2760771c36c757ddbb8cd4c5e6c955b0a6",
+  "published": "12.2019"
+ },
+ "edu17": {
+  "url": "https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s17-special-conditions.pdf",
+  "title": "חינוך תעבורתי, נושא 17: נהיגה בתנאים מיוחדים",
+  "publisher": "משרד החינוך – תוכנית הלימודים בחינוך תעבורתי לחטיבה העליונה (meyda.education.gov.il)",
+  "accessed": "2026-10-26",
+  "sha256": "2133b06d34097eef96d0a2093fb2ab7724e9c5d7f19ed410389e30935e9fce88",
+  "archive": "web.archive.org lookup rate-limited (HTTP 429) on 2026-10-26; pinned by sha256 of the text as fetched",
+  "quotes": [
+   {
+    "t": "שלולית וכביש מוצף מסוכנים בשל הסיכוי לאובדן שליטה על הרכב",
+    "p": 5
+   },
+   {
+    "t": "חשוב לנסוע לאט בהילוך הנמוך ביותר, וללחוץ על דוושת הדלק ללא הפוגה על מנת שהרכב לא יכבה",
+    "p": 6
+   }
+  ],
+  "pdf_sha256": "d04c0c507fd33796750e7695061a2e39345c18f368ce7c691a5355907ca3c060",
+  "published": "12.2019"
+ },
+ "edu21": {
+  "url": "https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s21-accident.pdf",
+  "title": "חינוך תעבורתי, נושא 21: תאונת דרכים",
+  "publisher": "משרד החינוך – תוכנית הלימודים בחינוך תעבורתי לחטיבה העליונה (meyda.education.gov.il)",
+  "accessed": "2026-10-26",
+  "sha256": "83eed7a0b591aaafbac139ef813fd4fdb0c87a049908eaf0ae4125f3e2d0725e",
+  "archive": "web.archive.org lookup rate-limited (HTTP 429) on 2026-10-26; pinned by sha256 of the text as fetched",
+  "quotes": [
+   {
+    "t": "תאונת דרכים היא \"מאורע שבו נגרם לאדם נזק גוף או נזק לרכוש עקב שימוש ברכב למטרות תחבורה\"",
+    "p": 5
+   }
+  ],
+  "pdf_sha256": "43d231c129ee402f932afdecc7abb1572538c8caf5133c040562ace12527ec07",
+  "published": "12.2019"
+ },
+ "pitzuim": {
+  "url": "https://he.wikisource.org/w/index.php?title=%D7%97%D7%95%D7%A7_%D7%A4%D7%99%D7%A6%D7%95%D7%99%D7%99%D7%9D_%D7%9C%D7%A0%D7%A4%D7%92%D7%A2%D7%99_%D7%AA%D7%90%D7%95%D7%A0%D7%95%D7%AA_%D7%93%D7%A8%D7%9B%D7%99%D7%9D&oldid=2968550",
+  "title": "חוק פיצויים לנפגעי תאונות דרכים, סעיף 1 (הגדרות)",
+  "publisher": "חוק פיצויים לנפגעי תאונות דרכים, תשל״ה–1975 – נוסח ויקיטקסט, גרסה 2968550",
+  "accessed": "2026-10-26",
+  "sha256": "5d29f42ee0cc4e65df7e49af06afad8f739541fadc001d10e6cc7bfc57e4e233",
+  "archive": "Wikisource permanent revision (oldid)",
+  "quotes": [
+   {
+    "t": "ואולם לא יראו כתאונת דרכים מאורע שאירע כתוצאה ממעשה שנעשה במתכוון כדי לגרום נזק לגופו או לרכושו של אותו אדם"
+   }
+  ],
+  "published": "16.12.2025",
+  "revid": 2968550,
+  "src_sha256": "8fdd952b285622e1209cd0cae17007106c7e6f75414f13c2011e1ff7b69d77bb"
+ },
  "textbook": {
   "url": "https://www.gov.il/BlobFolder/reports/driving_textbook/he/publications_2017_nohagim_aheret_nohagim_nachon.pdf",
   "title": "נוהגים אחרת – נוהגים נכון: ספר הלימוד הרשמי לתיאוריה",

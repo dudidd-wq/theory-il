@@ -22,7 +22,9 @@ BOOK_URL = 'https://www.gov.il/BlobFolder/reports/safety_rules_book/he/publicati
 # Quotes may come only from the explanatory text – never from the book's embedded sample exam questions.
 TEXTBOOK_URL = 'https://www.gov.il/BlobFolder/reports/driving_textbook/he/publications_2017_nohagim_aheret_nohagim_nachon.pdf'
 TEXTBOOK_PUB = 'הרשות הלאומית לבטיחות בדרכים ומשרד התחבורה (gov.il)'
-PDFS = {'book': ('book.pdf', '03.2026'), 'textbook': ('textbook.pdf', '2017'), 'edu_s18': ('edu_s18.pdf', '12.2019')}
+PDFS = {'book': ('book.pdf', '03.2026'), 'textbook': ('textbook.pdf', '2017'), 'edu_s18': ('edu_s18.pdf', '12.2019'),
+        'edu_s07': ('edu_s07.pdf', '09.2019'), 'edu_s13': ('edu_s13.pdf', '12.2019'), 'edu_s17': ('edu_s17.pdf', '12.2019'),
+        'edu_s21': ('edu_s21.pdf', '12.2019')}  # v1.12: dates from the PDF CreationDate metadata
 # Ministry of Education, high-school traffic-education curriculum (an official state textbook), topic 18
 # "הפעלת הרכב בבטחה". Cached as edu_s18.pdf; edu_s18.txt is per-page `pdftotext` with bidi marks removed, pages
 # joined by \f. Its practice-question blocks ('שאלות (ל)תרגול לקראת מבחן בתיאוריה' up to the 'תשובות לשאלות'
@@ -30,11 +32,19 @@ PDFS = {'book': ('book.pdf', '03.2026'), 'textbook': ('textbook.pdf', '2017'), '
 EDU18_URL = 'https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s18-operating-safely.pdf'
 KIDS_PUB = 'המשרד להגנת הסביבה – סבבה, מאגר מידע סביבתי (kids.gov.il)'
 # kids_co: Ministry of Environmental Protection page on carbon monoxide, approved as an official source by Dudi on 2026-10-26 (15:05 UTC+2).
+EDU = 'https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-'
+# v1.12 (approved by Dudi, 2026-10-26 18:20 UTC+2): topics 7, 13, 17 and 21 of the same curriculum; same caching method
+# (sha256 of the PDFs checked against /workspace/official_sources_candidates/SHA256SUMS.txt). Prose and tables only.
+# pitzuim: Compensation for Road Accident Victims Law 1975, section 1, Wikisource revision 2968550 (16.12.2025);
+# cached as pitzuim.body = the revision's wikitext from the MediaWiki API JSON (its sha256 kept as src_sha256).
+PITZ_URL = 'https://he.wikisource.org/w/index.php?title=%D7%97%D7%95%D7%A7_%D7%A4%D7%99%D7%A6%D7%95%D7%99%D7%99%D7%9D_%D7%9C%D7%A0%D7%A4%D7%92%D7%A2%D7%99_%D7%AA%D7%90%D7%95%D7%A0%D7%95%D7%AA_%D7%93%D7%A8%D7%9B%D7%99%D7%9D&oldid=2968550'
+PITZ_PUB = 'חוק פיצויים לנפגעי תאונות דרכים, תשל״ה–1975 – נוסח ויקיטקסט, גרסה 2968550'
+PITZ_SRC_SHA = '8fdd952b285622e1209cd0cae17007106c7e6f75414f13c2011e1ff7b69d77bb'
 EDU_PUB = 'משרד החינוך – תוכנית הלימודים בחינוך תעבורתי לחטיבה העליונה (meyda.education.gov.il)'
 def edu_prose(raw):
     """The edu PDF text with its practice-question blocks blanked (page breaks kept). TOC lines (dot leaders) skipped."""
     out, i = raw, 0
-    for m in list(re.finditer(r'שאלות (?:ל)?תרגול לקראת מבחן בתיאוריה[^\n]*', raw))[::-1]:
+    for m in list(re.finditer(r'שאלות (?:ל)?תרגול לקראת מבחן (?:ב|ה)תיאוריה[^\n]*', raw))[::-1]:
         if '....' in m.group(0): continue
         e = re.compile(r'תשובות לשאלות[^\n]*').search(raw, m.end())
         k = e.end() if e else len(raw)
@@ -180,6 +190,23 @@ P['edu18'] = (EDU18_URL, 'חינוך תעבורתי, נושא 18: הפעלת ה�
   'מערכת ABS היא מערכת בטיחות המונעת את נעילת הגלגלים בזמן בלימה',
   'בזמן כניסתה של המערכת לפעולה יישמעו נקישות ויורגש רטט בדוושת הבלם',
  ])
+P['edu07'] = (EDU + 's07-two-wheeled.pdf', 'חינוך תעבורתי, נושא 7: רכב דו-גלגלי', 'edu_s07', [
+  'בלימת חירום עם בלם אחורי בלבד', 'סחרור האופנוע', 'בלימה בשני הבלמים', 'בו-בזמן',
+  'דבר זה בולט במיוחד בחשכה, כשפרטים רבים היכולים לעזור לרוכב "לקרוא" את הדרך אינם נראים',
+  'בלמים – בדקו את הבלם הקדמי והאחורי, כל אחד בנפרד. ודאו שכל בלם עוצר את האופנוע',
+  'קסדה תקנית אינה מגבילה את ראות הרוכב, היא מאפשרת שדה ראייה מספיק',
+  'ללא שריטות', 'משקף את תמונת הדרך ללא הסתרות או עיוותים', 'מאפשר לאוויר לזרום דרכו, כדי למנוע הצטברות אדים',
+  'היגוי בעזרת הטיית הגוף'])
+P['edu13'] = (EDU + 's13-alcohol-and-driving.pdf', 'חינוך תעבורתי, נושא 13: אלכוהול ונהיגה', 'edu_s13', [
+  'לאחר שתיית מנה אחת של משקה אלכוהולי (פחית בירה, חצי כוס יין או כוסית משקה חריף) יש להמתין כשעתיים',
+  'מנת משקה שווה לפחית בירה, כ-1/2 כוס יין, או כוסית משקה חריף'])
+P['edu17'] = (EDU + 's17-special-conditions.pdf', 'חינוך תעבורתי, נושא 17: נהיגה בתנאים מיוחדים', 'edu_s17', [
+  'שלולית וכביש מוצף מסוכנים בשל הסיכוי לאובדן שליטה על הרכב',
+  'חשוב לנסוע לאט בהילוך הנמוך ביותר, וללחוץ על דוושת הדלק ללא הפוגה על מנת שהרכב לא יכבה'])
+P['edu21'] = (EDU + 's21-accident.pdf', 'חינוך תעבורתי, נושא 21: תאונת דרכים', 'edu_s21', [
+  'תאונת דרכים היא "מאורע שבו נגרם לאדם נזק גוף או נזק לרכוש עקב שימוש ברכב למטרות תחבורה"'])
+P['pitzuim'] = (PITZ_URL, 'חוק פיצויים לנפגעי תאונות דרכים, סעיף 1 (הגדרות)', 'pitzuim', [
+  'ואולם לא יראו כתאונת דרכים מאורע שאירע כתוצאה ממעשה שנעשה במתכוון כדי לגרום נזק לגופו או לרכושו של אותו אדם'])
 P['textbook'] = (TEXTBOOK_URL, 'נוהגים אחרת – נוהגים נכון: ספר הלימוד הרשמי לתיאוריה', 'textbook', textbook_quotes())
 TERMS = {'url': G + 'pages/gov_terms_of_use', 'title': 'תנאי שימוש באתר gov.il', 'file': 'terms', 'quotes': [
   'שימוש הוגן כולל ציטוט סביר מתוך החומר המוגן',
@@ -200,11 +227,15 @@ def build(verify_only=False):
         if not os.path.exists(fn): errs.append(f'{pid}: no cached text {fn}'); continue
         raw = open(fn, encoding='utf-8').read(); nt = norm(raw)
         pages = raw.split('\f')
-        rec = {'url': url, 'title': title, 'publisher': {'terms': 'מערך הדיגיטל הלאומי (gov.il)', 'textbook': TEXTBOOK_PUB, 'edu18': EDU_PUB, 'kids_co': KIDS_PUB}.get(pid, PUB),
+        rec = {'url': url, 'title': title, 'publisher': {'terms': 'מערך הדיגיטל הלאומי (gov.il)', 'textbook': TEXTBOOK_PUB, 'edu18': EDU_PUB, 'edu07': EDU_PUB, 'edu13': EDU_PUB, 'edu17': EDU_PUB, 'edu21': EDU_PUB,
+               'kids_co': KIDS_PUB, 'pitzuim': PITZ_PUB}.get(pid, PUB),
                'accessed': ACCESSED, 'sha256': hashlib.sha256(raw.encode()).hexdigest(), 'archive': ARCHIVE, 'quotes': []}
         if f in PDFS:
             rec['pdf_sha256'] = hashlib.sha256(open(os.path.join(CACHE, PDFS[f][0]), 'rb').read()).hexdigest()
             rec['published'] = PDFS[f][1]
+        elif pid == 'pitzuim':
+            rec['published'], rec['revid'], rec['archive'] = '16.12.2025', 2968550, 'Wikisource permanent revision (oldid)'
+            rec['src_sha256'] = PITZ_SRC_SHA
         else:
             rec['published'], rec['updated'] = dates(f)
         for q in qs:
