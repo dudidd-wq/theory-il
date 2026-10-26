@@ -142,3 +142,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - v1.9 item 5: worked bank examples added to all 48 B/A lessons that had none (tools/examples_v19.py; each quotes the mapped lesson rule with its official source and verbatim checks); 64/70 lessons now have examples (the 6 without are C/D/tractor-only); data_test enforces it.
 - v1.9 item 6: data_test builds tools/law/law.json from the pinned wikitext when missing, and FAILS (two checks) when the wikitext is missing too; no silent skip.
 - v1.9 item 7: exam note says questions are spread across topics in proportion to the bank (he/en); exam size, pass mark and minutes come from st.EXAM (store.js) instead of hard-coded 30/26/40 in app.js and the UI strings; About coverage table order fixed explicitly (whole bank, B, A, C1, C, D, tractor). Local e2e 223/0.
+- v1.9.0 release: SW VERSION 1.9.0, data_test passed.
