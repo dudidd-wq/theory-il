@@ -18,6 +18,9 @@ for v in lessons_v16.EXAMPLES16.values():
         if e[2] == 'OFF:textbook': Q.extend(e[3:])
 for v in lessons_v16.NOTES16.values():
     if v[1] == 'OFF:textbook': Q.extend(v[2])
+import bank_lessons
+for v in bank_lessons.BANK_NOTES.values():
+    if v[1] == 'OFF:textbook': Q.extend(v[2])
 seen = []
 for x in Q:
     if x not in seen: seen.append(x)

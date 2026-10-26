@@ -12,7 +12,8 @@ def ok(c, msg):
     if not c: fails.append(msg)
 
 Q = J('data', 'q.he.json'); ids = {q['id'] for q in Q}; byid = {q['id']: q for q in Q}
-L = J('data', 'lessons.json')['lessons']; LB = {l['id']: l for l in L}
+LALL = J('data', 'lessons.json')['lessons']; LB = {l['id']: l for l in LALL}
+L = [l for l in LALL if 'bank' not in l]   # taught lessons; v1.10 bank-only lessons are checked in section 5c
 SRC = J('data', 'sources.json'); COV = J('data', 'coverage.json'); SG = J('data', 'signs.json')
 
 # 1. every question mapped
@@ -176,6 +177,28 @@ ok(I18.count("'ab.course'") == 2 and 'אתר לא רשמי' in I18 and 'Unoffici
 LD = T('LICENSE-DATA.md')
 ok(all(k in LD for k in ('OFF:textbook', 'OFF:edu18', 'OFF:kids_co', 'has not been requested', 'stays CC BY-SA', 'version caveat')), 'LICENSE-DATA lists textbook/edu18/kids, permission status, CC BY-SA and CC BY version notes')
 ok(I18.count("'ab.perm'") == 2 and I18.count("'ab.tbook'") == 2 and I18.count("'ab.kidsTerms'") == 2, 'About lists textbook/edu18/kids sources and the permission notice in he and en')
+
+# 5c. v1.10: bank-only lessons ("מהמאגר הרשמי") – every question with no official source is shown in one, before its quiz
+BK = [l for l in LALL if 'bank' in l]
+QB = {q['id']: q for q in Q}
+NOSRC = {int(k) for k, e in CF['q'].items() if e['v'] == 'none' and e.get('src') == 'S'}
+inbank = {i for l in BK for i in l['bank']}
+ok(NOSRC == inbank, f'v1.10: every no-source question is in a bank lesson, and only those ({len(NOSRC)} vs {len(inbank)})')
+ok(all(set(l['quiz']) == set(l['bank']) for l in BK), 'v1.10: a bank lesson quizzes exactly the questions it shows')
+ok(all(c in l['cls'] for l in BK for i in l['bank'] for c in QB[i]['t']), 'v1.10: each bank question is shown to every class it belongs to')
+ok(all(not any(l[k] for k in ('body', 'rules', 'ex', 'recap', 'mnem', 'gal', 'viz')) for l in BK), 'v1.10: bank lessons carry no explanation, rule or example of ours')
+ok(all(l['title'].startswith('מהמאגר הרשמי: ') for l in BK), 'v1.10: bank lessons are titled "מהמאגר הרשמי"')
+ok({int(k) for k in NS['q']} <= inbank, 'v1.10: every NO_SOURCE_B_A question is in a bank lesson')
+for c in ('B', 'A', 'C1', 'C', 'D', '1'):
+    path = [l['id'] for l in LALL if c in l['cls']]; nb = [i for i, x in enumerate(path) if x.startswith('bank_')]
+    ok(not nb or nb[0] == len(path) - len(nb), f'v1.10: class {c} bank lessons come after all taught lessons')
+    ok(J('docs', 'coverage_after.json')['class'][c]['bank_only'] == sum(1 for i in inbank if c in QB[i]['t']) ==
+       J('docs', 'coverage_after.json')['class'][c]['none_nosource'], f'v1.10: class {c} bank-only figure = its no-source questions')
+NT = J('data', 'lessons.json')['notes']
+ok(all(int(k) in inbank for k, v in NT.items() if v.get('k') == 'tb'), 'v1.10: textbook-differs notes only on bank questions')
+ok(NT.get('1765', {}).get('k') == 'tb' and NT['1765']['s'] == 'OFF:textbook', 'v1.10: Q1765 states the textbook difference with its source')
+JL = T('js', 'learn.js')
+ok("'ln.bankNote'" in JL and 'BANK_URL' in JL and I18.count("'ln.bankNote'") == 2 and I18.count("'ln.bankAttr'") == 2, 'v1.10: bank lessons show the no-explanation label and CC BY attribution (he and en)')
 
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)

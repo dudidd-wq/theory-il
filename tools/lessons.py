@@ -175,7 +175,21 @@ for L in LESSONS:
                 'viz': L.get('viz', []), 'gal': gal, 'ex': ex, 'quiz': quiz, 'recap': recap})
     print(f'{lid:9s} rules={len(rules):2d} gal={len(gal):2d} ex={len(ex)} quiz={len(quiz):3d} per-class={per}')
 
+# v1.10: bank-only lessons for every question with no official source (question + answer as published, no explanation)
+import bank_lessons
+if os.path.exists(os.path.join(ROOT, 'data/coverage_full.json')):
+    BL, _ = bank_lessons.build(QS)
+    for b in BL:
+        per = {c: sum(1 for i in b['quiz'] if c in QS[i]['t']) for c in b['cls']}
+        if min(per.values()) < 1: errors.append(f"{b['id']}: empty for a class")
+        out.append({k: v for k, v in b.items() if k != 'quiz_min'})
+        print(f"{b['id']:9s} bank={len(b['bank']):3d} per-class={per}")
 notes = {}
+for qid, (txt, src, chk) in bank_lessons.BANK_NOTES.items():
+    q = QS.get(qid)
+    if not q: errors.append(f'bank note {qid}: no such question'); continue
+    source(src, chk, f'banknote{qid}')
+    notes[str(qid)] = {'exam': q['a'][q['c']], 'law': txt, 's': src, 'k': 'tb'}
 for qid, (law, src, chk) in NOTES.items():
     q = QS.get(qid)
     if not q: errors.append(f'note {qid}: no such question'); continue

@@ -54,13 +54,18 @@ def verdict(qid, c, strict=False):
     return v
 def best(qid, strict=False):
     return max((verdict(qid, c, strict) for c in by[qid]['t']), key=['none', 'partial', 'full'].index)
+# v1.10: questions shown in a bank-only lesson (official question + answer, no official explanation) – reported separately
+BANK = {c: {i for L in LS if 'bank' in L and c in L['cls'] for i in L['bank'] if c in by[i]['t']} for c in CLS}
+BANK[None] = {i for L in LS for i in L.get('bank', [])}
 def tot(ids, c=None):
     f = (lambda i, s: verdict(i, c, s)) if c else best
     v = collections.Counter(f(i, False) for i in ids); s = collections.Counter(f(i, True) for i in ids); N = len(ids)
     pc = lambda k: round(100 * k / N, 1) if N else 0
-    src = collections.Counter(F[str(i)].get('src') for i in ids if f(i, False) == 'none')
+    # a question taught only in a lesson not shown to this class has an official source: count it as T, not S
+    src = collections.Counter((F[str(i)].get('src') or 'S') if F[str(i)]['v'] == 'none' else 'T' for i in ids if f(i, False) == 'none')
     return {'n': N, 'full': v['full'], 'partial': v['partial'], 'none': v['none'], 'full_pct': pc(v['full']), 'any_pct': pc(v['full'] + v['partial']),
-            'strict_full': s['full'], 'strict_pct': pc(s['full']), 'none_teachable': src['T'], 'none_nosource': src['S'] + src[None]}
+            'strict_full': s['full'], 'strict_pct': pc(s['full']), 'none_teachable': src['T'], 'none_nosource': src['S'],
+            'bank_only': sum(1 for i in ids if f(i, False) == 'none' and i in BANK[c])}
 
 ALLIDS = sorted(by)
 T = {'all': tot(ALLIDS), 'class': {}, 'class_only': {}, 'topic': {}, 'class_topic': {}}
@@ -84,7 +89,7 @@ for q in Q:
         if ul[u] not in ls and lcls[ul[u]] & set(q['t']): ls.append(ul[u])
     if e.get('dict') and 'signs' not in ls: ls.append('signs')
     cov[q['id']] = [st, ls[:3], units[:3]] + (['S'] if e['v'] == 'none' and e.get('src') != 'T' else [])
-_t = lambda x: [x['n'], x['full_pct'], x['strict_pct'], x['any_pct'], x['none_nosource']]
+_t = lambda x: [x['n'], x['full_pct'], x['strict_pct'], x['any_pct'], x['none_nosource'], x['bank_only']]
 json.dump({'v': 2, 'legend': {'f': 'taught', 'w': 'partly', 'n': 'not taught yet', 'S': 'no official state source'},
            'tot': {'all': _t(T['all']), **{c: _t(T['class'][c]) for c in CLS}},
            'q': {str(k): v for k, v in sorted(cov.items())}}, open(P('data/coverage.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
@@ -98,7 +103,7 @@ full = {'v': 1, 'note': 'Whole-bank hand judgement of theory-il lessons against 
                        'cls': by[i]['t'], 'topic': by[i]['k'], 'by': F[str(i)]['by']} for i in ALLIDS}}
 json.dump(full, open(P('data/coverage_full.json'), 'w'), ensure_ascii=False, indent=0)
 json.dump(T, open(P('docs/coverage_after.json'), 'w'), ensure_ascii=False, indent=1)
-fmt = lambda s: f"n={s['n']:4d} full {s['full_pct']:5.1f}%  strict {s['strict_pct']:5.1f}%  any {s['any_pct']:5.1f}%  untaught: T {s['none_teachable']:3d} S {s['none_nosource']:3d}"
+fmt = lambda s: f"n={s['n']:4d} full {s['full_pct']:5.1f}%  strict {s['strict_pct']:5.1f}%  any {s['any_pct']:5.1f}%  untaught: T {s['none_teachable']:3d} S {s['none_nosource']:3d} bank-only {s['bank_only']:3d}"
 print('ALL              ', fmt(T['all']))
 for c in CLS: print(f"{NAMES[c]:17s}", fmt(T['class'][c]), ' | class-only', fmt(T['class_only'][c]))
 for k in TOP: print(f"{TOP[k]:17s}", fmt(T['topic'][k]))

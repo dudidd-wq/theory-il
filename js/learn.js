@@ -49,7 +49,8 @@ export function explain(id, c, cov, sg) {
   const note = L?.notes?.[id] || null;   // the bank's answer differs from (or is narrower than) the current law text
   const e = cov?.q?.[id]; if (!e) return note ? { kind: 'none', lesson: null, note } : null;
   const [stt, lids, units] = e;
-  if (stt === 'n') return { kind: 'none', lesson: null, note, nosrc: e[3] === 'S' };   // nearest-by-words lessons are often unrelated: no link, just say so
+  // no official source: point to the bank-only lesson that shows the question and answer as published (no explanation)
+  if (stt === 'n') return { kind: 'none', lesson: e[3] === 'S' ? ls.find(l => l.bank?.includes(id)) || null : null, note, nosrc: e[3] === 'S' };   // nearest-by-words lessons are often unrelated: no link, just say so
   for (const u of units || []) {
     const m = /^([\w]+)#([rxbc])(\d+)$/.exec(u); if (!m) continue;
     const l = lessonOf(m[1]); if (!l) continue;
@@ -82,7 +83,7 @@ export function whyBox(x, ok, c) {
     kids.push(h('p', { class: 'refs small' }, ext(BANK_URL, t('why.bank')), h('span', { class: 'muted', text: ' · ' }), ext(CLASS_URL[c] || CLASS_URL._, t('why.classPage'))));
   }
   if (x.note) kids.push(he(h('div', { class: 'notice lawnote', role: 'note' }, icon('info'), h('div', {},
-    h('p', {}, h('b', { text: t('why.exam') + ' ' }), x.note.exam), h('p', {}, h('b', { text: t('why.law') + ' ' }), x.note.law),
+    h('p', {}, h('b', { text: t('why.exam') + ' ' }), x.note.exam), h('p', {}, h('b', { text: t(x.note.k === 'tb' ? 'why.tb' : 'why.law') + ' ' }), x.note.law),
     x.note.s ? h('p', { class: 'refs' }, ref(x.note.s)) : null))));
   if (x.lesson) kids.push(h('p', { class: 'row tight' }, h('a', { href: lessonHref(x.lesson, c), class: ok ? 'btn small ghost' : 'btn small primary', 'data-learn': x.lesson.id },
     icon('book'), h('span', { text: t(ok ? 'why.related' : 'why.learn', x.lesson.title) }))));
@@ -119,7 +120,9 @@ export function makeLearn(ctx) {
     const mine = new Set(pool()), qids = l.quiz.filter(q => mine.has(q) && byId.has(q));
     if (sub === 'quiz') { st.markRead(l.id); return startSession('lesson', pick(qids, QUIZ_N), l.title, `#/learn/${l.id}/quiz`, { lesson: l.id }); }
     const i = ls.indexOf(l), nxt = ls[i + 1];
-    const speakText = [l.title, ...l.body, ...l.rules.map(r => r.t), ...l.mnem.map(m => m.t)].join('\n');
+    const bank = l.bank ? l.bank.filter(q => mine.has(q) && byId.has(q)).map(q => byId.get(q)) : null;
+    const speakText = bank ? [l.title, ...bank.map(v => v.q + '\n' + v.a[v.c])].join('\n')
+      : [l.title, ...l.body, ...l.rules.map(r => r.t), ...l.mnem.map(m => m.t)].join('\n');
     const listen = tts.supported() ? btn(t('ln.listen'), e => {
       if (tts.speaking()) { tts.stop(); e.currentTarget.setAttribute('aria-pressed', 'false'); return; }
       if (!tts.voiceFor('he')) toast(t('set.ttsNone', 'עברית'));
@@ -134,9 +137,18 @@ export function makeLearn(ctx) {
       peek ? h('p', { class: 'notice', role: 'note' }, icon('key'), h('span', { text: t('ln.peek') })) : null,
       he(h('p', { class: 'sub', text: l.sub })),
       uiLang() !== 'he' ? h('p', { class: 'notice', role: 'note' }, icon('info'), h('span', { text: t('ln.heOnly') })) : null,
-      sec('explain', he(h('div', { class: 'lbody' }, l.body.map(p => h('p', { text: p }))))),
+      // v1.10 bank-only lesson: official question + correct answer exactly as published, a visible no-explanation label, CC BY attribution
+      bank ? he(h('p', { class: 'notice banknote', role: 'note' }, icon('info'), h('span', { text: t('ln.bankNote') }))) : null,
+      bank ? h('p', { class: 'small bankattr' }, ext(BANK_URL, t('ln.bankAttr'))) : null,
+      bank ? sec('bank', h('div', { class: 'exs' }, bank.map(v => { const n = L?.notes?.[v.id];
+        return h('article', { class: 'excard bankcard', 'data-q': v.id }, qimg(v), he(h('p', { class: 'qtext sm' }, h('small', { class: 'muted', text: t('ln.q', v.id) + ' · ' }), v.q)),
+          he(h('p', { class: 'ans-ok' }, icon('check'), h('span', { text: v.a[v.c] }))),
+          h('p', { class: 'small muted banktag', text: t('ln.bankTag') }),
+          n ? he(h('div', { class: 'notice lawnote', role: 'note' }, icon('info'), h('div', {}, h('p', {}, h('b', { text: t(n.k === 'tb' ? 'why.tb' : 'why.law') + ' ' }), n.law),
+            n.s ? h('p', { class: 'refs' }, ref(n.s)) : null))) : null); }))) : null,
+      l.body.length ? sec('explain', he(h('div', { class: 'lbody' }, l.body.map(p => h('p', { text: p }))))) : null,
       l.viz.length ? h('div', { class: 'vizs' }, l.viz.filter(v => VIZ[v]).map(v => he(VIZ[v]({ lesson: l.id, cls: c })))) : null,
-      sec('rules', he(h('ol', { class: 'rules' }, l.rules.map(r => h('li', {}, h('span', { text: r.t }), refs(r.s, r.also)))))),
+      l.rules.length ? sec('rules', he(h('ol', { class: 'rules' }, l.rules.map(r => h('li', {}, h('span', { text: r.t }), refs(r.s, r.also)))))) : null,
       l.gal.length ? sec('gal', h('ul', { class: 'gal' }, l.gal.filter(q => byId.has(q)).map(q => { const v = byId.get(q);
         return h('li', {}, h('img', { src: 'img/q/' + v.i, alt: t('q.img', q), loading: 'lazy', width: 160, height: 90 }), he(h('span', { text: v.a[v.c] })), ref('Q:' + q)); }))) : null,
       l.ex.length ? sec('ex', h('div', { class: 'exs' }, l.ex.filter(x => byId.has(x.q)).map(x => { const v = byId.get(x.q);
@@ -152,7 +164,7 @@ export function makeLearn(ctx) {
         qids.length && !peek ? link(t('ln.quiz', Math.min(QUIZ_N, qids.length)), `#/learn/${l.id}/quiz`, 'btn primary big', 'exam') : null,
         !s.read && !peek ? btn(t('ln.markRead'), e => { st.markRead(l.id); e.currentTarget.replaceWith(h('span', { class: 'small accent', role: 'status', text: t('ln.isRead') })); }, 'btn', 'check') : null,
         nxt ? link(t('ln.next', nxt.title), '#/learn/' + nxt.id, 'btn ghost') : null),
-      h('p', { class: 'small muted', text: t('ln.own') }),
+      bank ? null : h('p', { class: 'small muted', text: t('ln.own') }),
     ];
     screen(l.title, ...kids.filter(Boolean));
     const h1 = document.querySelector('#app h1'); if (h1) { h1.lang = 'he'; h1.dir = 'rtl'; }

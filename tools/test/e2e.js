@@ -162,6 +162,21 @@ async function run(prof, opts) {
       const a = m.explain(15, 'B', cov, sg), b = Object.keys(cov.q).find(id => cov.q[id][0] === 'f' && !sg.q[id]), x = m.explain(+b, 'B', cov, sg);
       return { a: a && a.kind + ':' + a.lines[0].n, b: x && x.kind, s: x && x.s, ln: x && x.lesson?.id, all: Object.keys(cov.q).length }; });
     ok(r.a === 'sign:433' && r.b === 'rule' && !!r.s && !!r.ln && r.all === QH.size, `why data: sign question → sign 433, taught question → cited rule (${JSON.stringify(r)})`); }
+  // v1.10 bank-only lessons: question + answer as published, visible no-explanation label, CC BY attribution, no rules of ours
+  { const BKL = LB.filter(l => l.bank), ids = LB.map(l => l.id);
+    ok(BKL.length >= 4 && ids.slice(-BKL.length).every(i => i.startsWith('bank_')), `B path ends with ${BKL.length} "מהמאגר הרשמי" lessons`);
+    const bv = BKL.find(l => l.id === 'bank_veh'), want = bv.bank.filter(i => QH.get(i)?.t.includes('B'));
+    await go(p, '#/learn/bank_veh/peek'); await p.waitForSelector('.bankcard');
+    const cards = await p.locator('.bankcard').evaluateAll(es => es.map(e => [+e.dataset.q, e.querySelector('.qtext').textContent, e.querySelector('.ans-ok').textContent]));
+    ok(cards.length === want.length && cards.every(([i, q, a]) => q.endsWith(QH.get(i).q) && a === QH.get(i).a[QH.get(i).c]), `bank lesson: all ${want.length} B questions shown with the official text and correct answer`);
+    ok(/אין לשאלות האלה הסבר רשמי או מקור חוקי/.test(await p.textContent('.banknote')) && await p.locator('.banktag').count() === cards.length, 'bank lesson: visible "no official explanation or legal source" label on the lesson and every card');
+    ok(/data\.gov\.il/.test(await p.getAttribute('a:has-text("CC BY")', 'href')) && await p.locator('.rules, .lbody, .recap, .mnems').count() === 0, 'bank lesson: CC BY attribution link to data.gov.il, no rules/explanation/recap of ours');
+    ok(/ספר הלימוד הרשמי/.test(await p.textContent('.bankcard[data-q="1765"] .lawnote')) && await p.locator('.bankcard[data-q="1765"] .lawnote details.lawref').count() === 1, 'Q1765: textbook difference stated with its source');
+    const r = await p.evaluate(async () => { const m = await import('./js/learn.js'); const cov = await fetch('data/coverage.json').then(r => r.json());
+      return Object.keys(cov.q).filter(id => cov.q[id][3] === 'S').map(id => [id, m.explain(+id, 'B', cov, null)?.lesson?.id || '']); });
+    const nb = r.filter(([id]) => QH.get(+id).t.includes('B'));
+    ok(nb.length > 0 && nb.length === new Set(LB.filter(l => l.bank).flatMap(l => l.bank).filter(i => QH.get(i).t.includes("B"))).size && nb.every(([, l]) => l.startsWith('bank_')), `why box: every B no-source question links to its bank lesson (${nb.filter(([, l]) => l).length}/${nb.length})`);
+    await axe(p, 'bank-lesson', prof); }
   await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lsec');
   ok(await p.getAttribute('.lbody', 'lang') === 'he' && await p.locator('.rules li').count() === LB[0].rules.length, 'lesson: Hebrew body + all rules');
   ok(await p.locator('.rules details.lawref').count() >= LB[0].rules.length, 'every rule carries a law/sign reference');
