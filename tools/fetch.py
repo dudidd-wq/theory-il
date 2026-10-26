@@ -22,6 +22,6 @@ for lang, ds in SETS.items():
                   'resourceModified': res.get('last_modified'), 'metadataModified': p.get('metadata_modified'),
                   'records': len(d['records']), 'sha256': hashlib.sha256(body.encode()).hexdigest(),
                   'fetched': datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%MZ'),
-                  'url': f"https://data.gov.il/dataset/{p['name']}"}
+                  'url': f"https://data.gov.il/he/datasets/ministry_of_transport/" + p["name"]}
     print(lang, ds, len(d['records']), res.get('last_modified'))
 json.dump(meta, open('data/raw/meta.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

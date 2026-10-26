@@ -28,3 +28,15 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 - [ ] store/backup schema 2 (S.les) with v1 migration; readiness includes lessons; parent view
 - [ ] About/LICENSE-DATA/README: law + sign-table sources, §6 note
 - [ ] bump SW, e2e learn tests (mobile+desktop, axe, reduced motion), push, live check
+
+### Review findings 1 (fold-in)
+- [x] HIGH: data.gov.il links → /he/datasets/ministry_of_transport/<id> (About, manifest, LICENSE-DATA, fetch.py, raw meta) + CC BY 4.0 link; all 5 dataset pages + terms checked 200 in Chrome (2026-10-26)
+- [x] Translation consistency gate + ru/es 2019 flag (also in About source list)
+- [ ] Exam: persist/resume across reload/update; topic-weighted mix; unanswered not recorded
+- [ ] SRS: all seen questions scheduled by due date
+- [ ] Notice "bank last updated 2021" on welcome + exam intro
+- [ ] Teen feel: welcome illustration, pass celebration (reduced-motion safe), toast off Next, streak freeze, 2-column desktop
+- [ ] Backup reminder only after real copy/share/download
+- [ ] SW: banner for an already-waiting worker; data fetch timeout; image cache refresh
+- [ ] Drop data/raw from the published site; test hook out of prod
+- [ ] Alt text / screen-reader notice; per-class eligibility info (cited); search by text/number; mistakes filter by topic

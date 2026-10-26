@@ -439,6 +439,7 @@ async function doRestore(b) {
 }
 
 // ---------- about ----------
+const CCBY = 'https://creativecommons.org/licenses/by/4.0/';
 function about() {
   const he = MAN?.langs?.he || {};
   const ext = (href, text) => h('a', { href, rel: 'noopener noreferrer', target: '_blank', text });
@@ -446,14 +447,15 @@ function about() {
     h('p', { class: 'small', text: t('ab.version', VERSION) + ' · ' + t('ab.data', MAN?.version || '–', (he.resourceModified || '').slice(0, 10)) }),
     h('h2', { text: t('ab.src') }), h('p', { text: t('ab.srcText') }),
     h('ul', { class: 'srcs' }, LANGS.filter(l => MAN?.langs?.[l]).map(l => { const m = MAN.langs[l];
-      return h('li', {}, h('b', { text: LANG_NAMES[l] + ': ' }), ext(m.url || `https://data.gov.il/dataset/${m.dataset}`, m.title || m.dataset), h('span', { class: 'muted', text: ` · ${m.licenceTitle || m.licence} · ${m.org || ''} · ${(m.resourceModified || '').slice(0, 10)} · ${m.count} ` })); })),
+      return h('li', {}, h('b', { text: LANG_NAMES[l] + ': ' }), ext(m.url || `https://data.gov.il/he/datasets/ministry_of_transport/${m.dataset}`, m.title || m.dataset), h('span', { class: 'muted', text: ' · ' }), ext(CCBY, m.licenceTitle || 'CC BY'), h('span', { class: 'muted', text: ` · ${m.org || ''} · ${(m.resourceModified || '').slice(0, 10)} · ${m.count}${trOld(l) ? ' · ' + t('ab.oldBank', trOld(l)) : ''} ` })); })),
     h('h2', { text: t('ab.lang') }), h('p', { text: t('ab.langText') }),
     h('h2', { text: t('ab.test') }), h('p', { text: t('ab.testText') }),
     h('h2', { text: t('ab.law') }), h('p', { text: t('ab.lawText') }),
     h('h2', { text: t('ab.priv') }), h('p', { text: t('ab.privText') }),
     h('h2', { text: t('ab.links') }), h('ul', { class: 'srcs' },
-      h('li', {}, ext('https://data.gov.il/dataset/tqhe', 'data.gov.il – מאגר השאלות והתשובות הרשמי (tqhe)')),
-      h('li', {}, ext('https://data.gov.il/terms-of-use', 'data.gov.il – תנאי שימוש')),
+      h('li', {}, ext('https://data.gov.il/he/datasets/ministry_of_transport/tqhe', 'data.gov.il – מאגר השאלות והתשובות הרשמי (tqhe)')),
+      h('li', {}, ext(CCBY, 'Creative Commons Attribution (CC BY) 4.0')),
+      h('li', {}, ext('https://data.gov.il/he/terms-of-use', 'data.gov.il – תנאי שימוש')),
       h('li', {}, ext('https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf', 'gov.il – לוח התמרורים (PDF)')),
       h('li', {}, ext('https://www.gov.il/en/service/apply_for_new_driver_drivers_license', 'gov.il – Apply for a new driver licence')),
       h('li', {}, ext('https://www.kolzchut.org.il/he/%D7%9E%D7%91%D7%97%D7%9F_%D7%A0%D7%94%D7%99%D7%92%D7%94_%D7%A2%D7%99%D7%95%D7%A0%D7%99_(%D7%AA%D7%99%D7%90%D7%95%D7%A8%D7%99%D7%94)', 'כל זכות – מבחן נהיגה עיוני (תיאוריה)')),

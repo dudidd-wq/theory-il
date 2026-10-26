@@ -12,7 +12,7 @@
   "records": 1802,
   "sha256": "240f89eb89207250cf30dfbeff140c5fcdfb72d6442bba64e65d86f31151475c",
   "fetched": "2026-10-26T06:17Z",
-  "url": "https://data.gov.il/dataset/tqhe"
+  "url": "https://data.gov.il/he/datasets/ministry_of_transport/tqhe"
  },
  "en": {
   "dataset": "tqen",
@@ -27,7 +27,7 @@
   "records": 1803,
   "sha256": "91e369f4711505111f981cf97a541e486a7e09dada89db7db707e0cfaef743c5",
   "fetched": "2026-10-26T06:17Z",
-  "url": "https://data.gov.il/dataset/tqen"
+  "url": "https://data.gov.il/he/datasets/ministry_of_transport/tqen"
  },
  "ru": {
   "dataset": "tqru",
@@ -42,7 +42,7 @@
   "records": 1802,
   "sha256": "3a11de4d4aaf1ce6119a77db3df2d216f2a0981d9a719e289722b5e2a7ee7e9d",
   "fetched": "2026-10-26T06:17Z",
-  "url": "https://data.gov.il/dataset/tqru"
+  "url": "https://data.gov.il/he/datasets/ministry_of_transport/tqru"
  },
  "fr": {
   "dataset": "tqfr",
@@ -57,7 +57,7 @@
   "records": 1802,
   "sha256": "0588addad5870bf9d68feeb8b042e71e9fedd57a2768bf8d3f2c42d4e5f8e304",
   "fetched": "2026-10-26T06:17Z",
-  "url": "https://data.gov.il/dataset/tqfr"
+  "url": "https://data.gov.il/he/datasets/ministry_of_transport/tqfr"
  },
  "es": {
   "dataset": "tqes",
@@ -72,6 +72,6 @@
   "records": 1803,
   "sha256": "1960246a64127615653f8da609780191a4eeaf209b1a25dc78b359f382c75dfd",
   "fetched": "2026-10-26T06:17Z",
-  "url": "https://data.gov.il/dataset/tqes"
+  "url": "https://data.gov.il/he/datasets/ministry_of_transport/tqes"
  }
 }
