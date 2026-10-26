@@ -15272,7 +15272,7 @@
 "blind#r1"
 ],
 "ref": [
-"blind#r:לפני האטה: מסתכלים במראות, מרפים מהד"
+"blind#r:שלבי עצירה בטיחותיים לפי ספר הלימוד"
 ],
 "why": "textbook: safe stopping steps, mirrors then release the accelerator, brake/clutch (re-based v1.10)",
 "cls": [
@@ -23597,7 +23597,7 @@
 "bus#x0"
 ],
 "ref": [
-"bus#r:אוטובוס שנאלץ לעמוד בלילה מחוץ לעיר:",
+"bus#r:אוטובוס שהיה הכרח להשאירו עומד על הדרך",
 "bus#x:Q1206"
 ],
 "why": "TR 70: triangle visible from 100 m; bus outside a city at night: amber flasher or all indicators (re-based v1.10)",

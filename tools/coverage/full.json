@@ -1515,7 +1515,7 @@
 "by": "hand",
 "v": "partial",
 "u": [
-"bus#r:אוטובוס שנאלץ לעמוד בלילה מחוץ לעיר:"
+"bus#r:אוטובוס שהיה הכרח להשאירו עומד על הד"
 ],
 "why": "bus rule (D only) – generic rule not taught"
 },
@@ -6065,7 +6065,7 @@
 "by": "rebase",
 "v": "full",
 "u": [
-"blind#r:לפני האטה: מסתכלים במראות, מרפים מהד"
+"blind#r:שלבי עצירה בטיחותיים לפי ספר הלימוד"
 ],
 "why": "textbook: safe stopping steps, mirrors then release the accelerator, brake/clutch (re-based v1.10)"
 },
@@ -9568,7 +9568,7 @@
 "by": "rebase",
 "v": "full",
 "u": [
-"bus#r:אוטובוס שנאלץ לעמוד בלילה מחוץ לעיר:",
+"bus#r:אוטובוס שהיה הכרח להשאירו עומד על הדרך",
 "bus#x:Q1206"
 ],
 "why": "TR 70: triangle visible from 100 m; bus outside a city at night: amber flasher or all indicators (re-based v1.10)"
@@ -13452,7 +13452,7 @@
 "by": "hand",
 "v": "partial",
 "u": [
-"blind#r:לפני האטה: מסתכלים במראות, מרפים מהד"
+"blind#r:שלבי עצירה בטיחותיים לפי ספר הלימוד:"
 ],
 "why": "two hands rule; exception not"
 },

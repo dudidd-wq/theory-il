@@ -246,6 +246,9 @@ ok(CFQ['978']['v'] == 'full' and 'signs#d702' in CFQ['978']['rule'] and CFQ['985
 ok(CFQ['1506']['rule'] == ['heavy2#r24'] and CFQ['1322']['rule'] == ['heavy2#r22'] and CFQ['1393']['rule'] == ['heavy2#r17'], 'v1.11 (review #8): C/C1 citations 1506, 1322, 1393 point at the unit that teaches the answer')
 ok('ובאופנוע (A) הכיסוי חלקי' not in I18 and I18.count('{0}.') >= 2 and 'אף רישיון אינו מכוסה במלואו' in I18 and "t('ab.covText', [" in T('js', 'app.js'), 'v1.11 (review #8): About says every class is partial and gives computed per-class full figures')
 ok(not [x['q'] for l in LJ['lessons'] for x in l['ex'] if x['s'].startswith('Q:') or any(a.startswith('Q:') for a in x.get('also', []))], 'v1.11 (review #8): no worked example is sourced from a bank question (signs#x0 re-based on sign table 135/306)')
+_LB = {l['id']: l for l in LJ['lessons']}
+ok(any('אור מהבהב צהוב' in r['t'] and 'מחווני הכיוון' in r['t'] for r in _LB['bus']['rules']) and not any('אורות מצוקה' in r['t'] for r in _LB['bus']['rules']) and 'אורות מצוקה' not in _LB['bus']['ex'][0]['t'], 'v1.11 (review #8): bus TR 70 rule restates 70(ב)(1) (amber flasher or all indicators), not "hazard lights"')
+ok(any('בבלם ובמצמד' in r['t'] for r in _LB['blind']['rules']), 'v1.11 (review #8): blind stopping-steps rule follows the textbook wording (brake and clutch)')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 
