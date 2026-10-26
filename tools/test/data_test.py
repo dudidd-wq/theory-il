@@ -332,6 +332,12 @@ ok({('signs', 'Q:606'), ('signs', 'Q:477'), ('bus', 'Q:1726')} <= {(a, c) for a,
 # v1.13 (review #9 D5): maint2's carbon-monoxide rule keeps to the kids_co wording (no "closed car park" inference)
 _CO = [r['t'] for r in LB['maint2']['rules'] if r['s'] == 'OFF:kids_co']
 ok(len(_CO) == 1 and 'חניון' not in _CO[0] and 'אין להשאיר' not in _CO[0] and 'שיכולה להתרחש באזורים סגורים' in _CO[0], 'v1.13 (review #9 D5): maint2 CO rule states only what kids_co says')
+# v1.13 (review #9 D6): the Compensation Law source JSON is in the repo and its sha256 is the one pages.json records
+import hashlib, subprocess as _sp
+_PF = os.path.join(R, 'tools', 'official', 'cache', 'pitzuim_rev2968550.json')
+_trk = _sp.run(['git', 'ls-files', '--error-unmatch', _PF], cwd=R, capture_output=True).returncode == 0
+ok(_trk and os.path.exists(_PF) and hashlib.sha256(open(_PF, 'rb').read()).hexdigest() == J('tools', 'official', 'pages.json')['pitzuim']['src_sha256'],
+   'v1.13 (review #9 D6): the committed pitzuim API JSON reproduces src_sha256')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Pin the official road-safety pages (National Road Safety Authority on gov.il, and its March 2026
 booklet) that lessons cite as OFF:<id>.
-- Full page text is kept only in tools/official/cache/ (gitignored): gov.il terms of use allow fair use
+- Full page text is kept only in tools/official/cache/ (gitignored; the one exception is the Compensation Law
+  Wikisource API response, CC BY-SA, committed so its src_sha256 is reproducible): gov.il terms of use allow fair use
   ("שימוש הוגן", reasonable quotation with the source named), not republishing whole pages.
 - tools/official/pages.json (committed) records per page: url, publisher, dates, access date, sha256 of the
   cached text, archive status and the short quotes the lessons may cite. Every quote is verified to occur
@@ -238,6 +239,11 @@ def build(verify_only=False):
         elif pid == 'pitzuim':
             rec['published'], rec['revid'], rec['archive'] = '16.12.2025', 2968550, 'Wikisource permanent revision (oldid)'
             rec['src_sha256'] = PITZ_SRC_SHA
+            # v1.13 (review #9 D6): the API response is committed (cache/pitzuim_rev2968550.json); its hash and its wikitext must match
+            _pj = open(os.path.join(CACHE, 'pitzuim_rev2968550.json'), 'rb').read()
+            if hashlib.sha256(_pj).hexdigest() != PITZ_SRC_SHA: errs.append('pitzuim: committed API JSON does not match src_sha256')
+            _pr = json.loads(_pj)['query']['pages']['322734']['revisions'][0]
+            if _pr['revid'] != 2968550 or _pr['slots']['main']['*'] != raw: errs.append('pitzuim: cached body is not the revision 2968550 wikitext')
         else:
             rec['published'], rec['updated'] = dates(f)
         for q in qs:
