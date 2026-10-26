@@ -4,87 +4,87 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1011,
-"partial": 256,
-"none": 534,
-"full_pct": 56.1,
-"any_pct": 70.3,
-"strict_full": 778,
-"strict_pct": 43.2,
-"none_teachable": 218,
+"full": 1041,
+"partial": 258,
+"none": 502,
+"full_pct": 57.8,
+"any_pct": 72.1,
+"strict_full": 808,
+"strict_pct": 44.9,
+"none_teachable": 186,
 "none_nosource": 316
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 671,
-"partial": 178,
-"none": 423,
-"full_pct": 52.8,
-"any_pct": 66.7,
-"strict_full": 463,
-"strict_pct": 36.4,
-"none_teachable": 164,
+"full": 693,
+"partial": 179,
+"none": 400,
+"full_pct": 54.5,
+"any_pct": 68.6,
+"strict_full": 485,
+"strict_pct": 38.1,
+"none_teachable": 141,
 "none_nosource": 259
 },
 "A": {
 "n": 1155,
-"full": 653,
-"partial": 169,
-"none": 333,
-"full_pct": 56.5,
-"any_pct": 71.2,
-"strict_full": 450,
-"strict_pct": 39.0,
-"none_teachable": 127,
+"full": 663,
+"partial": 170,
+"none": 322,
+"full_pct": 57.4,
+"any_pct": 72.1,
+"strict_full": 460,
+"strict_pct": 39.8,
+"none_teachable": 116,
 "none_nosource": 206
 },
 "C1": {
 "n": 1385,
-"full": 735,
-"partial": 193,
-"none": 457,
-"full_pct": 53.1,
-"any_pct": 67.0,
-"strict_full": 524,
-"strict_pct": 37.8,
-"none_teachable": 199,
+"full": 763,
+"partial": 195,
+"none": 427,
+"full_pct": 55.1,
+"any_pct": 69.2,
+"strict_full": 552,
+"strict_pct": 39.9,
+"none_teachable": 169,
 "none_nosource": 258
 },
 "C": {
 "n": 1314,
-"full": 757,
-"partial": 179,
-"none": 378,
-"full_pct": 57.6,
-"any_pct": 71.2,
-"strict_full": 547,
-"strict_pct": 41.6,
-"none_teachable": 178,
+"full": 783,
+"partial": 180,
+"none": 351,
+"full_pct": 59.6,
+"any_pct": 73.3,
+"strict_full": 573,
+"strict_pct": 43.6,
+"none_teachable": 151,
 "none_nosource": 200
 },
 "D": {
 "n": 1316,
-"full": 783,
+"full": 802,
 "partial": 181,
-"none": 352,
-"full_pct": 59.5,
-"any_pct": 73.3,
-"strict_full": 561,
-"strict_pct": 42.6,
-"none_teachable": 144,
+"none": 333,
+"full_pct": 60.9,
+"any_pct": 74.7,
+"strict_full": 580,
+"strict_pct": 44.1,
+"none_teachable": 125,
 "none_nosource": 208
 },
 "1": {
 "n": 1127,
-"full": 635,
+"full": 649,
 "partial": 153,
-"none": 339,
-"full_pct": 56.3,
-"any_pct": 69.9,
-"strict_full": 431,
-"strict_pct": 38.2,
-"none_teachable": 133,
+"none": 325,
+"full_pct": 57.6,
+"any_pct": 71.2,
+"strict_full": 445,
+"strict_pct": 39.5,
+"none_teachable": 119,
 "none_nosource": 206
 }
 },
@@ -127,14 +127,14 @@
 },
 "C": {
 "n": 73,
-"full": 57,
+"full": 58,
 "partial": 8,
-"none": 8,
-"full_pct": 78.1,
-"any_pct": 89.0,
-"strict_full": 57,
-"strict_pct": 78.1,
-"none_teachable": 3,
+"none": 7,
+"full_pct": 79.5,
+"any_pct": 90.4,
+"strict_full": 58,
+"strict_pct": 79.5,
+"none_teachable": 2,
 "none_nosource": 5
 },
 "D": {
@@ -151,28 +151,28 @@
 },
 "1": {
 "n": 43,
-"full": 16,
+"full": 17,
 "partial": 1,
-"none": 26,
-"full_pct": 37.2,
-"any_pct": 39.5,
-"strict_full": 16,
-"strict_pct": 37.2,
-"none_teachable": 1,
+"none": 25,
+"full_pct": 39.5,
+"any_pct": 41.9,
+"strict_full": 17,
+"strict_pct": 39.5,
+"none_teachable": 0,
 "none_nosource": 25
 }
 },
 "topic": {
 "law": {
 "n": 901,
-"full": 554,
-"partial": 139,
-"none": 208,
-"full_pct": 61.5,
-"any_pct": 76.9,
-"strict_full": 554,
-"strict_pct": 61.5,
-"none_teachable": 180,
+"full": 581,
+"partial": 140,
+"none": 180,
+"full_pct": 64.5,
+"any_pct": 80.0,
+"strict_full": 581,
+"strict_pct": 64.5,
+"none_teachable": 152,
 "none_nosource": 28
 },
 "signs": {
@@ -189,26 +189,26 @@
 },
 "safety": {
 "n": 400,
-"full": 89,
+"full": 90,
 "partial": 85,
-"none": 226,
-"full_pct": 22.2,
-"any_pct": 43.5,
-"strict_full": 89,
-"strict_pct": 22.2,
-"none_teachable": 13,
+"none": 225,
+"full_pct": 22.5,
+"any_pct": 43.8,
+"strict_full": 90,
+"strict_pct": 22.5,
+"none_teachable": 12,
 "none_nosource": 213
 },
 "vehicle": {
 "n": 110,
-"full": 13,
-"partial": 19,
-"none": 78,
-"full_pct": 11.8,
-"any_pct": 29.1,
-"strict_full": 13,
-"strict_pct": 11.8,
-"none_teachable": 6,
+"full": 15,
+"partial": 20,
+"none": 75,
+"full_pct": 13.6,
+"any_pct": 31.8,
+"strict_full": 15,
+"strict_pct": 13.6,
+"none_teachable": 3,
 "none_nosource": 72
 }
 },
@@ -216,14 +216,14 @@
 "B": {
 "law": {
 "n": 501,
-"full": 269,
+"full": 289,
 "partial": 85,
-"none": 147,
-"full_pct": 53.7,
-"any_pct": 70.7,
-"strict_full": 269,
-"strict_pct": 53.7,
-"none_teachable": 131,
+"none": 127,
+"full_pct": 57.7,
+"any_pct": 74.7,
+"strict_full": 289,
+"strict_pct": 57.7,
+"none_teachable": 111,
 "none_nosource": 16
 },
 "signs": {
@@ -252,28 +252,28 @@
 },
 "vehicle": {
 "n": 106,
-"full": 13,
-"partial": 18,
-"none": 75,
-"full_pct": 12.3,
-"any_pct": 29.2,
-"strict_full": 13,
-"strict_pct": 12.3,
-"none_teachable": 5,
+"full": 15,
+"partial": 19,
+"none": 72,
+"full_pct": 14.2,
+"any_pct": 32.1,
+"strict_full": 15,
+"strict_pct": 14.2,
+"none_teachable": 2,
 "none_nosource": 70
 }
 },
 "A": {
 "law": {
 "n": 429,
-"full": 249,
+"full": 257,
 "partial": 81,
-"none": 99,
-"full_pct": 58.0,
-"any_pct": 76.9,
-"strict_full": 249,
-"strict_pct": 58.0,
-"none_teachable": 95,
+"none": 91,
+"full_pct": 59.9,
+"any_pct": 78.8,
+"strict_full": 257,
+"strict_pct": 59.9,
+"none_teachable": 87,
 "none_nosource": 4
 },
 "signs": {
@@ -302,28 +302,28 @@
 },
 "vehicle": {
 "n": 60,
-"full": 8,
-"partial": 9,
-"none": 43,
-"full_pct": 13.3,
-"any_pct": 28.3,
-"strict_full": 8,
-"strict_pct": 13.3,
-"none_teachable": 5,
+"full": 10,
+"partial": 10,
+"none": 40,
+"full_pct": 16.7,
+"any_pct": 33.3,
+"strict_full": 10,
+"strict_pct": 16.7,
+"none_teachable": 2,
 "none_nosource": 38
 }
 },
 "C1": {
 "law": {
 "n": 605,
-"full": 325,
-"partial": 95,
-"none": 185,
-"full_pct": 53.7,
-"any_pct": 69.4,
-"strict_full": 325,
-"strict_pct": 53.7,
-"none_teachable": 164,
+"full": 350,
+"partial": 96,
+"none": 159,
+"full_pct": 57.9,
+"any_pct": 73.7,
+"strict_full": 350,
+"strict_pct": 57.9,
+"none_teachable": 138,
 "none_nosource": 21
 },
 "signs": {
@@ -340,40 +340,40 @@
 },
 "safety": {
 "n": 312,
-"full": 65,
+"full": 66,
 "partial": 69,
-"none": 178,
-"full_pct": 20.8,
-"any_pct": 42.9,
-"strict_full": 65,
-"strict_pct": 20.8,
-"none_teachable": 11,
+"none": 177,
+"full_pct": 21.2,
+"any_pct": 43.3,
+"strict_full": 66,
+"strict_pct": 21.2,
+"none_teachable": 10,
 "none_nosource": 167
 },
 "vehicle": {
 "n": 101,
-"full": 13,
-"partial": 16,
-"none": 72,
-"full_pct": 12.9,
-"any_pct": 28.7,
-"strict_full": 13,
-"strict_pct": 12.9,
-"none_teachable": 5,
+"full": 15,
+"partial": 17,
+"none": 69,
+"full_pct": 14.9,
+"any_pct": 31.7,
+"strict_full": 15,
+"strict_pct": 14.9,
+"none_teachable": 2,
 "none_nosource": 67
 }
 },
 "C": {
 "law": {
 "n": 619,
-"full": 358,
-"partial": 94,
-"none": 167,
-"full_pct": 57.8,
-"any_pct": 73.0,
-"strict_full": 358,
-"strict_pct": 57.8,
-"none_teachable": 146,
+"full": 382,
+"partial": 95,
+"none": 142,
+"full_pct": 61.7,
+"any_pct": 77.1,
+"strict_full": 382,
+"strict_pct": 61.7,
+"none_teachable": 121,
 "none_nosource": 21
 },
 "signs": {
@@ -390,40 +390,40 @@
 },
 "safety": {
 "n": 307,
-"full": 64,
+"full": 65,
 "partial": 69,
-"none": 174,
-"full_pct": 20.8,
-"any_pct": 43.3,
-"strict_full": 64,
-"strict_pct": 20.8,
-"none_teachable": 12,
+"none": 173,
+"full_pct": 21.2,
+"any_pct": 43.6,
+"strict_full": 65,
+"strict_pct": 21.2,
+"none_teachable": 11,
 "none_nosource": 162
 },
 "vehicle": {
 "n": 22,
-"full": 4,
+"full": 5,
 "partial": 3,
-"none": 15,
-"full_pct": 18.2,
-"any_pct": 31.8,
-"strict_full": 4,
-"strict_pct": 18.2,
-"none_teachable": 1,
+"none": 14,
+"full_pct": 22.7,
+"any_pct": 36.4,
+"strict_full": 5,
+"strict_pct": 22.7,
+"none_teachable": 0,
 "none_nosource": 14
 }
 },
 "D": {
 "law": {
 "n": 618,
-"full": 374,
+"full": 391,
 "partial": 101,
-"none": 143,
-"full_pct": 60.5,
-"any_pct": 76.9,
-"strict_full": 374,
-"strict_pct": 60.5,
-"none_teachable": 114,
+"none": 126,
+"full_pct": 63.3,
+"any_pct": 79.6,
+"strict_full": 391,
+"strict_pct": 63.3,
+"none_teachable": 97,
 "none_nosource": 29
 },
 "signs": {
@@ -440,40 +440,40 @@
 },
 "safety": {
 "n": 299,
-"full": 62,
+"full": 63,
 "partial": 64,
-"none": 173,
-"full_pct": 20.7,
-"any_pct": 42.1,
-"strict_full": 62,
-"strict_pct": 20.7,
-"none_teachable": 11,
+"none": 172,
+"full_pct": 21.1,
+"any_pct": 42.5,
+"strict_full": 63,
+"strict_pct": 21.1,
+"none_teachable": 10,
 "none_nosource": 162
 },
 "vehicle": {
 "n": 22,
-"full": 4,
+"full": 5,
 "partial": 3,
-"none": 15,
-"full_pct": 18.2,
-"any_pct": 31.8,
-"strict_full": 4,
-"strict_pct": 18.2,
-"none_teachable": 1,
+"none": 14,
+"full_pct": 22.7,
+"any_pct": 36.4,
+"strict_full": 5,
+"strict_pct": 22.7,
+"none_teachable": 0,
 "none_nosource": 14
 }
 },
 "1": {
 "law": {
 "n": 436,
-"full": 246,
+"full": 259,
 "partial": 75,
-"none": 115,
-"full_pct": 56.4,
-"any_pct": 73.6,
-"strict_full": 246,
-"strict_pct": 56.4,
-"none_teachable": 105,
+"none": 102,
+"full_pct": 59.4,
+"any_pct": 76.6,
+"strict_full": 259,
+"strict_pct": 59.4,
+"none_teachable": 92,
 "none_nosource": 10
 },
 "signs": {
@@ -502,23 +502,23 @@
 },
 "vehicle": {
 "n": 43,
-"full": 5,
+"full": 6,
 "partial": 7,
-"none": 31,
-"full_pct": 11.6,
-"any_pct": 27.9,
-"strict_full": 5,
-"strict_pct": 11.6,
-"none_teachable": 3,
+"none": 30,
+"full_pct": 14.0,
+"any_pct": 30.2,
+"strict_full": 6,
+"strict_pct": 14.0,
+"none_teachable": 2,
 "none_nosource": 28
 }
 }
 },
 "by": {
-"hand": 1141,
-"v1.5": 291,
+"hand": 1110,
+"v1.5": 323,
 "link": 81,
-"sample": 288
+"sample": 287
 }
 },
 "q": {
@@ -5042,18 +5042,21 @@
 "by": "hand"
 },
 "243": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 86 towing one vehicle",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r14"
+],
+"ref": [
+"equip#r:אסור לגרור יותר מרכב אחד, ואסור לגרו"
+],
+"why": "rule written for this question (TR:91(ו))",
 "cls": [
 "1",
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "244": {
 "v": "partial",
@@ -5075,16 +5078,19 @@
 "by": "hand"
 },
 "245": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR towing agricultural trailer",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r15"
+],
+"ref": [
+"equip#r:גרור חקלאי הפטור מרישום ורישוי נגרר "
+],
+"why": "rule written for this question (TR:92(ד))",
 "cls": [
 "1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "246": {
 "v": "full",
@@ -5127,11 +5133,14 @@
 "by": "v1.5"
 },
 "248": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 62 security vehicle",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r17"
+],
+"ref": [
+"equip#r:רכב ביטחון מתקרב: נותנים לו זכות קדי"
+],
+"why": "rule written for this question (TR:93(א))",
 "cls": [
 "1",
 "A",
@@ -5141,14 +5150,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "249": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 62 100 m",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r17"
+],
+"ref": [
+"equip#r:רכב ביטחון מתקרב: נותנים לו זכות קדי"
+],
+"why": "rule written for this question (TR:93(א))",
 "cls": [
 "1",
 "A",
@@ -5158,7 +5170,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "250": {
 "v": "none",
@@ -5335,11 +5347,14 @@
 "by": "v1.5"
 },
 "259": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR spotlight",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r7"
+],
+"ref": [
+"equip#r:זרקור – רק כשהרכב אינו נע, ולא לאורך"
+],
+"why": "rule written for this question (TR:107(ג))",
 "cls": [
 "1",
 "B",
@@ -5348,7 +5363,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "260": {
 "v": "full",
@@ -5369,11 +5384,14 @@
 "by": "hand"
 },
 "261": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR reversing lamp",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r6"
+],
+"ref": [
+"equip#r:פנס לנסיעה אחורנית – רק בשעת נסיעה א"
+],
+"why": "rule written for this question (TR:107(ה))",
 "cls": [
 "B",
 "C",
@@ -5381,7 +5399,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "262": {
 "v": "full",
@@ -6454,17 +6472,20 @@
 "by": "sample"
 },
 "320": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 364 wheel chocks",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r2"
+],
+"ref": [
+"equip#r:ברכב מנועי שמשקלו הכולל המותר עולה ע"
+],
+"why": "rule written for this question (TR:368)",
 "cls": [
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "321": {
 "v": "full",
@@ -6844,17 +6865,20 @@
 "by": "hand"
 },
 "344": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR plates",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r10"
+],
+"ref": [
+"equip#r:ברכב רשום שתי לוחיות זיהוי; לאופנוע,"
+],
+"why": "rule written for this question (TR:300(א))",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "345": {
 "v": "none",
@@ -6891,11 +6915,14 @@
 "by": "hand"
 },
 "347": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR extra lamps",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r8"
+],
+"ref": [
+"equip#r:אסור להתקין פנס או מיתקן תאורה נוסף,"
+],
+"why": "rule written for this question (TR:350(א))",
 "cls": [
 "1",
 "A",
@@ -6905,14 +6932,17 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "348": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR speedometer",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r9"
+],
+"ref": [
+"equip#r:ברכב מנועי שאינו רכב איטי מותקן מד־מ"
+],
+"why": "rule written for this question (TR:360)",
 "cls": [
 "1",
 "A",
@@ -6922,7 +6952,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "349": {
 "v": "full",
@@ -6986,11 +7016,14 @@
 "by": "v1.5"
 },
 "352": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR fire extinguisher",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r1"
+],
+"ref": [
+"equip#r:מטף כיבוי אש חובה בכל רכב מנועי חוץ "
+],
+"why": "rule written for this question (TR:370(א))",
 "cls": [
 "B",
 "C",
@@ -6998,7 +7031,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "353": {
 "v": "none",
@@ -13043,11 +13076,14 @@
 "by": "hand"
 },
 "655": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR rear fog lamp",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r5"
+],
+"ref": [
+"equip#r:פנס ערפל אחורי מופעל בנפרד מהפנס האח"
+],
+"why": "rule written for this question (TR:347א(א))",
 "cls": [
 "B",
 "C",
@@ -13055,7 +13091,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "656": {
 "v": "full",
@@ -13717,11 +13753,14 @@
 "by": "hand"
 },
 "688": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR tyres same size",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r11"
+],
+"ref": [
+"equip#r:הצמיגים יהיו במבנה ובכושר ההעמסה שקב"
+],
+"why": "rule written for this question (TR:322(ב))",
 "cls": [
 "1",
 "A",
@@ -13731,7 +13770,7 @@
 "D"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "689": {
 "v": "none",
@@ -15166,11 +15205,14 @@
 "by": "hand"
 },
 "767": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 65 security vehicle",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r17"
+],
+"ref": [
+"equip#r:רכב ביטחון מתקרב: נותנים לו זכות קדי"
+],
+"why": "rule written for this question (TR:93(א))",
 "cls": [
 "1",
 "A",
@@ -15180,7 +15222,7 @@
 "D"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.5"
 },
 "768": {
 "v": "full",
@@ -19831,18 +19873,21 @@
 "by": "sample"
 },
 "1032": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR tyre size licence",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r11"
+],
+"ref": [
+"equip#r:הצמיגים יהיו במבנה ובכושר ההעמסה שקב"
+],
+"why": "rule written for this question (TR:322(ב))",
 "cls": [
 "A",
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1033": {
 "v": "none",
@@ -19872,18 +19917,21 @@
 "by": "hand"
 },
 "1035": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR tyre size change approval",
-"src": "T",
+"v": "partial",
+"rule": [
+"equip#r11"
+],
+"ref": [
+"equip#r:הצמיגים יהיו במבנה ובכושר ההעמסה שקב"
+],
+"why": "rule covers part of the answer (TR:322(ב))",
 "cls": [
 "A",
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1036": {
 "v": "full",
@@ -23532,11 +23580,14 @@
 "by": "hand"
 },
 "1283": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR warning triangle",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r0"
+],
+"ref": [
+"equip#r:משולש אזהרה חייב להימצא בגרור, בנתמך"
+],
+"why": "rule written for this question (TR:367(א))",
 "cls": [
 "1",
 "B",
@@ -23545,7 +23596,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1284": {
 "v": "full",
@@ -23585,11 +23636,14 @@
 "by": "hand"
 },
 "1286": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR extinguisher location",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r1"
+],
+"ref": [
+"equip#r:מטף כיבוי אש חובה בכל רכב מנועי חוץ "
+],
+"why": "rule written for this question (TR:370(א))",
 "cls": [
 "1",
 "B",
@@ -23598,7 +23652,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1287": {
 "v": "none",
@@ -24047,17 +24101,20 @@
 "by": "v1.5"
 },
 "1315": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR load height 4.00",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r13"
+],
+"ref": [
+"equip#r:גובה כולל מרבי: עד 1,500 ק\"ג – 2.50 "
+],
+"why": "rule written for this question (TR:313(א))",
 "cls": [
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1316": {
 "v": "full",
@@ -24201,11 +24258,14 @@
 "by": "v1.5"
 },
 "1325": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR extinguisher which vehicles",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r1"
+],
+"ref": [
+"equip#r:מטף כיבוי אש חובה בכל רכב מנועי חוץ "
+],
+"why": "rule written for this question (TR:370(א))",
 "cls": [
 "B",
 "C",
@@ -24213,7 +24273,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1326": {
 "v": "full",
@@ -24339,17 +24399,20 @@
 "by": "hand"
 },
 "1334": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR load height 3.00",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r13"
+],
+"ref": [
+"equip#r:גובה כולל מרבי: עד 1,500 ק\"ג – 2.50 "
+],
+"why": "rule written for this question (TR:313(א))",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1335": {
 "v": "full",
@@ -24686,11 +24749,14 @@
 "by": "v1.5"
 },
 "1356": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR headlamp colour",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r4"
+],
+"ref": [
+"equip#r:אור גבוה – לבן או צהוב בהיר, לפחות 1"
+],
+"why": "rule written for this question (TR:334(ב))",
 "cls": [
 "1",
 "A",
@@ -24700,7 +24766,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1357": {
 "v": "none",
@@ -24745,18 +24811,21 @@
 "by": "hand"
 },
 "1360": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR extinguisher which vehicles",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r1"
+],
+"ref": [
+"equip#r:מטף כיבוי אש חובה בכל רכב מנועי חוץ "
+],
+"why": "rule written for this question (TR:370(א))",
 "cls": [
 "C",
 "C1",
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1361": {
 "v": "full",
@@ -24807,18 +24876,21 @@
 "by": "v1.5"
 },
 "1364": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR portable amber lamp 150 m",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r3"
+],
+"ref": [
+"equip#r:ברכב מעל 3,500 ק\"ג חובה פנס אזהרה מי"
+],
+"why": "rule written for this question (TR:366)",
 "cls": [
 "C",
 "C1",
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1365": {
 "v": "full",
@@ -24880,17 +24952,20 @@
 "by": "v1.5"
 },
 "1369": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR third plate",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r10"
+],
+"ref": [
+"equip#r:ברכב רשום שתי לוחיות זיהוי; לאופנוע,"
+],
+"why": "rule written for this question (TR:300(א))",
 "cls": [
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1370": {
 "v": "full",
@@ -25423,23 +25498,29 @@
 "by": "hand"
 },
 "1401": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR trailer wheels contact",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r16"
+],
+"ref": [
+"equip#r:אסור לנהוג בגורר או בתומך אם אחד מגל"
+],
+"why": "rule written for this question (TR:92(ב))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1402": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR more than one trailer permit",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r14"
+],
+"ref": [
+"equip#r:אסור לגרור יותר מרכב אחד, ואסור לגרו"
+],
+"why": "rule written for this question (TR:91(ו))",
 "cls": [
 "1",
 "B",
@@ -25447,7 +25528,7 @@
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1403": {
 "v": "none",
@@ -25821,17 +25902,20 @@
 "by": "hand"
 },
 "1428": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR height 4.00",
-"src": "T",
+"v": "partial",
+"rule": [
+"equip#r13"
+],
+"ref": [
+"equip#r:גובה כולל מרבי: עד 1,500 ק\"ג – 2.50 "
+],
+"why": "rule covers part of the answer (TR:313(א))",
 "cls": [
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1429": {
 "v": "full",
@@ -26964,11 +27048,14 @@
 "by": "hand"
 },
 "1501": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR tread depth 2 mm",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r12"
+],
+"ref": [
+"equip#r:עומק החריצים בצמיג פנאומטי, כולל גלג"
+],
+"why": "rule written for this question (TR:322(ג))",
 "cls": [
 "A",
 "B",
@@ -26977,7 +27064,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1502": {
 "v": "full",
@@ -27513,18 +27600,21 @@
 "by": "hand"
 },
 "1533": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR towing one vehicle",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r14"
+],
+"ref": [
+"equip#r:אסור לגרור יותר מרכב אחד, ואסור לגרו"
+],
+"why": "rule written for this question (TR:91(ו))",
 "cls": [
 "B",
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1534": {
 "v": "partial",
@@ -28920,11 +29010,14 @@
 "by": "hand"
 },
 "1622": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR headlamp range 100/30",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r4"
+],
+"ref": [
+"equip#r:אור גבוה – לבן או צהוב בהיר, לפחות 1"
+],
+"why": "rule written for this question (TR:334(ב))",
 "cls": [
 "1",
 "A",
@@ -28934,7 +29027,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1623": {
 "v": "partial",
@@ -30138,11 +30231,14 @@
 "by": "hand"
 },
 "1700": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR reversing lamp",
-"src": "T",
+"v": "full",
+"rule": [
+"equip#r6"
+],
+"ref": [
+"equip#r:פנס לנסיעה אחורנית – רק בשעת נסיעה א"
+],
+"why": "rule written for this question (TR:107(ה))",
 "cls": [
 "B",
 "C",
@@ -30150,7 +30246,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1701": {
 "v": "partial",
