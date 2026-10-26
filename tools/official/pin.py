@@ -22,7 +22,22 @@ BOOK_URL = 'https://www.gov.il/BlobFolder/reports/safety_rules_book/he/publicati
 # Quotes may come only from the explanatory text – never from the book's embedded sample exam questions.
 TEXTBOOK_URL = 'https://www.gov.il/BlobFolder/reports/driving_textbook/he/publications_2017_nohagim_aheret_nohagim_nachon.pdf'
 TEXTBOOK_PUB = 'הרשות הלאומית לבטיחות בדרכים ומשרד התחבורה (gov.il)'
-PDFS = {'book': ('book.pdf', '03.2026'), 'textbook': ('textbook.pdf', '2017')}
+PDFS = {'book': ('book.pdf', '03.2026'), 'textbook': ('textbook.pdf', '2017'), 'edu_s18': ('edu_s18.pdf', '12.2019')}
+# Ministry of Education, high-school traffic-education curriculum (an official state textbook), topic 18
+# "הפעלת הרכב בבטחה". Cached as edu_s18.pdf; edu_s18.txt is per-page `pdftotext` with bidi marks removed, pages
+# joined by \f. Its practice-question blocks ('שאלות (ל)תרגול לקראת מבחן בתיאוריה' up to the 'תשובות לשאלות'
+# line, possibly spanning pages) are excluded: only the explanatory prose is citable.
+EDU18_URL = 'https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s18-operating-safely.pdf'
+EDU_PUB = 'משרד החינוך – תוכנית הלימודים בחינוך תעבורתי לחטיבה העליונה (meyda.education.gov.il)'
+def edu_prose(raw):
+    """The edu PDF text with its practice-question blocks blanked (page breaks kept). TOC lines (dot leaders) skipped."""
+    out, i = raw, 0
+    for m in list(re.finditer(r'שאלות (?:ל)?תרגול לקראת מבחן בתיאוריה[^\n]*', raw))[::-1]:
+        if '....' in m.group(0): continue
+        e = re.compile(r'תשובות לשאלות[^\n]*').search(raw, m.end())
+        k = e.end() if e else len(raw)
+        out = out[:m.start()] + re.sub(r'[^\f]', ' ', out[m.start():k]) + out[k:]
+    return out
 def textbook_quotes():
     f = os.path.join(HERE, 'textbook_quotes.txt')
     return [l.strip() for l in open(f, encoding='utf-8') if l.strip()] if os.path.exists(f) else []
@@ -136,6 +151,24 @@ P = {
   'מקפידים על מהירות נסיעה התואמת את החוק ואת תנאי הדרך (שדה ראייה, מזג אוויר ומצב הכביש).',
   'בהתקרבות לצומת וביציאה מצומת מאטים, מתמקמים בנתיב כך ששדה הראייה רחב יותר ושנהגים אחרים יכולים להבחין בכם, מוודאים שהצומת פנוי ומצייתים לרמזורים ולתמרורים.']),
 }
+P['edu18'] = (EDU18_URL, 'חינוך תעבורתי, נושא 18: הפעלת הרכב בבטחה', 'edu_s18', [
+  'החיכוך נוצר בין הדסקית לרפידת הבלם ברכב בעת לחיצה על דוושת הבלם',
+  'לחיצה תכופה על הבלמים עלולה להביא להתחממותם ולהיחלשות משמעותית עד אובדן כושר הבלימה',
+  'במצב כזה על הנהג לעצור את נסיעתו! רק לאחר שהבלמים יתקררו אפשר לבדוק בנסיעה איטית את חזרת כושר הבלימה',
+  'כיצד יזהה הנהג התחממות של הבלמים? הסימנים הם: חולשה בעוצמת הבלימה, ריח של חומר חרוך, רעש בזמן בלימה',
+  'לאחר נסיעה בשלולית יש לנהוג באיטיות וללחוץ כמה פעמים על דוושת הבלם כדי שחום החיכוך ייבש את משטחי הרפידות והדסקיות',
+  'את לחץ האוויר יש לבדוק כשהצמיגים קרים (לפני נסיעה) ולנפח לפי הוראות יצרן הרכב',
+  'מידע על לחץ האוויר ניתן למצוא בספר הרכב או במדבקה הצמודה לרכב',
+  'לחץ אוויר נמוך מקשה על הצמיג להתגלגל בחופשיות על פני הכביש ומשפיע מאוד על',
+  'צריכת הדלק וזיהום האוויר (עלייה בצריכה',
+  'חום הצמיג בנסיעה (בקיצוניות – סכנת פיצוץ לצמיג)',
+  'לוח מחוונים שמשמש לבקרה על המערכות השונות ומאפשר קבלת מידע',
+  'להפעיל את מתג ההצתה (בלי התנעה) ולסקור את לוח המחוונים',
+  'כאשר נדלקת נורה בצבע אדום במהלך הנסיעה עוצרים מיד, ולא ממשיכים בנסיעה',
+  'כאשר נדלקת נורה בצבע כתום במהלך הנסיעה פונים לתיקון התקלה בהקדם',
+  'מערכת ABS היא מערכת בטיחות המונעת את נעילת הגלגלים בזמן בלימה',
+  'בזמן כניסתה של המערכת לפעולה יישמעו נקישות ויורגש רטט בדוושת הבלם',
+ ])
 P['textbook'] = (TEXTBOOK_URL, 'נוהגים אחרת – נוהגים נכון: ספר הלימוד הרשמי לתיאוריה', 'textbook', textbook_quotes())
 TERMS = {'url': G + 'pages/gov_terms_of_use', 'title': 'תנאי שימוש באתר gov.il', 'file': 'terms', 'quotes': [
   'שימוש הוגן כולל ציטוט סביר מתוך החומר המוגן',
@@ -156,7 +189,7 @@ def build(verify_only=False):
         if not os.path.exists(fn): errs.append(f'{pid}: no cached text {fn}'); continue
         raw = open(fn, encoding='utf-8').read(); nt = norm(raw)
         pages = raw.split('\f')
-        rec = {'url': url, 'title': title, 'publisher': {'terms': 'מערך הדיגיטל הלאומי (gov.il)', 'textbook': TEXTBOOK_PUB}.get(pid, PUB),
+        rec = {'url': url, 'title': title, 'publisher': {'terms': 'מערך הדיגיטל הלאומי (gov.il)', 'textbook': TEXTBOOK_PUB, 'edu18': EDU_PUB}.get(pid, PUB),
                'accessed': ACCESSED, 'sha256': hashlib.sha256(raw.encode()).hexdigest(), 'archive': ARCHIVE, 'quotes': []}
         if f in PDFS:
             rec['pdf_sha256'] = hashlib.sha256(open(os.path.join(CACHE, PDFS[f][0]), 'rb').read()).hexdigest()
@@ -172,6 +205,9 @@ def build(verify_only=False):
                     return pg
                 if not any(norm(q) in norm(prose(pg)) for pg in pages):
                     errs.append(f'{pid}: quote only in a sample-exam block: {q[:60]}'); continue
+            if f.startswith('edu_'):
+                if not any(norm(q) in norm(pg) for pg in edu_prose(raw).split('\f')):
+                    errs.append(f'{pid}: quote only in a practice-question block: {q[:60]}'); continue
             if f in PDFS: e['p'] = next(i + 1 for i, pg in enumerate(pages) if norm(q) in norm(pg)) if any(norm(q) in norm(pg) for pg in pages) else None
             rec['quotes'].append(e)
         out[pid] = rec

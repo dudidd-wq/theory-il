@@ -4,88 +4,88 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1337,
-"partial": 253,
-"none": 211,
-"full_pct": 74.2,
-"any_pct": 88.3,
-"strict_full": 1104,
-"strict_pct": 61.3,
+"full": 1345,
+"partial": 255,
+"none": 201,
+"full_pct": 74.7,
+"any_pct": 88.8,
+"strict_full": 1112,
+"strict_pct": 61.7,
 "none_teachable": 43,
-"none_nosource": 168
+"none_nosource": 158
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 985,
-"partial": 180,
-"none": 107,
-"full_pct": 77.4,
-"any_pct": 91.6,
-"strict_full": 777,
-"strict_pct": 61.1,
+"full": 993,
+"partial": 182,
+"none": 97,
+"full_pct": 78.1,
+"any_pct": 92.4,
+"strict_full": 785,
+"strict_pct": 61.7,
 "none_teachable": 10,
-"none_nosource": 97
+"none_nosource": 87
 },
 "A": {
 "n": 1155,
-"full": 890,
-"partial": 167,
-"none": 98,
-"full_pct": 77.1,
-"any_pct": 91.5,
-"strict_full": 687,
-"strict_pct": 59.5,
+"full": 896,
+"partial": 168,
+"none": 91,
+"full_pct": 77.6,
+"any_pct": 92.1,
+"strict_full": 693,
+"strict_pct": 60.0,
 "none_teachable": 10,
-"none_nosource": 88
+"none_nosource": 81
 },
 "C1": {
 "n": 1385,
-"full": 1053,
-"partial": 195,
-"none": 137,
-"full_pct": 76.0,
-"any_pct": 90.1,
-"strict_full": 842,
-"strict_pct": 60.8,
+"full": 1061,
+"partial": 197,
+"none": 127,
+"full_pct": 76.6,
+"any_pct": 90.8,
+"strict_full": 850,
+"strict_pct": 61.4,
 "none_teachable": 40,
-"none_nosource": 97
+"none_nosource": 87
 },
 "C": {
 "n": 1314,
-"full": 1026,
-"partial": 170,
-"none": 118,
-"full_pct": 78.1,
-"any_pct": 91.0,
-"strict_full": 816,
-"strict_pct": 62.1,
+"full": 1028,
+"partial": 171,
+"none": 115,
+"full_pct": 78.2,
+"any_pct": 91.2,
+"strict_full": 818,
+"strict_pct": 62.3,
 "none_teachable": 42,
-"none_nosource": 76
+"none_nosource": 73
 },
 "D": {
 "n": 1316,
-"full": 1043,
-"partial": 171,
-"none": 102,
-"full_pct": 79.3,
-"any_pct": 92.2,
-"strict_full": 821,
-"strict_pct": 62.4,
+"full": 1045,
+"partial": 172,
+"none": 99,
+"full_pct": 79.4,
+"any_pct": 92.5,
+"strict_full": 823,
+"strict_pct": 62.5,
 "none_teachable": 15,
-"none_nosource": 87
+"none_nosource": 84
 },
 "1": {
 "n": 1127,
-"full": 891,
+"full": 896,
 "partial": 144,
-"none": 92,
-"full_pct": 79.1,
-"any_pct": 91.8,
-"strict_full": 687,
-"strict_pct": 61.0,
+"none": 87,
+"full_pct": 79.5,
+"any_pct": 92.3,
+"strict_full": 692,
+"strict_pct": 61.4,
 "none_teachable": 11,
-"none_nosource": 81
+"none_nosource": 76
 }
 },
 "class_only": {
@@ -189,27 +189,27 @@
 },
 "safety": {
 "n": 400,
-"full": 220,
-"partial": 82,
-"none": 98,
-"full_pct": 55.0,
-"any_pct": 75.5,
-"strict_full": 220,
-"strict_pct": 55.0,
+"full": 221,
+"partial": 84,
+"none": 95,
+"full_pct": 55.2,
+"any_pct": 76.2,
+"strict_full": 221,
+"strict_pct": 55.2,
 "none_teachable": 3,
-"none_nosource": 95
+"none_nosource": 92
 },
 "vehicle": {
 "n": 110,
-"full": 51,
+"full": 58,
 "partial": 26,
-"none": 33,
-"full_pct": 46.4,
-"any_pct": 70.0,
-"strict_full": 51,
-"strict_pct": 46.4,
+"none": 26,
+"full_pct": 52.7,
+"any_pct": 76.4,
+"strict_full": 58,
+"strict_pct": 52.7,
 "none_teachable": 0,
-"none_nosource": 33
+"none_nosource": 26
 }
 },
 "class_topic": {
@@ -240,27 +240,27 @@
 },
 "safety": {
 "n": 305,
-"full": 192,
-"partial": 61,
-"none": 52,
-"full_pct": 63.0,
-"any_pct": 83.0,
-"strict_full": 192,
-"strict_pct": 63.0,
+"full": 193,
+"partial": 63,
+"none": 49,
+"full_pct": 63.3,
+"any_pct": 83.9,
+"strict_full": 193,
+"strict_pct": 63.3,
 "none_teachable": 2,
-"none_nosource": 50
+"none_nosource": 47
 },
 "vehicle": {
 "n": 106,
-"full": 49,
+"full": 56,
 "partial": 26,
-"none": 31,
-"full_pct": 46.2,
-"any_pct": 70.8,
-"strict_full": 49,
-"strict_pct": 46.2,
+"none": 24,
+"full_pct": 52.8,
+"any_pct": 77.4,
+"strict_full": 56,
+"strict_pct": 52.8,
 "none_teachable": 0,
-"none_nosource": 31
+"none_nosource": 24
 }
 },
 "A": {
@@ -290,27 +290,27 @@
 },
 "safety": {
 "n": 312,
-"full": 182,
-"partial": 69,
-"none": 61,
-"full_pct": 58.3,
-"any_pct": 80.4,
-"strict_full": 182,
-"strict_pct": 58.3,
+"full": 183,
+"partial": 70,
+"none": 59,
+"full_pct": 58.7,
+"any_pct": 81.1,
+"strict_full": 183,
+"strict_pct": 58.7,
 "none_teachable": 2,
-"none_nosource": 59
+"none_nosource": 57
 },
 "vehicle": {
 "n": 60,
-"full": 30,
+"full": 35,
 "partial": 11,
-"none": 19,
-"full_pct": 50.0,
-"any_pct": 68.3,
-"strict_full": 30,
-"strict_pct": 50.0,
+"none": 14,
+"full_pct": 58.3,
+"any_pct": 76.7,
+"strict_full": 35,
+"strict_pct": 58.3,
 "none_teachable": 0,
-"none_nosource": 19
+"none_nosource": 14
 }
 },
 "C1": {
@@ -340,27 +340,27 @@
 },
 "safety": {
 "n": 312,
-"full": 195,
-"partial": 67,
-"none": 50,
-"full_pct": 62.5,
-"any_pct": 84.0,
-"strict_full": 195,
-"strict_pct": 62.5,
+"full": 196,
+"partial": 69,
+"none": 47,
+"full_pct": 62.8,
+"any_pct": 84.9,
+"strict_full": 196,
+"strict_pct": 62.8,
 "none_teachable": 2,
-"none_nosource": 48
+"none_nosource": 45
 },
 "vehicle": {
 "n": 101,
-"full": 49,
+"full": 56,
 "partial": 24,
-"none": 28,
-"full_pct": 48.5,
-"any_pct": 72.3,
-"strict_full": 49,
-"strict_pct": 48.5,
+"none": 21,
+"full_pct": 55.4,
+"any_pct": 79.2,
+"strict_full": 56,
+"strict_pct": 55.4,
 "none_teachable": 0,
-"none_nosource": 28
+"none_nosource": 21
 }
 },
 "C": {
@@ -390,27 +390,27 @@
 },
 "safety": {
 "n": 307,
-"full": 186,
-"partial": 68,
-"none": 53,
-"full_pct": 60.6,
-"any_pct": 82.7,
-"strict_full": 186,
-"strict_pct": 60.6,
+"full": 187,
+"partial": 69,
+"none": 51,
+"full_pct": 60.9,
+"any_pct": 83.4,
+"strict_full": 187,
+"strict_pct": 60.9,
 "none_teachable": 3,
-"none_nosource": 50
+"none_nosource": 48
 },
 "vehicle": {
 "n": 22,
-"full": 15,
+"full": 16,
 "partial": 2,
-"none": 5,
-"full_pct": 68.2,
-"any_pct": 77.3,
-"strict_full": 15,
-"strict_pct": 68.2,
+"none": 4,
+"full_pct": 72.7,
+"any_pct": 81.8,
+"strict_full": 16,
+"strict_pct": 72.7,
 "none_teachable": 0,
-"none_nosource": 5
+"none_nosource": 4
 }
 },
 "D": {
@@ -440,27 +440,27 @@
 },
 "safety": {
 "n": 299,
-"full": 186,
-"partial": 64,
-"none": 49,
-"full_pct": 62.2,
-"any_pct": 83.6,
-"strict_full": 186,
-"strict_pct": 62.2,
+"full": 187,
+"partial": 65,
+"none": 47,
+"full_pct": 62.5,
+"any_pct": 84.3,
+"strict_full": 187,
+"strict_pct": 62.5,
 "none_teachable": 2,
-"none_nosource": 47
+"none_nosource": 45
 },
 "vehicle": {
 "n": 22,
-"full": 15,
+"full": 16,
 "partial": 2,
-"none": 5,
-"full_pct": 68.2,
-"any_pct": 77.3,
-"strict_full": 15,
-"strict_pct": 68.2,
+"none": 4,
+"full_pct": 72.7,
+"any_pct": 81.8,
+"strict_full": 16,
+"strict_pct": 72.7,
 "none_teachable": 0,
-"none_nosource": 5
+"none_nosource": 4
 }
 },
 "1": {
@@ -490,33 +490,33 @@
 },
 "safety": {
 "n": 295,
-"full": 176,
+"full": 177,
 "partial": 55,
-"none": 64,
-"full_pct": 59.7,
-"any_pct": 78.3,
-"strict_full": 176,
-"strict_pct": 59.7,
+"none": 63,
+"full_pct": 60.0,
+"any_pct": 78.6,
+"strict_full": 177,
+"strict_pct": 60.0,
 "none_teachable": 2,
-"none_nosource": 62
+"none_nosource": 61
 },
 "vehicle": {
 "n": 43,
-"full": 25,
+"full": 29,
 "partial": 8,
-"none": 10,
-"full_pct": 58.1,
-"any_pct": 76.7,
-"strict_full": 25,
-"strict_pct": 58.1,
+"none": 6,
+"full_pct": 67.4,
+"any_pct": 86.0,
+"strict_full": 29,
+"strict_pct": 67.4,
 "none_teachable": 0,
-"none_nosource": 10
+"none_nosource": 6
 }
 }
 },
 "by": {
-"hand": 802,
-"v1.5": 668,
+"hand": 792,
+"v1.5": 678,
 "link": 81,
 "sample": 250
 }
@@ -19777,11 +19777,14 @@
 "by": "hand"
 },
 "986": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "brake mechanics",
-"src": "S",
+"v": "full",
+"rule": [
+"brakes3#r0"
+],
+"ref": [
+"brakes3#r:הבלימה נוצרת מחיכוך בין דסקית הבלם ל"
+],
+"why": "rule written for this question (OFF:edu18)",
 "cls": [
 "1",
 "A",
@@ -19791,7 +19794,7 @@
 "D"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "987": {
 "v": "full",
@@ -19852,11 +19855,14 @@
 "by": "v1.5"
 },
 "990": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "brake mechanics",
-"src": "S",
+"v": "full",
+"rule": [
+"brakes3#r2"
+],
+"ref": [
+"brakes3#r:סימני בלמים מחוממים: הבלימה נחלשת, י"
+],
+"why": "rule written for this question (OFF:edu18)",
 "cls": [
 "1",
 "A",
@@ -19864,14 +19870,17 @@
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "991": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "brake mechanics",
-"src": "S",
+"v": "full",
+"rule": [
+"brakes3#r3"
+],
+"ref": [
+"brakes3#r:הבלמים התחממו? עוצרים את הנסיעה ומחכ"
+],
+"why": "rule written for this question (OFF:edu18)",
 "cls": [
 "1",
 "A",
@@ -19879,7 +19888,7 @@
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "992": {
 "v": "full",
@@ -20307,17 +20316,20 @@
 "by": "hand"
 },
 "1018": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "tyre pressure cold",
-"src": "S",
+"v": "full",
+"rule": [
+"brakes3#r6"
+],
+"ref": [
+"brakes3#r:את לחץ האוויר בצמיגים בודקים כשהצמיג"
+],
+"why": "rule written for this question (OFF:edu18)",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1019": {
 "v": "partial",
@@ -20508,18 +20520,21 @@
 "by": "hand"
 },
 "1030": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "tyre pressure fuel",
-"src": "S",
+"v": "full",
+"rule": [
+"brakes3#r7"
+],
+"ref": [
+"brakes3#r:לחץ אוויר נמוך מדי מקשה על הצמיג להת"
+],
+"why": "rule written for this question (OFF:edu18)",
 "cls": [
 "A",
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1031": {
 "v": "partial",
@@ -20641,18 +20656,21 @@
 "by": "hand"
 },
 "1038": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "tyre pressure cold",
-"src": "S",
+"v": "full",
+"rule": [
+"brakes3#r6"
+],
+"ref": [
+"brakes3#r:את לחץ האוויר בצמיגים בודקים כשהצמיג"
+],
+"why": "rule written for this question (OFF:edu18)",
 "cls": [
 "A",
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1039": {
 "v": "none",
@@ -20849,18 +20867,21 @@
 "by": "v1.5"
 },
 "1052": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "dashboard",
-"src": "S",
+"v": "full",
+"rule": [
+"brakes3#r8"
+],
+"ref": [
+"brakes3#r:לוח המחוונים נועד לבקרה על מערכות הר"
+],
+"why": "rule written for this question (OFF:edu18)",
 "cls": [
 "1",
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.5"
 },
 "1053": {
 "v": "full",
@@ -20884,17 +20905,20 @@
 "by": "hand"
 },
 "1054": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "warning lamps",
-"src": "S",
+"v": "partial",
+"rule": [
+"brakes3#r9"
+],
+"ref": [
+"brakes3#r:לפני הנסיעה מפעילים את מתג ההצתה וסו"
+],
+"why": "rule covers part of the answer (OFF:edu18)",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1055": {
 "v": "full",
@@ -20983,11 +21007,14 @@
 "by": "sample"
 },
 "1060": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "wet brakes",
-"src": "S",
+"v": "full",
+"rule": [
+"brakes3#r4"
+],
+"ref": [
+"brakes3#r:אחרי נסיעה בשלולית נוסעים לאט ולוחצי"
+],
+"why": "rule written for this question (OFF:edu18)",
 "cls": [
 "1",
 "A",
@@ -20997,7 +21024,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1061": {
 "v": "none",
@@ -30891,11 +30918,14 @@
 "by": "v1.5"
 },
 "1690": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "wet brakes",
-"src": "S",
+"v": "partial",
+"rule": [
+"brakes3#r4"
+],
+"ref": [
+"brakes3#r:אחרי נסיעה בשלולית נוסעים לאט ולוחצי"
+],
+"why": "rule covers part of the answer (OFF:edu18)",
 "cls": [
 "A",
 "B",
@@ -30904,7 +30934,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.5"
 },
 "1691": {
 "v": "full",
