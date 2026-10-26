@@ -9,7 +9,7 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 - [x] backup (IDB, persist, file, code, autosave, reminder, undo)
 - [x] about/sources/privacy/disclaimer
 - [x] Playwright mobile+desktop + axe: `python3 -m http.server 8787 --bind 127.0.0.1 & node tools/test/e2e.js` (52 checks × 2 profiles)
-- [ ] live check
+- [x] live check — e2e 104/104 against https://dudidd-wq.github.io/theory-il/ (v1.0.1, 2026-10-26)
 
 ## Notes
 - translations have different answer ORDER than Hebrew → each lang stores its own correct index; app shuffles anyway
