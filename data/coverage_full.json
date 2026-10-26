@@ -4,122 +4,122 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1353,
-"partial": 270,
+"full": 1347,
+"partial": 276,
 "none": 178,
-"full_pct": 75.1,
+"full_pct": 74.8,
 "any_pct": 90.1,
-"strict_full": 1063,
-"strict_pct": 59.0,
+"strict_full": 1057,
+"strict_pct": 58.7,
 "none_teachable": 33,
 "none_nosource": 139,
 "conflict": 6,
 "bank_only": 145,
-"partial_shown": 222,
-"full_nobank_pct": 74.2,
-"full_bank_sourced": 16
+"partial_shown": 228,
+"full_nobank_pct": 74.0,
+"full_bank_sourced": 15
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 1014,
-"partial": 197,
+"full": 1009,
+"partial": 202,
 "none": 61,
-"full_pct": 79.7,
+"full_pct": 79.3,
 "any_pct": 95.2,
-"strict_full": 751,
-"strict_pct": 59.0,
+"strict_full": 746,
+"strict_pct": 58.6,
 "none_teachable": 0,
 "none_nosource": 57,
 "conflict": 4,
 "bank_only": 61,
-"partial_shown": 197,
-"full_nobank_pct": 79.5,
+"partial_shown": 202,
+"full_nobank_pct": 79.1,
 "full_bank_sourced": 3
 },
 "A": {
 "n": 1155,
-"full": 904,
-"partial": 191,
+"full": 898,
+"partial": 197,
 "none": 60,
-"full_pct": 78.3,
+"full_pct": 77.7,
 "any_pct": 94.8,
-"strict_full": 646,
-"strict_pct": 55.9,
+"strict_full": 640,
+"strict_pct": 55.4,
 "none_teachable": 0,
 "none_nosource": 60,
 "conflict": 0,
 "bank_only": 60,
-"partial_shown": 191,
-"full_nobank_pct": 77.5,
-"full_bank_sourced": 9
+"partial_shown": 197,
+"full_nobank_pct": 77.1,
+"full_bank_sourced": 8
 },
 "C1": {
 "n": 1385,
-"full": 1078,
-"partial": 205,
+"full": 1073,
+"partial": 210,
 "none": 102,
-"full_pct": 77.8,
+"full_pct": 77.5,
 "any_pct": 92.6,
-"strict_full": 810,
-"strict_pct": 58.5,
+"strict_full": 805,
+"strict_pct": 58.1,
 "none_teachable": 30,
 "none_nosource": 69,
 "conflict": 3,
 "bank_only": 72,
-"partial_shown": 191,
-"full_nobank_pct": 77.6,
+"partial_shown": 196,
+"full_nobank_pct": 77.3,
 "full_bank_sourced": 3
 },
 "C": {
 "n": 1314,
-"full": 1040,
-"partial": 182,
+"full": 1035,
+"partial": 187,
 "none": 92,
-"full_pct": 79.1,
+"full_pct": 78.8,
 "any_pct": 93.0,
-"strict_full": 773,
-"strict_pct": 58.8,
+"strict_full": 768,
+"strict_pct": 58.4,
 "none_teachable": 34,
 "none_nosource": 57,
 "conflict": 1,
 "bank_only": 58,
-"partial_shown": 161,
-"full_nobank_pct": 78.8,
+"partial_shown": 166,
+"full_nobank_pct": 78.4,
 "full_bank_sourced": 5
 },
 "D": {
 "n": 1316,
-"full": 1050,
-"partial": 188,
+"full": 1045,
+"partial": 193,
 "none": 78,
-"full_pct": 79.8,
+"full_pct": 79.4,
 "any_pct": 94.1,
-"strict_full": 771,
-"strict_pct": 58.6,
+"strict_full": 766,
+"strict_pct": 58.2,
 "none_teachable": 10,
 "none_nosource": 67,
 "conflict": 1,
 "bank_only": 68,
-"partial_shown": 162,
-"full_nobank_pct": 79.4,
+"partial_shown": 167,
+"full_nobank_pct": 79.0,
 "full_bank_sourced": 5
 },
 "1": {
 "n": 1127,
-"full": 903,
-"partial": 157,
+"full": 898,
+"partial": 162,
 "none": 67,
-"full_pct": 80.1,
+"full_pct": 79.7,
 "any_pct": 94.1,
-"strict_full": 645,
-"strict_pct": 57.2,
+"strict_full": 640,
+"strict_pct": 56.8,
 "none_teachable": 2,
 "none_nosource": 64,
 "conflict": 1,
 "bank_only": 65,
-"partial_shown": 156,
-"full_nobank_pct": 79.6,
+"partial_shown": 161,
+"full_nobank_pct": 79.1,
 "full_bank_sourced": 6
 }
 },
@@ -143,20 +143,20 @@
 },
 "A": {
 "n": 88,
-"full": 49,
-"partial": 25,
+"full": 48,
+"partial": 26,
 "none": 14,
-"full_pct": 55.7,
+"full_pct": 54.5,
 "any_pct": 84.1,
-"strict_full": 49,
-"strict_pct": 55.7,
+"strict_full": 48,
+"strict_pct": 54.5,
 "none_teachable": 0,
 "none_nosource": 14,
 "conflict": 0,
 "bank_only": 14,
-"partial_shown": 25,
+"partial_shown": 26,
 "full_nobank_pct": 48.9,
-"full_bank_sourced": 6
+"full_bank_sourced": 5
 },
 "C1": {
 "n": 1,
@@ -230,54 +230,54 @@
 "topic": {
 "law": {
 "n": 901,
-"full": 701,
-"partial": 121,
+"full": 699,
+"partial": 123,
 "none": 79,
-"full_pct": 77.8,
+"full_pct": 77.6,
 "any_pct": 91.2,
-"strict_full": 699,
-"strict_pct": 77.6,
+"strict_full": 697,
+"strict_pct": 77.4,
 "none_teachable": 31,
 "none_nosource": 42,
 "conflict": 6,
 "bank_only": 48,
-"partial_shown": 79,
-"full_nobank_pct": 77.2,
+"partial_shown": 81,
+"full_nobank_pct": 77.0,
 "full_bank_sourced": 5
 },
 "signs": {
 "n": 390,
-"full": 361,
-"partial": 23,
+"full": 360,
+"partial": 24,
 "none": 6,
-"full_pct": 92.6,
+"full_pct": 92.3,
 "any_pct": 98.5,
-"strict_full": 73,
-"strict_pct": 18.7,
+"strict_full": 72,
+"strict_pct": 18.5,
 "none_teachable": 1,
 "none_nosource": 5,
 "conflict": 0,
 "bank_only": 5,
-"partial_shown": 23,
-"full_nobank_pct": 92.1,
+"partial_shown": 24,
+"full_nobank_pct": 91.8,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 400,
-"full": 231,
-"partial": 98,
+"full": 228,
+"partial": 101,
 "none": 71,
-"full_pct": 57.8,
+"full_pct": 57.0,
 "any_pct": 82.2,
-"strict_full": 231,
-"strict_pct": 57.8,
+"strict_full": 228,
+"strict_pct": 57.0,
 "none_teachable": 1,
 "none_nosource": 70,
 "conflict": 0,
 "bank_only": 70,
-"partial_shown": 92,
-"full_nobank_pct": 55.5,
-"full_bank_sourced": 9
+"partial_shown": 95,
+"full_nobank_pct": 55.0,
+"full_bank_sourced": 8
 },
 "vehicle": {
 "n": 110,
@@ -301,53 +301,53 @@
 "B": {
 "law": {
 "n": 501,
-"full": 419,
-"partial": 71,
+"full": 417,
+"partial": 73,
 "none": 11,
-"full_pct": 83.6,
+"full_pct": 83.2,
 "any_pct": 97.8,
-"strict_full": 417,
-"strict_pct": 83.2,
+"strict_full": 415,
+"strict_pct": 82.8,
 "none_teachable": 0,
 "none_nosource": 7,
 "conflict": 4,
 "bank_only": 11,
-"partial_shown": 71,
-"full_nobank_pct": 83.6,
+"partial_shown": 73,
+"full_nobank_pct": 83.2,
 "full_bank_sourced": 0
 },
 "signs": {
 "n": 360,
-"full": 333,
-"partial": 23,
+"full": 332,
+"partial": 24,
 "none": 4,
-"full_pct": 92.5,
+"full_pct": 92.2,
 "any_pct": 98.9,
-"strict_full": 72,
-"strict_pct": 20.0,
+"strict_full": 71,
+"strict_pct": 19.7,
 "none_teachable": 0,
 "none_nosource": 4,
 "conflict": 0,
 "bank_only": 4,
-"partial_shown": 23,
-"full_nobank_pct": 91.9,
+"partial_shown": 24,
+"full_nobank_pct": 91.7,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 305,
-"full": 204,
-"partial": 75,
+"full": 202,
+"partial": 77,
 "none": 26,
-"full_pct": 66.9,
+"full_pct": 66.2,
 "any_pct": 91.5,
-"strict_full": 204,
-"strict_pct": 66.9,
+"strict_full": 202,
+"strict_pct": 66.2,
 "none_teachable": 0,
 "none_nosource": 26,
 "conflict": 0,
 "bank_only": 26,
-"partial_shown": 75,
-"full_nobank_pct": 66.6,
+"partial_shown": 77,
+"full_nobank_pct": 65.9,
 "full_bank_sourced": 1
 },
 "vehicle": {
@@ -371,54 +371,54 @@
 "A": {
 "law": {
 "n": 429,
-"full": 350,
-"partial": 71,
+"full": 348,
+"partial": 73,
 "none": 8,
-"full_pct": 81.6,
+"full_pct": 81.1,
 "any_pct": 98.1,
-"strict_full": 348,
-"strict_pct": 81.1,
+"strict_full": 346,
+"strict_pct": 80.7,
 "none_teachable": 0,
 "none_nosource": 8,
 "conflict": 0,
 "bank_only": 8,
-"partial_shown": 71,
-"full_nobank_pct": 81.6,
+"partial_shown": 73,
+"full_nobank_pct": 81.1,
 "full_bank_sourced": 0
 },
 "signs": {
 "n": 354,
-"full": 327,
-"partial": 23,
+"full": 326,
+"partial": 24,
 "none": 4,
-"full_pct": 92.4,
+"full_pct": 92.1,
 "any_pct": 98.9,
-"strict_full": 71,
-"strict_pct": 20.1,
+"strict_full": 70,
+"strict_pct": 19.8,
 "none_teachable": 0,
 "none_nosource": 4,
 "conflict": 0,
 "bank_only": 4,
-"partial_shown": 23,
-"full_nobank_pct": 91.8,
+"partial_shown": 24,
+"full_nobank_pct": 91.5,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 312,
-"full": 192,
-"partial": 86,
+"full": 189,
+"partial": 89,
 "none": 34,
-"full_pct": 61.5,
+"full_pct": 60.6,
 "any_pct": 89.1,
-"strict_full": 192,
-"strict_pct": 61.5,
+"strict_full": 189,
+"strict_pct": 60.6,
 "none_teachable": 0,
 "none_nosource": 34,
 "conflict": 0,
 "bank_only": 34,
-"partial_shown": 86,
-"full_nobank_pct": 59.3,
-"full_bank_sourced": 7
+"partial_shown": 89,
+"full_nobank_pct": 58.7,
+"full_bank_sourced": 6
 },
 "vehicle": {
 "n": 60,
@@ -441,53 +441,53 @@
 "C1": {
 "law": {
 "n": 605,
-"full": 475,
-"partial": 82,
+"full": 473,
+"partial": 84,
 "none": 48,
-"full_pct": 78.5,
+"full_pct": 78.2,
 "any_pct": 92.1,
-"strict_full": 473,
-"strict_pct": 78.2,
+"strict_full": 471,
+"strict_pct": 77.9,
 "none_teachable": 29,
 "none_nosource": 16,
 "conflict": 3,
 "bank_only": 19,
-"partial_shown": 71,
-"full_nobank_pct": 78.5,
+"partial_shown": 73,
+"full_nobank_pct": 78.2,
 "full_bank_sourced": 0
 },
 "signs": {
 "n": 367,
-"full": 339,
-"partial": 23,
+"full": 338,
+"partial": 24,
 "none": 5,
-"full_pct": 92.4,
+"full_pct": 92.1,
 "any_pct": 98.6,
-"strict_full": 73,
-"strict_pct": 19.9,
+"strict_full": 72,
+"strict_pct": 19.6,
 "none_teachable": 1,
 "none_nosource": 4,
 "conflict": 0,
 "bank_only": 4,
-"partial_shown": 23,
-"full_nobank_pct": 91.8,
+"partial_shown": 24,
+"full_nobank_pct": 91.6,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 312,
-"full": 207,
-"partial": 76,
+"full": 205,
+"partial": 78,
 "none": 29,
-"full_pct": 66.3,
+"full_pct": 65.7,
 "any_pct": 90.7,
-"strict_full": 207,
-"strict_pct": 66.3,
+"strict_full": 205,
+"strict_pct": 65.7,
 "none_teachable": 0,
 "none_nosource": 29,
 "conflict": 0,
 "bank_only": 29,
-"partial_shown": 73,
-"full_nobank_pct": 66.0,
+"partial_shown": 75,
+"full_nobank_pct": 65.4,
 "full_bank_sourced": 1
 },
 "vehicle": {
@@ -511,53 +511,53 @@
 "C": {
 "law": {
 "n": 619,
-"full": 488,
-"partial": 81,
+"full": 486,
+"partial": 83,
 "none": 50,
-"full_pct": 78.8,
+"full_pct": 78.5,
 "any_pct": 91.9,
-"strict_full": 486,
-"strict_pct": 78.5,
+"strict_full": 484,
+"strict_pct": 78.2,
 "none_teachable": 32,
 "none_nosource": 17,
 "conflict": 1,
 "bank_only": 18,
-"partial_shown": 64,
-"full_nobank_pct": 78.5,
+"partial_shown": 66,
+"full_nobank_pct": 78.2,
 "full_bank_sourced": 2
 },
 "signs": {
 "n": 366,
-"full": 338,
-"partial": 23,
+"full": 337,
+"partial": 24,
 "none": 5,
-"full_pct": 92.3,
+"full_pct": 92.1,
 "any_pct": 98.6,
-"strict_full": 73,
-"strict_pct": 19.9,
+"strict_full": 72,
+"strict_pct": 19.7,
 "none_teachable": 1,
 "none_nosource": 4,
 "conflict": 0,
 "bank_only": 4,
-"partial_shown": 23,
-"full_nobank_pct": 91.8,
+"partial_shown": 24,
+"full_nobank_pct": 91.5,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 307,
-"full": 199,
-"partial": 75,
+"full": 197,
+"partial": 77,
 "none": 33,
-"full_pct": 64.8,
+"full_pct": 64.2,
 "any_pct": 89.3,
-"strict_full": 199,
-"strict_pct": 64.8,
+"strict_full": 197,
+"strict_pct": 64.2,
 "none_teachable": 1,
 "none_nosource": 32,
 "conflict": 0,
 "bank_only": 32,
-"partial_shown": 71,
-"full_nobank_pct": 64.5,
+"partial_shown": 73,
+"full_nobank_pct": 63.8,
 "full_bank_sourced": 1
 },
 "vehicle": {
@@ -581,53 +581,53 @@
 "D": {
 "law": {
 "n": 618,
-"full": 488,
-"partial": 88,
+"full": 486,
+"partial": 90,
 "none": 42,
-"full_pct": 79.0,
+"full_pct": 78.6,
 "any_pct": 93.2,
-"strict_full": 486,
-"strict_pct": 78.6,
+"strict_full": 484,
+"strict_pct": 78.3,
 "none_teachable": 10,
 "none_nosource": 31,
 "conflict": 1,
 "bank_only": 32,
-"partial_shown": 63,
-"full_nobank_pct": 78.6,
+"partial_shown": 65,
+"full_nobank_pct": 78.3,
 "full_bank_sourced": 2
 },
 "signs": {
 "n": 377,
-"full": 349,
-"partial": 23,
+"full": 348,
+"partial": 24,
 "none": 5,
-"full_pct": 92.6,
+"full_pct": 92.3,
 "any_pct": 98.7,
-"strict_full": 72,
-"strict_pct": 19.1,
+"strict_full": 71,
+"strict_pct": 18.8,
 "none_teachable": 0,
 "none_nosource": 5,
 "conflict": 0,
 "bank_only": 5,
-"partial_shown": 23,
-"full_nobank_pct": 92.0,
+"partial_shown": 24,
+"full_nobank_pct": 91.8,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 299,
-"full": 198,
-"partial": 74,
+"full": 196,
+"partial": 76,
 "none": 27,
-"full_pct": 66.2,
+"full_pct": 65.6,
 "any_pct": 91.0,
-"strict_full": 198,
-"strict_pct": 66.2,
+"strict_full": 196,
+"strict_pct": 65.6,
 "none_teachable": 0,
 "none_nosource": 27,
 "conflict": 0,
 "bank_only": 27,
-"partial_shown": 73,
-"full_nobank_pct": 65.9,
+"partial_shown": 75,
+"full_nobank_pct": 65.2,
 "full_bank_sourced": 1
 },
 "vehicle": {
@@ -651,53 +651,53 @@
 "1": {
 "law": {
 "n": 436,
-"full": 363,
-"partial": 62,
+"full": 361,
+"partial": 64,
 "none": 11,
-"full_pct": 83.3,
+"full_pct": 82.8,
 "any_pct": 97.5,
-"strict_full": 362,
-"strict_pct": 83.0,
+"strict_full": 360,
+"strict_pct": 82.6,
 "none_teachable": 2,
 "none_nosource": 8,
 "conflict": 1,
 "bank_only": 9,
-"partial_shown": 62,
-"full_nobank_pct": 83.0,
+"partial_shown": 64,
+"full_nobank_pct": 82.6,
 "full_bank_sourced": 1
 },
 "signs": {
 "n": 353,
-"full": 327,
-"partial": 23,
+"full": 326,
+"partial": 24,
 "none": 3,
-"full_pct": 92.6,
+"full_pct": 92.4,
 "any_pct": 99.2,
-"strict_full": 70,
-"strict_pct": 19.8,
+"strict_full": 69,
+"strict_pct": 19.5,
 "none_teachable": 0,
 "none_nosource": 3,
 "conflict": 0,
 "bank_only": 3,
-"partial_shown": 23,
-"full_nobank_pct": 92.1,
+"partial_shown": 24,
+"full_nobank_pct": 91.8,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 295,
-"full": 184,
-"partial": 65,
+"full": 182,
+"partial": 67,
 "none": 46,
-"full_pct": 62.4,
+"full_pct": 61.7,
 "any_pct": 84.4,
-"strict_full": 184,
-"strict_pct": 62.4,
+"strict_full": 182,
+"strict_pct": 61.7,
 "none_teachable": 0,
 "none_nosource": 46,
 "conflict": 0,
 "bank_only": 46,
-"partial_shown": 64,
-"full_nobank_pct": 61.4,
+"partial_shown": 66,
+"full_nobank_pct": 60.7,
 "full_bank_sourced": 3
 },
 "vehicle": {
@@ -720,12 +720,12 @@
 }
 },
 "by": {
-"hand": 650,
-"spec": 734,
+"hand": 646,
+"spec": 731,
 "v1.13": 30,
 "rejudge": 96,
 "sample": 222,
-"v1.14": 33,
+"v1.14": 40,
 "link": 28,
 "rebase": 8
 },
@@ -4179,14 +4179,14 @@
 "by": "sample"
 },
 "172": {
-"v": "full",
+"v": "partial",
 "rule": [
 "roadparts#r0"
 ],
 "ref": [
 "roadparts#r:\"דרך\" – כל מסילה, דרך, רחוב, סמטה, כ"
 ],
-"why": "rule written for this question (TO:1)",
+"why": "strict re-sample: definition of \"דרך\" (roadparts#r0) does not say which numbered part of the drawing is the road",
 "cls": [
 "1",
 "A",
@@ -4196,7 +4196,7 @@
 "D"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.14"
 },
 "173": {
 "v": "full",
@@ -14503,14 +14503,14 @@
 "by": "hand"
 },
 "691": {
-"v": "full",
+"v": "partial",
 "rule": [
 "signs#r8"
 ],
 "ref": [
 "signs#r:חלק 9: תמרורים באתר עבודה, 901 עד 93"
 ],
-"why": "the cited rule states the correct answer",
+"why": "strict re-sample: signs#r8 names part 9 (901–935) as work-site signs but not that they are orange",
 "cls": [
 "1",
 "A",
@@ -14520,7 +14520,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.14"
 },
 "692": {
 "v": "full",
@@ -30004,12 +30004,14 @@
 "1598": {
 "v": "full",
 "rule": [
-"defensive#r3"
+"defensive#r7",
+"gap2#r5"
 ],
 "ref": [
-"defensive#r:הרשות ממליצה על רווח של 2 שניות לפחו"
+"defensive#r:ראות לקויה או כביש חלק: נוהגים לאט י",
+"gap2#r:עייפות, תרופות, סמים ואלכוהול מגדילי"
 ],
-"why": "the cited rule states the correct answer",
+"why": "strict re-sample: defensive#r3 is the 2-second gap; the answer (slow down, larger gap in poor visibility) is decided by defensive#r7 and gap2#r5",
 "cls": [
 "1",
 "A",
@@ -30019,7 +30021,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.14"
 },
 "1599": {
 "v": "partial",
@@ -30037,19 +30039,19 @@
 "by": "spec"
 },
 "1600": {
-"v": "full",
+"v": "partial",
 "rule": [
 "moto#r6"
 ],
 "ref": [
 "moto#r:בכניסה לפנייה אחיזת הצמיג בכביש משתנ"
 ],
-"why": "the cited rule states the correct answer",
+"why": "strict re-sample: moto#r6 says grip changes when leaning; that grip limits braking, leaning and accelerating is not stated",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.14"
 },
 "1601": {
 "v": "partial",
@@ -31528,14 +31530,14 @@
 "by": "spec"
 },
 "1695": {
-"v": "full",
+"v": "partial",
 "rule": [
 "night2#r4"
 ],
 "ref": [
 "night2#r:הכיוון של פנסי החזית והניקיון שלהם ו"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "strict re-sample: night2#r4: clean windows/headlamps give range and field of view; reducing glare is not stated",
 "cls": [
 "1",
 "A",
@@ -31545,7 +31547,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.14"
 },
 "1696": {
 "v": "full",
@@ -31890,14 +31892,14 @@
 "by": "spec"
 },
 "1714": {
-"v": "full",
+"v": "partial",
 "rule": [
 "duty#r6"
 ],
 "ref": [
 "duty#r:המנוע לא יפלוט עשן מעל הרגיל ולא יפר"
 ],
-"why": "the cited rule states the correct answer",
+"why": "strict re-sample: TR 316 (duty#r6) forbids excess smoke but does not say who is responsible (the driver)",
 "cls": [
 "1",
 "A",
@@ -31907,7 +31909,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.14"
 },
 "1715": {
 "v": "full",
@@ -31987,14 +31989,14 @@
 "by": "hand"
 },
 "1719": {
-"v": "full",
+"v": "partial",
 "rule": [
 "skid2#r7"
 ],
 "ref": [
 "skid2#r:גורם מרכזי לאובדן שליטה: נהיגה במהיר"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "strict re-sample: skid2#r7 names unsuitable speed only; lack of alertness and not knowing the vehicle are not taught",
 "cls": [
 "1",
 "A",
@@ -32004,7 +32006,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.14"
 },
 "1720": {
 "v": "partial",

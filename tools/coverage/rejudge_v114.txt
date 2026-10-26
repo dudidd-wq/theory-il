@@ -41,3 +41,11 @@
 795 full +signal#r10 +signal#r11 | TR 44: not near a curve/crest, not where unseen, not where a sign forbids – all options taught
 780 full +law3#r0 +speed#r5 | TO 71א1 lane permission for the disabled-badge holder; speed limit applies (TR 54)
 1024 full +maint2#r0 | textbook: tyre pressure is the one set by the manufacturer
+# strict re-sample of 66 full B/A verdicts (review #10 item 4; seed 1014, none from the v1.13 sample) – see rejudge_v114_sample.md
+172 partial | strict re-sample: definition of "דרך" (roadparts#r0) does not say which numbered part of the drawing is the road
+691 partial | strict re-sample: signs#r8 names part 9 (901–935) as work-site signs but not that they are orange
+1598 full +defensive#r7 +gap2#r5 | strict re-sample: defensive#r3 is the 2-second gap; the answer (slow down, larger gap in poor visibility) is decided by defensive#r7 and gap2#r5
+1600 partial | strict re-sample: moto#r6 says grip changes when leaning; that grip limits braking, leaning and accelerating is not stated
+1695 partial | strict re-sample: night2#r4: clean windows/headlamps give range and field of view; reducing glare is not stated
+1714 partial | strict re-sample: TR 316 (duty#r6) forbids excess smoke but does not say who is responsible (the driver)
+1719 partial | strict re-sample: skid2#r7 names unsuitable speed only; lack of alertness and not knowing the vehicle are not taught
