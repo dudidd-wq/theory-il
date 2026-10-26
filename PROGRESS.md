@@ -85,3 +85,13 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 - [x] sign dictionary "title – meaning"; "ללא ניקוד" on gov.il quotes and in About
 - [x] taxi mnem + 3 bank examples; heavy2 size diagram (lengths / width-height / rear overhang)
 - [x] sample union 60.4→61.5% full, 77.4→78.9% any; strict (dictionary = partial) 48.5% full; reviewer's own strict estimate 35–38%
+
+## v1.5.0 (review #5 + "בחן את כל השאלות")
+- [x] all 1,801 questions judged (tools/coverage/verdicts.txt → data/coverage_full.json: verdict, rule id, reason; per-class, class-only, per-topic totals incl. strict)
+- [x] headline is now the whole bank: 59.3% full / 46.4% strict / 74.0% any (v1.4 baseline from the same verdicts 42.4 / 29.5 / 54.2; reviewer's v1.4 estimate 44.6 / 31.7 / 59.0); per-class table in COVERAGE.md and About
+- [x] new lessons: busline, cargo2, taxi2, moto3, tractor2, equip, terms2, law2, parking2, roads2, signs2 (class-only + general gaps, TR 313(ב), TR 1, gov.il pages), rules3 (TR 159, 160, 157, 80, 38, 84, 85, 26), docs (TR 9, 13, 174, 276, 283, 290, 308, 169ד, TO 12א1); TR 47(א) for Q1630
+- [x] stored judgements keyed by rule id + keyword check; stale pointers (Q1571 → terms, TR 1) fixed; weak automatic matches hidden
+- [x] "not explained yet" box: link to the official bank (data.gov.il tqhe) + the class's gov.il page; plain "no official state source" variant
+- [x] law notes Q1793 (16 vs 19), Q13 (1,500 vs 1,800 kg); taxi example trimmed to TR 511; sign 703 punctuated; Kol Zchut link removed
+- [x] no class removed; tractor (1) and motorcycle (A) labelled partial in About/COVERAGE.md
+- [ ] 140 questions judged "source exists" not yet taught (mostly general law: 108); 328 have no official state source

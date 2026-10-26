@@ -1,73 +1,54 @@
-# Coverage audit: is every question topic taught by the lessons? (v1.4.0, 2026-10-26)
+# Coverage
 
-**Headline (v1.4.0, hand-judged sample of 270):** union **61.5% full / 78.9% full+partial**. **Strict figure** (the sign dictionary is not counted as teaching: a sign question whose only "full" unit is the dictionary counts as partial): **48.5% full / 78.9% full+partial**; per class B 44.6, A 45.1, C1 46.5, C 48.0, D 47.9, 1 43.4 (% full). The fourth review's own strict estimate was about 35–38% full; it used the same definition but the reviewer's own hand labels on a different reading of the units, which judged more questions partial. Both figures are shown so the reader can pick the stricter one.
+**Headline (v1.5.0, whole bank, every question judged):** of all **1,801** questions, **59.3% full**, **46.4% strict full**, **74.0% full or partial**.
 
-**How it was measured**
-- `tools/coverage.py` breaks every lesson into knowledge units: rules with their cited excerpts, body, recap, examples, mnemonics, the gallery, and the sign dictionary.
-- Each of the 1801 bank questions is matched to those units. The match uses char n‑gram TF‑IDF plus answer discrimination, and lessons outside the question's classes are filtered out. The result goes to `data/coverage.json`: status, lessons and units for each question.
-- For the manual check, a fixed random sample (seed 20261026) of **270 questions** was judged by hand as full, partial or none. That gives **166–215 questions per class**. The judgements are in `tools/coverage/judged.json`: `before` holds the v1.1 judgements, `after` the deltas after the v1.2, v1.3 and v1.4 fixes. The sample is the same one used for v1.1 and v1.2.
-- A sign question counts as covered when its לות״ם sign appears in a lesson's gallery or in the in-app sign dictionary. The dictionary is built from the gov.il sign table.
-- Percentages are sample estimates. The 95% Wilson CIs are in `docs/coverage_{before,after}.json`.
+Definitions:
+- **full**: a lesson rule, example, recap or the sign dictionary teaches the answer.
+- **strict**: as full, but the sign dictionary alone does not count as teaching (such a question counts as partial).
+- **full or partial**: at least part of the answer is taught.
+- **no official source**: the pinned law (Wikisource TR oldid 3085628, TO oldid 3085764), the cached gov.il / mot.gov.il pages including the sign table, and rsa.org.il were searched and no passage supports the answer. These are left unexplained on purpose; nothing is written from general knowledge.
 
-**Sources allowed (v1.3.0 and v1.4.0):** official state sources only. That means the law (pinned Wikisource revisions of the Traffic Ordinance and Traffic Regulations), the Ministry of Transport (gov.il / mot.gov.il), and the National Road Safety Authority (its gov.il pages and the March 2026 booklet "כללי בטיחות בדרכים"). Every rule cites a URL plus its section or passage. The 17 gov.il pages are pinned in `tools/official/pages.json` with access date and sha256; see `LICENSE-DATA.md`. No Nevo, theory books, other apps, or general knowledge were used. ask.ralbad.org.il was not used because it is not an approved source.
+Method: `tools/coverage/verdicts.txt` holds one verdict per question (hand judgement, or the v1.4 sample judgement where one exists). `tools/coverage/compile_verdicts.py` checks that each cited rule still exists and shares keywords with the question; `tools/coverage.py` writes `data/coverage_full.json` (verdict, mapped rule id and one-line reason per question, plus every total below). The old 270-question sample is kept only as a working set; its figures are no longer the headline. The fifth review's independent estimate (full 44.6 / strict 31.7 / any 59.0) was made on v1.4.0, before the v1.5 lessons; the v1.4 whole-bank figure from the same verdicts was about 42.4 / 29.5 / 54.2, in line with it.
 
-## Per class (manual sample, % full / % full+partial)
+## Per licence class (each class's own pool)
 
-| class | n | before (v1.1) | v1.2 | v1.3 | **v1.4** | v1.4 strict |
+| | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source |
 |---|---|---|---|---|---|---|
-| B | 195 | 23.1 / 38.5 | 51.8 / 67.2 | 61.0 / 77.9 | **61.0 / 77.9** | 44.6 / 77.9 |
-| A | 173 | 24.9 / 42.2 | 54.9 / 71.1 | 63.0 / 79.8 | **63.0 / 79.8** | 45.1 / 79.8 |
-| C1 | 215 | 21.4 / 36.3 | 49.8 / 65.6 | 60.9 / 78.1 | **61.9 / 79.5** | 46.5 / 79.5 |
-| C | 200 | 22.5 / 38.0 | 53.0 / 69.0 | 63.0 / 79.5 | **64.0 / 81.0** | 48.0 / 81.0 |
-| D | 192 | 21.4 / 35.9 | 52.1 / 66.7 | 63.5 / 79.7 | **65.1 / 81.2** | 47.9 / 81.2 |
-| 1 (tractor) | 166 | 24.1 / 42.2 | 54.2 / 70.5 | 62.0 / 78.9 | **62.0 / 78.9** | 43.4 / 78.9 |
-| union of all sampled | 270 | 19.3 / 33.3 | 44.4 / 59.6 | 60.4 / 77.4 | **61.5 / 78.9** | 48.5 / 78.9 |
+| whole bank | 1801 | 59.3 | 46.4 | 74.0 | 140 | 328 |
+| B private car | 1272 | 56.5 | 40.2 | 71.1 | 106 | 262 |
+| A motorcycle | 1155 | 59.3 | 41.7 | 74.6 | 81 | 212 |
+| C1 truck ≤12 t | 1385 | 56.9 | 41.7 | 71.4 | 135 | 261 |
+| C heavy truck | 1314 | 61.3 | 45.4 | 75.5 | 119 | 203 |
+| D bus | 1316 | 62.7 | 45.8 | 76.9 | 89 | 215 |
+| 1 tractor | 1127 | 59.7 | 41.6 | 73.8 | 87 | 208 |
 
-In the strict column only the full share changes: a dictionary-only sign question moves from full to partial, so full+partial stays the same.
+## Class-only questions (questions that belong to that class alone)
 
-**Weighted per class.** The sample is a simple random draw from the bank, so each class's subsample is already weighted by how often each topic appears in that class's pool. The only reweighting is for signs: the sign share of the class pool is multiplied by sign coverage, and the non-sign share by non-sign coverage. The weighted v1.4 figures are (full / any): B 61.3/78.1, A 63.2/79.8, C1 62.1/79.6, C 64.2/81.1, D 65.2/81.3, 1 62.4/79.1. They differ from the raw figures by less than 1 point.
+| | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source |
+|---|---|---|---|---|---|---|
+| B private car | 9 | 33.3 | 33.3 | 55.6 | 1 | 3 |
+| A motorcycle | 88 | 51.1 | 51.1 | 67.0 | 1 | 28 |
+| C1 truck ≤12 t | 1 | 100.0 | 100.0 | 100.0 | 0 | 0 |
+| C heavy truck | 73 | 79.5 | 79.5 | 90.4 | 1 | 6 |
+| D bus | 190 | 74.7 | 65.3 | 88.4 | 1 | 21 |
+| 1 tractor | 43 | 39.5 | 39.5 | 41.9 | 0 | 25 |
 
-**Why the union was lower than every class.** In v1.2 the union was 44.4% full while every class was above 49%. Each class's figure includes only that class's own questions, so it is dominated by the 145 questions that all six classes share. Those are taught best: 65.5/82.8 in v1.3. The union also counts every question that belongs to only some classes. 56 of the 270 belong to a single class (mostly D‑only, 24, and 1‑only, 8). In v1.2 those were at about 25% and 12.5% full. Each class contains only its own few of them, but the union contains all of them. v1.3 targeted those class‑only questions, so the union is now in line with the classes.
+## Per topic (whole bank)
 
-| questions belonging to | n | v1.4 full / any | v1.3 |
-|---|---|---|---|
-| 1 class only | 56 | 60.7 / 75.0 | 58.9 / 73.2 (v1.2: 37.5 / 46.4) |
-| 2 classes | 29 | 48.3 / 75.9 | 48.3 / 72.4 |
-| 3–5 classes | 40 | 57.5 / 72.5 | 51.3 / 67.0 |
-| all 6 classes | 145 | 65.5 / 82.8 | 65.5 / 82.8 |
+| | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source |
+|---|---|---|---|---|---|---|
+| law | 901 | 67.3 | 67.3 | 83.6 | 108 | 40 |
+| signs | 390 | 91.3 | 31.5 | 94.4 | 19 | 3 |
+| safety | 400 | 22.8 | 22.8 | 44.2 | 10 | 213 |
+| vehicle | 110 | 13.6 | 13.6 | 31.8 | 3 | 72 |
 
-**Class-only questions in the sample** (full / any): A 80/90 (n=10), C 53.8/69.2 (n=13), D 62.5/79.2 (n=24; v1.3: 58.3/75; v1.2: 25/33), 1 37.5/50 (n=8; unchanged – the tractor-mechanics questions have no official source), C1 1/1.
+## Recommendation on classes
 
-## Per topic (manual sample; % full / % any)
-
-| topic | n | v1.2 | v1.3 | **v1.4** |
-|---|---|---|---|---|
-| law (חוקי התנועה) | 130 | 46.2 / 58.5 | 72.3 / 84.6 | **74.6 / 87.7** |
-| signs (תמרורים) | 57 | 82.5 / 89.5 | 82.5 / 89.5 | **82.5 / 89.5** |
-| safety (בטיחות) | 66 | 19.7 / 50.0 | 31.8 / 65.2 | **31.8 / 65.2** |
-| vehicle (הכרת הרכב) | 17 | 0 / 5.9 | 5.9 / 29.4 | **5.9 / 29.4** |
-
-## Whole-bank app labels (automatic, all 1801 questions)
-
-The app labels every question in the why‑box. A hand judgement, where one exists, overrides the matcher. The labels are: **f** taught, **a** related rule ("כלל קשור", an automatic match), **w** weak or partial, **n** not taught.
-
-| scope | f | a | f+a | any (f+a+w) | not taught |
-|---|---|---|---|---|---|
-| whole bank | 27.4 | 7.1 | 34.5 | 51.6 | 48.4 |
-| B | 30.8 | 6.1 | 36.9 | 52.8 | 47.2 |
-| A | 32.7 | 6.3 | 39.0 | 53.9 | 46.1 |
-| C1 | 29.9 | 6.3 | 36.2 | 53.1 | 46.9 |
-| C | 31.1 | 6.5 | 37.6 | 54.6 | 45.4 |
-| D | 32.2 | 6.1 | 38.3 | 54.1 | 45.9 |
-| 1 | 33.6 | 5.7 | 39.3 | 53.8 | 46.2 |
-
-(v1.4; v1.3 whole bank was 26.4 / 6.8 / 33.2 / 50.4 / 49.6.)
-
-For comparison, the v1.2 whole-bank labels were about 29 / 43 / 57 (f+a / any / not taught), per the third review. The app labels sit about 25 points below the hand-judged sample because the automatic matcher is conservative. On the 270-question sample it agrees with the hand labels 71.1% of the time (v1.3: 72.2%): 140 true positives, 52 true negatives, 5 false positives and 73 false negatives. The small drop is because v1.4 hand-judged more questions as taught (e.g. Q324, Q1396) that the matcher does not reach. The four matcher misses named in the fourth review (Q1443, Q1072, Q1515, Q768) now carry hand judgements and show as taught. Nearly all disagreements are questions that a person judges taught but the matcher misses. The app therefore under-claims rather than over-claims.
+No class is removed. Suggested labels: **tractor (1)** partial – its 43 class-only questions are 39.5% full and 25 of them have no official state source (tractor operation and mechanics). **Motorcycle (A)** partial – class-only 51.1% full, 28 without an official source. B, C1, C and D are at or above the bank average.
 
 ## Sign coverage
 
-| | sign questions in sample | full | partial |
+| | sign questions in the v1.2 sample | full | partial |
 |---|---|---|---|
 | before | 57 | 12 | 12 |
 | v1.2 / v1.3 | 57 | 47 | 4 |

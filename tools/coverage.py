@@ -82,7 +82,9 @@ for q in Q:
         if ul[u] not in ls and lcls[ul[u]] & set(q['t']): ls.append(ul[u])
     if e.get('dict') and 'signs' not in ls: ls.append('signs')
     cov[q['id']] = [st, ls[:3], units[:3]] + (['S'] if e['v'] == 'none' and e.get('src') != 'T' else [])
+_t = lambda x: [x['n'], x['full_pct'], x['strict_pct'], x['any_pct'], x['none_nosource']]
 json.dump({'v': 2, 'legend': {'f': 'taught', 'w': 'partly', 'n': 'not taught yet', 'S': 'no official state source'},
+           'tot': {'all': _t(T['all']), **{c: _t(T['class'][c]) for c in CLS}},
            'q': {str(k): v for k, v in sorted(cov.items())}}, open(P('data/coverage.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 full = {'v': 1, 'note': 'Whole-bank hand judgement of theory-il lessons against every official bank question. v: full|partial|none; '
         'rule: lesson unit(s) carrying the answer (current id; ref = stable reference); why: one-line reason; src (untaught only): '

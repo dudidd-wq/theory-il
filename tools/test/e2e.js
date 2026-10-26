@@ -149,6 +149,7 @@ async function run(prof, opts) {
   ok(await p.locator('#ab-ccbysa a[href="https://creativecommons.org/licenses/by-sa/4.0/"]').count() === 1, 'about credits Wikisource CC BY-SA 4.0 with a link');
   ok(/משרד התחבורה/.test(await text(p)), 'about names the ministry as source');
   ok(/לא כולל תיאור מילולי/.test(await text(p)) && (await p.locator('.elig').count()) === 6, 'about: picture-question accessibility note + eligibility for all 6 classes');
+  ok(/כל המאגר/.test(await text(p)) && (await p.locator('table.tbl tbody tr').count()) >= 7 && !/kolzchut/.test(await p.content()), 'about: whole-bank coverage table for all classes, no Kol Zchut link');
   // learning stage: path → lesson (law chips, diagram + text alternative, recap) → mini-quiz → mastery → unlock
   const LJ = await p.evaluate(() => fetch('data/lessons.json').then(r => r.json())), LB = LJ.lessons.filter(l => l.cls.includes('B'));
   await go(p, '#/learn'); await p.waitForSelector('.lessons');
