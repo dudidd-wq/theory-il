@@ -134,3 +134,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - 2026-10-26 15:22 (UTC+2) v1.8 item 3a: no "1,200 questions" text found (guard added to data_test); unofficial-site + no-course note (he/en) on welcome (disc.short), About (ab.course, cites TR 203(א), 205) and README.
 - 2026-10-26 15:24 (UTC+2) v1.8 item 3b: docs/BANK_VERSION.md – no newer CC BY bank than 2021-12 on data.gov.il; 1,802 vs 1,801 = Q574 (broken sign image, excluded). Report only, no data swap.
 - 2026-10-26 15:25 (UTC+2) v1.8.0: bump (js/version.js, sw.js), COVERAGE headline 76.5% full / 63.5% strict / 90.4% any; data_test passed.
+- v1.8.0 live (sw VERSION 1.8.0); live e2e 220/220. Flake cause: offline-images toast ("442/442") follows the bookmark toast on live, so axe toast-wait raised 6s→15s (test only).

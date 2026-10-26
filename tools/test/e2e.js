@@ -10,7 +10,7 @@ const ok = (c, msg) => { if (c) { passes++; console.log('  ✓ ' + msg); } else 
 async function axe(p, name, prof) {
   await p.waitForTimeout(350);   // let the .18s fade-in finish so contrast is measured at full opacity
   // a toast that fades out while axe runs gives a bogus contrast result: let any toast finish first (its contrast is checked on its own below)
-  await p.waitForFunction(() => { const e = document.getElementById('toast'); return !e.classList.contains('show') && getComputedStyle(e).opacity === '0'; }, null, { timeout: 6000 });
+  await p.waitForFunction(() => { const e = document.getElementById('toast'); return !e.classList.contains('show') && getComputedStyle(e).opacity === '0'; }, null, { timeout: 15000 });
   await p.evaluate(AXE);
   const r = await p.evaluate(() => axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] } }));
   const v = r.violations;   // every impact, minor included (review #3 finding 10)
