@@ -28,6 +28,7 @@ man = J['before'] if LABEL == 'before' else {**J['before'], **J.get('after', {})
 # dictionary in the signs lesson (official meaning, cited LT:n) – unit id 'signs#d<num>'
 SG = json.load(open(os.path.join(ROOT, 'data/signs.json'))) if LABEL != 'before' else {'q': {}, 'e': {}}
 for n in SG['e']: ul['signs#d' + n] = 'signs'
+man_strict = dict(man)  # labels before the sign dictionary is credited (strict figure)
 for qid, nums in SG['q'].items():
     if qid not in man or man[qid]['v'] != 'full':
         man[qid] = {'v': 'full', 'u': ['signs#d' + n for n in nums], 'why': 'sign dictionary'}
@@ -121,6 +122,19 @@ for c in CLS:
         r[part] = {'n': n, 'full': round(100 * v['full'] / n, 1), 'any': round(100 * (v['full'] + v['partial']) / n, 1)}
     r['full'] = round(w * r['signs']['full'] + (1 - w) * r['other']['full'], 1); r['any'] = round(w * r['signs']['any'] + (1 - w) * r['other']['any'], 1)
     stats['weighted'][c] = r
+# strict figure (review #4 definition): the sign dictionary is not counted as teaching – a sign question whose
+# full label comes only from the dictionary counts as partial (its why-box still shows the official meaning)
+def verdict_strict(qid, c):
+    j = man_strict.get(str(qid), {'v': 'none', 'u': []}); v = j['v']
+    if str(qid) in SG['q'] and v == 'none': j = man[str(qid)]; v = 'partial'
+    if v != 'none' and not any(c in lcls[ul[u]] for u in j['u']): v = 'none'
+    return v
+stats['strict'] = {}
+for c in CLS:
+    ids = [i for i in SAMPLE if c in by[i]['t']]; v = collections.Counter(verdict_strict(i, c) for i in ids); N = len(ids)
+    stats['strict'][c] = {'n': N, 'full_pct': round(100 * v['full'] / N, 1), 'any_pct': round(100 * (v['full'] + v['partial']) / N, 1)}
+v = collections.Counter(max((verdict_strict(i, c) for c in set(by[i]['t'])), key=['none', 'partial', 'full'].index) for i in SAMPLE)
+stats['strict']['all'] = {'n': len(SAMPLE), 'full_pct': round(100 * v['full'] / len(SAMPLE), 1), 'any_pct': round(100 * (v['full'] + v['partial']) / len(SAMPLE), 1)}
 # class-only questions (in exactly one class) and the union by number of classes
 stats['only'] = {}
 for c in CLS:
@@ -138,6 +152,7 @@ for c, s in stats['class'].items():
     print(f"{NAMES[c]:18s} n={s['n']:3d} full {s['full_pct']:5.1f}% {s['full_ci']}  full+partial {s['any_pct']:5.1f}% {s['any_ci']}  auto {stats['auto'][c]}")
 for k, s in stats['topic'].items(): print(TOP[k], s)
 print('signs', stats['signs'], 'agree', stats['agree'])
+print('strict (sign dictionary = partial)', stats['strict'])
 print('bank labels', stats['bank'])
 print('weighted', {c: (w['full'], w['any']) for c, w in stats['weighted'].items()})
 print('class-only', stats['only'])

@@ -21,7 +21,9 @@ def build():
     from sklearn.feature_extraction.text import TfidfVectorizer
     man = json.load(open(os.path.join(ROOT, 'tools/signs/manual.json')))
     E = parse(); V = vocab(E.values()); keys = sorted(E, key=int)
-    E = {k: man.get('text', {}).get(k) or tidy(E[k], V, k) for k in keys}   # extraction repaired; hand-read cells from manual.json
+    # hand-read cells keep the table's "." after the title: show it as "title – meaning" like the rest
+    mt = {k: re.sub(r'^([^.]{3,90}?)\.\s+(?=\S)', r'\1 – ', t, count=1) for k, t in man.get('text', {}).items()}
+    E = {k: mt.get(k) or tidy(E[k], V, k) for k in keys}   # extraction repaired; hand-read cells from manual.json
     Q = [q for q in json.load(open(os.path.join(ROOT, 'data/q.he.json'))) if q['k'] == 'signs']
     v = TfidfVectorizer(analyzer='char_wb', ngram_range=(3, 5), sublinear_tf=True).fit([norm(E[k]) for k in keys] + [norm(q['a'][q['c']]) for q in Q])
     M = v.transform([norm(E[k][:200]) for k in keys])

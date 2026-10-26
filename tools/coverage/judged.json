@@ -1848,7 +1848,8 @@
   "1157": {
    "v": "full",
    "u": [
-    "taxi#r1"
+    "taxi#r1",
+    "taxi#x0"
    ],
    "why": "TR 511"
   },
@@ -1890,7 +1891,8 @@
   "614": {
    "v": "full",
    "u": [
-    "taxi#r8"
+    "taxi#r8",
+    "taxi#x2"
    ],
    "why": "TR 1 + 83(א)"
   },
@@ -1928,6 +1930,177 @@
     "vehicle#r18"
    ],
    "why": "TR 324"
+  },
+  "1443": {
+   "v": "full",
+   "u": [
+    "heavy2#r4"
+   ],
+   "why": "v1.4 (review #4 matcher miss): TR 1 רכב מחובר"
+  },
+  "1072": {
+   "v": "full",
+   "u": [
+    "defensive#r10"
+   ],
+   "why": "v1.4 (review #4 matcher miss): RSA elderly page – seat, backrest, steering"
+  },
+  "1515": {
+   "v": "full",
+   "u": [
+    "blind#r0"
+   ],
+   "why": "v1.4 (review #4 matcher miss): blind-spot definition"
+  },
+  "768": {
+   "v": "full",
+   "u": [
+    "signal#b0",
+    "signal#r0"
+   ],
+   "why": "v1.4 (review #4 matcher miss): signal before the manoeuvre (TR 59)"
+  },
+  "1214": {
+   "v": "full",
+   "u": [
+    "bus#r20"
+   ],
+   "why": "v1.4: TR 361(5)"
+  },
+  "1145": {
+   "v": "full",
+   "u": [
+    "bus#r21"
+   ],
+   "why": "v1.4: TR 408(א)(3)"
+  },
+  "1221": {
+   "v": "full",
+   "u": [
+    "taxi#r12",
+    "taxi#x1"
+   ],
+   "why": "v1.4: TR 506"
+  },
+  "1280": {
+   "v": "full",
+   "u": [
+    "bus#r23"
+   ],
+   "why": "v1.4: TR 83(ג)(2)"
+  },
+  "613": {
+   "v": "full",
+   "u": [
+    "bus#r23"
+   ],
+   "why": "v1.4: TR 83(ג)(2)"
+  },
+  "1229": {
+   "v": "full",
+   "u": [
+    "bus#r25"
+   ],
+   "why": "v1.4: TR 432א(א)"
+  },
+  "1341": {
+   "v": "full",
+   "u": [
+    "bus#r26"
+   ],
+   "why": "v1.4: TR 1"
+  },
+  "1137": {
+   "v": "full",
+   "u": [
+    "bus#r27"
+   ],
+   "why": "v1.4: TR 418"
+  },
+  "1377": {
+   "v": "full",
+   "u": [
+    "bus#r28",
+    "heavy2#r28"
+   ],
+   "why": "v1.4: TR 324 + 330 (D and C1/C)"
+  },
+  "1676": {
+   "v": "full",
+   "u": [
+    "bus#r29",
+    "heavy2#r29"
+   ],
+   "why": "v1.4: TR 324 + 330(ו) (D and C1/C)"
+  },
+  "334": {
+   "v": "full",
+   "u": [
+    "tractor#r11"
+   ],
+   "why": "v1.4: TR 188(א)"
+  },
+  "1109": {
+   "v": "full",
+   "u": [
+    "tractor#r12"
+   ],
+   "why": "v1.4: TR 344(א) + TR 1 טרקטור = רכב מנועי"
+  },
+  "1160": {
+   "v": "none",
+   "u": [],
+   "why": "v1.4: not taught – no official source for a fare exemption in a taxi on a service line (TR 502 is about extra children, not fares)"
+  },
+  "1565": {
+   "v": "none",
+   "u": [],
+   "why": "v1.4: not taught – air-tank fill time / what to do: not in the pinned TR or the pinned gov.il pages"
+  },
+  "1100": {
+   "v": "none",
+   "u": [],
+   "why": "v1.4: not taught – PTO safety: no TR text and no MOT/RSA page"
+  },
+  "1102": {
+   "v": "none",
+   "u": [],
+   "why": "v1.4: not taught – differential lock use: TR 1 only defines the term"
+  },
+  "1092": {
+   "v": "none",
+   "u": [],
+   "why": "v1.4: not taught – front weights: no official source"
+  },
+  "1085": {
+   "v": "none",
+   "u": [],
+   "why": "v1.4: not taught – front-axle oscillation: no official source"
+  },
+  "1107": {
+   "v": "none",
+   "u": [],
+   "why": "v1.4: not taught – spark arrester: no official source"
+  },
+  "1104": {
+   "v": "none",
+   "u": [],
+   "why": "v1.4: not taught – hydraulic pressure: no official source"
+  },
+  "1106": {
+   "v": "none",
+   "u": [],
+   "why": "v1.4: not taught – releasing hydraulic pressure: no official source"
+  },
+  "1088": {
+   "v": "none",
+   "u": [],
+   "why": "v1.4: not taught – rear-lift overload: no official source"
+  },
+  "1095": {
+   "v": "none",
+   "u": [],
+   "why": "v1.4: not taught – single-wheel braking: no official source"
   }
  }
 }

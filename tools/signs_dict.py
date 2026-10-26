@@ -8,10 +8,17 @@ LOT = json.load(open(os.path.join(ROOT, 'tools/law/lotam.json')))
 HDR = re.compile(r'^\d+ לוח תמרורים.*?13\.09\.2022( 1 \. צורת התמרור וצבעו 2 \. מספ ?ר ?ו 3 \. פירושו 4 \. (כוחו :יפה|מיועד ל))? ')
 
 def fix(s):
+    # the sign's title ends with the first sentence mark (".", ":" or "!", which the pdf puts before the word):
+    # mark the boundary with " § " so signs_tidy can print "title – meaning"
+    tok = s.split()
+    k = next((i for i, w in enumerate(tok[:16]) if re.match(r'^[.:!]+([^\s\d.]|$)', w)), None)
+    rest = ' '.join(tok[k + 1:]) if k is not None else ''
+    if k and re.search(r'[\u05d0-\u05ea]{2}', re.sub(r'\d{3} ?פ', '', rest)):
+        s = ' '.join(tok[:k + 1] + ['§'] + tok[k + 1:])
     # pdf text puts sentence punctuation before words: ".משובש" → "משובש."
     s = re.sub(r'(^|\s)([.,;:]+)(?=[^\s\d])', r'\1', s)
     s = re.sub(r'\s+', ' ', s)
-    return s.strip(' .')
+    return s.strip(' .§')
 
 def parse():
     pages = [p for p in LOT['pages'][5:] if not ('עדכונים' in p[:200] or (re.search(r'חלק \d', p) and len(p) < 400))]
@@ -33,7 +40,7 @@ def parse():
         _, e, o = min((c for c in cands if c[0] <= first + 1500), key=lambda c: c[1])
         pos.append((e, o[0], o[1])); last, at = e, o[1]
     for (n, a, b), nxt in zip(pos, pos[1:] + [(0, len(txt), 0)]):
-        ent[str(n)] = fix(txt[b:nxt[1]])[:400]
+        v = fix(txt[b:nxt[1]]); ent[str(n)] = v[:402 if '§' in v[:400] else 400]   # +2 for the title mark
     prev = ''
     for k in sorted(ent, key=int):  # pairs like 102/103 share one meaning cell
         if not ent[k]: ent[k] = prev

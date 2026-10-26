@@ -51,4 +51,5 @@ def tidy(s, V, n=None):
     if n: s = re.sub(rf'\s*(נוהג רכב)?\s*{n}פ$', '', s)                          # next row's label leaking into the cell
     s = re.sub(r'\s+נוהג רכב$', '', s)                                          # the "intended for" column of part 7
     s = re.sub(r'\s+([.,;:])', r'\1', s); s = re.sub(r'\s+', ' ', s)
-    return s.strip(' .')
+    s = re.sub(r'[.:]?\s*§\s*', ' – ', s, count=1).replace(' § ', ' ').replace('§', '')   # title – meaning
+    return s.strip(' .–')
