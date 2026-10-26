@@ -14,7 +14,30 @@ def parse(fn):
         elif cur: buf.append(line)
     if cur and cur[0] not in secs: secs[cur[0]]={'title':cur[1],'text':clean('\n'.join(buf))}
     return secs
+def _cell(c):
+    return re.sub(r'\s+',' ',re.sub(r'<[^>]+>',' ',c)).strip()
+def table_rows(s):
+    # v1.14 (review #10 N2): a table whose first column labels the rows (e.g. TR 54) is written one row per line,
+    # each value next to its own column heading ("heading – value"), so a passage holding a number also says what it applies to
+    def conv(m):
+        rows=re.findall(r'<tr[^>]*>(.*?)</tr>',m.group(0),re.S)
+        if not rows or 'rowspan' not in rows[0].split('</th>')[0]: return m.group(0)
+        hdr=[[_cell(c) for c in re.findall(r'<th[^>]*>(.*?)</th>',r,re.S)] for r in rows]
+        cap=[h[0] for h in hdr if len(h)==1]
+        out=[]
+        for r in rows:
+            td=[_cell(c) for c in re.findall(r'<td[^>]*>(.*?)</td>',r,re.S)]
+            if not td: continue
+            H=next((h for h in reversed(hdr) if len(h)==len(td)-1 and len(td)>2),None)
+            if not H: return m.group(0)
+            vals=[f'{h} – {v}' for h,v in zip(H,td[1:]) if v and v!='&nbsp;']
+            out.append(td[0]+(' ('+cap[0]+'): ' if cap else ': ')+'; '.join(vals) if vals else td[0])
+        return '\n'.join(out)
+    return re.sub(r'<table.*?</table>',conv,s,flags=re.S)
 def clean(s):
+    s=table_rows(s)
+    # v1.14 (review #10 N1): named template parameters (e.g. {{ח:תת|סוג=הגדרה}}) are markup, not text
+    s=re.sub(r'\{\{(ח:[^{}|]*)((?:\|[^{}]*)?)\}\}',lambda m:'{{'+m.group(1)+''.join('|'+a for a in m.group(2).split('|')[1:] if not re.match(r'^[^=\s]+=',a))+'}}',s)
     # two-column rows {{טור לשמאל|label|value}} -> 'label – value' (tables of dimensions and weights)
     s=re.sub(r'\{\{טור לשמאל\|(?:יישור=[^|{}]*\|)?([^{}]*?)\|([^|{}]*)\}\}',lambda m:(m.group(1).rstrip(' –:')+' – '+m.group(2)).strip(' –'),s)
     s=re.sub(r'\{\{ח:(תת+|תתת+)\|?([^}]*)\}\}',lambda m:' '+m.group(2).replace('|',' ')+' ',s)

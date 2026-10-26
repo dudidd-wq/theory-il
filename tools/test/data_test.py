@@ -341,6 +341,19 @@ ok(_trk and os.path.exists(_PF) and hashlib.sha256(open(_PF, 'rb').read()).hexdi
 # v1.13 (D1 follow-up): no full verdict rests only on uncited lesson-body prose – practice feedback always has a cited rule
 _BO = sorted(int(i) for i, e in CF['q'].items() if e['v'] == 'full' and e.get('rule') and all('#b' in u for u in e['rule']))
 ok(not _BO, f'v1.13: no full verdict rests only on uncited lesson-body prose {_BO[:10]}')
+
+# v1.14 (review #10 N1): no wiki markup residue in any displayed passage (template params, braces, links, html)
+import re as _re
+_WK = _re.compile(r'סוג=|\w+=\S|\{\{|\}\}|\[\[|\]\]|<[a-z/]|&nbsp;|\|')
+_res = sorted({(l['id'], k, i) for l in LALL for k in ('rules', 'mnem', 'recap', 'ex') for i, r in enumerate(l.get(k, [])) for x in r.get('x', []) if _WK.search(x[1])})
+_res += sorted({('src', s_) for s_, v in SRC.items() for e in v.get('ex', []) if _WK.search(e)})
+ok(not _res, f'v1.14 (review #10 N1): no wikitext residue (e.g. "סוג=הגדרה") in any chip passage {_res[:5]}')
+# v1.14 (review #10 N2): TR 54 table rows are pinned with their column headings – every speed rule's passage holds its number
+_T54 = [(l['id'], k, i, x[1]) for l in LALL for k in ('rules', 'mnem', 'recap', 'ex') for i, r in enumerate(l.get(k, [])) for x in r.get('x', []) if x[0] == 'TR:54' and _re.search(r'\(א\)', r.get('s', '') + '(א)')]
+_bad54 = [(a, b, c) for a, b, c, p in _T54 if p.startswith('דרך עירונית דרך עירונית') or 'רשות התימרור המרכזית' in p]
+ok(len(_T54) > 15 and not _bad54 and all(' – ' in p for _, _, _, p in _T54 if 'מהירות מרבית מותרת בקילומטרים לשעה' in p), f'v1.14 (review #10 N2): TR 54 chips show the table row with headings, not bare column headers or 54(ה1) ({len(_T54)} passages; {_bad54[:4]})')
+_L7 = LB['law3']['rules'][7]['x'][0][1]
+ok('דרך שאינה עירונית עם שטח הפרדה בנוי – 90' in _L7 and 'רכב מנועי למעט' in _L7, 'v1.14 (review #10 N2): law3#r7 chip states "…עם שטח הפרדה בנוי – 90" for its row')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 
