@@ -4,14 +4,14 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 839,
-"partial": 226,
-"none": 736,
-"full_pct": 46.6,
-"any_pct": 59.1,
-"strict_full": 606,
-"strict_pct": 33.6,
-"none_teachable": 420,
+"full": 866,
+"partial": 230,
+"none": 705,
+"full_pct": 48.1,
+"any_pct": 60.9,
+"strict_full": 633,
+"strict_pct": 35.1,
+"none_teachable": 389,
 "none_nosource": 316
 },
 "class": {
@@ -53,14 +53,14 @@
 },
 "C": {
 "n": 1314,
-"full": 605,
-"partial": 157,
-"none": 552,
-"full_pct": 46.0,
-"any_pct": 58.0,
-"strict_full": 395,
-"strict_pct": 30.1,
-"none_teachable": 352,
+"full": 632,
+"partial": 161,
+"none": 521,
+"full_pct": 48.1,
+"any_pct": 60.4,
+"strict_full": 422,
+"strict_pct": 32.1,
+"none_teachable": 321,
 "none_nosource": 200
 },
 "D": {
@@ -127,14 +127,14 @@
 },
 "C": {
 "n": 73,
-"full": 30,
-"partial": 4,
-"none": 39,
-"full_pct": 41.1,
-"any_pct": 46.6,
-"strict_full": 30,
-"strict_pct": 41.1,
-"none_teachable": 34,
+"full": 57,
+"partial": 8,
+"none": 8,
+"full_pct": 78.1,
+"any_pct": 89.0,
+"strict_full": 57,
+"strict_pct": 78.1,
+"none_teachable": 3,
 "none_nosource": 5
 },
 "D": {
@@ -165,14 +165,14 @@
 "topic": {
 "law": {
 "n": 901,
-"full": 421,
-"partial": 116,
-"none": 364,
-"full_pct": 46.7,
-"any_pct": 59.6,
-"strict_full": 421,
-"strict_pct": 46.7,
-"none_teachable": 336,
+"full": 448,
+"partial": 120,
+"none": 333,
+"full_pct": 49.7,
+"any_pct": 63.0,
+"strict_full": 448,
+"strict_pct": 49.7,
+"none_teachable": 305,
 "none_nosource": 28
 },
 "signs": {
@@ -366,14 +366,14 @@
 "C": {
 "law": {
 "n": 619,
-"full": 238,
-"partial": 76,
-"none": 305,
-"full_pct": 38.4,
-"any_pct": 50.7,
-"strict_full": 238,
-"strict_pct": 38.4,
-"none_teachable": 284,
+"full": 265,
+"partial": 80,
+"none": 274,
+"full_pct": 42.8,
+"any_pct": 55.7,
+"strict_full": 265,
+"strict_pct": 42.8,
+"none_teachable": 253,
 "none_nosource": 21
 },
 "signs": {
@@ -515,10 +515,10 @@
 }
 },
 "by": {
-"hand": 1338,
+"hand": 1308,
 "link": 81,
-"sample": 293,
-"v1.5": 89
+"sample": 292,
+"v1.5": 120
 }
 },
 "q": {
@@ -5758,16 +5758,19 @@
 "by": "hand"
 },
 "293": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 315 overhang cargo",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r1"
+],
+"ref": [
+"cargo2#r:מטען שחורג מאורך הרכב מותר רק אם אינ"
+],
+"why": "rule written for this question (TR:85(ה)(1))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "294": {
 "v": "none",
@@ -6272,16 +6275,19 @@
 "by": "hand"
 },
 "321": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 313 length 12",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r0"
+],
+"ref": [
+"cargo2#r:אורך כולל מרבי של רכב מסחרי – 12.00 "
+],
+"why": "rule written for this question (TR:313(א)(3))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "322": {
 "v": "partial",
@@ -23133,16 +23139,19 @@
 "by": "sample"
 },
 "1279": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR semi-trailer rear stickers",
-"src": "T",
+"v": "partial",
+"rule": [
+"cargo2#r21"
+],
+"ref": [
+"cargo2#r:לוחות סימון אחוריים לפי ת\"י 5381 – ב"
+],
+"why": "rule covers part of the answer (TR:383א(א))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1280": {
 "v": "full",
@@ -23474,16 +23483,19 @@
 "by": "hand"
 },
 "1300": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR long load permit 20 m",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r2"
+],
+"ref": [
+"cargo2#r:אורך הרכב עם המטען עולה על 20 מ' – ר"
+],
+"why": "rule written for this question (TR:85(ה)(3))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1301": {
 "v": "full",
@@ -23501,16 +23513,19 @@
 "by": "hand"
 },
 "1302": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR wide load sign",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r3"
+],
+"ref": [
+"cargo2#r:רוחב מטען מעל 2.50 ועד 3.40 מ' (ברכב"
+],
+"why": "rule written for this question (TR:85(ג)(1))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1303": {
 "v": "full",
@@ -23607,28 +23622,34 @@
 "by": "hand"
 },
 "1309": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR rear overhang third",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r1"
+],
+"ref": [
+"cargo2#r:מטען שחורג מאורך הרכב מותר רק אם אינ"
+],
+"why": "rule written for this question (TR:85(ה)(1))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1310": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR container trailer 29,000",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r13"
+],
+"ref": [
+"cargo2#r:נתמך בעל 2 סרנים או יותר להובלת מכול"
+],
+"why": "rule written for this question (TR:85א(ד)(2))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1311": {
 "v": "none",
@@ -23663,28 +23684,34 @@
 "by": "sample"
 },
 "1313": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR high load permit 4.80",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r8"
+],
+"ref": [
+"cargo2#r:גובה מטען (ברכב מעל 15,000 ק\"ג, יחיד"
+],
+"why": "rule written for this question (TR:85(ד))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1314": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR load height 4.80",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r8"
+],
+"ref": [
+"cargo2#r:גובה מטען (ברכב מעל 15,000 ק\"ג, יחיד"
+],
+"why": "rule written for this question (TR:85(ד))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1315": {
 "v": "none",
@@ -23700,16 +23727,19 @@
 "by": "hand"
 },
 "1316": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR amber beacon 20 m",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r7"
+],
+"ref": [
+"cargo2#r:פנס צהוב מהבהב על גג תא הנהג – חובה "
+],
+"why": "rule written for this question (TR:101)",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1317": {
 "v": "full",
@@ -23823,16 +23853,19 @@
 "by": "sample"
 },
 "1324": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR chains and flags",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r10"
+],
+"ref": [
+"cargo2#r:גרור או נתמך להובלת מטענים ארוכים בל"
+],
+"why": "rule written for this question (TR:369)",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1325": {
 "v": "none",
@@ -23880,28 +23913,34 @@
 "by": "sample"
 },
 "1328": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR speed limiter responsibility",
-"src": "T",
+"v": "partial",
+"rule": [
+"cargo2#r20"
+],
+"ref": [
+"cargo2#r:מגביל מהירות: רכב מסחרי מעל 12,000 ק"
+],
+"why": "rule covers part of the answer (TR:364ה)",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1329": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR high load permit",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r8"
+],
+"ref": [
+"cargo2#r:גובה מטען (ברכב מעל 15,000 ק\"ג, יחיד"
+],
+"why": "rule written for this question (TR:85(ד))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1330": {
 "v": "full",
@@ -24016,16 +24055,19 @@
 "by": "hand"
 },
 "1337": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR amber beacon wide load",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r7"
+],
+"ref": [
+"cargo2#r:פנס צהוב מהבהב על גג תא הנהג – חובה "
+],
+"why": "rule written for this question (TR:101)",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1338": {
 "v": "none",
@@ -24241,16 +24283,19 @@
 "by": "hand"
 },
 "1352": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR rear reflective plates",
-"src": "T",
+"v": "partial",
+"rule": [
+"cargo2#r21"
+],
+"ref": [
+"cargo2#r:לוחות סימון אחוריים לפי ת\"י 5381 – ב"
+],
+"why": "rule covers part of the answer (TR:383א(א))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1353": {
 "v": "none",
@@ -24266,28 +24311,34 @@
 "by": "hand"
 },
 "1354": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR coupling clearance",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r15"
+],
+"ref": [
+"cargo2#r:ברכב מורכב – המרחק בין הדופן הקדמית "
+],
+"why": "rule written for this question (TR:378)",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.5"
 },
 "1355": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR fifth wheel",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r16"
+],
+"ref": [
+"cargo2#r:\"גלגל חמישי\" – מיתקן בתומך שמחבר מכנ"
+],
+"why": "rule written for this question (TR:266)",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1356": {
 "v": "none",
@@ -24321,16 +24372,19 @@
 "by": "sample"
 },
 "1358": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR coupling gap 150 cm",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r14"
+],
+"ref": [
+"cargo2#r:ברכב מחובר – המרחק בין החלק האחורי ש"
+],
+"why": "rule written for this question (TR:374)",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1359": {
 "v": "none",
@@ -24360,16 +24414,19 @@
 "by": "hand"
 },
 "1361": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR chains lamps trailer",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r10"
+],
+"ref": [
+"cargo2#r:גרור או נתמך להובלת מטענים ארוכים בל"
+],
+"why": "rule written for this question (TR:369)",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1362": {
 "v": "full",
@@ -24549,16 +24606,19 @@
 "by": "hand"
 },
 "1374": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR ABS commercial",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r18"
+],
+"ref": [
+"cargo2#r:ABS חובה (משנת ייצור 1996) ברכב מסחר"
+],
+"why": "rule written for this question (TR:330א)",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1375": {
 "v": "full",
@@ -24732,16 +24792,19 @@
 "by": "hand"
 },
 "1385": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR brake check 16,000",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r19"
+],
+"ref": [
+"cargo2#r:בלמים של רכב מסחרי שמשקלו הכולל המות"
+],
+"why": "rule written for this question (TR:273ב(א))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1386": {
 "v": "none",
@@ -25244,16 +25307,19 @@
 "by": "sample"
 },
 "1418": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 מכולה",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r11"
+],
+"ref": [
+"cargo2#r:\"מכולה\" – מכל או ארגז משלוח קבוע להו"
+],
+"why": "rule written for this question (TR:85א(ט))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1419": {
 "v": "full",
@@ -25271,16 +25337,19 @@
 "by": "sample"
 },
 "1420": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR container no overhang",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r12"
+],
+"ref": [
+"cargo2#r:מובילים מכולה רק ברכב שאושר לכך, כשה"
+],
+"why": "rule written for this question (TR:85א(ו))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1421": {
 "v": "full",
@@ -25298,52 +25367,64 @@
 "by": "hand"
 },
 "1422": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR 1 תאורה היקפית",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r4"
+],
+"ref": [
+"cargo2#r:\"תאורה היקפית\" – פנסים בצבע צהוב מסב"
+],
+"why": "rule written for this question (TR:85(ז))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1423": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR escort vehicle signs",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r6"
+],
+"ref": [
+"cargo2#r:ברכב הליווי – שלט \"זהירות – מטען חור"
+],
+"why": "rule written for this question (TR:85(ו))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1424": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR escort distance",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r6"
+],
+"ref": [
+"cargo2#r:ברכב הליווי – שלט \"זהירות – מטען חור"
+],
+"why": "rule written for this question (TR:85(ו))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1425": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR escort position",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r5"
+],
+"ref": [
+"cargo2#r:רוחב מטען מעל 3.40 מ': רכב ליווי – מ"
+],
+"why": "rule written for this question (TR:85(ג)(2))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1426": {
 "v": "full",
@@ -25507,16 +25588,19 @@
 "by": "hand"
 },
 "1437": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR detached trailer",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r17"
+],
+"ref": [
+"cargo2#r:אסור להשאיר עומד בדרך גרור או נתמך ש"
+],
+"why": "rule written for this question (TR:69(ו)(2))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1438": {
 "v": "full",
@@ -26131,16 +26215,19 @@
 "by": "hand"
 },
 "1479": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR rear plates 12,000",
-"src": "T",
+"v": "partial",
+"rule": [
+"cargo2#r21"
+],
+"ref": [
+"cargo2#r:לוחות סימון אחוריים לפי ת\"י 5381 – ב"
+],
+"why": "rule covers part of the answer (TR:383א(א))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1480": {
 "v": "none",
@@ -30823,16 +30910,19 @@
 "by": "sample"
 },
 "1771": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR car transporter 4.80",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r9"
+],
+"ref": [
+"cargo2#r:מובילית (רכב להובלת רכב, בהיתר רשות "
+],
+"why": "rule written for this question (TR:85(ד1))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1772": {
 "v": "none",
@@ -31320,16 +31410,19 @@
 "by": "hand"
 },
 "1800": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR car transporter 4.40",
-"src": "T",
+"v": "full",
+"rule": [
+"cargo2#r9"
+],
+"ref": [
+"cargo2#r:מובילית (רכב להובלת רכב, בהיתר רשות "
+],
+"why": "rule written for this question (TR:85(ד1))",
 "cls": [
 "C"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.5"
 },
 "1801": {
 "v": "none",

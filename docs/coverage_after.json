@@ -1,14 +1,14 @@
 {
  "all": {
   "n": 1801,
-  "full": 839,
-  "partial": 226,
-  "none": 736,
-  "full_pct": 46.6,
-  "any_pct": 59.1,
-  "strict_full": 606,
-  "strict_pct": 33.6,
-  "none_teachable": 420,
+  "full": 866,
+  "partial": 230,
+  "none": 705,
+  "full_pct": 48.1,
+  "any_pct": 60.9,
+  "strict_full": 633,
+  "strict_pct": 35.1,
+  "none_teachable": 389,
   "none_nosource": 316
  },
  "class": {
@@ -50,14 +50,14 @@
   },
   "C": {
    "n": 1314,
-   "full": 605,
-   "partial": 157,
-   "none": 552,
-   "full_pct": 46.0,
-   "any_pct": 58.0,
-   "strict_full": 395,
-   "strict_pct": 30.1,
-   "none_teachable": 352,
+   "full": 632,
+   "partial": 161,
+   "none": 521,
+   "full_pct": 48.1,
+   "any_pct": 60.4,
+   "strict_full": 422,
+   "strict_pct": 32.1,
+   "none_teachable": 321,
    "none_nosource": 200
   },
   "D": {
@@ -124,14 +124,14 @@
   },
   "C": {
    "n": 73,
-   "full": 30,
-   "partial": 4,
-   "none": 39,
-   "full_pct": 41.1,
-   "any_pct": 46.6,
-   "strict_full": 30,
-   "strict_pct": 41.1,
-   "none_teachable": 34,
+   "full": 57,
+   "partial": 8,
+   "none": 8,
+   "full_pct": 78.1,
+   "any_pct": 89.0,
+   "strict_full": 57,
+   "strict_pct": 78.1,
+   "none_teachable": 3,
    "none_nosource": 5
   },
   "D": {
@@ -162,14 +162,14 @@
  "topic": {
   "law": {
    "n": 901,
-   "full": 421,
-   "partial": 116,
-   "none": 364,
-   "full_pct": 46.7,
-   "any_pct": 59.6,
-   "strict_full": 421,
-   "strict_pct": 46.7,
-   "none_teachable": 336,
+   "full": 448,
+   "partial": 120,
+   "none": 333,
+   "full_pct": 49.7,
+   "any_pct": 63.0,
+   "strict_full": 448,
+   "strict_pct": 49.7,
+   "none_teachable": 305,
    "none_nosource": 28
   },
   "signs": {
@@ -363,14 +363,14 @@
   "C": {
    "law": {
     "n": 619,
-    "full": 238,
-    "partial": 76,
-    "none": 305,
-    "full_pct": 38.4,
-    "any_pct": 50.7,
-    "strict_full": 238,
-    "strict_pct": 38.4,
-    "none_teachable": 284,
+    "full": 265,
+    "partial": 80,
+    "none": 274,
+    "full_pct": 42.8,
+    "any_pct": 55.7,
+    "strict_full": 265,
+    "strict_pct": 42.8,
+    "none_teachable": 253,
     "none_nosource": 21
    },
    "signs": {
@@ -512,9 +512,9 @@
   }
  },
  "by": {
-  "hand": 1338,
+  "hand": 1308,
   "link": 81,
-  "sample": 293,
-  "v1.5": 89
+  "sample": 292,
+  "v1.5": 120
  }
 }
