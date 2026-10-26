@@ -3,32 +3,32 @@
  "groups": {
   "law": {
    "title": "No provision in the pinned law",
-   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) 2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404; law grep for the key terms of the answer",
+   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) 2017 prose, Ministry of Education traffic-education topic 18 prose; since v1.12 also topics 7, 13, 17 and 21 and the Road Accident Victims Compensation Law s.1). An earlier note said MoE topics s02/s04/s05/s07/s14 return 404: that was wrong – they are available (s14 via the Wayback copy of 04.07.2022); none of the remaining questions is answered by their prose; law grep for the key terms of the answer",
    "why": "the answer states a legal rule that the pinned revisions do not contain (or contain only for another case); teaching it would need an unpinned or newer text"
   },
   "pic": {
    "title": "Picture / scene judgement",
-   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) 2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404; the scene was compared with the taught rules",
+   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) 2017 prose, Ministry of Education traffic-education topic 18 prose; since v1.12 also topics 7, 13, 17 and 21 and the Road Accident Victims Compensation Law s.1). An earlier note said MoE topics s02/s04/s05/s07/s14 return 404: that was wrong – they are available (s14 via the Wayback copy of 04.07.2022); none of the remaining questions is answered by their prose; the scene was compared with the taught rules",
    "why": "the answer depends on reading a specific photo or diagram; no official text describes this scene, and the general rule alone does not give the answer"
   },
   "veh": {
    "title": "Vehicle technology and maintenance",
-   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) 2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404; textbook pages 16, 124, 127, 141 and edu topic 18 read in full",
+   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) 2017 prose, Ministry of Education traffic-education topic 18 prose; since v1.12 also topics 7, 13, 17 and 21 and the Road Accident Victims Compensation Law s.1). An earlier note said MoE topics s02/s04/s05/s07/s14 return 404: that was wrong – they are available (s14 via the Wayback copy of 04.07.2022); none of the remaining questions is answered by their prose; textbook pages 16, 124, 127, 141 and edu topic 18 read in full",
    "why": "official prose does not state this fact (only manuals / commercial theory books do); not written from general knowledge"
   },
   "edu": {
    "title": "Only in a practice question",
-   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) 2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404; found only inside edu topic 18 or textbook sample-exam questions",
+   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) 2017 prose, Ministry of Education traffic-education topic 18 prose; since v1.12 also topics 7, 13, 17 and 21 and the Road Accident Victims Compensation Law s.1). An earlier note said MoE topics s02/s04/s05/s07/s14 return 404: that was wrong – they are available (s14 via the Wayback copy of 04.07.2022); none of the remaining questions is answered by their prose; found only inside edu topic 18 or textbook sample-exam questions",
    "why": "the answer appears only in an official practice question; the source rule forbids citing practice questions"
   },
   "drv": {
    "title": "Driving technique / defensive driving",
-   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) 2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404; RSA book and textbook defensive-driving chapters read",
+   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) 2017 prose, Ministry of Education traffic-education topic 18 prose; since v1.12 also topics 7, 13, 17 and 21 and the Road Accident Victims Compensation Law s.1). An earlier note said MoE topics s02/s04/s05/s07/s14 return 404: that was wrong – they are available (s14 via the Wayback copy of 04.07.2022); none of the remaining questions is answered by their prose; RSA book and textbook defensive-driving chapters read",
    "why": "official prose covers the topic but not the specific claim the answer makes"
   },
   "moto": {
    "title": "Motorcycle riding technique",
-   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) 2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404; RSA book motorcycle section (pp. 30-31) and the RSA bikers page read; MOT motorcycle course on campus.gov.il timed out / returned only boilerplate, not citable; no official motorcycle textbook found",
+   "search": "regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table (lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) 2017 prose, Ministry of Education traffic-education topic 18 prose; since v1.12 also topics 7, 13, 17 and 21 and the Road Accident Victims Compensation Law s.1). An earlier note said MoE topics s02/s04/s05/s07/s14 return 404: that was wrong – they are available (s14 via the Wayback copy of 04.07.2022); none of the remaining questions is answered by their prose; RSA book motorcycle section (pp. 30-31) and the RSA bikers page read; MOT motorcycle course on campus.gov.il timed out / returned only boilerplate, not citable; no official motorcycle textbook found",
    "why": "no official state text teaches this riding technique; not written from general knowledge"
   }
  },
@@ -45,12 +45,12 @@
   },
   "92": {
    "g": "law",
-   "note": "licence not valid > 1 year needs tests: no such provision in pinned TR 173/174/196/203 or TO",
+   "note": "licence not valid > 1 year needs tests: no such provision in pinned TR 173/174/196/203 or TO; TR 172א is marked \"(בוטלה)\" (cancelled) in the pinned text. Bank answer may be outdated vs current law – not cited",
    "cls": "BA"
   },
   "281": {
    "g": "law",
-   "note": "tunnel 50 m before/after: TR 47 and textbook p54 ban overtaking only on a bridge or inside a tunnel, no 50 m",
+   "note": "tunnel 50 m before/after: TR 47 and textbook p54 ban overtaking only on a bridge or inside a tunnel, no 50 m; TR 47(ה)(6) is marked \"(נמחקה)\" (deleted) in the pinned text. Bank answer may be outdated vs current law – not cited",
    "cls": "BA"
   },
   "273": {
@@ -58,19 +58,9 @@
    "note": "LPG parking: refers to Ministry of Environmental Protection guidance, not in the pinned sources",
    "cls": "B"
   },
-  "302": {
-   "g": "law",
-   "note": "beer counts as alcohol: OFF:drunk says any alcohol impairs but never names beer",
-   "cls": "BA"
-  },
   "1500": {
    "g": "law",
    "note": "third-party property insurance: the Motor Vehicle Insurance Ordinance covers bodily injury only. Candidates for Dudi: Knesset Research Center paper (fs.knesset.gov.il, 2024) and the standard-policy regulations (תקנות הפיקוח על עסקי ביטוח (תנאי חוזה לביטוח רכב פרטי), part B), not pinned",
-   "cls": "BA"
-  },
-  "1723": {
-   "g": "law",
-   "note": "definition of a road accident: in the Road Accident Victims Compensation Law, not pinned",
    "cls": "BA"
   },
   "1730": {
@@ -293,11 +283,6 @@
    "note": "knowing the cockpit",
    "cls": "BA"
   },
-  "1006": {
-   "g": "drv",
-   "note": "flooded road – low gear (textbook only has a photo caption)",
-   "cls": "BA"
-  },
   "1183": {
    "g": "drv",
    "note": "approaching a cyclist",
@@ -313,16 +298,6 @@
    "note": "side stand",
    "cls": "A"
   },
-  "1596": {
-   "g": "moto",
-   "note": "separate brakes",
-   "cls": "A"
-  },
-  "1599": {
-   "g": "moto",
-   "note": "helmet field of view",
-   "cls": "A"
-  },
   "1609": {
    "g": "moto",
    "note": "hazard detection",
@@ -331,16 +306,6 @@
   "1614": {
    "g": "moto",
    "note": "gaze in a turn",
-   "cls": "A"
-  },
-  "1615": {
-   "g": "moto",
-   "note": "why lean (textbook defines centrifugal force only for cars)",
-   "cls": "A"
-  },
-  "1616": {
-   "g": "moto",
-   "note": "lean into the turn",
    "cls": "A"
   },
   "1619": {
@@ -368,34 +333,14 @@
    "note": "lane splitting",
    "cls": "A"
   },
-  "1653": {
-   "g": "moto",
-   "note": "night riding",
-   "cls": "A"
-  },
   "1654": {
    "g": "moto",
    "note": "lean angle and headlight",
    "cls": "A"
   },
-  "1655": {
-   "g": "moto",
-   "note": "scratched visor at night",
-   "cls": "A"
-  },
-  "1657": {
-   "g": "moto",
-   "note": "visor in rain",
-   "cls": "A"
-  },
   "1659": {
    "g": "moto",
    "note": "riding two-up",
-   "cls": "A"
-  },
-  "1661": {
-   "g": "moto",
-   "note": "correct braking",
    "cls": "A"
   },
   "1663": {

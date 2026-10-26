@@ -76,7 +76,9 @@ for l in L:
 kinds = {v['kind'] for v in SRC.values()}
 ok(kinds <= {'TR', 'TO', 'LT', 'LTP', 'Q', 'OFF'}, f'sources only from law (TR/TO), sign table (LT/LTP), the bank (Q) and official RSA/MoT pages (OFF): {sorted(kinds)}')
 KIDS_CO = 'https://kids.gov.il/sababa/sababa_pool/pages/4451'  # Ministry of Environmental Protection CO page, approved by Dudi 2026-10-26 (this one page only)
-offd = lambda u: re.match(r'https://(www\.)?(gov\.il|mot\.gov\.il|rsa\.org\.il|meyda\.education\.gov\.il)/', u) or u == KIDS_CO  # meyda = Ministry of Education curriculum (official state textbook)
+PITZ = J('tools', 'official/pages.json')['pitzuim']['url']  # v1.12: Compensation Law s.1, Wikisource permanent revision 2968550 (approved by Dudi)
+ok(PITZ.startswith('https://he.wikisource.org/w/index.php?') and PITZ.endswith('&oldid=2968550'), 'v1.12: Compensation Law pinned to Wikisource oldid 2968550')
+offd = lambda u: re.match(r'https://(www\.)?(gov\.il|mot\.gov\.il|rsa\.org\.il|meyda\.education\.gov\.il)/', u) or u in (KIDS_CO, PITZ)  # meyda = Ministry of Education curriculum (official state textbook)
 ok(all(offd(v['url']) and v.get('sha256') and v.get('accessed') and v['ex'] for v in SRC.values() if v['kind'] == 'OFF'),
    'official sources are gov.il / mot.gov.il / rsa.org.il / Ministry of Education curriculum pages (+ the approved MoEP CO page), pinned (access date + sha256) and quoted')
 ok(all(('wikisource.org' in v['url'] and 'oldid=' in v['url']) for v in SRC.values() if v['kind'] in ('TR', 'TO')), 'law sources are pinned Wikisource revisions')
@@ -257,6 +259,21 @@ _badtr = [x['q'] for _, x in _EXBA if 'tr' in x and not (0 <= x['tr'] < len(byid
 ok(not _badtr and sum('tr' in x for _, x in _EXBA) >= len(_EXBA) - 2, f'v1.11 (review #8): B/A worked examples name the closest wrong option (index != correct): {sum("tr" in x for _, x in _EXBA)}/{len(_EXBA)} {_badtr[:5]}')
 _badqt = [(x['q'], p['s']) for _, x in _EXBA for p in x.get('qt', []) if not any(_np(p['t'].rstrip('…')) in _np(e) for e in SRC.get(p['s'], {}).get('ex', []))]
 ok(not _badqt and sum(bool(x.get('qt')) for _, x in _EXBA) >= len(_EXBA) - 6 and "'ln.trapNote'" in I18 and 'x.qt.map' in JL, f'v1.11 (review #8): each worked example quotes its own official passage verbatim (from the pinned source excerpts): {sum(bool(x.get("qt")) for _, x in _EXBA)}/{len(_EXBA)} {_badqt[:5]}')
+# v1.12: MoE topics 7/13/17/21 + Compensation Law s.1 (approved by Dudi 2026-10-26)
+_PG = J('tools', 'official/pages.json'); _NS = J('tools', 'coverage/nosource_ba.json')['q']
+_SH = {'edu07': '0297ccb25afb', 'edu13': '85cce4eea0bf', 'edu17': 'd04c0c507fd3', 'edu21': '43d231c129ee'}
+ok(all(_PG[k]['pdf_sha256'].startswith(v) and _PG[k]['url'].startswith('https://meyda.education.gov.il/') and _PG[k]['quotes'] and all(q.get('p') for q in _PG[k]['quotes']) for k, v in _SH.items())
+   and _PG['pitzuim']['src_sha256'].startswith('8fdd952b') and _PG['pitzuim']['revid'] == 2968550, 'v1.12: new sources pinned with PDF / API sha256 and page numbers')
+_V12F, _V12P = (1661, 1653, 302, 1006, 1723), (1596, 1599, 1655, 1657, 1615, 1616)
+ok(all(CFQ[str(i)]['v'] == 'full' and any(r.startswith(('moto3#', 'alc2#', 'winter2#', 'accident#')) for r in CFQ[str(i)]['rule']) for i in _V12F)
+   and all(CFQ[str(i)]['v'] == 'partial' and CFQ[str(i)]['rule'] for i in _V12P), 'v1.12: 5 questions full and 6 partial from the new sources')
+ok(not any(str(i) in _NS for i in _V12F + _V12P), 'v1.12: newly sourced questions removed from NO_SOURCE_B_A')
+ok(all('may be outdated' in _NS[i]['note'] for i in ('281', '92')) and _NS['281']['g'] == 'law', 'v1.12: Q281 / Q92 kept as no-source with an outdated-answer note (not cited)')
+ok(not any(f"'Q:{i}'" in T('tools', 'lessons_v112.py') for i in (281, 92)) and 'return 404\')' not in T('tools', 'coverage/nosource_build.py'), 'v1.12: Q281/Q92 not cited; stale 404 note fixed')
+_AR = [r for L in LALL if L['id'] == 'accident' for r in L['rules'] if 'OFF:pitzuim' in r.get('also', [])]
+ok(len(_AR) == 1 and _AR[0]['s'] == 'OFF:edu21', 'v1.12: Q1723 rule combines MoE topic 21 with Compensation Law s.1')
+_N12 = J('data', 'lessons.json')['notes']
+ok(_N12.get('281', {}).get('s') == 'TR:47' and _N12.get('92', {}).get('s') == 'TR:172א' and all('אינה מעודכנת' in _N12[i]['law'] for i in ('281', '92')), 'v1.12: Q281 / Q92 carry the in-app "bank answer may be outdated" note (deleted / cancelled provision)')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 

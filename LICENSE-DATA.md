@@ -62,6 +62,11 @@ the archive lookup was rate-limited (HTTP 429), and Save Page Now was deliberate
 | כללי בטיחות בדרכים (חוברת, מרץ 2026) | הרשות הלאומית לבטיחות בדרכים, חטיבת חינוך והסברה (gov.il) | [publications_safety_rules_book.pdf](https://www.gov.il/BlobFolder/reports/safety_rules_book/he/publications_safety_rules_book.pdf) | 2026-10-26 | `282189364e7a…` |
 | נוהגים אחרת – נוהגים נכון: ספר הלימוד הרשמי לתיאוריה (2017) | הרשות הלאומית לבטיחות בדרכים ומשרד התחבורה (gov.il) | [PDF](https://www.gov.il/BlobFolder/reports/driving_textbook/he/publications_2017_nohagim_aheret_nohagim_nachon.pdf) (landing page [driving_textbook](https://www.gov.il/he/pages/driving_textbook)) | 2026-10-26 | `7ea6a255ec79…` (PDF) |
 | חינוך תעבורתי, נושא 18: הפעלת הרכב בבטחה (12.2019) | משרד החינוך – תוכנית הלימודים בחינוך תעבורתי (meyda.education.gov.il) | [traffic-s18-operating-safely.pdf](https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s18-operating-safely.pdf) | 2026-10-26 | `3a72a445481a…` |
+| חינוך תעבורתי, נושא 7: רכב דו-גלגלי (09.2019) | משרד החינוך – תוכנית הלימודים בחינוך תעבורתי (meyda.education.gov.il) | [traffic-s07-two-wheeled.pdf](https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s07-two-wheeled.pdf) | 2026-10-26 | `451b096b02b7…` |
+| חינוך תעבורתי, נושא 13: אלכוהול ונהיגה (12.2019) | משרד החינוך – תוכנית הלימודים בחינוך תעבורתי (meyda.education.gov.il) | [traffic-s13-alcohol-and-driving.pdf](https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s13-alcohol-and-driving.pdf) | 2026-10-26 | `0eb7fd97701d…` |
+| חינוך תעבורתי, נושא 17: נהיגה בתנאים מיוחדים (12.2019) | משרד החינוך – תוכנית הלימודים בחינוך תעבורתי (meyda.education.gov.il) | [traffic-s17-special-conditions.pdf](https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s17-special-conditions.pdf) | 2026-10-26 | `2133b06d3409…` |
+| חינוך תעבורתי, נושא 21: תאונת דרכים (12.2019) | משרד החינוך – תוכנית הלימודים בחינוך תעבורתי (meyda.education.gov.il) | [traffic-s21-accident.pdf](https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s21-accident.pdf) | 2026-10-26 | `83eed7a0b591…` |
+| חוק פיצויים לנפגעי תאונות דרכים, סעיף 1 (הגדרות) (16.12.2025) | ויקיטקסט – נוסח החוק, גרסה קבועה | [oldid=2968550](https://he.wikisource.org/w/index.php?title=%D7%97%D7%95%D7%A7_%D7%A4%D7%99%D7%A6%D7%95%D7%99%D7%99%D7%9D_%D7%9C%D7%A0%D7%A4%D7%92%D7%A2%D7%99_%D7%AA%D7%90%D7%95%D7%A0%D7%95%D7%AA_%D7%93%D7%A8%D7%9B%D7%99%D7%9D&oldid=2968550) | 2026-10-26 | `5d29f42ee0cc…` |
 | מה מזהם את האוויר? (מאגר מידע סביבתי) | המשרד להגנת הסביבה – סבבה (kids.gov.il) | [sababa_pool/pages/4451](https://kids.gov.il/sababa/sababa_pool/pages/4451) | 2026-10-26 | `2d5bc0efeda8…` |
 
 **Reuse terms (gov.il).** The gov.il terms of use ([תנאי שימוש באתר gov.il](https://www.gov.il/he/pages/gov_terms_of_use), published 25.10.2022,
@@ -78,7 +83,7 @@ shown with its source title, publisher, URL and access date) and never copy page
 
 - **Its own copyright notice (p. 3):** "אין לשכפל, להעתיק, לצלם, להקליט, לתרגם, לאחסן במאגר מידע, לשדר או לקלוט … כל חלק שהוא מהחומר שבספר הדרכה זה, אלא ברשות מפורשת בכתב ומראש מהרשות הלאומית לבטיחות בדרכים." (no copying without prior written permission of the National Road Safety Authority).
 - **How the site uses it:** every rule is our own paraphrase, labelled with the book's name and page. Short unaltered phrases are kept as the cited excerpt (to verify the rule and show the source). The book, its pictures and its layout are not hosted or copied; the PDF is cached only in the gitignored `tools/official/cache/`. Quotes from the book's sample-exam questions are never used.
-- **Counts (v1.10.0, computed at build time into `data/coverage.json` `tb`):** 182 of the 797 lesson rules cite it; 327 excerpts from 96 of its 170 pages; 2,724 words in total (at most 20 per excerpt), about 6.0 % of the book's ~45,600 words. (The v1.9.0 text said 173 rules / 312 excerpts / 95 pages; the real v1.9.0 figures were 176 / 316 / 96, per review #7.) Every excerpt is checked verbatim against the pinned text at build time.
+- **Counts (v1.12.0, computed at build time into `data/coverage.json` `tb`):** 182 of the 806 lesson rules cite it; 327 excerpts from 96 of its 170 pages; 2,724 words in total (at most 20 per excerpt), about 6.0 % of the book's ~45,600 words. (The v1.9.0 text said 173 rules / 312 excerpts / 95 pages; the real v1.9.0 figures were 176 / 316 / 96, per review #7.) Every excerpt is checked verbatim against the pinned text at build time.
 - **Basis:** reasonable quotation with the source named and without change ("fair use", Copyright Act 2007 §19, as the gov.il terms allow). Because the book asks for written permission and the total number of excerpts is substantial, this is a judgement call, not a certainty (details: `docs/TEXTBOOK_LICENCE.md`; not legal advice).
 - **Permission status:** written permission from the National Road Safety Authority **has not been requested and has not been obtained**. If the Authority objects, the excerpts will be removed.
 
@@ -86,6 +91,16 @@ shown with its source title, publisher, URL and access date) and never copy page
 
 - 10 lesson rules, 15 short excerpts. Used as prose only (its practice questions are never cited).
 - **Own terms:** the PDF carries no copyright or licence notice (checked 2026-10-26). Ministry of Education portal pages show "© כל הזכויות שמורות למשרד החינוך". We did not find a separate terms-of-use page that governs meyda.education.gov.il files, so none is pinned. We treat it like the gov.il pages: State copyright, short quotation with the source named, no change.
+
+### Ministry of Education traffic-education topics 7, 13, 17, 21 (`OFF:edu07`, `OFF:edu13`, `OFF:edu17`, `OFF:edu21`) – since v1.12.0
+
+- Approved by Dudi on 2026-10-26 (18:20 UTC+2). Same curriculum, same terms and same treatment as topic 18: prose and tables only, never their practice questions (the pin script blanks the 'שאלות (ל)תרגול לקראת מבחן התיאוריה / בתיאוריה' blocks and rejects a quote found only there).
+- PDF sha256 checked against the candidates' SHA256SUMS before pinning; `pages.json` keeps `pdf_sha256`, the text sha256 and the page of every quote.
+- 9 lesson rules (moto3 ×6, alc2, winter2, accident).
+
+### Road Accident Victims Compensation Law, 1975, section 1 (`OFF:pitzuim`) – since v1.12.0
+
+- Pinned like the Transport Regulations and the Traffic Ordinance: a permanent Wikisource revision (oldid 2968550, 16.12.2025); the MediaWiki API JSON sha256 `8fdd952b285622e1…` is kept as `src_sha256`. One short quote (the "not an intentional act" exclusion of the definition of a road accident), used only together with MoE topic 21 for Q1723.
 
 ### kids.gov.il "סבבה" environmental information pool (`OFF:kids_co`)
 

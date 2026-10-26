@@ -776,6 +776,11 @@ EXAMPLES = {
 # Bank answer vs today's law text: shown under the question's why-box ("for the exam X; the regulation says Y").
 # The bank text is never edited; 'law' is own wording, verified by the check substrings against the cited source.
 NOTES = {
+ # v1.12: Q281 / Q92 – the bank answer may be outdated vs the pinned law; stated as a fact, the old rule itself is not cited
+ 281: ('ייתכן שתשובת המאגר אינה מעודכנת לחוק הנוכחי: בנוסח תקנות התעבורה המוצמד, פסקה (6) בתקנה 47(ה) מסומנת "(נמחקה)". לכן כלל ה-50 מטר אינו נלמד כאן.',
+       'TR:47', ['נמחקה']),
+ 92: ('ייתכן שתשובת המאגר אינה מעודכנת לחוק הנוכחי: בנוסח תקנות התעבורה המוצמד, תקנה 172א מסומנת "(בוטלה)". לכן הכלל אינו נלמד כאן.',
+      'TR:172א', ['בוטלה']),
  13: ('הבנק כותב משקל כולל מותר של עד 1,500 ק"ג, אבל בהגדרה שבתקנה 1 טרקטור משא הוא עד 1,800 ק"ג.',
       'TR:1', ['משקלו הכולל המותר לא עולה על 1,800 ק״ג']),
  1793: ('הבנק כותב "עד 16 נוסעים", אבל בהגדרה שבתקנה 1 אוטובוס זעיר מיועד להסעת עד 19 נוסעים נוסף על הנהג (ומשקלו הכולל עד 5,000 ק"ג). המספר 16 מופיע בתקנות 183א–183ב – הוא הגבול לנהיגה ברישיון D2/D3.',
@@ -816,3 +821,12 @@ def add_v16():
     for k, v in m.EXAMPLES16.items(): EXAMPLES.setdefault(k, []).extend(X(*e) for e in v)
     for k, v in m.NOTES16.items(): NOTES.setdefault(k, v)
 add_v16()
+
+# v1.12: MoE traffic-education topics 7/13/17/21 + Compensation Law s.1, appended to existing lessons (tools/lessons_v112.py)
+def add_v112():
+    from lessons_v112 import extra
+    for lid, rs in extra(R).items():
+        L = next(x for x in LESSONS if x['id'] == lid)
+        assert not any(r['t'] == x['t'] for r in rs for x in L['rules'])
+        L['rules'].extend(rs)
+add_v112()

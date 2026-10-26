@@ -6,7 +6,9 @@ R = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 P = lambda p: os.path.join(R, p)
 BASE = ('regex search of the pinned Transport Regulations and Traffic Ordinance (tools/law/law.json), the pinned sign table '
         '(lotam, 2022), all pinned official pages (20 since v1.7.0, including the approved Ministry of Environmental Protection carbon-monoxide page; RSA/gov.il safety pages, RSA safety-rules book 03.2026, RSA/MOT textbook (fully re-searched question by question for v1.8.0) '
-        '2017 prose, Ministry of Education traffic-education topic 18 prose); MoE topics s02/s04/s05/s07/s14 return 404')
+        '2017 prose, Ministry of Education traffic-education topic 18 prose; since v1.12 also topics 7, 13, 17 and 21 and the Road Accident Victims Compensation Law s.1). '
+        'An earlier note said MoE topics s02/s04/s05/s07/s14 return 404: that was wrong – they are available (s14 via the Wayback copy of 04.07.2022); '
+        'none of the remaining questions is answered by their prose')
 G = {
  'law': ('No provision in the pinned law', BASE + '; law grep for the key terms of the answer',
          'the answer states a legal rule that the pinned revisions do not contain (or contain only for another case); '
@@ -28,12 +30,10 @@ G = {
 Q = {
  'law': {520: 'urban-area guide sign: meaning not stated in the sign table entries or any rule (v1.9 re-judgement; was gallery tile only)',
          1307: 'city-centre guide sign: not in the sign table used, no rule (v1.9 re-judgement; was gallery tile only)',
-         92: 'licence not valid > 1 year needs tests: no such provision in pinned TR 173/174/196/203 or TO',
-         281: 'tunnel 50 m before/after: TR 47 and textbook p54 ban overtaking only on a bridge or inside a tunnel, no 50 m',
+         92: 'licence not valid > 1 year needs tests: no such provision in pinned TR 173/174/196/203 or TO; TR 172א is marked "(בוטלה)" (cancelled) in the pinned text. Bank answer may be outdated vs current law – not cited',
+         281: 'tunnel 50 m before/after: TR 47 and textbook p54 ban overtaking only on a bridge or inside a tunnel, no 50 m; TR 47(ה)(6) is marked "(נמחקה)" (deleted) in the pinned text. Bank answer may be outdated vs current law – not cited',
          273: 'LPG parking: refers to Ministry of Environmental Protection guidance, not in the pinned sources',
-         302: 'beer counts as alcohol: OFF:drunk says any alcohol impairs but never names beer',
          1500: 'third-party property insurance: the Motor Vehicle Insurance Ordinance covers bodily injury only. Candidates for Dudi: Knesset Research Center paper (fs.knesset.gov.il, 2024) and the standard-policy regulations (תקנות הפיקוח על עסקי ביטוח (תנאי חוזה לביטוח רכב פרטי), part B), not pinned',
-         1723: 'definition of a road accident: in the Road Accident Victims Compensation Law, not pinned',
          1730: '"pressure exhaust" ban: TR 318 regulates the exhaust system but has no such ban',
          1778: 'what the annual test records: not in the pinned regulations'},
  'pic': {i: '' for i in (699, 708, 728, 878, 885, 896, 898, 909, 911, 914, 923, 931, 942, 944, 948, 953, 954,
@@ -45,14 +45,14 @@ Q = {
          1066: 'jack position', 742: 'kick-down', 1290: 'manual vs automatic difference'},
  'edu': {1048: 'steering wear on front tyres', 1068: 'pressure gauge', 1069: 'fuel light', 1562: 'parking-brake light (only listed)'},
  'drv': {778: 'pedestrians near junction', 869: 'knowing the cockpit',
-         1006: 'flooded road – low gear (textbook only has a photo caption)', 1183: 'approaching a cyclist',
+         1183: 'approaching a cyclist',
          1296: 'daytime lights when the sun is behind'},
- 'moto': {1588: 'side stand', 1596: 'separate brakes', 1599: 'helmet field of view', 1609: 'hazard detection',
-          1614: 'gaze in a turn', 1615: 'why lean (textbook defines centrifugal force only for cars)', 1616: 'lean into the turn',
+ 'moto': {1588: 'side stand', 1609: 'hazard detection',
+          1614: 'gaze in a turn',
           1619: 'oily patch in a turn', 1620: 'avoiding an obstacle', 1626: 'safety space responsibility',
           1629: 'foot brake fails (edu 18 car prose says use the parking brake – conflicts)', 1639: 'lane splitting',
-          1653: 'night riding', 1654: 'lean angle and headlight', 1655: 'scratched visor at night', 1657: 'visor in rain',
-          1659: 'riding two-up', 1661: 'correct braking', 1663: 'obstacle', 1670: 'brake-pad wear mark'},
+          1654: 'lean angle and headlight',
+          1659: 'riding two-up', 1663: 'obstacle', 1670: 'brake-pad wear mark'},
 }
 def main():
     qs = {q['id']: q for q in json.load(open(P('data/q.he.json')))}
