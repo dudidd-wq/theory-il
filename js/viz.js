@@ -393,5 +393,10 @@ const stopdist = flow('מרחק העצירה', TB + ', עמ׳ 22–23', [
   ['מרחק\nתגובה', 'מרחק התגובה: מה שהרכב עובר עד שהנהג מגיב. עייפות, אלכוהול, סמים ותרופות מאריכים אותו.'],
   ['מרחק\nבלימה', 'מרחק הבלימה: מהלחיצה על הבלם ועד שהרכב נעצר. תלוי בצמיגים ובמצב הכביש.'],
   ['50 / 100', 'ב־50 קמ"ש מרחק העצירה כ־24 מטר; ב־100 קמ"ש כ־77 מטר. מהירות כפולה – מרחק עצירה בערך משולש.']]);
+const leftturn = flow('פנייה שמאלה: מאיפה ולאן', TB + ', עמ׳ 48', [
+  ['מחד־סטרי', 'יוצאים מכביש חד־סטרי מצד שמאל של הכביש.'],
+  ['מדו־סטרי', 'יוצאים מכביש דו־סטרי קרוב ככל האפשר לאמצע הכביש; אם יש שני נתיבים או יותר – מהנתיב השמאלי ביותר בכיוון הנסיעה.'],
+  ['לחד־סטרי', 'נכנסים לכביש חד־סטרי לנתיב השמאלי ביותר.'],
+  ['לדו־סטרי', 'נכנסים לכביש דו־סטרי עם נתיב אחד בכל כיוון בקשת רחבה לצדו הימני; אם יש שני נתיבים או יותר בכיוון – לנתיב השמאלי ביותר. סימון בכביש גובר על כל אלה.']]);
 
-export const VIZ = { roadparts, startcar, stopdist, priority, signs, speed, gap, overtake, crosswalk, parking, rail, blind, moto, signdict, duty, newdrv, accident, brakes, blowout, bac, dims, motojx, lamps, hands, load, kids, taxi, tractor };
+export const VIZ = { roadparts, leftturn, startcar, stopdist, priority, signs, speed, gap, overtake, crosswalk, parking, rail, blind, moto, signdict, duty, newdrv, accident, brakes, blowout, bac, dims, motojx, lamps, hands, load, kids, taxi, tractor };
