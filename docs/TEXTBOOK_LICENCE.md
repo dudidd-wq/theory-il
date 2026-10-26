@@ -15,7 +15,7 @@ Checked on 2026-10-26 at 15:20 UTC+2.
    - "המשתמש רשאי לעשות 'שימוש הוגן' בחומר המוגן, לפי הכללים הקבועים בדין. שימוש הוגן כולל ציטוט סביר מתוך החומר המוגן. המצטט כאמור חייב לציין את המקור לציטוט".
    - Distorting or altering the material is forbidden.
    - Copying, publishing or making a derivative work beyond that needs prior written consent.
-3. **Copyright Law 2007, section 19 (fair use):** allows use "for purposes such as … quotation of reasonable extracts". A notice cannot remove this statutory exception.
+3. **Copyright Law 2007, section 19 (fair use):** allows fair use for purposes such as "הבאת מובאות" (quotation). The gov.il terms above refer to this rule ("לפי הכללים הקבועים בדין"). This clause is not pinned in the repo.
 
 ## Conclusion
 - **Allowed:** short quotations of reasonable length, with the source named and never altered, and our own paraphrased lesson text based on the book. This is fair use, as the gov.il terms allow.
