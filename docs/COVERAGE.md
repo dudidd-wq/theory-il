@@ -1,6 +1,6 @@
 # Coverage
 
-**Headline (v1.13.0, whole bank, every question judged; strict figure first, as review #9 asked):** of all **1,801** questions, **59.2% strict full** (a sign-dictionary meaning is not counted as teaching; v1.13 strict re-judgement applied, [rejudge_v113_sample.md](../tools/coverage/rejudge_v113_sample.md)), **75.3% full** as judged, **90.8% full or partial**. **Without bank-sourced rules: 74.5% full** (B 79.6%, A 77.6%; see below). **Bank answer contradicts the law ('סתירה בין המאגר לחוק'): 1** (Q13; neither full nor cited, shown only in a bank lesson next to the law text). **Taught from the official bank only, no official explanation: 133** questions (B 54, A 55, C1 66, C 54, D 62, tractor 62); these are *not* counted as full or partial. **Partial + shown with the official bank answer: B 203 of 203 partial (16.0% of B), A 195 of 195 (16.9% of A)**; whole bank 229 of 278 partial (every partial question that belongs to B or A); these stay *partial* and are not counted as full. Classes B and A: every question that has an official state source is taught (fully or partly); the rest are listed with the search done in [NO_SOURCE_B_A.md](NO_SOURCE_B_A.md).
+**Headline (v1.13.0, whole bank, every question judged; strict figure first, as review #9 asked):** of all **1,801** questions, **58.8% strict full** (a sign-dictionary meaning is not counted as teaching; v1.13 strict re-judgement applied, [rejudge_v113_sample.md](../tools/coverage/rejudge_v113_sample.md)), **75.0% full** as judged, **90.7% full or partial**. **Without bank-sourced rules: 74.1% full** (B 79.2%, A 77.3%; see below). **Bank answer contradicts the law ('סתירה בין המאגר לחוק'): 1** (Q13; neither full nor cited, shown only in a bank lesson next to the law text). **Taught from the official bank only, no official explanation: 135** questions (B 54, A 55, C1 66, C 54, D 64, tractor 62); these are *not* counted as full or partial. **Partial + shown with the official bank answer: B 208 of 208 partial (16.4% of B), A 198 of 198 (17.1% of A)**; whole bank 234 of 283 partial (every partial question that belongs to B or A); these stay *partial* and are not counted as full. Classes B and A: every question that has an official state source is taught (fully or partly); the rest are listed with the search done in [NO_SOURCE_B_A.md](NO_SOURCE_B_A.md).
 
 **v1.9 re-judgement (review #6):** a bank picture shown with its own bank answer (a sign-gallery tile) no longer counts as teaching. 54 questions that were full only via a gallery tile are now full only via the official sign-table meaning of their sign (so they count as partial under *strict*); 36 more were re-judged by hand in `tools/coverage/rejudge_v19.txt` (applied last by `compile_verdicts.py`, one-line reason each): 16 re-based on a cited rule (3 new textbook rules: ABS keeps steering, p.140; traffic-light phase order, p.71–72; flashing green, p.72), 5 on the sign table, 11 downgraded to partial (e.g. Q93, Q983, Q1580) and 4 to untaught (Q520, Q1307 for B/A; Q1257, Q1435 for C/D). Disclosure (v1.9 figures; superseded by the v1.10 bank-sourced section below): some lesson worked examples and 25 rules (14 used by B/A questions) are sourced from a bank question itself (`Q:<id>` in their source); 42 full verdicts rest only on a worked example built on that same question or on a rule sourced from it; the worked examples were kept after a hand check that their explanation states the rule and cites the law or an official page, while the `Q:<id>`-sourced rules are bank-derived and are disclosed here rather than counted as independent official sources.
 
@@ -11,6 +11,8 @@
 **v1.11 – partly taught B/A questions shown with the official bank answer:** every question that belongs to class B or A and is judged *partial* (213 in the whole bank: B 195, A 180) is now shown in its topic lesson (48 lessons), in a section "שאלות מהמאגר שהשיעור מכסה רק חלקית", before the lesson quiz, which now includes it (tools/partial_bank.py). Each card shows the official question and correct answer exactly as published in the data.gov.il bank (CC BY), then, labelled apart, the existing lesson unit the verdict points to with its own citation ("partly explained in the lesson, from an official source"), and a separate line that the rest of the answer comes from the official bank only. No new text was written: every string is the bank's or an existing lesson unit's. The host lesson is the first verdict unit's lesson that is shown to all of the question's B/A classes. In 15 cards the covering unit cites no official source of its own (13 lesson-text paragraphs, 1 gallery tile, 1 rule sourced from a bank question); those are labelled "partly covered in the lesson, but with no cited official source". Verdicts are unchanged: all 213 remain *partial* (whole bank 75.8% full, 90.3% full or partial). For other classes the same cards appear when the host lesson is in their path (C1 188 of 202 partial, C 154 of 176, D 154 of 180, tractor 150 of 151); partial questions of those classes that are not B/A are not shown in this way.
 
 **v1.12 – new official sources (approved by Dudi, 2026-10-26):** Ministry of Education traffic-education booklets for upper secondary, topics 7 (two-wheelers), 13 (alcohol), 17 (special conditions) and 21 (road accidents), and the Road Accident Victims Compensation Law s.1 (Wikisource oldid 2968550), are pinned in `tools/official/pages.json` with sha256 (prose and tables only; practice questions are rejected by the pin script). 9 new paraphrased rules, each verified against the pinned quote, were appended to moto3, alc2, winter2 and accident. **Full:** Q1661 (both brakes together; rear brake alone can skid), Q1653 (at night the details for "reading" the road are not visible), Q302 (beer is an alcoholic drink, one standard drink), Q1006 (flooded road: slowly in the lowest gear), Q1723 (definition of a road accident: MoE topic 21 + the law's exclusion of intentional acts – only the combination). **Partial** (shown with the official bank answer): Q1596, 1599, 1655, 1657, 1615, 1616. All 11 left `NO_SOURCE_B_A` and the bank-only lessons (141 → 130). **Q281 and Q92 are not cited:** the bank answer may be outdated vs current law (TR 47(ה)(6) is marked deleted and TR 172א cancelled in the pinned text); they stay listed as no-source with that note. An earlier note that MoE topics 2, 4, 5, 7 and 14 return 404 was wrong and is corrected.
+
+**v1.13 – re-judged after review #9 (strict):** Q13 is now *'סתירה בין המאגר לחוק'* (the bank answer 1,500 kg contradicts TR 1's 1,800 kg): neither full nor cited, shown only in a bank lesson next to the law text. Q1297, Q994 and Q935 are *partial* (the cited unit states only part of the answer); Q1021 and Q1688 had only a related rule and are now bank-only (no official explanation). Q22, Q34, Q1029 and Q1773 got their own official rule (TR 83ב(א), TR 1 "רחוב משולב", MoE topics 18 and 17). A strict re-sample of 64 other *full* B/A verdicts (seed 913, [rejudge_v113_sample.md](../tools/coverage/rejudge_v113_sample.md)) kept 52 and downgraded 12 to partial (19%). Because the unsampled full verdicts may hold similar over-generous ones, the **strict** figure is the headline. 15 *full* verdicts rested only on uncited lesson-body prose: 8 now point to the cited rule that decides them, 5 are partial, and Q1199 and Q1759 (class D) are bank-only. Before → after (whole bank): full 76.1% → 75.0%, strict 59.9% → 58.8%, full or partial 90.9% → 90.7%, without bank-sourced 75.1% → 74.1%, bank-only 130 → 135 (incl. the 1 conflict). Rules whose only source is a bank question (e.g. signs Q606/Q477, bus Q1726) are labelled "תשובת המאגר" in their chip.
 
 **v1.11 – re-judged after review #8:** Q978 (picture: red + yellow) is now *full* – sign table 702 ("היכון לנסיעה עם התחלף האור", unit signs#d702) and the textbook light sequence (lights2#r5); Q985 (picture: tanker not keeping right) and Q1464 (C/C1: what affects a loaded truck's stability in a curve) are now *partial* (lanes#r9 keep right; skid2#r8 centre of gravity and lanes#r2 speed for the curve radius). None of the three had been counted as taught before. No-source questions: 144 → 141 (B/A 77 → 75). Three C/C1 citations were corrected to the unit that teaches the answer (1506 → heavy2#r24, 1322 → heavy2#r22, 1393 → heavy2#r17); their verdicts were already *full*.
 
@@ -26,13 +28,13 @@ Method: `tools/coverage/verdicts.txt` holds one verdict per question (hand judge
 
 | | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source | of these: taught from the official bank only, no official explanation | partial (counted as partial) | of these: shown in a lesson with the official bank answer | full % without bank-sourced rules |
 |---|---|---|---|---|---|---|---|---|---|---|
-| whole bank | 1801 | 75.3 | 59.2 | 90.8 | 33 | 132 | 133 | 278 | 229 | 74.5 |
-| B private car | 1272 | 79.8 | 59.0 | 95.8 | 0 | 53 | 54 | 203 | 203 | 79.6 |
-| A motorcycle | 1155 | 78.4 | 55.9 | 95.2 | 0 | 55 | 55 | 195 | 195 | 77.6 |
-| C1 truck ≤12 t | 1385 | 77.9 | 58.5 | 93.1 | 30 | 65 | 66 | 210 | 196 | 77.7 |
-| C heavy truck | 1314 | 79.2 | 58.8 | 93.3 | 34 | 54 | 54 | 185 | 163 | 78.8 |
-| D bus | 1316 | 80.1 | 58.8 | 94.5 | 10 | 62 | 62 | 190 | 164 | 79.7 |
-| 1 tractor | 1127 | 80.2 | 57.2 | 94.3 | 2 | 61 | 62 | 159 | 158 | 79.7 |
+| whole bank | 1801 | 75.0 | 58.8 | 90.7 | 33 | 134 | 135 | 283 | 234 | 74.1 |
+| B private car | 1272 | 79.4 | 58.6 | 95.8 | 0 | 53 | 54 | 208 | 208 | 79.2 |
+| A motorcycle | 1155 | 78.1 | 55.7 | 95.2 | 0 | 55 | 55 | 198 | 198 | 77.3 |
+| C1 truck ≤12 t | 1385 | 77.5 | 58.1 | 93.1 | 30 | 65 | 66 | 215 | 201 | 77.3 |
+| C heavy truck | 1314 | 79.0 | 58.6 | 93.3 | 34 | 54 | 54 | 188 | 166 | 78.6 |
+| D bus | 1316 | 79.7 | 58.4 | 94.4 | 10 | 64 | 64 | 193 | 167 | 79.3 |
+| 1 tractor | 1127 | 79.9 | 57.0 | 94.3 | 2 | 61 | 62 | 162 | 161 | 79.4 |
 
 ## Class-only questions (questions that belong to that class alone)
 
@@ -42,17 +44,17 @@ Method: `tools/coverage/verdicts.txt` holds one verdict per question (hand judge
 | A motorcycle | 88 | 55.7 | 55.7 | 85.2 | 0 | 13 | 13 | 26 | 26 | 48.9 |
 | C1 truck ≤12 t | 1 | 100.0 | 100.0 | 100.0 | 0 | 0 | 0 | 0 | 0 | 100.0 |
 | C heavy truck | 73 | 79.5 | 79.5 | 90.4 | 1 | 6 | 6 | 8 | 0 | 76.7 |
-| D bus | 190 | 74.2 | 64.7 | 87.9 | 1 | 22 | 22 | 26 | 0 | 73.2 |
+| D bus | 190 | 73.2 | 63.7 | 86.8 | 1 | 24 | 24 | 26 | 0 | 72.1 |
 | 1 tractor | 43 | 39.5 | 39.5 | 41.9 | 0 | 25 | 25 | 1 | 0 | 32.6 |
 
 ## Per topic (whole bank)
 
 | | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source | of these: taught from the official bank only, no official explanation | partial (counted as partial) | of these: shown in a lesson with the official bank answer | full % without bank-sourced rules |
 |---|---|---|---|---|---|---|---|---|---|---|
-| law | 901 | 77.8 | 77.6 | 92.0 | 31 | 40 | 41 | 128 | 85 | 77.2 |
+| law | 901 | 77.5 | 77.2 | 91.8 | 31 | 42 | 43 | 129 | 86 | 76.9 |
 | signs | 390 | 93.1 | 19.0 | 98.7 | 1 | 4 | 4 | 22 | 22 | 92.6 |
-| safety | 400 | 58.5 | 58.5 | 83.0 | 1 | 67 | 67 | 98 | 92 | 56.2 |
-| vehicle | 110 | 53.6 | 53.6 | 80.9 | 0 | 21 | 21 | 30 | 30 | 53.6 |
+| safety | 400 | 57.8 | 57.8 | 83.0 | 1 | 67 | 67 | 101 | 95 | 55.5 |
+| vehicle | 110 | 52.7 | 52.7 | 80.9 | 0 | 21 | 21 | 31 | 31 | 52.7 |
 
 ## Recommendation on classes
 
@@ -150,6 +152,7 @@ The bank text is never changed. Where it differs from the pinned law, the why‑
 - **Q40** ("רכב נוסעים פרטי" definition): the content is consistent; only the wording differs. The bank uses the older wording, and TR 1 / TR 271א now define it through the M1 category. The lesson teaches the law text, and the note explains that the difference is in wording, not in substance.
 - **Q592:** checked in the third review. The mapping is correct, and a note was added.
 - **Q1667** (A2 power): the bank says 14.6 hp, and TR 176 gives 14.916 hp (11 kW). A note is shown.
+- **Q13** (v1.13): the bank answer is 1,500 kg; the pinned TR 1 says 1,800 kg. Status 'סתירה בין המאגר לחוק' – not counted as full or partial, not cited; the bank lesson shows a note that quotes both.
 
 ## v1.4 changes (fourth review)
 - **D-only and tractor material:** 10 bus rules (TR 361/482, 408(א), 483א, 83(ג)–(ה), 432א, 1 "רכב מדברי", 418, 324/330 brake terms), taxi rules (TR 506, 281(ב), 266, 501, 511), tractor age 16 (TR 188(א)) and indicators (TR 344(א)); TR 159(ג) (use the retarder on a dangerous descent) in bus and heavy2.

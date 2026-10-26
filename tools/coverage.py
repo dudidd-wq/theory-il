@@ -50,9 +50,14 @@ for ln in open(P('tools/coverage/rejudge_v113.txt'), encoding='utf-8'):
     head, why = (x.strip() for x in ln.split('|', 1)); qid, v, *add = head.split()
     e = F[qid]; e['why'] = why; e['by'] = 'v1.13'
     if v == 'why': continue
-    if v == 'partial':
+    # +refs: cited units added; when given, uncited lesson-body prose units ('#b:') are dropped (v1.13: a verdict must rest on a cited unit)
+    plus = [ref_of(LS, a[1:]) for a in add if a.startswith('+')]
+    if plus: e['u'] = [u for u in e['u'] if '#b:' not in u]
+    if v == 'full':   # re-point a full verdict from body prose to the cited rule that decides it
+        assert e['v'] == 'full' and plus, qid; e['u'] = plus + e['u']; e.pop('strict_u', None)
+    elif v == 'partial':
         assert e['v'] == 'full', qid; e['v'] = 'partial'; e.pop('dict', None); e.pop('strict_u', None)
-        e['u'] += [ref_of(LS, a[1:]) for a in add if a.startswith('+')]
+        e['u'] += plus
     else:
         e.update(v='none', u=[], src={'none-T': 'T', 'none-S': 'S', 'conflict': 'X'}[v]); e.pop('dict', None); e.pop('strict_u', None)
 for e in F.values():

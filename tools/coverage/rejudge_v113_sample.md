@@ -85,3 +85,25 @@ Result: 12 of 64 downgraded to partial (19%); the rest stay full.
 | 34 | full (new rule) | TR 1 definition of "רחוב משולב", verbatim |
 | 1029 | full (new rule) | MoE topic 18: low tyre pressure affects "חום הצמיג בנסיעה (בקיצוניות – סכנת פיצוץ לצמיג)" |
 | 1773 | full (new rule) | MoE topic 17: in summer "מצטברים על פני הכביש לכלוך ושומנים" before the first rain |
+
+## Full verdicts that rested only on uncited lesson-body prose (found by the v1.13 e2e check)
+
+A verdict must rest on a cited unit. 15 *full* verdicts pointed only at lesson-body prose (no pinned passage); each was re-judged:
+
+| id | decision | reason |
+|---|---|---|
+| 130 | full +overtake#r5 | TR 47(ה): no overtaking "בראות לקויה" (was lesson-body prose) |
+| 1444 | full +overtake#r5 | TR 47(ה): no overtaking in poor visibility (was lesson-body prose) |
+| 141 | full +speed#r7 | TR 52: slow down when visibility is limited / sharp bend (was lesson-body prose) |
+| 297 | full +sober#r16 | TO 64ב(א1): a police officer may demand a breath sample (was lesson-body prose) |
+| 303 | full +sober#r0 | TR 26(2): no driving under the influence of intoxicating drugs (was lesson-body prose) |
+| 772 | full +overtake#r4 | TR 47(ד): overtake only when the road is clear enough to finish safely (was lesson-body prose) |
+| 1497 | full +distance#r4 | textbook: stopping distance grows with speed (was lesson-body prose) |
+| 1660 | full +moto#r2 | TR 120(ג): passenger only from age 18 (was lesson-body prose) |
+| 267 | partial +newdrv#r2 | TO 12א1 states the companion duty, not who counts as a new driver of B/C1 |
+| 822 | partial +overtake#r4 | TR 47(ד) covers the clear-road condition, not overtaking several vehicles at once |
+| 823 | partial +overtake#r4 | TR 47(ד) covers finishing safely; "is it permitted" is not stated by that rule |
+| 1017 | partial +vehicle#r4 | tyre pressure affects tyre wear (OFF:tires); "longer tyre life" from moderate driving is not stated |
+| 1542 | partial +lights#r7 | TR 99(א) requires dimming; the dazzle effect itself is not stated |
+| 1199 | none-S | bus driver responsible for passengers boarding/alighting: no pinned rule states it (was lesson-body prose) |
+| 1759 | none-S | bus in a public-transport lane overtaking an overtaking vehicle: TR 47(ח) excludes buses ("לא יעקוף רכב עוקף אחר בכל דרך"); no pinned text supports the bank answer "רשאי" (was an unrelated body unit) |

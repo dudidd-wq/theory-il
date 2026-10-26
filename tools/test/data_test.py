@@ -51,7 +51,7 @@ ok(_X == [13] and not CF['q']['13']['rule'] and all(13 not in l['quiz'] for l in
    if '13' in J('data', 'lessons.json')['notes'] and J('data', 'lessons.json')['notes']['13'].get('x') else False,
    f'v1.13: bank-vs-law conflict status {_X}: Q13 uncited, only in a bank lesson, its note quotes TR 1 (1,800 kg)')
 _RJ = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v113.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
-ok(all(CF['q'][q]['by'] == 'v1.13' and (v in ('why',) or CF['q'][q]['v'] == {'partial': 'partial'}.get(v, 'none')) for q, v in _RJ.items()),
+ok(all(CF['q'][q]['by'] == 'v1.13' and (v in ('why',) or CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none')) for q, v in _RJ.items()),
    f'v1.13: every strict re-judgement ({len(_RJ)}) is applied')
 ok(not any(e['by'] == 'v1.5' and e.get('why', '').startswith('rule written for this question') for e in CF['q'].values()), 'v1.13: spec links are not labelled v1.5')
 _Q, _LS, _S, _U, _D = uload()
@@ -338,6 +338,9 @@ _PF = os.path.join(R, 'tools', 'official', 'cache', 'pitzuim_rev2968550.json')
 _trk = _sp.run(['git', 'ls-files', '--error-unmatch', _PF], cwd=R, capture_output=True).returncode == 0
 ok(_trk and os.path.exists(_PF) and hashlib.sha256(open(_PF, 'rb').read()).hexdigest() == J('tools', 'official', 'pages.json')['pitzuim']['src_sha256'],
    'v1.13 (review #9 D6): the committed pitzuim API JSON reproduces src_sha256')
+# v1.13 (D1 follow-up): no full verdict rests only on uncited lesson-body prose – practice feedback always has a cited rule
+_BO = sorted(int(i) for i, e in CF['q'].items() if e['v'] == 'full' and e.get('rule') and all('#b' in u for u in e['rule']))
+ok(not _BO, f'v1.13: no full verdict rests only on uncited lesson-body prose {_BO[:10]}')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 

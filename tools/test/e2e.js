@@ -197,7 +197,7 @@ async function run(prof, opts) {
     ok(/data\.gov\.il/.test(await p.getAttribute('a:has-text("CC BY")', 'href')) && await p.locator('.rules, .lbody, .recap, .mnems').count() === 0, 'bank lesson: CC BY attribution link to data.gov.il, no rules/explanation/recap of ours');
     ok(/ספר הלימוד הרשמי/.test(await p.textContent('.bankcard[data-q="1765"] .lawnote')) && await p.locator('.bankcard[data-q="1765"] .lawnote details.lawref').count() === 1, 'Q1765: textbook difference stated with its source');
     const r = await p.evaluate(async () => { const m = await import('./js/learn.js'); const cov = await fetch('data/coverage.json').then(r => r.json());
-      return Object.keys(cov.q).filter(id => cov.q[id][3] === 'S').map(id => [id, m.explain(+id, 'B', cov, null)?.lesson?.id || '']); });
+      return Object.keys(cov.q).filter(id => (cov.q[id][3] === 'S' || cov.q[id][3] === 'X')).map(id => [id, m.explain(+id, 'B', cov, null)?.lesson?.id || '']); });
     const nb = r.filter(([id]) => QH.get(+id).t.includes('B'));
     ok(nb.length > 0 && nb.length === new Set(LB.filter(l => l.bank).flatMap(l => l.bank).filter(i => QH.get(i).t.includes("B"))).size && nb.every(([, l]) => l.startsWith('bank_')), `why box: every B no-source question links to its bank lesson (${nb.filter(([, l]) => l).length}/${nb.length})`);
     await axe(p, 'bank-lesson', prof); }
