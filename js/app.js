@@ -6,7 +6,7 @@ import * as tts from './tts.js';
 import { VERSION } from './version.js';
 import { ELIG, lawUrl } from './elig.js';
 import { makeLearn, loadLessons, lessonFrac, lessonsFor, masteredCount, explain, whyBox, lessonHref } from './learn.js';
-const { state: S, save, today, CLASSES, LANGS } = st;
+const { state: S, save, today, CLASSES, LANGS, EXAM } = st;
 const TOPICS = ['vehicle', 'signs', 'safety', 'law'];
 const LANG_NAMES = { he: 'עברית', en: 'English', ru: 'Русский', fr: 'Français', es: 'Español' };
 const app = () => document.getElementById('app');
@@ -54,8 +54,8 @@ const BADGES = [
   ['first', () => totals()[0] >= 1], ['c50', () => totals()[1] >= 50], ['c500', () => totals()[1] >= 500],
   ['s3', () => st.streak() >= 3], ['s7', () => st.streak() >= 7], ['s30', () => st.streak() >= 30],
   ['signs', () => Q.filter(p => p.k === 'signs' && st.mastered(p.id)).length >= 50],
-  ['exam', () => S().ex.length >= 1], ['pass', () => S().ex.some(e => e[2] >= 26)],
-  ['pass3', () => S().ex.length >= 3 && S().ex.slice(-3).every(e => e[2] >= 26)],
+  ['exam', () => S().ex.length >= 1], ['pass', () => S().ex.some(e => e[2] >= EXAM.pass)],
+  ['pass3', () => S().ex.length >= 3 && S().ex.slice(-3).every(e => e[2] >= EXAM.pass)],
   ['review', () => !!S().badges.review], ['backup', () => !!bk.getMeta().lastBackup],
 ];
 function checkBadges() {
@@ -67,7 +67,7 @@ function checkBadges() {
 function readiness() {
   const m = frac(pool()), ex = S().ex.filter(e => e[1] === cls()).slice(-3), hasL = lessonsFor(cls()).length > 0;
   const wl = hasL ? 0.15 : 0, base = wl * lessonFrac(cls()) + 0.5 * m;
-  return ex.length ? base + 0.35 * (ex.reduce((a, e) => a + e[2], 0) / ex.length / 30) : base / (wl + 0.5);
+  return ex.length ? base + 0.35 * (ex.reduce((a, e) => a + e[2], 0) / ex.length / EXAM.n) : base / (wl + 0.5);
 }
 
 // ---------- shell ----------
@@ -190,7 +190,7 @@ function home() {
     nL ? tile('#/learn', 'learn', t('home.learn'), t('home.learnD', masteredCount(p.cls), nL), masteredCount(p.cls) < nL ? 'hl' : '') : null,
     tile('#/practice/mix', 'repeat', t('home.quick'), t('home.quickD')),
     tile('#/signs', 'sign', t('home.signs'), t('home.signsD', signPool().length)),
-    tile('#/exam', 'exam', t('home.exam'), t('home.examD'), nL && masteredCount(p.cls) < nL ? '' : 'hl'),
+    tile('#/exam', 'exam', t('home.exam'), t('home.examD', EXAM.n, EXAM.min), nL && masteredCount(p.cls) < nL ? '' : 'hl'),
     tile('#/review', 'repeat', t('home.review'), due ? t('home.reviewD', due) : (mist ? t('rv.due', 0, mist) : t('home.reviewNone')), due ? 'warn' : ''),
     tile('#/bookmarks', 'star', t('home.bm'), t('home.bmD', S().bm.length)));
   const cols = h('div', { class: 'cols' }, tiles); kids.push(cols);
@@ -202,7 +202,7 @@ function home() {
     h('ol', { class: 'road' }, stops.map((s, i) => h('li', { class: 'stop' + (s.f >= 0.6 ? ' done' : '') + (i === cur ? ' cur' : '') },
       h('a', { href: '#/practice/' + s.k, 'aria-current': i === cur ? 'step' : null },
         ring(s.f, 52, 6), h('span', { class: 'stop-t' }, h('b', { text: t('topic.' + s.k) }), h('small', { text: t('pr.stats', s.n, Math.round(s.f * 100)) })), i === cur && icon('car', 'ic car')))),
-      h('li', { class: 'stop finish' + (cur === -1 ? ' cur' : '') }, h('a', { href: '#/exam' }, h('span', { class: 'flagdot' }, icon('flag')), h('span', { class: 'stop-t' }, h('b', { text: t('home.finish') }), h('small', { text: t('home.examD') })))))));
+      h('li', { class: 'stop finish' + (cur === -1 ? ' cur' : '') }, h('a', { href: '#/exam' }, h('span', { class: 'flagdot' }, icon('flag')), h('span', { class: 'stop-t' }, h('b', { text: t('home.finish') }), h('small', { text: t('home.examD', EXAM.n, EXAM.min) })))))));
   kids.push(h('p', { class: 'row tight center' }, link(t('se.title'), '#/search', 'btn ghost small', 'search'), link(t('home.parent'), '#/parent', 'btn ghost small', 'user'), link(t('set.about'), '#/about', 'btn ghost small', 'info')));
   kids.push(h('p', { class: 'disc small', role: 'note', text: t('disc.short') }));
   screen(t('home.hi', p.name ? ', ' + p.name : ''), ...kids);
@@ -365,20 +365,20 @@ function examIntro(go) {
   if (saved && !exam) {
     const left = Math.max(0, (saved.end - Date.now()) / 1000), done = Object.keys(saved.ans || {}).length;
     return screen(t('ex.title'), h('div', { class: 'banner', role: 'status' }, icon('clock'),
-      h('p', { text: left > 0 ? t('ex.resumeQ', done, mmss(left)) : t('ex.resumeLate', done) }),
+      h('p', { text: left > 0 ? t('ex.resumeQ', done, mmss(left), EXAM.n) : t('ex.resumeLate', done) }),
       h('div', { class: 'row tight' }, btn(left > 0 ? t('ex.resume') : t('ex.resumeSubmit'), () => resumeExam(saved), 'btn primary'),
         btn(t('ex.discard'), () => { if (confirm(t('ex.discardAsk'))) { st.clearExam(); examIntro(); } }, 'btn ghost'))));
   }
   if (go === 'go') return startExam();
   screen(t('ex.title'), h('p', { class: 'sub', text: clsName(cls()) }),
-    h('ul', { class: 'points' }, t('ex.rules').map(r => h('li', {}, icon('check'), h('span', { text: r.replace('{0}', cls()) })))),
+    h('ul', { class: 'points' }, t('ex.rules').map(r => h('li', {}, icon('check'), h('span', { text: r.replace('{0}', cls()).replace('{1}', EXAM.n).replace('{2}', EXAM.min).replace('{3}', EXAM.pass) })))),
     bankNotice(),
     h('p', { class: 'small muted', text: t('ex.note') }),
     h('div', { class: 'row' }, btn(t('ex.start'), () => startExam(), 'btn primary big', 'clock')),
     S().ex.length ? examHistory(5) : null);
 }
-/** 30 questions, topic mix proportional to the class pool's topic shares (largest remainder), random inside each topic */
-function examIds(c = cls(), n = 30) {
+/** EXAM.n questions, topic mix proportional to the class pool's topic shares (largest remainder), random inside each topic */
+function examIds(c = cls(), n = EXAM.n) {
   const by = TOPICS.map(k => shuffle(topicPool(k, c))), tot = by.reduce((a, x) => a + x.length, 0);
   const quota = by.map(x => n * x.length / tot), take = quota.map(Math.floor);
   let rest = n - take.reduce((a, x) => a + x, 0);
@@ -386,7 +386,7 @@ function examIds(c = cls(), n = 30) {
   return shuffle(by.flatMap((x, i) => x.slice(0, take[i])));
 }
 function startExam() {
-  exam = { ids: examIds(), cls: cls(), ans: {}, orders: {}, i: 0, start: Date.now(), end: Date.now() + 40 * 60e3, done: false, he: false, flags: {} };
+  exam = { ids: examIds(), cls: cls(), ans: {}, orders: {}, i: 0, start: Date.now(), end: Date.now() + EXAM.min * 60e3, done: false, he: false, flags: {} };
   exam.render = renderExam; renderExam(); startTimer();
 }
 function resumeExam(saved) {
@@ -437,9 +437,9 @@ function submitExam() {
   st.clearExam();
   st.addExam(e.cls || cls(), score, secs, prof().lang, wrong);
   const unans = e.ids.filter(id => !e.ans[id]).length;
-  const pass = score >= 26;
+  const pass = score >= EXAM.pass;
   screen(pass ? t('ex.pass') : t('ex.fail'), pass ? confetti() : null,
-    h('div', { class: 'result ' + (pass ? 'pass' : 'fail') }, ring(score / 30, 140, 12, t('ex.score', score)), h('p', { class: 'big-t', text: t('ex.score', score) }), h('p', { class: 'muted', text: t('ex.time', mmss(secs)) }),
+    h('div', { class: 'result ' + (pass ? 'pass' : 'fail') }, ring(score / EXAM.n, 140, 12, t('ex.score', score, EXAM.n)), h('p', { class: 'big-t', text: t('ex.score', score, EXAM.n) }), h('p', { class: 'muted', text: t('ex.time', mmss(secs)) }),
       unans ? h('p', { class: 'small muted', text: t('ex.unans', unans) }) : null),
     h('div', { class: 'row' }, btn(t('ex.again'), () => startExam(), 'btn primary', 'repeat'), wrong.length ? btn(t('sum.mist'), () => { exam = null; startSession('review', wrong, t('rv.title'), '#/review'); }, 'btn', 'repeat') : null, link(t('sum.home'), '#/home', 'btn ghost', 'home')),
     h('h2', { text: t('ex.review') }),
@@ -461,7 +461,7 @@ function confetti() {   // CSS-only celebration; with prefers-reduced-motion it 
 function examHistory(n) {
   const ex = S().ex.slice(-n).reverse();
   return h('section', {}, h('h2', { text: t('st.exams') }), !ex.length ? h('p', { class: 'muted', text: t('st.noEx') }) :
-    h('ul', { class: 'exlist' }, ex.map(e => h('li', { class: e[2] >= 26 ? 'pass' : 'fail' }, h('b', { text: `${e[2]}/30` }), h('span', { text: e[2] >= 26 ? t('ex.pass') : t('ex.fail') }),
+    h('ul', { class: 'exlist' }, ex.map(e => h('li', { class: e[2] >= EXAM.pass ? 'pass' : 'fail' }, h('b', { text: `${e[2]}/${EXAM.n}` }), h('span', { text: e[2] >= EXAM.pass ? t('ex.pass') : t('ex.fail') }),
       h('span', { class: 'muted', text: `${e[1]} · ${new Date(e[0]).toLocaleDateString(uiLang() === 'he' ? 'he-IL' : 'en-GB')} · ${mmss(e[3])}` })))));
 }
 
@@ -493,7 +493,7 @@ function parent() {
     h('dl', { class: 'plist' }, row(t('set.name'), p.name || '—'), row(t('set.cls'), clsName(p.cls)), row(t('pa.last'), lastDay ? fmt(lastDay) : t('pa.never')),
       row(t('pa.active'), `${active}/14`), row(t('home.streak'), String(st.streak())), row(t('pa.lessons'), `${masteredCount(p.cls)}/${lessonsFor(p.cls).length}`), row(t('pa.total'), `${Object.keys(S().q).length}/${pool().length}`),
       row(t('pa.open'), String(mistakes().length)), row(t('st.ready'), Math.round(readiness() * 100) + '%'),
-      row(t('pa.lastEx'), ex.length ? ex.map(e => `${e[2]}/30 ${e[2] >= 26 ? '✓' : '✗'}`).join(' · ') : t('st.noEx'))),
+      row(t('pa.lastEx'), ex.length ? ex.map(e => `${e[2]}/${EXAM.n} ${e[2] >= EXAM.pass ? '✓' : '✗'}`).join(' · ') : t('st.noEx'))),
     topicTable(), h('h2', { text: t('st.days') }), daysChart(),
     h('div', { class: 'row noprint' }, btn(t('pa.print'), () => print(), 'btn', 'print')), h('p', { class: 'disc small', text: t('disc.short') }));
 }
@@ -582,7 +582,7 @@ function about() {
     h('h2', { text: t('ab.learn') }), h('p', { text: t('ab.learnText') }), h('p', { class: 'small', id: 'ab-ccbysa' }, h('span', { text: t('ab.wsCC') + ' ' }), ext(CCBYSA, t('ab.ccbysa'))), h('ul', { class: 'srcs' }, h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085628', t('ab.wsTR', 3085628))), h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085764', t('ab.wsTO', 3085764))), h('li', {}, ext('https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf', t('ab.lotam')))),
     ...(COV?.tot ? [h('h2', { text: t('ab.cov') }), h('p', { text: t('ab.covText') }),
       h('div', { class: 'tblwrap', role: 'region', tabindex: '0', 'aria-label': t('ab.cov') }, h('table', { class: 'tbl cov' }, h('thead', {}, h('tr', {}, ...['ab.covCls', 'ab.covN', 'ab.covFull', 'ab.covStrict', 'ab.covAny', 'ab.covNoSrc'].map(k => h('th', { scope: 'col', text: t(k) })))),
-        h('tbody', {}, ...Object.entries(COV.tot).map(([c, [n, f, s, a, ns]]) => h('tr', {}, h('th', { scope: 'row', text: c === 'all' ? t('ab.covAll') : c }),
+        h('tbody', {}, ...['all', 'B', 'A', 'C1', 'C', 'D', '1'].filter(c => COV.tot[c]).map(c => [c, COV.tot[c]]).map(([c, [n, f, s, a, ns]]) => h('tr', {}, h('th', { scope: 'row', text: c === 'all' ? t('ab.covAll') : c }),
           ...[n, f + '%', s + '%', a + '%', ns].map(v => h('td', { text: String(v) })))))))] : []),
     h('h2', { text: t('ab.off') }), h('p', { text: t('ab.offText') }), h('ul', { class: 'srcs' }, h('li', {}, ext('https://www.gov.il/he/pages/gov_terms_of_use', t('ab.govTerms'))), h('li', {}, ext('https://www.gov.il/BlobFolder/reports/safety_rules_book/he/publications_safety_rules_book.pdf', t('ab.rsaBook'))), h('li', {}, ext('https://www.gov.il/BlobFolder/reports/driving_textbook/he/publications_2017_nohagim_aheret_nohagim_nachon.pdf', t('ab.tbook'))), h('li', {}, ext('https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s18-operating-safely.pdf', t('ab.edu18'))), h('li', {}, ext('https://kids.gov.il/sababa/sababa_pool/pages/4451', t('ab.kids'))), h('li', {}, ext('https://kids.gov.il/sababa/sababa_pool/terms.html', t('ab.kidsTerms'))), h('li', {}, ext('https://github.com/dudidd-wq/theory-il/blob/main/LICENSE-DATA.md', t('ab.offList')))),
     h('p', { text: t('ab.tbookText') }), h('p', { class: 'disc', role: 'note', id: 'ab-perm' }, icon('info'), h('span', { text: t('ab.perm') })),

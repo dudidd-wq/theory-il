@@ -19,13 +19,13 @@ export const onPersist = f => listeners.push(f);
 export const snapshot = () => JSON.parse(JSON.stringify(S));
 export function replaceState(s) { S = { ...blank(), ...s }; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} listeners.forEach(f => { try { f(); } catch {} }); }
 export const lostLocal = () => { try { return !localStorage.getItem(KEY); } catch { return true; } };
-export function resetAll() { S = blank(); try { localStorage.removeItem(KEY); localStorage.removeItem(EXAM); } catch {} }
+export function resetAll() { S = blank(); try { localStorage.removeItem(KEY); localStorage.removeItem(EXAM_KEY); } catch {} }
 
 // ---------- exam in progress: own key (not part of backups), survives reload and app updates ----------
-const EXAM = 'theoryIL.exam';
-export function saveExam(e) { try { const { render, ...x } = e; localStorage.setItem(EXAM, JSON.stringify(x)); } catch {} }
-export function loadExam() { try { const e = JSON.parse(localStorage.getItem(EXAM)); if (e && Array.isArray(e.ids) && e.ids.length && typeof e.end === 'number' && !e.done) return e; } catch {} return null; }
-export function clearExam() { try { localStorage.removeItem(EXAM); } catch {} }
+const EXAM_KEY = 'theoryIL.exam';
+export function saveExam(e) { try { const { render, ...x } = e; localStorage.setItem(EXAM_KEY, JSON.stringify(x)); } catch {} }
+export function loadExam() { try { const e = JSON.parse(localStorage.getItem(EXAM_KEY)); if (e && Array.isArray(e.ids) && e.ids.length && typeof e.end === 'number' && !e.done) return e; } catch {} return null; }
+export function clearExam() { try { localStorage.removeItem(EXAM_KEY); } catch {} }
 
 // ---------- progress, spaced repetition (Leitner boxes 0–5) ----------
 const GAP = [0, 1, 3, 7, 16, 35];             // days until the next review per box
@@ -47,7 +47,9 @@ export const wasWrong = id => { const r = S.q[id]; return !!r && r[2] > r[3]; };
 export const mastered = id => { const r = S.q[id]; return !!r && r[0] >= MASTER_BOX; };
 export function toggleBookmark(id) { const i = S.bm.indexOf(id); if (i >= 0) S.bm.splice(i, 1); else S.bm.unshift(id); S.bm = S.bm.slice(0, 2000); save(); return i < 0; }
 export const isBookmarked = id => S.bm.includes(id);
-export function addExam(cls, score, secs, lang, wrongIds) { S.ex.push([Date.now(), cls, score, secs, lang, wrongIds.slice(0, 30)]); S.ex = S.ex.slice(-200); S.xp += score >= 26 ? 100 : 30; save(); }
+/** exam format in one place: questions, pass mark, minutes */
+export const EXAM = Object.freeze({ n: 30, pass: 26, min: 40 });
+export function addExam(cls, score, secs, lang, wrongIds) { S.ex.push([Date.now(), cls, score, secs, lang, wrongIds.slice(0, EXAM.n)]); S.ex = S.ex.slice(-200); S.xp += score >= EXAM.pass ? 100 : 30; save(); }
 // streak: consecutive active days. A freeze covers one missed day; one is earned per 7-day streak (max 2 in hand).
 const active = d => !!S.days[d] || S.frz.includes(d);
 function newDay(d) {
