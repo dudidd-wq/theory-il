@@ -28,7 +28,7 @@ Resume here after interruptions. Plan: /workspace/driving-theory-plan/PLAN.md
 - [x] store/backup schema 2 (S.les) with v1 migration; readiness includes lessons; parent view
 - [x] About/LICENSE-DATA/README: law + sign-table sources, §6 note
 - [x] 1.1.0 SW bump, e2e learn tests (path, locks, law chips, viz alt + reduced motion, recap, quiz→mastery→unlock, en note, dark, offline, backup les) 196/196 local
-- [ ] bump SW, e2e learn tests (mobile+desktop, axe, reduced motion), push, live check
+- [x] pushed d2a758f, Pages built, live e2e 196/196 (2026-10-26)
 
 ### Review findings 1 (fold-in)
 - [x] HIGH: data.gov.il links → /he/datasets/ministry_of_transport/<id> (About, manifest, LICENSE-DATA, fetch.py, raw meta) + CC BY 4.0 link; all 5 dataset pages + terms checked 200 in Chrome (2026-10-26)
