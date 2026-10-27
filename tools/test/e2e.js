@@ -363,7 +363,15 @@ async function overflowSweep() {
     const LJ = await p.evaluate(() => fetch('data/lessons.json').then(r => r.json()));
     const routes = ['#/home', '#/learn', '#/practice', '#/practice/mix', '#/review', '#/search', '#/bookmarks', '#/signs', '#/signs/go', '#/stats', '#/parent', '#/about', '#/settings', '#/exam',
       ...LJ.lessons.filter(l => l.cls.includes('B') || l.cls.includes('A')).map(l => '#/learn/' + l.id + '/peek')];
-    for (const r of routes) { await go(p, r); await p.waitForSelector('h1', { timeout: 5000 }).catch(() => {}); const sw = await over(); if (sw) bad.push(r + '=' + sw); }
+    const tiny = async () => p.evaluate(() => [...document.querySelectorAll('a[href], button, input:not([type=hidden]), select, textarea, summary, [role=button], [tabindex="0"]')].filter(e => {
+      const r = e.getBoundingClientRect(), cs = getComputedStyle(e); if (!r.width || !r.height || cs.visibility === 'hidden' || e.closest('[hidden]')) return false;
+      const lab = e.closest('label'); if (e.classList.contains('sr') && e.tabIndex < 0) return false;   // the visually-hidden file input is opened by its visible button
+      if ((e.type === 'radio') && lab && lab.getBoundingClientRect().height >= 24) return false;   // a radio's tap target is its whole option row
+      return r.width < 23.5 || r.height < 23.5; }).map(e => `${e.tagName.toLowerCase()}${e.type ? ':' + e.type : ''}'${(e.textContent || e.getAttribute('aria-label') || '').trim().slice(0, 18)}' ${Math.round(e.getBoundingClientRect().width)}x${Math.round(e.getBoundingClientRect().height)}`));
+    const small = [];
+    for (const r of routes) { await go(p, r); await p.waitForSelector('h1', { timeout: 5000 }).catch(() => {}); const sw = await over(); if (sw) bad.push(r + '=' + sw); const tt = await tiny(); if (tt.length) small.push(r + ': ' + tt.slice(0, 3).join(', ')); }
+    // v1.17 (review #13 N9): tap targets – every visible link / control on every screen is at least 24×24 px (WCAG 2.5.8)
+    ok(!small.length, `${W}px: every link and control on ${routes.length} screens is a ≥24×24 px tap target ${small.slice(0, 4).join(' | ')}`);
     await go(p, '#/about'); await p.waitForSelector('.tbl.cov td');
     const cv = await p.evaluate(W => { const w = document.querySelector('.tbl.cov').closest('.tblwrap'); const tds = [...document.querySelectorAll('.tbl.cov tr:first-child td')];
       return { hid: w.scrollWidth > w.clientWidth + 1, out: tds.filter(td => { const r = td.getBoundingClientRect(); return r.left < -1 || r.right > W + 1; }).length, n: tds.length,
@@ -376,8 +384,10 @@ async function overflowSweep() {
   await b.close();
 }
 (async () => {
+  if (!process.env.SWEEP_ONLY) {
   await run('mobile', { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2, locale: 'he-IL' });
   await run('desktop', { viewport: { width: 1280, height: 860 }, locale: 'he-IL', reducedMotion: 'reduce' });
+  }
   await overflowSweep();
   console.log(`\n${passes} passed, ${fails} failed`); process.exit(fails ? 1 : 0);
 })().catch(e => { console.error(e); process.exit(2); });
