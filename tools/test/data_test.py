@@ -859,6 +859,29 @@ ok(_n3['1790'] == ('partial', ['alc2#r1']) and _n3['1009'] == ('full', ['safety2
    f"v1.20 (review #16 N3): Q1790→alc2#r1, Q1009 on the airbag passage, Q1014 head restraint, Q1780/Q1509 partial ({_n3})")
 ok(any('(א) נהג חדש; (ב) נהג שטרם מלאו לו 24' in p[1] for p in _LJ['sober']['mnem'][0]['x']),
    "v1.20 (review #16 N3): sober#m0 shows TO 64ב(א)(3א) item (א) נהג חדש beside (ב)")
+# v1.20 (review #16 N4/N6): no pdf split-word artefacts and no bracketed editor's punctuation anywhere a learner reads
+import sys as _sys; _sys.path.insert(0, os.path.join(ROOT, 'tools')) if 'ROOT' in dir() else _sys.path.insert(0, 'tools')
+from signs_tidy import vocab as _vocab
+_V = _vocab()
+def _strs(o):
+    if isinstance(o, str): yield o
+    elif isinstance(o, dict):
+        for v in o.values(): yield from _strs(v)
+    elif isinstance(o, list):
+        for v in o: yield from _strs(v)
+_split, _brk = set(), set()
+for _f in ('data/signs.json', 'data/lessons.json', 'data/sources.json'):
+    for _s in _strs(json.load(open(_f, encoding='utf-8'))):
+        _t = _s.split(' ')
+        for _a, _b in zip(_t, _t[1:]):
+            if re.fullmatch(r'[א-ת]{1,3}', _a) and re.fullmatch(r'[א-ת]{1,3}', _b) and min(len(_a), len(_b)) <= 2:
+                _w = _V.get(_a + _b, 0)
+                if _w >= 20 and _w >= 4 * max(_V.get(_a, 0), _V.get(_b, 0), 1): _split.add(_a + ' ' + _b)
+        _brk.update(re.findall(r'\d\([,./]\)\d|\([,./]\)[A-Z]', _s))
+ok(not _split and 'לצומת ועבור' in json.load(open('data/signs.json', encoding='utf-8'))['e']['514']
+   and 'את מעבר המפגש' in json.load(open('data/signs.json', encoding='utf-8'))['e']['722'],
+   f'v1.20 (review #16 N4): no split-word artefacts in signs/lessons/sources ({sorted(_split)[:5]}); 514 לצומת, 722 מעבר')
+ok(not _brk and '1,500 ק״ג' in json.dumps(_LJ['cargo'], ensure_ascii=False), f"v1.20 (review #16 N6): no '1(,)500'-style bracketed editor punctuation ({sorted(_brk)[:5]})")
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

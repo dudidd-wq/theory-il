@@ -37,6 +37,19 @@ def glue(s, V, B):
         else: out.append(tok[i]); i += 1
     return ' '.join(out)
 
+def _join_short(s, V):
+    tok = s.split(' '); out = []
+    for t in tok:
+        a = out[-1] if out else ''
+        w = a + t
+        if (HEB1.match(a) and HEB1.match(t) and min(len(a), len(t)) <= 2 and max(len(a), len(t)) <= 3
+                and V.get(w, 0) >= 20 and V.get(w, 0) >= 4 * max(V.get(a, 0), V.get(t, 0), 1)):
+            out[-1] = w
+        else: out.append(t)
+    return ' '.join(out)
+
+HEB1 = re.compile(r'^[\u05d0-\u05ea]+$')
+
 def tidy(s, V, n=None):
     s = re.sub(r'\s*1 ?\. ?צורת ?ה ?(?:סימון|סמל|תמרור) וצבעו.*$', '', s)          # leaked column header (+ the symbol table after it)
     s = re.sub(r'""([^\s"]+)', r'"\1"', s)                                  # v1.19: the pdf puts both quote marks before the word: '""אופניים' → '"אופניים"'
@@ -53,6 +66,9 @@ def tidy(s, V, n=None):
     # any other lone letter is the end of the word before it ("האו ר" → "האור", "חד ה" → "חדה")
     s = re.sub(r'(?<![^\s(])([בהולמכש]) (?=[\u05d0-\u05ea]{2})', r'\1', s)
     s = re.sub(r'([\u05d0-\u05ea]{2,}) ((?!ל:)[\u05d0-\u05ea])(?=[\s.,;:!]|$)', r'\1\2', s)   # but "מותרת ל:" stays
+    # v1.20 (review #16 N4): two short real-looking fragments glue() left apart ("לצו מת" → "לצומת", "מע בר" → "מעבר"):
+    # join when the glued word is common in the law/bank and ≥4× as common as either fragment
+    s = _join_short(s, V)
     s = re.sub(r'(\d{3}) פ(?=[\s.,]|$)', r'\1פ', s)                             # variant numbers "724 פ" → "724פ"
     if n: s = re.sub(rf'\s*(נוהג רכב)?\s*{n}פ$', '', s)                          # next row's label leaking into the cell
     s = re.sub(r'\s+([.,;:])', r'\1', s); s = re.sub(r'\s+', ' ', s)
