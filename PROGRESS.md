@@ -209,3 +209,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - v1.16 T1b (fresh-clone run 2026-10-27): 23/25 rebuilt from the official URLs; kids_co re-pinned (the page gained one sentence after the cited passage; accessed 2026-10-27, note in pages.json); edu13's official URL now returns 404 (withdrawn; the Wayback capture is truncated) – pinned copy kept, note in pages.json, fetch_cache --pdf-dir imports a sha256-matching local copy
 - v1.16.0: bump (SW VERSION 1.16.0); data_test passes (also from a fresh clone after fetch_cache: 25/25, pin --verify ok, no SKIP); local e2e 280/280
 - v1.16.0 live: sw.js VERSION 1.16.0; live e2e 280/280
+- v1.17 N1a (review #13): fetch_cache retries meyda PDFs (5 tries, backoff), rejects the HTTP-200 'שגיאה 404' HTML (no %PDF magic) and any non-pinned sha, falls back to --pdf-dir; edu07/edu13 notes corrected to 'upstream intermittent' (edu13 is not withdrawn)

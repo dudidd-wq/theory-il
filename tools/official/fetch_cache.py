@@ -3,7 +3,9 @@
 so that `pin.py --verify` and data_test's passage checks work from a clean clone.
 gov.il terms allow quotation, not republishing whole pages, so full texts are never committed (only the Compensation Law
 API JSON is). Every page listed in pages.json is rebuilt and checked against its committed sha256 (and pdf_sha256):
-  - PDFs (textbook, safety-rules book, MoE topics): downloaded once each with urllib; texts regenerated with pdftotext
+  - PDFs (textbook, safety-rules book, MoE topics): a sha256-matching copy under --pdf-dir is used first; otherwise downloaded
+    with urllib, up to 5 tries with backoff, accepting only a %PDF file with the pinned pdf_sha256 (meyda.education.gov.il
+    sometimes serves an HTTP 200 'שגיאה 404' HTML page instead of the PDF); texts regenerated with pdftotext
     exactly as pinned (textbook: per page, bidi marks removed; book: whole file; MoE: whole file, last form feed dropped);
   - gov.il / kids.gov.il HTML pages: opened once each in a headed Chrome (fetch_html.js under xvfb-run – gov.il blocks
     headless and scripted clients); the rendered text is kept as <stem>.txt and the article body as <stem>.body;
@@ -13,7 +15,7 @@ hash differs from the pin; the script exits non-zero and lists those pages.
 usage: fetch_cache.py            rebuild everything missing (network: one request per missing page)
        fetch_cache.py --offline  only rebuild what can be built from files already in the cache
        fetch_cache.py --pdf-dir DIR   also accept a local copy of a pinned PDF found under DIR if its sha256 matches
-                                      (needed for edu13: its official URL returns 404 since 2026-10-27, see its pages.json note)"""
+                                      (fallback when meyda.education.gov.il keeps serving its soft-404 page; see the edu07/edu13 notes in pages.json)"""
 import hashlib, json, os, re, shutil, subprocess, sys, tempfile, time, urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__)); CACHE = os.path.join(HERE, 'cache')
 PAGES = json.load(open(os.path.join(HERE, 'pages.json'), encoding='utf-8'))
@@ -56,9 +58,9 @@ def main():
                 data = _local_pdf(rec['pdf_sha256'])
                 if data is None:
                     if off: bad.append(pid + ' (PDF missing; run without --offline or give --pdf-dir)'); continue
-                    data = urllib.request.urlopen(urllib.request.Request(rec['url'], headers=UA), timeout=180).read(); time.sleep(1)
-                    if sha(data) != rec['pdf_sha256']:
-                        bad.append(pid + ' (downloaded PDF differs from pdf_sha256' + ('; ' + rec['note'] if rec.get('note') else '') + ')'); continue
+                    data, why = _download_pdf(rec['url'], rec['pdf_sha256'])
+                    if data is None:
+                        bad.append(pid + f' ({why}; give --pdf-dir with a sha256-matching copy)'); continue
                 open(pdf, 'wb').write(data)
             t = pdf_text(stem, pdf)
             if sha(t) != rec['sha256']: bad.append(pid + ' (text differs from sha256)'); continue
@@ -84,6 +86,24 @@ def main():
         else: bad.append(pid + (' (not fetched)' if not t else ' (page text no longer yields the pinned body: the page changed or was blocked)'))
     print(f'fetch_cache: {len(done)}/{len(PAGES)} pages match their pinned sha256')
     if bad: sys.exit('not rebuilt: ' + '; '.join(bad))
+TRIES, WAIT = 5, (3, 8, 15, 30)
+def _download_pdf(url, want):
+    """v1.17 (review #13 N1): meyda.education.gov.il is intermittent – the same URL sometimes answers HTTP 200 with an HTML
+    'שגיאה 404' page instead of the PDF. Retry with backoff; accept only a body that starts with %PDF- and has the pinned sha256."""
+    last = 'no response'
+    for i in range(TRIES):
+        if i: time.sleep(WAIT[i - 1])
+        try:
+            r = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=180); data = r.read()
+            ctype = r.headers.get('Content-Type', '')
+        except Exception as e:
+            last = f'attempt {i + 1}: {type(e).__name__}'; continue
+        if not data.startswith(b'%PDF-'):
+            last = f'attempt {i + 1}: soft 404 / not a PDF ({ctype or "no content-type"}, {len(data)} bytes)'; continue
+        if sha(data) != want:
+            last = f'attempt {i + 1}: a PDF, but not the pinned one (sha256 {sha(data)[:12]}…)'; continue
+        return data, None
+    return None, f'{TRIES} downloads, none the pinned PDF – last: {last}'
 def _local_pdf(want):
     """--pdf-dir DIR: a locally held copy of a pinned PDF (e.g. one the publisher has withdrawn), accepted only if its sha256 is the pinned one."""
     if '--pdf-dir' not in sys.argv: return None

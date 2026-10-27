@@ -14,9 +14,14 @@ HERE = os.path.dirname(os.path.abspath(__file__)); CACHE = os.path.join(HERE, 'c
 ACCESSED = '2026-10-26'
 # v1.16 (T1b, clean-clone rebuild on 2026-10-27): per-page status found when every pinned page was re-fetched once
 ACCESSED_PAGE = {'kids_co': '2026-10-27'}
+MEYDA_FLAKY = ('meyda.education.gov.il is intermittent: the same URL sometimes answers with an HTML "שגיאה 404" page (HTTP 200) '
+               'instead of the PDF (observed on 2026-10-27; review #13 got the pinned PDF in 1 of 3 tries for edu07, and edu13 – briefly '
+               'thought withdrawn in v1.16 – is served again with the pinned sha256). fetch_cache.py retries and accepts only a %PDF file with '
+               'the pinned pdf_sha256, falling back to --pdf-dir')
 NOTES = {
  'kids_co': 're-pinned 2026-10-27: the page now ends with one more sentence ("בנוסף, פחמימנים משתתפים ביצירה של האוזון ה\'רע\'…"); the cited passage is unchanged',
- 'edu13': 'the official URL returns HTTP 404 since 2026-10-27 (the file was withdrawn by the publisher); the pinned copy was downloaded from that URL on 2026-10-26 and is identified by pdf_sha256; the only Wayback capture (20210923004300) is truncated at 1 MiB, so a clean clone can rebuild this page only from a local copy (fetch_cache.py --pdf-dir)',
+ 'edu13': MEYDA_FLAKY,
+ 'edu07': MEYDA_FLAKY,
 }
 ARCHIVE = 'web.archive.org lookup rate-limited (HTTP 429) on 2026-10-26; pinned by sha256 of the text as fetched'
 PUB = 'הרשות הלאומית לבטיחות בדרכים, חטיבת חינוך והסברה (gov.il)'

@@ -628,7 +628,8 @@
    }
   ],
   "pdf_sha256": "0297ccb25afb698889bcfb6112be26aa38518b3866c444579e668ce5b6bcfb0e",
-  "published": "09.2019"
+  "published": "09.2019",
+  "note": "meyda.education.gov.il is intermittent: the same URL sometimes answers with an HTML \"שגיאה 404\" page (HTTP 200) instead of the PDF (observed on 2026-10-27; review #13 got the pinned PDF in 1 of 3 tries for edu07, and edu13 – briefly thought withdrawn in v1.16 – is served again with the pinned sha256). fetch_cache.py retries and accepts only a %PDF file with the pinned pdf_sha256, falling back to --pdf-dir"
  },
  "edu13": {
   "url": "https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s13-alcohol-and-driving.pdf",
@@ -649,7 +650,7 @@
   ],
   "pdf_sha256": "85cce4eea0bfd2ed26cf6c728dd92b2760771c36c757ddbb8cd4c5e6c955b0a6",
   "published": "12.2019",
-  "note": "the official URL returns HTTP 404 since 2026-10-27 (the file was withdrawn by the publisher); the pinned copy was downloaded from that URL on 2026-10-26 and is identified by pdf_sha256; the only Wayback capture (20210923004300) is truncated at 1 MiB, so a clean clone can rebuild this page only from a local copy (fetch_cache.py --pdf-dir)"
+  "note": "meyda.education.gov.il is intermittent: the same URL sometimes answers with an HTML \"שגיאה 404\" page (HTTP 200) instead of the PDF (observed on 2026-10-27; review #13 got the pinned PDF in 1 of 3 tries for edu07, and edu13 – briefly thought withdrawn in v1.16 – is served again with the pinned sha256). fetch_cache.py retries and accepts only a %PDF file with the pinned pdf_sha256, falling back to --pdf-dir"
  },
  "edu17": {
   "url": "https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s17-special-conditions.pdf",
