@@ -5,14 +5,14 @@ def parse(fn):
         m=re.match(r'\{\{ח:סעיף\*?\|([^|}]*)\|([^|}]*)',line)
         if m and 'עוגן=תוספת' in line:  # schedule item: key 'תוספתNפרטM' (anchor ת וספת_N_פרט_M)
             a=re.search(r'עוגן=תוספת (\d+) פרט (\S+?)\}\}',line)
-            if cur and cur[0] not in secs: secs[cur[0]]={'title':cur[1],'text':clean('\n'.join(buf))}
+            if cur and cur[0] not in secs: secs[cur[0]]={'title':ttl(cur[1]),'text':clean('\n'.join(buf))}
             cur=(f'תוספת{a.group(1)}פרט{a.group(2)}' if a else m.group(1).strip(), f'תוספת {a.group(1)}, פרט {a.group(2)}' if a else ''); buf=[]
             continue
         if m:
-            if cur and cur[0] not in secs: secs[cur[0]]={'title':cur[1],'text':clean('\n'.join(buf))}
+            if cur and cur[0] not in secs: secs[cur[0]]={'title':ttl(cur[1]),'text':clean('\n'.join(buf))}
             cur=(m.group(1).strip(),m.group(2).strip()); buf=[]
         elif cur: buf.append(line)
-    if cur and cur[0] not in secs: secs[cur[0]]={'title':cur[1],'text':clean('\n'.join(buf))}
+    if cur and cur[0] not in secs: secs[cur[0]]={'title':ttl(cur[1]),'text':clean('\n'.join(buf))}
     return secs
 def _cell(c):
     return re.sub(r'\s+',' ',re.sub(r'<[^>]+>',' ',c)).strip()
@@ -34,6 +34,9 @@ def table_rows(s):
             out.append(td[0]+(' ('+cap[0]+'): ' if cap else ': ')+'; '.join(vals) if vals else td[0])
         return '\n'.join(out)
     return re.sub(r'<table.*?</table>',conv,s,flags=re.S)
+def ttl(t):
+    # v1.17 (review #13 N3): section titles keep the Wikisource <wbr> break hints as markup – drop them (and any other tag)
+    return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', re.sub(r'<wbr\s*/?>', '', t))).strip()
 def clean(s):
     s=table_rows(s)
     # v1.14 (review #10 N1): named template parameters (e.g. {{ח:תת|סוג=הגדרה}}) are markup, not text

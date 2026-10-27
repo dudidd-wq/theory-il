@@ -37,7 +37,8 @@ export function ref(s, own, cited) {
   return h('details', { class: 'lawref' }, h('summary', {}, icon('book'), h('span', { text: label })),
     h('div', { class: 'lawbox' }, h('p', { class: 'small muted', text: x.doc + (x.title ? ' – ' + x.title : '') + (x.rev ? ` (ויקיטקסט, גרסה ${x.rev})` : '') + (x.accessed ? ` (${t('ln.accessed', x.accessed)}${x.pub ? ', ' + t('ln.updated', x.pub) : ''})` : '') + (x.kind === 'OFF' ? ' · ' + t('ln.noNiqqud') : '') }),
       ...shown.map(e => h('blockquote', { text: e })),
-      ext(pg ? x.url + '#page=' + pg[1] : x.url, x.kind === 'Q' ? t('ln.bank') : t('ln.full'))));
+      ext(pg ? x.url + '#page=' + pg[1] : x.url, x.kind === 'Q' ? t('ln.bank') : t('ln.full')),
+      x.flaky ? h('p', { class: 'small muted flaky', text: t('ln.flaky') }) : null));
 }
 const refs = (s, also = [], own) => h('span', { class: 'refs' }, [s, ...also].map(a => ref(a, own, true)));
 

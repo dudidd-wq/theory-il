@@ -449,9 +449,10 @@ for _l in LB.values():
         for _i, _r in enumerate(_l.get(_k, [])):
             for _x in _r.get('x') or []:
                 _nj += 1; _t = re.sub(r'\s*\(עמ׳ \d+\)$', '', _x[1])
-                if _x[0].startswith('LT:'): _t = re.sub(r'^\d+[א-ת]?\s', '', _t)
+                if _x[0].startswith('LT:'): _t = re.sub(r'^(ס\s*-\s*)?\d+[א-ת]?\s', '', _t)
                 _w = re.findall(r'[א-תA-Za-z]{2,}', _t)
-                if len(_w) < 2 or len(''.join(_w)) < 7: _jk.append(f"{_l['id']}#{_k}{_i}:{_x[0]}:{_x[1][:20]}")
+                # v1.17: a service sign's whole entry is its name ("ס - 62 מסעדה") – one real word is the complete entry there
+                if (len(''.join(_w)) < 4) if _x[0].startswith('LT:ס-') else (len(_w) < 2 or len(''.join(_w)) < 7): _jk.append(f"{_l['id']}#{_k}{_i}:{_x[0]}:{_x[1][:20]}")
 ok(not _jk and _nj >= 1300, f'v1.15 (review #11 C1/T2): every displayed passage has real words beyond a sign number / punctuation ({_nj} chips; junk: {_jk[:6]})')
 _lc = LB['licence2']['rules'][3]; _l3 = LB['law3']['rules'][0]
 ok('אלא אם כן יוכיח מי נהג' in ' '.join(x[1] for x in _lc['x']) and 'כגון מצלמת מהירות' in ' '.join(x[1] for x in _lc['x']), 'v1.15 (review #11 C2): licence2#r3 chip carries the exception "אלא אם כן יוכיח מי נהג" and "כגון מצלמת מהירות" (p.145)')
@@ -537,6 +538,36 @@ _tp = [f"{_l['id']}#r{_i}" for _l in LALL for _i, _r in enumerate(_l['rules']) i
 _tpb = [u for u in _tp if not all(w in (lambda r: r['t'])(LB[u.split('#')[0]]['rules'][int(u.split('#r')[1])]) for w in ('פעם בשבוע', 'אחת לשבועיים', 'אינ'))
         or not all(any(w in x[1] for x in LB[u.split('#')[0]]['rules'][int(u.split('#r')[1])]['x']) for w in ('פעם בשבוע', 'אחת לשבועיים'))]
 ok(len(_tp) >= 2 and not _tpb, f'v1.16 (review #12 D3): tyre-pressure frequency rules state both official wordings, cite both and label the inconsistency ({len(_tp)} rules) {_tpb}')
+# v1.17 (review #13 N2/N3): no markup, PDF page footer or RTL punctuation residue in ANY displayed string – sources.json
+# (titles, labels, excerpts), lessons.json and signs.json; sign-table excerpts are the sign's own cleaned entry
+def _strs(o, path=''):
+    if isinstance(o, str): yield path, o
+    elif isinstance(o, dict):
+        for k, v in o.items(): yield from _strs(v, path + '.' + str(k))
+    elif isinstance(o, list):
+        for i, v in enumerate(o): yield from _strs(v, path + f'[{i}]')
+_RES = re.compile(r'<\s*/?\s*(wbr|br|span|ref|small|big|sup|sub|div|p|b|i)\b|&nbsp;|&lt;|\{\{|\}\}|\[\[|\(\)[א-ת]|""[א-ת]')
+_FOOT = re.compile(r'ספטמבר 2022|\(נוסח משולב,|לוח תמרורים|ק"ת התשפ"ב')   # the PDF running footer; legitimate only in a document title
+_res = [(f, p, v[:80]) for f, o in (('sources', SRC), ('lessons', J('data', 'lessons.json')), ('signs', SG)) for p, v in _strs(o)
+        if _RES.search(v) or (_FOOT.search(v) and not re.search(r'\.(doc|title|name)$', p))]
+ok(not _res, f'v1.17 (review #13 N2/N3): no markup / PDF-footer / reversed-bracket residue in any displayed string of sources.json, lessons.json, signs.json ({len(_res)}) {_res[:4]}')
+_LTX = [(k, e[:60]) for k, v in SRC.items() if v['kind'] == 'LT' for e in v['ex']
+        if re.search(r'(^|\s)[.,:;]+(\S|\s|$)', e) or re.search(r'\s\d{1,3} לוח תמרורים', e)
+        or re.search(r'""[א-ת]', e)
+        or k[3:].isdigit() and any(int(k[3:]) < int(n) <= int(k[3:]) + 9 and pv not in ('תמרור', 'או', 'עד', '-', 'לתמרור', 'ו', 'ב')
+                                   for pv, n in re.findall(r'(\S+)\s(\d{3})(?=\s[א-ת])', e))]
+ok(not _LTX, f'v1.17 (review #13 N2): sign-table excerpts in sources.json carry no displaced punctuation and no neighbouring entry ({len(_LTX)}) {_LTX[:4]}')
+_TT = [(k, v['title']) for k, v in SRC.items() if v['kind'] in ('TR', 'TO') and ('<' in v['title'] or '>' in v['title'])]
+ok(not _TT and 'בעלי־חיים' in SRC.get('TR:462', {}).get('title', ''), f'v1.17 (review #13 N3): law-section titles have no <wbr> ({_TT[:3]})')
+# v1.17 (review #13 N1): the MoE file server intermittently serves an HTML "404" for valid booklet URLs – every meyda source is
+# flagged so the lawbox warns about it, pages.json carries the corrected note, and fetch_cache verifies %PDF magic + sha256
+_my = [k for k, v in SRC.items() if 'meyda.education.gov.il' in (v.get('url') or '')]
+_FC = T('tools', 'official', 'fetch_cache.py')
+_PG = J('tools', 'official', 'pages.json')
+_PGl = _PG if isinstance(_PG, list) else list(_PG.values())
+ok(_my and all(SRC[k].get('flaky') for k in _my) and "'ln.flaky'" in I18 and 'x.flaky' in JL and "b'%PDF-'" in _FC and '--pdf-dir' in _FC
+   and all('intermittent' in (_PG[i].get('note') or '') for i in ('edu07', 'edu13')) and not any('removed upstream' in (p.get('note') or '') for p in _PGl),
+   f'v1.17 (review #13 N1): {len(_my)} MoE-server sources flagged as flaky in the UI; fetch_cache checks %PDF + sha, retries, falls back to --pdf-dir')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

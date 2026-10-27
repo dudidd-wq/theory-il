@@ -3,9 +3,9 @@
 so that `pin.py --verify` and data_test's passage checks work from a clean clone.
 gov.il terms allow quotation, not republishing whole pages, so full texts are never committed (only the Compensation Law
 API JSON is). Every page listed in pages.json is rebuilt and checked against its committed sha256 (and pdf_sha256):
-  - PDFs (textbook, safety-rules book, MoE topics): a sha256-matching copy under --pdf-dir is used first; otherwise downloaded
-    with urllib, up to 5 tries with backoff, accepting only a %PDF file with the pinned pdf_sha256 (meyda.education.gov.il
-    sometimes serves an HTTP 200 'שגיאה 404' HTML page instead of the PDF); texts regenerated with pdftotext
+  - PDFs (textbook, safety-rules book, MoE topics): downloaded with urllib, up to 6 tries with backoff, accepting only a %PDF file with the pinned pdf_sha256 (meyda.education.gov.il
+    sometimes serves an HTTP 200 'שגיאה 404' HTML page instead of the PDF); if no try succeeds, a sha256-matching copy
+    under --pdf-dir is used, and the run says so; texts regenerated with pdftotext
     exactly as pinned (textbook: per page, bidi marks removed; book: whole file; MoE: whole file, last form feed dropped);
   - gov.il / kids.gov.il HTML pages: opened once each in a headed Chrome (fetch_html.js under xvfb-run – gov.il blocks
     headless and scripted clients); the rendered text is kept as <stem>.txt and the article body as <stem>.body;
@@ -55,12 +55,12 @@ def main():
         if stem in pin.PDFS:
             pdf = C(pin.PDFS[stem][0])
             if not (os.path.exists(pdf) and sha(open(pdf, 'rb').read()) == rec['pdf_sha256']):
-                data = _local_pdf(rec['pdf_sha256'])
+                data, why = (None, 'offline') if off else _download_pdf(rec['url'], rec['pdf_sha256'])
                 if data is None:
-                    if off: bad.append(pid + ' (PDF missing; run without --offline or give --pdf-dir)'); continue
-                    data, why = _download_pdf(rec['url'], rec['pdf_sha256'])
+                    data = _local_pdf(rec['pdf_sha256'])   # fallback: a sha256-matching local copy (--pdf-dir)
                     if data is None:
-                        bad.append(pid + f' ({why}; give --pdf-dir with a sha256-matching copy)'); continue
+                        bad.append(pid + f' ({why}; no sha256-matching copy under --pdf-dir)'); continue
+                    print(f'{pid}: official URL gave no pinned PDF ({why}); used the sha256-identical copy from --pdf-dir')
                 open(pdf, 'wb').write(data)
             t = pdf_text(stem, pdf)
             if sha(t) != rec['sha256']: bad.append(pid + ' (text differs from sha256)'); continue
@@ -86,7 +86,7 @@ def main():
         else: bad.append(pid + (' (not fetched)' if not t else ' (page text no longer yields the pinned body: the page changed or was blocked)'))
     print(f'fetch_cache: {len(done)}/{len(PAGES)} pages match their pinned sha256')
     if bad: sys.exit('not rebuilt: ' + '; '.join(bad))
-TRIES, WAIT = 5, (3, 8, 15, 30)
+TRIES, WAIT = 6, (3, 8, 15, 30, 45)
 def _download_pdf(url, want):
     """v1.17 (review #13 N1): meyda.education.gov.il is intermittent – the same URL sometimes answers HTTP 200 with an HTML
     'שגיאה 404' page instead of the PDF. Retry with backoff; accept only a body that starts with %PDF- and has the pinned sha256."""
@@ -94,7 +94,9 @@ def _download_pdf(url, want):
     for i in range(TRIES):
         if i: time.sleep(WAIT[i - 1])
         try:
-            r = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=180); data = r.read()
+            # a retry adds a cache-busting query (the soft 404 is sometimes served from a cache for the bare URL)
+            u = url if not i else url + ('&' if '?' in url else '?') + f'r={int(time.time())}'
+            r = urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=180); data = r.read()
             ctype = r.headers.get('Content-Type', '')
         except Exception as e:
             last = f'attempt {i + 1}: {type(e).__name__}'; continue
