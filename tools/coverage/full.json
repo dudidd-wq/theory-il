@@ -3167,7 +3167,7 @@
 "why": "textbook p.71-72: phase order and \"עם הופעת האור האדום\" after yellow (was: dictionary 701 only)",
 "v": "full",
 "u": [
-"lights2#r:סדר מופעי הרמזור: אדום, אדום וצהוב י"
+"lights2#r:סדר מופעי הרמזור: אדום לבד, אדום וצה"
 ]
 },
 "406": {
@@ -7884,7 +7884,7 @@
 "why": "sign table 702 (red + yellow together: \"היכון לנסיעה עם התחלף האור\") and the textbook light sequence red, red+yellow, green (was: none/no source)",
 "v": "full",
 "u": [
-"lights2#r:סדר מופעי הרמזור: אדום, אדום וצהוב י",
+"lights2#r:סדר מופעי הרמזור: אדום לבד, אדום וצה",
 "signs#d702"
 ]
 },
@@ -7923,7 +7923,7 @@
 "why": "mountain-road rule only; the sign's own text (narrow, no escape shoulders) is not taught",
 "v": "partial",
 "u": [
-"overtake2#r:דרך הררית: כביש צר, עקומות חדות שמגב"
+"overtake2#r:דרך הררית: שיפועים, עקומות חדות שמגב"
 ]
 },
 "984": {
@@ -11712,12 +11712,12 @@
 "why": "TO non-use notice"
 },
 "1489": {
-"by": "link",
+"by": "rebase",
 "v": "full",
 "u": [
 "distance#r:מרחק התגובה תלוי בזמן התגובה של הנהג"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)"
+"why": "textbook p.96: reaction distance grows in direct proportion to speed and depends on the driver's reaction speed (re-based v1.16 from the bank question to the textbook)"
 },
 "1490": {
 "by": "sample",

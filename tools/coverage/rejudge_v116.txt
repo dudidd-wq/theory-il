@@ -1,0 +1,23 @@
+# v1.16 (review #12, item 3) strict re-judgement, applied after rejudge_v115.txt. Same line format: "qid verdict [+lesson#rN ...] | why"
+#
+# reviewer-flagged verdicts
+819 partial +gap2#r3 | p.95: slow down to leave an escape gap ahead; the answer's "gentle braking" is not in the passage, and the same page also mentions speeding up
+812 full +moveoff#r9 | p.22: "הוא המרחק שהרכב עובר מרגע שהנהג הבחין בסכנה ועד שהגיב" – the textbook's own definition of reaction distance decides the answer
+1796 full +moto#x0 | TR 120(א) now shown: "כשרגליו של האדם האחר נמצאות משני צדי האופנוע"
+1595 full +moto#x0 | TR 119(ב1): the passenger's feet on the foot-rests; TR 120(א) (both sides) now shown too
+1509 partial +sober#r17 | textbook: stop and rest about a quarter hour; "long breaks" during driving is not in the cited passage (reviewer borderline, judged strictly)
+904 partial +yield2#r4 | p.62: expect others to break the right-of-way rules and be ready to give way; a vehicle already turning in the junction in front of you is not in the passage (reviewer borderline, judged strictly)
+#
+# v1.16 strict re-sample (random.Random(1216), 84 of 506 B/A 'full' non-dictionary verdicts; all earlier samples, rejudge files and the reviewer's seed-1212/1213 lists excluded) – see rejudge_v116_sample.md
+195 partial | TR 69(ב): only public works (and boarding, rescue) are exempt; "רכב צה"ל" is not in the cited text
+310 partial | textbook p.66 explains the octagon of the stop sign only; nothing cited explains the shape of the second sign
+363 partial | the dictionary entries say only what each sign warns of; neither "slow down and be alert" nor their group is in the cited text
+394 partial | TR 47(ה)(2) names the old sign number א–30; nothing cited links it to sign 132 (or the 100 m)
+575 partial | LT 411: entry forbidden to animals; animal-drawn carts are not in the cited entry
+593 partial | peds#r0 cites TR 67 (yield at a crossing); the meaning of the pictured sign is not in the cited passage
+805 partial | p.22–23: stopping distance grows with speed; that reaction and braking distances are each shorter at low speed is not in the cited passage
+947 partial | p.50: limited view at a sharp curve; "slow down and keep right" is not in the passage (rule claim removed)
+983 partial | p.106: features of winding roads; "slow down and be especially alert" is not in the passage (rule claim removed)
+1044 partial | p.20: clutch, neutral, P/N; that the parking brake is applied before starting is not in the passage (rule claim removed)
+1295 partial | TR 308(א): notice when the vehicle may endanger traffic or fails legal conditions; air pollution is not named, and the wrong options would fit the same words
+1640 partial | p.31: do not zigzag between lanes; the danger of a car swerving into the gap is not in the passage

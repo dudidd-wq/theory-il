@@ -165,7 +165,10 @@ async function run(prof, opts) {
   ok(/משרד התחבורה/.test(await text(p)), 'about names the ministry as source');
   ok(await p.locator('a[href*="meyda.education.gov.il"][href*="traffic-s07-"], a[href*="traffic-s13-"], a[href*="traffic-s17-"], a[href*="traffic-s21-"]').count() === 4 && await p.locator('a[href*="oldid=2968550"]').count() === 1, 'about: v1.12 sources (MoE topics 7/13/17/21 + Compensation Law s.1, pinned oldid) are linked');
   { const CV = await p.evaluate(() => fetch('data/coverage.json').then(r => r.json())); const tx = await text(p);
-    ok(['B', 'A', 'C1', 'C', 'D', '1'].every(c => tx.includes(`${c} ${(+CV.tot[c][1]).toFixed(1)}%`)) && /אף רישיון אינו מכוסה במלואו/.test(tx), 'about: every class partial, computed per-class full figures'); }
+    ok(['B', 'A', 'C1', 'C', 'D', '1'].every(c => tx.includes(`${c} ${(+CV.tot[c][2]).toFixed(1)}% / ${(+CV.tot[c][1]).toFixed(1)}%`)) && /אף רישיון אינו מכוסה במלואו/.test(tx), 'about: every class partial, computed per-class strict / full figures (strict first)');
+    const hb = await p.locator('#ab-covB').innerText(), E = CV.est, f1 = x => (+x).toFixed(1);
+    ok(hb.indexOf(f1(E.B_strict) + '%') >= 0 && hb.indexOf(f1(E.B_strict) + '%') < hb.indexOf(f1(E.B_full) + '%') && hb.includes(`≈${f1(E.B_est)}% (${f1(E.B_lo)}–${f1(E.B_hi)}%)`) && hb.includes(`${E.k} מתוך ${E.n}`),
+       `about (v1.16 H1): class-B headline – strict first, then full as judged with the estimate ≈${f1(E.B_est)}% (${f1(E.B_lo)}–${f1(E.B_hi)}%)`); }
   ok(/לא כולל תיאור מילולי/.test(await text(p)) && (await p.locator('.elig').count()) === 6, 'about: picture-question accessibility note + eligibility for all 6 classes');
   ok(/כל המאגר/.test(await text(p)) && (await p.locator('table.tbl tbody tr').count()) >= 7 && !/kolzchut/.test(await p.content()), 'about: whole-bank coverage table for all classes, no Kol Zchut link');
   // learning stage: path → lesson (law chips, diagram + text alternative, recap) → mini-quiz → mastery → unlock

@@ -62,7 +62,7 @@ for ln in open(P('tools/coverage/rejudge_v113.txt'), encoding='utf-8'):
         e.update(v='none', u=[], src={'none-T': 'T', 'none-S': 'S', 'conflict': 'X'}[v]); e.pop('dict', None); e.pop('strict_u', None)
 # v1.14 (review #10): second strict re-judgement, applied after v1.13. Same line format; here 'full' may also raise a partial
 # (with +refs, the cited rules that decide the answer) and 'partial' may also re-point a partial (+refs replace its units).
-for _by, ln in ((b, l) for b, fn in (('v1.14', 'rejudge_v114.txt'), ('v1.15', 'rejudge_v115.txt')) for l in open(P('tools/coverage/' + fn), encoding='utf-8')):   # v1.15: review #11 re-judgement appended
+for _by, ln in ((b, l) for b, fn in (('v1.14', 'rejudge_v114.txt'), ('v1.15', 'rejudge_v115.txt'), ('v1.16', 'rejudge_v116.txt')) for l in open(P('tools/coverage/' + fn), encoding='utf-8')):   # v1.15: review #11 re-judgement appended
     ln = '' if ln.lstrip().startswith('#') else ln.strip()
     if not ln: continue
     head, why = (x.strip() for x in ln.split('|', 1)); qid, v, *add = head.split()
@@ -147,8 +147,25 @@ for q in Q:
         if ul[u] not in ls and lcls[ul[u]] & set(q['t']): ls.append(ul[u])
     if (e.get('dict') or any(u.startswith('signs#d') for u in e['ids'])) and 'signs' not in ls: ls.append('signs')
     cov[q['id']] = [st, ls[:3], units[:3]] + ([e.get('src') or 'S'] if e['v'] == 'none' and e.get('src') != 'T' else [])
+# v1.16 (review #12 H1): the honest class-B estimate, computed once here and read by COVERAGE.md and the About page.
+# Pooled strict downgrade rate of the latest independent re-samples, applied to the B full verdicts never checked strictly.
+def _est():
+    import math
+    k = n = 0
+    for f in ('rejudge_v115_sample.md', 'rejudge_v116_sample.md'):
+        m = re.search(r'\*\*(\d+) of (\d+) downgraded', open(P('tools/coverage/' + f), encoding='utf-8').read()); k += int(m[1]); n += int(m[2])
+    chk = {int(x) for l in open(P('tools/coverage/strict_checked.txt'), encoding='utf-8') if not l.startswith('#') for x in l.split()}
+    B = [i for i in ALLIDS if 'B' in by[i]['t']]
+    fullB = [i for i in B if F[str(i)]['v'] == 'full']
+    un = [i for i in fullB if not F[str(i)].get('dict') and i not in chk]
+    z = 1.96; ph = k / n; c = (ph + z * z / (2 * n)) / (1 + z * z / n); h = z * math.sqrt(ph * (1 - ph) / n + z * z / (4 * n * n)) / (1 + z * z / n)
+    e = lambda r: round(100 * (len(fullB) - len(un) * r) / len(B), 1)
+    return {'k': k, 'n': n, 'rate': round(100 * ph, 1), 'lo_rate': round(100 * (c - h), 1), 'hi_rate': round(100 * (c + h), 1), 'unchecked': len(un),
+            'B_full': T['class']['B']['full_pct'], 'B_strict': T['class']['B']['strict_pct'], 'B_est': e(ph), 'B_lo': e(c + h), 'B_hi': e(c - h)}
+EST = _est(); T['est'] = EST
 _t = lambda x: [x['n'], x['full_pct'], x['strict_pct'], x['any_pct'], x['none_nosource'], x['bank_only'], x['full_nobank_pct'], x['partial'], x['partial_shown']]
 json.dump({'v': 2, 'legend': {'f': 'taught', 'w': 'partly', 'n': 'not taught yet', 'S': 'no official state source', 'X': 'bank answer contradicts the law'},
+           'est': EST,
            'tot': {'all': _t(T['all']), **{c: _t(T['class'][c]) for c in CLS}},
            # v1.10: textbook use, computed (About text): [rules citing it, all rules, excerpts, pages, % of the book's ~45,600 words]
            'tb': (lambda R, TQ: [sum(1 for r in R if 'OFF:textbook' in [r['s']] + r.get('also', [])), len(R), len(TQ), len({z['p'] for z in TQ}),

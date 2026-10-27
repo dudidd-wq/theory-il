@@ -4,123 +4,123 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1332,
-"partial": 291,
+"full": 1318,
+"partial": 305,
 "none": 178,
-"full_pct": 74.0,
+"full_pct": 73.2,
 "any_pct": 90.1,
-"strict_full": 1042,
-"strict_pct": 57.9,
+"strict_full": 1028,
+"strict_pct": 57.1,
 "none_teachable": 33,
 "none_nosource": 139,
 "conflict": 6,
 "bank_only": 145,
-"partial_shown": 243,
-"full_nobank_pct": 73.1,
-"full_bank_sourced": 15
+"partial_shown": 257,
+"full_nobank_pct": 72.4,
+"full_bank_sourced": 14
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 993,
-"partial": 218,
+"full": 980,
+"partial": 231,
 "none": 61,
-"full_pct": 78.1,
+"full_pct": 77.0,
 "any_pct": 95.2,
-"strict_full": 730,
-"strict_pct": 57.4,
+"strict_full": 717,
+"strict_pct": 56.4,
 "none_teachable": 0,
 "none_nosource": 57,
 "conflict": 4,
 "bank_only": 61,
-"partial_shown": 218,
-"full_nobank_pct": 77.8,
-"full_bank_sourced": 3
+"partial_shown": 231,
+"full_nobank_pct": 76.9,
+"full_bank_sourced": 2
 },
 "A": {
 "n": 1155,
-"full": 888,
-"partial": 207,
+"full": 876,
+"partial": 219,
 "none": 60,
-"full_pct": 76.9,
+"full_pct": 75.8,
 "any_pct": 94.8,
-"strict_full": 630,
-"strict_pct": 54.5,
+"strict_full": 618,
+"strict_pct": 53.5,
 "none_teachable": 0,
 "none_nosource": 60,
 "conflict": 0,
 "bank_only": 60,
-"partial_shown": 207,
-"full_nobank_pct": 76.2,
-"full_bank_sourced": 8
+"partial_shown": 219,
+"full_nobank_pct": 75.2,
+"full_bank_sourced": 7
 },
 "C1": {
 "n": 1385,
-"full": 1057,
-"partial": 226,
+"full": 1044,
+"partial": 239,
 "none": 102,
-"full_pct": 76.3,
+"full_pct": 75.4,
 "any_pct": 92.6,
-"strict_full": 789,
-"strict_pct": 57.0,
+"strict_full": 776,
+"strict_pct": 56.0,
 "none_teachable": 30,
 "none_nosource": 69,
 "conflict": 3,
 "bank_only": 72,
-"partial_shown": 212,
-"full_nobank_pct": 76.1,
-"full_bank_sourced": 3
+"partial_shown": 225,
+"full_nobank_pct": 75.2,
+"full_bank_sourced": 2
 },
 "C": {
 "n": 1314,
-"full": 1023,
-"partial": 199,
+"full": 1011,
+"partial": 211,
 "none": 92,
-"full_pct": 77.9,
+"full_pct": 76.9,
 "any_pct": 93.0,
-"strict_full": 756,
-"strict_pct": 57.5,
+"strict_full": 744,
+"strict_pct": 56.6,
 "none_teachable": 34,
 "none_nosource": 57,
 "conflict": 1,
 "bank_only": 58,
-"partial_shown": 178,
-"full_nobank_pct": 77.5,
-"full_bank_sourced": 5
+"partial_shown": 190,
+"full_nobank_pct": 76.6,
+"full_bank_sourced": 4
 },
 "D": {
 "n": 1316,
-"full": 1035,
-"partial": 203,
+"full": 1023,
+"partial": 215,
 "none": 78,
-"full_pct": 78.6,
+"full_pct": 77.7,
 "any_pct": 94.1,
-"strict_full": 756,
-"strict_pct": 57.4,
+"strict_full": 744,
+"strict_pct": 56.5,
 "none_teachable": 10,
 "none_nosource": 67,
 "conflict": 1,
 "bank_only": 68,
-"partial_shown": 177,
-"full_nobank_pct": 78.3,
-"full_bank_sourced": 5
+"partial_shown": 189,
+"full_nobank_pct": 77.4,
+"full_bank_sourced": 4
 },
 "1": {
 "n": 1127,
-"full": 887,
-"partial": 173,
+"full": 876,
+"partial": 184,
 "none": 67,
-"full_pct": 78.7,
+"full_pct": 77.7,
 "any_pct": 94.1,
-"strict_full": 629,
-"strict_pct": 55.8,
+"strict_full": 618,
+"strict_pct": 54.8,
 "none_teachable": 2,
 "none_nosource": 64,
 "conflict": 1,
 "bank_only": 65,
-"partial_shown": 172,
-"full_nobank_pct": 78.2,
-"full_bank_sourced": 6
+"partial_shown": 183,
+"full_nobank_pct": 77.3,
+"full_bank_sourced": 5
 }
 },
 "class_only": {
@@ -143,19 +143,19 @@
 },
 "A": {
 "n": 88,
-"full": 49,
-"partial": 25,
+"full": 48,
+"partial": 26,
 "none": 14,
-"full_pct": 55.7,
+"full_pct": 54.5,
 "any_pct": 84.1,
-"strict_full": 49,
-"strict_pct": 55.7,
+"strict_full": 48,
+"strict_pct": 54.5,
 "none_teachable": 0,
 "none_nosource": 14,
 "conflict": 0,
 "bank_only": 14,
-"partial_shown": 25,
-"full_nobank_pct": 50.0,
+"partial_shown": 26,
+"full_nobank_pct": 48.9,
 "full_bank_sourced": 5
 },
 "C1": {
@@ -230,54 +230,54 @@
 "topic": {
 "law": {
 "n": 901,
-"full": 692,
-"partial": 130,
+"full": 691,
+"partial": 131,
 "none": 79,
-"full_pct": 76.8,
+"full_pct": 76.7,
 "any_pct": 91.2,
-"strict_full": 690,
-"strict_pct": 76.6,
+"strict_full": 689,
+"strict_pct": 76.5,
 "none_teachable": 31,
 "none_nosource": 42,
 "conflict": 6,
 "bank_only": 48,
-"partial_shown": 88,
-"full_nobank_pct": 76.2,
+"partial_shown": 89,
+"full_nobank_pct": 76.1,
 "full_bank_sourced": 5
 },
 "signs": {
 "n": 390,
-"full": 360,
-"partial": 24,
+"full": 355,
+"partial": 29,
 "none": 6,
-"full_pct": 92.3,
+"full_pct": 91.0,
 "any_pct": 98.5,
-"strict_full": 72,
-"strict_pct": 18.5,
+"strict_full": 67,
+"strict_pct": 17.2,
 "none_teachable": 1,
 "none_nosource": 5,
 "conflict": 0,
 "bank_only": 5,
-"partial_shown": 24,
-"full_nobank_pct": 91.8,
+"partial_shown": 29,
+"full_nobank_pct": 90.5,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 400,
-"full": 223,
-"partial": 106,
+"full": 215,
+"partial": 114,
 "none": 71,
-"full_pct": 55.8,
+"full_pct": 53.8,
 "any_pct": 82.2,
-"strict_full": 223,
-"strict_pct": 55.8,
+"strict_full": 215,
+"strict_pct": 53.8,
 "none_teachable": 1,
 "none_nosource": 70,
 "conflict": 0,
 "bank_only": 70,
-"partial_shown": 100,
-"full_nobank_pct": 53.8,
-"full_bank_sourced": 8
+"partial_shown": 108,
+"full_nobank_pct": 52.0,
+"full_bank_sourced": 7
 },
 "vehicle": {
 "n": 110,
@@ -301,54 +301,54 @@
 "B": {
 "law": {
 "n": 501,
-"full": 409,
-"partial": 81,
+"full": 408,
+"partial": 82,
 "none": 11,
-"full_pct": 81.6,
+"full_pct": 81.4,
 "any_pct": 97.8,
-"strict_full": 407,
-"strict_pct": 81.2,
+"strict_full": 406,
+"strict_pct": 81.0,
 "none_teachable": 0,
 "none_nosource": 7,
 "conflict": 4,
 "bank_only": 11,
-"partial_shown": 81,
-"full_nobank_pct": 81.6,
+"partial_shown": 82,
+"full_nobank_pct": 81.4,
 "full_bank_sourced": 0
 },
 "signs": {
 "n": 360,
-"full": 332,
-"partial": 24,
+"full": 327,
+"partial": 29,
 "none": 4,
-"full_pct": 92.2,
+"full_pct": 90.8,
 "any_pct": 98.9,
-"strict_full": 71,
-"strict_pct": 19.7,
+"strict_full": 66,
+"strict_pct": 18.3,
 "none_teachable": 0,
 "none_nosource": 4,
 "conflict": 0,
 "bank_only": 4,
-"partial_shown": 24,
-"full_nobank_pct": 91.7,
+"partial_shown": 29,
+"full_nobank_pct": 90.3,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 305,
-"full": 197,
-"partial": 82,
+"full": 190,
+"partial": 89,
 "none": 26,
-"full_pct": 64.6,
+"full_pct": 62.3,
 "any_pct": 91.5,
-"strict_full": 197,
-"strict_pct": 64.6,
+"strict_full": 190,
+"strict_pct": 62.3,
 "none_teachable": 0,
 "none_nosource": 26,
 "conflict": 0,
 "bank_only": 26,
-"partial_shown": 82,
-"full_nobank_pct": 64.3,
-"full_bank_sourced": 1
+"partial_shown": 89,
+"full_nobank_pct": 62.3,
+"full_bank_sourced": 0
 },
 "vehicle": {
 "n": 106,
@@ -371,54 +371,54 @@
 "A": {
 "law": {
 "n": 429,
-"full": 344,
-"partial": 77,
+"full": 343,
+"partial": 78,
 "none": 8,
-"full_pct": 80.2,
+"full_pct": 80.0,
 "any_pct": 98.1,
-"strict_full": 342,
-"strict_pct": 79.7,
+"strict_full": 341,
+"strict_pct": 79.5,
 "none_teachable": 0,
 "none_nosource": 8,
 "conflict": 0,
 "bank_only": 8,
-"partial_shown": 77,
-"full_nobank_pct": 80.2,
+"partial_shown": 78,
+"full_nobank_pct": 80.0,
 "full_bank_sourced": 0
 },
 "signs": {
 "n": 354,
-"full": 326,
-"partial": 24,
+"full": 321,
+"partial": 29,
 "none": 4,
-"full_pct": 92.1,
+"full_pct": 90.7,
 "any_pct": 98.9,
-"strict_full": 70,
-"strict_pct": 19.8,
+"strict_full": 65,
+"strict_pct": 18.4,
 "none_teachable": 0,
 "none_nosource": 4,
 "conflict": 0,
 "bank_only": 4,
-"partial_shown": 24,
-"full_nobank_pct": 91.5,
+"partial_shown": 29,
+"full_nobank_pct": 90.1,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 312,
-"full": 185,
-"partial": 93,
+"full": 179,
+"partial": 99,
 "none": 34,
-"full_pct": 59.3,
+"full_pct": 57.4,
 "any_pct": 89.1,
-"strict_full": 185,
-"strict_pct": 59.3,
+"strict_full": 179,
+"strict_pct": 57.4,
 "none_teachable": 0,
 "none_nosource": 34,
 "conflict": 0,
 "bank_only": 34,
-"partial_shown": 93,
-"full_nobank_pct": 57.4,
-"full_bank_sourced": 6
+"partial_shown": 99,
+"full_nobank_pct": 55.8,
+"full_bank_sourced": 5
 },
 "vehicle": {
 "n": 60,
@@ -441,54 +441,54 @@
 "C1": {
 "law": {
 "n": 605,
-"full": 465,
-"partial": 92,
+"full": 464,
+"partial": 93,
 "none": 48,
-"full_pct": 76.9,
+"full_pct": 76.7,
 "any_pct": 92.1,
-"strict_full": 463,
-"strict_pct": 76.5,
+"strict_full": 462,
+"strict_pct": 76.4,
 "none_teachable": 29,
 "none_nosource": 16,
 "conflict": 3,
 "bank_only": 19,
-"partial_shown": 81,
-"full_nobank_pct": 76.9,
+"partial_shown": 82,
+"full_nobank_pct": 76.7,
 "full_bank_sourced": 0
 },
 "signs": {
 "n": 367,
-"full": 338,
-"partial": 24,
+"full": 333,
+"partial": 29,
 "none": 5,
-"full_pct": 92.1,
+"full_pct": 90.7,
 "any_pct": 98.6,
-"strict_full": 72,
-"strict_pct": 19.6,
+"strict_full": 67,
+"strict_pct": 18.3,
 "none_teachable": 1,
 "none_nosource": 4,
 "conflict": 0,
 "bank_only": 4,
-"partial_shown": 24,
-"full_nobank_pct": 91.6,
+"partial_shown": 29,
+"full_nobank_pct": 90.2,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 312,
-"full": 200,
-"partial": 83,
+"full": 193,
+"partial": 90,
 "none": 29,
-"full_pct": 64.1,
+"full_pct": 61.9,
 "any_pct": 90.7,
-"strict_full": 200,
-"strict_pct": 64.1,
+"strict_full": 193,
+"strict_pct": 61.9,
 "none_teachable": 0,
 "none_nosource": 29,
 "conflict": 0,
 "bank_only": 29,
-"partial_shown": 80,
-"full_nobank_pct": 63.8,
-"full_bank_sourced": 1
+"partial_shown": 87,
+"full_nobank_pct": 61.9,
+"full_bank_sourced": 0
 },
 "vehicle": {
 "n": 101,
@@ -511,54 +511,54 @@
 "C": {
 "law": {
 "n": 619,
-"full": 479,
-"partial": 90,
+"full": 478,
+"partial": 91,
 "none": 50,
-"full_pct": 77.4,
+"full_pct": 77.2,
 "any_pct": 91.9,
-"strict_full": 477,
-"strict_pct": 77.1,
+"strict_full": 476,
+"strict_pct": 76.9,
 "none_teachable": 32,
 "none_nosource": 17,
 "conflict": 1,
 "bank_only": 18,
-"partial_shown": 73,
-"full_nobank_pct": 77.1,
+"partial_shown": 74,
+"full_nobank_pct": 76.9,
 "full_bank_sourced": 2
 },
 "signs": {
 "n": 366,
-"full": 337,
-"partial": 24,
+"full": 332,
+"partial": 29,
 "none": 5,
-"full_pct": 92.1,
+"full_pct": 90.7,
 "any_pct": 98.6,
-"strict_full": 72,
-"strict_pct": 19.7,
+"strict_full": 67,
+"strict_pct": 18.3,
 "none_teachable": 1,
 "none_nosource": 4,
 "conflict": 0,
 "bank_only": 4,
-"partial_shown": 24,
-"full_nobank_pct": 91.5,
+"partial_shown": 29,
+"full_nobank_pct": 90.2,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 307,
-"full": 192,
-"partial": 82,
+"full": 186,
+"partial": 88,
 "none": 33,
-"full_pct": 62.5,
+"full_pct": 60.6,
 "any_pct": 89.3,
-"strict_full": 192,
-"strict_pct": 62.5,
+"strict_full": 186,
+"strict_pct": 60.6,
 "none_teachable": 1,
 "none_nosource": 32,
 "conflict": 0,
 "bank_only": 32,
-"partial_shown": 78,
-"full_nobank_pct": 62.2,
-"full_bank_sourced": 1
+"partial_shown": 84,
+"full_nobank_pct": 60.6,
+"full_bank_sourced": 0
 },
 "vehicle": {
 "n": 22,
@@ -581,54 +581,54 @@
 "D": {
 "law": {
 "n": 618,
-"full": 481,
-"partial": 95,
+"full": 480,
+"partial": 96,
 "none": 42,
-"full_pct": 77.8,
+"full_pct": 77.7,
 "any_pct": 93.2,
-"strict_full": 479,
-"strict_pct": 77.5,
+"strict_full": 478,
+"strict_pct": 77.3,
 "none_teachable": 10,
 "none_nosource": 31,
 "conflict": 1,
 "bank_only": 32,
-"partial_shown": 70,
-"full_nobank_pct": 77.5,
+"partial_shown": 71,
+"full_nobank_pct": 77.3,
 "full_bank_sourced": 2
 },
 "signs": {
 "n": 377,
-"full": 348,
-"partial": 24,
+"full": 343,
+"partial": 29,
 "none": 5,
-"full_pct": 92.3,
+"full_pct": 91.0,
 "any_pct": 98.7,
-"strict_full": 71,
-"strict_pct": 18.8,
+"strict_full": 66,
+"strict_pct": 17.5,
 "none_teachable": 0,
 "none_nosource": 5,
 "conflict": 0,
 "bank_only": 5,
-"partial_shown": 24,
-"full_nobank_pct": 91.8,
+"partial_shown": 29,
+"full_nobank_pct": 90.5,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 299,
-"full": 191,
-"partial": 81,
+"full": 185,
+"partial": 87,
 "none": 27,
-"full_pct": 63.9,
+"full_pct": 61.9,
 "any_pct": 91.0,
-"strict_full": 191,
-"strict_pct": 63.9,
+"strict_full": 185,
+"strict_pct": 61.9,
 "none_teachable": 0,
 "none_nosource": 27,
 "conflict": 0,
 "bank_only": 27,
-"partial_shown": 80,
-"full_nobank_pct": 63.5,
-"full_bank_sourced": 1
+"partial_shown": 86,
+"full_nobank_pct": 61.9,
+"full_bank_sourced": 0
 },
 "vehicle": {
 "n": 22,
@@ -651,54 +651,54 @@
 "1": {
 "law": {
 "n": 436,
-"full": 356,
-"partial": 69,
+"full": 355,
+"partial": 70,
 "none": 11,
-"full_pct": 81.7,
+"full_pct": 81.4,
 "any_pct": 97.5,
-"strict_full": 355,
-"strict_pct": 81.4,
+"strict_full": 354,
+"strict_pct": 81.2,
 "none_teachable": 2,
 "none_nosource": 8,
 "conflict": 1,
 "bank_only": 9,
-"partial_shown": 69,
-"full_nobank_pct": 81.4,
+"partial_shown": 70,
+"full_nobank_pct": 81.2,
 "full_bank_sourced": 1
 },
 "signs": {
 "n": 353,
-"full": 326,
-"partial": 24,
+"full": 321,
+"partial": 29,
 "none": 3,
-"full_pct": 92.4,
+"full_pct": 90.9,
 "any_pct": 99.2,
-"strict_full": 69,
-"strict_pct": 19.5,
+"strict_full": 64,
+"strict_pct": 18.1,
 "none_teachable": 0,
 "none_nosource": 3,
 "conflict": 0,
 "bank_only": 3,
-"partial_shown": 24,
-"full_nobank_pct": 91.8,
+"partial_shown": 29,
+"full_nobank_pct": 90.4,
 "full_bank_sourced": 2
 },
 "safety": {
 "n": 295,
-"full": 178,
-"partial": 71,
+"full": 173,
+"partial": 76,
 "none": 46,
-"full_pct": 60.3,
+"full_pct": 58.6,
 "any_pct": 84.4,
-"strict_full": 178,
-"strict_pct": 60.3,
+"strict_full": 173,
+"strict_pct": 58.6,
 "none_teachable": 0,
 "none_nosource": 46,
 "conflict": 0,
 "bank_only": 46,
-"partial_shown": 70,
-"full_nobank_pct": 59.3,
-"full_bank_sourced": 3
+"partial_shown": 75,
+"full_nobank_pct": 58.0,
+"full_bank_sourced": 2
 },
 "vehicle": {
 "n": 43,
@@ -720,15 +720,16 @@
 }
 },
 "by": {
-"hand": 639,
-"spec": 722,
-"v1.13": 30,
-"rejudge": 96,
+"hand": 636,
+"spec": 709,
+"v1.13": 29,
+"rejudge": 95,
 "sample": 221,
 "v1.14": 38,
 "v1.15": 19,
-"link": 28,
-"rebase": 8
+"link": 27,
+"v1.16": 18,
+"rebase": 9
 },
 "none_ids": {
 "B": [
@@ -856,6 +857,19 @@
 1730,
 1778
 ]
+},
+"est": {
+"k": 23,
+"n": 168,
+"rate": 13.7,
+"lo_rate": 9.3,
+"hi_rate": 19.7,
+"unchecked": 397,
+"B_full": 77.0,
+"B_strict": 56.4,
+"B_est": 72.8,
+"B_lo": 70.9,
+"B_hi": 74.1
 }
 },
 "q": {
@@ -4651,14 +4665,14 @@
 "by": "spec"
 },
 "195": {
-"v": "full",
+"v": "partial",
 "rule": [
 "parking2#r0"
 ],
 "ref": [
 "parking2#r:בדרך לא עירונית שמסומנת כדרך ראשית א"
 ],
-"why": "rule written for this question (TR:69(א))",
+"why": "TR 69(ב): only public works (and boarding, rescue) are exempt; \"רכב צה\"ל\" is not in the cited text",
 "cls": [
 "B",
 "C",
@@ -4666,7 +4680,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.16"
 },
 "196": {
 "v": "full",
@@ -6836,14 +6850,14 @@
 "by": "spec"
 },
 "310": {
-"v": "full",
+"v": "partial",
 "rule": [
 "yield2#r7"
 ],
 "ref": [
 "yield2#r:לתמרור \"עצור\" צורת מתומן כדי שיזוהה "
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "textbook p.66 explains the octagon of the stop sign only; nothing cited explains the shape of the second sign",
 "cls": [
 "1",
 "A",
@@ -6853,7 +6867,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "spec"
+"by": "v1.16"
 },
 "311": {
 "v": "full",
@@ -7824,14 +7838,14 @@
 "by": "sample"
 },
 "363": {
-"v": "full",
+"v": "partial",
 "rule": [
 "signs3#r0"
 ],
 "ref": [
 "signs3#r:תמרורי אזהרה כמו 101 (כביש משובש) ו-"
 ],
-"why": "rule written for this question (LT:101)",
+"why": "the dictionary entries say only what each sign warns of; neither \"slow down and be alert\" nor their group is in the cited text",
 "cls": [
 "1",
 "A",
@@ -7841,7 +7855,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "spec"
+"by": "v1.16"
 },
 "364": {
 "v": "full",
@@ -8468,7 +8482,7 @@
 "by": "rejudge"
 },
 "394": {
-"v": "full",
+"v": "partial",
 "rule": [
 "overtake#r5",
 "rail#r4"
@@ -8477,7 +8491,7 @@
 "overtake#r:אסור לעקוף: בראות לקויה, לפני מפגש מ",
 "rail#r:תמרורים 130, 131, 132 מזהירים ממפגש "
 ],
-"why": "TR 47(ה) no overtaking before a level crossing; sign 132 = ~100 m before it",
+"why": "TR 47(ה)(2) names the old sign number א–30; nothing cited links it to sign 132 (or the 100 m)",
 "cls": [
 "1",
 "A",
@@ -8487,7 +8501,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "rejudge"
+"by": "v1.16"
 },
 "395": {
 "v": "full",
@@ -8695,7 +8709,7 @@
 "lights2#r5"
 ],
 "ref": [
-"lights2#r:סדר מופעי הרמזור: אדום, אדום וצהוב י"
+"lights2#r:סדר מופעי הרמזור: אדום לבד, אדום וצה"
 ],
 "why": "textbook p.71-72: phase order and \"עם הופעת האור האדום\" after yellow (was: dictionary 701 only)",
 "cls": [
@@ -12160,14 +12174,14 @@
 "by": "rejudge"
 },
 "575": {
-"v": "full",
+"v": "partial",
 "rule": [
 "signs3#r6"
 ],
 "ref": [
 "signs3#r:תמרור 411 אוסר כניסה לבעלי חיים בדרך"
 ],
-"why": "rule written for this question (LT:411)",
+"why": "LT 411: entry forbidden to animals; animal-drawn carts are not in the cited entry",
 "cls": [
 "1",
 "A",
@@ -12177,7 +12191,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "spec"
+"by": "v1.16"
 },
 "576": {
 "v": "full",
@@ -12531,14 +12545,14 @@
 "by": "hand"
 },
 "593": {
-"v": "full",
+"v": "partial",
 "rule": [
 "peds#r0"
 ],
 "ref": [
 "peds#r:הולכי רגל חוצים במעבר – נותנים להם ל"
 ],
-"why": "the cited rule states the correct answer",
+"why": "peds#r0 cites TR 67 (yield at a crossing); the meaning of the pictured sign is not in the cited passage",
 "cls": [
 "1",
 "A",
@@ -12548,7 +12562,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.16"
 },
 "594": {
 "v": "partial",
@@ -16715,14 +16729,14 @@
 "by": "hand"
 },
 "805": {
-"v": "full",
+"v": "partial",
 "rule": [
 "moveoff#r10"
 ],
 "ref": [
 "moveoff#r:מרחק העצירה מושפע בעיקר מהמהירות: במ"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "p.22–23: stopping distance grows with speed; that reaction and braking distances are each shorter at low speed is not in the cited passage",
 "cls": [
 "1",
 "A",
@@ -16732,7 +16746,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.16"
 },
 "806": {
 "v": "partial",
@@ -16855,14 +16869,14 @@
 "by": "sample"
 },
 "812": {
-"v": "partial",
+"v": "full",
 "rule": [
-"distance#r3"
+"moveoff#r9"
 ],
 "ref": [
-"distance#r:מרחק התגובה תלוי בזמן התגובה של הנהג"
+"moveoff#r:מרחק התגובה – מהרגע שהנהג הבחין בסכנ"
 ],
-"why": "rule: reaction distance depends on reaction time and speed; it does not define it (from seeing the danger to reacting)",
+"why": "p.22: \"הוא המרחק שהרכב עובר מרגע שהנהג הבחין בסכנה ועד שהגיב\" – the textbook's own definition of reaction distance decides the answer",
 "cls": [
 "1",
 "A",
@@ -16872,7 +16886,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "v1.13"
+"by": "v1.16"
 },
 "813": {
 "v": "full",
@@ -16995,14 +17009,14 @@
 "by": "spec"
 },
 "819": {
-"v": "full",
+"v": "partial",
 "rule": [
 "gap2#r3"
 ],
 "ref": [
 "gap2#r:רכב נצמד אליך מאחור? האט, הגדל את הר"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "p.95: slow down to leave an escape gap ahead; the answer's \"gentle braking\" is not in the passage, and the same page also mentions speeding up",
 "cls": [
 "1",
 "A",
@@ -17012,7 +17026,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.16"
 },
 "820": {
 "v": "full",
@@ -17397,7 +17411,7 @@
 "overtake2#r5"
 ],
 "ref": [
-"overtake2#r:דרך הררית: כביש צר, עקומות חדות שמגב"
+"overtake2#r:דרך הררית: שיפועים, עקומות חדות שמגב"
 ],
 "why": "rule written for this question (OFF:textbook)",
 "cls": [
@@ -18646,14 +18660,14 @@
 "by": "spec"
 },
 "904": {
-"v": "full",
+"v": "partial",
 "rule": [
 "yield2#r4"
 ],
 "ref": [
 "yield2#r:אל תסמוך על אחרים שייתנו לך זכות קדי"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "p.62: expect others to break the right-of-way rules and be ready to give way; a vehicle already turning in the junction in front of you is not in the passage (reviewer borderline, judged strictly)",
 "cls": [
 "1",
 "A",
@@ -18663,7 +18677,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.16"
 },
 "905": {
 "v": "full",
@@ -19475,14 +19489,14 @@
 "by": "spec"
 },
 "947": {
-"v": "full",
+"v": "partial",
 "rule": [
 "turns#r7"
 ],
 "ref": [
 "turns#r:ליד עקומה חדה שדה הראייה מוגבל: אינך"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "p.50: limited view at a sharp curve; \"slow down and keep right\" is not in the passage (rule claim removed)",
 "cls": [
 "1",
 "A",
@@ -19492,7 +19506,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.16"
 },
 "948": {
 "v": "none",
@@ -20072,7 +20086,7 @@
 "signs#d702"
 ],
 "ref": [
-"lights2#r:סדר מופעי הרמזור: אדום, אדום וצהוב י",
+"lights2#r:סדר מופעי הרמזור: אדום לבד, אדום וצה",
 "signs#d702"
 ],
 "why": "sign table 702 (red + yellow together: \"היכון לנסיעה עם התחלף האור\") and the textbook light sequence red, red+yellow, green (was: none/no source)",
@@ -20165,14 +20179,16 @@
 "by": "sample"
 },
 "983": {
-"v": "full",
+"v": "partial",
 "rule": [
+"overtake2#r5",
 "overtake2#r5"
 ],
 "ref": [
-"overtake2#r:דרך הררית: כביש צר, עקומות חדות שמגב"
+"overtake2#r:דרך הררית: שיפועים, עקומות חדות שמגב",
+"overtake2#r:דרך הררית: שיפועים, עקומות חדות שמגב"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "p.106: features of winding roads; \"slow down and be especially alert\" is not in the passage (rule claim removed)",
 "cls": [
 "1",
 "A",
@@ -20182,7 +20198,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.16"
 },
 "984": {
 "v": "full",
@@ -21206,20 +21222,20 @@
 "by": "spec"
 },
 "1044": {
-"v": "full",
+"v": "partial",
 "rule": [
 "cockpit#r6"
 ],
 "ref": [
 "cockpit#r:לפני התנעה ברכב ידני: לוחצים על המצמ"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "p.20: clutch, neutral, P/N; that the parking brake is applied before starting is not in the passage (rule claim removed)",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.16"
 },
 "1045": {
 "v": "full",
@@ -25017,14 +25033,14 @@
 "by": "spec"
 },
 "1295": {
-"v": "full",
+"v": "partial",
 "rule": [
 "law4#r4"
 ],
 "ref": [
 "law4#r:בוחן או שוטר שסבור שרכב מסכן את התנו"
 ],
-"why": "rule written for this question (TR:308(א))",
+"why": "TR 308(א): notice when the vehicle may endanger traffic or fails legal conditions; air pollution is not named, and the wrong options would fit the same words",
 "cls": [
 "1",
 "A",
@@ -25034,7 +25050,7 @@
 "D"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.16"
 },
 "1296": {
 "v": "none",
@@ -28122,7 +28138,7 @@
 "ref": [
 "distance#r:מרחק התגובה תלוי בזמן התגובה של הנהג"
 ],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"why": "textbook p.96: reaction distance grows in direct proportion to speed and depends on the driver's reaction speed (re-based v1.16 from the bank question to the textbook)",
 "cls": [
 "1",
 "A",
@@ -28132,7 +28148,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "link"
+"by": "rebase"
 },
 "1490": {
 "v": "full",
@@ -28474,14 +28490,14 @@
 "by": "v1.15"
 },
 "1509": {
-"v": "full",
+"v": "partial",
 "rule": [
 "sober#r17"
 ],
 "ref": [
 "sober#r:לפני נסיעה ארוכה מתכננים את המסלול ו"
 ],
-"why": "rule written for this question (OFF:fatigue)",
+"why": "textbook: stop and rest about a quarter hour; \"long breaks\" during driving is not in the cited passage (reviewer borderline, judged strictly)",
 "cls": [
 "1",
 "A",
@@ -28491,7 +28507,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.16"
 },
 "1510": {
 "v": "partial",
@@ -29965,12 +29981,12 @@
 "ref": [
 "moto#x:Q959"
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 119(ב1): the passenger's feet on the foot-rests; TR 120(א) (both sides) now shown too",
 "cls": [
 "A"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.16"
 },
 "1596": {
 "v": "partial",
@@ -30631,19 +30647,19 @@
 "by": "hand"
 },
 "1640": {
-"v": "full",
+"v": "partial",
 "rule": [
 "moto3#r11"
 ],
 "ref": [
 "moto3#r:רואים ונראים: לא עוקפים מימין, לא \"מ"
 ],
-"why": "rule written for this question (OFF:book)",
+"why": "p.31: do not zigzag between lanes; the danger of a car swerving into the gap is not in the passage",
 "cls": [
 "A"
 ],
 "topic": "safety",
-"by": "spec"
+"by": "v1.16"
 },
 "1641": {
 "v": "full",
@@ -33414,12 +33430,12 @@
 "ref": [
 "moto#x:Q959"
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 120(א) now shown: \"כשרגליו של האדם האחר נמצאות משני צדי האופנוע\"",
 "cls": [
 "A"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.16"
 },
 "1797": {
 "v": "full",

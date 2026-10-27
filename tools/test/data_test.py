@@ -61,11 +61,16 @@ _bdr = [(k, r) for k, e in CF['q'].items() if e['v'] != 'none' for r in e['rule'
 ok(not _bdn and not _bdr, f'v1.14: a note saying the bank differs is a conflict (X) {_bdn[:5]}; no verdict cites a rule that says the bank differs {_bdr[:5]}')
 # v1.14 (review #10 N5): coverage never rests on uncited lesson-body prose
 ok(not [k for k, e in CF['q'].items() for r in e['rule'] + e['ref'] if '#b' in r], 'v1.14: no verdict cites lesson-body prose (#b units)')
-_RJ5 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v115.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
-_RJ4 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v114.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ5}
+_RJ6 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v116.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
+ok(len(_RJ6) >= 15 and all(CF['q'][q]['by'] == 'v1.16' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ6.items()),
+   f'v1.16: every re-judgement of review #12 and the strict re-sample ({len(_RJ6)}) is applied')
+_S16 = open('tools/coverage/rejudge_v116_sample.md', encoding='utf-8').read()
+ok(len(set(re.findall(r'^\| *Q?(\d+) *\|', _S16, re.M))) >= 80, 'v1.16: strict re-sample covers at least 80 further B/A full verdicts')
+_RJ5 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v115.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ6}
+_RJ4 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v114.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ5 and l.split()[0] not in _RJ6}
 ok(len(_RJ5) >= 15 and all(CF['q'][q]['by'] == 'v1.15' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ5.items()),
    f'v1.15: every re-judgement of review #11 and the strict re-sample ({len(_RJ5)}) is applied')
-_RJ = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v113.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ4 and l.split()[0] not in _RJ5}
+_RJ = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v113.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ4 and l.split()[0] not in _RJ5 and l.split()[0] not in _RJ6}
 ok(all(CF['q'][q]['by'] == 'v1.14' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none')
        and (v != 'conflict' or CF['q'][q].get('src') == 'X') for q, v in _RJ4.items()), f'v1.14: every re-judgement of review #10 ({len(_RJ4)}) is applied')
 ok(all(CF['q'][q]['by'] == 'v1.13' and (v in ('why',) or CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none')) for q, v in _RJ.items()),
@@ -491,6 +496,18 @@ _zc = [u for u, r in _units if any('בכל ריכוז' in x[1] for x in r.get('x
 _zb = [u for u, r in _units if u in _zc and not (any(x[0].startswith('TO:64ב') for x in r.get('x') or []) and 'בספר הלימוד' in r['t'] and 'הסף המחייב' in r['t'])]
 _nd = [u for u, r in _units if 'אלכוהול' in r.get('t', '') and re.search(r'נהג חדש|לנהג חדש', r.get('t', '')) and not any(x[0].startswith('TO:64ב') for x in r.get('x') or [])]
 ok(_zc and not _zb and not _nd, f'v1.16 (review #12 D1): "in any concentration" (textbook p.147) is shown only attributed and beside TO 64ב(א)(3א); every new-driver alcohol rule cites TO 64ב {_zb[:4]} {_nd[:4]}')
+
+# v1.16 (review #12 H1): the About page shows the honest class-B headline – strict first, then the full figure with the estimate –
+# from data/coverage.json 'est', in the same wording as the COVERAGE.md headline; and 'est' matches the per-class totals.
+_CJ = J('data', 'coverage.json'); _E = _CJ.get('est') or {}
+_EN = re.search(r"'ab\.covB': '([^']*)'", open(os.path.join(R, 'js', 'i18n.js'), encoding='utf-8').read().split('const en = {')[1])
+_args = [f"{float(_E.get(k, 0)):.1f}" for k in ('B_strict', 'B_full', 'B_est', 'B_lo', 'B_hi')] + [str(_E.get('k')), str(_E.get('n')), f"{float(_E.get('rate', 0)):.1f}", str(_E.get('unchecked'))]
+_about = re.sub(r'\{(\d)\}', lambda m: _args[int(m[1])], _EN[1]) if _EN else ''
+ok(bool(_about) and _about in CM, f'v1.16: About class-B headline equals the COVERAGE.md headline ({_about[:90]}…)')
+ok(_E.get('B_strict') == CA['class']['B']['strict_pct'] and _E.get('B_full') == CA['class']['B']['full_pct'] and _CJ['tot']['B'][1] == _E['B_full'] and _CJ['tot']['B'][2] == _E['B_strict']
+   and _E['B_lo'] <= _E['B_est'] <= _E['B_hi'] < _E['B_full'] and _E['B_strict'] < _E['B_lo'], 'v1.16: coverage.json estimate matches the class-B totals (strict < estimate range < full as judged)')
+_AJ = open(os.path.join(R, 'js', 'app.js'), encoding='utf-8').read()
+ok(0 < _AJ.find("t('ab.covB'") < _AJ.find("t('ab.covText'") and 'COV.tot[c][2]).toFixed(1)}% / ' in _AJ, 'v1.16: About shows the strict figure first, then the estimate next to the full figure')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

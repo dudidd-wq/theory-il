@@ -9,3 +9,4 @@
 1206|full|bus#r:אוטובוס שהיה הכרח להשאירו עומד על הדרך;bus#x:Q1206|TR 70: triangle visible from 100 m; bus outside a city at night: amber flasher or all indicators (re-based v1.10)
 328|full|tractor#r:דרגת הרישיון לטרקטור: דרגה 1.|TR 179: a class 1 licence is for a tractor (re-based v1.10)
 1664|full|tractor#r:גרור מעל 4,000 ק"ג – רק אחרי שישה חו|TR 39ו(א): trailer over 4,000 kg only 6 months after the licence (re-based v1.10)
+1489|full|distance#r:מרחק התגובה תלוי בזמן התגובה של הנהג|textbook p.96: reaction distance grows in direct proportion to speed and depends on the driver's reaction speed (re-based v1.16 from the bank question to the textbook)

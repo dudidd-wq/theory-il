@@ -20,10 +20,14 @@ sect('## Class-only questions', [row(L[c], d['class_only'][c]) for c in L if c i
 sect('## Per topic', [row(t, d['topic'][t]) for t in ['law', 'signs', 'safety', 'vehicle'] if t in d['topic']])
 # headline paragraph, generated from the same figures (v1.11, review #8: no hand-copied numbers)
 a, C = d['all'], d['class']; pc = lambda x, n: f'{100 * x / n:.1f}%'
-hl = (f"**Headline (v1.15.0, whole bank, every question judged; strict figure first, as reviews #9–#11 asked):** of all **{a['n']:,}** questions, **{a['strict_pct']:.1f}% strict full** "
-      f"(a sign-dictionary meaning is not counted as teaching; v1.13 + v1.14 + v1.15 strict re-judgements applied, [rejudge_v113_sample.md](../tools/coverage/rejudge_v113_sample.md), [rejudge_v114_sample.md](../tools/coverage/rejudge_v114_sample.md), [rejudge_v115_sample.md](../tools/coverage/rejudge_v115_sample.md); lesson-body prose never counts), "
+E = d['est']
+# the same sentence is rendered on the About page (js/i18n.js 'ab.covB', filled from data/coverage.json 'est'); data_test checks they match
+B_HEADLINE_EN = lambda E: (f"Class B: {E['B_strict']:.1f}% strict full; {E['B_full']:.1f}% full as judged is an upper bound – estimated ≈{E['B_est']:.1f}% ({E['B_lo']:.1f}–{E['B_hi']:.1f}%) "
+                           f"after the strict re-samples ({E['k']} of {E['n']} downgraded, {E['rate']:.1f}%, applied to the {E['unchecked']} B full verdicts never checked strictly).")
+hl = (f"**Headline (v1.16.0, whole bank, every question judged; strict figure first, as reviews #9–#12 asked):** of all **{a['n']:,}** questions, **{a['strict_pct']:.1f}% strict full** "
+      f"(a sign-dictionary meaning is not counted as teaching; v1.13–v1.16 strict re-judgements applied, [rejudge_v113_sample.md](../tools/coverage/rejudge_v113_sample.md), [rejudge_v114_sample.md](../tools/coverage/rejudge_v114_sample.md), [rejudge_v115_sample.md](../tools/coverage/rejudge_v115_sample.md), [rejudge_v116_sample.md](../tools/coverage/rejudge_v116_sample.md); lesson-body prose never counts), "
       f"**{a['full_pct']:.1f}% full** as judged, **{a['any_pct']:.1f}% full or partial**. "
-      f"**Class B: {C['B']['strict_pct']:.1f}% strict full, {C['B']['full_pct']:.1f}% full as judged** – an upper bound: the v1.15 strict re-sample downgraded 11 of 84 not-yet-checked full verdicts (13.1%, 95% interval 7.5–21.9%); applied to the 506 B full verdicts never strictly sampled this gives an estimated **≈72.9% B full (≈69–75%)**, in line with review #11's estimate of 72–76%. "
+      f"**{B_HEADLINE_EN(E)}** Review #12's own estimate was ≈74% (72–76%). "
       f"**Without bank-sourced rules: {a['full_nobank_pct']:.1f}% full** (B {C['B']['full_nobank_pct']:.1f}%, A {C['A']['full_nobank_pct']:.1f}%; see below). "
       f"**Bank answer contradicts the law ('סתירה בין המאגר לחוק'): {a['conflict']}** (" + ', '.join('Q' + k for k, e in sorted(CF['q'].items(), key=lambda x: int(x[0])) if e.get('src') == 'X') + "; neither full nor cited, shown only in a bank lesson next to the law text). "
       f"**Taught from the official bank only, no official explanation: {a['bank_only']}** questions (" + ', '.join(f"{'tractor' if c == '1' else c} {C[c]['bank_only']}" for c in L) + "); these are *not* counted as full or partial. "
