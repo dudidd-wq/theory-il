@@ -4,123 +4,123 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1313,
+"full": 1312,
 "partial": 309,
-"none": 179,
-"full_pct": 72.9,
-"any_pct": 90.1,
-"strict_full": 1023,
-"strict_pct": 56.8,
+"none": 180,
+"full_pct": 72.8,
+"any_pct": 90.0,
+"strict_full": 1024,
+"strict_pct": 56.9,
 "none_teachable": 33,
-"none_nosource": 140,
+"none_nosource": 141,
 "conflict": 6,
-"bank_only": 146,
+"bank_only": 147,
 "partial_shown": 260,
 "full_nobank_pct": 72.1,
-"full_bank_sourced": 14
+"full_bank_sourced": 13
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 976,
+"full": 975,
 "partial": 234,
-"none": 62,
+"none": 63,
 "full_pct": 76.7,
-"any_pct": 95.1,
-"strict_full": 713,
+"any_pct": 95.0,
+"strict_full": 714,
 "strict_pct": 56.1,
 "none_teachable": 0,
-"none_nosource": 58,
+"none_nosource": 59,
 "conflict": 4,
-"bank_only": 62,
+"bank_only": 63,
 "partial_shown": 234,
 "full_nobank_pct": 76.6,
-"full_bank_sourced": 2
+"full_bank_sourced": 1
 },
 "A": {
 "n": 1155,
-"full": 874,
+"full": 873,
 "partial": 220,
-"none": 61,
-"full_pct": 75.7,
-"any_pct": 94.7,
-"strict_full": 616,
-"strict_pct": 53.3,
+"none": 62,
+"full_pct": 75.6,
+"any_pct": 94.6,
+"strict_full": 617,
+"strict_pct": 53.4,
 "none_teachable": 0,
-"none_nosource": 61,
+"none_nosource": 62,
 "conflict": 0,
-"bank_only": 61,
+"bank_only": 62,
 "partial_shown": 220,
 "full_nobank_pct": 75.1,
-"full_bank_sourced": 7
+"full_bank_sourced": 6
 },
 "C1": {
 "n": 1385,
-"full": 1040,
+"full": 1039,
 "partial": 242,
-"none": 103,
-"full_pct": 75.1,
-"any_pct": 92.6,
-"strict_full": 772,
-"strict_pct": 55.7,
+"none": 104,
+"full_pct": 75.0,
+"any_pct": 92.5,
+"strict_full": 773,
+"strict_pct": 55.8,
 "none_teachable": 30,
-"none_nosource": 70,
+"none_nosource": 71,
 "conflict": 3,
-"bank_only": 73,
+"bank_only": 74,
 "partial_shown": 228,
 "full_nobank_pct": 74.9,
-"full_bank_sourced": 2
+"full_bank_sourced": 1
 },
 "C": {
 "n": 1314,
-"full": 1008,
+"full": 1007,
 "partial": 213,
-"none": 93,
-"full_pct": 76.7,
-"any_pct": 92.9,
-"strict_full": 741,
-"strict_pct": 56.4,
+"none": 94,
+"full_pct": 76.6,
+"any_pct": 92.8,
+"strict_full": 742,
+"strict_pct": 56.5,
 "none_teachable": 34,
-"none_nosource": 58,
+"none_nosource": 59,
 "conflict": 1,
-"bank_only": 59,
+"bank_only": 60,
 "partial_shown": 192,
 "full_nobank_pct": 76.4,
-"full_bank_sourced": 4
+"full_bank_sourced": 3
 },
 "D": {
 "n": 1316,
-"full": 1021,
+"full": 1020,
 "partial": 217,
-"none": 78,
-"full_pct": 77.6,
-"any_pct": 94.1,
-"strict_full": 742,
-"strict_pct": 56.4,
+"none": 79,
+"full_pct": 77.5,
+"any_pct": 94.0,
+"strict_full": 743,
+"strict_pct": 56.5,
 "none_teachable": 9,
-"none_nosource": 68,
+"none_nosource": 69,
 "conflict": 1,
-"bank_only": 69,
+"bank_only": 70,
 "partial_shown": 191,
 "full_nobank_pct": 77.3,
-"full_bank_sourced": 4
+"full_bank_sourced": 3
 },
 "1": {
 "n": 1127,
-"full": 871,
+"full": 870,
 "partial": 188,
-"none": 68,
-"full_pct": 77.3,
-"any_pct": 94.0,
-"strict_full": 613,
-"strict_pct": 54.4,
+"none": 69,
+"full_pct": 77.2,
+"any_pct": 93.9,
+"strict_full": 614,
+"strict_pct": 54.5,
 "none_teachable": 2,
-"none_nosource": 65,
+"none_nosource": 66,
 "conflict": 1,
-"bank_only": 66,
+"bank_only": 67,
 "partial_shown": 186,
 "full_nobank_pct": 76.8,
-"full_bank_sourced": 5
+"full_bank_sourced": 4
 }
 },
 "class_only": {
@@ -247,20 +247,20 @@
 },
 "signs": {
 "n": 390,
-"full": 355,
-"partial": 29,
-"none": 6,
-"full_pct": 91.0,
-"any_pct": 98.5,
+"full": 353,
+"partial": 30,
+"none": 7,
+"full_pct": 90.5,
+"any_pct": 98.2,
 "strict_full": 67,
 "strict_pct": 17.2,
 "none_teachable": 1,
-"none_nosource": 5,
+"none_nosource": 6,
 "conflict": 0,
-"bank_only": 5,
-"partial_shown": 29,
-"full_nobank_pct": 90.5,
-"full_bank_sourced": 2
+"bank_only": 6,
+"partial_shown": 30,
+"full_nobank_pct": 90.3,
+"full_bank_sourced": 1
 },
 "safety": {
 "n": 400,
@@ -281,19 +281,19 @@
 },
 "vehicle": {
 "n": 110,
-"full": 56,
-"partial": 32,
+"full": 57,
+"partial": 31,
 "none": 22,
-"full_pct": 50.9,
+"full_pct": 51.8,
 "any_pct": 80.0,
-"strict_full": 56,
-"strict_pct": 50.9,
+"strict_full": 57,
+"strict_pct": 51.8,
 "none_teachable": 0,
 "none_nosource": 22,
 "conflict": 0,
 "bank_only": 22,
-"partial_shown": 32,
-"full_nobank_pct": 50.9,
+"partial_shown": 31,
+"full_nobank_pct": 51.8,
 "full_bank_sourced": 0
 }
 },
@@ -318,20 +318,20 @@
 },
 "signs": {
 "n": 360,
-"full": 327,
-"partial": 29,
-"none": 4,
-"full_pct": 90.8,
-"any_pct": 98.9,
+"full": 325,
+"partial": 30,
+"none": 5,
+"full_pct": 90.3,
+"any_pct": 98.6,
 "strict_full": 66,
 "strict_pct": 18.3,
 "none_teachable": 0,
-"none_nosource": 4,
+"none_nosource": 5,
 "conflict": 0,
-"bank_only": 4,
-"partial_shown": 29,
-"full_nobank_pct": 90.3,
-"full_bank_sourced": 2
+"bank_only": 5,
+"partial_shown": 30,
+"full_nobank_pct": 90.0,
+"full_bank_sourced": 1
 },
 "safety": {
 "n": 305,
@@ -352,19 +352,19 @@
 },
 "vehicle": {
 "n": 106,
-"full": 54,
-"partial": 32,
+"full": 55,
+"partial": 31,
 "none": 20,
-"full_pct": 50.9,
+"full_pct": 51.9,
 "any_pct": 81.1,
-"strict_full": 54,
-"strict_pct": 50.9,
+"strict_full": 55,
+"strict_pct": 51.9,
 "none_teachable": 0,
 "none_nosource": 20,
 "conflict": 0,
 "bank_only": 20,
-"partial_shown": 32,
-"full_nobank_pct": 50.9,
+"partial_shown": 31,
+"full_nobank_pct": 51.9,
 "full_bank_sourced": 0
 }
 },
@@ -388,20 +388,20 @@
 },
 "signs": {
 "n": 354,
-"full": 321,
-"partial": 29,
-"none": 4,
-"full_pct": 90.7,
-"any_pct": 98.9,
+"full": 319,
+"partial": 30,
+"none": 5,
+"full_pct": 90.1,
+"any_pct": 98.6,
 "strict_full": 65,
 "strict_pct": 18.4,
 "none_teachable": 0,
-"none_nosource": 4,
+"none_nosource": 5,
 "conflict": 0,
-"bank_only": 4,
-"partial_shown": 29,
-"full_nobank_pct": 90.1,
-"full_bank_sourced": 2
+"bank_only": 5,
+"partial_shown": 30,
+"full_nobank_pct": 89.8,
+"full_bank_sourced": 1
 },
 "safety": {
 "n": 312,
@@ -422,19 +422,19 @@
 },
 "vehicle": {
 "n": 60,
-"full": 33,
-"partial": 13,
+"full": 34,
+"partial": 12,
 "none": 14,
-"full_pct": 55.0,
+"full_pct": 56.7,
 "any_pct": 76.7,
-"strict_full": 33,
-"strict_pct": 55.0,
+"strict_full": 34,
+"strict_pct": 56.7,
 "none_teachable": 0,
 "none_nosource": 14,
 "conflict": 0,
 "bank_only": 14,
-"partial_shown": 13,
-"full_nobank_pct": 55.0,
+"partial_shown": 12,
+"full_nobank_pct": 56.7,
 "full_bank_sourced": 0
 }
 },
@@ -458,20 +458,20 @@
 },
 "signs": {
 "n": 367,
-"full": 333,
-"partial": 29,
-"none": 5,
-"full_pct": 90.7,
-"any_pct": 98.6,
+"full": 331,
+"partial": 30,
+"none": 6,
+"full_pct": 90.2,
+"any_pct": 98.4,
 "strict_full": 67,
 "strict_pct": 18.3,
 "none_teachable": 1,
-"none_nosource": 4,
+"none_nosource": 5,
 "conflict": 0,
-"bank_only": 4,
-"partial_shown": 29,
-"full_nobank_pct": 90.2,
-"full_bank_sourced": 2
+"bank_only": 5,
+"partial_shown": 30,
+"full_nobank_pct": 89.9,
+"full_bank_sourced": 1
 },
 "safety": {
 "n": 312,
@@ -492,19 +492,19 @@
 },
 "vehicle": {
 "n": 101,
-"full": 53,
-"partial": 28,
+"full": 54,
+"partial": 27,
 "none": 20,
-"full_pct": 52.5,
+"full_pct": 53.5,
 "any_pct": 80.2,
-"strict_full": 53,
-"strict_pct": 52.5,
+"strict_full": 54,
+"strict_pct": 53.5,
 "none_teachable": 0,
 "none_nosource": 20,
 "conflict": 0,
 "bank_only": 20,
-"partial_shown": 28,
-"full_nobank_pct": 52.5,
+"partial_shown": 27,
+"full_nobank_pct": 53.5,
 "full_bank_sourced": 0
 }
 },
@@ -528,20 +528,20 @@
 },
 "signs": {
 "n": 366,
-"full": 332,
-"partial": 29,
-"none": 5,
-"full_pct": 90.7,
-"any_pct": 98.6,
+"full": 330,
+"partial": 30,
+"none": 6,
+"full_pct": 90.2,
+"any_pct": 98.4,
 "strict_full": 67,
 "strict_pct": 18.3,
 "none_teachable": 1,
-"none_nosource": 4,
+"none_nosource": 5,
 "conflict": 0,
-"bank_only": 4,
-"partial_shown": 29,
-"full_nobank_pct": 90.2,
-"full_bank_sourced": 2
+"bank_only": 5,
+"partial_shown": 30,
+"full_nobank_pct": 89.9,
+"full_bank_sourced": 1
 },
 "safety": {
 "n": 307,
@@ -562,19 +562,19 @@
 },
 "vehicle": {
 "n": 22,
-"full": 15,
-"partial": 3,
+"full": 16,
+"partial": 2,
 "none": 4,
-"full_pct": 68.2,
+"full_pct": 72.7,
 "any_pct": 81.8,
-"strict_full": 15,
-"strict_pct": 68.2,
+"strict_full": 16,
+"strict_pct": 72.7,
 "none_teachable": 0,
 "none_nosource": 4,
 "conflict": 0,
 "bank_only": 4,
-"partial_shown": 3,
-"full_nobank_pct": 68.2,
+"partial_shown": 2,
+"full_nobank_pct": 72.7,
 "full_bank_sourced": 0
 }
 },
@@ -598,20 +598,20 @@
 },
 "signs": {
 "n": 377,
-"full": 343,
-"partial": 29,
-"none": 5,
-"full_pct": 91.0,
-"any_pct": 98.7,
+"full": 341,
+"partial": 30,
+"none": 6,
+"full_pct": 90.5,
+"any_pct": 98.4,
 "strict_full": 66,
 "strict_pct": 17.5,
 "none_teachable": 0,
-"none_nosource": 5,
+"none_nosource": 6,
 "conflict": 0,
-"bank_only": 5,
-"partial_shown": 29,
-"full_nobank_pct": 90.5,
-"full_bank_sourced": 2
+"bank_only": 6,
+"partial_shown": 30,
+"full_nobank_pct": 90.2,
+"full_bank_sourced": 1
 },
 "safety": {
 "n": 299,
@@ -632,19 +632,19 @@
 },
 "vehicle": {
 "n": 22,
-"full": 15,
-"partial": 3,
+"full": 16,
+"partial": 2,
 "none": 4,
-"full_pct": 68.2,
+"full_pct": 72.7,
 "any_pct": 81.8,
-"strict_full": 15,
-"strict_pct": 68.2,
+"strict_full": 16,
+"strict_pct": 72.7,
 "none_teachable": 0,
 "none_nosource": 4,
 "conflict": 0,
 "bank_only": 4,
-"partial_shown": 3,
-"full_nobank_pct": 68.2,
+"partial_shown": 2,
+"full_nobank_pct": 72.7,
 "full_bank_sourced": 0
 }
 },
@@ -668,20 +668,20 @@
 },
 "signs": {
 "n": 353,
-"full": 321,
-"partial": 29,
-"none": 3,
-"full_pct": 90.9,
-"any_pct": 99.2,
+"full": 319,
+"partial": 30,
+"none": 4,
+"full_pct": 90.4,
+"any_pct": 98.9,
 "strict_full": 64,
 "strict_pct": 18.1,
 "none_teachable": 0,
-"none_nosource": 3,
+"none_nosource": 4,
 "conflict": 0,
-"bank_only": 3,
-"partial_shown": 29,
-"full_nobank_pct": 90.4,
-"full_bank_sourced": 2
+"bank_only": 4,
+"partial_shown": 30,
+"full_nobank_pct": 90.1,
+"full_bank_sourced": 1
 },
 "safety": {
 "n": 295,
@@ -702,34 +702,34 @@
 },
 "vehicle": {
 "n": 43,
-"full": 26,
-"partial": 10,
+"full": 27,
+"partial": 9,
 "none": 7,
-"full_pct": 60.5,
+"full_pct": 62.8,
 "any_pct": 83.7,
-"strict_full": 26,
-"strict_pct": 60.5,
+"strict_full": 27,
+"strict_pct": 62.8,
 "none_teachable": 0,
 "none_nosource": 7,
 "conflict": 0,
 "bank_only": 7,
-"partial_shown": 10,
-"full_nobank_pct": 60.5,
+"partial_shown": 9,
+"full_nobank_pct": 62.8,
 "full_bank_sourced": 0
 }
 }
 },
 "by": {
-"hand": 630,
+"hand": 628,
 "spec": 699,
 "v1.13": 29,
-"rejudge": 94,
+"rejudge": 93,
 "sample": 216,
-"v1.18": 16,
+"v1.18": 20,
 "v1.14": 37,
 "v1.15": 18,
 "v1.17": 7,
-"link": 27,
+"link": 26,
 "v1.16": 19,
 "rebase": 9
 },
@@ -744,6 +744,7 @@
 330,
 333,
 520,
+606,
 611,
 699,
 708,
@@ -803,6 +804,7 @@
 257,
 281,
 520,
+606,
 611,
 699,
 708,
@@ -868,11 +870,11 @@
 "rate": 13.7,
 "lo_rate": 9.3,
 "hi_rate": 19.7,
-"unchecked": 394,
+"unchecked": 396,
 "B_full": 76.7,
 "B_strict": 56.1,
-"B_est": 72.5,
-"B_lo": 70.6,
+"B_est": 72.4,
+"B_lo": 70.5,
 "B_hi": 73.8
 }
 },
@@ -8093,15 +8095,14 @@
 "by": "rejudge"
 },
 "375": {
-"v": "full",
-"dict": true,
+"v": "partial",
 "rule": [
-"signs#d306"
+"signs#x0"
 ],
 "ref": [
-"signs#d306"
+"signs#x:Q384"
 ],
-"why": "as 384",
+"why": "review #14 borderline: LT:135 (crossing ahead) and LT:306 (yield at the marked crossing) are cited, but that 306 is the sign placed after 135 is an inference, not written",
 "cls": [
 "1",
 "A",
@@ -8111,7 +8112,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "rejudge"
+"by": "v1.18"
 },
 "376": {
 "v": "full",
@@ -9732,14 +9733,15 @@
 },
 "454": {
 "v": "full",
-"dict": true,
 "rule": [
-"signs#d132"
+"rail#r4",
+"rail2#r0"
 ],
 "ref": [
-"signs#d132"
+"rail#r:תמרורים 130, 131, 132 מזהירים ממפגש ",
+"rail2#r:לפני מפגש מסילת ברזל חייבים להאט, גם"
 ],
-"why": "official sign meaning (sign dictionary, gov.il)",
+"why": "sign 132: rail crossing in ~100 m (LT:132) + textbook p.82 \"חייב להאט את מהירות רכבו עד כדי אפשרות לעצור לפני המסילה\" (was a dictionary verdict without a cited behaviour; review #14 borderline)",
 "cls": [
 "1",
 "A",
@@ -9749,7 +9751,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "hand"
+"by": "v1.18"
 },
 "455": {
 "v": "full",
@@ -12813,14 +12815,11 @@
 "by": "hand"
 },
 "606": {
-"v": "full",
-"rule": [
-"signs#r9"
-],
-"ref": [
-"signs#r:צורתם של תמרורי אזהרה היא בדרך כלל מ"
-],
-"why": "rule written for this question (explicit citation / worked example / same sign picture)",
+"v": "none",
+"rule": [],
+"ref": [],
+"why": "review #14: its only rule (signs#r9) is sourced to the bank answer itself (s=Q:606); no official text states the warning-sign shape (it is only drawn in the sign table, textbook and MoE booklets searched) – shown as the bank's answer, not counted as taught",
+"src": "S",
 "cls": [
 "1",
 "A",
@@ -12830,7 +12829,7 @@
 "D"
 ],
 "topic": "signs",
-"by": "link"
+"by": "v1.18"
 },
 "607": {
 "v": "full",
@@ -31698,14 +31697,14 @@
 "by": "sample"
 },
 "1702": {
-"v": "partial",
+"v": "full",
 "rule": [
-"vehicle#r9"
+"brakes3#r5"
 ],
 "ref": [
-"vehicle#r:ABS מונע נעילת גלגלים בבלימה חזקה: ל"
+"brakes3#r:ABS מונעת את נעילת הגלגלים בבלימה, ו"
 ],
-"why": "ABS use",
+"why": "edu18 p.8 \"בזמן כניסתה של המערכת לפעולה יישמעו נקישות ויורגש רטט בדוושת הבלם\" (was partial on vehicle#r9; review #14 D7)",
 "cls": [
 "1",
 "A",
@@ -31715,7 +31714,7 @@
 "D"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.18"
 },
 "1703": {
 "v": "full",

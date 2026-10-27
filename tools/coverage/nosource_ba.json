@@ -38,6 +38,11 @@
   }
  },
  "q": {
+  "606": {
+   "g": "law",
+   "note": "warning-sign shape (triangle, apex up): drawn in the sign table but not stated in any official text; textbook, MoE booklets and sign-table prose searched; the rule signs#r9 is the bank answer, labelled so (v1.18, review #14)",
+   "cls": "BA"
+  },
   "520": {
    "g": "law",
    "note": "urban-area guide sign: meaning not stated in the sign table entries or any rule (v1.9 re-judgement; was gallery tile only)",

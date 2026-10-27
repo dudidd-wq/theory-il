@@ -16,3 +16,7 @@
 1527 full +cargo#r1 | twin of Q1335
 992 full +safety2#r10 +vehicle#r9 | twin of Q1001: textbook p.140 "ומאפשרת היגוי" and the ABS chip "מעניקה שליטה לנהג על מערכות ההיגוי ומונעת … נעילת גלגלים … בלימה חזקה" (was partial in v1.15: chip then lacked the steering clause; reviewer #14 D7)
 1001 full +safety2#r10 +vehicle#r9 | twin of Q992
+606 none-S | review #14: its only rule (signs#r9) is sourced to the bank answer itself (s=Q:606); no official text states the warning-sign shape (it is only drawn in the sign table, textbook and MoE booklets searched) – shown as the bank's answer, not counted as taught
+454 full +rail#r4 +rail2#r0 | sign 132: rail crossing in ~100 m (LT:132) + textbook p.82 "חייב להאט את מהירות רכבו עד כדי אפשרות לעצור לפני המסילה" (was a dictionary verdict without a cited behaviour; review #14 borderline)
+375 partial +signs#x0 | review #14 borderline: LT:135 (crossing ahead) and LT:306 (yield at the marked crossing) are cited, but that 306 is the sign placed after 135 is an inference, not written
+1702 full +brakes3#r5 | edu18 p.8 "בזמן כניסתה של המערכת לפעולה יישמעו נקישות ויורגש רטט בדוושת הבלם" (was partial on vehicle#r9; review #14 D7)
