@@ -485,6 +485,12 @@ ok(not _pp, f'v1.15 (review #11 C5): no passage shows a repealed item as "((בו
 _CF = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'data', 'coverage_full.json'), encoding='utf-8'))['q']
 _bs = [l['id'] for l in _LJ['lessons'] if l['id'].startswith('bank_') and (any(_CF.get(str(q), {}).get('src') == 'X' for q in l['bank']) != ('סותרת את נוסח החוק' in l['sub']))]
 ok(not _bs and all('אין להן הסבר רשמי או מקור חוקי' not in l.get('sub', '') for l in _LJ['lessons']), f'v1.15 (review #11 C5): bank-lesson subtitles mention the law conflict exactly when they hold one {_bs}')
+# v1.16 (review #12 D1): textbook wording that is stricter than the pinned law is shown attributed, next to the law
+_units = [(f"{l['id']}#r{i}", r) for l in LB.values() for i, r in enumerate(l.get('rules') or [])] + [(f"{l['id']}#x{i}", e) for l in LB.values() for i, e in enumerate(l.get('ex') or [])]
+_zc = [u for u, r in _units if any('בכל ריכוז' in x[1] for x in r.get('x') or []) or 'בכל ריכוז' in r.get('t', '')]
+_zb = [u for u, r in _units if u in _zc and not (any(x[0].startswith('TO:64ב') for x in r.get('x') or []) and 'בספר הלימוד' in r['t'] and 'הסף המחייב' in r['t'])]
+_nd = [u for u, r in _units if 'אלכוהול' in r.get('t', '') and re.search(r'נהג חדש|לנהג חדש', r.get('t', '')) and not any(x[0].startswith('TO:64ב') for x in r.get('x') or [])]
+ok(_zc and not _zb and not _nd, f'v1.16 (review #12 D1): "in any concentration" (textbook p.147) is shown only attributed and beside TO 64ב(א)(3א); every new-driver alcohol rule cites TO 64ב {_zb[:4]} {_nd[:4]}')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

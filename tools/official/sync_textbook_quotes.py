@@ -15,7 +15,10 @@ def C(front, back, src, *checks):
 lessons_v16.lessons(R, C)
 for v in lessons_v16.EXAMPLES16.values():
     for e in v:
-        if e[2] == 'OFF:textbook': Q.extend(e[3:])
+        kw = e[-1] if isinstance(e[-1], dict) else {}
+        e = e[:-1] if kw else e
+        for s_, c in [(e[2], e[3:])] + list(kw.get('also', [])):
+            if s_ == 'OFF:textbook': Q.extend(c)
 for v in lessons_v16.NOTES16.values():
     if v[1] == 'OFF:textbook': Q.extend(v[2])
 import lessons_spec

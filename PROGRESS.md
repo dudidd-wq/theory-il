@@ -200,3 +200,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - v1.15 item 7 (review #11 tap targets): widget controls ≥24px – the sign-dictionary search (signs/signs3, was 21px high) now 44px, checkboxes 24px (.check and widget), range sliders 32px; measured 0 controls under 24px in signs/signs3/speed/rules3/moto3 at 390px; new e2e check.
 - v1.15.0 (review #11): release – COVERAGE v1.15 paragraph + test bullets, SW VERSION 1.15.0; data_test pass; local e2e 278/0 (06:07 UTC+2)
 - v1.15.0 live e2e (github.io): 278 passed / 0 failed (06:2x UTC+2)
+- v1.16 D1: alc2#r0/x0 (Q309) states the law first – TR 169א 240µg/50mg and TO 64ב(א)(3א) 50µg/10mg for new/<24/public/heavy – and shows textbook p.147 'בכל ריכוז שהוא' attributed as a simplification; sober#r14 chip now starts at (3א); alc2#r4 '24h suspension' tied to TR 169ו(ב); scan of textbook number/absolute claims vs law found no other contradiction; data_test D1 check
