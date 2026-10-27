@@ -46,13 +46,17 @@ export function cleanState(raw) {
   } : null;
   if (isObj(raw.q)) { let n = 0; for (const k of keys(raw.q)) { if (++n > 5000) break; const v = raw.q[k], id = +k;
     if (!int(id, 1, 99999, 0) || !Array.isArray(v) || v.length !== 5) continue;
-    const r = [int(v[0], 0, 5, 0), int(v[1], 0, D, 0), int(v[2], 0, 1e5, 0), int(v[3], 0, 1e5, 0), int(v[4], 0, D, 0)];
+    const r = [int(v[0], 0, 5, 0), int(v[1], 0, 1e6, 0), int(v[2], 0, 1e5, 0), int(v[3], 0, 1e5, 0), int(v[4], 0, D, 0)];
     r[3] = Math.min(r[3], r[2]); s.q[id] = r; } }
   if (Array.isArray(raw.bm)) s.bm = [...new Set(raw.bm.slice(0, 2000).filter(x => int(x, 1, 99999, 0)))];
   if (Array.isArray(raw.ex)) s.ex = raw.ex.slice(-200).filter(Array.isArray).map(e => [int(e[0], 0, 1e13, 0), CLASSES.includes(e[1]) ? e[1] : 'B', int(e[2], 0, 30, 0), int(e[3], 0, 86400, 0), LANGS.includes(e[4]) ? e[4] : 'he', Array.isArray(e[5]) ? e[5].slice(0, 30).filter(x => int(x, 1, 99999, 0)) : []]).filter(e => e[0]);
   if (isObj(raw.days)) { let n = 0; for (const k of keys(raw.days)) { if (++n > 4000) break; const v = raw.days[k]; if (int(+k, 1, D, 0) && Array.isArray(v)) { const a = int(v[0], 0, 1e5, 0); s.days[+k] = [a, Math.min(a, int(v[1], 0, 1e5, 0))]; } } }
   if (isObj(raw.badges)) for (const k of keys(raw.badges)) if (/^[a-z0-9]{1,16}$/.test(k)) s.badges[k] = int(raw.badges[k], 0, 1e13, 0);
   if (isObj(raw.les)) for (const k of keys(raw.les).slice(0, 200)) { const v = raw.les[k]; if (/^[a-z0-9]{1,16}$/.test(k) && Array.isArray(v) && v.length === 3) s.les[k] = [int(v[0], 0, 1e13, 0), int(v[1], 0, 100, 0), int(v[2], 0, 1e5, 0)]; }
+  // v1.22: ticked rules and sign flashcards
+  if (isObj(raw.kn)) for (const k of keys(raw.kn).slice(0, 300)) { const v = raw.kn[k]; if (/^[a-z0-9_]{1,24}$/.test(k) && Array.isArray(v)) { const a = [...new Set(v.filter(x => int(x, 0, 999, -1) >= 0))].sort((x, y) => x - y).slice(0, 1000); if (a.length) s.kn[k] = a; } }
+  if (isObj(raw.fc)) { let n = 0; for (const k of keys(raw.fc)) { if (++n > 2000) break; const v = raw.fc[k];
+    if (/^[0-9]{1,4}[a-z]?$/.test(k) && Array.isArray(v) && v.length === 4) { const r = [int(v[0], 0, 5, 0), int(v[1], 0, 1e6, 0), int(v[2], 0, 1e5, 0), int(v[3], 0, 1e5, 0)]; r[3] = Math.min(r[3], r[2]); s.fc[k] = r; } } }
   s.fz = int(raw.fz, 0, 2, 0);
   if (Array.isArray(raw.frz)) s.frz = raw.frz.slice(-60).filter(x => int(x, 1, D, 0));
   s.xp = int(Math.round(raw.xp || 0), 0, 1e8, 0); s.created = int(raw.created, 0, 1e13, Date.now());
@@ -111,7 +115,7 @@ export async function readFile(file) {
 
 // ---------- restore (keeps an undo copy in IndexedDB) ----------
 /** merge two progress states (pure). Per question the record with the later last-answer time wins;
- *  bookmarks, exams, freeze days are unions; per day / lesson the larger counts win; xp, freezes = max.
+ *  bookmarks, exams, freeze days, 'I know' ticks are unions; flashcards: the more-seen record; per day / lesson the larger counts win; xp, freezes = max.
  *  The current profile (class, language, settings) is kept; the backup's is used only when this device has none. */
 export function mergeStates(cur, inc) {
   const a = { ...blank(), ...cur }, b = { ...blank(), ...inc }, o = { ...a };
@@ -124,6 +128,9 @@ export function mergeStates(cur, inc) {
   o.badges = { ...b.badges, ...a.badges }; for (const [k, ts] of Object.entries(b.badges || {})) if (a.badges?.[k]) o.badges[k] = Math.min(a.badges[k], ts);
   o.les = { ...a.les }; for (const [id, r] of Object.entries(b.les || {})) { const m = o.les[id];
     o.les[id] = m ? [m[0] && r[0] ? Math.min(m[0], r[0]) : (m[0] || r[0]), Math.max(m[1], r[1]), Math.max(m[2], r[2])] : r; }
+  // v1.22: 'I know' ticks are a union per lesson; per flashcard the record seen more often wins (then the later due day)
+  o.kn = { ...a.kn }; for (const [id, v] of Object.entries(b.kn || {})) o.kn[id] = [...new Set([...(o.kn[id] || []), ...v])].sort((x, y) => x - y);
+  o.fc = { ...a.fc }; for (const [n, r] of Object.entries(b.fc || {})) { const m = o.fc[n]; if (!m || r[2] > m[2] || (r[2] === m[2] && r[1] > m[1])) o.fc[n] = r; }
   o.xp = Math.max(a.xp || 0, b.xp || 0); o.fz = Math.max(a.fz || 0, b.fz || 0);
   o.frz = [...new Set([...(a.frz || []), ...(b.frz || [])])].sort((x, y) => x - y);
   o.created = Math.min(a.created || Date.now(), b.created || Date.now());

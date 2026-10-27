@@ -5,7 +5,7 @@ export const CLASSES = ['B', 'A', 'C1', 'C', 'D', '1'];
 export const LANGS = ['he', 'en', 'ru', 'fr', 'es'];
 export const today = (t = Date.now()) => Math.floor((t - new Date(t).getTimezoneOffset() * 6e4) / 864e5);
 // v2 (app 1.1): + les (lesson progress), fz (streak freezes in hand), frz (days covered by a freeze)
-export const blank = () => ({ v: 2, profile: null, q: {}, bm: [], ex: [], xp: 0, days: {}, badges: {}, les: {}, fz: 0, frz: [], created: Date.now() });
+export const blank = () => ({ v: 2, profile: null, q: {}, bm: [], ex: [], xp: 0, days: {}, badges: {}, les: {}, fz: 0, frz: [], kn: {}, fc: {}, created: Date.now() });
 export const migrate = s => (s && (s.v === 1 || s.v === 2) ? { ...blank(), ...s, v: 2 } : null);   // v1 → v2 only adds empty fields
 let S = load(), listeners = [], saveT;
 function load() { try { const s = migrate(JSON.parse(localStorage.getItem(KEY))); if (s) return s; } catch {} return blank(); }
@@ -86,6 +86,13 @@ export const freezes = () => S.fz;
 export const frozeYesterday = () => S.frz.includes(today() - 1) || (!active(today() - 1) && S.fz > 0 && active(today() - 2));
 // ---------- lessons: les[id] = [readAt, bestQuizPct, quizAttempts] ----------
 export const lesson = id => S.les[id] || null;
+// v1.22: rules the learner ticked as 'I know this' (summary / before-the-exam review) – per lesson, rule indexes; local + in backups
+export const known = id => new Set(S.kn?.[id] || []);
+export function setKnown(id, r, on) { S.kn ||= {}; const k = known(id); if (on) k.add(r); else k.delete(r); if (k.size) S.kn[id] = [...k].sort((a, b) => a - b); else delete S.kn[id]; save(); }
+// v1.22: sign flashcards – own Leitner boxes per sign number (self-rated), [box, due day, seen, knew]
+export const fcard = n => S.fc?.[n] || null;
+export function rateCard(n, ok) { S.fc ||= {}; const d = today(), r = S.fc[n] || [0, d, 0, 0]; const box = ok ? Math.min(5, r[0] + 1) : 0;
+  S.fc[n] = [box, d + GAP[box], r[2] + 1, r[3] + (ok ? 1 : 0)]; if (!S.days[d]) newDay(d); save(); }
 export function markRead(id) { const r = S.les[id] || [0, 0, 0]; if (!r[0]) { r[0] = Date.now(); S.les[id] = r; S.xp += 15; save(); } }
 export function lessonQuiz(id, pct) { const r = S.les[id] || [0, 0, 0]; r[0] ||= Date.now(); r[1] = Math.max(r[1], pct); r[2]++; S.les[id] = r; S.xp += pct >= 80 ? 40 : 10; save(); }
 export const level = () => { const xp = S.xp; let lv = 1, need = 200, base = 0; while (xp >= base + need) { base += need; lv++; need = Math.round(need * 1.25); } return { lv, into: xp - base, need }; };
