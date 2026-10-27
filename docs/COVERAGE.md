@@ -1,6 +1,6 @@
 # Coverage
 
-**Headline (v1.20.0, whole bank, every question judged; strict figure first, as reviews #9–#16 asked):** of all **1,801** questions, **56.7% strict full** (a sign-dictionary meaning is not counted as teaching; v1.13–v1.16 strict re-judgements applied, [rejudge_v113_sample.md](../tools/coverage/rejudge_v113_sample.md), [rejudge_v114_sample.md](../tools/coverage/rejudge_v114_sample.md), [rejudge_v115_sample.md](../tools/coverage/rejudge_v115_sample.md), [rejudge_v116_sample.md](../tools/coverage/rejudge_v116_sample.md); lesson-body prose never counts), **72.7% full** as judged, **89.3% full or partial**. **Class B: 56.5% strict full; 77.0% full as judged is an upper bound – estimated ≈72.7% (70.9–74.1%) after the strict re-samples (23 of 168 downgraded, 13.7%, applied to the 399 B full verdicts never checked strictly).** Review #12's own estimate was ≈74% (72–76%). **Without bank-sourced rules: 72.7% full** (B 77.0%, A 75.4%; see below). **Bank answer contradicts the law ('סתירה בין המאגר לחוק'): 6** (Q13, Q91, Q330, Q333, Q1327, Q1793; neither full nor cited, shown only in a bank lesson next to the law text). **Taught from the official bank only, no official explanation: 161** questions (B 64, A 71, C1 75, C 62, D 72, tractor 71); these are *not* counted as full or partial. **Partial + shown with the official bank answer: B 228 of 228 partial (17.9% of B), A 213 of 213 (18.4% of A)**; whole bank 299 of 299 partial (every partial question that belongs to B or A); these stay *partial* and are not counted as full. Classes B and A: every question that has an official state source is taught (fully or partly); the rest are listed with the search done in [NO_SOURCE_B_A.md](NO_SOURCE_B_A.md).
+**Headline (v1.20.0, whole bank, every question judged; strict figure first, as reviews #9–#16 asked):** of all **1,801** questions, **56.9% strict full** (a sign-dictionary meaning is not counted as teaching; v1.13–v1.16 strict re-judgements applied, [rejudge_v113_sample.md](../tools/coverage/rejudge_v113_sample.md), [rejudge_v114_sample.md](../tools/coverage/rejudge_v114_sample.md), [rejudge_v115_sample.md](../tools/coverage/rejudge_v115_sample.md), [rejudge_v116_sample.md](../tools/coverage/rejudge_v116_sample.md); lesson-body prose never counts), **72.8% full** as judged, **89.3% full or partial**. **Class B: 56.8% strict full; 77.3% full as judged is an upper bound – estimated ≈73.0% (71.1–74.3%) after the strict re-samples (23 of 168 downgraded, 13.7%, applied to the 402 B full verdicts never checked strictly).** Review #12's own estimate was ≈74% (72–76%). **Without bank-sourced rules: 72.8% full** (B 77.3%, A 75.6%; see below). **Bank answer contradicts the law ('סתירה בין המאגר לחוק'): 6** (Q13, Q91, Q330, Q333, Q1327, Q1793; neither full nor cited, shown only in a bank lesson next to the law text). **Taught from the official bank only, no official explanation: 161** questions (B 64, A 71, C1 75, C 62, D 72, tractor 71); these are *not* counted as full or partial. **Partial + shown with the official bank answer: B 225 of 225 partial (17.7% of B), A 211 of 211 (18.3% of A)**; whole bank 296 of 296 partial (every partial question that belongs to B or A); these stay *partial* and are not counted as full. Classes B and A: every question that has an official state source is taught (fully or partly); the rest are listed with the search done in [NO_SOURCE_B_A.md](NO_SOURCE_B_A.md).
 
 **v1.9 re-judgement (review #6):** a bank picture shown with its own bank answer (a sign-gallery tile) no longer counts as teaching. 54 questions that were full only via a gallery tile are now full only via the official sign-table meaning of their sign (so they count as partial under *strict*); 36 more were re-judged by hand in `tools/coverage/rejudge_v19.txt` (applied last by `compile_verdicts.py`, one-line reason each): 16 re-based on a cited rule (3 new textbook rules: ABS keeps steering, p.140; traffic-light phase order, p.71–72; flashing green, p.72), 5 on the sign table, 11 downgraded to partial (e.g. Q93, Q983, Q1580) and 4 to untaught (Q520, Q1307 for B/A; Q1257, Q1435 for C/D). Disclosure (v1.9 figures; superseded by the v1.10 bank-sourced section below): some lesson worked examples and 25 rules (14 used by B/A questions) are sourced from a bank question itself (`Q:<id>` in their source); 42 full verdicts rest only on a worked example built on that same question or on a rule sourced from it; the worked examples were kept after a hand check that their explanation states the rule and cites the law or an official page, while the `Q:<id>`-sourced rules are bank-derived and are disclosed here rather than counted as independent official sources.
 
@@ -42,13 +42,13 @@ Method: `tools/coverage/verdicts.txt` holds one verdict per question (hand judge
 
 | | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source | of these: taught from the official bank only, no official explanation | partial (counted as partial) | of these: shown in a lesson with the official bank answer | full % without bank-sourced rules |
 |---|---|---|---|---|---|---|---|---|---|---|
-| whole bank | 1801 | 72.7 | 56.7 | 89.3 | 32 | 155 | 161 | 299 | 299 | 72.7 |
-| B private car | 1272 | 77.0 | 56.5 | 95.0 | 0 | 60 | 64 | 228 | 228 | 77.0 |
-| A motorcycle | 1155 | 75.4 | 53.2 | 93.9 | 0 | 71 | 71 | 213 | 213 | 75.4 |
-| C1 truck ≤12 t | 1385 | 75.4 | 56.2 | 92.5 | 29 | 72 | 75 | 237 | 237 | 75.4 |
-| C heavy truck | 1314 | 76.9 | 56.7 | 92.8 | 33 | 61 | 62 | 209 | 209 | 76.9 |
-| D bus | 1316 | 77.7 | 56.6 | 93.8 | 9 | 71 | 72 | 213 | 213 | 77.7 |
-| 1 tractor | 1127 | 77.3 | 54.6 | 93.5 | 2 | 70 | 71 | 183 | 183 | 77.3 |
+| whole bank | 1801 | 72.8 | 56.9 | 89.3 | 32 | 155 | 161 | 296 | 296 | 72.8 |
+| B private car | 1272 | 77.3 | 56.8 | 95.0 | 0 | 60 | 64 | 225 | 225 | 77.3 |
+| A motorcycle | 1155 | 75.6 | 53.4 | 93.9 | 0 | 71 | 71 | 211 | 211 | 75.6 |
+| C1 truck ≤12 t | 1385 | 75.6 | 56.4 | 92.5 | 29 | 72 | 75 | 234 | 234 | 75.6 |
+| C heavy truck | 1314 | 77.0 | 56.8 | 92.8 | 33 | 61 | 62 | 207 | 207 | 77.0 |
+| D bus | 1316 | 77.8 | 56.8 | 93.8 | 9 | 71 | 72 | 211 | 211 | 77.8 |
+| 1 tractor | 1127 | 77.5 | 54.7 | 93.5 | 2 | 70 | 71 | 181 | 181 | 77.5 |
 
 ## Class-only questions (questions that belong to that class alone)
 
@@ -65,10 +65,10 @@ Method: `tools/coverage/verdicts.txt` holds one verdict per question (hand judge
 
 | | questions | full % | strict full % | full or partial % | untaught, source exists | untaught, no official source | of these: taught from the official bank only, no official explanation | partial (counted as partial) | of these: shown in a lesson with the official bank answer | full % without bank-sourced rules |
 |---|---|---|---|---|---|---|---|---|---|---|
-| law | 901 | 76.7 | 76.5 | 91.1 | 30 | 44 | 50 | 130 | 130 | 76.7 |
+| law | 901 | 76.8 | 76.6 | 91.1 | 30 | 44 | 50 | 129 | 129 | 76.8 |
 | signs | 390 | 90.5 | 17.2 | 97.9 | 1 | 7 | 7 | 29 | 29 | 90.5 |
-| safety | 400 | 51.5 | 51.5 | 79.2 | 1 | 82 | 82 | 111 | 111 | 51.5 |
-| vehicle | 110 | 53.6 | 53.6 | 80.0 | 0 | 22 | 22 | 29 | 29 | 53.6 |
+| safety | 400 | 51.8 | 51.8 | 79.2 | 1 | 82 | 82 | 110 | 110 | 51.8 |
+| vehicle | 110 | 54.5 | 54.5 | 80.0 | 0 | 22 | 22 | 28 | 28 | 54.5 |
 
 ## Recommendation on classes
 

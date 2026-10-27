@@ -919,6 +919,13 @@ _TEN = {612: 'taxi', 620: 'taxi', 1128: 'busline', 1129: 'terms', 1163: 'taxi', 
 ok(all(q in _LJI[l]['quiz'] for q, l in _TEN.items()), 'the 10 questions dropped from quizzes in v1.20 are practised in the lesson of their rule')
 ok(CF['q']['1333']['v'] == 'full' and CF['q']['1333']['rule'] == ['heavy#r6'] and 'TR:281' in _LJI['heavy']['rules'][6]['s'], 'Q1333 full on heavy#r6 (TR 281(א)(4))')
 ok(len(_LJI['docs2']['quiz']) >= 4 and len(_LJI['tractor2']['quiz']) >= 8, 'thin quizzes docs2/tractor2 filled with questions their own rules answer')
+# v1.20.1 (review #17 #5): sign chips whole; no unsourced interpretation; loose mappings re-judged strictly
+_SJ = J('data', 'sources.json')
+ok(_SJ['LT:432']['ex'][0].endswith('עד לתמרור 433, 434, 437, 626, 627, 817') and _SJ['LT:433']['ex'][0].endswith('עד לתמרור 432, 434, 437, 626, 627, 817'), 'LT:432/433 chips show the whole list of signs (not cut at "עד לתמרור")')
+ok(all("מס' 630" in _SJ['LT:%d' % n]['ex'][0] and "'מס 630" not in _SJ['LT:%d' % n]['ex'][0] for n in (130, 131, 132)), "LT:130–132 chips: geresh on the right side (מס' 630)")
+ok('מוכן להסתכן' not in json.dumps(LJ, ensure_ascii=False), 'no unsourced "מוכן להסתכן יותר" in any lesson')
+ok(any('מאטים ככל האפשר בעזרת הבלמים ותיבת ההילוכים' in x[1] for x in _LJI['vehicle']['rules'][12].get('x', [])), 'vehicle#r12: the braking clause has its textbook p.44 chip')
+ok(all(CF['q'][k]['v'] == 'full' for k in ('66', '1389', '1003')) and CF['q']['1389']['rule'] == ['alc2#r2'] and CF['q']['1003']['rule'] == ['vehicle#r10'], 'Q66/Q1389/Q1003 full on rules that state the answer (Q1389 no longer on the lane-drift rule)')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

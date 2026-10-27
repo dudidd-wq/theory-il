@@ -206,7 +206,8 @@ def source(src, checks, where):
             kn = int(re.match(r'\d+', key).group()) if re.match(r'\d+', key) else None
             _t = e2[len(key):]
             m = next((m for m in re.finditer(r'\s(\d{3})[א-ת]?\s', _t) if kn and kn < int(m.group(1)) <= kn + 9
-                      and not re.search(r'(?:^|\s)(?:או|עד|תמרור|ו)\s?$', _t[:m.start()])), None)
+                      and not re.search(r'(?:^|\s)[ולב]?(?:או|עד|תמרור|ו)\s?$|\d[א-ת]?\s?[,/]\s?$', _t[:m.start()])), None)
+            # v1.20.1 (review #17 #5): a cross-reference list ("עד לתמרור 433 , 434, 437") is part of the entry, not the next sign
             # v1.16: a services symbol (ס-130) ends at the next symbol number
             m = m or (re.search(r'\sס\s*-\s*\d{2,3}(?!\d)', _t) if key.startswith('ס-') else None)
             m_end = bool(m)
@@ -226,10 +227,13 @@ def source(src, checks, where):
             # v1.17 (review #13 N7): the table's last column names who the sign addresses ("נוהג רכב") – not part of the meaning
             e2 = re.sub(r'\s+נוהג רכב\.?$', '', e2)
             e2 = fix_split(e2)
+            e2 = re.sub(r"'מס (?=\d)", "מס' ", e2)
+            e2 = re.sub(r'(?<=\d{3})\s+(?=\d{3}(?!\d))', ', ', e2)   # the list's commas, which the PDF displaces   # v1.20.1 (review #17 #5): RTL-displaced geresh ("'מס 630" -> "מס' 630")
             # v1.18 (review #14 D5): the table's columns – meaning (פירושו) | where it applies (כוחו יפה) – shown apart
             if key in LT_FORCE and (' ' + LT_FORCE[key]) in e2: e2 = e2.replace(' ' + LT_FORCE[key], ' · כוחו יפה: ' + LT_FORCE[key], 1)
             # v1.17: an entry cut by the 220-character cap ends at a whole word, marked '…'
             if len(e2) >= 200 and not re.search(r'[.!?)]$', e2) and not m_end: e2 = e2.rsplit(' ', 1)[0] + ' …'
+            e2 = re.sub(r'(?<=\d{3})\s+(?=\d{3}(?!\d))', ', ', e2)
             e2 = lt_col(key, e2)   # v1.20 (review #16 item 6): after the cap, so a cut column still gets its label
             return e, e2
         if ok:

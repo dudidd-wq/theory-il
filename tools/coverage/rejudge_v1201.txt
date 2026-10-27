@@ -8,3 +8,7 @@
 1628 full +tractor#r6 +tractor2#r2 | TR 38(א): crossing a pavement to enter or leave premises
 1283 full +equip#r0 +tractor2#r4 | TR 367(א): a warning triangle in a trailer, semi-trailer and every motor vehicle except a motorcycle
 1496 full +accident#r6 +docs2#r3 | textbook: hit a parked car with nobody there – written notice on it with your details, police within 24 hours
+# Review #17 #5: loose mappings re-judged strictly
+66 full +duty#r1 | TR 23(א)(1)+(ב): military police in uniform are named, and obedience holds even against signs; duty#r1 now says so (the distractors are all 'no'/'except sign X')
+1389 full +alc2#r2 | textbook: 'גם תרופות מסוימות … משפיעות על הנהיגה' 'בכל תרופה … (עם מרשם רופא או ללא מרשם)' – was on the lane-drift rule
+1003 full +vehicle#r10 | gov.il safety systems: ESP 'מפעילה אוטומטית את בלמי הרכב ו/או מנטרלת את פעולת המנוע'; MoE topic 18: 'הפעלת כוח בלימה על גלגלים לפי הצורך, ומפחיתה את כוח המנוע'

@@ -64,6 +64,7 @@ async function run(prof, opts) {
   const s0 = (await S(p)).profile;
   ok(s0.cls === 'B' && s0.lang === 'he' && s0.name === 'נועהscript', `profile saved + name sanitised (${s0.name})`);
   ok(await p.isVisible('#nav'), 'bottom nav visible');
+  { const bb = await p.locator('a.brand').first().boundingBox(); ok(bb && bb.height >= 44 && bb.width >= 44, `logo link tap target ≥ 44px (${bb && Math.round(bb.width)}x${bb && Math.round(bb.height)})`); }
   await axe(p, 'home', prof);
   // practice: answer 10, first wrong on purpose
   await go(p, '#/practice/mix'); await p.waitForSelector('.answers .ans');
@@ -75,6 +76,7 @@ async function run(prof, opts) {
     if (i === 0) { ok(await p.isVisible('.ans.ok') && await p.isVisible('.ans.bad'), 'wrong answer: shows correct + wrong'); await axe(p, 'question-answered', prof); }
     if (i === 0) { const k = await p.evaluate(async id => { const m = await import('./js/learn.js'); const [cov, sg] = await Promise.all(['data/coverage.json', 'data/signs.json'].map(u => fetch(u).then(r => r.json()))); const x = m.explain(id, 'B', cov, sg); return [x?.kind, !!x?.lesson]; }, await curId(p));
       ok(await p.isVisible('.why') && await p.locator('.why a.btn.primary[data-learn]').count() === (k[1] ? 1 : 0), `wrong answer: why box + lesson link whenever a lesson shows the question (${k[0]}${k[1] ? ', linked' : ''})`);
+      if (k[1]) ok(/^(לשיעור מהמאגר|ללמוד את זה):/.test(await p.textContent('.why a[data-learn]')) && (k[0] === 'none') === /^לשיעור מהמאגר/.test(await p.textContent('.why a[data-learn]')), 'lesson link: "לשיעור מהמאגר" for a bank-only lesson, "ללמוד את זה" only when a rule explains it');
       ok(!/הישג/.test(await p.textContent('#toast')), 'no achievement toast on a wrong answer'); }
     if (i === 3 && await p.locator('.why').count()) ok(await p.locator('.why a.btn.primary').count() === 0, 'right answer: related lesson is a quiet link');
     await p.click('.next');

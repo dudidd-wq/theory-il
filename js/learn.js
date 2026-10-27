@@ -97,8 +97,9 @@ export function whyBox(x, ok, c) {
   if (x.note) kids.push(he(h('div', { class: 'notice lawnote', role: 'note' }, icon('info'), h('div', {},
     h('p', {}, h('b', { text: t('why.exam') + ' ' }), x.note.exam), h('p', {}, h('b', { text: t(x.note.k === 'tb' ? 'why.tb' : 'why.law') + ' ' }), x.note.law),
     x.note.s ? h('p', { class: 'refs' }, ref(x.note.s, x.note.x)) : null))));
+  // v1.20.1 (review #17 #5): a lesson that only shows the bank's question and answer (no explanation) is not called 'learn this'
   if (x.lesson) kids.push(h('p', { class: 'row tight' }, h('a', { href: lessonHref(x.lesson, c), class: ok ? 'btn small ghost' : 'btn small primary', 'data-learn': x.lesson.id },
-    icon('book'), h('span', { text: t(ok ? 'why.related' : 'why.learn', x.lesson.title) }))));
+    icon('book'), h('span', { text: t(ok ? 'why.related' : x.kind === 'none' ? 'why.bankLesson' : 'why.learn', x.lesson.title) }))));
   return h('div', { class: 'why' + (ok ? '' : ' bad') }, ...kids);
 }
 

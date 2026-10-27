@@ -454,7 +454,7 @@ function submitExam() {
 }
 function learnLink(id) {
   const l = lessonFor(id); if (!l) return null;
-  return h('p', { class: 'small' }, h('a', { href: lessonHref(l, cls()), class: 'btn small ghost', 'data-learn': l.id }, icon('book'), h('span', { text: t('why.learn', l.title) })));
+  return h('p', { class: 'small' }, h('a', { href: lessonHref(l, cls()), class: 'btn small ghost', 'data-learn': l.id }, icon('book'), h('span', { text: t(l.bank?.includes(id) ? 'why.bankLesson' : 'why.learn', l.title) })));
 }
 function confetti() {   // CSS-only celebration; with prefers-reduced-motion it is a static burst (see css)
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) navigator.vibrate?.([60, 40, 60]);
