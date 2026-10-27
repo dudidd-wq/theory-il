@@ -51,14 +51,29 @@ errors = []
 
 def excerpt(text, checks):
     # the sentence(s) / sub-clauses containing the checks
-    parts = re.split(r'\n', text)
-    keep = []
-    for p in parts:
-        np_ = norm(p)
-        if any(norm(c) in np_ for c in checks) and p.strip() not in keep:
-            keep.append(p.strip())
-    ex = ' … '.join(keep)
-    return ex[:900]
+    # v1.18 (review #14 D1): a numbered item "(1) …" is shown with its chapeau ("… באופן שלא –", "… אלא –"),
+    # so a chip never drops the negation/condition that governs it; a long excerpt is cut at a clause/sentence end, marked " …"
+    parts = [p.strip() for p in re.split(r'\n', text)]
+    idx = []
+    for i, p in enumerate(parts):
+        if p and any(norm(c) in norm(p) for c in checks):
+            if re.match(r'\(\d+[א-ת]?\)', p):
+                j = i - 1
+                while j >= 0 and re.match(r'\(\d+[א-ת]?\)', parts[j]):
+                    j -= 1
+                if j >= 0 and re.search(r'[–:—-]\s*$', parts[j]):
+                    idx.append(j)
+            idx.append(i)
+    ex, last = '', None
+    for i in sorted(set(idx)):
+        if parts[i] in ex:
+            continue
+        ex += (parts[i] if last is None else (' ' if i == last + 1 else ' … ') + parts[i])
+        last = i
+    if len(ex) > 900:
+        cut = max(ex.rfind(' … ', 0, 900), max(ex.rfind(m, 0, 900) for m in ('; ', '. ')) + 1)
+        ex = ex[:cut].rstrip() + ' …'
+    return ex
 
 PASS = []  # v1.11: passages picked by the last source() calls (per-example official wording)
 
