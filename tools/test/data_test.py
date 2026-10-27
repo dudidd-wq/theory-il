@@ -770,16 +770,30 @@ ELIDE_OK = {('881', 'priority#r2'): 'מימינו – (3) itself gives way to al
 _eb = []
 for qid, e in cq.items():
     if e[0] != 'f': continue
-    q = byid[int(qid)]; aw = _ow(q['a'][q['c']]) - _ow(q['q'])
+    # units of measure are not operative terms (the chapeau-bearing chips elide '(1) … מטרים' while showing the figure itself)
+    q = byid[int(qid)]; aw = _ow(q['a'][q['c']]) - _ow(q['q']) - _ow('מטרים מטר מטרי קילוגרם')
     shown = set().union(*[_ow(' '.join(p[1] for p in _XR[u].get('x', []))) for u in e[2] if u in _XR] or [set()])
     for u in e[2]:
         if u not in _XR: continue
         hit = (aw & _ow(_elided(_XR[u]))) - shown
         if hit and (len(hit) >= 2 or not aw & shown) and (qid, u) not in ELIDE_OK: _eb.append((qid, u, sorted(hit)[:4]))
-ok(not _eb, f'v1.19 (review #15 D1): no fully taught answer rests on a paragraph its cited chip elides ({len(_eb)}) {_eb[:4]}')
+ok(not _eb, f'v1.19 (review #15 D1): no fully taught answer rests on a paragraph its cited chip elides ({len(_eb)}) {_eb[:12]}')
 _old = {'t': 'x', 's': 'TR:47(ב)', 'x': [['TR:47', '(ב) מותר לנוהג רכב לעקוף רכב אחר מצדו הימני במקרים אלה: (1) נוהג הרכב האחר נמצא בנתיב לפניה שמאלה בלבד או מתכוון לפנות שמאלה ואותת על כך; … (4) נוהג הרכב נוסע בנתיב המיועד לפניה ימינה בלבד.']]}
 ok('לתחבורה ציבורית' in _elided(_old) and 'נוהג הרכב נוסע בנתיב שיועד לתחבורה ציבורית' in _XR['overtake#r3']['x'][0][1] and '(2) בפניה שמאלה' in _XR['overtake#r3']['x'][0][1],
    'v1.19: overtake#r3 shows TR 47(ב)(2) and (3) (Q1767); the audit sees the v1.18 elision (self-test)')
+
+# v1.19 (review #15 D6): a law chip never opens on a bare numbered paragraph "(N) …" without the chapeau that governs it,
+# and the lead-ins named by the review are present (TO 64ב(א)(3א) over "(ב) נהג שטרם מלאו לו 24 שנים"; cockpit#r1; newdrv#m0)
+_LJ = {l['id']: l for l in json.load(open(os.path.join(R, 'data/lessons.json'), encoding='utf-8'))['lessons']}
+_bare = [f'{lid}.{kd}{i}' for lid, L_ in _LJ.items() for kd in ('rules', 'mnem', 'recap') for i, u_ in enumerate(L_.get(kd, []))
+         for x_ in u_.get('x', []) if x_[0][:2] in ('TR', 'TO') and re.match(r'\(\d', x_[1])]
+ok(not _bare, f'v1.19 D6: no law chip starts with a bare "(N)" paragraph (was 12) {_bare[:8]}')
+_xs = lambda lid, kd, i: ' '.join(x_[1] for x_ in _LJ[lid][kd][i]['x'])
+ok('(3א) אחד המנויים להלן' in _xs('sober', 'mnem', 0) and '50 מיקרוגרם' in _xs('sober', 'mnem', 0)
+   and 'לא יעלה אדם לרכב ולא יירד ממנו אלא' in _xs('cockpit', 'rules', 1) and 'מצדו הימני ליד מדרכה או שול' in _xs('cockpit', 'rules', 1)
+   and '(1) בשלושת החודשים' in _xs('newdrv', 'mnem', 0) and 'יותר משני נוסעים' in _xs('newdrv', 'mnem', 0)
+   and 'לא ישלם את האגרה' in _LJ['docs']['rules'][5]['t'],
+   'v1.19 D5/D6: sober#m0 shows the (3א) chapeau and 50 µg; cockpit#r1 the chapeau and the right-side item; newdrv#m0 all three claims; docs#r5 says what TR 174(ב) says')
 
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)

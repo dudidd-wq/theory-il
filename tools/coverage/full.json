@@ -1398,7 +1398,7 @@
 "u": [
 "signs#d302"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "dict": true,
 "strict_u": [
 "priority#r:תמרור \"עצור\": עוצרים במקום שרואים ממ",
@@ -3511,7 +3511,7 @@
 "u": [
 "signs#d301"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "dict": true,
 "strict_u": [
 "priority#r:תמרור \"תן זכות קדימה\": מאטים, ואם צר"
@@ -4644,7 +4644,7 @@
 "u": [
 "signs#d507"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "dict": true,
 "strict_u": [
 "parking#g658"
@@ -4807,7 +4807,7 @@
 "u": [
 "signs#d624"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "dict": true,
 "strict_u": [
 "signs#g556"
@@ -5185,7 +5185,7 @@
 "u": [
 "signs#d222"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "dict": true,
 "strict_u": [
 "signs#g632",
@@ -10112,7 +10112,7 @@
 "u": [
 "signs#d436"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "dict": true,
 "strict_u": [
 "heavy#r:תמרור 435 אוסר חניית רכב שמשקלו הכול"
@@ -10945,7 +10945,7 @@
 "u": [
 "signs#d404"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "dict": true,
 "strict_u": [
 "rail#g1387"
@@ -11853,7 +11853,7 @@
 "u": [
 "signs#d226"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "dict": true,
 "strict_u": [
 "peds#g1507"

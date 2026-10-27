@@ -59,6 +59,43 @@ def fix_split(t):
     return re.sub(r'(?<![^\s])([כבמל]) - (?=\d)', r'\1-', t)
 # the "כוחו יפה" (where the sign applies) column, for entries whose two text columns otherwise read as one sentence
 LT_FORCE = {'203': 'בצומת או בתנועה שלפניך', '218': 'עד לצומת הבא'}
+_HEB = 'אבגדהוזחטיכלמנסעפצקרשת'
+def _item(p):
+    # v1.19 (review #15 D6): the label of a numbered / lettered item line – (kind, ordinal) – or None
+    m = re.match(r'\((\d+)([א-ת]?)\)', p)
+    if m: return ('n', int(m.group(1)), m.group(2))
+    m = re.match(r'\(([א-ת])(\d?)\)', p)
+    if m and m.group(1) in _HEB: return ('l', _HEB.index(m.group(1)) + 1, m.group(2))
+    m = re.match(r'(\d+)\.\s', p)
+    if m: return ('d', int(m.group(1)), '')
+    return None
+def _follows(a, b):
+    # item b can be the next sibling of item a
+    return a[0] == b[0] and (b[1] == a[1] + 1 or (b[1] == a[1] and b[2] > a[2]))
+def _chapeaus(parts, i):
+    # v1.19 (review #15 D6): the chain of chapeau lines ("… אלה:", "… אלא אם כן –") that govern item line i, found
+    # by tracking the item nesting forward (an item continues the deepest open level it follows, else opens a new one)
+    # stack: [(item, line index)]; an unlabelled lead-in line ("”X“ – … כל אלה:") enters as (None, k) and heads the list after it
+    stack, END = [], r'(?:[.;]|\.\))\s*$'
+    for k, p in enumerate(parts[:i + 1]):
+        it = _item(p)
+        if not it:
+            if p and re.search(r'[–:—-]\s*$', p):
+                while stack and stack[-1][0] is None: stack.pop()
+                stack.append((None, k))
+            continue
+        lv = next((n for n in range(len(stack) - 1, -1, -1) if stack[n][0] and _follows(stack[n][0], it)), None)
+        if lv is None:
+            # a new sub-list cannot hang under an item that ended its sentence ('.', ';') – it belongs to an open lead-in
+            while stack and re.search(END, parts[stack[-1][1]]): stack.pop()
+            stack.append((it, k))
+        else: stack[lv:] = [(it, k)]
+    if not stack or stack[-1][1] != i: return []
+    out, k = [], len(stack) - 2
+    # a parent is shown when it leads in ('–', ':', ',') or is an unpunctuated table-row label ("(6) רכב מסחרי בלתי אחוד")
+    while k >= 0 and not re.search(END, parts[stack[k][1]]):
+        out.append(stack[k][1]); k -= 1
+    return out
 def excerpt(text, checks):
     # the sentence(s) / sub-clauses containing the checks
     # v1.18 (review #14 D1): a numbered item "(1) …" is shown with its chapeau ("… באופן שלא –", "… אלא –"),
@@ -67,12 +104,7 @@ def excerpt(text, checks):
     idx = []
     for i, p in enumerate(parts):
         if p and any(norm(c) in norm(p) for c in checks):
-            if re.match(r'\(\d+[א-ת]?\)', p):
-                j = i - 1
-                while j >= 0 and re.match(r'\(\d+[א-ת]?\)', parts[j]):
-                    j -= 1
-                if j >= 0 and re.search(r'[–:—-]\s*$', parts[j]):
-                    idx.append(j)
+            idx.extend(_chapeaus(parts, i))
             idx.append(i)
     ex, last = '', None
     for i in sorted(set(idx)):

@@ -4462,7 +4462,7 @@
 "ref": [
 "signs#d302"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "cls": [
 "1",
 "A",
@@ -5313,7 +5313,7 @@
 "cockpit#r1"
 ],
 "ref": [
-"cockpit#r:נוסעים עולים ויורדים מהצד הימני, ליד"
+"cockpit#r:עולים לרכב ויורדים ממנו רק כשהרכב עו"
 ],
 "why": "rule written for this question (OFF:textbook)",
 "cls": [
@@ -7191,7 +7191,7 @@
 "docs#r5"
 ],
 "ref": [
-"docs#r:רישיון נהיגה לא יינתן ולא יחודש למי "
+"docs#r:מבקש רישיון או חידושו לא ישלם את האג"
 ],
 "why": "rule covers part of the answer (TR:174(ב))",
 "cls": [
@@ -9525,7 +9525,7 @@
 "ref": [
 "signs#d301"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "cls": [
 "1",
 "A",
@@ -12093,7 +12093,7 @@
 "ref": [
 "signs#d507"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "cls": [
 "1",
 "A",
@@ -13309,7 +13309,7 @@
 "ref": [
 "signs#d222"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "cls": [
 "1",
 "A",
@@ -24720,7 +24720,7 @@
 "ref": [
 "signs#d436"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "cls": [
 "C",
 "C1"
@@ -26534,7 +26534,7 @@
 "ref": [
 "signs#d404"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "cls": [
 "1",
 "A",
@@ -28471,7 +28471,7 @@
 "ref": [
 "signs#d226"
 ],
-"why": "related rule only",
+"why": "official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)",
 "cls": [
 "1",
 "A",

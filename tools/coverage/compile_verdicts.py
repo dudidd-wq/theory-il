@@ -48,7 +48,7 @@ for qid, j in man.items():
             assert s in ('T', 'S'), f'judged none without source class: {qid}'
             e.update(src=s, why=(e['why'] + ' – ' if e['why'] else '') + h)
     elif j['v'] == 'partial' and qid in SG['q']:
-        e.update(v='full', dict=True, strict_u=e['u'], u=['signs#d' + n for n in SG['q'][qid]])
+        e.update(v='full', dict=True, strict_u=e['u'], u=['signs#d' + n for n in SG['q'][qid]], why='official sign meaning (sign dictionary, gov.il); the lesson rule alone was related only (v1.19, review #15)' if e['why'] == 'related rule only' else e['why'])
     out[qid] = e
 # v1.10 re-based rules (tools/coverage/rebase_v110.txt): explicit judgement for questions whose rule now cites law/textbook
 for l in open(P('tools/coverage/rebase_v110.txt')):
