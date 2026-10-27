@@ -390,3 +390,16 @@ line.vz-span { stroke: #f3a712; stroke-width: 6; fill: none; }
 .covpanel .covlist { padding-inline-start: 1.2rem; line-height: 1.7; }
 .covpanel .covlist li { margin-bottom: .35rem; }
 .covpanel .covlist li.sub { margin-inline-start: 1rem; list-style: circle; }
+/* v1.22: summary + before-the-exam review – one-line rules with an 'I know this' tick */
+.sumrules > li { margin-bottom: .55rem; }
+.knw { display: flex; align-items: flex-start; gap: .6rem; min-height: 44px; padding: .3rem 0; cursor: pointer; }
+.knw input[type=checkbox] { inline-size: 24px; block-size: 24px; margin: .15rem 0 0; flex: none; accent-color: var(--accent, #0f766e); }
+.knli.known .rt1 { color: var(--muted, #667); }
+.onlynew .knli.known { display: none; }
+.rcl { margin-bottom: 1rem; }
+#ln-view .btn { min-height: 44px; }
+.rcviz > summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 600; }
+.today { margin-bottom: 1rem; } .today .row .btn { min-height: 44px; }
+.fccard { text-align: center; } .fcimg { margin-inline: auto; max-inline-size: 100%; block-size: auto; }
+.fcmean { font-size: 1.1em; font-weight: 600; text-align: start; } .fcrate .btn, #fc-show { min-height: 44px; min-width: 44px; }
+.partend { flex-wrap: wrap; } .partend .qcgo { min-height: 44px; margin-inline-start: auto; }

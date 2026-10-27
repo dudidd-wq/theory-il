@@ -47,6 +47,25 @@ function pick(ids, n) {
   const rest = shuffle(ids.filter(id => st.info(id) && !due.includes(id))).sort((a, b) => st.info(a)[0] - st.info(b)[0]);
   return shuffle([...new Set([...due, ...fresh, ...rest])].slice(0, n));
 }
+// v1.22: weak spots – from the learner's own answers only: lessons (or topics, for classes without lessons) with ≥4 answers and the lowest accuracy under 80%
+function weakSpots(max = 3) {
+  const hasL = lessonsFor(cls()).length > 0, g = new Map();
+  for (const id of pool()) { const r = st.info(id); if (!r) continue; const key = hasL ? lessonFor(id)?.id : byId.get(id).k; if (!key) continue;
+    const a = g.get(key) || [0, 0]; a[0] += r[2]; a[1] += r[3]; g.set(key, a); }
+  return [...g.entries()].filter(([, a]) => a[0] >= 4 && a[1] / a[0] < 0.8).map(([k, a]) => ({ k, acc: a[1] / a[0], n: a[0], l: hasL ? lessonsFor(cls()).find(x => x.id === k) : null }))
+    .sort((x, y) => x.acc - y.acc).slice(0, max);
+}
+const weakIds = ws => { const ks = new Set(ws.map(w => w.k)); return pool().filter(id => ks.has(ws[0]?.l ? lessonFor(id)?.id : byId.get(id).k)); };
+// v1.22: 'תרגול יומי' – about 10: due questions first (missed ones before the rest), then other mistakes, then weak spots, then new questions
+const DAILY_N = 10;
+function dailyIds() {
+  const P = pool(), due = P.filter(st.isDue), out = [];
+  const add = ids => { for (const id of ids) { if (out.length >= DAILY_N) break; if (!out.includes(id)) out.push(id); } };
+  add(shuffle(due.filter(st.wasWrong))); add(shuffle(due)); add(shuffle(P.filter(st.inMistakes)));
+  const ws = weakSpots(); if (ws.length) add(shuffle(weakIds(ws).filter(id => !st.mastered(id))));
+  add(shuffle(P.filter(id => !st.info(id)))); add(shuffle(P.filter(id => !st.mastered(id))));
+  return out;
+}
 const trOld = l => { const m = MAN?.langs?.[l]?.resourceModified; return m && m < '2021' ? m.slice(0, 4) : ''; };
 const dirOf = l => (l === 'he' ? 'rtl' : 'ltr');
 
@@ -199,6 +218,14 @@ function home() {
     tile('#/exam', 'exam', t('home.exam'), t('home.examD', EXAM.n, EXAM.min), nL && masteredCount(p.cls) < nL ? '' : 'hl'),
     tile('#/review', 'repeat', t('home.review'), due ? t('home.reviewD', due) : (mist ? t('rv.due', 0, mist) : t('home.reviewNone')), due ? 'warn' : ''),
     tile('#/bookmarks', 'star', t('home.bm'), t('home.bmD', S().bm.length)));
+  // v1.22: today's plan – the daily practice and the weak spots, both from this learner's own answers on this device
+  const dIds = dailyIds(), dDue = dIds.filter(st.isDue).length, dNew = dIds.filter(id => !st.info(id)).length, ws = weakSpots();
+  const wName = w => (w.l ? w.l.title : t('topic.' + w.k)) + ` (${Math.round(w.acc * 100)}%)`;
+  kids.push(h('section', { class: 'card today', 'aria-labelledby': 'dy-h' }, h('h2', { id: 'dy-h', class: 'h3', text: t('dy.title') }),
+    h('p', { class: 'small', id: 'dy-mix', text: t('dy.mix', dIds.length, dDue, dIds.length - dDue - dNew, dNew) }),
+    h('div', { class: 'row tight' }, link(t('dy.start'), '#/practice/daily', 'btn primary', 'repeat'),
+      ws.length ? link(t('wk.start'), '#/practice/weak', 'btn ghost', 'flag') : null),
+    h('p', { class: 'small muted', id: 'wk-list', text: ws.length ? t('wk.list', ws.map(wName).join(' · ')) : t('wk.none') })));
   const cols = h('div', { class: 'cols' }, tiles); kids.push(cols);
   if (streak && st.frozeYesterday()) kids.splice(kids.indexOf(cols), 0, h('p', { class: 'small accent', text: t('home.frozen') }));
   // the route ("drive" metaphor): topic stations → exam
@@ -217,18 +244,60 @@ const tile = (href, ic, title, sub, cls = '') => h('a', { class: 'tile ' + cls, 
 
 // ---------- practice / signs / review / bookmarks ----------
 function practice(k) {
+  if (k === 'daily') return startSession('practice', shuffle(dailyIds()), t('dy.title'), '#/practice/daily');
+  if (k === 'weak') { const ws = weakSpots(); if (!ws.length) { location.hash = '#/practice'; return; }
+    const ids = weakIds(ws), m = ids.filter(id => !st.mastered(id)); return startSession('practice', shuffle([...shuffle(m), ...shuffle(ids.filter(id => !m.includes(id)))].slice(0, 10)), t('wk.title'), '#/practice/weak'); }
   if (k && (TOPICS.includes(k) || k === 'mix')) return startSession('practice', k === 'mix' ? pick(pool(), 10) : pick(topicPool(k), 10), t('topic.' + k), '#/practice/' + k);
   screen(t('pr.title'), h('p', { class: 'small', text: t('pr.hint') }), h('p', {}, link(t('se.title'), '#/search', 'btn ghost small', 'search')),
     h('div', { class: 'list' }, [...TOPICS, 'mix'].map(k => { const ids = k === 'mix' ? pool() : topicPool(k), f = frac(ids);
       return h('a', { class: 'item', href: '#/practice/' + k }, ring(f, 48, 5), h('span', {}, h('b', { text: t('topic.' + k) }), h('small', { text: t('pr.stats', ids.length, Math.round(f * 100)) })), icon(uiLang() === 'he' ? 'arrowS' : 'arrowE')); })));
 }
-function signs(go) {
+// v1.22: sign flashcards – the official sign table (number + meaning, data/signs.json from the gov.il PDF) with the bank's own picture of that sign;
+// the learner rates themself ('ידעתי' / 'עוד לא') and the card comes back on the same Leitner days as questions
+const FC_N = 10;
+const fcAll = () => Object.keys(SG?.img || {}).filter(n => SG.e?.[n]).sort((a, b) => a - b);
+function fcPick() {
+  const all = fcAll(), d = today(), due = shuffle(all.filter(n => st.fcard(n) && st.fcard(n)[1] <= d)), fresh = all.filter(n => !st.fcard(n));
+  const rest = all.filter(n => st.fcard(n) && st.fcard(n)[1] > d).sort((a, b) => st.fcard(a)[0] - st.fcard(b)[0]);
+  return [...due, ...shuffle(fresh.slice(0, 30)), ...rest].slice(0, FC_N);
+}
+function cards(mode) {
+  const txt = mode === 'txt', deck = fcPick(); let i = 0, knew = 0;
+  if (!deck.length) { location.hash = '#/signs'; return; }
+  const part = n => (SG.parts.find(([p]) => p === Math.floor(n / 100)) || [0, ''])[1];
+  const pic = n => h('img', { class: 'qimg fcimg', src: 'img/q/' + SG.img[n], alt: t(txt ? 'fc.altN' : 'fc.alt', n), width: 320, height: 180 });
+  const mean = n => h('p', { class: 'fcmean', lang: 'he', dir: 'rtl', text: SG.e[n] });
+  function card() {
+    if (i >= deck.length) return done();
+    const n = deck[i], back = h('div', { class: 'fcback', id: 'fc-back', hidden: true },
+      txt ? pic(n) : mean(n), h('p', { class: 'fcnum' }, h('b', { text: t('fc.num', n) }), h('small', { class: 'muted', text: ' · ' + part(n) })),
+      h('p', { class: 'small' }, h('a', { href: SG.src.url, target: '_blank', rel: 'noopener', class: 'chip', text: t('fc.src') })),
+      h('p', { class: 'small muted', text: t('fc.rateQ') }),
+      h('div', { class: 'row fcrate' }, btn(t('fc.yes'), () => rate(n, true), 'btn primary', 'check', { id: 'fc-yes' }), btn(t('fc.no'), () => rate(n, false), 'btn ghost', 'repeat', { id: 'fc-no' })));
+    const show = btn(t('fc.show'), e => { back.hidden = false; e.currentTarget.hidden = true; back.querySelector('#fc-yes').focus(); }, 'btn primary big', 'info', { id: 'fc-show' });
+    screen(t('fc.title'), h('p', { class: 'sub', id: 'fc-pos', 'aria-live': 'polite', text: t('fc.pos', i + 1, deck.length) }),
+      h('section', { class: 'card fccard', 'data-n': n, 'aria-label': t('fc.card') }, h('p', { class: 'small muted', text: t(txt ? 'fc.askTxt' : 'fc.askPic') }), txt ? mean(n) : pic(n), show, back));
+  }
+  function rate(n, ok) { st.rateCard(n, ok); if (ok) knew++; i++; card(); }
+  function done() {
+    screen(t('fc.title'), h('div', { class: 'result card', role: 'status' }, h('p', { class: 'big', text: t('fc.done', knew, deck.length) }),
+      h('p', { class: 'small', text: t('fc.doneHint') })),
+      h('div', { class: 'row' }, btn(t('fc.again'), () => cards(mode), 'btn primary', 'repeat', { id: 'fc-again' }), link(t('sg.title'), '#/signs', 'btn ghost')));
+  }
+  card();
+}
+function signs(go, sub) {
   const ids = signPool();
+  if (go === 'cards') return cards(sub);
   if (go === 'go') return startSession('signs', pick(ids, 10), t('sg.title'), '#/signs/go');
   const sample = Q.find(p => p.id === ids[0]);
   screen(t('sg.title'), h('p', { text: t('sg.hint') }), h('p', { class: 'sub', text: t('pr.stats', ids.length, Math.round(frac(ids) * 100)) }),
     sample && h('img', { class: 'qimg', src: 'img/q/' + sample.i, alt: t('q.img', sample.id), loading: 'lazy', width: 320, height: 180 }),
-    h('div', { class: 'row' }, link(t('sg.start'), '#/signs/go', 'btn primary big', 'sign')));
+    h('div', { class: 'row' }, link(t('sg.start'), '#/signs/go', 'btn primary big', 'sign')),
+    fcAll().length ? h('section', { class: 'card', 'aria-labelledby': 'fc-h' }, h('h2', { id: 'fc-h', class: 'h3', text: t('fc.title') }),
+      h('p', { class: 'small', text: t('fc.hint', fcAll().length) }),
+      h('p', { class: 'small muted', id: 'fc-stat', text: t('fc.stat', fcAll().filter(n => (st.fcard(n)?.[0] || 0) >= 3).length, fcAll().filter(n => st.fcard(n) && st.fcard(n)[1] <= today()).length) }),
+      h('div', { class: 'row tight' }, link(t('fc.startPic'), '#/signs/cards', 'btn primary', 'sign'), link(t('fc.startTxt'), '#/signs/cards/txt', 'btn ghost', 'book'))) : null);
 }
 function review(go) {
   const due = dueList(), all = mistakes();
@@ -323,6 +392,7 @@ function summary() {
   const les = s.lesson ? LRN.afterQuiz(s.lesson, s.ok, n) : [];
   checkBadges();
   screen(t('sum.title'), h('div', { class: 'result' }, ring(s.ok / n, 120, 10, t('sum.score', s.ok, n)), h('p', { class: 'big-t', text: t('sum.score', s.ok, n) }), h('p', { class: 'accent', text: t('sum.xp', S().xp - s.xp0) })), ...les,
+    s.back ? h('div', { class: 'row' }, link(t('qc.back'), s.back, 'btn primary big', 'book')) : null,
     h('div', { class: 'row' }, s.wrong.length ? btn(t('sum.mist'), () => startSession('review', s.wrong.slice(), t('rv.title'), '#/review'), 'btn primary', 'repeat') : null,
       btn(t('sum.again'), () => { location.hash = s.again; route(); }, 'btn', 'repeat'), link(t('sum.home'), '#/home', 'btn ghost', 'home')));
 }
@@ -582,6 +652,9 @@ function about() {
     h('h2', { text: t('ab.src') }), h('p', { text: t('ab.srcText') }),
     h('ul', { class: 'srcs' }, LANGS.filter(l => MAN?.langs?.[l]).map(l => { const m = MAN.langs[l];
       return h('li', {}, h('b', { text: LANG_NAMES[l] + ': ' }), ext(m.url || `https://data.gov.il/he/datasets/ministry_of_transport/${m.dataset}`, m.title || m.dataset), h('span', { class: 'muted', text: ' · ' }), ext(CCBY, m.licenceTitle || 'CC BY'), h('span', { class: 'muted', text: ` · ${m.org || ''} · ${(m.resourceModified || '').slice(0, 10)} · ${m.count}${trOld(l) ? ' · ' + t('ab.oldBank', trOld(l)) : ''} ` })); })),
+    // v1.22: what the study tools do – all on this device, from the learner's own answers only
+    h('h2', { id: 'ab-tools', text: t('ab.tools') }), h('ul', { class: 'abtools' }, ['sum', 'recap', 'daily', 'weak', 'fc', 'qc'].map(k => h('li', { text: t('ab.tool.' + k) }))),
+    h('p', { class: 'small muted', text: t('ab.toolsNote') }),
     h('h2', { text: t('ab.lang') }), h('p', { text: t('ab.langText') }),
     h('h2', { text: t('ab.test') }), h('p', { text: t('ab.testText') }), h('p', { class: 'disc', role: 'note' }, icon('info'), h('span', { text: t('ab.course') })),
     h('h2', { text: t('ab.law') }), h('p', { text: t('ab.lawText') }),

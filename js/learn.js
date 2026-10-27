@@ -8,6 +8,7 @@ import * as tts from './tts.js';
 import { VIZ } from './viz.js';
 import { buildSteps, minutes, firstLine, partStarts, partOf, grouped } from './steps.js';
 let L = null, SRC = {};
+export const QC_N = 3;
 export const QUIZ_N = 6, MASTER_PCT = 80;
 export async function loadLessons(getJSON) {
   try { const [a, b] = await Promise.all([getJSON('data/lessons.json'), getJSON('data/sources.json')]); L = a; SRC = b; } catch { L = null; }
@@ -128,6 +129,36 @@ export function coverPanel(c, cov, name) {
 export function makeLearn(ctx) {
   const { screen, btn, link, byId, view, pool, cls, prof, pick, startSession, clsName, setPref, fsLevel, FS_N } = ctx;
   const he = node => { node.lang = 'he'; node.dir = 'rtl'; return node; };
+  // v1.22: a rule as one line with an 'I know this' tick (summary view and before-the-exam review); the citation chips stay one tap away
+  function knownLi(l, i, onchg) { const r = l.rules[i], [a] = firstLine(r.t), id = `kn-${l.id}-${i}`;
+    const cb = h('input', { type: 'checkbox', id, class: 'kncb', checked: st.known(l.id).has(i), onchange: e => { st.setKnown(l.id, i, e.target.checked); li.classList.toggle('known', e.target.checked); onchg?.(); } });
+    const li = h('li', { value: i + 1, class: 'knli' + (cb.checked ? ' known' : ''), 'data-r': String(i) },
+      h('label', { class: 'knw', for: id }, cb, he(h('span', { class: 'rt1', text: a })), h('span', { class: 'sr-only', text: ' – ' + t('sm.know') })), refs(r.s, r.also, r.x));
+    return li; }
+  const mnemOf = l => he(h('ul', { class: 'mnems' }, l.mnem.map(m => h('li', {}, h('b', { text: m.t }), m.n ? h('small', { text: m.n }) : null, refs(m.s, m.also || [], m.x)))));
+  const keyViz = (l, c) => { const v = l.viz.find(x => VIZ[x]); return v ? h('div', { class: 'vizs', 'data-viz': v }, he(VIZ[v]({ lesson: l.id, cls: c }))) : null; };
+  // v1.22: 'חזרה לפני מבחן' – every summary of one topic in one scroll, with ticks for what I already know and a filter for the rest
+  function recap(g) {
+    const c = cls(), ls = lessonsFor(c), G = grouped(ls), gi = G.findIndex(([k]) => k === g);
+    if (gi < 0) { location.hash = '#/learn'; return; }
+    const lsn = G[gi][1].map(i => ls[i]), withR = lsn.filter(l => l.rules.length), all = withR.reduce((a, l) => a + l.rules.length, 0);
+    const cnt = h('p', { class: 'sub', id: 'rc-cnt', 'aria-live': 'polite' });
+    const upd = () => { const k = withR.reduce((a, l) => a + l.rules.filter((_, i) => st.known(l.id).has(i)).length, 0); cnt.textContent = t('sm.count', k, all); };
+    const only = h('input', { type: 'checkbox', id: 'rc-only', onchange: e => document.querySelector('.recapall')?.classList.toggle('onlynew', e.target.checked) });
+    const body = h('div', { class: 'recapall' }, withR.map(l => h('section', { class: 'card rcl', 'data-id': l.id, 'aria-labelledby': 'rh-' + l.id },
+      he(h('h2', { class: 'h3', id: 'rh-' + l.id, text: l.title })),
+      l.viz.some(x => VIZ[x]) ? h('details', { class: 'rcviz' }, h('summary', { text: t('sm.diag') }), keyViz(l, c)) : null,
+      he(h('ol', { class: 'rules sumrules' }, l.rules.map((_, i) => knownLi(l, i, upd)))),
+      l.mnem.length ? h('div', { class: 'rcmnem' }, h('p', { class: 'small' }, h('b', { text: t('ln.mnem') })), mnemOf(l)) : null,
+      h('p', { class: 'row tight' }, link(t('sm.toLesson'), '#/learn/' + l.id + (status(l, ls).unlocked ? '' : '/peek'), 'btn small ghost', 'book')))));
+    const nb = lsn.length - withR.length;
+    screen(t('sm.recapT', t('lg.' + g)), h('p', { class: 'small', text: t('sm.recapHint') }), cnt,
+      h('p', {}, h('label', { class: 'knw', for: 'rc-only' }, only, h('span', { text: t('sm.onlyNew') }))),
+      body, nb ? h('p', { class: 'small muted', text: t('sm.recapBank', nb) }) : null,
+      h('div', { class: 'row' }, link(t('sm.practiceT'), '#/practice/mix', 'btn primary', 'repeat'), link(t('ln.title'), '#/learn', 'btn ghost')),
+      h('p', { class: 'small muted', text: t('ln.own') }));
+    upd();
+  }
   function path() {
     const c = cls(), ls = lessonsFor(c);
     if (!ls.length) return screen(t('ln.title'), h('p', { class: 'empty', text: t('ln.noData') }));
@@ -143,7 +174,11 @@ export function makeLearn(ctx) {
         he(h('span', { text: t('ln.cont', ls[li].title, (+lp.s || 0) + 1, info[li].n) })))) : null,
       nextI >= 0 && !(going && nextI === li) ? h('p', {}, h('a', { class: 'btn ' + (going ? '' : 'primary big'), href: '#/learn/' + ls[nextI].id, id: 'ln-next' }, icon('book'),
         he(h('span', { text: t('ln.nextL', ls[nextI].title, info[nextI].min) })))) : null,
-      h('p', { class: 'small muted', text: t('ln.totalMin', ls.length, totalMin) }));
+      h('p', { class: 'small muted', text: t('ln.totalMin', ls.length, totalMin) }),
+      // v1.22: one switch for every lesson (each lesson also has its own)
+      h('div', { class: 'row tight' }, h('span', { class: 'small', id: 'lv-l', text: t('sm.viewAll') }),
+        h('div', { class: 'seg', role: 'group', 'aria-labelledby': 'lv-l', id: 'ln-view' }, VIEWS.map(v => h('button', { type: 'button', class: 'btn small' + (v === lview() ? ' on' : ''),
+          'aria-pressed': String(v === lview()), 'data-view': v, onclick: () => { setPref('lnv', v); path(); } }, h('span', { text: t('st.v.' + v) }))))));
     const item = i => { const l = ls[i], s = sts[i], x = info[i];
       const state = !s.unlocked ? t('ln.locked') : s.mastered ? t('ln.mastered') + ' · ' + t('ln.best', s.best) : s.read ? t('ln.read') + (s.tries ? ' · ' + t('ln.best', s.best) : '') : t('ln.new');
       const inner = [h('span', { class: 'lnum' + (s.mastered ? ' ok' : ''), 'aria-hidden': 'true' }, s.mastered ? icon('check') : !s.unlocked ? icon('key') : String(i + 1)),
@@ -158,7 +193,8 @@ export function makeLearn(ctx) {
         h('p', { class: 'small muted lgmeta', id: 'lgm-' + g, text: t('ln.grpMeta', is.length, r, m, mins) }),
         h('div', { class: 'stbar lgbar', role: 'progressbar', 'aria-labelledby': 'lg-' + g, 'aria-describedby': 'lgm-' + g, 'aria-valuemin': '0', 'aria-valuemax': String(is.length), 'aria-valuenow': String(r) },
           h('span', { class: 'stfill', style: { width: (100 * r / is.length) + '%' } })),
-        h('ol', { class: 'lessons' }, is.map(item))); });
+        h('ol', { class: 'lessons' }, is.map(item)),
+        is.some(i => ls[i].rules.length) ? h('p', { class: 'row tight' }, link(t('sm.recapL'), '#/learn/recap/' + g, 'btn small ghost', 'repeat')) : null); });
     screen(t('ln.title'), h('p', { class: 'sub', text: clsName(c) + ' · ' + t('ln.count', ls.length, done) }),
       h('p', { class: 'small', text: t('ln.hint') }),
       uiLang() !== 'he' ? h('p', { class: 'notice', role: 'note' }, icon('info'), h('span', { text: t('ln.heOnly') })) : null,
@@ -173,7 +209,7 @@ export function makeLearn(ctx) {
   }
   // v1.21: three ways to read a lesson – 'steps' (default: short cards, ≤ ~120 words and ≤ 5 rules each, progress, back/next,
   // position remembered on this device), 'quick' (each rule's one-line statement + diagrams + recap) and 'full' (the whole lesson on one page)
-  const VIEWS = ['steps', 'quick', 'full'];
+  const VIEWS = ['steps', 'quick', 'full'];   // 'quick' = the summary (v1.22: one screen)
   const lview = () => (VIEWS.includes(prof()?.lnv) ? prof().lnv : 'steps');
   const labOf = s => { const x = SRC[srcKey(s)]; return x ? x.label + s.slice(srcKey(s).length) : s; };
   function lessonData(l, c) {
@@ -194,6 +230,8 @@ export function makeLearn(ctx) {
     if (!s.unlocked && sub !== 'peek') { location.replace('#/learn/' + l.id + '/peek'); return; }
     const peek = !s.unlocked;
     const { qids, pb, bank, gal } = lessonData(l, c);
+    // v1.22: 'בדיקה מהירה' – 3 of the lesson's own quiz questions at the end of a part, then straight back to the same step
+    if (sub === 'check') return qids.length ? startSession('check', pick(qids, QC_N), t('qc.title') + ' · ' + l.title, `#/learn/${l.id}/check`, { back: '#/learn/' + l.id + (peek ? '/peek' : '') }) : void (location.hash = '#/learn/' + l.id);
     if (sub === 'quiz') { st.markRead(l.id); return startSession('lesson', pick(qids, QUIZ_N), l.title, `#/learn/${l.id}/quiz`, { lesson: l.id }); }
     const i = ls.indexOf(l), nxt = own ? ls[i + 1] : null, vw = lview();
     const listen = tts.supported() ? btn(t('ln.listen'), e => {
@@ -284,8 +322,21 @@ export function makeLearn(ctx) {
         l.mnem.length ? sec('mnem', mnemList(l.mnem)) : null,
         l.recap.length ? sec('recap', recapList(l.recap.map((_, n) => n))) : null,
         end(), bank ? null : h('p', { class: 'small muted', text: t('ln.own') })].filter(Boolean));
-    } else stepsScreen();
+    } else if (vw === 'quick') sumScreen(); else stepsScreen();
     const h1 = document.querySelector('#app h1'); if (h1) { h1.lang = 'he'; h1.dir = 'rtl'; }
+    // v1.22: the summary – one screen: each rule's one line (tick what I know; chips one tap away), the key diagram, 'לזכור', then the quiz
+    function sumScreen() {
+      const n = l.rules.length, cnt = h('p', { class: 'small muted', id: 'sm-cnt', 'aria-live': 'polite' });
+      const upd = () => { cnt.textContent = t('sm.count', l.rules.filter((_, i) => st.known(l.id).has(i)).length, n); };
+      screen(l.title, ...[...head,
+        h('p', { class: 'notice sumnote', role: 'note' }, icon('info'), h('span', { text: t(bank ? 'sm.noteBank' : 'sm.note') })),
+        n ? h('section', { class: 'lsec lsum', 'aria-labelledby': 'ls-rules' }, h('h2', { id: 'ls-rules', text: t('ln.rules') }), cnt, he(h('ol', { class: 'rules sumrules' }, l.rules.map((_, i) => knownLi(l, i, upd))))) : null,
+        l.viz.some(x => VIZ[x]) ? h('section', { class: 'lsec lsum', 'aria-labelledby': 'ls-viz' }, h('h2', { id: 'ls-viz', text: t('sm.diag') }), keyViz(l, c)) : null,
+        bank ? h('p', { class: 'sub', text: t('sm.bankN', bank.length) }) : null,
+        l.mnem.length ? sec('mnem', mnemOf(l)) : null,
+        end(), bank ? null : h('p', { class: 'small muted', text: t('ln.own') })].filter(Boolean));
+      if (n) upd();
+    }
     function stepsScreen() {
       const steps = stepsOf(l, c, vw), N = steps.length, words = steps.reduce((a, x) => a + x.w, 0);
       const pbFirst = steps.findIndex(x => x.k === 'pb');
@@ -336,7 +387,8 @@ export function makeLearn(ctx) {
         const h2 = h('h2', { id: 'st-h', tabindex: '-1', text: title(x, n) });
         const last = n === N - 1;
         if (last && !peek && !st.lesson(l.id)?.[0]) { st.markRead(l.id); const se = document.querySelector('.lstate'); if (se) se.textContent = t('ln.read'); }
-        const partEnd = P > 1 && n === kEnd && !last ? h('p', { class: 'notice partend', role: 'note' }, icon('check'), h('span', { text: t('st.partDone', k + 1, P) })) : null;
+        const partEnd = P > 1 && n === kEnd && !last ? h('div', { class: 'notice partend', role: 'note' }, icon('check'), h('span', { text: t('st.partDone', k + 1, P) }),
+          qids.length && !peek ? link(t('qc.go', Math.min(QC_N, qids.length)), `#/learn/${l.id}/check`, 'btn small qcgo', 'exam') : null) : null;
         box.replaceChildren(h('section', { class: 'lstep', 'data-k': x.k, 'data-step': String(n), 'data-part': String(k + 1), 'aria-labelledby': 'st-h' }, h2, ...body(x, n), partEnd));
         nav.replaceChildren(
           btn(t('st.prev'), () => go(n - 1, true), 'btn stprev', uiLang() === 'he' ? 'arrowE' : 'arrowS', { disabled: n === 0 }),
@@ -361,5 +413,5 @@ export function makeLearn(ctx) {
     return [h('p', { class: pass ? 'banner ok' : 'banner', role: 'status' }, icon(pass ? 'award' : 'info'), h('span', { text: pass ? t('ln.passed', pct) : t('ln.notYet', pct) })),
       h('div', { class: 'row' }, link(t('ln.toLesson'), '#/learn/' + id, 'btn'), nxt ? link(t('ln.next', nxt.title), '#/learn/' + nxt.id, pass ? 'btn primary' : 'btn ghost') : link(t('ln.title'), '#/learn', 'btn ghost'))];
   }
-  return { route: (id, sub) => (id ? lesson(id, sub) : path()), afterQuiz };
+  return { route: (id, sub) => (id === 'recap' ? recap(sub) : id ? lesson(id, sub) : path()), afterQuiz };
 }

@@ -93,6 +93,20 @@ async function run(prof, opts) {
   await p.waitForFunction(() => document.querySelector('.qcard .qimg').complete);
   ok(await p.evaluate(() => document.querySelector('.qcard .qimg').naturalWidth > 100), 'sign image loads locally');
   await axe(p, 'signs', prof); await go(p, '#/home');
+  // v1.22: sign flashcards – picture → (flip) official number + meaning + source; self-rating moves the card's own Leitner box (local, kept in backups)
+  { const SG = await p.evaluate(() => fetch('data/signs.json').then(r => r.json())); await go(p, '#/signs'); await p.waitForSelector('#fc-stat');
+    await p.click('a[href="#/signs/cards"]'); await p.waitForSelector('#fc-show'); const n = await p.getAttribute('.fccard', 'data-n');
+    const hid = await p.isHidden('#fc-back'); await p.click('#fc-show'); const bt = await p.textContent('#fc-back');
+    ok(hid && SG.img[n] && (await p.getAttribute('.fccard .fcimg', 'src')).endsWith(SG.img[n]) && bt.includes(SG.e[n].slice(0, 30)) && bt.includes('תמרור ' + n)
+      && await p.getAttribute('#fc-back a.chip', 'href') === SG.src.url && /כרטיס 1 מתוך 10/.test(await p.textContent('#fc-pos')), `flashcard ${n}: picture, flip → official meaning + number + sign-table link`);
+    await axe(p, 'flashcard', prof);
+    const d0 = await p.evaluate(() => Math.floor((Date.now() - new Date().getTimezoneOffset() * 6e4) / 864e5));
+    await p.click('#fc-yes'); await p.waitForSelector('#fc-pos:has-text("כרטיס 2")'); const m = await p.getAttribute('.fccard', 'data-n');
+    await p.click('#fc-show'); await p.click('#fc-no'); const fc = (await S(p)).fc;
+    ok(JSON.stringify(fc[n]) === JSON.stringify([1, d0 + 1, 1, 1]) && JSON.stringify(fc[m]) === JSON.stringify([0, d0, 1, 0]), `self-rating: 'ידעתי' → back in 1 day, 'עוד לא' → today ${JSON.stringify([fc[n], fc[m]])}`);
+    await go(p, '#/signs/cards/txt'); await p.waitForSelector('#fc-show');
+    ok(await p.isVisible('.fccard > .fcmean') && !(await p.isVisible('.fcimg')), 'meaning → picture mode: meaning first, picture after the flip');
+    await p.click('#fc-show'); ok(await p.isVisible('#fc-back .fcimg'), 'flip shows the picture'); }
   // review (3 wrong → mistakes)
   await go(p, '#/review'); await p.waitForSelector('h1');
   ok(+((await text(p)).match(/(\d+) טעויות/) || [0, 0])[1] >= 3, 'review lists mistakes');
@@ -104,6 +118,27 @@ async function run(prof, opts) {
     ok(taught === null ? n >= 0 : (taught > 0 ? n >= 1 && await p.locator('a[href^="#/review/ln-"]').count() >= 1 : n === 0), `mistakes grouped by lesson (${n} lesson links, ${taught} taught mistakes)`); }
   await p.click('a[href="#/review/go"], a[href="#/review/all"]'); await p.waitForSelector('.answers .ans');
   ok(true, 'review session starts'); await go(p, '#/home');
+  // v1.22: 'תרגול יומי' – 10 questions, the questions missed today come first; 'תרגל את החלשים' – from the learner's own weakest lesson
+  { await go(p, '#/home'); await p.waitForSelector('#dy-mix'); const s0 = await S(p), wrong = Object.entries(s0.q).filter(([, r]) => r[2] > r[3] && r[0] < 3).map(([k]) => +k);
+    const nd = +((await p.textContent('#dy-mix')).match(/(\d+) לחזרה/) || [])[1];
+    ok(/^10 שאלות להיום/.test(await p.textContent('#dy-mix')) && nd >= wrong.length && /חוזרת אחרי יום, 3 ימים ושבוע/.test(await p.textContent('#dy-mix')) && /אחרי עוד כמה תשובות/.test(await p.textContent('#wk-list')),
+      `home: daily practice card (10 questions, ${nd} due incl. ${wrong.length} missed), no weak spots yet`);
+    await p.click('a[href="#/practice/daily"]'); await p.waitForSelector('.answers .ans'); const seen = [];
+    for (let i = 0; i < 10; i++) { seen.push(await curId(p)); await p.click(`.answers .ans[data-i="${correct(seen[i])}"]`); await p.click('.next'); }
+    await p.waitForSelector('.result');
+    ok(wrong.every(id => seen.includes(id)) && new Set(seen).size === 10, `daily practice: 10 questions, all ${wrong.length} missed ones included`);
+    const L = (await p.evaluate(() => fetch('data/lessons.json').then(r => r.json()))).lessons.find(l => l.cls.includes('B') && l.quiz?.length >= 5), raw = await p.evaluate(() => localStorage.getItem('theoryIL.state'));
+    const mine = await p.evaluate(async ([qs, lid]) => { const m = await import('./js/learn.js'); const [cov, sg] = await Promise.all(['data/coverage.json', 'data/signs.json'].map(u => fetch(u).then(r => r.json())));
+      return qs.filter(id => m.explain(id, 'B', cov, sg)?.lesson?.id === lid); }, [L.quiz, L.id]);
+    await p.evaluate(ids => { const s = JSON.parse(localStorage.getItem('theoryIL.state')); ids.forEach(id => { s.q[id] = [0, 99999, 2, 0, 1]; }); localStorage.setItem('theoryIL.state', JSON.stringify(s)); }, mine);
+    await p.reload(); await go(p, '#/home'); await p.waitForSelector('#wk-list');
+    const wl = await p.textContent('#wk-list');
+    ok(mine.length >= 2 && wl.includes(L.title) && /\(0%\)/.test(wl) && await p.locator('a[href="#/practice/weak"]').count() === 1, `weak spots from own answers: '${L.title}' (0%) listed`);
+    await p.click('a[href="#/practice/weak"]'); await p.waitForSelector('.answers .ans');
+    { const c0 = await curId(p), lt = await p.evaluate(async id => { const m = await import('./js/learn.js'); const [cov, sg] = await Promise.all(['data/coverage.json', 'data/signs.json'].map(u => fetch(u).then(r => r.json())));
+        return m.explain(id, 'B', cov, sg)?.lesson?.title || ''; }, c0);
+      ok(mine.includes(c0) || (lt && wl.includes(lt)), `weak-spots practice starts with a question of a listed weak lesson (${lt})`); }
+    await p.evaluate(r => localStorage.setItem('theoryIL.state', r), raw); await p.reload(); await p.waitForSelector('h1'); }
   // search by text and by number
   await go(p, '#/search'); await p.waitForSelector('#sq'); await p.fill('#sq', 'חגורת בטיחות'); await p.waitForTimeout(400);
   const nRes = +((await text(p)).match(/(\d+) תוצאות/) || [0, 0])[1];
@@ -205,10 +240,34 @@ async function run(prof, opts) {
     const nums = await p.$$eval('#covp .covlist li b', bs => bs.map(b => +b.textContent.split(' ')[0].replace(/[^0-9]/g, '')));
     const tx = await p.textContent('#covp'), want = [v[9], v[10], v[7], v[5], v[0] - v[9] - v[7] - v[5]];
     await go(p, '#/about'); await p.waitForSelector('#covp'); const ab = await p.textContent('#covp');
+    ok(await p.locator('.abtools li').count() === 6 && /תרגול יומי/.test(await p.textContent('.abtools')) && /לא תחזית רשמית/.test(await text(p)), "About lists the v1.22 study tools (local only, not an official forecast)");
     ok(['B', 'A'].includes(c) && JSON.stringify(nums) === JSON.stringify(want) && want[0] + want[2] + want[3] + want[4] === v[0] && want[4] === 0
       && tx.includes(v[0].toLocaleString('he-IL')) && tx.includes(CV.est[c + '_est'] + '%') && /אין כאן ערבות ל-100%/.test(tx) && !/מכסה 100%|100% מהחומר/.test(tx) && ab === tx,
       `coverage panel (${c}): ${want.join('/')} of ${v[0]}, estimate ${CV.est[c + '_est']}%, 'no 100% guarantee', same on About`);
     await go(p, '#/learn'); await p.waitForSelector('.lgroup'); }
+  // v1.22: summary mode – a global switch on the path page; a lesson then is ONE screen: one line per rule (+ source chips), key diagram, 'לזכור', the quiz;
+  // 'I know this' ticks are kept (device + reload), and 'חזרה לפני מבחן' shows the whole topic in one scroll with a filter for what is left
+  { const L0 = LB[0]; await p.click('#ln-view [data-view=quick]'); await p.waitForSelector('#ln-view [data-view=quick][aria-pressed=true]');
+    const rc = await p.$eval(`.lgroup:has(li[data-id="${L0.id}"]) a[href^="#/learn/recap/"]`, a => a.getAttribute('href'));
+    await go(p, '#/learn/' + L0.id); await p.waitForSelector('.sumnote');
+    const nli = await p.locator('.lsum .sumrules > li').count(), nch = await p.locator('.lsum .sumrules > li .refs a').count();
+    const b = await p.locator('.lsum .knw').first().boundingBox();
+    ok(!(await p.locator('.lstep').count()) && nli === L0.rules.length && nch >= nli && await p.locator(`a[href="#/learn/${L0.id}/quiz"]`).count() === 1
+      && (!L0.viz.length || await p.locator('.vizs').count() === 1) && (!L0.mnem.length || await p.locator('.mnems li').count() === L0.mnem.length) && b.height >= 44,
+      `summary of '${L0.id}': one screen, ${nli} one-line rules with ${nch} source chips, key diagram, 'לזכור', quiz button, ticks ≥44px`);
+    await p.click(`label[for="kn-${L0.id}-0"]`); await p.waitForTimeout(150);
+    ok(JSON.stringify((await S(p)).kn?.[L0.id]) === '[0]' && /סימנת 1 מתוך/.test(await p.textContent('#sm-cnt')), "'אני יודע' tick saved locally + counted");
+    await p.reload(); await p.waitForSelector('.sumnote');
+    ok(await p.isChecked(`#kn-${L0.id}-0`), 'summary view and tick survive a reload');
+    await axe(p, 'lesson-summary', prof);
+    await go(p, rc); await p.waitForSelector('.recapall');
+    const nl = await p.locator('.rcl').count(); await p.click('label[for=rc-only]');
+    ok(nl >= 2 && /סימנת 1 מתוך/.test(await p.textContent('#rc-cnt')) && await p.isChecked(`#kn-${L0.id}-0`) && !(await p.isVisible(`.rcl li[data-r="0"]:has(#kn-${L0.id}-0)`))
+      && await p.isVisible(`.rcl[data-id="${L0.id}"] li[data-r="1"]`), `'חזרה לפני מבחן' (${rc}): ${nl} lesson summaries in one scroll, shared ticks, 'only what is left' filter`);
+    await axe(p, 'recap', prof);
+    await p.click('label[for=rc-only]'); await p.click(`label[for="kn-${L0.id}-0"]`); await p.waitForTimeout(150);
+    ok(!(await S(p)).kn?.[L0.id], 'untick removes it');
+    await go(p, '#/learn'); await p.click('#ln-view [data-view=steps]'); await p.waitForSelector('#ln-view [data-view=steps][aria-pressed=true]'); }
   // v1.21: a lesson opens step by step – progress 'שלב 1 מתוך N', back/next ≥44px, focus on the step heading, aria-live, reading time, resume
   { const L0 = LB[0]; await go(p, '#/learn/' + L0.id); await p.waitForSelector('.lstep');
     const N = +(/מתוך (\d+)/.exec(await p.textContent('#st-pos')) || [])[1];
@@ -246,6 +305,15 @@ async function run(prof, opts) {
     const s = await S(p);
     ok(/^שלב \d+ מתוך/.test(await p.textContent('#st-pos')) && await p.locator('.stnav .stnext').count() === 0 && await p.locator('.lend a.btn.primary').count() === 1 && s.les?.[L0.id]?.[0] > 0,
       'steps: the last step shows the mini-quiz button and marks the lesson read');
+    // v1.22: 'בדיקה מהירה' at the end of a part – 3 questions of this lesson, then back to the same step
+    if (await p.locator('.partnav [data-part="2"]').count()) { await p.click('.partnav [data-part="2"]'); await p.waitForTimeout(120); await p.click('.stnav .stprev'); await p.waitForTimeout(120);
+      const pos = await p.textContent('#st-pos'), qb = await p.locator('.partend .qcgo').boundingBox();
+      await p.click('.partend .qcgo'); await p.waitForSelector('.answers .ans'); const qs = [];
+      for (let i = 0; i < 3; i++) { qs.push(await curId(p)); await p.click(`.answers .ans[data-i="${correct(qs[i])}"]`); await p.click('.next'); }
+      await p.waitForSelector('.result'); const back = await p.getAttribute('.screen a.btn.primary.big', 'href');
+      await p.click('.screen a.btn.primary.big'); await p.waitForSelector('.lstep');
+      ok(qb && qb.height >= 44 && qs.every(id => L0.quiz.includes(id) || (L0.pbank || []).some(b => b.q === id)) && back === '#/learn/' + L0.id && await p.textContent('#st-pos') === pos,
+        `quick check at the end of part 1: 3 of the lesson's questions (${qs}), then back to '${pos}'`); }
     // v1.21 (1c): a long lesson is split into parts of ≤ 5 cards – 'חלק 1 מתוך P', part buttons, 'לחלק 2' at the end of a part
     { const LL = LB.reduce((a, b) => (b.rules.length > a.rules.length ? b : a)); await go(p, '#/learn/' + LL.id + '/peek'); await p.waitForSelector('.lstep');
       if (await p.locator('.resume button').count()) { await p.click('.resume button'); await p.waitForTimeout(80); }
@@ -400,6 +468,7 @@ async function run(prof, opts) {
   await p.fill('#codein', code); await p.click('#bk-restore'); await p.waitForSelector('.drive');
   ok(JSON.stringify((await S(p)).q) === before, 'restore from code: same progress');
   ok((await S(p)).les?.[LB[0].id]?.[1] === 100, 'restore from code keeps lesson progress');
+  ok(Object.keys((await S(p)).fc || {}).length >= 2, 'restore from code keeps sign-flashcard ratings');
   await go(p, '#/settings'); await p.waitForSelector('.card#backup');
   ok(await p.isVisible('#bk-undo'), 'undo restore offered');
   // file export → import (sanitised)
@@ -409,11 +478,12 @@ async function run(prof, opts) {
   await p.click('#bk-confirm'); ok(!!(await META(p)).lastBackup, 'confirmed download counts as a backup');
   const f = path.join(OUT, 'backup.json'); await dl.saveAs(f);
   const j = JSON.parse(fs.readFileSync(f, 'utf8')); ok(j.app === 'theory-il' && j.state.profile.cls === 'B', `backup file ${dl.suggestedFilename()}`);
-  j.state.profile.name = '<img src=x onerror=alert(1)>'; j.state.profile.cls = 'ZZ'; j.state.evil = { a: 1 }; j.state.q['abc'] = [1, 2, 3, 4, 5]; j.state.xp = -5;
+  j.state.profile.name = '<img src=x onerror=alert(1)>'; j.state.profile.cls = 'ZZ'; j.state.evil = { a: 1 }; j.state.q['abc'] = [1, 2, 3, 4, 5]; j.state.xp = -5; j.state.fc = { ...j.state.fc, '<b>': [1, 2, 3, 4], 101: [9, 'x', -1, 5] }; j.state.kn = { signs: [0, 2, 'x', 2], 'bad key!': [1] };
   const f2 = path.join(OUT, 'evil.json'); fs.writeFileSync(f2, JSON.stringify(j));
   await p.setInputFiles('#filein', f2); await p.waitForSelector('.drive');
   const ev = await (async () => { const s = await S(p); return { name: s.profile.name, cls: s.profile.cls, evil: 'evil' in s, abc: 'abc' in s.q, xp: s.xp, imgs: await p.evaluate(() => document.querySelectorAll('img[src="x"]').length) }; })();
   ok(!/[<>]/.test(ev.name) && ev.cls === 'B' && !ev.evil && !ev.abc && ev.xp === 0 && !ev.imgs, `sanitised import ${JSON.stringify(ev)}`);
+  { const s = await S(p); ok(!('<b>' in s.fc) && JSON.stringify(s.fc['101']) === '[0,0,0,0]' && JSON.stringify(s.kn) === '{"signs":[0,2]}', `sanitised import of flashcards + ticks ${JSON.stringify([s.fc['101'], s.kn])}`); }
   { const before = await S(p), j3 = JSON.parse(fs.readFileSync(f, 'utf8')); j3.state.bm = [1801]; j3.state.xp = 7; j3.state.profile.name = 'אחר';
     const f3 = path.join(OUT, 'merge.json'); fs.writeFileSync(f3, JSON.stringify(j3));
     await go(p, '#/settings'); await p.check('#bk-merge'); await p.setInputFiles('#filein', f3); await p.waitForSelector('.drive');
@@ -481,7 +551,7 @@ async function overflowSweep() {
     await p.click('.row .btn.primary.big'); await p.waitForSelector('.drive');
     const LJ = await p.evaluate(() => fetch('data/lessons.json').then(r => r.json()));
     const routes = ['#/home', '#/learn', '#/practice', '#/practice/mix', '#/review', '#/search', '#/bookmarks', '#/signs', '#/signs/go', '#/stats', '#/parent', '#/about', '#/settings', '#/exam',
-      ...LJ.lessons.filter(l => l.cls.includes('B') || l.cls.includes('A')).map(l => '#/learn/' + l.id + '/peek')];
+      ...LJ.lessons.filter(l => l.cls.includes('B') || l.cls.includes('A')).map(l => '#/learn/' + l.id + '/peek'), '#/learn/recap/signs', '#/learn/recap/junction', '#/learn/recap/road', '#/signs/cards', '#/signs/cards/txt'];
     const tiny = async () => p.evaluate(() => [...document.querySelectorAll('a[href], button, input:not([type=hidden]), select, textarea, summary, [role=button], [tabindex="0"]')].filter(e => {
       const r = e.getBoundingClientRect(), cs = getComputedStyle(e); if (!r.width || !r.height || cs.visibility === 'hidden' || e.closest('[hidden]')) return false;
       const lab = e.closest('label'); if (e.classList.contains('sr') && e.tabIndex < 0) return false;   // the visually-hidden file input is opened by its visible button
@@ -489,6 +559,10 @@ async function overflowSweep() {
       return r.width < 23.5 || r.height < 23.5; }).map(e => `${e.tagName.toLowerCase()}${e.type ? ':' + e.type : ''}'${(e.textContent || e.getAttribute('aria-label') || '').trim().slice(0, 18)}' ${Math.round(e.getBoundingClientRect().width)}x${Math.round(e.getBoundingClientRect().height)}`));
     const small = [];
     for (const r of routes) { await go(p, r); await p.waitForSelector('h1', { timeout: 5000 }).catch(() => {}); const sw = await over(); if (sw) bad.push(r + '=' + sw); const tt = await tiny(); if (tt.length) small.push(r + ': ' + tt.slice(0, 3).join(', ')); }
+    // v1.22: every lesson again in the one-screen summary view
+    await go(p, '#/learn'); await p.click('#ln-view [data-view=quick]');
+    for (const r of routes.filter(r => r.endsWith('/peek'))) { await go(p, r); await p.waitForSelector('.sumnote', { timeout: 5000 }).catch(() => bad.push(r + ':nosum')); const sw = await over(); if (sw) bad.push(r + ':sum=' + sw); const tt = await tiny(); if (tt.length) small.push(r + ':sum ' + tt.join(',')); }
+    await go(p, '#/learn'); await p.click('#ln-view [data-view=steps]');
     // v1.17 (review #13 N9): tap targets – every visible link / control on every screen is at least 24×24 px (WCAG 2.5.8)
     ok(!small.length, `${W}px: every link and control on ${routes.length} screens is a ≥24×24 px tap target ${small.slice(0, 4).join(' | ')}`);
     await go(p, '#/about'); await p.waitForSelector('.tbl.cov td');

@@ -940,6 +940,12 @@ ok(all("מס' 630" in _SJ['LT:%d' % n]['ex'][0] and "'מס 630" not in _SJ['LT:%
 ok('מוכן להסתכן' not in json.dumps(LJ, ensure_ascii=False), 'no unsourced "מוכן להסתכן יותר" in any lesson')
 ok(any('מאטים ככל האפשר בעזרת הבלמים ותיבת ההילוכים' in x[1] for x in _LJI['vehicle']['rules'][12].get('x', [])), 'vehicle#r12: the braking clause has its textbook p.44 chip')
 ok(all(CF['q'][k]['v'] == 'full' for k in ('66', '1389', '1003')) and CF['q']['1389']['rule'] == ['alc2#r2'] and CF['q']['1003']['rule'] == ['vehicle#r10'], 'Q66/Q1389/Q1003 full on rules that state the answer (Q1389 no longer on the lane-drift rule)')
+# v1.22: sign flashcards – every card is an official sign-table entry with a local bank picture, in one of the 9 parts
+_fc = [n for n in SG['img'] if n in SG['e']]
+ok(len(_fc) >= 140 and all(os.path.isfile(os.path.join('img', 'q', SG['img'][n])) for n in _fc) and all(int(n) // 100 in range(1, 10) for n in _fc)
+   and SG['src']['url'].startswith('https://www.gov.il/'), f'flashcards: {len(_fc)} official signs with a local picture, gov.il source')
+_bk = open(os.path.join('js', 'backup.js'), encoding='utf-8').read()
+ok('raw.kn' in _bk and 'raw.fc' in _bk, "backup keeps v1.22 'I know' ticks (kn) and flashcard boxes (fc)")
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 
