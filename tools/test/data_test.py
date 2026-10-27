@@ -409,9 +409,10 @@ for _l in LB.values():
         for _i, _r in enumerate(_l.get(_k, [])):
             if not _r.get('x') or any(_x[0].startswith('Q:') for _x in _r['x']): continue
             _t = ' '.join(str(_r.get(_f, '')) for _f in _F); _nn += 1
-            _P = ' '.join(_x[1] for _x in _r['x']).replace('(,)', '').replace(',', '')
+            _P = ' '.join(re.sub(r'^\d+[א-ת]?\s', '', _x[1]) if _x[0].startswith('LT:') else _x[1] for _x in _r['x']).replace('(,)', '').replace(',', '')   # v1.15 (T2): a sign's own number is not evidence
             _pf = {float(v) for v in re.findall(r'(?<![\d.])\d+(?:\.\d+)?(?![\d])', _P)}
-            for _n in _nums(_t):
+            _ids = {re.match(r'LT:(\d+)', _x[0]).group(1) for _x in _r['x'] if re.match(r'LT:\d+', _x[0])}   # sign ids name the sign, they are not claims
+            for _n in _nums(_t) - _ids:
                 if float(_n) in _pf or any(w in _P for w in _W.get(_n, [])): continue
                 _dm = re.fullmatch(r'(\d{1,2})\.(\d{1,2})', _n)
                 if _dm and re.search(r'(?<!\d)' + _dm.group(1) + r' ב', _P): continue   # date 1.11 ↔ "1 בנובמבר"
@@ -425,6 +426,17 @@ for _l in LB.values():
             for _m in re.finditer(r'עמ׳\s*(\d+)(?:[–-](\d+))?', ' '.join(str(_r.get(f, '')) for f in ('t', 'n', 'b'))):
                 if not any(int(_m.group(1)) <= p <= int(_m.group(2) or _m.group(1)) for p in _pg): _pr.append(f"{_l['id']}#{_k}{_i}")
 ok(not _pr, f'v1.14 (review #10 N3): a page cited in a rule text ("עמ׳ N") matches the page tag of one of its chips ({_pr[:8]})')
+# v1.15 (review #11 C1/T2): no junk passage – every displayed chip has real words (not just a number/punctuation)
+_jk = []; _nj = 0
+for _l in LB.values():
+    for _k in ('rules', 'ex', 'mnem', 'recap'):
+        for _i, _r in enumerate(_l.get(_k, [])):
+            for _x in _r.get('x') or []:
+                _nj += 1; _t = re.sub(r'\s*\(עמ׳ \d+\)$', '', _x[1])
+                if _x[0].startswith('LT:'): _t = re.sub(r'^\d+[א-ת]?\s', '', _t)
+                _w = re.findall(r'[א-תA-Za-z]{2,}', _t)
+                if len(_w) < 2 or len(''.join(_w)) < 7: _jk.append(f"{_l['id']}#{_k}{_i}:{_x[0]}:{_x[1][:20]}")
+ok(not _jk and _nj >= 1300, f'v1.15 (review #11 C1/T2): every displayed passage has real words beyond a sign number / punctuation ({_nj} chips; junk: {_jk[:6]})')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 

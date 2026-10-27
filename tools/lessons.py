@@ -96,15 +96,21 @@ def source(src, checks, where):
         if not ok: errors.append(f'{where}: {checks} not near sign {key}')
         s = sources.setdefault(sid, {'kind': kind, 'label': 'תמרור ' + key, 'title': '',
             'doc': LOT['title'], 'url': LOT['url'], 'ex': []})
-        if ok:
-            e = re.sub(r'\s+', ' ', ok[0])[:220]
-            if e not in s['ex']: s['ex'].append(e)
+        def _own(w):
+            e = re.sub(r'\s+', ' ', w)[:220]
             # the sign's own entry only (cut at the next sign number); PDF RTL artefact ' .word' shown as ' word'
             m = re.search(r'(?<!\d)' + re.escape(key) + r'(?!\d)', e); e2 = e[m.start():] if m else e
             kn = int(re.match(r'\d+', key).group()) if re.match(r'\d+', key) else None
             m = next((m for m in re.finditer(r'\s(\d{3})[א-ת]?\s', e2[len(key):]) if kn and kn < int(m.group(1)) <= kn + 9), None)
             e2 = e2[:len(key) + m.start()] if m else e2
-            PASS.append((sid, re.sub(r'(^|\s)[.,:;]+(?=\S)', r'\1', e2).strip()))
+            return e, re.sub(r'(^|\s)[.,:;]+(?=\S)', r'\1', e2).strip()
+        if ok:
+            # v1.15 (review #11 C1): prefer the window where the number opens the sign's own entry (its cut entry holds the checks),
+            # not a cross-reference such as "עד לתמרור 433 , 434" inside the previous sign
+            cand = [_own(w) for w in ok]
+            e, e2 = next((c for c in cand if all(norm(x, True) in norm(c[1], True) for x in checks)), cand[0])
+            if e not in s['ex']: s['ex'].append(e)
+            PASS.append((sid, e2))
     elif kind == 'LTP':
         pg = [p for p in LOT_PAGES if re.search(r'חלק\s*' + key + r'\s', p) and len(p) < 400]
         if not pg or not all(norm(c, True) in norm(pg[0], True) for c in checks):
