@@ -18,6 +18,13 @@ async function axe(p, name, prof) {
   ok(!v.length, `axe ${name}: ${v.length ? v.map(x => `${x.id}(${x.impact}) ${x.nodes.slice(0, 2).map(n => n.target.join(' ')).join(' | ')}`).join('; ') : 'no violations'}`);
   await p.screenshot({ path: path.join(OUT, `${prof}-${name}.png`), fullPage: true });
 }
+// v1.20.1 (review #17 #4): the live site's first load (cold CDN + service-worker install) can be slow – wait longer and retry once
+async function load(p) {
+  for (let i = 0; ; i++) {
+    try { await p.goto(BASE, { timeout: 90000, waitUntil: 'domcontentloaded' }); await p.waitForSelector('h1', { timeout: 60000 }); return; }
+    catch (e) { if (i) throw e; console.log('  (slow first load – retrying once)'); }
+  }
+}
 const go = async (p, hash) => { await p.evaluate(h => { location.hash = h; }, hash); await p.waitForTimeout(250); };
 const text = p => p.evaluate(() => document.getElementById('app').innerText);
 // no test hook in the app: state is read from localStorage, correct answers from the published data files
@@ -36,7 +43,7 @@ async function run(prof, opts) {
   p.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
   ctx.on('request', r => { const u = r.url(); if (!u.startsWith(new URL(BASE).origin) && !u.startsWith('data:') && !u.startsWith('blob:')) foreign.push(u); });
   let dialogAnswer = true; p.on('dialog', d => (dialogAnswer ? d.accept() : d.dismiss()));
-  await p.goto(BASE); await p.waitForSelector('h1');
+  await load(p);
   QH ||= new Map((await p.evaluate(() => fetch('data/q.he.json').then(r => r.json()))).map(q => [q.id, q]));
   ok(await p.evaluate(() => !('__theory' in window)), 'no test hook in production');
   ok(/עודכן לאחרונה/.test(await text(p)) && await p.isVisible('img.hero'), 'welcome: bank-date notice + illustration');
@@ -66,8 +73,8 @@ async function run(prof, opts) {
     const sel = i < 3 ? `.answers .ans:not([data-i="${c}"])` : `.answers .ans[data-i="${c}"]`;
     await p.click(sel);
     if (i === 0) { ok(await p.isVisible('.ans.ok') && await p.isVisible('.ans.bad'), 'wrong answer: shows correct + wrong'); await axe(p, 'question-answered', prof); }
-    if (i === 0) { const k = await p.evaluate(async id => { const m = await import('./js/learn.js'); const [cov, sg] = await Promise.all(['data/coverage.json', 'data/signs.json'].map(u => fetch(u).then(r => r.json()))); return m.explain(id, 'B', cov, sg)?.kind; }, await curId(p));
-      ok(await p.isVisible('.why') && await p.locator('.why a.btn.primary[data-learn]').count() === (k === 'none' ? 0 : 1), `wrong answer: why box + "learn this" lesson link when taught (${k})`);
+    if (i === 0) { const k = await p.evaluate(async id => { const m = await import('./js/learn.js'); const [cov, sg] = await Promise.all(['data/coverage.json', 'data/signs.json'].map(u => fetch(u).then(r => r.json()))); const x = m.explain(id, 'B', cov, sg); return [x?.kind, !!x?.lesson]; }, await curId(p));
+      ok(await p.isVisible('.why') && await p.locator('.why a.btn.primary[data-learn]').count() === (k[1] ? 1 : 0), `wrong answer: why box + lesson link whenever a lesson shows the question (${k[0]}${k[1] ? ', linked' : ''})`);
       ok(!/הישג/.test(await p.textContent('#toast')), 'no achievement toast on a wrong answer'); }
     if (i === 3 && await p.locator('.why').count()) ok(await p.locator('.why a.btn.primary').count() === 0, 'right answer: related lesson is a quiet link');
     await p.click('.next');
@@ -369,7 +376,7 @@ async function overflowSweep() {
     const p = await ctx.newPage(); p.on('dialog', d => d.accept());
     const over = async () => p.evaluate(W => { const d = document.documentElement; return d.scrollWidth > W + 1 || document.body.scrollWidth > W + 1 ? d.scrollWidth : 0; }, W);
     const bad = [];
-    await p.goto(BASE); await p.waitForSelector('h1'); if (await over()) bad.push('welcome');
+    await load(p); if (await over()) bad.push('welcome');
     await p.click('a[href="#/onboard/1"]'); await p.click('label:has(input[value="B"])'); if (await over()) bad.push('onboard1');
     await p.click('.row .btn.primary'); await p.click('a[href="#/onboard/3"]'); if (await over()) bad.push('onboard3');
     await p.click('.row .btn.primary.big'); await p.waitForSelector('.drive');
