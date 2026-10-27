@@ -24,7 +24,7 @@ E = d['est']
 # the same sentence is rendered on the About page (js/i18n.js 'ab.covB', filled from data/coverage.json 'est'); data_test checks they match
 B_HEADLINE_EN = lambda E: (f"Class B: {E['B_strict']:.1f}% strict full; {E['B_full']:.1f}% full as judged is an upper bound – estimated ≈{E['B_est']:.1f}% ({E['B_lo']:.1f}–{E['B_hi']:.1f}%) "
                            f"after the strict re-samples ({E['k']} of {E['n']} downgraded, {E['rate']:.1f}%, applied to the {E['unchecked']} B full verdicts never checked strictly).")
-hl = (f"**Headline (v1.16.0, whole bank, every question judged; strict figure first, as reviews #9–#12 asked):** of all **{a['n']:,}** questions, **{a['strict_pct']:.1f}% strict full** "
+hl = (f"**Headline (v1.17.0, whole bank, every question judged; strict figure first, as reviews #9–#13 asked):** of all **{a['n']:,}** questions, **{a['strict_pct']:.1f}% strict full** "
       f"(a sign-dictionary meaning is not counted as teaching; v1.13–v1.16 strict re-judgements applied, [rejudge_v113_sample.md](../tools/coverage/rejudge_v113_sample.md), [rejudge_v114_sample.md](../tools/coverage/rejudge_v114_sample.md), [rejudge_v115_sample.md](../tools/coverage/rejudge_v115_sample.md), [rejudge_v116_sample.md](../tools/coverage/rejudge_v116_sample.md); lesson-body prose never counts), "
       f"**{a['full_pct']:.1f}% full** as judged, **{a['any_pct']:.1f}% full or partial**. "
       f"**{B_HEADLINE_EN(E)}** Review #12's own estimate was ≈74% (72–76%). "
