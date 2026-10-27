@@ -380,3 +380,13 @@ line.vz-span { stroke: #f3a712; stroke-width: 6; fill: none; }
 .lgroup > h2 { margin: 0 0 2px; }
 .lgmeta { margin: 0 0 6px; }
 .lgbar { margin-bottom: 10px; height: 8px; }
+.fsw { align-items: center; }
+.fsbtn { min-width: 48px; min-height: 44px; font-weight: 700; }
+.fsval { margin-inline-start: .25rem; }
+/* v1.21 (1e): comfortable reading – lesson text a bit airier, paragraphs spaced, lines not too long */
+.lstep p, .lstep li, .lsec p, .lsec li { line-height: 1.75; }
+.lstep .rules > li { margin-bottom: .7rem; }
+.lbody p { margin: 0 0 .8rem; max-width: 65ch; }
+.covpanel .covlist { padding-inline-start: 1.2rem; line-height: 1.7; }
+.covpanel .covlist li { margin-bottom: .35rem; }
+.covpanel .covlist li.sub { margin-inline-start: 1rem; list-style: circle; }

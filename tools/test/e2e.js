@@ -200,6 +200,15 @@ async function run(prof, opts) {
       && await p.locator('.lgroup .stbar[role=progressbar]').count() === ng && /דק׳/.test(await p.textContent('.lgroup .lgmeta'))
       && await p.getAttribute('#ln-next', 'href') === '#/learn/' + LB[0].id && /השיעור הבא: .+ · כ-\d+ דק׳/.test(await p.textContent('#ln-next')),
       `learn path grouped by topic: ${ng} topics, every lesson once, topic progress + minutes, 'השיעור הבא' → lesson 1`); }
+  // v1.21 (Part 2): 'מה האתר מכסה' on the path page and About – numbers equal data/coverage.json, add up to the pool, never claim 100%
+  { const CV = await p.evaluate(() => fetch('data/coverage.json').then(r => r.json())), c = await p.getAttribute('#covp', 'data-cls'), v = CV.tot[c];
+    const nums = await p.$$eval('#covp .covlist li b', bs => bs.map(b => +b.textContent.split(' ')[0].replace(/[^0-9]/g, '')));
+    const tx = await p.textContent('#covp'), want = [v[9], v[10], v[7], v[5], v[0] - v[9] - v[7] - v[5]];
+    await go(p, '#/about'); await p.waitForSelector('#covp'); const ab = await p.textContent('#covp');
+    ok(['B', 'A'].includes(c) && JSON.stringify(nums) === JSON.stringify(want) && want[0] + want[2] + want[3] + want[4] === v[0] && want[4] === 0
+      && tx.includes(v[0].toLocaleString('he-IL')) && tx.includes(CV.est[c + '_est'] + '%') && /אין כאן ערבות ל-100%/.test(tx) && !/מכסה 100%|100% מהחומר/.test(tx) && ab === tx,
+      `coverage panel (${c}): ${want.join('/')} of ${v[0]}, estimate ${CV.est[c + '_est']}%, 'no 100% guarantee', same on About`);
+    await go(p, '#/learn'); await p.waitForSelector('.lgroup'); }
   // v1.21: a lesson opens step by step – progress 'שלב 1 מתוך N', back/next ≥44px, focus on the step heading, aria-live, reading time, resume
   { const L0 = LB[0]; await go(p, '#/learn/' + L0.id); await p.waitForSelector('.lstep');
     const N = +(/מתוך (\d+)/.exec(await p.textContent('#st-pos')) || [])[1];
@@ -208,6 +217,19 @@ async function run(prof, opts) {
       && nb.height >= 44 && pb.height >= 44 && /כ-\d+ דק׳ קריאה · \d+ שלבים/.test(await p.textContent('.rtime')) && await p.locator('#st-live[aria-live="polite"]').count() === 1,
       `steps (${L0.id}): 'שלב 1 מתוך ${N}', progress bar, back disabled, ≥44px buttons (${Math.round(nb.height)}px), reading time, live region`);
     await axe(p, 'lesson-steps', prof);
+    // v1.21 (1e): A−/A+ text size – larger body text, remembered after reload, ≥44px buttons, bounded, back to normal
+    { const fs = () => p.evaluate(() => parseFloat(getComputedStyle(document.querySelector('.lstep p, .lstep li')).fontSize));
+      const f0 = await fs(), bb = await p.locator('#fs-up').boundingBox();
+      await p.click('#fs-up'); await p.waitForTimeout(80); const f1 = await fs();
+      await p.reload(); await p.waitForSelector('.lstep'); const f2 = await fs(), lv = (await S(p)).profile.fsz;
+      for (let k = 0; k < 6; k++) if (!(await p.isDisabled('#fs-up'))) await p.click('#fs-up');
+      const top = await p.isDisabled('#fs-up') && /גודל 5 מתוך 5/.test(await p.textContent('#fs-val'));
+      const wide = await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1);
+      for (let k = 0; k < 6; k++) if (!(await p.isDisabled('#fs-dn'))) await p.click('#fs-dn');
+      const bottom = await p.isDisabled('#fs-dn');
+      await p.click('#fs-up'); await p.waitForTimeout(80);
+      ok(f1 > f0 * 1.1 && Math.abs(f2 - f1) < 0.5 && lv === 2 && bb.height >= 44 && bb.width >= 44 && top && bottom && wide && Math.abs(await fs() - f0) < 0.5 && (await S(p)).profile.fsz === 1,
+        `text size A−/A+: ${f0}px → ${f1}px, kept after reload, 5 levels bounded, no overflow at the largest, back to ${await fs()}px`); }
     await p.click('.stnav .stnext'); await p.waitForTimeout(150);
     ok(/^שלב 2 מתוך/.test((await p.textContent('#st-pos')).trim()) && await p.evaluate(() => document.activeElement?.id) === 'st-h' && /שלב 2 מתוך/.test(await p.textContent('#st-live')),
       'steps: next → step 2, focus moves to the step heading, the change is announced (aria-live)');
@@ -406,7 +428,9 @@ async function run(prof, opts) {
   await go(p, '#/settings'); await p.selectOption('#su', 'en'); await p.waitForTimeout(300);
   ok((await p.getAttribute('html', 'dir')) === 'ltr' && (await p.getAttribute('html', 'lang')) === 'en', 'English UI is LTR');
   await go(p, '#/home'); await axe(p, 'home-en', prof);
-  await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lstep');
+  // v1.21: the restored backup keeps the lesson view the profile had (lnv) – switch back to steps if it was 'full'
+  await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lstep, .lsec');
+  if (await p.locator('.lstep').count() === 0) { await p.click('.seg [data-view="steps"]'); await p.waitForSelector('.lstep'); }
   ok(/Hebrew only/.test(await text(p)) && await p.getAttribute('.lbody', 'dir') === 'rtl', 'English UI: lesson flagged Hebrew-only, body stays RTL');
   await axe(p, 'lesson-en', prof);
   await go(p, '#/settings'); await p.selectOption('#su', 'he'); await p.selectOption('#st', 'dark'); await p.waitForTimeout(300);
@@ -428,7 +452,8 @@ async function run(prof, opts) {
   await ctx.setOffline(true); await p.reload(); await p.waitForSelector('.drive');
   await go(p, '#/signs/go'); await p.waitForSelector('.qcard .qimg'); await p.waitForFunction(() => document.querySelector('.qcard .qimg').complete);
   ok(await p.evaluate(() => document.querySelector('.qcard .qimg').naturalWidth > 100), 'works offline (shell + images)');
-  await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lstep', { timeout: 5000 }).catch(() => {});
+  await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lstep, .lsec', { timeout: 5000 }).catch(() => {});
+  if (await p.locator('.lstep').count() === 0 && await p.locator('[data-view=steps]').count()) { await p.click('[data-view=steps]'); await p.waitForSelector('.lstep', { timeout: 5000 }).catch(() => {}); }
   const stOff = await p.locator('.lstep').count() === 1 && /\d/.test(await p.textContent('#st-pos').catch(() => ''));
   if (await p.locator('[data-view=full]').count()) await p.click('[data-view=full]');
   await p.waitForSelector('.viz', { timeout: 5000 }).catch(() => {});

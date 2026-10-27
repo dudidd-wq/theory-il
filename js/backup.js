@@ -41,6 +41,8 @@ export function cleanState(raw) {
     name: str(p.name, 20), cls: CLASSES.includes(p.cls) ? p.cls : 'B', lang: LANGS.includes(p.lang) ? p.lang : 'he', ui: p.ui === 'en' ? 'en' : 'he',
     theme: ['auto', 'light', 'dark'].includes(p.theme) ? p.theme : 'auto', goal: int(p.goal, 5, 200, 20),
     tts: p.tts === true, rate: typeof p.rate === 'number' && p.rate >= 0.5 && p.rate <= 1.5 ? p.rate : 1, big: p.big === true,
+    // v1.21: lesson view and font-size level survive a backup/restore
+    ...(['steps', 'quick', 'full'].includes(p.lnv) ? { lnv: p.lnv } : {}), ...(Number.isInteger(p.fsz) && p.fsz >= 0 && p.fsz <= 4 ? { fsz: p.fsz } : {}),
   } : null;
   if (isObj(raw.q)) { let n = 0; for (const k of keys(raw.q)) { if (++n > 5000) break; const v = raw.q[k], id = +k;
     if (!int(id, 1, 99999, 0) || !Array.isArray(v) || v.length !== 5) continue;

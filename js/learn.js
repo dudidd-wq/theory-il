@@ -104,8 +104,29 @@ export function whyBox(x, ok, c) {
   return h('div', { class: 'why' + (ok ? '' : ' bad') }, ...kids);
 }
 
+// v1.21 (Part 2): 'מה האתר מכסה' – plain-language coverage of the class's official bank, computed from data/coverage.json (tested).
+// Never a guarantee: the counts say how deep the explanation goes, not that the exam is covered by the state.
+export function coverPanel(c, cov, name) {
+  const x = cov?.tot?.[c]; if (!x || x.length < 12) return null;
+  const [n, , , , nosrc, bankOnly, , partial, , full, strict, conflict] = x, untaught = n - full - partial - bankOnly;
+  const pc = k => (100 * k / n).toFixed(1) + '%', N = k => k.toLocaleString('he-IL');
+  const e = cov.est || {}, est = e[c + '_est'];
+  return h('section', { class: 'card covpanel', id: 'covp', 'aria-labelledby': 'covp-h', 'data-cls': c },
+    h('h2', { id: 'covp-h', text: t('cv.title', name) }),
+    h('p', { text: t('cv.pool', N(n)) }),
+    h('ul', { class: 'covlist' },
+      h('li', { 'data-k': 'full' }, h('b', { text: N(full) + ' (' + pc(full) + ')' }), h('span', { text: ' ' + t('cv.full') })),
+      h('li', { 'data-k': 'strict', class: 'sub' }, h('b', { text: N(strict) + ' (' + pc(strict) + ')' }), h('span', { text: ' ' + t('cv.strict') })),
+      h('li', { 'data-k': 'partial' }, h('b', { text: N(partial) + ' (' + pc(partial) + ')' }), h('span', { text: ' ' + t('cv.partial') })),
+      h('li', { 'data-k': 'bank' }, h('b', { text: N(bankOnly) + ' (' + pc(bankOnly) + ')' }), h('span', { text: ' ' + t('cv.bank', N(nosrc), N(conflict)) })),
+      h('li', { 'data-k': 'none' }, h('b', { text: N(untaught) }), h('span', { text: ' ' + t('cv.none') }))),
+    est != null ? h('p', { 'data-k': 'est' }, h('b', { text: t('cv.estH') + ' ' }), h('span', { text: t(c === 'B' ? 'cv.est' : 'cv.estA', est, e[c + '_lo'], e[c + '_hi'], (100 - est).toFixed(1)) })) : null,
+    h('p', { class: 'small', text: t('cv.practice') }),
+    h('p', { class: 'notice', role: 'note' }, icon('info'), h('span', { text: t('cv.no100') })));
+}
+
 export function makeLearn(ctx) {
-  const { screen, btn, link, byId, view, pool, cls, prof, pick, startSession, clsName, setPref } = ctx;
+  const { screen, btn, link, byId, view, pool, cls, prof, pick, startSession, clsName, setPref, fsLevel, FS_N } = ctx;
   const he = node => { node.lang = 'he'; node.dir = 'rtl'; return node; };
   function path() {
     const c = cls(), ls = lessonsFor(c);
@@ -145,6 +166,7 @@ export function makeLearn(ctx) {
       h('ol', { class: 'steps3', 'aria-label': t('ln.path') }, ['ln.step1', 'ln.step2', 'ln.step3'].map((k, i) => h('li', { class: i === 0 ? 'on' : '' }, h('b', { text: i + 1 }), h('span', { text: t(k) })))),
       h('p', { class: 'small muted', text: t('ln.grpHint') }),
       ...groups,
+      ['B', 'A'].includes(c) ? coverPanel(c, ctx.cov?.(), clsName(c)) : null,
       cur === -1 ? h('p', { class: 'banner', role: 'status' }, icon('award'), h('span', { text: t('ln.allDone') })) : null,
       h('div', { class: 'row' }, link(t('nav.practice'), '#/practice', 'btn', 'book'), link(t('nav.exam'), '#/exam', 'btn', 'exam')),
       h('p', { class: 'small muted', text: t('ln.own') }));
@@ -228,12 +250,18 @@ export function makeLearn(ctx) {
         he(h('span', { text: r.f })), h('small', { class: 'muted', text: t('ln.flip') }));
       return h('li', {}, b, back); }));
     const stateTxt = () => (s.mastered ? t('ln.mastered') + ' · ' + t('ln.best', s.best) : s.read || st.lesson(l.id)?.[0] ? t('ln.read') : t('ln.new'));
+    // v1.21 (1e): A−/A+ – five text sizes, remembered in the profile; the value is announced
+    function fontSw() { const out = h('span', { class: 'small muted fsval', id: 'fs-val', 'aria-live': 'polite' });
+      const set = n => { setPref('fsz', n); upd(); }, upd = () => { const n = fsLevel(); out.textContent = t('st.fsVal', n + 1, FS_N); dn.disabled = n <= 0; up.disabled = n >= FS_N - 1; };
+      const dn = h('button', { type: 'button', class: 'btn small fsbtn', id: 'fs-dn', 'aria-describedby': 'fs-val', onclick: () => set(Math.max(0, fsLevel() - 1)) }, h('span', { 'aria-hidden': 'true', text: 'A−' }), h('span', { class: 'sr-only', text: t('st.fsDn') }));
+      const up = h('button', { type: 'button', class: 'btn small fsbtn', id: 'fs-up', 'aria-describedby': 'fs-val', onclick: () => set(Math.min(FS_N - 1, fsLevel() + 1)) }, h('span', { 'aria-hidden': 'true', text: 'A+' }), h('span', { class: 'sr-only', text: t('st.fsUp') }));
+      upd(); return h('div', { class: 'seg fsw', role: 'group', 'aria-label': t('st.fs') }, dn, up, out); }
     const viewSw = h('div', { class: 'seg', role: 'group', 'aria-label': t('st.view') }, VIEWS.map(v => h('button', { type: 'button', class: 'btn small' + (v === vw ? ' on' : ''), 'aria-pressed': String(v === vw), 'data-view': v,
       onclick: () => { if (v !== vw) { setPref('lnv', v); lesson(id, sub); } } }, h('span', { text: t('st.v.' + v) }))));
     const head = [
       h('p', { class: 'row tight' }, link(t('ln.back'), '#/learn', 'btn small ghost', uiLang() === 'he' ? 'arrowE' : 'arrowS'), listen,
         h('span', { class: 'small muted lstate', text: stateTxt() })),
-      h('div', { class: 'row tight ltools' }, viewSw),
+      h('div', { class: 'row tight ltools' }, viewSw, fontSw()),
       peek ? h('p', { class: 'notice', role: 'note' }, icon('key'), h('span', { text: t('ln.peek') })) : null,
       he(h('p', { class: 'sub', text: l.sub })),
       uiLang() !== 'he' ? h('p', { class: 'notice', role: 'note' }, icon('info'), h('span', { text: t('ln.heOnly') })) : null,

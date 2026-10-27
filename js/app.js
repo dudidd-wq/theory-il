@@ -5,7 +5,7 @@ import * as bk from './backup.js';
 import * as tts from './tts.js';
 import { VERSION } from './version.js';
 import { ELIG, lawUrl } from './elig.js';
-import { makeLearn, loadLessons, lessonFrac, lessonsFor, masteredCount, explain, whyBox, lessonHref } from './learn.js';
+import { makeLearn, loadLessons, lessonFrac, lessonsFor, masteredCount, explain, whyBox, lessonHref, coverPanel } from './learn.js';
 const COVH = ['ab.covCls', 'ab.covN', 'ab.covFull', 'ab.covStrict', 'ab.covAny', 'ab.covNoSrc', 'ab.covBank', 'ab.covPart', 'ab.covNoBank'];
 const pc = v => v == null || v === '' ? '' : (+v).toFixed(1) + '%';
 const { state: S, save, today, CLASSES, LANGS, EXAM } = st;
@@ -73,10 +73,14 @@ function readiness() {
 }
 
 // ---------- shell ----------
+const FS = [0.9, 1, 1.18, 1.32, 1.5];
+const fsLevel = p => (Number.isInteger(p?.fsz) && p.fsz >= 0 && p.fsz < FS.length ? p.fsz : p?.big ? 2 : 1);
 function applyPrefs() {
   const p = prof() || {}; setUi(p.ui || 'he');
   const de = document.documentElement; de.lang = uiLang(); de.dir = dirOf(uiLang());
-  de.dataset.theme = p.theme || 'auto'; de.classList.toggle('big', !!p.big);
+  de.dataset.theme = p.theme || 'auto';
+  // v1.21 (1e): font size in 5 steps (A−/A+ in a lesson; the settings checkbox 'large text' = step 3)
+  const fz = fsLevel(p); de.classList.toggle('big', fz >= 2); de.style.setProperty('--fs', FS[fz] + 'rem');
   document.title = t('app.title');
   document.querySelectorAll('[data-t]').forEach(el => { el.textContent = t(el.dataset.t); });
   const nav = document.getElementById('nav'); nav.setAttribute('aria-label', t('nav.main')); nav.replaceChildren(...[
@@ -104,7 +108,7 @@ async function route() {
   markNav(r || 'home');
   (routes[r] || home)(arg, sub);
 }
-const LRN = makeLearn({ screen, btn, link, view, pool, cls, prof, pick, clsName, setPref: (k, v) => { const p = prof(); if (p) { p[k] = v; save(); applyPrefs(); } }, byId: { has: k => byId.has(k), get: k => byId.get(k) },
+const LRN = makeLearn({ cov: () => COV, screen, btn, link, view, pool, cls, prof, pick, clsName, setPref: (k, v) => { const p = prof(); if (p) { p[k] = v; if (k === 'fsz') p.big = v >= 2; save(); applyPrefs(); } }, fsLevel: () => fsLevel(prof()), FS_N: FS.length, byId: { has: k => byId.has(k), get: k => byId.get(k) },
   startSession: (...a) => startSession(...a) });
 let leaving = false;
 addEventListener('hashchange', () => {
@@ -516,7 +520,7 @@ async function settings(sec) {
       field(t('set.ui'), sel('su', [['he', 'עברית'], ['en', 'English']], p.ui || 'he', v => upd('ui', v))),
       field(t('set.theme'), sel('st', [['auto', t('set.auto')], ['light', t('set.light')], ['dark', t('set.dark')]], p.theme, v => upd('theme', v))),
       field(t('set.goal'), sel('sg', [10, 20, 30, 50].map(n => [String(n), String(n)]), String(p.goal), v => upd('goal', +v))),
-      h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: p.big, onchange: e => upd('big', e.target.checked) }), h('span', { text: t('set.big') }))));
+      h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: fsLevel(p) >= 2, onchange: e => { p.fsz = e.target.checked ? 2 : 1; upd('big', e.target.checked); } }), h('span', { text: t('set.big') }))));
     kids.push(h('section', { class: 'card' }, h('h2', { text: t('set.tts') }),
       h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: p.tts, disabled: !tts.supported(), onchange: e => upd('tts', e.target.checked) }), h('span', { text: t('set.ttsOn') })),
       field(t('set.rate'), sel('sr', [['0.8', '0.8×'], ['1', '1×'], ['1.2', '1.2×']], String(p.rate), v => upd('rate', +v))),
@@ -582,6 +586,7 @@ function about() {
     h('h2', { text: t('ab.test') }), h('p', { text: t('ab.testText') }), h('p', { class: 'disc', role: 'note' }, icon('info'), h('span', { text: t('ab.course') })),
     h('h2', { text: t('ab.law') }), h('p', { text: t('ab.lawText') }),
     h('h2', { text: t('ab.learn') }), h('p', { text: t('ab.learnText') }), h('p', { class: 'small', id: 'ab-ccbysa' }, h('span', { text: t('ab.wsCC') + ' ' }), ext(CCBYSA, t('ab.ccbysa'))), h('ul', { class: 'srcs' }, h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085628', t('ab.wsTR', 3085628))), h('li', {}, ext('https://he.wikisource.org/w/index.php?oldid=3085764', t('ab.wsTO', 3085764))), h('li', {}, ext('https://www.gov.il/BlobFolder/policy/tamrurim_7924_01_18/he/1694327856_%D7%9C%D7%95%D7%AA_%D7%9D_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_0922.pdf', t('ab.lotam')))),
+    ...(['B', 'A'].includes(cls()) ? [cls()] : ['B', 'A']).map(k => coverPanel(k, COV, clsName(k))),
     ...(COV?.tot ? [h('h2', { text: t('ab.cov') }), ...(COV.est ? [h('p', { id: 'ab-covB', class: 'covhead' }, h('strong', { text: t('ab.covB', ...[COV.est.B_strict, COV.est.B_full, COV.est.B_est, COV.est.B_lo, COV.est.B_hi].map(x => (+x).toFixed(1)), COV.est.k, COV.est.n, (+COV.est.rate).toFixed(1), COV.est.unchecked) }))] : []), h('p', { text: t('ab.covText', ['B', 'A', 'C1', 'C', 'D', '1'].filter(c => COV.tot[c]).map(c => `${c} ${(+COV.tot[c][2]).toFixed(1)}% / ${(+COV.tot[c][1]).toFixed(1)}%`).join(', ')) }),
       h('div', { class: 'tblwrap', role: 'region', tabindex: '0', 'aria-label': t('ab.cov') }, h('table', { class: 'tbl cov' }, h('thead', {}, h('tr', {}, ...COVH.map(k => h('th', { scope: 'col', text: t(k) })))),
         h('tbody', {}, ...['all', 'B', 'A', 'C1', 'C', 'D', '1'].filter(c => COV.tot[c]).map(c => [c, COV.tot[c]]).map(([c, [n, f, s, a, ns, bk, nb, pt, ps]]) => h('tr', {}, h('th', { scope: 'row', text: c === 'all' ? t('ab.covAll') : c }),
