@@ -819,6 +819,10 @@ for _f in ('lessons.json', 'sources.json', 'signs.json'):
 ok(not _spx, f'v1.19 (review #15 D8): no glued number/Latin–Hebrew, detached punctuation or glued dash in lessons/sources/signs ({len(_spx)}) {_spx[:6]}')
 _ed = {'licence2': ('דרגת רשיון B מאפשרת', '3,500 ק”ג'), 'moveoff': ('50 קמ”ש – מרחק',), 'alc2': ('אלכוהול, סמים', 'ינשוף – 240 מיקרוגרם', '50 מ”ג')}
 ok(all(any(w in x[1] for r in _LJ[l]['rules'] for x in r.get('x', [])) for l, ws in _ed.items() for w in ws), 'v1.19 (review #15 D8): the named textbook chips read with their spaces (licence2#r0, moveoff#r10, alc2#r0)')
+# v1.19 (review #15 T1): chip_integrity.py run on its own without the official cache skips cleanly (it crashed with FileNotFoundError)
+import subprocess as _sp
+_ci = _sp.run([sys.executable, os.path.join(R, 'tools/test/chip_integrity.py')], capture_output=True, text=True, env={**os.environ, 'THEORY_OFFICIAL_CACHE': '/nonexistent/cache/'})
+ok(_ci.returncode == 0 and 'SKIP' in _ci.stdout and 'Traceback' not in _ci.stderr, f'v1.19 (review #15 T1): chip_integrity.py skips without the cache (rc {_ci.returncode}: {_ci.stderr[-120:]})')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

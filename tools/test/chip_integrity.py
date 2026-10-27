@@ -14,7 +14,7 @@ import json, re, os, sys
 R = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, R + '/tools/official')
 import pin
-C = R + '/tools/official/cache/'
+C = os.environ.get('THEORY_OFFICIAL_CACHE', R + '/tools/official/cache/')   # override: the no-cache test (v1.19 T1)
 NEG = {'אל', 'לא', 'אין', 'אסור', 'בלי', 'אינו', 'אינה', 'אינם', 'אינן', 'איננו', 'מבלי', 'ללא', 'אף', 'שלא',
        'ואל', 'ולא', 'ואין', 'ואסור', 'ובלי', 'אלא', 'למעט', 'זולת'}
 SEP = '.:;!?•\n'
@@ -138,6 +138,8 @@ def selftest():
 
 if __name__ == '__main__':
     print(selftest())
+    if not available():   # v1.19 (review #15 T1): a clean clone has no official cache (gov.il terms) – skip, do not crash
+        print('SKIP chip sentence-integrity scan: official cache absent (run tools/official/fetch_cache.py)'); sys.exit(0)
     LS = json.load(open(R + '/data/lessons.json'))['lessons']
     n, miss, bad = scan(LS)
     print('chips', n, 'not located', len(miss), 'problems', len(bad))
