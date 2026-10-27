@@ -242,6 +242,11 @@ async function run(prof, opts) {
     const no = LB.find(l => (l.pbank || []).some(x => QH.get(x.q)?.t.includes('B') && x.u.every(u => !u.o)));
     if (no) { const x = no.pbank.find(x => QH.get(x.q)?.t.includes('B') && x.u.every(u => !u.o)); await go(p, '#/learn/' + no.id + '/peek'); await p.waitForSelector('.pbcard');
       ok(/בלי מקור רשמי מצוטט/.test(await p.textContent(`.pbcard[data-q="${x.q}"]`)) && await p.locator(`.pbcard[data-q="${x.q}"] .pbpart.off`).count() === 0, `partial card Q${x.q}: covering unit without an official source is labelled so`); }
+    // v1.20 (review #16 N5): the worked example's bank question on a partial card is labelled as the bank question, not listed with the official source
+    await go(p, '#/learn/priority/peek'); await p.waitForSelector('.pbcard[data-q="185"]');
+    { const c = p.locator('.pbcard[data-q="185"]');
+      ok(await c.locator('.pbpart.off span.refs .lawref').filter({ hasText: '183' }).count() === 0 && /שאלת הדוגמה מהמאגר/.test(await c.locator('.exq').first().textContent()) && /183/.test(await c.locator('.exq').first().textContent()),
+        'partial card Q185: the example question Q183 is shown apart as the bank question, not among the official sources'); }
     await go(p, '#/learn/' + pl.id + '/peek'); await p.waitForSelector('.pbcard'); await axe(p, 'partial-cards', prof); }
   await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lsec');
   ok(await p.getAttribute('.lbody', 'lang') === 'he' && await p.locator('.rules li').count() === LB[0].rules.length, 'lesson: Hebrew body + all rules');

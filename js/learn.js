@@ -187,7 +187,9 @@ export function makeLearn(ctx) {
           h('p', { class: 'small muted banktag', text: t('ln.bankTag') }),
           ...u.map(x => h('div', { class: 'pbpart' + (x.o ? ' off' : '') }, h('p', { class: 'small' }, h('b', { text: t(x.o ? 'ln.pbOff' : 'ln.pbNoOff') })),
             x.t ? he(h('p', { class: 'sm', text: x.t })) : h('p', { class: 'small muted', text: t('ln.pbGal') }),
-            x.url ? h('p', { class: 'refs' }, ext(x.url, t('why.signSrc', x.n))) : x.s ? refs(x.s, x.also || [], x.x) : null)),
+            x.url ? h('p', { class: 'refs' }, ext(x.url, t('why.signSrc', x.n))) : x.s ? refs(x.s, (x.also || []).filter(a => !(x.o && a.startsWith('Q:'))), x.x) : null,
+            // v1.20 (review #16 N5): the worked example's own bank question is not a source – shown apart, labelled as the bank question
+            ...(x.s && x.o ? (x.also || []).filter(a => a.startsWith('Q:')) : []).map(a => h('p', { class: 'small refs exq' }, h('span', { class: 'muted', text: t('ln.pbExQ') + ' ' }), ref(a, x.x))))),
           h('p', { class: 'small pbrest', text: t('ln.pbRest') }),
           L?.notes?.[v.id] ? he(h('div', { class: 'notice lawnote', role: 'note' }, icon('info'), h('div', {}, h('p', {}, h('b', { text: t(L.notes[v.id].k === 'tb' ? 'why.tb' : 'why.law') + ' ' }), L.notes[v.id].law),
             L.notes[v.id].s ? h('p', { class: 'refs' }, ref(L.notes[v.id].s, L.notes[v.id].x)) : null))) : null)))) : null,

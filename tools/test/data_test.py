@@ -896,6 +896,10 @@ for _l in json.load(open('data/lessons.json', encoding='utf-8'))['lessons']:
                     if f' · {_m[1]}: ' in _x[1]: _lab += 1
                     else: _nolab.append(f"{_l['id']}:{_x[0]}")
 ok(not _nolab and _lab >= 40, f'v1.20 (review #16 item 6): sign chips show column 4 under its label ({_lab} labelled; unlabelled {_nolab[:5]})')
+# v1.20 (review #16 N5): pbank official parts never list the example's Q: link among their sources
+_lj = open('js/learn.js', encoding='utf-8').read(); _i18 = open('js/i18n.js', encoding='utf-8').read()
+ok("filter(a => !(x.o && a.startsWith('Q:')))" in _lj and "class: 'small refs exq'" in _lj and _i18.count("'ln.pbExQ':") == 2,
+   'v1.20 (review #16 N5): partial cards show the example bank question apart, labelled (he+en)')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 
