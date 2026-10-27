@@ -213,6 +213,18 @@ async function run(prof, opts) {
     const s = await S(p);
     ok(/^שלב \d+ מתוך/.test(await p.textContent('#st-pos')) && await p.locator('.stnav .stnext').count() === 0 && await p.locator('.lend a.btn.primary').count() === 1 && s.les?.[L0.id]?.[0] > 0,
       'steps: the last step shows the mini-quiz button and marks the lesson read');
+    // v1.21 (1c): a long lesson is split into parts of ≤ 5 cards – 'חלק 1 מתוך P', part buttons, 'לחלק 2' at the end of a part
+    { const LL = LB.reduce((a, b) => (b.rules.length > a.rules.length ? b : a)); await go(p, '#/learn/' + LL.id + '/peek'); await p.waitForSelector('.lstep');
+      if (await p.locator('.resume button').count()) { await p.click('.resume button'); await p.waitForTimeout(80); }
+      const P = +(/מתוך (\d+)/.exec(await p.textContent('#st-part').catch(() => '')) || [0, 0])[1];
+      const pb2 = await p.locator('.partnav [data-part="2"]').boundingBox().catch(() => null);
+      await p.click('.partnav [data-part="2"]'); await p.waitForTimeout(120);
+      const in2 = await p.getAttribute('.lstep', 'data-part') === '2' && /^חלק 2 מתוך/.test(await p.textContent('#st-part')) && await p.evaluate(() => document.activeElement?.id) === 'st-h';
+      await p.click('.stnav .stprev'); await p.waitForTimeout(120);
+      ok(P >= 2 && pb2 && pb2.height >= 44 && in2 && await p.getAttribute('.lstep', 'data-part') === '1' && await p.locator('.lstep .partend').count() === 1 && /לחלק 2/.test(await p.textContent('.stnav .stnext')),
+        `parts (${LL.id}, ${LL.rules.length} rules): ${P} parts, part buttons ≥44px, jump to part 2 moves focus, the end of part 1 says so and offers 'לחלק 2'`);
+      await axe(p, 'lesson-parts', prof); }
+    await go(p, '#/learn/' + L0.id); await p.waitForSelector('.lstep');
     await p.click('.seg [data-view="full"]'); await p.waitForSelector('.lsec');
     ok((await S(p)).profile.lnv === 'full' && await p.getAttribute('.seg [data-view="full"]', 'aria-pressed') === 'true' && await p.locator('.lstep').count() === 0, 'view switch: "הכול בעמוד אחד" shows the whole lesson and is remembered'); }
   await go(p, '#/learn/' + LB[2].id); await p.waitForSelector('.lsec');

@@ -6,7 +6,7 @@ import { t, uiLang } from './i18n.js';
 import * as st from './store.js';
 import * as tts from './tts.js';
 import { VIZ } from './viz.js';
-import { buildSteps, minutes, firstLine } from './steps.js';
+import { buildSteps, minutes, firstLine, partStarts, partOf } from './steps.js';
 let L = null, SRC = {};
 export const QUIZ_N = 6, MASTER_PCT = 80;
 export async function loadLessons(getJSON) {
@@ -261,8 +261,11 @@ export function makeLearn(ctx) {
         return out;
       };
       const saved = st.lpos(l.id) || {}, key = vw === 'quick' ? 'q' : 's';
-      let idx = Math.min(N - 1, Math.max(0, +saved[key] || 0));
-      const resumed = idx > 0;
+      // v1.21 (1c): a long lesson is split into parts (sub-lessons) of ≤ 5 cards; the lesson id, its quiz and its rules stay one lesson
+      const starts = partStarts(N), P = starts.length, pm = /^p(\d+)$/.exec(sub || '');
+      let idx = pm && starts[+pm[1] - 1] != null ? starts[+pm[1] - 1] : Math.min(N - 1, Math.max(0, +saved[key] || 0));
+      const resumed = idx > 0 && !pm;
+      const partEl = P > 1 ? h('div', { class: 'stparts' }) : null;
       const pos = h('p', { class: 'stpos', id: 'st-pos' }), fill = h('span', { class: 'stfill' });
       const bar = h('div', { class: 'stbar', role: 'progressbar', 'aria-labelledby': 'st-pos', 'aria-valuemin': '1' }, fill);
       const live = h('p', { class: 'sr-only', 'aria-live': 'polite', id: 'st-live' });
@@ -271,23 +274,29 @@ export function makeLearn(ctx) {
         btn(t('st.restart'), () => { note.remove(); go(0, true); }, 'btn small ghost')) : null;
       function go(n, user) {
         idx = n; st.setLpos(l.id, { [key]: n, ['m' + key]: Math.max(n, +saved['m' + key] || 0) }); saved['m' + key] = Math.max(n, +saved['m' + key] || 0);
-        const x = steps[n];
+        const x = steps[n], k = partOf(starts, n), kEnd = (starts[k + 1] ?? N) - 1;
+        const partTxt = P > 1 ? t('st.part', k + 1, P) + ' · ' : '';
+        if (partEl) partEl.replaceChildren(h('p', { class: 'stpart', id: 'st-part', text: t('st.part', k + 1, P) + ' · ' + t('st.partSteps', starts[k] + 1, kEnd + 1) }),
+          h('div', { class: 'seg partnav', role: 'group', 'aria-label': t('st.parts') }, starts.map((s0, j) => h('button', { type: 'button', class: 'btn small' + (j === k ? ' on' : ''),
+            'aria-pressed': String(j === k), 'data-part': String(j + 1), onclick: () => { if (j !== k) go(s0, true); } }, h('span', { text: t('st.partN', j + 1) })))));
         pos.textContent = t('st.pos', n + 1, N); bar.setAttribute('aria-valuemax', String(N)); bar.setAttribute('aria-valuenow', String(n + 1));
         fill.style.width = (100 * (n + 1) / N) + '%';
         const h2 = h('h2', { id: 'st-h', tabindex: '-1', text: title(x, n) });
         const last = n === N - 1;
         if (last && !peek && !st.lesson(l.id)?.[0]) { st.markRead(l.id); const se = document.querySelector('.lstate'); if (se) se.textContent = t('ln.read'); }
-        box.replaceChildren(h('section', { class: 'lstep', 'data-k': x.k, 'data-step': String(n), 'aria-labelledby': 'st-h' }, h2, ...body(x, n)));
+        const partEnd = P > 1 && n === kEnd && !last ? h('p', { class: 'notice partend', role: 'note' }, icon('check'), h('span', { text: t('st.partDone', k + 1, P) })) : null;
+        box.replaceChildren(h('section', { class: 'lstep', 'data-k': x.k, 'data-step': String(n), 'data-part': String(k + 1), 'aria-labelledby': 'st-h' }, h2, ...body(x, n), partEnd));
         nav.replaceChildren(
           btn(t('st.prev'), () => go(n - 1, true), 'btn stprev', uiLang() === 'he' ? 'arrowE' : 'arrowS', { disabled: n === 0 }),
           last ? h('span', { class: 'small accent', role: 'status', text: peek ? t('st.endPeek') : t('st.end') })
-            : btn(t('st.next'), () => go(n + 1, true), 'btn primary stnext', uiLang() === 'he' ? 'arrowS' : 'arrowE'));
+            : btn(partEnd ? t('st.nextPart', k + 2) : t('st.next'), () => go(n + 1, true), 'btn primary stnext', uiLang() === 'he' ? 'arrowS' : 'arrowE'));
         endBox.replaceChildren(...(last ? [end()] : []));
-        if (user) { live.textContent = t('st.pos', n + 1, N) + ': ' + title(x, n); requestAnimationFrame(() => { h2.focus({ preventScroll: true }); bar.scrollIntoView({ block: 'start' }); }); }
+        if (user) { live.textContent = partTxt + t('st.pos', n + 1, N) + ': ' + title(x, n); requestAnimationFrame(() => { h2.focus({ preventScroll: true }); bar.scrollIntoView({ block: 'start' }); }); }
       }
       const endBox = h('div', { class: 'lendbox' });
       screen(l.title, ...[...head,
-        h('p', { class: 'small muted rtime' }, icon('clock'), h('span', { text: t('st.time', minutes(words), N) })),
+        h('p', { class: 'small muted rtime' }, icon('clock'), h('span', { text: t('st.time', minutes(words), N) + (P > 1 ? ' · ' + t('st.nParts', P) : '') })),
+        partEl,
         note, h('div', { class: 'stprog' }, pos, bar), live, box, nav, endBox,
         bank ? null : h('p', { class: 'small muted', text: t('ln.own') })].filter(Boolean));
       go(idx, false);

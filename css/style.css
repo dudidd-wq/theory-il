@@ -369,3 +369,8 @@ line.vz-span { stroke: #f3a712; stroke-width: 6; fill: none; }
 .rt1 { font-weight: 600; }
 .rmore > summary { cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; color: var(--primary); font-weight: 600; }
 .rmore > p { margin: .25rem 0 .5rem; }
+.stparts { margin: .25rem 0 .5rem; }
+.stpart { font-weight: 600; margin: 0 0 .35rem; }
+.partnav { flex-wrap: wrap; }
+.partnav .btn { min-height: 44px; min-width: 44px; }
+.partend { margin-top: 1rem; }
