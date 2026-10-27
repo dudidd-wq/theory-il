@@ -12,6 +12,12 @@ usage: pin.py            rebuild pages.json from the cache (fails if a quote is 
 import json, os, re, sys, hashlib
 HERE = os.path.dirname(os.path.abspath(__file__)); CACHE = os.path.join(HERE, 'cache')
 ACCESSED = '2026-10-26'
+# v1.16 (T1b, clean-clone rebuild on 2026-10-27): per-page status found when every pinned page was re-fetched once
+ACCESSED_PAGE = {'kids_co': '2026-10-27'}
+NOTES = {
+ 'kids_co': 're-pinned 2026-10-27: the page now ends with one more sentence ("בנוסף, פחמימנים משתתפים ביצירה של האוזון ה\'רע\'…"); the cited passage is unchanged',
+ 'edu13': 'the official URL returns HTTP 404 since 2026-10-27 (the file was withdrawn by the publisher); the pinned copy was downloaded from that URL on 2026-10-26 and is identified by pdf_sha256; the only Wayback capture (20210923004300) is truncated at 1 MiB, so a clean clone can rebuild this page only from a local copy (fetch_cache.py --pdf-dir)',
+}
 ARCHIVE = 'web.archive.org lookup rate-limited (HTTP 429) on 2026-10-26; pinned by sha256 of the text as fetched'
 PUB = 'הרשות הלאומית לבטיחות בדרכים, חטיבת חינוך והסברה (gov.il)'
 G = 'https://www.gov.il/he/'
@@ -235,7 +241,7 @@ def build(verify_only=False):
         pages = raw.split('\f')
         rec = {'url': url, 'title': title, 'publisher': {'terms': 'מערך הדיגיטל הלאומי (gov.il)', 'textbook': TEXTBOOK_PUB, 'edu18': EDU_PUB, 'edu07': EDU_PUB, 'edu13': EDU_PUB, 'edu17': EDU_PUB, 'edu21': EDU_PUB,
                'kids_co': KIDS_PUB, 'pitzuim': PITZ_PUB}.get(pid, PUB),
-               'accessed': ACCESSED, 'sha256': hashlib.sha256(raw.encode()).hexdigest(), 'archive': ARCHIVE, 'quotes': []}
+               'accessed': ACCESSED_PAGE.get(pid, ACCESSED), 'sha256': hashlib.sha256(raw.encode()).hexdigest(), 'archive': ARCHIVE, 'quotes': []}
         if f in PDFS:
             rec['pdf_sha256'] = hashlib.sha256(open(os.path.join(CACHE, PDFS[f][0]), 'rb').read()).hexdigest()
             rec['published'] = PDFS[f][1]
@@ -263,6 +269,7 @@ def build(verify_only=False):
                     errs.append(f'{pid}: quote only in a practice-question block: {q[:60]}'); continue
             if f in PDFS: e['p'] = next(i + 1 for i, pg in enumerate(pages) if norm(q) in norm(pg)) if any(norm(q) in norm(pg) for pg in pages) else None
             rec['quotes'].append(e)
+        if pid in NOTES: rec['note'] = NOTES[pid]
         out[pid] = rec
     if verify_only:
         for k, v in old.items():

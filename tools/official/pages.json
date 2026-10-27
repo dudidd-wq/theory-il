@@ -466,8 +466,8 @@
   "url": "https://kids.gov.il/sababa/sababa_pool/pages/4451",
   "title": "מה מזהם את האוויר? (מאגר מידע סביבתי – זיהום אוויר)",
   "publisher": "המשרד להגנת הסביבה – סבבה, מאגר מידע סביבתי (kids.gov.il)",
-  "accessed": "2026-10-26",
-  "sha256": "2d5bc0efeda8d1eb726ee02e70f552aa0e7eb960b3d735a6ff3452122b40806d",
+  "accessed": "2026-10-27",
+  "sha256": "5a640016717ba407f99789eb91e1fd52942b80a153188febb971a0ac924d94a8",
   "archive": "web.archive.org lookup rate-limited (HTTP 429) on 2026-10-26; pinned by sha256 of the text as fetched",
   "quotes": [
    {
@@ -487,7 +487,8 @@
    }
   ],
   "published": null,
-  "updated": null
+  "updated": null,
+  "note": "re-pinned 2026-10-27: the page now ends with one more sentence (\"בנוסף, פחמימנים משתתפים ביצירה של האוזון ה'רע'…\"); the cited passage is unchanged"
  },
  "edu18": {
   "url": "https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s18-operating-safely.pdf",
@@ -647,7 +648,8 @@
    }
   ],
   "pdf_sha256": "85cce4eea0bfd2ed26cf6c728dd92b2760771c36c757ddbb8cd4c5e6c955b0a6",
-  "published": "12.2019"
+  "published": "12.2019",
+  "note": "the official URL returns HTTP 404 since 2026-10-27 (the file was withdrawn by the publisher); the pinned copy was downloaded from that URL on 2026-10-26 and is identified by pdf_sha256; the only Wayback capture (20210923004300) is truncated at 1 MiB, so a clean clone can rebuild this page only from a local copy (fetch_cache.py --pdf-dir)"
  },
  "edu17": {
   "url": "https://meyda.education.gov.il/files/Curriculum/high-school/download/traffic-s17-special-conditions.pdf",

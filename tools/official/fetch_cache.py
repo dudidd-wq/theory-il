@@ -11,7 +11,9 @@ API JSON is). Every page listed in pages.json is rebuilt and checked against its
 A file that already exists with the pinned hash is reused (no request). Nothing is written for a page whose rebuilt
 hash differs from the pin; the script exits non-zero and lists those pages.
 usage: fetch_cache.py            rebuild everything missing (network: one request per missing page)
-       fetch_cache.py --offline  only rebuild what can be built from files already in the cache"""
+       fetch_cache.py --offline  only rebuild what can be built from files already in the cache
+       fetch_cache.py --pdf-dir DIR   also accept a local copy of a pinned PDF found under DIR if its sha256 matches
+                                      (needed for edu13: its official URL returns 404 since 2026-10-27, see its pages.json note)"""
 import hashlib, json, os, re, shutil, subprocess, sys, tempfile, time, urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__)); CACHE = os.path.join(HERE, 'cache')
 PAGES = json.load(open(os.path.join(HERE, 'pages.json'), encoding='utf-8'))
@@ -51,9 +53,12 @@ def main():
         if stem in pin.PDFS:
             pdf = C(pin.PDFS[stem][0])
             if not (os.path.exists(pdf) and sha(open(pdf, 'rb').read()) == rec['pdf_sha256']):
-                if off: bad.append(pid + ' (PDF missing; run without --offline)'); continue
-                data = urllib.request.urlopen(urllib.request.Request(rec['url'], headers=UA), timeout=180).read(); time.sleep(1)
-                if sha(data) != rec['pdf_sha256']: bad.append(pid + ' (downloaded PDF differs from pdf_sha256)'); continue
+                data = _local_pdf(rec['pdf_sha256'])
+                if data is None:
+                    if off: bad.append(pid + ' (PDF missing; run without --offline or give --pdf-dir)'); continue
+                    data = urllib.request.urlopen(urllib.request.Request(rec['url'], headers=UA), timeout=180).read(); time.sleep(1)
+                    if sha(data) != rec['pdf_sha256']:
+                        bad.append(pid + ' (downloaded PDF differs from pdf_sha256' + ('; ' + rec['note'] if rec.get('note') else '') + ')'); continue
                 open(pdf, 'wb').write(data)
             t = pdf_text(stem, pdf)
             if sha(t) != rec['sha256']: bad.append(pid + ' (text differs from sha256)'); continue
@@ -79,6 +84,16 @@ def main():
         else: bad.append(pid + (' (not fetched)' if not t else ' (page text no longer yields the pinned body: the page changed or was blocked)'))
     print(f'fetch_cache: {len(done)}/{len(PAGES)} pages match their pinned sha256')
     if bad: sys.exit('not rebuilt: ' + '; '.join(bad))
+def _local_pdf(want):
+    """--pdf-dir DIR: a locally held copy of a pinned PDF (e.g. one the publisher has withdrawn), accepted only if its sha256 is the pinned one."""
+    if '--pdf-dir' not in sys.argv: return None
+    d = sys.argv[sys.argv.index('--pdf-dir') + 1]
+    for root, _, fs in os.walk(d):
+        for f in fs:
+            if f.lower().endswith('.pdf'):
+                b = open(os.path.join(root, f), 'rb').read()
+                if sha(b) == want: return b
+    return None
 def _try(stem, t, rec):
     try: return sha(body(stem, t)) == rec['sha256']
     except (ValueError, IndexError): return False
