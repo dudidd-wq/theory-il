@@ -112,6 +112,12 @@ async function run(prof, opts) {
     ok(!/עדיין לא מוסבר/.test(wt) && /^#\/learn\/moto\/peek$/.test(lk || ''), `class-A Q1595 under class B: why box links its lesson read-only (${lk})`);
     await go(p, lk || '#/learn/moto/peek'); await p.waitForTimeout(300); ok(/#\/learn\/moto\/peek$/.test(p.url()) && await p.locator('.rules, .rule').count() > 0, 'other-class lesson opens read-only');
   } else ok(false, 'search finds class-A Q1595 under class B');
+  // v1.15 (review #11): widget controls are ≥24px tap targets
+  for (const l of ['signs', 'signs3', 'speed', 'rules3']) {
+    await go(p, '#/learn/' + l + '/peek'); await p.waitForTimeout(400);
+    const sm = await p.evaluate(() => [...document.querySelectorAll('.viz input, .viz select, .viz button')].filter(e => e.offsetParent).map(e => { const b = e.getBoundingClientRect(); return [e.id || e.type, Math.round(b.width), Math.round(b.height)]; }).filter(x => x[1] < 24 || x[2] < 24));
+    ok(!sm.length, `${l}: widget controls ≥24px ${JSON.stringify(sm)}`);
+  }
   await go(p, '#/home');
   // bookmarks
   await go(p, '#/bookmarks'); await p.waitForSelector('.qlist li'); await axe(p, 'bookmarks', prof);

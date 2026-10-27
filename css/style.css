@@ -73,7 +73,7 @@ fieldset { border: 0; padding: 0; margin: 0; }
 input[type=text], select, textarea { width: 100%; min-height: 48px; padding: 10px 12px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); color: var(--text); font: inherit; }
 textarea { font-family: ui-monospace, monospace; font-size: .85em; word-break: break-all; }
 .check { display: flex; align-items: center; gap: 10px; min-height: 48px; cursor: pointer; }
-.check input { width: 22px; height: 22px; accent-color: var(--primary); }
+.check input { width: 24px; height: 24px; accent-color: var(--primary); }
 .banner { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; background: var(--accent-bg); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 12px; }
 .banner p { flex: 1 1 220px; margin: 0; }
 .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0; }
@@ -260,7 +260,10 @@ textarea { font-family: ui-monospace, monospace; font-size: .85em; word-break: b
 .vz-stage { background: var(--surface2); border-radius: 12px; padding: 6px; }
 .vz-svg { display: block; width: 100%; height: auto; max-height: 260px; }
 .vz-ctl { display: grid; gap: 6px; margin: 10px 0 4px; }
-.vz-ctl input[type="range"] { width: 100%; accent-color: var(--primary); min-height: 32px; }
+.vz-ctl input[type="range"] { width: 100%; accent-color: var(--primary); min-height: 32px; height: 32px; }
+/* v1.15 (review #11): every widget control is a ≥24px tap target */
+.vz-ctl input[type="checkbox"], .viz input[type="checkbox"] { width: 24px; height: 24px; min-width: 24px; accent-color: var(--primary); }
+.vz-ctl input[type="number"], .vz-ctl input[type="search"], .viz input[type="search"], .viz input[type="number"] { min-height: 44px; }
 .vz-ctl input[type="number"], .vz-ctl select { font: inherit; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--text); max-width: 12em; }
 .vz-out { font-weight: 700; margin: 4px 0; }
 .viz figcaption { display: grid; gap: 2px; margin-top: 6px; }
