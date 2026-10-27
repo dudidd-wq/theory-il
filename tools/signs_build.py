@@ -44,8 +44,9 @@ def build():
         qid = str(q['id'])
         if q.get('i') and how.get(qid) in ('manual', 'text') and len(qmap[qid]) == 1:
             img.setdefault(qmap[qid][0], q['i'])
+    # v1.19 (review #15 RTL self-audit): a comma glued to the next word in the PDF text layer ('לאיסור,להוריה') gets its space
     out = {'v': 1, 'src': {'title': LOT['title'], 'url': LOT['url'], 'sha256': LOT['sha256']},
-           'parts': [[p, t] for p, t in PARTS], 'e': {k: columns(E[k], LC, k) for k in keys}, 'img': img, 'q': qmap}
+           'parts': [[p, t] for p, t in PARTS], 'e': {k: re.sub(r'(?<=[א-ת]),(?=[א-ת])', ', ', columns(E[k], LC, k)) for k in keys}, 'img': img, 'q': qmap}
     return out, how
 
 if __name__ == '__main__':

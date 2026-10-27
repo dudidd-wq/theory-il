@@ -134,6 +134,23 @@ def trap(q):
     sc = [(len(A & tok(a)) / (len(A | tok(a)) or 1), -k) for k, a in enumerate(q['a']) if k != q['c']]
     return -max(sc)[1] if sc else None
 
+def pdf_tidy(t):
+    # v1.19 (review #15 D8): spacing artefacts of the PDF text layer, shown as the page prints them (the words are unchanged):
+    # a number or Latin letter glued to Hebrew ('3,500ק”ג', 'Bמאפשרת'), punctuation detached from its word ('אלכוהול ,סמים',
+    # 'הנסיעה .ככל'), a dash glued to the next word ('דם -כמות'), and the bidi-reversed '… 240 -מיקרוגרם' ('… – 240 מיקרוגרם')
+    t = re.sub(r'(?<![^\s(])([,.])(\d+|[A-Za-z]+)(?=[\sא-ת])', r'\2\1', t)   # bidi-reversed '.1לכביש' / ',1או ,R' → '1.' / '1,' / 'R,'
+    t = re.sub(r'(?<=\d[.,])(?=[א-ת])', ' ', t)
+    t = t.replace('“ +', '+ “')
+    t = re.sub(r'(?<=\d)(?=[א-ת][א-ת"”׳״\'])', ' ', t)
+    t = re.sub(r'(?<=[A-Za-z])(?=[א-ת])|(?<=[א-ת])(?=[A-Za-z])', ' ', t)
+    t = re.sub(r' ([,.;:])(?=[א-ת"“(])', r'\1 ', t)
+    t = re.sub(r' ([,;])(?=\s)', r'\1', t)
+    t = re.sub(r'(?<=\s)(\d[\d,.]*) -(?=[א-ת])', r'– \1 ', t)
+    t = re.sub(r'(?<=:) -(?=[א-ת])', ' - ', t)   # a list dash after a colon stays a list dash
+    t = re.sub(r'(?<=\S) -(?=[א-ת"“])', ' – ', t)
+    t = re.sub(r'•(?=[א-ת"“])', '• ', t)
+    return re.sub(r'  +', ' ', t)
+
 def source(src, checks, where):
     kind, key, sub = parse(src)
     sid = kind + ':' + key
@@ -227,7 +244,7 @@ def source(src, checks, where):
         if 'meyda.education.gov.il' in pg['url']: s['flaky'] = True
         for q in qs:
             # v1.18 (review #14 D5): the textbook PDF's reversed number-prefix ('מ 2-נקודות') shown as written ('מ-2 נקודות')
-            e = re.sub(r'(?<![^\s(])([בכמלה]) (\d+(?:[.,]\d+)?)-(?=[א-ת"“])', r'\1-\2 ', q['t']) + (f' (עמ׳ {q["p"]})' if q.get('p') else '')
+            e = re.sub(r'(?<![^\s(])([בכמלה]) (\d+(?:[.,]\d+)?)-(?=[א-ת"“])', r'\1-\2 ', pdf_tidy(q['t'])) + (f' (עמ׳ {q["p"]})' if q.get('p') else '')
             if e not in s['ex']: s['ex'].append(e)
             PASS.append((sid, e))
     elif kind == 'Q':

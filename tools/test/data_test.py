@@ -323,7 +323,7 @@ sys.path.insert(0, os.path.join(R, 'tools'))
 from lessons_spec import LESSONS as _LS, EXAMPLES as _EXS
 from cite_v113 import CHK as _CITE
 _LAW = J('tools', 'law/law.json')
-_nm = lambda x: re.sub(r'\s+', ' ', re.sub(r'[״׳"\'`“”„‘’\-–—־.,;:!?()\[\]/…]', ' ', re.sub(r'[\u0591-\u05C7]', '', x))).strip()
+_nm = lambda x: re.sub(r'\s+', ' ', re.sub(r'[״׳"\'`“”„‘’\-–—־.,;:!?()\[\]/…+•]', ' ', re.sub(r'[\u0591-\u05C7]', '', x))).strip()
 _pg = lambda e: re.sub(r'\s*\(עמ׳ \d+\)$', '', e)
 _sid = lambda s: re.match(r'^(TR|TO|LT|LTP|Q|OFF):([^()]+)', s).group(0)
 _LJI = {l['id']: l for l in LJ['lessons']}
@@ -346,7 +346,7 @@ for _L in _LS:
             if _kd in ('TR', 'TO') and any(_nm(_pt) not in _nm(_LAW[_kd][_ky]['text']) for _pt in _pg(_xe).split(' … ')): _bad1.append(_w + ' excerpt not in law text')
         _own = ' '.join(_nm(e) for xs, e in _x if xs == _sd)
         if _sd.split(':')[0] in ('TR', 'TO') and not _ch: _bad1.append(_w + ' no checks')
-        _bad1 += [_w + f' check "{c}" not in its own excerpt' for c in _ch if _sd.split(':')[0] in ('TR', 'TO', 'OFF') and _nm(c) not in _own]
+        _bad1 += [_w + f' check "{c}" not in its own excerpt' for c in _ch if _sd.split(':')[0] in ('TR', 'TO', 'OFF') and _nm(c) not in _own and not (_sd.startswith('OFF:') and _nm(c).replace(' ', '') in _own.replace(' ', ''))]   # v1.19 D8: shown OFF passages get the PDF's missing spaces back
 ok(not _bad1 and _n1 > 600, f'v1.13 (review #9 D1): every rule / mnemonic / recap / example pins its own passage, present in the pinned source and containing its own checks ({_n1} items; {_bad1[:4]})')
 ok('mine.length ? mine' in JL and 'slice(0, 4)' not in JL and "'#page=' + pg[1]" in JL, 'v1.13 (review #9 D1): the chip shows the item\'s own passage first')
 
@@ -801,6 +801,24 @@ def _rs(ref):
     lid, n = ref.split('#r'); return _LJ[lid]['rules'][int(n)]['s']
 _fq = [k for k in ('1704', '856', '857', '1509', '1510') if not all(_rs(r).startswith('OFF:fatigue') for r in _CF[k].get('rule', [])) or not _CF[k].get('rule')]
 ok(not _fq, f'v1.19 (review #15 D4): Q1704 and its fatigue twins cite only the RSA fatigue rules {_fq}')
+# v1.19 (review #15 D8 + RTL self-audit): no PDF spacing / bidi artefacts in any shown passage or written text
+# (lessons, sources, sign dictionary; the data.gov.il bank stays verbatim and is not scanned)
+_SP = re.compile(r'\d[א-ת]{2}|[A-Za-z][א-ת]|[א-ת][A-Za-z]| [,.;:][א-ת"“]| [,;](?=\s|$)|[^\s:] -[א-ת"“]|“ \+|•[א-ת]|[א-ת],[א-ת]|(?:^|\s)[,.](?:\d|[A-Za-z])')
+def _strs(o):
+    if isinstance(o, str): yield o
+    elif isinstance(o, dict):
+        for v in o.values(): yield from _strs(v)
+    elif isinstance(o, list):
+        for v in o: yield from _strs(v)
+_spx = []
+for _f in ('lessons.json', 'sources.json', 'signs.json'):
+    for _s in _strs(json.load(open(os.path.join(R, 'data', _f), encoding='utf-8'))):
+        for _m in _SP.finditer(_s):
+            if re.search(r'תוספת\d+פרט', _s[max(0, _m.start() - 8):_m.end() + 4]): continue   # ids such as TO:תוספת3פרט1
+            _spx.append((_f, _s[max(0, _m.start() - 15):_m.end() + 8]))
+ok(not _spx, f'v1.19 (review #15 D8): no glued number/Latin–Hebrew, detached punctuation or glued dash in lessons/sources/signs ({len(_spx)}) {_spx[:6]}')
+_ed = {'licence2': ('דרגת רשיון B מאפשרת', '3,500 ק”ג'), 'moveoff': ('50 קמ”ש – מרחק',), 'alc2': ('אלכוהול, סמים', 'ינשוף – 240 מיקרוגרם', '50 מ”ג')}
+ok(all(any(w in x[1] for r in _LJ[l]['rules'] for x in r.get('x', [])) for l, ws in _ed.items() for w in ws), 'v1.19 (review #15 D8): the named textbook chips read with their spaces (licence2#r0, moveoff#r10, alc2#r0)')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 
