@@ -823,6 +823,12 @@ ok(all(any(w in x[1] for r in _LJ[l]['rules'] for x in r.get('x', [])) for l, ws
 import subprocess as _sp
 _ci = _sp.run([sys.executable, os.path.join(R, 'tools/test/chip_integrity.py')], capture_output=True, text=True, env={**os.environ, 'THEORY_OFFICIAL_CACHE': '/nonexistent/cache/'})
 ok(_ci.returncode == 0 and 'SKIP' in _ci.stdout and 'Traceback' not in _ci.stderr, f'v1.19 (review #15 T1): chip_integrity.py skips without the cache (rc {_ci.returncode}: {_ci.stderr[-120:]})')
+# v1.19 (review #15 RTL self-audit): a long sign-dictionary entry in the practice why box is cut at a word boundary, not mid-word
+_LJS = open(os.path.join(R, 'js/learn.js'), encoding='utf-8').read()
+_SG = json.load(open(os.path.join(R, 'data/signs.json'), encoding='utf-8'))['e']
+_cut = lambda t: re.sub(r'[\s·,;:–-]+\S*$', '', t[:220])
+_mw = [k for k, t in _SG.items() if len(t) > 220 and not re.match(r'[\s·,;:–-]', t[len(_cut(t)):] or ' ')]
+ok("slice(0, 220).replace(/[\\s·,;:–-]+\\S*$/, '') + ' …'" in _LJS and not _mw, f'v1.19: long sign entries are cut at a word boundary in the why box ({len([1 for t in _SG.values() if len(t) > 220])} long entries; mid-word: {_mw[:5]})')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 
