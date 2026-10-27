@@ -437,6 +437,9 @@ for _l in LB.values():
                 _w = re.findall(r'[א-תA-Za-z]{2,}', _t)
                 if len(_w) < 2 or len(''.join(_w)) < 7: _jk.append(f"{_l['id']}#{_k}{_i}:{_x[0]}:{_x[1][:20]}")
 ok(not _jk and _nj >= 1300, f'v1.15 (review #11 C1/T2): every displayed passage has real words beyond a sign number / punctuation ({_nj} chips; junk: {_jk[:6]})')
+_lc = LB['licence2']['rules'][3]; _l3 = LB['law3']['rules'][0]
+ok('אלא אם כן יוכיח מי נהג' in ' '.join(x[1] for x in _lc['x']) and 'כגון מצלמת מהירות' in ' '.join(x[1] for x in _lc['x']), 'v1.15 (review #11 C2): licence2#r3 chip carries the exception "אלא אם כן יוכיח מי נהג" and "כגון מצלמת מהירות" (p.145)')
+ok('המהירות המרבית חלה' not in _l3['t'] and 'להסעת המונים שאינו אוטובוס' in _l3['t'] and 'להסעת המונים שאינו אוטובוס' in ' '.join(x[1] for x in _l3['x']), 'v1.15 (review #11 C3): law3#r0 states only what TO 71א1 says, incl. the mass-transit-lane exception')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 
