@@ -121,8 +121,8 @@ async function run(prof, opts) {
   // v1.22: 'תרגול יומי' – 10 questions, the questions missed today come first; 'תרגל את החלשים' – from the learner's own weakest lesson
   { await go(p, '#/home'); await p.waitForSelector('#dy-mix'); const s0 = await S(p), wrong = Object.entries(s0.q).filter(([, r]) => r[2] > r[3] && r[0] < 3).map(([k]) => +k);
     const nd = +((await p.textContent('#dy-mix')).match(/(\d+) לחזרה/) || [])[1];
-    ok(/^10 שאלות להיום/.test(await p.textContent('#dy-mix')) && nd >= wrong.length && /חוזרת אחרי יום, 3 ימים ושבוע/.test(await p.textContent('#dy-mix')) && /אחרי עוד כמה תשובות/.test(await p.textContent('#wk-list')),
-      `home: daily practice card (10 questions, ${nd} due incl. ${wrong.length} missed), no weak spots yet`);
+    ok(/^10 שאלות להיום/.test(await p.textContent('#dy-mix')) && nd >= wrong.length && /חוזרת אחרי יום, 3 ימים ושבוע/.test(await p.textContent('#dy-mix')) && (/אחרי עוד כמה תשובות/.test(await p.textContent('#wk-list')) ? await p.locator('a[href="#/practice/weak"]').count() === 0 : await p.locator('a[href="#/practice/weak"]').count() === 1 && /%\)/.test(await p.textContent('#wk-list'))),
+      `home: daily practice card (10 questions, ${nd} due incl. ${wrong.length} missed); weak-spots block consistent with own answers`);
     await p.click('a[href="#/practice/daily"]'); await p.waitForSelector('.answers .ans'); const seen = [];
     for (let i = 0; i < 10; i++) { seen.push(await curId(p)); await p.click(`.answers .ans[data-i="${correct(seen[i])}"]`); await p.click('.next'); }
     await p.waitForSelector('.result');

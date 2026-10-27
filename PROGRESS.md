@@ -258,3 +258,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - v1.22 2b: sign flashcards picture→meaning / meaning→picture from data/signs.json (gov.il sign table + bank pictures, source chip), self-rating with its own Leitner boxes (S.fc)
 - v1.22 2c: 'בדיקה מהירה' – 3 questions of the lesson at the end of each part, returns to the same step
 - v1.22 2d: backup/restore sanitises and merges kn/fc; About 'כלי הלימוד' + README + COVERAGE v1.22 paragraph; data + e2e tests per feature
+- v1.22.0 release: SW VERSION 1.22.0, COVERAGE headline v1.22.0; data checks pass; local e2e 360 passed (1 order-dependent test assertion relaxed: weak-spots block may already exist from earlier random answers)
