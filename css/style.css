@@ -403,3 +403,18 @@ line.vz-span { stroke: #f3a712; stroke-width: 6; fill: none; }
 .fccard { text-align: center; } .fcimg { margin-inline: auto; max-inline-size: 100%; block-size: auto; }
 .fcmean { font-size: 1.1em; font-weight: 600; text-align: start; } .fcrate .btn, #fc-show { min-height: 44px; min-width: 44px; }
 .partend { flex-wrap: wrap; } .partend .qcgo { min-height: 44px; margin-inline-start: auto; }
+/* v1.22.1 sign browser: family tiles → sign pictures, no typing of numbers */
+.famgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; margin: 6px 0; }
+.famt { display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 88px; padding: 6px; border: 2px solid var(--line); border-radius: 10px; background: var(--surface); color: inherit; font: inherit; font-size: .85rem; font-weight: 600; line-height: 1.2; cursor: pointer; text-align: center; }
+.famt img, .sgt img { max-width: 100%; height: auto; border-radius: 4px; background: #fff; }
+.famt[aria-pressed="true"] { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary) inset; }
+.sgrid { list-style: none; padding: 0; margin: 6px 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 6px; }
+.sgt { width: 100%; min-height: 56px; min-width: 44px; padding: 4px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: inherit; font: inherit; font-size: .8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.sgt[aria-expanded="true"] { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary) inset; }
+.sgtxt { line-height: 1.2; overflow-wrap: anywhere; }
+.sginfo-li { grid-column: 1 / -1; }
+.sginfo { padding: 10px; border: 2px solid var(--primary); border-radius: 10px; background: var(--surface); }
+.sginfo img { display: block; max-width: 100%; height: auto; margin-bottom: 6px; background: #fff; border-radius: 4px; }
+.sgmean { margin: 4px 0; overflow-wrap: anywhere; }
+.sgwhy { margin: 4px 0; }
+.sdbrowse[hidden] { display: none; }

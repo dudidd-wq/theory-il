@@ -2,7 +2,8 @@
 // Every number shown comes from the rule cited next to it (see data/lessons.json / sources.json).
 // The diagram itself is aria-hidden; the caption under it is the text alternative and is updated on every step.
 // Movement uses CSS transitions only, which the global prefers-reduced-motion rule turns off (steps then jump).
-import { h } from './ui.js';
+import { h, icon } from './ui.js';
+import * as st from './store.js';
 const S = (tag, a, ...k) => h('svg:' + tag, a, ...k);
 const svg = (vb, ...k) => S('svg', { viewBox: vb, class: 'vz-svg', 'aria-hidden': 'true', focusable: 'false' }, ...k);
 const chip = (label, on, onclick) => h('button', { type: 'button', class: 'chip', 'aria-pressed': String(on), onclick, text: label });
@@ -49,17 +50,63 @@ function priority() {
 export const PARTS = [[101, 153, 'חלק 1 – תמרורי אזהרה והתראה'], [201, 231, 'חלק 2 – תמרורי הוריה'], [301, 310, 'חלק 3 – תמרורי זכות קדימה'], [401, 441, 'חלק 4 – תמרורי איסורים והגבלות'],
   [501, 516, 'חלק 5 – תמרורי תחבורה ציבורית'], [601, 640, 'חלק 6 – תמרורי מודיעין והדרכה'], [701, 729, 'חלק 7 – רמזורים ובקרת נתיבים'], [801, 821, 'חלק 8 – סימון על פני הדרך'],
   [901, 935, 'חלק 9 – תמרורים באתר עבודה']];
+// v1.22.1: no typing of sign numbers anywhere – choose a family (tile with a real picture from that part), then tap a sign picture
+const FAMIMG = { 3: 'tq_pic_3310.webp' };   // part 3: the bank picture of 302 + 301 (question 310)
+const FAMREP = ['135', '205', '302', '402', '501', '602', '701', '803', '901'];   // one picture per part, all from the bank pictures in data/signs.json
+// shape/colour hints only where the official bank states them (question numbers shown with the hint)
+const FAMWHY = { 1: ['צורתם של תמרורי אזהרה היא בדרך כלל משולש שקודקודו כלפי מעלה.', 606], 2: ['תמרור שצורתו עיגול הוא בדרך כלל תמרור הוריה או איסור.', 477],
+  3: ['ל"עצור" ול"תן זכות קדימה" צורה מיוחדת – כדי להבליטם, להבחין בהם ולפרש אותם נכון גם בראות גרועה.', 310], 4: ['תמרור שצורתו עיגול הוא בדרך כלל תמרור הוריה או איסור.', 477],
+  8: ['סימון על הכביש שנעשה לפי החוק נחשב תמיד לתמרור.', 1772], 9: ['תמרורים או סימון בצבע כתום מסמנים אתר של עבודה בדרך.', 691] };
+let SGP = null;
+const loadSG = () => (SGP ||= fetch('data/signs.json').then(r => { if (!r.ok) throw 0; return r.json(); }).catch(e => { SGP = null; throw e; }));
+const pn = n => parseInt(n, 10);
+const partOf = n => PARTS.findIndex(([a, b]) => pn(n) >= a && pn(n) <= b);
+const famName = i => PARTS[i][2].split('– ')[1];
+const meanOf = (D, n) => D.e[n].split(' · ');
+const famWhy = i => FAMWHY[i + 1] ? h('p', { class: 'small sgwhy' }, h('span', { text: FAMWHY[i + 1][0] + ' ' }), h('span', { class: 'muted', text: `(שאלה ${FAMWHY[i + 1][1]} במאגר)` })) : null;
+const byPic = D => (x, y) => (!!D.img[y] - !!D.img[x]) || pn(x) - pn(y) || (x < y ? -1 : 1);
+// family tiles + sign grid + an info panel that opens right after the tapped sign
+function signBrowser(D, pfx, say) {
+  const info = h('div', { class: 'sginfo', id: pfx + '-info', role: 'region', 'aria-label': 'פירוש התמרור' });
+  const grid = h('div', { class: 'sgwrap', id: pfx + '-grid' }), infoLi = h('li', { class: 'sginfo-li' }, info);
+  const show = (n, btn) => {
+    const [m, ...more] = meanOf(D, n), i = partOf(n);
+    info.replaceChildren(D.img[n] ? h('img', { src: 'img/q/' + D.img[n], alt: '', width: 192, height: 108 }) : null,
+      h('p', { class: 'sgmean' }, h('b', { text: m }), more.length ? h('span', { class: 'small', text: ' · ' + more.join(' · ') }) : null),
+      i >= 0 ? h('p', { class: 'small', text: PARTS[i][2] }) : null, i >= 0 ? famWhy(i) : null,
+      h('p', { class: 'row tight' }, h('a', { class: 'chip', href: D.src.url, target: '_blank', rel: 'noopener', text: 'המקור: לוח התמרורים (gov.il)' }), h('small', { class: 'muted sgno', text: 'תמרור ' + n })));
+    grid.querySelectorAll('.sgt[aria-expanded]').forEach(b => b.setAttribute('aria-expanded', String(b === btn)));
+    btn?.closest('li')?.after(infoLi);
+    say(`${m}${i >= 0 ? ' – ' + PARTS[i][2] : ''}.${i >= 0 && FAMWHY[i + 1] ? ' ' + FAMWHY[i + 1][0] : ''}`);
+  };
+  const list = (nums, cap) => {
+    const tiles = nums.map(n => h('li', {}, h('button', { type: 'button', class: 'sgt', 'data-n': n, 'aria-expanded': 'false', 'aria-controls': pfx + '-info', onclick: e => show(n, e.currentTarget) },
+      D.img[n] ? h('img', { src: 'img/q/' + D.img[n], alt: '', width: 96, height: 54, loading: 'lazy' }) : null,
+      h('span', { class: D.img[n] ? 'sr-only' : 'sgtxt', text: meanOf(D, n)[0] }))));
+    info.replaceChildren(); infoLi.remove();
+    grid.replaceChildren(cap ? h('p', { class: 'small', text: cap }) : null, nums.length ? h('ul', { class: 'sgrid' }, tiles) : null);
+  };
+  const btns = PARTS.map((p, i) => h('button', { type: 'button', class: 'famt', 'data-part': i + 1, 'aria-pressed': 'false', onclick: () => fam(i) },
+    (FAMIMG[i + 1] || D.img[FAMREP[i]]) ? h('img', { src: 'img/q/' + (FAMIMG[i + 1] || D.img[FAMREP[i]]), alt: '', width: 96, height: 54, loading: 'lazy' }) : null, h('span', { text: famName(i) })));
+  function fam(i) {
+    btns.forEach((b, j) => b.setAttribute('aria-pressed', String(j === i)));
+    const ns = Object.keys(D.e).filter(n => partOf(n) === i).sort(byPic(D));
+    list(ns, `${famName(i)}: ${ns.length} תמרורים. הקישו על תמרור כדי לראות מה פירושו.`);
+    const w = famWhy(i); if (w) grid.prepend(w);
+    say(`נבחרה המשפחה ${famName(i)} (${ns.length} תמרורים).${FAMWHY[i + 1] ? ' ' + FAMWHY[i + 1][0] : ''} הקישו על תמונה של תמרור כדי לראות את פירושו.`);
+  }
+  const unpress = () => btns.forEach(b => b.setAttribute('aria-pressed', 'false'));
+  const tiles = h('div', { class: 'famgrid', role: 'group', 'aria-label': 'בחרו משפחת תמרורים' }, btns);
+  return { tiles, grid, fam, list, unpress };
+}
 function signs() {
-  return fig('המספר מגלה את המשפחה', 'לפי לוח התמרורים (gov.il) ושאלות 606, 477 במאגר', ({ stage, ctl, say }) => {
+  return fig('משפחות התמרורים', 'לפי לוח התמרורים (gov.il); הצורות לפי שאלות 606, 477, 310, 1772 ו־691 במאגר', ({ stage, ctl, say }) => {
     const tri = S('path', { class: 'vz-shape', d: 'M60 20 L100 90 L20 90 Z' }), circ = S('circle', { class: 'vz-shape', cx: 200, cy: 58, r: 36 });
     stage.append(svg('0 0 280 120', tri, circ, txt(60, 112, 'אזהרה – בדרך כלל'), txt(200, 112, 'הוריה או איסור – בדרך כלל')));
-    const inp = h('input', { id: 'vz-num', type: 'number', inputmode: 'numeric', min: 100, max: 999, value: 135 });
-    const out = h('p', { class: 'vz-out', 'aria-live': 'polite' });
-    const run = () => { const n = +inp.value, p = PARTS.find(([a, b]) => n >= a && n <= b);
-      out.textContent = p ? `${n}: ${p[2]} (מספרים ${p[0]} עד ${p[1]})` : `${n || '?'}: אין מספר כזה באף חלק של לוח התמרורים.`; };
-    inp.addEventListener('input', run);
-    ctl.append(h('label', { for: 'vz-num', class: 'lbl', text: 'הקלידו מספר תמרור:' }), inp, out); run();
-    say('משולש שקודקודו למעלה הוא בדרך כלל תמרור אזהרה. עיגול הוא בדרך כלל תמרור הוריה או איסור. הספרה הראשונה במספר התמרור אומרת לאיזה חלק בלוח הוא שייך: ' + PARTS.map(p => `${p[0]} עד ${p[1]} – ${p[2].split('– ')[1]}`).join('; ') + '.');
+    const intro = 'משולש שקודקודו למעלה הוא בדרך כלל תמרור אזהרה. עיגול הוא בדרך כלל תמרור הוריה או איסור. בחרו משפחה, ואז הקישו על תמונה של תמרור – אין צורך לדעת מספרים.';
+    say('טוען את לוח התמרורים…');
+    loadSG().then(D => { const B = signBrowser(D, 'sf', say); ctl.append(h('p', { class: 'lbl', text: 'בחרו משפחה:' }), B.tiles, B.grid); say(intro); },
+      () => say(intro + ' (לא הצלחנו לטעון את התמונות. נסו שוב כשיש חיבור.)'));
   });
 }
 
@@ -215,25 +262,36 @@ function moto() {
 }
 
 // ---------- sign dictionary: every entry of the 2022 table (data/signs.json, built by tools/signs_build.py) ----------
+// signs met in my own practice: questions I answered wrong + flashcards I rated "not yet" (local data only)
+function mineSigns(D) {
+  const out = new Set(), q = st.state().q || {}, fc = st.state().fc || {};
+  for (const [id, r] of Object.entries(q)) if (r[2] > r[3]) (D.q[id] || []).forEach(n => D.e[n] && out.add(n));
+  for (const [n, r] of Object.entries(fc)) if (r[2] > r[3] && r[0] < st.MASTER_BOX && D.e[n]) out.add(n);
+  return [...out].sort(byPic(D));
+}
 function signdict() {
   return fig('מילון התמרורים', 'לפי לוח התמרורים (gov.il, נוסח משולב 2022); התמונות מתוך מאגר השאלות', ({ stage, ctl, say }) => {
-    const inp = h('input', { id: 'vz-sd', type: 'search', placeholder: 'מספר או מילה, למשל 302 או חנייה', autocomplete: 'off' });
-    const out = h('ul', { class: 'sdict', 'aria-live': 'polite' });
-    let D = null;
-    const run = () => {
-      if (!D) return;
-      const q = inp.value.trim(), all = Object.entries(D.e);
-      const hits = !q ? [] : /^\d+$/.test(q) ? all.filter(([n]) => n.startsWith(q)) : all.filter(([, t]) => t.includes(q));
-      out.replaceChildren(...hits.slice(0, 12).map(([n, t]) => { const p = PARTS.find(([a, b]) => +n >= a && +n <= b);
-        return h('li', {}, D.img?.[n] ? h('img', { src: 'img/q/' + D.img[n], alt: '', loading: 'lazy', width: 64, height: 36 }) : null,
-          h('b', { text: n + ' ' }), h('span', { text: t }), p ? h('small', { class: 'muted', text: ' · ' + p[2] }) : null); }));
-      say(!q ? `יש בלוח ${all.length} תמרורים. הקלידו מספר או מילה כדי לראות את משמעות התמרור.` : hits.length ? `נמצאו ${hits.length} תמרורים${hits.length > 12 ? ', מוצגים 12 הראשונים' : ''}.` : 'לא נמצא תמרור מתאים.');
-    };
-    inp.addEventListener('input', run);
-    stage.append(h('label', { for: 'vz-sd', class: 'lbl', text: 'חיפוש בלוח התמרורים:' }), inp);
-    ctl.append(out);
+    const inp = h('input', { id: 'vz-sd', type: 'search', placeholder: 'חפשו לפי מילה, למשל חנייה', autocomplete: 'off', enterkeyhint: 'search' });
+    stage.append(h('label', { for: 'vz-sd', class: 'lbl', text: 'חיפוש לפי מילה (לא חובה):' }), inp);
     say('טוען את לוח התמרורים…');
-    fetch('data/signs.json').then(r => r.json()).then(x => { D = x; run(); }, () => say('לא הצלחנו לטעון את המילון. נסו שוב כשיש חיבור.'));
+    loadSG().then(D => {
+      const B = signBrowser(D, 'sd', say), mine = mineSigns(D), all = Object.entries(D.e);
+      const mineBtn = mine.length ? h('button', { type: 'button', class: 'btn small', id: 'sd-mine', onclick: () => { B.unpress(); B.list(mine, `תמרורים שנתקלתי בהם בתרגול: ${mine.length} (מתשובות שטעיתי בהן ומכרטיסיות שסימנתי "עוד לא").`); say(`${mine.length} תמרורים מהתרגול שלך. הקישו על תמונה כדי לראות את פירושו.`); } },
+        icon('flag'), h('span', { text: `תמרורים שנתקלתי בהם בתרגול (${mine.length})` }))
+        : h('p', { class: 'small muted', id: 'sd-mine-empty', text: 'כאן יופיעו תמרורים מתשובות שטעית בהן ומכרטיסיות שסימנת "עוד לא".' });
+      const browse = h('div', { class: 'sdbrowse' }, h('p', { class: 'lbl', text: 'או בחרו משפחה:' }), B.tiles, h('div', { class: 'row tight' }, mineBtn));
+      ctl.append(browse, B.grid);
+      const idle = `יש בלוח ${all.length} תמרורים. בחרו משפחה ואז הקישו על תמונה, או חפשו לפי מילה.`;
+      const run = () => {
+        const q = inp.value.trim();
+        if (!q) { browse.hidden = false; B.list([], ''); B.unpress(); return say(idle); }
+        browse.hidden = true;
+        const hits = (/^\d+$/.test(q) ? all.filter(([n]) => n.startsWith(q)) : all.filter(([, t]) => t.includes(q))).map(([n]) => n).sort(byPic(D)).slice(0, 24);
+        B.list(hits, hits.length ? '' : 'לא נמצא תמרור מתאים. נסו מילה אחרת, או מחקו את החיפוש כדי לבחור משפחה.');
+        say(hits.length ? `נמצאו ${hits.length} תמרורים. הקישו על תמרור כדי לראות את פירושו.` : 'לא נמצא תמרור מתאים.');
+      };
+      inp.addEventListener('input', run); run();
+    }, () => say('לא הצלחנו לטעון את המילון. נסו שוב כשיש חיבור.'));
   });
 }
 
