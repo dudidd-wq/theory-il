@@ -104,7 +104,7 @@ async function route() {
   markNav(r || 'home');
   (routes[r] || home)(arg, sub);
 }
-const LRN = makeLearn({ screen, btn, link, view, pool, cls, prof, pick, clsName, byId: { has: k => byId.has(k), get: k => byId.get(k) },
+const LRN = makeLearn({ screen, btn, link, view, pool, cls, prof, pick, clsName, setPref: (k, v) => { const p = prof(); if (p) { p[k] = v; save(); applyPrefs(); } }, byId: { has: k => byId.has(k), get: k => byId.get(k) },
   startSession: (...a) => startSession(...a) });
 let leaving = false;
 addEventListener('hashchange', () => {

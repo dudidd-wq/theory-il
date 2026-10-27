@@ -127,7 +127,7 @@ async function run(prof, opts) {
     await p.click(`.answers .ans:not([data-i="${c95}"])`); await p.waitForSelector('.why');
     const wt = await p.textContent('.why'), lk = await p.getAttribute('.why a[data-learn]', 'href').catch(() => null);
     ok(!/עדיין לא מוסבר/.test(wt) && /^#\/learn\/moto\/peek$/.test(lk || ''), `class-A Q1595 under class B: why box links its lesson read-only (${lk})`);
-    await go(p, lk || '#/learn/moto/peek'); await p.waitForTimeout(300); ok(/#\/learn\/moto\/peek$/.test(p.url()) && await p.locator('.rules, .rule').count() > 0, 'other-class lesson opens read-only');
+    await go(p, lk || '#/learn/moto/peek'); await p.waitForTimeout(300); ok(/#\/learn\/moto\/peek$/.test(p.url()) && await p.locator('.rules, .rule, .lstep').count() > 0, 'other-class lesson opens read-only');
   } else ok(false, 'search finds class-A Q1595 under class B');
   // v1.15 (review #11): widget controls are ≥24px tap targets
   for (const l of ['signs', 'signs3', 'speed', 'rules3']) {
@@ -193,6 +193,28 @@ async function run(prof, opts) {
   await go(p, '#/learn'); await p.waitForSelector('.lessons');
   ok(await p.locator('.lessons li').count() === LB.length && await p.locator('.lessons li:nth-child(1) a').count() === 1 && await p.locator('.lessons li:nth-child(2) [aria-disabled="true"]').count() === 1, `learn path: ${LB.length} lessons for B, only the first open`);
   await axe(p, 'learn-path', prof);
+  // v1.21: a lesson opens step by step – progress 'שלב 1 מתוך N', back/next ≥44px, focus on the step heading, aria-live, reading time, resume
+  { const L0 = LB[0]; await go(p, '#/learn/' + L0.id); await p.waitForSelector('.lstep');
+    const N = +(/מתוך (\d+)/.exec(await p.textContent('#st-pos')) || [])[1];
+    const nb = await p.locator('.stnav .stnext').boundingBox(), pb = await p.locator('.stnav .stprev').boundingBox();
+    ok(/^שלב 1 מתוך \d+$/.test((await p.textContent('#st-pos')).trim()) && N > 1 && await p.getAttribute('.stbar', 'aria-valuenow') === '1' && await p.isDisabled('.stnav .stprev')
+      && nb.height >= 44 && pb.height >= 44 && /כ-\d+ דק׳ קריאה · \d+ שלבים/.test(await p.textContent('.rtime')) && await p.locator('#st-live[aria-live="polite"]').count() === 1,
+      `steps (${L0.id}): 'שלב 1 מתוך ${N}', progress bar, back disabled, ≥44px buttons (${Math.round(nb.height)}px), reading time, live region`);
+    await axe(p, 'lesson-steps', prof);
+    await p.click('.stnav .stnext'); await p.waitForTimeout(150);
+    ok(/^שלב 2 מתוך/.test((await p.textContent('#st-pos')).trim()) && await p.evaluate(() => document.activeElement?.id) === 'st-h' && /שלב 2 מתוך/.test(await p.textContent('#st-live')),
+      'steps: next → step 2, focus moves to the step heading, the change is announced (aria-live)');
+    await p.reload(); await p.waitForSelector('.lstep');
+    ok(/^שלב 2 מתוך/.test((await p.textContent('#st-pos')).trim()) && await p.locator('.resume').count() === 1
+      && (await p.evaluate(id => JSON.parse(localStorage.getItem('theoryIL.pos'))[id].s, L0.id)) === 1, 'steps: the position is remembered on this device (reload → step 2, "continue where you stopped" note)');
+    await p.click('.resume button'); await p.waitForTimeout(100);
+    ok(/^שלב 1 מתוך/.test((await p.textContent('#st-pos')).trim()), 'steps: "start over" returns to step 1');
+    for (let k = 1; k < N; k++) { await p.click('.stnav .stnext'); await p.waitForTimeout(40); }
+    const s = await S(p);
+    ok(/^שלב \d+ מתוך/.test(await p.textContent('#st-pos')) && await p.locator('.stnav .stnext').count() === 0 && await p.locator('.lend a.btn.primary').count() === 1 && s.les?.[L0.id]?.[0] > 0,
+      'steps: the last step shows the mini-quiz button and marks the lesson read');
+    await p.click('.seg [data-view="full"]'); await p.waitForSelector('.lsec');
+    ok((await S(p)).profile.lnv === 'full' && await p.getAttribute('.seg [data-view="full"]', 'aria-pressed') === 'true' && await p.locator('.lstep').count() === 0, 'view switch: "הכול בעמוד אחד" shows the whole lesson and is remembered'); }
   await go(p, '#/learn/' + LB[2].id); await p.waitForSelector('.lsec');
   ok((await p.evaluate(() => location.hash)) === '#/learn/' + LB[2].id + '/peek' && /מצב קריאה/.test(await text(p)) && await p.locator('.lend a.btn.primary').count() === 0, 'direct link to a locked lesson opens the read-only preview');
   await go(p, '#/learn/' + LB[2].id + '/quiz'); await p.waitForSelector('.lsec');
@@ -283,13 +305,36 @@ async function run(prof, opts) {
   const dur = await p.evaluate(() => getComputedStyle(document.querySelector('.vz-car')).transitionDuration);
   ok(opts.reducedMotion === 'reduce' ? dur === '0s' : dur !== '0s', `diagram motion respects prefers-reduced-motion (${dur})`);
   // every B lesson read-only: each diagram renders with a text alternative, and the page passes axe
+  const FULLW = [];
   { let bad = [];
     for (const l of LB) { await go(p, '#/learn/' + l.id + '/peek'); await p.waitForSelector('.lsec');
+      FULLW.push(await p.evaluate(() => document.querySelector('.screen').innerText.split(/\s+/).filter(Boolean).length));
       const n = await p.locator('.viz').count(), alts = await p.locator('.viz .vz-alt').evaluateAll(es => es.filter(e => e.textContent.trim().length > 10).length);
       if (n !== l.viz.length || alts !== n) bad.push(`${l.id}(${n}/${l.viz.length}/${alts})`);
       const r = await p.evaluate(() => axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] } }));
       if (r.violations.length) bad.push(l.id + ':' + r.violations.map(x => x.id).join(',')); }
     ok(!bad.length, `all ${LB.length} B lessons: diagrams + text alternative + axe clean ${bad.join(' ')}`); }
+  // v1.21: every B and A lesson step by step – no rule, diagram, example or bank question lost; words per card measured; axe on each first card
+  { const keep = await p.evaluate(() => localStorage.getItem('theoryIL.state'));   // (view 'full' – restored after the walk)
+    await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lsec'); await p.click('.seg [data-view="steps"]'); await p.waitForSelector('.lstep');
+    const LBA = LJ.lessons.filter(l => l.cls.includes('B') || l.cls.includes('A')), bad = [], per = [], nst = [], BIG = [];
+    for (const l of LBA) { await go(p, '#/learn/' + l.id + '/peek'); await p.waitForSelector('.lstep');
+      const N = +(/מתוך (\d+)/.exec(await p.textContent('#st-pos')) || [0, 1])[1]; nst.push(N);
+      if (await p.locator('.resume button').count()) { await p.click('.resume button'); await p.waitForTimeout(40); }
+      { const r = await p.evaluate(() => axe.run(document.querySelector('#app'), { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'] } })); if (r.violations.length) bad.push(l.id + ':' + r.violations.map(x => x.id).join(',')); }
+      const got = { r: 0, v: 0, x: 0, q: 0 };
+      for (let k = 0; k < N; k++) {
+        const w = await p.evaluate(() => { const e = document.querySelector('.lstep'); return [e.innerText.split(/\s+/).filter(Boolean).length, e.querySelectorAll('.rules > li').length, e.querySelectorAll('.viz').length, e.querySelectorAll('.excard:not(.bankcard)').length, e.querySelectorAll('.qfold').length]; });
+        if (w[0] > 150) BIG.push(`${l.id}#${k + 1}=${w[0]}`);
+        per.push(w[0]); got.r += w[1]; got.v += w[2]; got.x += w[3]; got.q += w[4];
+        if (k < N - 1) { await p.click('.stnav .stnext'); await p.waitForTimeout(30); } }
+      const inPool = q => QH.get(q)?.t.includes('B');
+      const want = { r: l.rules.length, v: l.viz.length, x: l.ex.length, q: (l.bank || []).filter(inPool).length + (l.pbank || []).filter(x => inPool(x.q)).length };
+      if (l.cls.includes('B') && JSON.stringify(got) !== JSON.stringify(want)) bad.push(`${l.id} got ${JSON.stringify(got)} want ${JSON.stringify(want)}`); }
+    await p.evaluate(k => localStorage.setItem('theoryIL.state', k), keep); await p.reload(); await p.waitForSelector('h1');   // walking the cards marks open lessons read – undo
+    const srt = [...per].sort((a, b) => a - b), med = a => a[Math.floor((a.length - 1) / 2)];
+    console.log(`  STATS(${prof}) steps-view words per card: max ${srt[srt.length - 1]}, median ${med(srt)}, cards ${per.length}; steps per lesson: max ${Math.max(...nst)}, median ${med([...nst].sort((a, b) => a - b))}; full-page words: max ${Math.max(...FULLW)}, median ${med([...FULLW].sort((a, b) => a - b))}`);
+    ok(!bad.length && srt[srt.length - 1] <= 200 && med(srt) <= 120, `all ${LBA.length} B/A lessons step by step: every rule, diagram, example and bank card is on some card; axe clean; words per card median ${med(srt)} (≤120), max ${srt[srt.length - 1]} (${BIG.join(' ')}) ${bad.slice(0, 4).join(' | ')}`); }
   await go(p, '#/learn'); await p.waitForSelector('.lessons');
   ok(await p.locator('.lessons li:nth-child(2) a').count() === 1, 'reading lesson 1 unlocked lesson 2');
   await go(p, '#/parent'); ok(new RegExp(`שיעורים שנשלטו\\s*1/${LB.length}`).test(await text(p)), 'parent view lists lessons mastered');

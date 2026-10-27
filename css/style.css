@@ -340,3 +340,29 @@ line.vz-span { stroke: #f3a712; stroke-width: 6; fill: none; }
   .tbl.cov td::before { content: attr(data-label); color: var(--muted, #555); flex: 1 1 auto; min-width: 0; }
   .tbl.cov td { white-space: nowrap; } .tbl.cov td::before { white-space: normal; }
 }
+/* v1.21 lesson steps */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.seg { display: inline-flex; flex-wrap: wrap; gap: .35rem; }
+.seg .btn.on { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+.ltools { gap: .5rem; }
+.rtime { display: flex; align-items: center; gap: .35rem; margin: .25rem 0; }
+.rtime .ic { width: 1.1em; height: 1.1em; }
+.stprog { margin: .75rem 0 .5rem; }
+.stpos { font-weight: 700; margin: 0 0 .35rem; }
+.stbar { height: 10px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.stfill { display: block; height: 100%; background: var(--primary); border-radius: 99px; transition: width .2s; }
+.lstep { line-height: 1.75; }
+.lstep h2 { margin-top: .5rem; }
+.lstep h2:focus { outline: 3px solid var(--primary); outline-offset: 3px; }
+.lstep .lbody p, .lstep .rules li { max-width: 65ch; }
+.lstep .rules li { margin-bottom: .8rem; }
+.stnav { display: flex; justify-content: space-between; align-items: center; gap: .75rem; margin: 1.25rem 0 .5rem; flex-wrap: wrap; }
+.stnav .btn { min-height: 52px; min-width: 7.5rem; font-size: 1.05em; }
+.stnav .btn[disabled] { opacity: .45; cursor: default; }
+.trapd > summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-weight: 600; }
+.resume { align-items: center; flex-wrap: wrap; }
+.qfolds { display: grid; gap: .5rem; }
+.qfold { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.qfold > summary { cursor: pointer; min-height: 44px; padding: .6rem .8rem; line-height: 1.6; }
+.qfold[open] > summary { border-bottom: 1px solid var(--line); }
+.qfold > .excard { border: 0; margin: 0; }

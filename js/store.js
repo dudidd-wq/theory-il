@@ -19,7 +19,25 @@ export const onPersist = f => listeners.push(f);
 export const snapshot = () => JSON.parse(JSON.stringify(S));
 export function replaceState(s) { S = { ...blank(), ...s }; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} listeners.forEach(f => { try { f(); } catch {} }); }
 export const lostLocal = () => { try { return !localStorage.getItem(KEY); } catch { return true; } };
-export function resetAll() { S = blank(); try { localStorage.removeItem(KEY); localStorage.removeItem(EXAM_KEY); } catch {} }
+export function resetAll() { S = blank(); POS = null; try { localStorage.removeItem(KEY); localStorage.removeItem(EXAM_KEY); localStorage.removeItem(POS_KEY); } catch {} }
+
+// ---------- v1.21: where the learner stopped in each lesson (own key, this device only, not part of backups) ----------
+// { [lessonId]: { s: step (steps view), q: step (quick view), ms/mq: furthest step }, _last: lessonId }
+const POS_KEY = 'theoryIL.pos';
+let POS = null;
+function posAll() {
+  if (POS) return POS;
+  let raw = null; try { raw = JSON.parse(localStorage.getItem(POS_KEY)); } catch {}
+  POS = {};
+  if (raw && typeof raw === 'object') for (const [k, v] of Object.entries(raw).slice(0, 300)) {
+    if (k === '_last' && typeof v === 'string' && /^[a-z0-9_]{1,16}$/.test(v)) POS._last = v;
+    else if (/^[a-z0-9_]{1,16}$/.test(k) && v && typeof v === 'object') { const o = {}; for (const f of ['s', 'q', 'ms', 'mq']) if (Number.isInteger(v[f]) && v[f] >= 0 && v[f] < 200) o[f] = v[f]; POS[k] = o; }
+  }
+  return POS;
+}
+export const lpos = id => posAll()[id] || null;
+export const lastLesson = () => posAll()._last || null;
+export function setLpos(id, v) { const P = posAll(); P[id] = { ...(P[id] || {}), ...v }; P._last = id; try { localStorage.setItem(POS_KEY, JSON.stringify(P)); } catch {} }
 
 // ---------- exam in progress: own key (not part of backups), survives reload and app updates ----------
 const EXAM_KEY = 'theoryIL.exam';
