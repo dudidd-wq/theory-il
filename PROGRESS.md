@@ -262,3 +262,4 @@ Scope (Dudi, 26.10 13:46 UTC+2): every B and A question taught from an official 
 - v1.22.1 a: first lesson 'signs' – #vz-num number input replaced by 9 family tiles (shape/colour + name) then a picture grid; tap shows meaning, bank-sourced shape hint, gov.il source chip; number only as small label
 - v1.22.1 b: sign dictionary – word-only search (placeholder 'חפשו לפי מילה, למשל חנייה', numbers accepted silently), browse-by-family default, 'תמרורים שנתקלתי בהם בתרגול' from wrong answers/unknown flashcards
 - v1.22.1 c: tests (no number input anywhere in js, no-digit placeholder, FAMWHY hints match bank answers; e2e picker/dictionary/no-number sweep) + About 'pick' + README + COVERAGE
+- v1.22.1 release: SW VERSION 1.22.1, COVERAGE headline v1.22.1; data checks pass; local e2e 378 passed, 0 failed
