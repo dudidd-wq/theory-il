@@ -61,16 +61,22 @@ _bdr = [(k, r) for k, e in CF['q'].items() if e['v'] != 'none' for r in e['rule'
 ok(not _bdn and not _bdr, f'v1.14: a note saying the bank differs is a conflict (X) {_bdn[:5]}; no verdict cites a rule that says the bank differs {_bdr[:5]}')
 # v1.14 (review #10 N5): coverage never rests on uncited lesson-body prose
 ok(not [k for k, e in CF['q'].items() for r in e['rule'] + e['ref'] if '#b' in r], 'v1.14: no verdict cites lesson-body prose (#b units)')
-_RJ6 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v116.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
+_RJ8 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v118.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
+ok(len(_RJ8) >= 14 and all(CF['q'][q]['by'] == 'v1.18' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ8.items()),
+   f'v1.18: every re-judgement of review #14 ({len(_RJ8)}) is applied')
+_RJ7 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v117.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ8}
+ok(all(CF['q'][q]['by'] == 'v1.17' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ7.items()),
+   f'v1.17: every re-judgement of review #13 not superseded by v1.18 ({len(_RJ7)}) is applied')
+_RJ6 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v116.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ8 and l.split()[0] not in _RJ7}
 ok(len(_RJ6) >= 15 and all(CF['q'][q]['by'] == 'v1.16' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ6.items()),
    f'v1.16: every re-judgement of review #12 and the strict re-sample ({len(_RJ6)}) is applied')
 _S16 = open('tools/coverage/rejudge_v116_sample.md', encoding='utf-8').read()
 ok(len(set(re.findall(r'^\| *Q?(\d+) *\|', _S16, re.M))) >= 80, 'v1.16: strict re-sample covers at least 80 further B/A full verdicts')
-_RJ5 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v115.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ6}
-_RJ4 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v114.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ5 and l.split()[0] not in _RJ6}
+_RJ5 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v115.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ6 and l.split()[0] not in _RJ7 and l.split()[0] not in _RJ8}
+_RJ4 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v114.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ5 and l.split()[0] not in _RJ6 and l.split()[0] not in _RJ7 and l.split()[0] not in _RJ8}
 ok(len(_RJ5) >= 15 and all(CF['q'][q]['by'] == 'v1.15' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ5.items()),
    f'v1.15: every re-judgement of review #11 and the strict re-sample ({len(_RJ5)}) is applied')
-_RJ = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v113.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ4 and l.split()[0] not in _RJ5 and l.split()[0] not in _RJ6}
+_RJ = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v113.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ4 and l.split()[0] not in _RJ5 and l.split()[0] not in _RJ6 and l.split()[0] not in _RJ7 and l.split()[0] not in _RJ8}
 ok(all(CF['q'][q]['by'] == 'v1.14' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none')
        and (v != 'conflict' or CF['q'][q].get('src') == 'X') for q, v in _RJ4.items()), f'v1.14: every re-judgement of review #10 ({len(_RJ4)}) is applied')
 ok(all(CF['q'][q]['by'] == 'v1.13' and (v in ('why',) or CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none')) for q, v in _RJ.items()),
@@ -659,6 +665,31 @@ else:
     _n, _miss, _bad = _CI.scan(list(LB.values()))
     ok(_n >= 900 and not _miss and not _bad,
        f'v1.18 (review #14 D1): all {_n} source chips are whole sentences/clauses – no negation dropped before a chip, no mid-word/mid-sentence cut (not located: {_miss[:3]}; problems: {_bad[:4]})')
+
+# v1.18 (review #14 D2): twin questions – same normalised stem (or stem ≥0.9 similar) with the same / close correct answer –
+# must rest on the same cited rules with the same verdict, unless listed as DISTINCT (different subject or fact) with a reason.
+# Every candidate pair found by the scan has to be classified, so a new twin cannot slip through.
+import difflib as _dl, itertools as _it
+def _tn(s): return re.sub(r'[^\u05d0-\u05eaA-Za-z0-9]', '', re.sub(r'[\u0591-\u05c7]', '', s))
+TWINS = [(23, 1379), (25, 1339), (38, 239), (44, 951), (260, 1774), (320, 1121), (352, 1325), (614, 1220), (856, 1509),
+         (891, 1742), (992, 1001), (1525, 1720), (324, 1125), (1335, 1527)]
+TWIN_VERDICT_EXCEPT = {(856, 1509): 'same rule; Q1509 says "long breaks", not in the cited passage (review #12, judged strictly)'}
+DISTINCT = {(65, 66): 'police vs military police', (89, 90): 'two-way vs one-way road', (1026, 1029): 'different correct facts (wear vs heat)',
+            (1305, 1306): 'three vs two axles', (1650, 1716): 'quad vs tractor'}
+_cq = COV['q']; _it_q = sorted((q['id'], _tn(q['q']), _tn(q['a'][q['c']])) for q in Q if not q.get('i'))
+_cand = []
+for (_i, _s, _a), (_j, _t, _b) in _it.combinations(_it_q, 2):
+    if abs(len(_s) - len(_t)) > 0.1 * max(len(_s), len(_t)) + 2: continue
+    _rs = 1.0 if _s == _t else _dl.SequenceMatcher(None, _s, _t).ratio()
+    if _rs < 0.9: continue
+    _ra = 1.0 if _a == _b else _dl.SequenceMatcher(None, _a, _b).ratio()
+    if (_s == _t and _ra >= .45) or _ra >= .75: _cand.append((_i, _j))
+_uncl = [p for p in _cand if p not in DISTINCT and p not in TWINS]
+ok(not _uncl, f'v1.18 (review #14 D2): every twin-question candidate pair is classified as TWIN or DISTINCT ({len(_cand)} pairs; unclassified {_uncl[:6]})')
+_tbad = [(i, j, _cq[str(i)][0], _cq[str(i)][2], _cq[str(j)][0], _cq[str(j)][2]) for i, j in TWINS
+         if sorted(_cq[str(i)][2]) != sorted(_cq[str(j)][2]) or (_cq[str(i)][0] != _cq[str(j)][0] and (i, j) not in TWIN_VERDICT_EXCEPT)]
+ok(not _tbad and (260, 1774) in TWINS and _cq['260'][2] == ['defensive#r11'],
+   f'v1.18 (review #14 D2): {len(TWINS)} twin pairs share their cited rules and verdict (Q260 = Q1774 = defensive#r11, TR 107(ד)) {_tbad[:3]}')
 
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)

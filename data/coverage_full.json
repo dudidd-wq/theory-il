@@ -4,70 +4,70 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1312,
-"partial": 310,
+"full": 1313,
+"partial": 309,
 "none": 179,
-"full_pct": 72.8,
+"full_pct": 72.9,
 "any_pct": 90.1,
-"strict_full": 1022,
-"strict_pct": 56.7,
+"strict_full": 1023,
+"strict_pct": 56.8,
 "none_teachable": 33,
 "none_nosource": 140,
 "conflict": 6,
 "bank_only": 146,
-"partial_shown": 261,
+"partial_shown": 260,
 "full_nobank_pct": 72.1,
 "full_bank_sourced": 14
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 975,
-"partial": 235,
+"full": 976,
+"partial": 234,
 "none": 62,
 "full_pct": 76.7,
 "any_pct": 95.1,
-"strict_full": 712,
-"strict_pct": 56.0,
+"strict_full": 713,
+"strict_pct": 56.1,
 "none_teachable": 0,
 "none_nosource": 58,
 "conflict": 4,
 "bank_only": 62,
-"partial_shown": 235,
-"full_nobank_pct": 76.5,
+"partial_shown": 234,
+"full_nobank_pct": 76.6,
 "full_bank_sourced": 2
 },
 "A": {
 "n": 1155,
-"full": 873,
-"partial": 221,
+"full": 874,
+"partial": 220,
 "none": 61,
-"full_pct": 75.6,
+"full_pct": 75.7,
 "any_pct": 94.7,
-"strict_full": 615,
-"strict_pct": 53.2,
+"strict_full": 616,
+"strict_pct": 53.3,
 "none_teachable": 0,
 "none_nosource": 61,
 "conflict": 0,
 "bank_only": 61,
-"partial_shown": 221,
-"full_nobank_pct": 75.0,
+"partial_shown": 220,
+"full_nobank_pct": 75.1,
 "full_bank_sourced": 7
 },
 "C1": {
 "n": 1385,
-"full": 1039,
-"partial": 243,
+"full": 1040,
+"partial": 242,
 "none": 103,
-"full_pct": 75.0,
+"full_pct": 75.1,
 "any_pct": 92.6,
-"strict_full": 771,
+"strict_full": 772,
 "strict_pct": 55.7,
 "none_teachable": 30,
 "none_nosource": 70,
 "conflict": 3,
 "bank_only": 73,
-"partial_shown": 229,
+"partial_shown": 228,
 "full_nobank_pct": 74.9,
 "full_bank_sourced": 2
 },
@@ -90,35 +90,35 @@
 },
 "D": {
 "n": 1316,
-"full": 1020,
+"full": 1021,
 "partial": 217,
-"none": 79,
-"full_pct": 77.5,
-"any_pct": 94.0,
-"strict_full": 741,
-"strict_pct": 56.3,
-"none_teachable": 10,
+"none": 78,
+"full_pct": 77.6,
+"any_pct": 94.1,
+"strict_full": 742,
+"strict_pct": 56.4,
+"none_teachable": 9,
 "none_nosource": 68,
 "conflict": 1,
 "bank_only": 69,
 "partial_shown": 191,
-"full_nobank_pct": 77.2,
+"full_nobank_pct": 77.3,
 "full_bank_sourced": 4
 },
 "1": {
 "n": 1127,
-"full": 870,
-"partial": 189,
+"full": 871,
+"partial": 188,
 "none": 68,
-"full_pct": 77.2,
+"full_pct": 77.3,
 "any_pct": 94.0,
-"strict_full": 612,
-"strict_pct": 54.3,
+"strict_full": 613,
+"strict_pct": 54.4,
 "none_teachable": 2,
 "none_nosource": 65,
 "conflict": 1,
 "bank_only": 66,
-"partial_shown": 187,
+"partial_shown": 186,
 "full_nobank_pct": 76.8,
 "full_bank_sourced": 5
 }
@@ -281,19 +281,19 @@
 },
 "vehicle": {
 "n": 110,
-"full": 55,
-"partial": 33,
+"full": 56,
+"partial": 32,
 "none": 22,
-"full_pct": 50.0,
+"full_pct": 50.9,
 "any_pct": 80.0,
-"strict_full": 55,
-"strict_pct": 50.0,
+"strict_full": 56,
+"strict_pct": 50.9,
 "none_teachable": 0,
 "none_nosource": 22,
 "conflict": 0,
 "bank_only": 22,
-"partial_shown": 33,
-"full_nobank_pct": 50.0,
+"partial_shown": 32,
+"full_nobank_pct": 50.9,
 "full_bank_sourced": 0
 }
 },
@@ -352,19 +352,19 @@
 },
 "vehicle": {
 "n": 106,
-"full": 53,
-"partial": 33,
+"full": 54,
+"partial": 32,
 "none": 20,
-"full_pct": 50.0,
+"full_pct": 50.9,
 "any_pct": 81.1,
-"strict_full": 53,
-"strict_pct": 50.0,
+"strict_full": 54,
+"strict_pct": 50.9,
 "none_teachable": 0,
 "none_nosource": 20,
 "conflict": 0,
 "bank_only": 20,
-"partial_shown": 33,
-"full_nobank_pct": 50.0,
+"partial_shown": 32,
+"full_nobank_pct": 50.9,
 "full_bank_sourced": 0
 }
 },
@@ -422,19 +422,19 @@
 },
 "vehicle": {
 "n": 60,
-"full": 32,
-"partial": 14,
+"full": 33,
+"partial": 13,
 "none": 14,
-"full_pct": 53.3,
+"full_pct": 55.0,
 "any_pct": 76.7,
-"strict_full": 32,
-"strict_pct": 53.3,
+"strict_full": 33,
+"strict_pct": 55.0,
 "none_teachable": 0,
 "none_nosource": 14,
 "conflict": 0,
 "bank_only": 14,
-"partial_shown": 14,
-"full_nobank_pct": 53.3,
+"partial_shown": 13,
+"full_nobank_pct": 55.0,
 "full_bank_sourced": 0
 }
 },
@@ -492,19 +492,19 @@
 },
 "vehicle": {
 "n": 101,
-"full": 52,
-"partial": 29,
+"full": 53,
+"partial": 28,
 "none": 20,
-"full_pct": 51.5,
+"full_pct": 52.5,
 "any_pct": 80.2,
-"strict_full": 52,
-"strict_pct": 51.5,
+"strict_full": 53,
+"strict_pct": 52.5,
 "none_teachable": 0,
 "none_nosource": 20,
 "conflict": 0,
 "bank_only": 20,
-"partial_shown": 29,
-"full_nobank_pct": 51.5,
+"partial_shown": 28,
+"full_nobank_pct": 52.5,
 "full_bank_sourced": 0
 }
 },
@@ -581,19 +581,19 @@
 "D": {
 "law": {
 "n": 618,
-"full": 480,
+"full": 481,
 "partial": 96,
-"none": 42,
-"full_pct": 77.7,
-"any_pct": 93.2,
-"strict_full": 478,
-"strict_pct": 77.3,
-"none_teachable": 10,
+"none": 41,
+"full_pct": 77.8,
+"any_pct": 93.4,
+"strict_full": 479,
+"strict_pct": 77.5,
+"none_teachable": 9,
 "none_nosource": 31,
 "conflict": 1,
 "bank_only": 32,
 "partial_shown": 71,
-"full_nobank_pct": 77.3,
+"full_nobank_pct": 77.5,
 "full_bank_sourced": 2
 },
 "signs": {
@@ -702,31 +702,32 @@
 },
 "vehicle": {
 "n": 43,
-"full": 25,
-"partial": 11,
+"full": 26,
+"partial": 10,
 "none": 7,
-"full_pct": 58.1,
+"full_pct": 60.5,
 "any_pct": 83.7,
-"strict_full": 25,
-"strict_pct": 58.1,
+"strict_full": 26,
+"strict_pct": 60.5,
 "none_teachable": 0,
 "none_nosource": 7,
 "conflict": 0,
 "bank_only": 7,
-"partial_shown": 11,
-"full_nobank_pct": 58.1,
+"partial_shown": 10,
+"full_nobank_pct": 60.5,
 "full_bank_sourced": 0
 }
 }
 },
 "by": {
-"hand": 636,
-"spec": 702,
+"hand": 630,
+"spec": 699,
 "v1.13": 29,
-"rejudge": 95,
-"sample": 220,
-"v1.14": 38,
-"v1.15": 19,
+"rejudge": 94,
+"sample": 216,
+"v1.18": 16,
+"v1.14": 37,
+"v1.15": 18,
 "v1.17": 7,
 "link": 27,
 "v1.16": 19,
@@ -869,9 +870,9 @@
 "hi_rate": 19.7,
 "unchecked": 394,
 "B_full": 76.7,
-"B_strict": 56.0,
-"B_est": 72.4,
-"B_lo": 70.5,
+"B_strict": 56.1,
+"B_est": 72.5,
+"B_lo": 70.6,
 "B_hi": 73.8
 }
 },
@@ -1296,12 +1297,14 @@
 "23": {
 "v": "full",
 "rule": [
-"peds2#r8"
+"peds2#r8",
+"terms#r1"
 ],
 "ref": [
-"peds2#r:\"מעבר חצייה\" הוא חלק הכביש המיועד לח"
+"peds2#r:\"מעבר חצייה\" הוא חלק הכביש המיועד לח",
+"terms#r:מעבר חצייה: חלק הכביש המסומן לחצייה "
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "twin of Q1379: textbook p.76 + TR 1 definition of \"מעבר חצייה\"",
 "cls": [
 "1",
 "A",
@@ -1311,7 +1314,7 @@
 "D"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.18"
 },
 "24": {
 "v": "full",
@@ -5905,12 +5908,12 @@
 "260": {
 "v": "full",
 "rule": [
-"defensive#r5"
+"defensive#r11"
 ],
 "ref": [
-"defensive#r:בערפל מאטים ומדליקים גם פנסי ערפל (ו"
+"defensive#r:פנסי ערפל מפעילים רק בערפל, בגשם שוט"
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 107(ד) verbatim: fog lights only in fog, heavy rain or snow (was defensive#r5, the winter page \"in fog switch on fog lights\", which does not support \"only\"); twin of Q1774",
 "cls": [
 "B",
 "C",
@@ -5918,7 +5921,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.18"
 },
 "261": {
 "v": "full",
@@ -7053,18 +7056,20 @@
 "320": {
 "v": "full",
 "rule": [
-"equip#r2"
+"equip#r2",
+"heavy2#r6"
 ],
 "ref": [
-"equip#r:ברכב מנועי שמשקלו הכולל המותר עולה ע"
+"equip#r:ברכב מנועי שמשקלו הכולל המותר עולה ע",
+"heavy2#r:ברכב מנועי מעל 5,000 ק\"ג (למעט אוטוב"
 ],
-"why": "rule written for this question (TR:368)",
+"why": "twin of Q1121: TR 368, two safety chocks above 5,000 kg except a bus",
 "cls": [
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.18"
 },
 "321": {
 "v": "full",
@@ -7127,14 +7132,14 @@
 "bus#r:הוצב תמרור המזהיר על ירידה מסוכנת? נ",
 "heavy2#r:הוצב תמרור המזהיר על ירידה מסוכנת? נ"
 ],
-"why": "v1.4: TR 159(ג) – a retarder must be used on a descent marked by a dangerous-descent sign",
+"why": "twin of Q1125: TR 159(ג) – retarders must be used on a descent marked by a steep-descent warning sign",
 "cls": [
 "C",
 "C1",
 "D"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.18"
 },
 "325": {
 "v": "none",
@@ -12967,12 +12972,12 @@
 "taxi#r:\"הסעת תלמידים\" – הסעה בשכר של ילדים ",
 "taxi#x:Q614"
 ],
-"why": "TR 1 + 83(א)",
+"why": "twin of Q1220: TR definition of \"הסעת תלמידים\" (excluding a service line)",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.18"
 },
 "615": {
 "v": "full",
@@ -18414,12 +18419,14 @@
 "891": {
 "v": "full",
 "rule": [
-"turns#r6"
+"turns#r6",
+"signal#r11"
 ],
 "ref": [
-"turns#r:פניית פרסה לשמאל מותרת מנתיב הפנייה "
+"turns#r:פניית פרסה לשמאל מותרת מנתיב הפנייה ",
+"signal#r:פרסה לשמאל מותרת מנתיב פנייה שמאלה ו"
 ],
-"why": "rule written for this question (OFF:textbook)",
+"why": "twin of Q1742: textbook p.50 + TR 44(ב) – U-turn from any lane unless a sign/marking forbids it",
 "cls": [
 "1",
 "A",
@@ -18429,7 +18436,7 @@
 "D"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.18"
 },
 "892": {
 "v": "full",
@@ -20353,14 +20360,16 @@
 "by": "spec"
 },
 "992": {
-"v": "partial",
+"v": "full",
 "rule": [
+"safety2#r10",
 "vehicle#r9"
 ],
 "ref": [
+"safety2#r:ABS מונעת נעילת גלגלים ומאפשרת להמשי",
 "vehicle#r:ABS מונע נעילת גלגלים בבלימה חזקה: ל"
 ],
-"why": "ABS chip: prevents wheel locking; that it keeps steering control while braking is not in the cited passage",
+"why": "twin of Q1001: textbook p.140 \"ומאפשרת היגוי\" and the ABS chip \"מעניקה שליטה לנהג על מערכות ההיגוי ומונעת … נעילת גלגלים … בלימה חזקה\" (was partial in v1.15: chip then lacked the steering clause; reviewer #14 D7)",
 "cls": [
 "1",
 "A",
@@ -20368,7 +20377,7 @@
 "C1"
 ],
 "topic": "vehicle",
-"by": "v1.15"
+"by": "v1.18"
 },
 "993": {
 "v": "full",
@@ -20516,19 +20525,21 @@
 "1001": {
 "v": "full",
 "rule": [
-"safety2#r10"
+"safety2#r10",
+"vehicle#r9"
 ],
 "ref": [
-"safety2#r:ABS מונעת נעילת גלגלים ומאפשרת להמשי"
+"safety2#r:ABS מונעת נעילת גלגלים ומאפשרת להמשי",
+"vehicle#r:ABS מונע נעילת גלגלים בבלימה חזקה: ל"
 ],
-"why": "textbook p.140: ABS \"מונעת נעילת גלגלי הרכב ומאפשרת היגוי\" (was: irrelevant sober#r3)",
+"why": "twin of Q992",
 "cls": [
 "A",
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "rejudge"
+"by": "v1.18"
 },
 "1002": {
 "v": "full",
@@ -22371,19 +22382,21 @@
 "1121": {
 "v": "full",
 "rule": [
+"equip#r2",
 "heavy2#r6"
 ],
 "ref": [
+"equip#r:ברכב מנועי שמשקלו הכולל המותר עולה ע",
 "heavy2#r:ברכב מנועי מעל 5,000 ק\"ג (למעט אוטוב"
 ],
-"why": "the cited rule states the correct answer",
+"why": "twin of Q320",
 "cls": [
 "C",
 "C1",
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.18"
 },
 "1122": {
 "v": "partial",
@@ -22439,17 +22452,19 @@
 "1125": {
 "v": "full",
 "rule": [
-"bus#r30"
+"bus#r30",
+"heavy2#r30"
 ],
 "ref": [
-"bus#r:הוצב תמרור המזהיר על ירידה מסוכנת? נ"
+"bus#r:הוצב תמרור המזהיר על ירידה מסוכנת? נ",
+"heavy2#r:הוצב תמרור המזהיר על ירידה מסוכנת? נ"
 ],
-"why": "the cited rule states the correct answer",
+"why": "twin of Q324",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.18"
 },
 "1126": {
 "v": "full",
@@ -23865,17 +23880,19 @@
 "1220": {
 "v": "full",
 "rule": [
+"taxi#r8",
 "taxi#x2"
 ],
 "ref": [
+"taxi#r:\"הסעת תלמידים\" – הסעה בשכר של ילדים ",
 "taxi#x:Q614"
 ],
-"why": "the cited rule states the correct answer",
+"why": "twin of Q614",
 "cls": [
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.18"
 },
 "1221": {
 "v": "full",
@@ -25671,18 +25688,18 @@
 "1335": {
 "v": "full",
 "rule": [
-"heavy2#r18"
+"cargo#r1"
 ],
 "ref": [
-"heavy2#r:C1: רכב מסחרי או רכב עבודה מעל 3,500"
+"cargo#r:גובה מרבי מפני הדרך: עד 1,500 ק\"ג – "
 ],
-"why": "the cited rule states the correct answer",
+"why": "was heavy2#r18 (the C1 licence class, which says nothing about load height); TR 85(א)(2) table: 3.50 m for 3,501–8,000 kg; twin of Q1527",
 "cls": [
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.18"
 },
 "1336": {
 "v": "full",
@@ -26375,12 +26392,14 @@
 "1379": {
 "v": "full",
 "rule": [
+"peds2#r8",
 "terms#r1"
 ],
 "ref": [
+"peds2#r:\"מעבר חצייה\" הוא חלק הכביש המיועד לח",
 "terms#r:מעבר חצייה: חלק הכביש המסומן לחצייה "
 ],
-"why": "the cited rule states the correct answer",
+"why": "twin of Q23",
 "cls": [
 "1",
 "A",
@@ -26390,7 +26409,7 @@
 "D"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.18"
 },
 "1380": {
 "v": "none",
@@ -28802,12 +28821,12 @@
 "ref": [
 "cargo#r:גובה מרבי מפני הדרך: עד 1,500 ק\"ג – "
 ],
-"why": "the cited rule states the correct answer",
+"why": "twin of Q1335",
 "cls": [
 "C1"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.18"
 },
 "1528": {
 "v": "full",
@@ -32411,12 +32430,14 @@
 "1742": {
 "v": "full",
 "rule": [
+"turns#r6",
 "signal#r11"
 ],
 "ref": [
+"turns#r:פניית פרסה לשמאל מותרת מנתיב הפנייה ",
 "signal#r:פרסה לשמאל מותרת מנתיב פנייה שמאלה ו"
 ],
-"why": "the cited rule states the correct answer",
+"why": "twin of Q891",
 "cls": [
 "1",
 "A",
@@ -32426,7 +32447,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.18"
 },
 "1743": {
 "v": "full",
@@ -33017,7 +33038,7 @@
 "ref": [
 "defensive#r:פנסי ערפל מפעילים רק בערפל, בגשם שוט"
 ],
-"why": "TR 107(ד): fog lights only in fog, heavy rain or snow (new rule defensive#r11)",
+"why": "twin of Q260 (TR 107(ד))",
 "cls": [
 "1",
 "A",
@@ -33027,7 +33048,7 @@
 "D"
 ],
 "topic": "law",
-"by": "v1.14"
+"by": "v1.18"
 },
 "1775": {
 "v": "full",

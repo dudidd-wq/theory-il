@@ -1,0 +1,18 @@
+# v1.18 (review #14, items D2/D7) strict re-judgement, applied after rejudge_v117.txt. Same line format: "qid verdict [+lesson#rN ...] | why"
+# D2 – twin questions (same normalised stem, same meaning of the correct answer) now rest on the same cited rules and verdict (tested in data_test, TWINS)
+260 full +defensive#r11 | TR 107(ד) verbatim: fog lights only in fog, heavy rain or snow (was defensive#r5, the winter page "in fog switch on fog lights", which does not support "only"); twin of Q1774
+1774 full +defensive#r11 | twin of Q260 (TR 107(ד))
+23 full +peds2#r8 +terms#r1 | twin of Q1379: textbook p.76 + TR 1 definition of "מעבר חצייה"
+1379 full +peds2#r8 +terms#r1 | twin of Q23
+320 full +equip#r2 +heavy2#r6 | twin of Q1121: TR 368, two safety chocks above 5,000 kg except a bus
+1121 full +equip#r2 +heavy2#r6 | twin of Q320
+614 full +taxi#r8 +taxi#x2 | twin of Q1220: TR definition of "הסעת תלמידים" (excluding a service line)
+1220 full +taxi#r8 +taxi#x2 | twin of Q614
+891 full +turns#r6 +signal#r11 | twin of Q1742: textbook p.50 + TR 44(ב) – U-turn from any lane unless a sign/marking forbids it
+1742 full +turns#r6 +signal#r11 | twin of Q891
+324 full +bus#r30 +heavy2#r30 | twin of Q1125: TR 159(ג) – retarders must be used on a descent marked by a steep-descent warning sign
+1125 full +bus#r30 +heavy2#r30 | twin of Q324
+1335 full +cargo#r1 | was heavy2#r18 (the C1 licence class, which says nothing about load height); TR 85(א)(2) table: 3.50 m for 3,501–8,000 kg; twin of Q1527
+1527 full +cargo#r1 | twin of Q1335
+992 full +safety2#r10 +vehicle#r9 | twin of Q1001: textbook p.140 "ומאפשרת היגוי" and the ABS chip "מעניקה שליטה לנהג על מערכות ההיגוי ומונעת … נעילת גלגלים … בלימה חזקה" (was partial in v1.15: chip then lacked the steering clause; reviewer #14 D7)
+1001 full +safety2#r10 +vehicle#r9 | twin of Q992
