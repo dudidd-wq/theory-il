@@ -946,6 +946,17 @@ ok(len(_fc) >= 140 and all(os.path.isfile(os.path.join('img', 'q', SG['img'][n])
    and SG['src']['url'].startswith('https://www.gov.il/'), f'flashcards: {len(_fc)} official signs with a local picture, gov.il source')
 _bk = open(os.path.join('js', 'backup.js'), encoding='utf-8').read()
 ok('raw.kn' in _bk and 'raw.fc' in _bk, "backup keeps v1.22 'I know' ticks (kn) and flashcard boxes (fc)")
+# v1.22.1: signs are chosen by picture – no number input anywhere, and the family shape hints are the bank's own answers
+import glob as _g, re as _re
+_js = {f: open(f, encoding='utf-8').read() for f in _g.glob('js/*.js')}
+ok(not [f for f, t in _js.items() if _re.search(r"type: ?'number'|inputmode: ?'numeric'|הקלידו מספר", t)], 'v1.22.1: no number input / "type a sign number" prompt in the app')
+_vz = _js['js/viz.js']; _ph = _re.search(r"id: 'vz-sd'[^}]*placeholder: '([^']*)'", _vz)
+ok(_ph and not _re.search(r'\d', _ph.group(1)), 'v1.22.1: dictionary placeholder suggests a word, not a sign number')
+_QB = {x['id']: x for x in json.load(open('data/q.he.json', encoding='utf-8'))}
+_fw = _re.findall(r"(\d): \['([^']+)', (\d+)\]", _vz[_vz.index('const FAMWHY'):_vz.index('let SGP')])
+_key = {606: 'משולש שקודקודו כלפי מעלה', 477: 'הוריה או איסור', 310: 'להבליטם', 1772: 'תמיד', 691: 'אתר של עבודה'}
+ok(len(_fw) == 6 and all(int(q) in _key and _QB[int(q)]['k'] == 'signs' and _key[int(q)] in _QB[int(q)]['a'][_QB[int(q)]['c']] + _QB[int(q)]['q'] and _key[int(q)].split()[-1] in t for _, t, q in _fw) and not any(int(q) in (281, 92) for _, _, q in _fw),
+   'v1.22.1: every family shape hint restates the correct answer of the bank question it names')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

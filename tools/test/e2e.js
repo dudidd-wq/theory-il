@@ -240,7 +240,7 @@ async function run(prof, opts) {
     const nums = await p.$$eval('#covp .covlist li b', bs => bs.map(b => +b.textContent.split(' ')[0].replace(/[^0-9]/g, '')));
     const tx = await p.textContent('#covp'), want = [v[9], v[10], v[7], v[5], v[0] - v[9] - v[7] - v[5]];
     await go(p, '#/about'); await p.waitForSelector('#covp'); const ab = await p.textContent('#covp');
-    ok(await p.locator('.abtools li').count() === 6 && /תרגול יומי/.test(await p.textContent('.abtools')) && /לא תחזית רשמית/.test(await text(p)), "About lists the v1.22 study tools (local only, not an official forecast)");
+    ok(await p.locator('.abtools li').count() === 7 && /תרגול יומי/.test(await p.textContent('.abtools')) && /לא תחזית רשמית/.test(await text(p)), "About lists the v1.22 study tools (local only, not an official forecast)");
     ok(['B', 'A'].includes(c) && JSON.stringify(nums) === JSON.stringify(want) && want[0] + want[2] + want[3] + want[4] === v[0] && want[4] === 0
       && tx.includes(v[0].toLocaleString('he-IL')) && tx.includes(CV.est[c + '_est'] + '%') && /אין כאן ערבות ל-100%/.test(tx) && !/מכסה 100%|100% מהחומר/.test(tx) && ab === tx,
       `coverage panel (${c}): ${want.join('/')} of ${v[0]}, estimate ${CV.est[c + '_est']}%, 'no 100% guarantee', same on About`);
@@ -398,10 +398,30 @@ async function run(prof, opts) {
   await p.click('.rules details.lawref >> nth=0 >> summary');
   ok(await p.isVisible('.rules details.lawref[open] blockquote') && /noopener/.test(await p.getAttribute('.rules details.lawref[open] a', 'rel')), 'law chip opens the cited excerpt + external link');
   ok(await p.locator('.viz svg[aria-hidden="true"]').count() >= 1 && (await p.textContent('.viz .vz-alt')).length > 40, 'diagram is aria-hidden with a text alternative');
-  await p.fill('#vz-num', '305'); ok(/חלק 3/.test(await p.textContent('.vz-out')), 'sign-number diagram reacts (305 → part 3)');
-  await p.fill('#vz-num', '905'); ok(/חלק 9/.test(await p.textContent('.vz-out')), 'sign-number diagram knows parts 5 and 9 (905 → part 9)');
-  await p.waitForSelector('#vz-sd'); await p.fill('#vz-sd', '433'); await p.waitForSelector('.sdict li');
-  ok(/433/.test(await p.textContent('.sdict')), 'sign dictionary finds 433');
+  // v1.22.1: the first lesson never asks for a sign number – choose a family tile, then tap a sign picture
+  { await p.waitForSelector('#sf-grid', { state: 'attached' }); await p.waitForSelector('.famt');
+    ok(await p.locator('input[type=number]').count() === 0 && !/הקלידו מספר/.test(await text(p)) && await p.locator('figure.viz:has(#sf-grid) .famt').count() === 9, 'first lesson: no sign-number input, 9 family tiles');
+    const fs = await p.$$eval('.famt', bs => bs.map(b => { const r = b.getBoundingClientRect(); return Math.min(r.width, r.height); }));
+    ok(fs.every(x => x >= 44), `family tiles are ≥44px tap targets (min ${Math.round(Math.min(...fs))})`);
+    await p.click('.famt[data-part="3"] >> nth=0');
+    const n3 = await p.locator('#sf-grid .sgt').count(), d3 = await p.evaluate(() => fetch('data/signs.json').then(r => r.json()));
+    const want = Object.keys(d3.e).filter(n => +parseInt(n, 10) >= 301 && +parseInt(n, 10) <= 310).length;
+    ok(n3 === want && await p.getAttribute('.famt[data-part="3"] >> nth=0', 'aria-pressed') === 'true' && /שאלה 310/.test(await p.textContent('#sf-grid')), `family 'זכות קדימה' shows its ${want} signs as pictures + the shape hint (question 310)`);
+    await p.click('#sf-grid .sgt[data-n="302"]'); await p.waitForSelector('#sf-info .sgmean');
+    const inf = await p.textContent('#sf-info');
+    ok(/עצור/.test(inf) && /gov\.il/.test(await p.getAttribute('#sf-info a.chip', 'href')) && /תמרור 302/.test(inf) && await p.getAttribute('#sf-grid .sgt[data-n="302"]', 'aria-expanded') === 'true' && /עצור/.test(await p.textContent('figure.viz .vz-alt')),
+      'tapping the 302 picture shows its meaning, family, source chip (gov.il), number only as a small label');
+    const tl = await p.$$eval('#sf-grid .sgt', bs => bs.map(b => { const r = b.getBoundingClientRect(); return Math.min(r.width, r.height); }));
+    ok(tl.every(x => x >= 44), `sign tiles are ≥44px (min ${Math.round(Math.min(...tl))})`); }
+  // dictionary: word search only (a typed number still works, never suggested), browse by family by default
+  await p.waitForSelector('#vz-sd'); await p.waitForSelector('#sd-grid', { state: 'attached' });
+  ok(!/\d/.test(await p.getAttribute('#vz-sd', 'placeholder')) && await p.getAttribute('#vz-sd', 'type') === 'search' && await p.isVisible('.sdbrowse .famt >> nth=0'), 'dictionary: placeholder suggests a word, no number; family browse shown by default');
+  await p.click('.sdbrowse .famt[data-part="1"]'); ok(await p.locator('#sd-grid .sgt img').count() >= 10, 'dictionary browse: family 1 shows sign pictures');
+  const d4 = await p.evaluate(() => fetch('data/signs.json').then(r => r.json()));
+  await p.fill('#vz-sd', 'חני'); await p.waitForSelector('#sd-grid .sgt');
+  ok(!(await p.isVisible('.sdbrowse')) && (await p.$$eval('#sd-grid .sgt', bs => bs.map(b => b.dataset.n))).every(n => d4.e[n].includes('חני')), 'dictionary word search ("חני") lists only matching meanings');
+  await p.fill('#vz-sd', '433'); await p.waitForSelector('#sd-grid .sgt[data-n="433"]'); ok(true, 'a typed number is still accepted silently (433)');
+  await p.fill('#vz-sd', ''); ok(await p.isVisible('.sdbrowse .famt >> nth=0') && await p.locator('#sd-mine-empty, #sd-mine').count() === 1, "cleared search returns to browsing; 'signs I met in practice' slot present");
   await p.click('.recap .flip >> nth=0'); ok(await p.getAttribute('.recap .flip >> nth=0', 'aria-expanded') === 'true' && await p.isVisible('.recap .back >> nth=0'), 'recap card flips (aria-expanded)');
   ok(await p.locator('.gal img').count() > 0 && await p.locator('.excard').count() > 0, 'sign gallery + worked examples with images');
   await axe(p, 'lesson', prof);
@@ -557,12 +577,13 @@ async function overflowSweep() {
       const lab = e.closest('label'); if (e.classList.contains('sr') && e.tabIndex < 0) return false;   // the visually-hidden file input is opened by its visible button
       if ((e.type === 'radio') && lab && lab.getBoundingClientRect().height >= 24) return false;   // a radio's tap target is its whole option row
       return r.width < 23.5 || r.height < 23.5; }).map(e => `${e.tagName.toLowerCase()}${e.type ? ':' + e.type : ''}'${(e.textContent || e.getAttribute('aria-label') || '').trim().slice(0, 18)}' ${Math.round(e.getBoundingClientRect().width)}x${Math.round(e.getBoundingClientRect().height)}`));
-    const small = [];
-    for (const r of routes) { await go(p, r); await p.waitForSelector('h1', { timeout: 5000 }).catch(() => {}); const sw = await over(); if (sw) bad.push(r + '=' + sw); const tt = await tiny(); if (tt.length) small.push(r + ': ' + tt.slice(0, 3).join(', ')); }
+    const small = [], nums = [];
+    for (const r of routes) { await go(p, r); await p.waitForSelector('h1', { timeout: 5000 }).catch(() => {}); const sw = await over(); if (sw) bad.push(r + '=' + sw); if (await p.locator('input[type=number]').count()) nums.push(r); const tt = await tiny(); if (tt.length) small.push(r + ': ' + tt.slice(0, 3).join(', ')); }
     // v1.22: every lesson again in the one-screen summary view
     await go(p, '#/learn'); await p.click('#ln-view [data-view=quick]');
     for (const r of routes.filter(r => r.endsWith('/peek'))) { await go(p, r); await p.waitForSelector('.sumnote', { timeout: 5000 }).catch(() => bad.push(r + ':nosum')); const sw = await over(); if (sw) bad.push(r + ':sum=' + sw); const tt = await tiny(); if (tt.length) small.push(r + ':sum ' + tt.join(',')); }
     await go(p, '#/learn'); await p.click('#ln-view [data-view=steps]');
+    ok(!nums.length, `${W}px: no number input on any of ${routes.length} screens (signs are chosen by picture) ${nums.join(' ')}`);
     // v1.17 (review #13 N9): tap targets – every visible link / control on every screen is at least 24×24 px (WCAG 2.5.8)
     ok(!small.length, `${W}px: every link and control on ${routes.length} screens is a ≥24×24 px tap target ${small.slice(0, 4).join(' | ')}`);
     await go(p, '#/about'); await p.waitForSelector('.tbl.cov td');
