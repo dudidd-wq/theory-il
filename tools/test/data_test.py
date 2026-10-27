@@ -376,6 +376,21 @@ _WK = _re.compile(r'סוג=|\w+=\S|\{\{|\}\}|\[\[|\]\]|<[a-z/]|&nbsp;|\|')
 _res = sorted({(l['id'], k, i) for l in LALL for k in ('rules', 'mnem', 'recap', 'ex') for i, r in enumerate(l.get(k, [])) for x in r.get('x', []) if _WK.search(x[1])})
 _res += sorted({('src', s_) for s_, v in SRC.items() for e in v.get('ex', []) if _WK.search(e)})
 ok(not _res, f'v1.14 (review #10 N1): no wikitext residue (e.g. "סוג=הגדרה") in any chip passage {_res[:5]}')
+# v1.18 (review #14 D5): no PDF split word in any passage – a lone Hebrew letter between spaces ("מו פ יע", "ב קטע",
+# "תמרורי ם", "מ 2-נקודות") – except the table's own codes: the services prefix "ס - 62" and the variant mark "724 פ"
+_SL = _re.compile(r'(?<![^\s])([א-ת])(?=[\s.,:;]|$)')
+def _split_words(t):
+    return [t[max(0, m.start() - 12):m.end() + 12] for m in _SL.finditer(t)
+            if not (m[1] == 'ס' and _re.match(r'\s*-\s*\d', t[m.end():])) and not (m[1] == 'פ' and _re.search(r'\d\s$', t[:m.start()]))]
+_spl = sorted({(l['id'], k, i) for l in LALL for k in ('rules', 'mnem', 'recap', 'ex') for i, r in enumerate(l.get(k, [])) for x in r.get('x', []) if _split_words(x[1])})
+_spl += sorted({('src', s_) for s_, v in SRC.items() for e in v.get('ex', []) if _split_words(e)})
+ok(not _spl, f'v1.18 (review #14 D5): no split word (a lone Hebrew letter) in any chip passage {_spl[:5]}')
+ok(_split_words('אם החץ מו פ יע בכיוון') and _split_words('ב קטע דרך') and _split_words('תמרורי ם') and not _split_words('ס - 62 מסעדה, 724 פ או'),
+   'v1.18: the split-word check itself flags "מו פ יע", "ב קטע", "תמרורי ם" and allows "ס - 62", "724 פ"')
+_lt = lambda k: ' '.join(SRC.get(k, {}).get('ex', []))
+ok('פנית פרסה אסורה. בחירת הנתיבים' in _lt('LT:203') and ' · כוחו יפה: בצומת או בתנועה שלפניך' in _lt('LT:203')
+   and _lt('LT:218').startswith('218 דרך לרכב מנועי') and ' · כוחו יפה: עד לצומת הבא' in _lt('LT:218') and 'המוצב לפני' not in _lt('LT:218'),
+   'v1.18 (review #14 D5): LT:203 and LT:218 are the sign\'s own entry, meaning and "כוחו יפה" columns shown apart')
 # v1.14 (review #10 N2): TR 54 table rows are pinned with their column headings – every speed rule's passage holds its number
 _T54 = [(l['id'], k, i, x[1]) for l in LALL for k in ('rules', 'mnem', 'recap', 'ex') for i, r in enumerate(l.get(k, [])) for x in r.get('x', []) if x[0] == 'TR:54' and _re.search(r'\(א\)', r.get('s', '') + '(א)')]
 _bad54 = [(a, b, c) for a, b, c, p in _T54 if p.startswith('דרך עירונית דרך עירונית') or 'רשות התימרור המרכזית' in p]

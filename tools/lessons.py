@@ -34,6 +34,8 @@ def lt_windows(num):
     pat = (r'ס\s*-\s*' + num[2:] if num.startswith('ס-') else re.escape(num)) + r'(?![\d,])'
     for m in re.finditer(r'(?<![\d,])' + pat, LOT_ALL[START:]):
         i = START + m.start()
+        # v1.18 (review #14 D5): a cross-reference ('בתמרור 218 המוצב…') is not a window of the sign's own entry
+        if re.search(r'(?<![א-ת])[בל]?תמרור\s*$', LOT_ALL[max(START, i - 12):i]): continue
         out.append(LOT_ALL[i:i + 700])   # v1.17 (review #13 N7): long enough that an entry starting late in the window is not cut
     return out
 
@@ -49,6 +51,14 @@ def parse(src):
 sources = {}
 errors = []
 
+# v1.18 (review #14 D5): the sign-table PDF splits some words ("מו פ יע", "ב קטע", "ש בה", "עד ל תמרור", "תמרורי ם") – rejoin them
+def fix_split(t):
+    t = re.sub(r'(?<=\s)([א-ת]{2}) ([א-ת]) ([א-ת]{2})(?=[\s.,:;]|$)', r'\1\2\3', ' ' + t)[1:]
+    t = re.sub(r'(?<![^\s])(?<!\d )([בלשה]) (?=[א-ת]{2})', r'\1', t)
+    t = re.sub(r'(?<=[א-ת]) ([םןץףך])(?=[\s.,:;]|$)', r'\1', t)
+    return re.sub(r'(?<![^\s])([כבמל]) - (?=\d)', r'\1-', t)
+# the "כוחו יפה" (where the sign applies) column, for entries whose two text columns otherwise read as one sentence
+LT_FORCE = {'203': 'בצומת או בתנועה שלפניך', '218': 'עד לצומת הבא'}
 def excerpt(text, checks):
     # the sentence(s) / sub-clauses containing the checks
     # v1.18 (review #14 D1): a numbered item "(1) …" is shown with its chapeau ("… באופן שלא –", "… אלא –"),
@@ -119,7 +129,7 @@ def source(src, checks, where):
             # v1.15: the entry opens where the number is followed by a word (not a range "101 – 152", a list "101 , 102" or a page header)
             ww = re.sub(r'\s+', ' ', w)
             # v1.16 (review #12 D5): not a cross-reference ("או 724", "עד 724") nor the variant entry ("724 פ")
-            m = re.search(r'(?<![\d\-–] )(?<!\d)(?<!או )(?<!עד )' + re.escape(key) + r'(?!\d)(?= [.,]?(?!(?:פ|או|עד)(?![א-ת]))[א-ת])', ww)
+            m = re.search(r'(?<![\d\-–] )(?<!\d)(?<!או )(?<!עד )(?<!תמרור )' + re.escape(key) + r'(?!\d)(?= [.,]?(?!(?:פ|או|עד)(?![א-ת]))[א-ת])', ww)
             m = m or re.search(r'(?<!\d)' + re.escape(key) + r'(?!\d)', e)
             if m and m.re.pattern.endswith('[א-ת])'): e = ww[m.start():m.start() + 220]; e2 = e
             else: e2 = e[m.start():] if m else e
@@ -136,13 +146,18 @@ def source(src, checks, where):
             m_end = m_end or bool(m)
             e2 = e2[:len(key) + m.start()] if m else e2
             # v1.17 (review #13 N2): also drop the PDF's displaced stand-alone punctuation (" , .בהתאמה", "בצבע , כחול")
-            e2 = re.sub(r'(^|\s)[.,:;]+(?=\S)', r'\1', e2)
+            # v1.18 (review #14 D5): RTL-displaced punctuation (' .ישר', ' ,הכביש') belongs after its word ('ישר.', 'הכביש,')
+            e2 = re.sub(r'(\d) \.(?=\s|$)', r'\1.', e2)
+            e2 = re.sub(r'(^|\s)([.,:;]+)([^\s.,:;]+)', r'\1\3\2', e2)
             e2 = re.sub(r'\(\)([^\s()]+)', r'(\1)', e2)
             e2 = re.sub(r'""([^\s"]+)', r'"\1"', e2)
             e2 = re.sub(r'(^|\s)!([א-ת]+)', r'\1\2!', e2)   # v1.17: RTL-reversed '!עצור' -> 'עצור!'   # and reversed quotes 'תמרור ""עצור' -> 'תמרור "עצור"'   # RTL-reversed brackets "()קמפינג" -> "(קמפינג)"
             e2 = re.sub(r'\s+', ' ', re.sub(r'(?<=\s)[.,:;]+(?=\s|$)', '', e2)).strip()
             # v1.17 (review #13 N7): the table's last column names who the sign addresses ("נוהג רכב") – not part of the meaning
-            e2 = re.sub(r'\s+נוהג רכב$', '', e2)
+            e2 = re.sub(r'\s+נוהג רכב\.?$', '', e2)
+            e2 = fix_split(e2)
+            # v1.18 (review #14 D5): the table's columns – meaning (פירושו) | where it applies (כוחו יפה) – shown apart
+            if key in LT_FORCE and (' ' + LT_FORCE[key]) in e2: e2 = e2.replace(' ' + LT_FORCE[key], ' · כוחו יפה: ' + LT_FORCE[key], 1)
             # v1.17: an entry cut by the 220-character cap ends at a whole word, marked '…'
             if len(e2) >= 200 and not re.search(r'[.!?)]$', e2) and not m_end: e2 = e2.rsplit(' ', 1)[0] + ' …'
             return e, e2
@@ -160,8 +175,8 @@ def source(src, checks, where):
             errors.append(f'{where}: part {key} heading mismatch')
         sources.setdefault(sid, {'kind': kind, 'label': 'לוח התמרורים, חלק ' + key, 'title': '',
             'doc': LOT['title'], 'url': LOT['url'],
-            'ex': [re.sub(r'^.*?(חלק)', r'\1', pg[0]).strip()] if pg else []})
-        if pg: PASS.append((sid, re.sub(r'^.*?(חלק)', r'\1', pg[0]).strip()))
+            'ex': [fix_split(re.sub(r'^.*?(חלק)', r'\1', pg[0]).strip())] if pg else []})
+        if pg: PASS.append((sid, fix_split(re.sub(r'^.*?(חלק)', r'\1', pg[0]).strip())))
     elif kind == 'OFF':
         pg = OFF.get(key)
         if not pg: errors.append(f'{where}: no official page {key}'); return sid
@@ -177,7 +192,8 @@ def source(src, checks, where):
         # v1.17 (review #13 N1): the MoE file server sometimes answers with a 'שגיאה 404' page – the link says so
         if 'meyda.education.gov.il' in pg['url']: s['flaky'] = True
         for q in qs:
-            e = q['t'] + (f' (עמ׳ {q["p"]})' if q.get('p') else '')
+            # v1.18 (review #14 D5): the textbook PDF's reversed number-prefix ('מ 2-נקודות') shown as written ('מ-2 נקודות')
+            e = re.sub(r'(?<![^\s(])([בכמלה]) (\d+(?:[.,]\d+)?)-(?=[א-ת"“])', r'\1-\2 ', q['t']) + (f' (עמ׳ {q["p"]})' if q.get('p') else '')
             if e not in s['ex']: s['ex'].append(e)
             PASS.append((sid, e))
     elif kind == 'Q':
