@@ -4,54 +4,54 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1305,
-"partial": 302,
+"full": 1306,
+"partial": 301,
 "none": 194,
 "full_pct": 72.5,
 "any_pct": 89.2,
-"strict_full": 1017,
+"strict_full": 1018,
 "strict_pct": 56.5,
 "none_teachable": 33,
 "none_nosource": 155,
 "conflict": 6,
 "bank_only": 161,
-"partial_shown": 254,
+"partial_shown": 253,
 "full_nobank_pct": 72.5,
 "full_bank_sourced": 0
 },
 "class": {
 "B": {
 "n": 1272,
-"full": 977,
-"partial": 231,
+"full": 978,
+"partial": 230,
 "none": 64,
-"full_pct": 76.8,
+"full_pct": 76.9,
 "any_pct": 95.0,
-"strict_full": 716,
-"strict_pct": 56.3,
+"strict_full": 717,
+"strict_pct": 56.4,
 "none_teachable": 0,
 "none_nosource": 60,
 "conflict": 4,
 "bank_only": 64,
-"partial_shown": 231,
-"full_nobank_pct": 76.8,
+"partial_shown": 230,
+"full_nobank_pct": 76.9,
 "full_bank_sourced": 0
 },
 "A": {
 "n": 1155,
-"full": 870,
-"partial": 214,
+"full": 869,
+"partial": 215,
 "none": 71,
-"full_pct": 75.3,
+"full_pct": 75.2,
 "any_pct": 93.9,
-"strict_full": 614,
-"strict_pct": 53.2,
+"strict_full": 613,
+"strict_pct": 53.1,
 "none_teachable": 0,
 "none_nosource": 71,
 "conflict": 0,
 "bank_only": 71,
-"partial_shown": 214,
-"full_nobank_pct": 75.3,
+"partial_shown": 215,
+"full_nobank_pct": 75.2,
 "full_bank_sourced": 0
 },
 "C1": {
@@ -73,72 +73,72 @@
 },
 "C": {
 "n": 1314,
-"full": 1008,
-"partial": 210,
+"full": 1007,
+"partial": 211,
 "none": 96,
-"full_pct": 76.7,
+"full_pct": 76.6,
 "any_pct": 92.7,
-"strict_full": 743,
+"strict_full": 742,
 "strict_pct": 56.5,
 "none_teachable": 34,
 "none_nosource": 61,
 "conflict": 1,
 "bank_only": 62,
-"partial_shown": 189,
-"full_nobank_pct": 76.7,
+"partial_shown": 190,
+"full_nobank_pct": 76.6,
 "full_bank_sourced": 0
 },
 "D": {
 "n": 1316,
-"full": 1021,
-"partial": 214,
+"full": 1020,
+"partial": 215,
 "none": 81,
-"full_pct": 77.6,
+"full_pct": 77.5,
 "any_pct": 93.8,
-"strict_full": 744,
+"strict_full": 743,
 "strict_pct": 56.5,
 "none_teachable": 9,
 "none_nosource": 71,
 "conflict": 1,
 "bank_only": 72,
-"partial_shown": 188,
-"full_nobank_pct": 77.6,
+"partial_shown": 189,
+"full_nobank_pct": 77.5,
 "full_bank_sourced": 0
 },
 "1": {
 "n": 1127,
-"full": 870,
-"partial": 184,
+"full": 869,
+"partial": 185,
 "none": 73,
-"full_pct": 77.2,
+"full_pct": 77.1,
 "any_pct": 93.5,
-"strict_full": 614,
-"strict_pct": 54.5,
+"strict_full": 613,
+"strict_pct": 54.4,
 "none_teachable": 2,
 "none_nosource": 70,
 "conflict": 1,
 "bank_only": 71,
-"partial_shown": 183,
-"full_nobank_pct": 77.2,
+"partial_shown": 184,
+"full_nobank_pct": 77.1,
 "full_bank_sourced": 0
 }
 },
 "class_only": {
 "B": {
 "n": 9,
-"full": 5,
-"partial": 2,
+"full": 6,
+"partial": 1,
 "none": 2,
-"full_pct": 55.6,
+"full_pct": 66.7,
 "any_pct": 77.8,
-"strict_full": 5,
-"strict_pct": 55.6,
+"strict_full": 6,
+"strict_pct": 66.7,
 "none_teachable": 0,
 "none_nosource": 1,
 "conflict": 1,
 "bank_only": 2,
-"partial_shown": 2,
-"full_nobank_pct": 55.6,
+"partial_shown": 1,
+"full_nobank_pct": 66.7,
 "full_bank_sourced": 0
 },
 "A": {
@@ -264,36 +264,36 @@
 },
 "safety": {
 "n": 400,
-"full": 207,
-"partial": 110,
+"full": 206,
+"partial": 111,
 "none": 83,
-"full_pct": 51.8,
+"full_pct": 51.5,
 "any_pct": 79.2,
-"strict_full": 207,
-"strict_pct": 51.8,
+"strict_full": 206,
+"strict_pct": 51.5,
 "none_teachable": 1,
 "none_nosource": 82,
 "conflict": 0,
 "bank_only": 82,
-"partial_shown": 104,
-"full_nobank_pct": 51.8,
+"partial_shown": 105,
+"full_nobank_pct": 51.5,
 "full_bank_sourced": 0
 },
 "vehicle": {
 "n": 110,
-"full": 57,
-"partial": 31,
+"full": 59,
+"partial": 29,
 "none": 22,
-"full_pct": 51.8,
+"full_pct": 53.6,
 "any_pct": 80.0,
-"strict_full": 57,
-"strict_pct": 51.8,
+"strict_full": 59,
+"strict_pct": 53.6,
 "none_teachable": 0,
 "none_nosource": 22,
 "conflict": 0,
 "bank_only": 22,
-"partial_shown": 31,
-"full_nobank_pct": 51.8,
+"partial_shown": 29,
+"full_nobank_pct": 53.6,
 "full_bank_sourced": 0
 }
 },
@@ -335,36 +335,36 @@
 },
 "safety": {
 "n": 305,
-"full": 190,
-"partial": 88,
+"full": 189,
+"partial": 89,
 "none": 27,
-"full_pct": 62.3,
+"full_pct": 62.0,
 "any_pct": 91.1,
-"strict_full": 190,
-"strict_pct": 62.3,
+"strict_full": 189,
+"strict_pct": 62.0,
 "none_teachable": 0,
 "none_nosource": 27,
 "conflict": 0,
 "bank_only": 27,
-"partial_shown": 88,
-"full_nobank_pct": 62.3,
+"partial_shown": 89,
+"full_nobank_pct": 62.0,
 "full_bank_sourced": 0
 },
 "vehicle": {
 "n": 106,
-"full": 55,
-"partial": 31,
+"full": 57,
+"partial": 29,
 "none": 20,
-"full_pct": 51.9,
+"full_pct": 53.8,
 "any_pct": 81.1,
-"strict_full": 55,
-"strict_pct": 51.9,
+"strict_full": 57,
+"strict_pct": 53.8,
 "none_teachable": 0,
 "none_nosource": 20,
 "conflict": 0,
 "bank_only": 20,
-"partial_shown": 31,
-"full_nobank_pct": 51.9,
+"partial_shown": 29,
+"full_nobank_pct": 53.8,
 "full_bank_sourced": 0
 }
 },
@@ -405,19 +405,19 @@
 },
 "safety": {
 "n": 312,
-"full": 175,
-"partial": 94,
+"full": 174,
+"partial": 95,
 "none": 43,
-"full_pct": 56.1,
+"full_pct": 55.8,
 "any_pct": 86.2,
-"strict_full": 175,
-"strict_pct": 56.1,
+"strict_full": 174,
+"strict_pct": 55.8,
 "none_teachable": 0,
 "none_nosource": 43,
 "conflict": 0,
 "bank_only": 43,
-"partial_shown": 94,
-"full_nobank_pct": 56.1,
+"partial_shown": 95,
+"full_nobank_pct": 55.8,
 "full_bank_sourced": 0
 },
 "vehicle": {
@@ -475,36 +475,36 @@
 },
 "safety": {
 "n": 312,
-"full": 193,
-"partial": 89,
+"full": 192,
+"partial": 90,
 "none": 30,
-"full_pct": 61.9,
+"full_pct": 61.5,
 "any_pct": 90.4,
-"strict_full": 193,
-"strict_pct": 61.9,
+"strict_full": 192,
+"strict_pct": 61.5,
 "none_teachable": 0,
 "none_nosource": 30,
 "conflict": 0,
 "bank_only": 30,
-"partial_shown": 86,
-"full_nobank_pct": 61.9,
+"partial_shown": 87,
+"full_nobank_pct": 61.5,
 "full_bank_sourced": 0
 },
 "vehicle": {
 "n": 101,
-"full": 54,
-"partial": 27,
+"full": 55,
+"partial": 26,
 "none": 20,
-"full_pct": 53.5,
+"full_pct": 54.5,
 "any_pct": 80.2,
-"strict_full": 54,
-"strict_pct": 53.5,
+"strict_full": 55,
+"strict_pct": 54.5,
 "none_teachable": 0,
 "none_nosource": 20,
 "conflict": 0,
 "bank_only": 20,
-"partial_shown": 27,
-"full_nobank_pct": 53.5,
+"partial_shown": 26,
+"full_nobank_pct": 54.5,
 "full_bank_sourced": 0
 }
 },
@@ -545,19 +545,19 @@
 },
 "safety": {
 "n": 307,
-"full": 186,
-"partial": 87,
+"full": 185,
+"partial": 88,
 "none": 34,
-"full_pct": 60.6,
+"full_pct": 60.3,
 "any_pct": 88.9,
-"strict_full": 186,
-"strict_pct": 60.6,
+"strict_full": 185,
+"strict_pct": 60.3,
 "none_teachable": 1,
 "none_nosource": 33,
 "conflict": 0,
 "bank_only": 33,
-"partial_shown": 83,
-"full_nobank_pct": 60.6,
+"partial_shown": 84,
+"full_nobank_pct": 60.3,
 "full_bank_sourced": 0
 },
 "vehicle": {
@@ -615,19 +615,19 @@
 },
 "safety": {
 "n": 299,
-"full": 185,
-"partial": 86,
+"full": 184,
+"partial": 87,
 "none": 28,
-"full_pct": 61.9,
+"full_pct": 61.5,
 "any_pct": 90.6,
-"strict_full": 185,
-"strict_pct": 61.9,
+"strict_full": 184,
+"strict_pct": 61.5,
 "none_teachable": 0,
 "none_nosource": 28,
 "conflict": 0,
 "bank_only": 28,
-"partial_shown": 85,
-"full_nobank_pct": 61.9,
+"partial_shown": 86,
+"full_nobank_pct": 61.5,
 "full_bank_sourced": 0
 },
 "vehicle": {
@@ -685,19 +685,19 @@
 },
 "safety": {
 "n": 295,
-"full": 170,
-"partial": 75,
+"full": 169,
+"partial": 76,
 "none": 50,
-"full_pct": 57.6,
+"full_pct": 57.3,
 "any_pct": 83.1,
-"strict_full": 170,
-"strict_pct": 57.6,
+"strict_full": 169,
+"strict_pct": 57.3,
 "none_teachable": 0,
 "none_nosource": 50,
 "conflict": 0,
 "bank_only": 50,
-"partial_shown": 74,
-"full_nobank_pct": 57.6,
+"partial_shown": 75,
+"full_nobank_pct": 57.3,
 "full_bank_sourced": 0
 },
 "vehicle": {
@@ -720,17 +720,17 @@
 }
 },
 "by": {
-"hand": 617,
-"v1.20": 11,
+"hand": 613,
+"v1.20": 17,
 "spec": 692,
 "v1.13": 28,
 "rejudge": 93,
-"sample": 214,
+"sample": 213,
 "v1.18": 20,
 "v1.14": 36,
 "v1.15": 17,
 "v1.17": 7,
-"v1.19": 24,
+"v1.19": 23,
 "link": 15,
 "v1.16": 18,
 "rebase": 9
@@ -882,12 +882,12 @@
 "rate": 13.7,
 "lo_rate": 9.3,
 "hi_rate": 19.7,
-"unchecked": 396,
-"B_full": 76.8,
-"B_strict": 56.3,
-"B_est": 72.5,
+"unchecked": 398,
+"B_full": 76.9,
+"B_strict": 56.4,
+"B_est": 72.6,
 "B_lo": 70.7,
-"B_hi": 73.9
+"B_hi": 74.0
 }
 },
 "q": {
@@ -17835,12 +17835,14 @@
 "859": {
 "v": "full",
 "rule": [
-"defensive#r10"
+"defensive#r10",
+"cockpit#r13"
 ],
 "ref": [
-"defensive#r:מתאימים לפני הנסיעה את ההגה, הכיסא, "
+"defensive#r:מתאימים לפני הנסיעה את ההגה, הכיסא, ",
+"cockpit#r:לפני הנסיעה מכוונים את המושב, את המש"
 ],
-"why": "v1.3: RSA elderly page",
+"why": "twin of the Q1014 finding: defensive#r10 has wheel, seat, seat back and mirrors; the head restraints ('כרית הראש') come from cockpit#r13 (textbook p. 16)",
 "cls": [
 "B",
 "C",
@@ -17848,7 +17850,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "sample"
+"by": "v1.20"
 },
 "860": {
 "v": "partial",
@@ -20683,20 +20685,20 @@
 "by": "spec"
 },
 "1009": {
-"v": "partial",
+"v": "full",
 "rule": [
-"vehicle#r16"
+"safety2#r11"
 ],
 "ref": [
-"vehicle#r:חגורה נכונה: הרצועה האלכסונית על מרכ"
+"safety2#r:כרית אוויר שמתנפחת מסכנת מאוד נוסע ש"
 ],
-"why": "related rule only",
+"why": "textbook p. 134 (safety2#r11, added in v1.20): 'אי חגירת חגורה במקרה של הפעלת הכרית מסוכנת מאוד ועלולה להסב נזק רב'; was partial via vehicle#r16 (belt placement, nothing on airbags)",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.20"
 },
 "1010": {
 "v": "full",
@@ -20762,19 +20764,19 @@
 "by": "spec"
 },
 "1014": {
-"v": "partial",
+"v": "full",
 "rule": [
-"defensive#r10"
+"safety2#r7"
 ],
 "ref": [
-"defensive#r:מתאימים לפני הנסיעה את ההגה, הכיסא, "
+"safety2#r:בתאונה מלפנים או מאחור הראש נוטה לנו"
 ],
-"why": "adjust head restraint",
+"why": "textbook p. 134 (safety2#r7): in a front/rear crash the head moves forward and back – 'הגורם שימנע זאת הוא משענת הראש'; was defensive#r10, whose 'המשענת' is the seat back",
 "cls": [
 "B"
 ],
 "topic": "vehicle",
-"by": "hand"
+"by": "v1.20"
 },
 "1015": {
 "v": "partial",
@@ -28519,14 +28521,14 @@
 "by": "v1.15"
 },
 "1509": {
-"v": "full",
+"v": "partial",
 "rule": [
 "sober#r17"
 ],
 "ref": [
 "sober#r:לפני נסיעה ארוכה מתכננים את המסלול ו"
 ],
-"why": "as Q856",
+"why": "strict: the RSA text supports rest before the trip and a ≥15-minute stop that helps only briefly – not 'long breaks'; twin Q856 ('הפסקות למנוחה והתרעננות') stays full",
 "cls": [
 "1",
 "A",
@@ -28536,7 +28538,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "v1.19"
+"by": "v1.20"
 },
 "1510": {
 "v": "full",
@@ -33145,12 +33147,14 @@
 "1780": {
 "v": "partial",
 "rule": [
+"overtake#r5",
 "distance#r0"
 ],
 "ref": [
+"overtake#r:אסור לעקוף: בראות לקויה, לפני מפגש מ",
 "distance#r:שומרים רווח שמאפשר לעצור בכל רגע ולמ"
 ],
-"why": "solid line; slow vehicle not",
+"why": "TR 47(ה)(5) forbids an overtake that crosses the solid line and 21(א) keeps the following distance; the shoulder (right-side) option is not decided by these passages",
 "cls": [
 "1",
 "A",
@@ -33160,7 +33164,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.20"
 },
 "1781": {
 "v": "full",
@@ -33336,12 +33340,12 @@
 "1790": {
 "v": "partial",
 "rule": [
-"defensive#r10"
+"alc2#r1"
 ],
 "ref": [
-"defensive#r:מתאימים לפני הנסיעה את ההגה, הכיסא, "
+"alc2#r:אלכוהול פוגע בערנות ובשיפוט. מי שמסר"
 ],
-"why": "alcohol and drugs judgment",
+"why": "textbook p. 148 (alc2#r1) 'האלכוהול פוגם בערנות ומביא לשיפוט לקוי' – decides the alcohol half; no shown passage says drugs impair judgement (was defensive#r10, a seat/mirror/medicine rule)",
 "cls": [
 "1",
 "A",
@@ -33351,7 +33355,7 @@
 "D"
 ],
 "topic": "safety",
-"by": "hand"
+"by": "v1.20"
 },
 "1791": {
 "v": "full",

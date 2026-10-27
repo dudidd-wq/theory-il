@@ -12,3 +12,10 @@
 1736 full +law2#r1 +licence2#r3 | owner liable (incl. parking) unless he proves who drove – law2#r1; textbook p. 145 (licence2#r3) 'חנייה … אלא אם כן יוכיח מי נהג'
 323 full +docs#r3 +licence2#r3 | address change is reported to the Ministry of the Interior – docs#r3 (TR 13(א1)); textbook p. 145 (licence2#r3)
 1740 partial +terms2#r3 +licence2#r3 | 'pushing = driving' (TR 164; textbook p. 145 licence2#r3); the no-entry part of the answer is not in these passages
+# N3 – strict re-judgements named by review #16
+1790 partial +alc2#r1 | textbook p. 148 (alc2#r1) 'האלכוהול פוגם בערנות ומביא לשיפוט לקוי' – decides the alcohol half; no shown passage says drugs impair judgement (was defensive#r10, a seat/mirror/medicine rule)
+1009 full +safety2#r11 | textbook p. 134 (safety2#r11, added in v1.20): 'אי חגירת חגורה במקרה של הפעלת הכרית מסוכנת מאוד ועלולה להסב נזק רב'; was partial via vehicle#r16 (belt placement, nothing on airbags)
+1014 full +safety2#r7 | textbook p. 134 (safety2#r7): in a front/rear crash the head moves forward and back – 'הגורם שימנע זאת הוא משענת הראש'; was defensive#r10, whose 'המשענת' is the seat back
+859 full +defensive#r10 +cockpit#r13 | twin of the Q1014 finding: defensive#r10 has wheel, seat, seat back and mirrors; the head restraints ('כרית הראש') come from cockpit#r13 (textbook p. 16)
+1780 partial +overtake#r5 +distance#r0 | TR 47(ה)(5) forbids an overtake that crosses the solid line and 21(א) keeps the following distance; the shoulder (right-side) option is not decided by these passages
+1509 partial +sober#r17 | strict: the RSA text supports rest before the trip and a ≥15-minute stop that helps only briefly – not 'long breaks'; twin Q856 ('הפסקות למנוחה והתרעננות') stays full

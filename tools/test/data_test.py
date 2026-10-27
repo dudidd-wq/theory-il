@@ -62,7 +62,8 @@ ok(not _bdn and not _bdr, f'v1.14: a note saying the bank differs is a conflict 
 # v1.14 (review #10 N5): coverage never rests on uncited lesson-body prose
 ok(not [k for k, e in CF['q'].items() for r in e['rule'] + e['ref'] if '#b' in r], 'v1.14: no verdict cites lesson-body prose (#b units)')
 _RJ9 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v119.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
-ok(len(_RJ9) >= 1 and all(CF['q'][q]['by'] == 'v1.19' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ9.items()),
+_RJ10 = {l.split()[0] for l in open('tools/coverage/rejudge_v120.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}  # a later file supersedes
+ok(len(_RJ9) >= 1 and all(q in _RJ10 or CF['q'][q]['by'] == 'v1.19' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ9.items()),
    f'v1.19: every re-judgement of review #15 ({len(_RJ9)}) is applied')
 _RJ8 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v118.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ9}
 ok(len(_RJ8) >= 13 and all(CF['q'][q]['by'] == 'v1.18' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ8.items()),
@@ -850,6 +851,14 @@ _dq = [(l['id'], q) for l in _LJ.values() if not l['id'].startswith('bank_') for
        if not any(u.split('#')[0] == l['id'] for u in (_CF.get(str(q), {}).get('rule') or []))]
 ok(not _dq and 1333 not in _LJ['licence2']['quiz'] and len(_LJ['licence2']['quiz']) >= 10,
    f"v1.20 (review #16 pedagogy): every lesson practice question maps to a rule of the same lesson ({len(_dq)} dangling: {_dq[:6]}; licence2 {len(_LJ['licence2']['quiz'])})")
+# v1.20 (review #16 N3): named re-judgements and the sober#m0 item (א)
+_n3 = {q: (_CF[q]['v'], _CF[q]['rule']) for q in ('1790', '1009', '1014', '1780', '1509', '856', '859')}
+ok(_n3['1790'] == ('partial', ['alc2#r1']) and _n3['1009'] == ('full', ['safety2#r11']) and _n3['1014'] == ('full', ['safety2#r7'])
+   and _n3['1780'][0] == 'partial' and 'overtake#r5' in _n3['1780'][1] and _n3['1509'][0] == 'partial' and _n3['856'][0] == 'full'
+   and 'cockpit#r13' in _n3['859'][1] and 'מסוכנת מאוד' in ' '.join(p[1] for p in _LJ['safety2']['rules'][11]['x']),
+   f"v1.20 (review #16 N3): Q1790→alc2#r1, Q1009 on the airbag passage, Q1014 head restraint, Q1780/Q1509 partial ({_n3})")
+ok(any('(א) נהג חדש; (ב) נהג שטרם מלאו לו 24' in p[1] for p in _LJ['sober']['mnem'][0]['x']),
+   "v1.20 (review #16 N3): sober#m0 shows TO 64ב(א)(3א) item (א) נהג חדש beside (ב)")
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 
