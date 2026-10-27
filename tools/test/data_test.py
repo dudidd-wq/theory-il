@@ -466,7 +466,30 @@ _MUST = {'duty#r7': ['תנאי הרשיון', 'לא ירשה לנהוג'], 'lane
          'moveoff#r5': ['לפני שמגיעים אליה', 'לוחצים קלות על דוושת הדלק', 'סכנה לאיבוד שליטה'], 'gap2#r1': ['לראות משתמשי דרך אחרים', 'ולהיראות'],
          'yield2#r5': ['אטית מאוד', 'בדיקה קפדנית', 'נפתח שדה הראייה', 'ורק אז'], 'bus#r8': ['ההגה והבלמים', 'לחץ האויר', 'האורות', 'הדלתות והחלון', 'הצופר', 'מגבי השמשות'], 'winter2#r2': ['חלון פתוח', 'מפשירי אדים'], 'cockpit#r12': ['הראייה ההיקפית', 'חפיפה', 'השטחים המתים'],
          'parking3#r1': ['2מטרים', 'כאשר התחום מסומן', '12מטרים לפניו'], 'rules4#r1': ['נחסם', 'זכות קדימה לבא כנגדו'],
-         'licence2#r3': ['מצלמת מהירות', 'אלא אם כן יוכיח'], 'maint2#r0': ['בספר הרכב של היצרן'], 'emerg2#r2': ['לאחוז היטב בהגה', 'בקו ישר', 'פנצ']}
+         'licence2#r3': ['מצלמת מהירות', 'אלא אם כן יוכיח'], 'maint2#r0': ['בספר הרכב של היצרן'], 'emerg2#r2': ['לאחוז היטב בהגה', 'בקו ישר', 'פנצ'],
+         # v1.16 (review #12 D4): the parts of each claim the reviewer found missing from the displayed passage
+         'turns#r7': ['כשהוא מתקרב לעקומה או לפסגה תלולה'], 'speed#r7': ['בכל מקרה שבו צפויה סכנה', 'בהיכנסו לעקומות חדות', 'בירידה תלולה או ארוכה'],
+         'cockpit#r9': ['מביטים לכל הכיוונים'], 'tractor#r8': ['שומר” על מהירות נמוכה', 'להוריד להילוך נמוך'], 'maint2#r2': ['טיפול תקופתי', 'חיסכון בדלק', 'בלאי'],
+         'rail2#r2': ['בדומה לעקיפת רכב ארבעה-גלגלי'], 'signs3#r4': ['המונע בכוח מיכני'], 'turns#r5': ['מכביש חד סטרי', 'לא יחולו אם סומן בכביש אחרת'],
+         'skid2#r0': ['כלל זהב למניעת החלקה', 'הדרגתי ומבוקר', 'להאט לפני הכניסה לעקומה']}
+ok('משני צדי האופנוע' in json.dumps(LB['moto']['ex'][0], ensure_ascii=False), 'v1.16 (review #12): moto#x0 (Q1796/Q1595) shows the TR 120(א) "both sides of the motorcycle" passage')
+# v1.16 (review #12 D4): claim phrases that had no official passage must not come back in these rules' text
+_NOT = {'maint2#r2': ['תחזוקה מונעת', 'שומרת על תקינות'], 'tractor#r8': ['סיבובי המנוע'], 'rail2#r2': ['כמו רכב רגיל'], 'skid2#r0': ['מתמתנת']}
+_nb = [(_u, t) for _u, _ts in _NOT.items() for t in _ts if t in LB[_u.split('#')[0]]['rules'][int(_u.split('#r')[1])]['t']]
+ok(not _nb, f'v1.16 (review #12 D4): unsourced claim phrases stay out of the trimmed rules {_nb}')
+# v1.16 (review #12 D5/D6): sign-list chips carry only the sign's own entry (no variant/next-symbol residue);
+# a rule with several passages never opens with an unlabelled pronoun passage ("זהו המרחק…") and has at most one
+_res, _unl = [], []
+for _l in LALL:
+    for _i, _r in enumerate(_l['rules']):
+        _xs = _r.get('x') or []
+        for _x in _xs:
+            if _x[0].startswith('LT:') and (len(re.findall(r'ס\s*-\s*\d{3}', _x[1])) > 1 or re.search(r'(?<!או)(?<!עד)(?<!תמרור)\s\d{3}\s?פ\s+(?!או\s|עד\s)[א-ת]', _x[1]) or re.search(r'^\d{3} (?:פ|או|עד)\s', _x[1])):
+                _res.append(f"{_l['id']}#r{_i}")
+        _pr = [k for k, _x in enumerate(_xs) if re.match(r'^(זהו|זוהי|זו|זה|הוא|היא|הם)\s', _x[1])]
+        if len(_xs) > 1 and (0 in _pr or len(_pr) > 1): _unl.append(f"{_l['id']}#r{_i}")
+ok(not _res, f'v1.16 (review #12 D5): no sign-list chip carries another entry\'s residue {_res[:5]}')
+ok(not _unl, f'v1.16 (review #12 D6): multi-passage rules open with a labelled passage {_unl[:5]}')
 _mb = []
 for _u, _ts in _MUST.items():
     _r = LB[_u.split('#')[0]]['rules'][int(_u.split('#r')[1])]; _px = _nz(' '.join(x[1] for x in _r.get('x') or [])).replace(' ', '')

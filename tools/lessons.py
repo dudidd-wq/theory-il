@@ -102,12 +102,17 @@ def source(src, checks, where):
             # the sign's own entry only (cut at the next sign number); PDF RTL artefact ' .word' shown as ' word'
             # v1.15: the entry opens where the number is followed by a word (not a range "101 – 152", a list "101 , 102" or a page header)
             ww = re.sub(r'\s+', ' ', w)
-            m = re.search(r'(?<![\d\-–] )(?<!\d)' + re.escape(key) + r'(?!\d)(?= [.,]?[א-ת])', ww)
+            # v1.16 (review #12 D5): not a cross-reference ("או 724", "עד 724") nor the variant entry ("724 פ")
+            m = re.search(r'(?<![\d\-–] )(?<!\d)(?<!או )(?<!עד )' + re.escape(key) + r'(?!\d)(?= [.,]?(?!(?:פ|או|עד)(?![א-ת]))[א-ת])', ww)
             m = m or re.search(r'(?<!\d)' + re.escape(key) + r'(?!\d)', e)
             if m and m.re.pattern.endswith('[א-ת])'): e = ww[m.start():m.start() + 220]; e2 = e
             else: e2 = e[m.start():] if m else e
             kn = int(re.match(r'\d+', key).group()) if re.match(r'\d+', key) else None
-            m = next((m for m in re.finditer(r'\s(\d{3})[א-ת]?\s', e2[len(key):]) if kn and kn < int(m.group(1)) <= kn + 9), None)
+            _t = e2[len(key):]
+            m = next((m for m in re.finditer(r'\s(\d{3})[א-ת]?\s', _t) if kn and kn < int(m.group(1)) <= kn + 9
+                      and not re.search(r'(?:^|\s)(?:או|עד|תמרור|ו)\s?$', _t[:m.start()])), None)
+            # v1.16: a services symbol (ס-130) ends at the next symbol number
+            m = m or (re.search(r'\sס\s*-\s*\d{3}', _t) if key.startswith('ס-') else None)
             e2 = e2[:len(key) + m.start()] if m else e2
             # v1.15: never run into the PDF page header ("12 לוח תמרורים (לות"ם) ספטמבר 2022 …") or the variant entry ("150 פ")
             m = re.search(r'\s\d{1,3} לוח תמרורים|\sלוח תמרורים \(|\s' + re.escape(key) + r' ?פ(?![א-ת])', e2[len(key):])
