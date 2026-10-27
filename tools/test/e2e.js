@@ -103,6 +103,15 @@ async function run(prof, opts) {
   await p.fill('#sq', '1535'); await p.waitForTimeout(400);
   ok(/1 תוצאות/.test(await text(p)) && /1535/.test(await p.textContent('.sres .qlist li')), 'search by question number');
   await p.click('a[href="#/search/go"]'); await p.waitForSelector('.answers .ans'); ok((await curId(p)) === 1535, 'practise search results');
+  // v1.15 (review #11 F1): a class-A question opened via search under class B still shows its (A) lesson, not "not explained yet"
+  await go(p, '#/search'); await p.waitForSelector('#sq'); await p.fill('#sq', '1595'); await p.waitForTimeout(400);
+  if (/1595/.test(await p.textContent('.sres'))) {
+    await p.click('a[href="#/search/go"]'); await p.waitForSelector('.answers .ans'); const c95 = correct(await curId(p));
+    await p.click(`.answers .ans:not([data-i="${c95}"])`); await p.waitForSelector('.why');
+    const wt = await p.textContent('.why'), lk = await p.getAttribute('.why a[data-learn]', 'href').catch(() => null);
+    ok(!/עדיין לא מוסבר/.test(wt) && /^#\/learn\/moto\/peek$/.test(lk || ''), `class-A Q1595 under class B: why box links its lesson read-only (${lk})`);
+    await go(p, lk || '#/learn/moto/peek'); await p.waitForTimeout(300); ok(/#\/learn\/moto\/peek$/.test(p.url()) && await p.locator('.rules, .rule').count() > 0, 'other-class lesson opens read-only');
+  } else ok(false, 'search finds class-A Q1595 under class B');
   await go(p, '#/home');
   // bookmarks
   await go(p, '#/bookmarks'); await p.waitForSelector('.qlist li'); await axe(p, 'bookmarks', prof);

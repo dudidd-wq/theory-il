@@ -64,7 +64,8 @@ PASS = []  # v1.11: passages picked by the last source() calls (per-example offi
 
 def own():
     # v1.13 (review #9 D1): the excerpt(s) this item itself pinned – [source id, passage (with page)] – shown first in its chip
-    return [[s_, t_] for s_, t_ in dict.fromkeys(PASS)]
+    # v1.15 (review #11 C5): the parsed law renders a repealed item as '((בוטלה).)' – shown as the law prints it, '(בוטלה).'
+    return [[s_, re.sub(r'\(\((נמחקה|בוטלה|בוטל|נמחק)\)\.\)', r'(\1).', t_)] for s_, t_ in dict.fromkeys(PASS)]
 
 def trap(q):
     # v1.11 (review #8 item 2): the wrong option closest in wording to the correct one (token overlap) – an objective pick, no written text
@@ -131,6 +132,9 @@ def source(src, checks, where):
         pg = OFF.get(key)
         if not pg: errors.append(f'{where}: no official page {key}'); return sid
         qs = [q for q in pg['quotes'] if any(norm(c, True) in norm(q['t'], True) for c in checks)]
+        # v1.15 (review #11 N3): a pinned quote contained in another selected one is not shown twice (rail2#r4, lanes#r1)
+        _n = [norm(q['t'], True) for q in qs]
+        qs = [q for i, q in enumerate(qs) if not any(j != i and _n[i] in _n[j] and (len(_n[j]) > len(_n[i]) or j < i) for j in range(len(qs)))]
         for c in checks:
             if not any(norm(c, True) in norm(q['t'], True) for q in pg['quotes']): errors.append(f'{where}: "{c}" not in a pinned quote of OFF:{key}')
         if not checks: errors.append(f'{where}: OFF source needs checks (they pick the quoted passage)')

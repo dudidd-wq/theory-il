@@ -12,6 +12,8 @@ export async function loadLessons(getJSON) {
   try { const [a, b] = await Promise.all([getJSON('data/lessons.json'), getJSON('data/sources.json')]); L = a; SRC = b; } catch { L = null; }
 }
 export const lessonsFor = c => (L?.lessons || []).filter(l => l.cls.includes(c));
+// v1.15 (review #11 F1): a question of another class reached via search still finds its lesson (opened read-only)
+const anyLesson = lid => (L?.lessons || []).find(l => l.id === lid) || null;
 export const byLessonId = id => (L?.lessons || []).find(l => l.id === id);
 export function status(l, list) {
   const r = st.lesson(l.id) || [0, 0, 0], i = list.indexOf(l);
@@ -46,7 +48,7 @@ const CLASS_URL = { _: 'https://www.gov.il/he/service/apply_for_new_driver_drive
   C: 'https://www.gov.il/he/Departments/General/truck_drivers_background', D: 'https://www.gov.il/he/departments/general/bus_drivers_rules' };
 export function explain(id, c, cov, sg) {
   const ls = lessonsFor(c), mine = new Map(ls.map(l => [l.id, l]));
-  const lessonOf = lid => mine.get(lid) || null;
+  const lessonOf = lid => mine.get(lid) || anyLesson(lid);
   const nums = sg?.q?.[id];
   if (nums?.length && nums.every(n => sg.e?.[n])) {
     return { kind: 'sign', lines: nums.map(n => ({ n, t: sg.e[n] })), url: sg.src?.url, lesson: lessonOf('signs'), note: L?.notes?.[id] || null };
@@ -71,7 +73,7 @@ export function explain(id, c, cov, sg) {
   return { kind: 'none', lesson: null, note };
 }
 /** link target for a lesson: locked lessons open in read-only "peek" mode */
-export function lessonHref(l, c) { const ls = lessonsFor(c); return '#/learn/' + l.id + (status(l, ls).unlocked ? '' : '/peek'); }
+export function lessonHref(l, c) { const ls = lessonsFor(c); return '#/learn/' + l.id + (ls.includes(l) && status(l, ls).unlocked ? '' : '/peek'); }
 /** the why box shown under the feedback line */
 export function whyBox(x, ok, c) {
   if (!x) return null;
@@ -118,15 +120,15 @@ export function makeLearn(ctx) {
       h('p', { class: 'small muted', text: t('ln.own') }));
   }
   function lesson(id, sub) {
-    const c = cls(), ls = lessonsFor(c), l = ls.find(x => x.id === id);
-    if (!l) { location.hash = '#/learn'; return; }
-    const s = status(l, ls);
+    const c = cls(), ls = lessonsFor(c), own = ls.find(x => x.id === id), l = own || (sub === 'peek' ? anyLesson(id) : null);
+    if (!l) { location.hash = own === undefined && anyLesson(id) ? '#/learn/' + id + '/peek' : '#/learn'; return; }
+    const s = own ? status(l, ls) : { unlocked: false };
     // v1.10: a direct link to a locked lesson (or its quiz) opens it read-only instead of bouncing to the path
     if (!s.unlocked && sub !== 'peek') { location.replace('#/learn/' + l.id + '/peek'); return; }
     const peek = !s.unlocked;
     const mine = new Set(pool()), qids = l.quiz.filter(q => mine.has(q) && byId.has(q));
     if (sub === 'quiz') { st.markRead(l.id); return startSession('lesson', pick(qids, QUIZ_N), l.title, `#/learn/${l.id}/quiz`, { lesson: l.id }); }
-    const i = ls.indexOf(l), nxt = ls[i + 1];
+    const i = ls.indexOf(l), nxt = own ? ls[i + 1] : null;
     const pb = (l.pbank || []).filter(p => mine.has(p.q) && byId.has(p.q)).map(p => ({ v: byId.get(p.q), u: p.u }));
     const bank = l.bank ? l.bank.filter(q => mine.has(q) && byId.has(q)).map(q => byId.get(q)) : null;
     const speakText = bank ? [l.title, ...bank.map(v => v.q + '\n' + v.a[v.c])].join('\n')

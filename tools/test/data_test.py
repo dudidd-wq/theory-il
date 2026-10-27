@@ -390,7 +390,8 @@ else:
                 if len(_c) >= 45: continue
                 _t = _TBP[int(_m.group(2)) - 1]; _k = _t.find(_c); _e = _t[_k + len(_c):_k + len(_c) + 2]
                 if not (_c.rstrip().endswith(('.', '!', ':')) or _e.strip()[:1] in ('.', '•', '!', ':', '')): _frag.append(f"{_l['id']}#r{_i}")
-    ok(not _frag and _nt >= 340, f'v1.14 (review #10 N3): every short textbook chip ends at a sentence/list-item boundary ({_nt} chips; fragments: {_frag[:8]})')
+    ok(not _frag and _nt >= 320,  # v1.15: contained duplicate quotes no longer shown (was ≥340)
+        f'v1.14 (review #10 N3): every short textbook chip ends at a sentence/list-item boundary ({_nt} chips; fragments: {_frag[:8]})')
     _smp = []
     sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'official')); import pin as _pin
     _RAW = [p if isinstance(p, str) else p.get('t', '') for p in json.load(open(_TBPF, encoding='utf-8'))]
@@ -472,6 +473,18 @@ _st = lambda S: {(w[1:] if w[0] in 'והבלמשכ' and len(w) > 4 else w)[:4] f
 _gb = [(l['id'], i) for l in LB.values() for i, r in enumerate(l.get('rules') or []) if r.get('x') and any(x[1] for x in r['x'])
        and len(_st(_cw(r['t'])) & _st(_cw(' '.join(x[1] for x in r['x'])))) < 1]
 ok(not _gb, f'v1.15 (review #11 T3): every cited rule shares a content word with its passage {_gb[:6]}')
+# v1.15 (review #11 N3): no rule shows the same passage twice (rail2#r4 had it with and without a final period)
+_dup = [f"{_l['id']}#r{_i}" for _l in LB.values() for _i, _r in enumerate(_l.get('rules', []))
+        if any(_a != _b and re.sub(r'[^\u05d0-\u05ea\d]', '', re.sub(r' \(עמ׳ \d+\)$', '', _a[1])) in re.sub(r'[^\u05d0-\u05ea\d]', '', _b[1]) and _a[0] == _b[0]
+               for _a in _r.get('x') or [] for _b in _r.get('x') or [])]
+ok(not _dup, f'v1.15 (review #11 N3): no rule repeats a passage chip {_dup[:6]}')
+# v1.15 (review #11 C5): no chip shows the parser's doubled parentheses; bank-lesson subtitles match their items
+_LJ = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'data', 'lessons.json'), encoding='utf-8'))
+_pp = [k for k, n in _LJ['notes'].items() for x in n.get('x') or [] if re.search(r'\(\((נמחקה|בוטלה|בוטל|נמחק)\)', x[1])] + [l['id'] for l in _LJ['lessons'] for r in l.get('rules', []) for x in r.get('x') or [] if re.search(r'\(\((נמחקה|בוטלה|בוטל|נמחק)\)', x[1])]
+ok(not _pp, f'v1.15 (review #11 C5): no passage shows a repealed item as "((בוטלה).)" {_pp[:6]}')
+_CF = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'data', 'coverage_full.json'), encoding='utf-8'))['q']
+_bs = [l['id'] for l in _LJ['lessons'] if l['id'].startswith('bank_') and (any(_CF.get(str(q), {}).get('src') == 'X' for q in l['bank']) != ('סותרת את נוסח החוק' in l['sub']))]
+ok(not _bs and all('אין להן הסבר רשמי או מקור חוקי' not in l.get('sub', '') for l in _LJ['lessons']), f'v1.15 (review #11 C5): bank-lesson subtitles mention the law conflict exactly when they hold one {_bs}')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 
