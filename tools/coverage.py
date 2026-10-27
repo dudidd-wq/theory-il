@@ -70,7 +70,7 @@ for _by, ln in ((b, l) for b, fn in (('v1.14', 'rejudge_v114.txt'), ('v1.15', 'r
     plus = [ref_of(LS, a[1:]) for a in add if a.startswith('+')]
     e.pop('dict', None); e.pop('strict_u', None)
     if v == 'full':
-        assert e['v'] in ('full', 'partial') and plus, qid; e['v'] = 'full'; e['u'] = plus
+        assert (e['v'] in ('full', 'partial') or e.get('src') == 'T') and plus, qid; e['v'] = 'full'; e['u'] = plus; e.pop('src', None) if e.get('src') == 'T' else None   # v1.20.1: a teachable (none-T) question may be raised once a cited rule teaches it
     elif v == 'partial':
         assert e['v'] in ('full', 'partial'), qid; e['v'] = 'partial'
         if plus: e['u'] = plus

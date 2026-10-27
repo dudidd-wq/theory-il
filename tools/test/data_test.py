@@ -909,6 +909,16 @@ ok('כבר אסור לעקוף' not in _rx['t'] and '132' in _rx['t'] and 'TR:47
 ok(any('TR:47' in r['s'] and '132' in r['t'] for r in _LJI['rail']['rules']), 'rail TR 47(ה)(2) rule names sign 132 / "100 מטר"')
 # v1.20.1 (review #17 #2): Q228 (getting on/off a moving vehicle) rests on TR 81 (duty#r11), not on the STOP-sign rule
 ok(CF['q']['228']['v'] == 'full' and CF['q']['228']['rule'] == ['duty#r11'], 'Q228 full on duty#r11 (TR 81), not priority#x1 (TR 64(ד))')
+# v1.20.1 (review #17 #3): no partial is left out of every lesson – each one (all classes, not only B/A) is shown and
+# practised in the lesson of its first rule; the 10 questions v1.20 dropped from quizzes are back in their rule's lesson
+_PBQ = {p['q']: l['id'] for l in LJ['lessons'] for p in l.get('pbank', [])}
+_QZ = {q: l['id'] for l in LJ['lessons'] for q in l['quiz']}
+_PARTS = [k for k, e in CF['q'].items() if e['v'] == 'partial']
+ok(all(int(k) in _PBQ and int(k) in _QZ for k in _PARTS), f'every partial question ({len(_PARTS)}) is shown and practised in a lesson')
+_TEN = {612: 'taxi', 620: 'taxi', 1128: 'busline', 1129: 'terms', 1163: 'taxi', 1191: 'safety', 1192: 'bus', 1247: 'taxi2', 1516: 'blind', 1333: 'heavy'}
+ok(all(q in _LJI[l]['quiz'] for q, l in _TEN.items()), 'the 10 questions dropped from quizzes in v1.20 are practised in the lesson of their rule')
+ok(CF['q']['1333']['v'] == 'full' and CF['q']['1333']['rule'] == ['heavy#r6'] and 'TR:281' in _LJI['heavy']['rules'][6]['s'], 'Q1333 full on heavy#r6 (TR 281(א)(4))')
+ok(len(_LJI['docs2']['quiz']) >= 4 and len(_LJI['tractor2']['quiz']) >= 8, 'thin quizzes docs2/tractor2 filled with questions their own rules answer')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

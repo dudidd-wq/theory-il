@@ -1,3 +1,10 @@
 # v1.20.1 (review #17, final) re-judgements, applied after rejudge_v120.txt. Same line format.
 394 full +rail#r6 +rail#r4 | textbook p. 82: no overtaking after the sign "100 מטר" before a level crossing (TR 47(ה)(2)); LT 132 = level crossing ~100 m → answer 132
 228 full +duty#r11 | TR 81: no one gets on or off a vehicle except when it stands (no exception) → "forbidden outright"; textbook p. 12 the same. Was mapped to the STOP-sign rule priority#x1 (TR 64(ד)), unrelated
+1333 full +heavy#r6 | TR 281(א)(4): no vehicle licence is given or renewed for a recovery vehicle up to 16,000 kg after nineteen years from its year of manufacture → answer 19 (rule added in v1.20.1)
+# Thin quizzes (review #17 #3): the rule in docs2/tractor2 states the same answer, so the question is practised there too (verdict unchanged)
+87 full +tractor#r6 +law4#r17 +tractor2#r2 | TR 38(א): on a pavement only to cross it entering or leaving premises (tractor2#r2 cites the same)
+1543 full +tractor#r6 +law4#r17 +tractor2#r2 | TR 38(א): not to bypass an obstacle (tractor2#r2 says so in those words)
+1628 full +tractor#r6 +tractor2#r2 | TR 38(א): crossing a pavement to enter or leave premises
+1283 full +equip#r0 +tractor2#r4 | TR 367(א): a warning triangle in a trailer, semi-trailer and every motor vehicle except a motorcycle
+1496 full +accident#r6 +docs2#r3 | textbook: hit a parked car with nobody there – written notice on it with your details, police within 24 hours

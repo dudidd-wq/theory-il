@@ -10,7 +10,9 @@ BA = {'B', 'A'}
 
 def partial_ids(QS):
     F = json.load(open(os.path.join(R, 'data/coverage_full.json')))['q']
-    return {int(k): e for k, e in F.items() if e['v'] == 'partial' and int(k) in QS and set(QS[int(k)]['t']) & BA}
+    # v1.20.1 (review #17 #3): every class, not only B/A – a C/C1/D/1-only partial is shown and practised in the lesson
+    # of its rule instead of in no lesson at all (10 questions dropped from quizzes in v1.20, 48 partials shown nowhere)
+    return {int(k): e for k, e in F.items() if e['v'] == 'partial' and int(k) in QS}
 
 def unit(uid, L, SG):
     """the lesson unit a verdict points to → {'k', 't', 's', 'also'} (s None = no specific cited source)"""
@@ -52,7 +54,8 @@ def attach(out, QS):
             if all(pos): e['rule'] = pos
     for q, e in sorted(P.items()):
         need = set(QS[q]['t']) & BA
-        host = next((u.split('#')[0] for u in e['rule'] if u.split('#')[0] in L and need <= set(L[u.split('#')[0]]['cls'])), None)
+        if need: host = next((u.split('#')[0] for u in e['rule'] if u.split('#')[0] in L and need <= set(L[u.split('#')[0]]['cls'])), None)
+        else: host = next((u.split('#')[0] for u in e['rule'] if u.split('#')[0] in L and set(QS[q]['t']) & set(L[u.split('#')[0]]['cls'])), None)
         if not host: continue
         us = [unit(u, L, SG) for u in e['rule']]
         for u in us: u['o'] = official(u)

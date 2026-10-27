@@ -4,19 +4,19 @@
 "totals": {
 "all": {
 "n": 1801,
-"full": 1308,
+"full": 1309,
 "partial": 299,
-"none": 194,
-"full_pct": 72.6,
-"any_pct": 89.2,
-"strict_full": 1020,
-"strict_pct": 56.6,
-"none_teachable": 33,
+"none": 193,
+"full_pct": 72.7,
+"any_pct": 89.3,
+"strict_full": 1021,
+"strict_pct": 56.7,
+"none_teachable": 32,
 "none_nosource": 155,
 "conflict": 6,
 "bank_only": 161,
-"partial_shown": 251,
-"full_nobank_pct": 72.6,
+"partial_shown": 299,
+"full_nobank_pct": 72.7,
 "full_bank_sourced": 0
 },
 "class": {
@@ -56,36 +56,36 @@
 },
 "C1": {
 "n": 1385,
-"full": 1043,
+"full": 1044,
 "partial": 237,
-"none": 105,
-"full_pct": 75.3,
-"any_pct": 92.4,
-"strict_full": 777,
-"strict_pct": 56.1,
-"none_teachable": 30,
+"none": 104,
+"full_pct": 75.4,
+"any_pct": 92.5,
+"strict_full": 778,
+"strict_pct": 56.2,
+"none_teachable": 29,
 "none_nosource": 72,
 "conflict": 3,
 "bank_only": 75,
-"partial_shown": 223,
-"full_nobank_pct": 75.3,
+"partial_shown": 237,
+"full_nobank_pct": 75.4,
 "full_bank_sourced": 0
 },
 "C": {
 "n": 1314,
-"full": 1009,
+"full": 1010,
 "partial": 209,
-"none": 96,
-"full_pct": 76.8,
-"any_pct": 92.7,
-"strict_full": 744,
-"strict_pct": 56.6,
-"none_teachable": 34,
+"none": 95,
+"full_pct": 76.9,
+"any_pct": 92.8,
+"strict_full": 745,
+"strict_pct": 56.7,
+"none_teachable": 33,
 "none_nosource": 61,
 "conflict": 1,
 "bank_only": 62,
-"partial_shown": 188,
-"full_nobank_pct": 76.8,
+"partial_shown": 209,
+"full_nobank_pct": 76.9,
 "full_bank_sourced": 0
 },
 "D": {
@@ -101,7 +101,7 @@
 "none_nosource": 71,
 "conflict": 1,
 "bank_only": 72,
-"partial_shown": 187,
+"partial_shown": 213,
 "full_nobank_pct": 77.7,
 "full_bank_sourced": 0
 },
@@ -118,7 +118,7 @@
 "none_nosource": 70,
 "conflict": 1,
 "bank_only": 71,
-"partial_shown": 182,
+"partial_shown": 183,
 "full_nobank_pct": 77.3,
 "full_bank_sourced": 0
 }
@@ -188,7 +188,7 @@
 "none_nosource": 7,
 "conflict": 1,
 "bank_only": 8,
-"partial_shown": 0,
+"partial_shown": 7,
 "full_nobank_pct": 78.1,
 "full_bank_sourced": 0
 },
@@ -205,7 +205,7 @@
 "none_nosource": 25,
 "conflict": 1,
 "bank_only": 26,
-"partial_shown": 0,
+"partial_shown": 26,
 "full_nobank_pct": 72.1,
 "full_bank_sourced": 0
 },
@@ -222,7 +222,7 @@
 "none_nosource": 28,
 "conflict": 0,
 "bank_only": 28,
-"partial_shown": 0,
+"partial_shown": 1,
 "full_nobank_pct": 32.6,
 "full_bank_sourced": 0
 }
@@ -230,19 +230,19 @@
 "topic": {
 "law": {
 "n": 901,
-"full": 690,
+"full": 691,
 "partial": 130,
-"none": 81,
-"full_pct": 76.6,
-"any_pct": 91.0,
-"strict_full": 688,
-"strict_pct": 76.4,
-"none_teachable": 31,
+"none": 80,
+"full_pct": 76.7,
+"any_pct": 91.1,
+"strict_full": 689,
+"strict_pct": 76.5,
+"none_teachable": 30,
 "none_nosource": 44,
 "conflict": 6,
 "bank_only": 50,
-"partial_shown": 88,
-"full_nobank_pct": 76.6,
+"partial_shown": 130,
+"full_nobank_pct": 76.7,
 "full_bank_sourced": 0
 },
 "signs": {
@@ -275,7 +275,7 @@
 "none_nosource": 82,
 "conflict": 0,
 "bank_only": 82,
-"partial_shown": 105,
+"partial_shown": 111,
 "full_nobank_pct": 51.5,
 "full_bank_sourced": 0
 },
@@ -441,19 +441,19 @@
 "C1": {
 "law": {
 "n": 605,
-"full": 465,
+"full": 466,
 "partial": 92,
-"none": 48,
-"full_pct": 76.9,
-"any_pct": 92.1,
-"strict_full": 463,
-"strict_pct": 76.5,
-"none_teachable": 29,
+"none": 47,
+"full_pct": 77.0,
+"any_pct": 92.2,
+"strict_full": 464,
+"strict_pct": 76.7,
+"none_teachable": 28,
 "none_nosource": 16,
 "conflict": 3,
 "bank_only": 19,
-"partial_shown": 81,
-"full_nobank_pct": 76.9,
+"partial_shown": 92,
+"full_nobank_pct": 77.0,
 "full_bank_sourced": 0
 },
 "signs": {
@@ -486,7 +486,7 @@
 "none_nosource": 30,
 "conflict": 0,
 "bank_only": 30,
-"partial_shown": 87,
+"partial_shown": 90,
 "full_nobank_pct": 61.5,
 "full_bank_sourced": 0
 },
@@ -511,19 +511,19 @@
 "C": {
 "law": {
 "n": 619,
-"full": 478,
+"full": 479,
 "partial": 90,
-"none": 51,
-"full_pct": 77.2,
-"any_pct": 91.8,
-"strict_full": 476,
-"strict_pct": 76.9,
-"none_teachable": 32,
+"none": 50,
+"full_pct": 77.4,
+"any_pct": 91.9,
+"strict_full": 477,
+"strict_pct": 77.1,
+"none_teachable": 31,
 "none_nosource": 18,
 "conflict": 1,
 "bank_only": 19,
-"partial_shown": 73,
-"full_nobank_pct": 77.2,
+"partial_shown": 90,
+"full_nobank_pct": 77.4,
 "full_bank_sourced": 0
 },
 "signs": {
@@ -556,7 +556,7 @@
 "none_nosource": 33,
 "conflict": 0,
 "bank_only": 33,
-"partial_shown": 84,
+"partial_shown": 88,
 "full_nobank_pct": 60.3,
 "full_bank_sourced": 0
 },
@@ -592,7 +592,7 @@
 "none_nosource": 32,
 "conflict": 1,
 "bank_only": 33,
-"partial_shown": 70,
+"partial_shown": 95,
 "full_nobank_pct": 77.8,
 "full_bank_sourced": 0
 },
@@ -626,7 +626,7 @@
 "none_nosource": 28,
 "conflict": 0,
 "bank_only": 28,
-"partial_shown": 86,
+"partial_shown": 87,
 "full_nobank_pct": 61.5,
 "full_bank_sourced": 0
 },
@@ -696,7 +696,7 @@
 "none_nosource": 50,
 "conflict": 0,
 "bank_only": 50,
-"partial_shown": 75,
+"partial_shown": 76,
 "full_nobank_pct": 57.3,
 "full_bank_sourced": 0
 },
@@ -720,20 +720,20 @@
 }
 },
 "by": {
-"hand": 612,
+"hand": 610,
 "v1.20": 17,
-"spec": 692,
+"spec": 689,
 "v1.13": 28,
 "rejudge": 93,
-"sample": 213,
+"sample": 212,
 "v1.18": 20,
 "v1.14": 36,
 "v1.15": 17,
 "v1.17": 7,
+"v1.20.1": 8,
 "v1.19": 23,
 "link": 15,
 "v1.16": 17,
-"v1.20.1": 2,
 "rebase": 9
 },
 "none_ids": {
@@ -2545,13 +2545,15 @@
 "v": "full",
 "rule": [
 "tractor#r6",
-"law4#r17"
+"law4#r17",
+"tractor2#r2"
 ],
 "ref": [
 "tractor#r:מותר לחצות מדרכה או שביל כדי להיכנס ",
-"law4#r:על מדרכה או שביל נוהגים רק כדי לחצות"
+"law4#r:על מדרכה או שביל נוהגים רק כדי לחצות",
+"tractor2#r:על מדרכה נוהגים רק כדי לחצות אותה בכ"
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 38(א): on a pavement only to cross it entering or leaving premises (tractor2#r2 cites the same)",
 "cls": [
 "1",
 "A",
@@ -2561,7 +2563,7 @@
 "D"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.20.1"
 },
 "88": {
 "v": "full",
@@ -24842,12 +24844,14 @@
 "1283": {
 "v": "full",
 "rule": [
-"equip#r0"
+"equip#r0",
+"tractor2#r4"
 ],
 "ref": [
-"equip#r:משולש אזהרה חייב להימצא בגרור, בנתמך"
+"equip#r:משולש אזהרה חייב להימצא בגרור, בנתמך",
+"tractor2#r:בגרור, בנתמך וברכב מנועי (חוץ מאופנו"
 ],
-"why": "rule written for this question (TR:367(א))",
+"why": "TR 367(א): a warning triangle in a trailer, semi-trailer and every motor vehicle except a motorcycle",
 "cls": [
 "1",
 "B",
@@ -24856,7 +24860,7 @@
 "D"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.20.1"
 },
 "1284": {
 "v": "full",
@@ -25673,17 +25677,20 @@
 "by": "spec"
 },
 "1333": {
-"v": "none",
-"rule": [],
-"ref": [],
-"why": "TR tow truck age 19",
-"src": "T",
+"v": "full",
+"rule": [
+"heavy#r6"
+],
+"ref": [
+"heavy#r:לרכב חילוץ שמשקלו הכולל המותר עד 16,"
+],
+"why": "TR 281(א)(4): no vehicle licence is given or renewed for a recovery vehicle up to 16,000 kg after nineteen years from its year of manufacture → answer 19 (rule added in v1.20.1)",
 "cls": [
 "C",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.20.1"
 },
 "1334": {
 "v": "full",
@@ -28291,12 +28298,14 @@
 "1496": {
 "v": "full",
 "rule": [
-"accident#r6"
+"accident#r6",
+"docs2#r3"
 ],
 "ref": [
-"accident#r:הרכב שנפגע ריק: הודעה כתובה על הרכב "
+"accident#r:הרכב שנפגע ריק: הודעה כתובה על הרכב ",
+"docs2#r:פגעת ברכב חונה ואין איש במקום? משאיר"
 ],
-"why": "the cited rule states the correct answer",
+"why": "textbook: hit a parked car with nobody there – written notice on it with your details, police within 24 hours",
 "cls": [
 "1",
 "A",
@@ -28306,7 +28315,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.20.1"
 },
 "1497": {
 "v": "full",
@@ -29131,13 +29140,15 @@
 "v": "full",
 "rule": [
 "tractor#r6",
-"law4#r17"
+"law4#r17",
+"tractor2#r2"
 ],
 "ref": [
 "tractor#r:מותר לחצות מדרכה או שביל כדי להיכנס ",
-"law4#r:על מדרכה או שביל נוהגים רק כדי לחצות"
+"law4#r:על מדרכה או שביל נוהגים רק כדי לחצות",
+"tractor2#r:על מדרכה נוהגים רק כדי לחצות אותה בכ"
 ],
-"why": "rule written for this question (TR:38)",
+"why": "TR 38(א): not to bypass an obstacle (tractor2#r2 says so in those words)",
 "cls": [
 "1",
 "A",
@@ -29147,7 +29158,7 @@
 "D"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.20.1"
 },
 "1544": {
 "v": "full",
@@ -30491,17 +30502,19 @@
 "1628": {
 "v": "full",
 "rule": [
-"tractor#r6"
+"tractor#r6",
+"tractor2#r2"
 ],
 "ref": [
-"tractor#r:מותר לחצות מדרכה או שביל כדי להיכנס "
+"tractor#r:מותר לחצות מדרכה או שביל כדי להיכנס ",
+"tractor2#r:על מדרכה נוהגים רק כדי לחצות אותה בכ"
 ],
-"why": "TR 38(א)",
+"why": "TR 38(א): crossing a pavement to enter or leave premises",
 "cls": [
 "1"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.20.1"
 },
 "1629": {
 "v": "none",
