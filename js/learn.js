@@ -6,7 +6,7 @@ import { t, uiLang } from './i18n.js';
 import * as st from './store.js';
 import * as tts from './tts.js';
 import { VIZ } from './viz.js';
-import { buildSteps, minutes } from './steps.js';
+import { buildSteps, minutes, firstLine } from './steps.js';
 let L = null, SRC = {};
 export const QUIZ_N = 6, MASTER_PCT = 80;
 export async function loadLessons(getJSON) {
@@ -171,7 +171,11 @@ export function makeLearn(ctx) {
     const bankCard = v => h('article', { class: 'excard bankcard', 'data-q': v.id }, qimg(v), he(h('p', { class: 'qtext sm' }, h('small', { class: 'muted', text: t('ln.q', v.id) + ' · ' }), v.q)),
       opts(v), h('p', { class: 'small muted banktag', text: t('ln.bankTag') }), lawNote(L?.notes?.[v.id]));
     const vizNode = v => (VIZ[v] ? he(VIZ[v]({ lesson: l.id, cls: c })) : null);
-    const ruleLi = (r, n) => h('li', { value: n + 1 }, h('span', { text: r.t }), refs(r.s, r.also, r.x));
+    // v1.21 (1b): in the step and summary views a rule shows its one-line statement first; the rest of our wording opens under 'למה?'.
+    // The citation chips stay visible; the quoted official passage is in the chip, word for word.
+    const ruleLi = (r, n, split) => { const [a, b] = split ? firstLine(r.t) : [r.t, ''];
+      return h('li', { value: n + 1 }, h('span', { class: b ? 'rt1' : null, text: a }),
+        b ? h('details', { class: 'rmore' }, h('summary', { text: t('st.why') }), he(h('p', { text: b }))) : null, refs(r.s, r.also, r.x)); };
     const galList = qs => h('ul', { class: 'gal' }, qs.map(v => h('li', {}, h('img', { src: 'img/q/' + v.i, alt: t('q.img', v.id), loading: 'lazy', width: 160, height: 90 }), he(h('span', { text: v.a[v.c] })), ref('Q:' + v.id))));
     const exCard = (x, fold) => { const v = byId.get(x.q);
       // v1.11 (review #8 item 2): walk through the closest wrong option against the cited source's own wording – no written text
@@ -180,7 +184,8 @@ export function makeLearn(ctx) {
         h('p', { class: 'muted sm', text: t('ln.trapNote') })) : null;
       return h('article', { class: 'excard' }, qimg(v), he(h('p', { class: 'qtext sm' }, h('small', { class: 'muted', text: t('ln.q', v.id) + ' · ' }), v.q)), opts(v),
         trap && fold ? h('details', { class: 'trapd' }, h('summary', { text: t('st.trap') }), trap) : trap,
-        he(h('p', {}, h('b', { text: t('ln.why') + ' ' }), x.t)), h('p', { class: 'refs' }, ref(x.s, x.x), ...(x.also || []).map(a => ref(a, x.x)), ref('Q:' + x.q))); };
+        fold ? h('details', { class: 'rmore exwhy' }, h('summary', { text: t('st.exWhy') }), he(h('p', { text: x.t })))
+          : he(h('p', {}, h('b', { text: t('ln.why') + ' ' }), x.t)), h('p', { class: 'refs' }, ref(x.s, x.x), ...(x.also || []).map(a => ref(a, x.x)), ref('Q:' + x.q))); };
     // v1.11: B/A questions this lesson covers only partly – official question + answer as published, the covering unit with
     // its own citation, and a separate label that the rest comes from the bank alone (still 'partial' in the coverage figures)
     const pbNote = () => [he(h('p', { class: 'notice banknote', role: 'note' }, icon('info'), h('span', { text: t('ln.pbankNote') }))), h('p', { class: 'small bankattr' }, ext(BANK_URL, t('ln.bankAttr')))];
@@ -220,7 +225,7 @@ export function makeLearn(ctx) {
         bank ? sec('bank', h('div', { class: 'exs' }, bank.map(bankCard))) : null,
         l.body.length ? sec('explain', he(h('div', { class: 'lbody' }, l.body.map(p => h('p', { text: p }))))) : null,
         l.viz.length ? h('div', { class: 'vizs' }, l.viz.map(vizNode)) : null,
-        l.rules.length ? sec('rules', he(h('ol', { class: 'rules' }, l.rules.map(ruleLi)))) : null,
+        l.rules.length ? sec('rules', he(h('ol', { class: 'rules' }, l.rules.map((r, i) => ruleLi(r, i, false))))) : null,
         gal.length ? sec('gal', galList(gal)) : null,
         l.ex.length ? sec('ex', h('div', { class: 'exs' }, l.ex.filter(x => byId.has(x.q)).map(x => exCard(x, false)))) : null,
         pb.length ? sec('pbank', ...pbNote(), h('div', { class: 'exs' }, pb.map(pbCard))) : null,
@@ -240,10 +245,10 @@ export function makeLearn(ctx) {
         if (x.k === 'intro') out.push(he(h('div', { class: 'lbody' }, x.items.map(it => h('p', { text: it.p })))));
         if (x.k === 'rules') { let ol = null;
           for (const it of x.items) {
-            for (const v of it.viz || []) { const z = vizNode(v); if (z) { out.push(h('div', { class: 'vizs' }, z)); ol = null; } }
+            for (const v of it.viz || []) { const z = vizNode(v); if (z) { out.push(h('div', { class: 'vizs', 'data-viz': v }, z)); ol = null; } }
             if (it.r == null) continue;
             if (!ol) { ol = he(h('ol', { class: 'rules', start: it.r + 1 })); out.push(ol); }
-            ol.append(ruleLi(l.rules[it.r], it.r));
+            ol.append(ruleLi(l.rules[it.r], it.r, true));
           } }
         if (x.k === 'gal') out.push(galList(x.items.flatMap(it => it.g.map(q => byId.get(q)))));
         if (x.k === 'ex') out.push(h('div', { class: 'exs' }, x.items.map(it => exCard(l.ex[it.x], true))));

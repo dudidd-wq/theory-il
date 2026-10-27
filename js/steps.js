@@ -1,11 +1,17 @@
 // v1.21: lesson steps ('כרטיסים'), parts and topic groups – pure functions (no DOM), shared by the app and tools/test/steps_stats.mjs.
 // A step holds at most MAX_R rules and about MAX_W visible words; the cited passages stay in their collapsed chips (not counted until opened).
-export const MAX_W = 120, MAX_R = 5, MAX_Q = 6, PART_STEPS = 5, WPM = 120, VIZ_W = 35;
+export const MAX_W = 120, MAX_R = 5, MAX_Q = 6, PART_STEPS = 5, WPM = 120, VIZ_W = 45;
+// visible words of each visualisation (its title, controls and the 'תיאור מילולי' text), measured in the browser (v1.21)
+export const VIZ_WC = {"signs":127,"signdict":31,"priority":41,"speed":65,"gap":53,"overtake":41,"crosswalk":29,"parking":55,"lamps":42,"rail":83,"kids":39,"blind":46,"newdrv":45,"moto":43,"tractor":46,"hands":37,"duty":60,"bac":86,"accident":43,"dims":88,"roadparts":37,"brakes":45,"blowout":41,"startcar":55,"stopdist":48,"leftturn":45,"motojx":41};
+const vw = vs => (vs || []).reduce((a, v) => a + (VIZ_WC[v] || VIZ_W), 0);
 export const wc = s => String(s || '').split(/\s+/).filter(Boolean).length;
 /** a rule's one-line statement and the rest (shown under 'למה?'); only split at a real sentence end, never inside a number */
 export function firstLine(t) {
   const m = /^([\s\S]{12,}?[^\d\s][.!?])\s+(\S[\s\S]*)$/.exec(t || '');
-  return m && wc(m[1]) >= 4 && wc(m[2]) >= 3 ? [m[1], m[2]] : [t || '', ''];
+  if (m && wc(m[1]) >= 4 && wc(m[2]) >= 3) return [m[1], m[2]];
+  // a long rule written as one sentence with ';' parts: its first part is the statement
+  const k = wc(t) > 30 ? /^([^;]{20,}?;)\s+(\S[\s\S]*)$/.exec(t) : null;
+  return k && wc(k[1]) >= 4 && wc(k[2]) >= 3 ? [k[1], k[2]] : [t || '', ''];
 }
 /** our explanatory paragraphs, long ones broken at sentence ends into short paragraphs (≤ ~40 words) */
 export function paras(body) {
@@ -49,15 +55,18 @@ export function buildSteps(l, view, o) {
     if (!quick && (l.body || []).length) pack('intro', paras(l.body).map(p => ({ p, w: wc(p) })));
     const at = vizAt(l), byR = {};
     for (const [v, i] of Object.entries(at)) (byR[i] ||= []).push(v);
+    // two heavy visualisations on one rule would overfill a card: the extra one moves to the next rule
+    const nR = (l.rules || []).length;
+    for (let i = 0; i < nR - 1; i++) while ((byR[i] || []).length > 1 && vw(byR[i]) > MAX_W - 20) (byR[i + 1] ||= []).unshift(byR[i].pop());
     pack('rules', (l.rules || []).map((r, i) => { const [a, b] = firstLine(r.t);
-      return { r: i, viz: byR[i] || [], w: wc(a) + (b ? 2 : 0) + labs(lab, r.s, r.also) + (byR[i] || []).length * VIZ_W }; }));
-    if (!(l.rules || []).length && (l.viz || []).length) pack('rules', [{ viz: l.viz, w: VIZ_W * l.viz.length }]);
+      return { r: i, viz: byR[i] || [], w: wc(a) + (b ? 2 : 0) + labs(lab, r.s, r.also) + vw(byR[i]) }; }));
+    if (!(l.rules || []).length && (l.viz || []).length) pack('rules', [{ viz: l.viz, w: vw(l.viz) }]);
     if (!quick) {
       const gal = o.gal || [];
       for (let i = 0; i < gal.length; i += 4) pack('gal', [{ g: gal.slice(i, i + 4).map(v => v.id), w: gal.slice(i, i + 4).reduce((a, v) => a + wc(v.a[v.c]) + 4, 0) }]);
-      pack('ex', (l.ex || []).map((x, i) => ({ x: i, w: opts(Q(x.q)) + wc(x.t) + labs(lab, x.s, x.also) + 4 })));
+      pack('ex', (l.ex || []).map((x, i) => ({ x: i, w: opts(Q(x.q)) + labs(lab, x.s, x.also) + 8 })));
       if ((l.mnem || []).length) pack('mnem', l.mnem.map((m, i) => ({ m: i, w: wc(m.t) + wc(m.n) + labs(lab, m.s, m.also) })));
-      pack('pb', (o.pb || []).map(({ v }, i) => ({ q: v.id, w: wc(v.q) + 4 + (i ? 0 : 30) })));
+      pack('pb', (o.pb || []).map(({ v }, i) => ({ q: v.id, w: wc(v.q) + 4 + (i ? 0 : 50) })));
     }
   }
   if ((l.recap || []).length) pack('recap', l.recap.map((r, i) => ({ c: i, w: wc(r.f) + 2 })));

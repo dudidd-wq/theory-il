@@ -366,3 +366,6 @@ line.vz-span { stroke: #f3a712; stroke-width: 6; fill: none; }
 .qfold > summary { cursor: pointer; min-height: 44px; padding: .6rem .8rem; line-height: 1.6; }
 .qfold[open] > summary { border-bottom: 1px solid var(--line); }
 .qfold > .excard { border: 0; margin: 0; }
+.rt1 { font-weight: 600; }
+.rmore > summary { cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; color: var(--primary); font-weight: 600; }
+.rmore > p { margin: .25rem 0 .5rem; }

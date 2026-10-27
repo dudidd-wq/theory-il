@@ -334,7 +334,7 @@ async function run(prof, opts) {
     await p.evaluate(k => localStorage.setItem('theoryIL.state', k), keep); await p.reload(); await p.waitForSelector('h1');   // walking the cards marks open lessons read – undo
     const srt = [...per].sort((a, b) => a - b), med = a => a[Math.floor((a.length - 1) / 2)];
     console.log(`  STATS(${prof}) steps-view words per card: max ${srt[srt.length - 1]}, median ${med(srt)}, cards ${per.length}; steps per lesson: max ${Math.max(...nst)}, median ${med([...nst].sort((a, b) => a - b))}; full-page words: max ${Math.max(...FULLW)}, median ${med([...FULLW].sort((a, b) => a - b))}`);
-    ok(!bad.length && srt[srt.length - 1] <= 200 && med(srt) <= 120, `all ${LBA.length} B/A lessons step by step: every rule, diagram, example and bank card is on some card; axe clean; words per card median ${med(srt)} (≤120), max ${srt[srt.length - 1]} (${BIG.join(' ')}) ${bad.slice(0, 4).join(' | ')}`); }
+    ok(!bad.length && srt[srt.length - 1] <= 150 && med(srt) <= 100, `all ${LBA.length} B/A lessons step by step: every rule, diagram, example and bank card is on some card; axe clean; words per card median ${med(srt)} (≤100), max ${srt[srt.length - 1]} (${BIG.join(' ')}) ${bad.slice(0, 4).join(' | ')}`); }
   await go(p, '#/learn'); await p.waitForSelector('.lessons');
   ok(await p.locator('.lessons li:nth-child(2) a').count() === 1, 'reading lesson 1 unlocked lesson 2');
   await go(p, '#/parent'); ok(new RegExp(`שיעורים שנשלטו\\s*1/${LB.length}`).test(await text(p)), 'parent view lists lessons mastered');
@@ -383,12 +383,13 @@ async function run(prof, opts) {
   await go(p, '#/settings'); await p.selectOption('#su', 'en'); await p.waitForTimeout(300);
   ok((await p.getAttribute('html', 'dir')) === 'ltr' && (await p.getAttribute('html', 'lang')) === 'en', 'English UI is LTR');
   await go(p, '#/home'); await axe(p, 'home-en', prof);
-  await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lsec');
+  await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lstep');
   ok(/Hebrew only/.test(await text(p)) && await p.getAttribute('.lbody', 'dir') === 'rtl', 'English UI: lesson flagged Hebrew-only, body stays RTL');
   await axe(p, 'lesson-en', prof);
   await go(p, '#/settings'); await p.selectOption('#su', 'he'); await p.selectOption('#st', 'dark'); await p.waitForTimeout(300);
   await go(p, '#/home'); await axe(p, 'home-dark', prof);
-  await go(p, '#/learn/' + LB[1].id); await p.waitForSelector('.viz'); await axe(p, 'lesson-dark', prof);
+  await go(p, '#/learn/' + LB[1].id); await p.waitForSelector('.lstep'); await axe(p, 'lesson-steps-dark', prof);
+  await p.click('[data-view=full]'); await p.waitForSelector('.viz'); await axe(p, 'lesson-dark', prof);
   ok(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'lesson page: no horizontal overflow');
   await go(p, '#/exam'); await p.click('.btn.primary.big'); await p.waitForSelector('#timer'); await axe(p, 'exam-dark', prof);
   dialogAnswer = true; await go(p, '#/home');
@@ -404,8 +405,11 @@ async function run(prof, opts) {
   await ctx.setOffline(true); await p.reload(); await p.waitForSelector('.drive');
   await go(p, '#/signs/go'); await p.waitForSelector('.qcard .qimg'); await p.waitForFunction(() => document.querySelector('.qcard .qimg').complete);
   ok(await p.evaluate(() => document.querySelector('.qcard .qimg').naturalWidth > 100), 'works offline (shell + images)');
-  await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.viz', { timeout: 5000 }).catch(() => {});
-  ok(await p.locator('.viz').count() > 0 && await p.locator('.rules li').count() === LB[0].rules.length, 'lessons + diagrams work offline');
+  await go(p, '#/learn/' + LB[0].id); await p.waitForSelector('.lstep', { timeout: 5000 }).catch(() => {});
+  const stOff = await p.locator('.lstep').count() === 1 && /\d/.test(await p.textContent('#st-pos').catch(() => ''));
+  if (await p.locator('[data-view=full]').count()) await p.click('[data-view=full]');
+  await p.waitForSelector('.viz', { timeout: 5000 }).catch(() => {});
+  ok(stOff && await p.locator('.viz').count() > 0 && await p.locator('.rules li').count() === LB[0].rules.length, 'lessons + diagrams work offline');
   await ctx.setOffline(false);
   ok(!foreign.length, `no third-party requests ${foreign.slice(0, 3).join(' ')}`);
   ok(!errs.length, `no console/page errors ${errs.slice(0, 3).join(' | ')}`);
