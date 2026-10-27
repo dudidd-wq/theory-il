@@ -4,6 +4,7 @@ import * as st from './store.js';
 import * as bk from './backup.js';
 import * as tts from './tts.js';
 import { VERSION } from './version.js';
+import { VIZ } from './viz.js';
 import { ELIG, lawUrl } from './elig.js';
 import { makeLearn, loadLessons, lessonFrac, lessonsFor, masteredCount, explain, whyBox, lessonHref, coverPanel } from './learn.js';
 const COVH = ['ab.covCls', 'ab.covN', 'ab.covFull', 'ab.covStrict', 'ab.covAny', 'ab.covNoSrc', 'ab.covBank', 'ab.covPart', 'ab.covNoBank'];
@@ -297,7 +298,9 @@ function signs(go, sub) {
     fcAll().length ? h('section', { class: 'card', 'aria-labelledby': 'fc-h' }, h('h2', { id: 'fc-h', class: 'h3', text: t('fc.title') }),
       h('p', { class: 'small', text: t('fc.hint', fcAll().length) }),
       h('p', { class: 'small muted', id: 'fc-stat', text: t('fc.stat', fcAll().filter(n => (st.fcard(n)?.[0] || 0) >= 3).length, fcAll().filter(n => st.fcard(n) && st.fcard(n)[1] <= today()).length) }),
-      h('div', { class: 'row tight' }, link(t('fc.startPic'), '#/signs/cards', 'btn primary', 'sign'), link(t('fc.startTxt'), '#/signs/cards/txt', 'btn ghost', 'book'))) : null);
+      h('div', { class: 'row tight' }, link(t('fc.startPic'), '#/signs/cards', 'btn primary', 'sign'), link(t('fc.startTxt'), '#/signs/cards/txt', 'btn ghost', 'book'))) : null,
+    // v1.22.1: browse the official sign table by family and picture – no sign numbers to type
+    h('section', { class: 'card sdpage', lang: 'he', dir: 'rtl' }, VIZ.signdict()));
 }
 function review(go) {
   const due = dueList(), all = mistakes();
@@ -653,7 +656,7 @@ function about() {
     h('ul', { class: 'srcs' }, LANGS.filter(l => MAN?.langs?.[l]).map(l => { const m = MAN.langs[l];
       return h('li', {}, h('b', { text: LANG_NAMES[l] + ': ' }), ext(m.url || `https://data.gov.il/he/datasets/ministry_of_transport/${m.dataset}`, m.title || m.dataset), h('span', { class: 'muted', text: ' · ' }), ext(CCBY, m.licenceTitle || 'CC BY'), h('span', { class: 'muted', text: ` · ${m.org || ''} · ${(m.resourceModified || '').slice(0, 10)} · ${m.count}${trOld(l) ? ' · ' + t('ab.oldBank', trOld(l)) : ''} ` })); })),
     // v1.22: what the study tools do – all on this device, from the learner's own answers only
-    h('h2', { id: 'ab-tools', text: t('ab.tools') }), h('ul', { class: 'abtools' }, ['sum', 'recap', 'daily', 'weak', 'fc', 'qc'].map(k => h('li', { text: t('ab.tool.' + k) }))),
+    h('h2', { id: 'ab-tools', text: t('ab.tools') }), h('ul', { class: 'abtools' }, ['sum', 'recap', 'daily', 'weak', 'fc', 'qc', 'pick'].map(k => h('li', { text: t('ab.tool.' + k) }))),
     h('p', { class: 'small muted', text: t('ab.toolsNote') }),
     h('h2', { text: t('ab.lang') }), h('p', { text: t('ab.langText') }),
     h('h2', { text: t('ab.test') }), h('p', { text: t('ab.testText') }), h('p', { class: 'disc', role: 'note' }, icon('info'), h('span', { text: t('ab.course') })),
