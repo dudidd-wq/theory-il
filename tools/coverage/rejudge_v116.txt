@@ -22,4 +22,4 @@
 1295 partial | TR 308(א): notice when the vehicle may endanger traffic or fails legal conditions; air pollution is not named, and the wrong options would fit the same words
 1640 partial | p.31: do not zigzag between lanes; the danger of a car swerving into the gap is not in the passage
 # item 4 (review #12 D4: weak chips)
-1112 partial +tractor#r8 | p.32: low gear keeps speed low and spares the brakes; "engine revs" (the answer) vs "engine brake" is not decided by an official passage – the bank-only claim was removed from the rule
+1112 partial +tractor#r4 | p.32: low gear keeps speed low and spares the brakes; "engine revs" (the answer) vs "engine brake" is not decided by an official passage – the bank-only claim was removed from the rule

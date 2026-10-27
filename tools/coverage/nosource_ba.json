@@ -40,7 +40,12 @@
  "q": {
   "606": {
    "g": "law",
-   "note": "warning-sign shape (triangle, apex up): drawn in the sign table but not stated in any official text; textbook, MoE booklets and sign-table prose searched; the rule signs#r9 is the bank answer, labelled so (v1.18, review #14)",
+   "note": "warning-sign shape (triangle, apex up): drawn in the sign table but not stated in any official text; textbook, MoE booklets and sign-table prose searched; its bank-sourced rule was removed from the signs lesson (v1.18 none-S; v1.19 rule removed, review #15)",
+   "cls": "BA"
+  },
+  "477": {
+   "g": "law",
+   "note": "round-sign shape (\"הוריה או איסור\"): drawn in the sign table but not stated in any official text, same search as Q606; its bank-sourced rule signs#r10 removed (v1.19, review #15 D3)",
    "cls": "BA"
   },
   "520": {
@@ -421,6 +426,46 @@
   "1670": {
    "g": "moto",
    "note": "brake-pad wear mark",
+   "cls": "A"
+  },
+  "1600": {
+   "g": "moto",
+   "note": "tyre grip limits braking/leaning (v1.19)",
+   "cls": "A"
+  },
+  "1603": {
+   "g": "moto",
+   "note": "lane centre dirtiest/oiliest (v1.19)",
+   "cls": "A"
+  },
+  "1604": {
+   "g": "moto",
+   "note": "oil patch (v1.19)",
+   "cls": "A"
+  },
+  "1605": {
+   "g": "moto",
+   "note": "oil patch (v1.19)",
+   "cls": "A"
+  },
+  "1606": {
+   "g": "moto",
+   "note": "oil patch (v1.19)",
+   "cls": "A"
+  },
+  "1611": {
+   "g": "moto",
+   "note": "grip changes when leaning (v1.19)",
+   "cls": "A"
+  },
+  "1649": {
+   "g": "moto",
+   "note": "wet-road skid / roll-over (v1.19)",
+   "cls": "A"
+  },
+  "1669": {
+   "g": "moto",
+   "note": "mirror adjustment (v1.19)",
    "cls": "A"
   }
  }

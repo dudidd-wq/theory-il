@@ -357,9 +357,16 @@ _nob = sorted(q for q in _NSQ if not any(q in l.get('bank', []) for l in LJ['les
 ok(not _inq and not _nob and {92, 909, 914, 923, 1160, 1076, 1699, 1765, 1454, 1455, 1456, 1472} <= _NSQ, f'v1.13 (review #9 D2): {len(_NSQ)} no-source questions: none in a regular lesson quiz {_inq[:5]}, all in a bank-only lesson {_nob[:5]}')
 # v1.13 (review #9): rules whose only source is a bank question (circular) are labelled "תשובת המאגר" in their chip
 _QR = sorted((l['id'], i, r['s']) for l in LALL for i, r in enumerate(l['rules']) if r['s'].startswith('Q:'))
-ok({('signs', 'Q:606'), ('signs', 'Q:477'), ('bus', 'Q:1726')} <= {(a, c) for a, _, c in _QR} and "cited && x.kind === 'Q' ? t('ln.bankAns')" in JL
+_QU = [f"{l['id']}#{k}{i}" for l in LALL for k, key in (('r', 'rules'), ('c', 'recap'), ('m', 'mnem')) for i, u in enumerate(l.get(key, []))
+       if all(x.startswith('Q:') for x in [u['s']] + u.get('also', []))]
+_QB = [q for q, e in cq.items() if e[0] != 'n' and any(u in _QU for u in e[2])]
+ok(not _QR and not _QU and not _QB and all(cq[str(q)][0] == 'n' for q in (606, 477, 1086, 1097, 1474, 1603, 1604, 1605, 1611, 1669, 1726))
+   and not any('גם הצורה עוזרת' in b or 'משולש שהקודקוד' in b for b in LB['signs']['body']),
+   f'v1.19 (review #15 D3): no regular lesson teaches a rule/recap/mnemonic sourced only to the bank answer ({len(_QR)} rules, {_QU[:4]}); no verdict rests on one {_QB[:4]}; '
+   'Q477 and the bank-sourced fulls are bank-only (none-S) like Q606; the uncited shape claim is gone from the signs lesson body')
+ok( "cited && x.kind === 'Q' ? t('ln.bankAns')" in JL
    and 'refs = (s, also = [], own) => h(\'span\', { class: \'refs\' }, [s, ...also].map(a => ref(a, own, true)))' in JL
-   and 'תשובת המאגר' in T('js', 'i18n.js'), f'v1.13 (review #9): {len(_QR)} bank-sourced rules are labelled "תשובת המאגר" in their chip')
+   and 'תשובת המאגר' in T('js', 'i18n.js'), 'v1.13 (review #9): the chip label for a bank-question source ("תשובת המאגר") is still in the app')
 # v1.13 (review #9 D5): maint2's carbon-monoxide rule keeps to the kids_co wording (no "closed car park" inference)
 _CO = [r['t'] for r in LB['maint2']['rules'] if r['s'] == 'OFF:kids_co']
 ok(len(_CO) == 1 and 'חניון' not in _CO[0] and 'אין להשאיר' not in _CO[0] and 'שיכולה להתרחש באזורים סגורים' in _CO[0], 'v1.13 (review #9 D5): maint2 CO rule states only what kids_co says')
@@ -493,17 +500,17 @@ _nz = lambda x: re.sub(r'\s+', ' ', re.sub(r'[״׳"\'`“”„‘’\-–—־.
 _MUST = {'duty#r7': ['תנאי הרשיון', 'לא ירשה לנהוג'], 'lanes#r4': ['בשטחים המתים', 'החלפה חדה'], 'overtake2#r7': ['הפרש מהירות', 'קריטי במעלה הר'],
          'maint2#r9': ['משפת הכביש', 'האפוד הזוהר', 'המשולש', 'לאבטח את הרכב', 'לשחרר מעט את האומים', 'להציב את המגבה'],
          'moveoff#r5': ['לפני שמגיעים אליה', 'לוחצים קלות על דוושת הדלק', 'סכנה לאיבוד שליטה'], 'gap2#r1': ['לראות משתמשי דרך אחרים', 'ולהיראות'],
-         'yield2#r5': ['אטית מאוד', 'בדיקה קפדנית', 'נפתח שדה הראייה', 'ורק אז'], 'bus#r8': ['ההגה והבלמים', 'לחץ האויר', 'האורות', 'הדלתות והחלון', 'הצופר', 'מגבי השמשות'], 'winter2#r2': ['חלון פתוח', 'מפשירי אדים'], 'cockpit#r12': ['הראייה ההיקפית', 'חפיפה', 'השטחים המתים'],
+         'yield2#r5': ['אטית מאוד', 'בדיקה קפדנית', 'נפתח שדה הראייה', 'ורק אז'], 'bus#r6': ['ההגה והבלמים', 'לחץ האויר', 'האורות', 'הדלתות והחלון', 'הצופר', 'מגבי השמשות'], 'winter2#r2': ['חלון פתוח', 'מפשירי אדים'], 'cockpit#r12': ['הראייה ההיקפית', 'חפיפה', 'השטחים המתים'],
          'parking3#r1': ['2מטרים', 'כאשר התחום מסומן', '12מטרים לפניו'], 'rules4#r1': ['נחסם', 'זכות קדימה לבא כנגדו'],
          'licence2#r3': ['מצלמת מהירות', 'אלא אם כן יוכיח'], 'maint2#r0': ['בספר הרכב של היצרן'], 'emerg2#r2': ['לאחוז היטב בהגה', 'בקו ישר', 'פנצ'],
          # v1.16 (review #12 D4): the parts of each claim the reviewer found missing from the displayed passage
          'turns#r7': ['כשהוא מתקרב לעקומה או לפסגה תלולה'], 'speed#r7': ['בכל מקרה שבו צפויה סכנה', 'בהיכנסו לעקומות חדות', 'בירידה תלולה או ארוכה'],
-         'cockpit#r9': ['מביטים לכל הכיוונים'], 'tractor#r8': ['שומר” על מהירות נמוכה', 'להוריד להילוך נמוך'], 'maint2#r2': ['טיפול תקופתי', 'חיסכון בדלק', 'בלאי'],
+         'cockpit#r9': ['מביטים לכל הכיוונים'], 'tractor#r4': ['שומר” על מהירות נמוכה', 'להוריד להילוך נמוך'], 'maint2#r2': ['טיפול תקופתי', 'חיסכון בדלק', 'בלאי'],
          'rail2#r2': ['בדומה לעקיפת רכב ארבעה-גלגלי'], 'signs3#r4': ['המונע בכוח מיכני'], 'turns#r5': ['מכביש חד סטרי', 'לא יחולו אם סומן בכביש אחרת'],
          'skid2#r0': ['כלל זהב למניעת החלקה', 'הדרגתי ומבוקר', 'להאט לפני הכניסה לעקומה']}
 ok('משני צדי האופנוע' in json.dumps(LB['moto']['ex'][0], ensure_ascii=False), 'v1.16 (review #12): moto#x0 (Q1796/Q1595) shows the TR 120(א) "both sides of the motorcycle" passage')
 # v1.16 (review #12 D4): claim phrases that had no official passage must not come back in these rules' text
-_NOT = {'maint2#r2': ['תחזוקה מונעת', 'שומרת על תקינות'], 'tractor#r8': ['סיבובי המנוע'], 'rail2#r2': ['כמו רכב רגיל'], 'skid2#r0': ['מתמתנת']}
+_NOT = {'maint2#r2': ['תחזוקה מונעת', 'שומרת על תקינות'], 'tractor#r4': ['סיבובי המנוע'], 'rail2#r2': ['כמו רכב רגיל'], 'skid2#r0': ['מתמתנת']}
 _nb = [(_u, t) for _u, _ts in _NOT.items() for t in _ts if t in LB[_u.split('#')[0]]['rules'][int(_u.split('#r')[1])]['t']]
 ok(not _nb, f'v1.16 (review #12 D4): unsourced claim phrases stay out of the trimmed rules {_nb}')
 # v1.16 (review #12 D5/D6): sign-list chips carry only the sign's own entry (no variant/next-symbol residue);
@@ -755,7 +762,7 @@ def _elided(r):
     return out
 ELIDE_OK = {('881', 'priority#r2'): 'מימינו – (3) itself gives way to all traffic on the paved road', ('1737', 'parking#r3'): '(6) shown',
             ('1171', 'parking#r7'): 'the taxi exception is another unit; the elided items are other places', ('212', 'parking#r8'): '(12) shown (20 m)',
-            ('1757', 'parking2#r3'): '(9) shown (לרבות שולי הדרך)', ('213', 'parking2#r5'): '(12) shown incl. the 12 m proviso', ('1144', 'bus#r7'): 'לפחות – (1) hammers shown',
+            ('1757', 'parking2#r3'): '(9) shown (לרבות שולי הדרך)', ('213', 'parking2#r5'): '(12) shown incl. the 12 m proviso', ('1144', 'bus#r5'): 'לפחות – (1) hammers shown',
             ('340', 'tractor2#r3'): '(4) shown (sign + lights)', ('1788', 'law2#r6'): 'TO 70 list – the elided items are other subjects', ('40', 'terms#r7'): 'vehicle-class table, other classes',
             ('791', 'turns#r5'): 'textbook p.49 (two left lanes) shown', ('1587', 'moto3#r6'): 'bus-stop item shown', ('1305', 'heavy2#r2'): '(א) 12.00 shown',
             ('1306', 'heavy2#r2'): '(א) 12.00 shown', ('1652', 'heavy2#r2'): '(ג) 18.75 shown', ('1799', 'heavy2#r2'): '(ד)(1) 16.50 shown',

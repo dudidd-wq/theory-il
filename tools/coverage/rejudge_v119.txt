@@ -1,3 +1,23 @@
 # v1.19 (review #15) re-judgements, applied after rejudge_v118.txt. Same line format: "qid verdict [+lesson#rN ...] | why"
 # D1 – operative-term audit: the answer's operative words must be in a displayed passage of the cited rules (not in an elided paragraph)
 175 full +priority#r0 +priority#r1 | TR 64(א)(1) (give way to vehicles from the right) and 64(א)(2) (turning left: give way to oncoming) – the answer names both; was priority#r1 only, whose chip elides (1)
+# D3 – no bank-sourced rule (s=Q:…) is taught inside a regular lesson any more (consistent with Q606, v1.18). Questions with an official
+# passage elsewhere are re-pointed to it; the rest go to the "מהמאגר הרשמי" lessons (question + bank answer, no explanation), not counted as taught
+477 none-S | round-sign shape ("הוריה או איסור"): drawn in the sign table but stated in no official text (same as Q606); its rule signs#r10 was the bank answer itself – removed
+1086 none-S | tractor loader lowered when parked: no pinned law / textbook / official page states it; its rule (s=Q:1086) was the bank answer – removed
+1096 none-S | split brakes for a sharp turn: rested only on the bank-sourced rule (s=Q:1097) – removed; no official text found
+1097 none-S | split brakes may overturn the tractor: no official text states it; its rule (s=Q:1097) was the bank answer – removed
+1474 none-S | load weight ≤ licence load: no pinned provision found in these words; its rule (s=Q:1474) was the bank answer – removed
+1600 none-S | tyre grip limits braking/leaning: rested only on the bank-sourced rule (s=Q:1611) – removed; no official motorcycle text
+1603 none-S | lane centre dirtiest/oiliest: no official motorcycle text; its rule (s=Q:1603) was the bank answer – removed
+1604 none-S | crossing an oil patch: no official motorcycle text; its rule (s=Q:1605) was the bank answer – removed
+1605 none-S | crossing an oil patch: no official motorcycle text; its rule (s=Q:1605) was the bank answer – removed
+1606 none-S | crossing an oil patch: rested only on the bank-sourced rule (s=Q:1605) – removed
+1611 none-S | grip changes when leaning: no official motorcycle text; its rule (s=Q:1611) was the bank answer – removed
+1649 none-S | wet-road skid risk: rested only on the bank-sourced rule (s=Q:1611) – removed
+1669 none-S | mirror adjustment standing, bars at 90°: no official text; its rule (s=Q:1669) was the bank answer – removed
+1726 none-S | minimum age for a public-vehicle licence: TR 189(ד)(1) sets 21 only for a TR 184 (D1) licence; no pinned provision states one age for all public vehicles; its rule (s=Q:1726) was the bank answer – removed
+97 full +quad#r5 | TR 39ג(ד): the rider and every passenger wear a helmet on an ATV (quad#r5, classes B/C1/1); the bank-sourced twin rule tractor#r5 removed
+723 full +bus#r22 | TR 83(ד): do not start before every child has got off and moved away from the vehicle's path (bus#r22); the bank-sourced rule bus#r4 removed
+1445 full +tractor#r0 | TR 54(א)(5): slow vehicle / tractor – the expressway is closed to it ("סגורה בפניו", tractor#r0); the bank-sourced rule tractor#r1 removed
+1478 full +cargo2#r12 +heavy2#r21 | TR 85א(ו)(1): a container only in a vehicle whose licence approves carrying containers (heavy2#r21 shows (1)); was the bank-sourced heavy#r5

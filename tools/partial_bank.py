@@ -30,12 +30,26 @@ def official(u):
     if u['k'] == 'sign': return True
     return any(s and not s.startswith('Q:') for s in [u['s']] + [a for a in u.get('also', []) if u['k'] != 'ex' or not a.startswith('Q:')])
 
+def _pos(ref, L):
+    """v1.19: stable reference (lesson#r:<text start>) → current position id, so removing rules never misplaces a unit"""
+    lid, k = ref.split('#', 1)
+    if k[1:2] != ':' or lid not in L: return ref
+    l = L[lid]; kind = k[0]
+    T = {'r': [r['t'] for r in l['rules']], 'b': l['body'], 'c': [c['f'] for c in l['recap']], 'm': [m['t'] for m in l['mnem']],
+         'x': ['Q%d' % x['q'] for x in l['ex']]}[kind]
+    hit = [i for i, t in enumerate(T) if (t == k[2:] if kind == 'x' else t.startswith(k[2:]))]
+    return f'{lid}#{kind}{hit[0]}' if len(hit) == 1 else None
+
 def attach(out, QS):
     """add l['pbank'] = [{'q': id, 'u': [units]}] to the host lesson of every B/A partial question (first verdict unit
     whose lesson serves all the question's B/A classes) and put the question in that lesson's quiz"""
     SG = json.load(open(os.path.join(R, 'data/signs.json')))
     L = {l['id']: l for l in out}
     P = partial_ids(QS); placed = {}
+    for e in P.values():
+        if e.get('ref'):
+            pos = [_pos(r, L) for r in e['ref']]
+            if all(pos): e['rule'] = pos
     for q, e in sorted(P.items()):
         need = set(QS[q]['t']) & BA
         host = next((u.split('#')[0] for u in e['rule'] if u.split('#')[0] in L and need <= set(L[u.split('#')[0]]['cls'])), None)

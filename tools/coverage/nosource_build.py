@@ -31,7 +31,8 @@ G = {
           'no official state text teaches this riding technique; not written from general knowledge'),
 }
 Q = {
- 'law': {606: 'warning-sign shape (triangle, apex up): drawn in the sign table but not stated in any official text; textbook, MoE booklets and sign-table prose searched; the rule signs#r9 is the bank answer, labelled so (v1.18, review #14)',
+ 'law': {606: 'warning-sign shape (triangle, apex up): drawn in the sign table but not stated in any official text; textbook, MoE booklets and sign-table prose searched; its bank-sourced rule was removed from the signs lesson (v1.18 none-S; v1.19 rule removed, review #15)',
+         477: 'round-sign shape ("הוריה או איסור"): drawn in the sign table but not stated in any official text, same search as Q606; its bank-sourced rule signs#r10 removed (v1.19, review #15 D3)',
          520: 'urban-area guide sign: meaning not stated in the sign table entries or any rule (v1.9 re-judgement; was gallery tile only)',
          1307: 'city-centre guide sign: not in the sign table used, no rule (v1.9 re-judgement; was gallery tile only)',
          92: 'licence not valid > 1 year needs tests: no such provision in pinned TR 173/174/196/203 or TO; TR 172א is marked "(בוטלה)" (cancelled) in the pinned text. Bank answer may be outdated vs current law – not cited',
@@ -64,7 +65,10 @@ Q = {
           1619: 'oily patch in a turn', 1620: 'avoiding an obstacle', 1626: 'safety space responsibility',
           1629: 'foot brake fails (edu 18 car prose says use the parking brake – conflicts)', 1639: 'lane splitting',
           1654: 'lean angle and headlight',
-          1659: 'riding two-up', 1663: 'obstacle', 1670: 'brake-pad wear mark'},
+          1659: 'riding two-up', 1663: 'obstacle', 1670: 'brake-pad wear mark',
+          # v1.19 (review #15 D3): these rested only on lesson rules whose source was the bank answer itself (s=Q:…); rules removed
+          1600: 'tyre grip limits braking/leaning (v1.19)', 1603: 'lane centre dirtiest/oiliest (v1.19)', 1604: 'oil patch (v1.19)', 1605: 'oil patch (v1.19)',
+          1606: 'oil patch (v1.19)', 1611: 'grip changes when leaning (v1.19)', 1649: 'wet-road skid / roll-over (v1.19)', 1669: 'mirror adjustment (v1.19)'},
 }
 def main():
     qs = {q['id']: q for q in json.load(open(P('data/q.he.json')))}

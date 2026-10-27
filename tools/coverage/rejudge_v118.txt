@@ -10,8 +10,8 @@
 1220 full +taxi#r8 +taxi#x2 | twin of Q614
 891 full +turns#r6 +signal#r11 | twin of Q1742: textbook p.50 + TR 44(ב) – U-turn from any lane unless a sign/marking forbids it
 1742 full +turns#r6 +signal#r11 | twin of Q891
-324 full +bus#r30 +heavy2#r30 | twin of Q1125: TR 159(ג) – retarders must be used on a descent marked by a steep-descent warning sign
-1125 full +bus#r30 +heavy2#r30 | twin of Q324
+324 full +bus#r28 +heavy2#r30 | twin of Q1125: TR 159(ג) – retarders must be used on a descent marked by a steep-descent warning sign
+1125 full +bus#r28 +heavy2#r30 | twin of Q324
 1335 full +cargo#r1 | was heavy2#r18 (the C1 licence class, which says nothing about load height); TR 85(א)(2) table: 3.50 m for 3,501–8,000 kg; twin of Q1527
 1527 full +cargo#r1 | twin of Q1335
 992 full +safety2#r10 +vehicle#r9 | twin of Q1001: textbook p.140 "ומאפשרת היגוי" and the ABS chip "מעניקה שליטה לנהג על מערכות ההיגוי ומונעת … נעילת גלגלים … בלימה חזקה" (was partial in v1.15: chip then lacked the steering clause; reviewer #14 D7)
