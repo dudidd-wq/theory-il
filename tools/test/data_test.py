@@ -834,6 +834,15 @@ _col = [(q, n) for q, ns in _SGJ['q'].items() for n in ns if n in _SG and any(k 
 ok(not re.search(r'slice\(|substring\(|substr\(|…', _wb) and "s.t.split(' · ')" in _wb and not _n1 and not _col,
    f"v1.20 (review #16 N1): every sign 'למה?' box shows the whole entry with its 'כוחו יפה'/'מיועד ל' column ({sum(len(v) for v in _SGJ['q'].values())} question×sign feedbacks; cut: {_n1[:4]}; column lost: {_col[:4]})")
 ok('עד לצומת הקרוב' in ' '.join(_rend(_SG['626'])) and _SGJ['q'].get('584') == ['626'], "v1.20 (review #16 N1): Q584's why box shows sign 626 'כוחו יפה: עד לצומת הקרוב'")
+# v1.20 (review #16 N2): the About page's textbook-excerpt length claim is computed from the excerpts themselves (v1.19 said
+# 'up to 20 words' while 76 of 349 were longer, max 49)
+_TQ = json.load(open(os.path.join(R, 'tools/official/pages.json'), encoding='utf-8'))['textbook']['quotes']
+_TW = sorted(len(z['t'].split()) for z in _TQ); _TB = json.load(open(os.path.join(R, 'data/coverage.json'), encoding='utf-8'))['tb']
+_I18 = open(os.path.join(R, 'js/i18n.js'), encoding='utf-8').read()
+_tbt = re.findall(r"'ab\.tbookText': '([^']*)'", _I18)
+ok(len(_TB) == 8 and _TB[2] == len(_TQ) and _TB[5] == _TW[len(_TW) // 2] and _TB[6] == _TW[-1] and _TB[7] == sum(w <= 20 for w in _TW)
+   and len(_tbt) == 2 and all(all('{%d}' % i in x for i in (2, 5, 6, 7)) for x in _tbt) and not any(re.search(r'עד 20 מילים לקטע|at most 20 words', x) for x in _tbt),
+   f"v1.20 (review #16 N2): About excerpt-length claim = data ({_TB[2:]} vs {len(_TQ)} excerpts, median {_TW[len(_TW) // 2]}, max {_TW[-1]}, ≤20: {sum(w <= 20 for w in _TW)})")
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

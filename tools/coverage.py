@@ -167,9 +167,11 @@ _t = lambda x: [x['n'], x['full_pct'], x['strict_pct'], x['any_pct'], x['none_no
 json.dump({'v': 2, 'legend': {'f': 'taught', 'w': 'partly', 'n': 'not taught yet', 'S': 'no official state source', 'X': 'bank answer contradicts the law'},
            'est': EST,
            'tot': {'all': _t(T['all']), **{c: _t(T['class'][c]) for c in CLS}},
-           # v1.10: textbook use, computed (About text): [rules citing it, all rules, excerpts, pages, % of the book's ~45,600 words]
+           # v1.10: textbook use, computed (About text): [rules citing it, all rules, excerpts, pages, % of the book's ~45,600 words, median/max words, # ≤ 20 words]
            'tb': (lambda R, TQ: [sum(1 for r in R if 'OFF:textbook' in [r['s']] + r.get('also', [])), len(R), len(TQ), len({z['p'] for z in TQ}),
-                                 round(100 * sum(len(z['t'].split()) for z in TQ) / 45600, 1)])(
+                                 round(100 * sum(len(z['t'].split()) for z in TQ) / 45600, 1),
+                                 # v1.20 (review #16 N2): the real excerpt lengths (median, longest, how many ≤ 20 words) instead of a fixed 'up to 20'
+                                 sorted(len(z['t'].split()) for z in TQ)[len(TQ) // 2], max(len(z['t'].split()) for z in TQ), sum(len(z['t'].split()) <= 20 for z in TQ)])(
                [r for L in LS for r in L['rules']], json.load(open(P('tools/official/pages.json')))['textbook']['quotes']),
            'q': {str(k): v for k, v in sorted(cov.items())}}, open(P('data/coverage.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 full = {'v': 1, 'note': 'Whole-bank hand judgement of theory-il lessons against every official bank question. v: full|partial|none; '
