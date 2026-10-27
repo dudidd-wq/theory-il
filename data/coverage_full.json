@@ -4594,7 +4594,7 @@
 "rules4#r1"
 ],
 "ref": [
-"rules4#r:נתיב הנסיעה שלך נחסם? נותנים זכות קד"
+"rules4#r:נתיב הנסיעה שלך נחסם (ואין שוטר, אתת"
 ],
 "why": "rule written for this question (TR:68)",
 "cls": [
@@ -16940,7 +16940,7 @@
 "gap2#r1"
 ],
 "ref": [
-"gap2#r:ככל שהרווח מהרכב שלפניך גדול יותר, כ"
+"gap2#r:שמירת רווח מהרכב שלפניך מאפשרת לך לר"
 ],
 "why": "rule written for this question (OFF:textbook)",
 "cls": [
@@ -18196,7 +18196,7 @@
 "rules4#r1"
 ],
 "ref": [
-"rules4#r:נתיב הנסיעה שלך נחסם? נותנים זכות קד"
+"rules4#r:נתיב הנסיעה שלך נחסם (ואין שוטר, אתת"
 ],
 "why": "rule written for this question (TR:68)",
 "cls": [

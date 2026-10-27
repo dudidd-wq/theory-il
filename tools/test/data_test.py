@@ -446,6 +446,25 @@ ok('המהירות המרבית חלה' not in _l3['t'] and 'להסעת המונ
 _ltj = [(l['id'], k, i, x[1][:60]) for l in LB.values() for k in ('rules', 'ex', 'recap', 'mnem') for i, r in enumerate(l.get(k) or []) for x in r.get('x') or []
         if x[0].startswith('LT') and (re.search(r'לוח תמרורים|ספטמבר 2022|התש ?פ', x[1]) or re.match(r'\s*\d+\s*[–-]\s*\d', x[1]))]
 ok(not _ltj, f'v1.15 (review #11 C1): no sign-table chip shows the PDF page header or a sign-number range instead of the sign\'s own entry {_ltj[:3]}')
+# v1.15 (review #11 C4/T3): each rule's distinctive claim terms appear in the passage its chips show
+_nz = lambda x: re.sub(r'\s+', ' ', re.sub(r'[״׳"\'`“”„‘’\-–—־.,;:!?()\[\]/•]', ' ', re.sub(r'[\u0591-\u05C7]', '', x))).strip()
+_MUST = {'duty#r7': ['תנאי הרשיון', 'לא ירשה לנהוג'], 'lanes#r4': ['בשטחים המתים', 'החלפה חדה'], 'overtake2#r7': ['הפרש מהירות', 'קריטי במעלה הר'],
+         'maint2#r9': ['משפת הכביש', 'האפוד הזוהר', 'המשולש', 'לאבטח את הרכב', 'לשחרר מעט את האומים', 'להציב את המגבה'],
+         'moveoff#r5': ['לפני שמגיעים אליה', 'לוחצים קלות על דוושת הדלק', 'סכנה לאיבוד שליטה'], 'gap2#r1': ['לראות משתמשי דרך אחרים', 'ולהיראות'],
+         'yield2#r5': ['אטית מאוד', 'בדיקה קפדנית', 'נפתח שדה הראייה', 'ורק אז'], 'bus#r8': ['ההגה והבלמים', 'לחץ האויר', 'האורות', 'הדלתות והחלון', 'הצופר', 'מגבי השמשות'], 'winter2#r2': ['חלון פתוח', 'מפשירי אדים'], 'cockpit#r12': ['הראייה ההיקפית', 'חפיפה', 'השטחים המתים'],
+         'parking3#r1': ['2מטרים', 'כאשר התחום מסומן', '12מטרים לפניו'], 'rules4#r1': ['נחסם', 'זכות קדימה לבא כנגדו'],
+         'licence2#r3': ['מצלמת מהירות', 'אלא אם כן יוכיח'], 'maint2#r0': ['בספר הרכב של היצרן'], 'emerg2#r2': ['לאחוז היטב בהגה', 'בקו ישר', 'פנצ']}
+_mb = []
+for _u, _ts in _MUST.items():
+    _r = LB[_u.split('#')[0]]['rules'][int(_u.split('#r')[1])]; _px = _nz(' '.join(x[1] for x in _r.get('x') or [])).replace(' ', '')
+    _mb += [(_u, t) for t in _ts if _nz(t).replace(' ', '') not in _px]
+ok(len(_MUST) >= 15 and not _mb, f'v1.15 (review #11 C4): each listed rule\'s distinctive claim terms are in its own passage ({len(_MUST)} rules) {_mb[:4]}')
+# and generically: every cited rule shares at least two content words (4+ letters) with its passage
+_cw = lambda t: {w for w in _nz(t).split() if len(w) >= 3 and not w.isdigit()}
+_st = lambda S: {(w[1:] if w[0] in 'והבלמשכ' and len(w) > 4 else w)[:4] for w in S} | {w[:4] for w in S}
+_gb = [(l['id'], i) for l in LB.values() for i, r in enumerate(l.get('rules') or []) if r.get('x') and any(x[1] for x in r['x'])
+       and len(_st(_cw(r['t'])) & _st(_cw(' '.join(x[1] for x in r['x'])))) < 1]
+ok(not _gb, f'v1.15 (review #11 T3): every cited rule shares a content word with its passage {_gb[:6]}')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 
