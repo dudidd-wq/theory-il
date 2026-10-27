@@ -70,8 +70,9 @@ def excerpt(text, checks):
             continue
         ex += (parts[i] if last is None else (' ' if i == last + 1 else ' … ') + parts[i])
         last = i
-    if len(ex) > 900:
-        cut = max(ex.rfind(' … ', 0, 900), max(ex.rfind(m, 0, 900) for m in ('; ', '. ')) + 1)
+    if len(ex) > 1300:
+        ends = [k + 1 for k in (ex.find(m, 900) for m in ('; ', '. ', ' … ')) if 0 <= k < 1300]
+        cut = min(ends) if ends else max(ex.rfind(' … ', 0, 900), max(ex.rfind(m, 0, 900) for m in ('; ', '. ')) + 1)
         ex = ex[:cut].rstrip() + ' …'
     return ex
 

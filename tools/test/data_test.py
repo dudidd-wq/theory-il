@@ -314,7 +314,7 @@ sys.path.insert(0, os.path.join(R, 'tools'))
 from lessons_spec import LESSONS as _LS, EXAMPLES as _EXS
 from cite_v113 import CHK as _CITE
 _LAW = J('tools', 'law/law.json')
-_nm = lambda x: re.sub(r'\s+', ' ', re.sub(r'[״׳"\'`“”„‘’\-–—־.,;:!?()\[\]/]', ' ', re.sub(r'[\u0591-\u05C7]', '', x))).strip()
+_nm = lambda x: re.sub(r'\s+', ' ', re.sub(r'[״׳"\'`“”„‘’\-–—־.,;:!?()\[\]/…]', ' ', re.sub(r'[\u0591-\u05C7]', '', x))).strip()
 _pg = lambda e: re.sub(r'\s*\(עמ׳ \d+\)$', '', e)
 _sid = lambda s: re.match(r'^(TR|TO|LT|LTP|Q|OFF):([^()]+)', s).group(0)
 _LJI = {l['id']: l for l in LJ['lessons']}
@@ -645,6 +645,21 @@ for _l in L:
     _nr = {(_r.get('t') or '')[:40] for _r in _l.get('rules', []) if 'אינו אחיד' in (_r.get('t') or '')}
     _incon += [f"{_l['id']}:{e.get('q')}" for e in (_l.get('ex') or []) if (e.get('t') or '')[:40] in _nr and 'אינו אחיד' not in e.get('t', '')]
 ok(not _incon, f'v1.17 (review #13 N8): a lesson example keeps the "the book is not uniform" note of its rule {_incon[:5]}')
+# v1.18 (review #14 D1): sentence integrity of EVERY source chip (OFF + TR/TO) – no dropped negation before a chip,
+# no chip starting/ending inside a word, no OFF chip starting/ending mid-sentence (tools/test/chip_integrity.py)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import chip_integrity as _CI
+_st = _CI.selftest()
+ok(_st[0] and any(f.startswith('NEG') for f in _st[0]) and _st[1] and _st[2] == [],
+   f'v1.18 (review #14 D1): chip-integrity check catches the dropped "ואל לו לנהג" and the broken "שמערכת ABSפועלת כהלכה" fragment ({_st})')
+if not _CI.available():
+    SKIPS += ['chip sentence integrity']
+    print('SKIP chip sentence-integrity check: official cache absent (run tools/official/fetch_cache.py)')
+else:
+    _n, _miss, _bad = _CI.scan(list(LB.values()))
+    ok(_n >= 900 and not _miss and not _bad,
+       f'v1.18 (review #14 D1): all {_n} source chips are whole sentences/clauses – no negation dropped before a chip, no mid-word/mid-sentence cut (not located: {_miss[:3]}; problems: {_bad[:4]})')
+
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 
