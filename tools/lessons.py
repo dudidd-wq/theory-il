@@ -59,6 +59,25 @@ def fix_split(t):
     return re.sub(r'(?<![^\s])([כבמל]) - (?=\d)', r'\1-', t)
 # the "כוחו יפה" (where the sign applies) column, for entries whose two text columns otherwise read as one sentence
 LT_FORCE = {'203': 'בצומת או בתנועה שלפניך', '218': 'עד לצומת הבא'}
+# v1.20 (review #16 item 6): every sign's last column (כוחו יפה / מיועד ל) as the dictionary splits it (signs_build.py) –
+# a lesson chip that quotes the entry shows that column under its label too, never merged into the meaning
+try:
+    _SE = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data/signs.json'), encoding='utf-8'))['e']
+except Exception: _SE = {}
+LT_COL = {k: m.groups() for k, v in _SE.items() for m in [re.search(r' · (כוחו יפה|מיועד ל): (.+)$', v)] if m}
+def lt_col(key, e2):
+    if ' · ' in e2 or key not in LT_COL: return e2
+    lab, tail = LT_COL[key]
+    words = re.findall(r'[^\s.,;:]+', tail)
+    if not words: return e2
+    m = None
+    for n in range(len(words), min(3, len(words)) - 1, -1):   # the whole column, or (an entry cut by the cap, ending '…') its opening words
+        pat = r'[\s.,;:]+'.join(re.escape(w) for w in words[:n])
+        for m in re.finditer(r'(?<=[\s.,;:])' + pat + (r'(?=[\s.,;:]*$)' if n == len(words) else r'(?=[\s.,;:]*…?$)'), e2): pass
+        if m: break
+    if not m or m.start() < len(key) + 3: return e2
+    head = e2[:m.start()].rstrip(' .,;:–-')
+    return f'{head} · {lab}: {e2[m.start():].rstrip(" .")}'
 _HEB = 'אבגדהוזחטיכלמנסעפצקרשת'
 def _item(p):
     # v1.19 (review #15 D6): the label of a numbered / lettered item line – (kind, ordinal) – or None
@@ -211,6 +230,7 @@ def source(src, checks, where):
             if key in LT_FORCE and (' ' + LT_FORCE[key]) in e2: e2 = e2.replace(' ' + LT_FORCE[key], ' · כוחו יפה: ' + LT_FORCE[key], 1)
             # v1.17: an entry cut by the 220-character cap ends at a whole word, marked '…'
             if len(e2) >= 200 and not re.search(r'[.!?)]$', e2) and not m_end: e2 = e2.rsplit(' ', 1)[0] + ' …'
+            e2 = lt_col(key, e2)   # v1.20 (review #16 item 6): after the cap, so a cut column still gets its label
             return e, e2
         if ok:
             # v1.15 (review #11 C1): prefer the window where the number opens the sign's own entry (its cut entry holds the checks),

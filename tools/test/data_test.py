@@ -882,6 +882,20 @@ ok(not _split and 'לצומת ועבור' in json.load(open('data/signs.json', e
    and 'את מעבר המפגש' in json.load(open('data/signs.json', encoding='utf-8'))['e']['722'],
    f'v1.20 (review #16 N4): no split-word artefacts in signs/lessons/sources ({sorted(_split)[:5]}); 514 לצומת, 722 מעבר')
 ok(not _brk and '1,500 ק״ג' in json.dumps(_LJ['cargo'], ensure_ascii=False), f"v1.20 (review #16 N6): no '1(,)500'-style bracketed editor punctuation ({sorted(_brk)[:5]})")
+# v1.20 (review #16 item 6): a lesson chip that quotes a sign's last column shows it under the table's label (כוחו יפה / מיועד ל)
+_SEe = json.load(open('data/signs.json', encoding='utf-8'))['e']
+_nolab, _lab = [], 0
+for _l in json.load(open('data/lessons.json', encoding='utf-8'))['lessons']:
+    for _g in ('rules', 'mnem', 'ex', 'recap', 'pbank'):
+        for _r in _l.get(_g) or []:
+            for _x in (_r.get('x', []) if isinstance(_r, dict) else []):
+                _m = re.search(r' · (כוחו יפה|מיועד ל): (.+)$', _SEe.get(_x[0][3:], '')) if _x[0].startswith('LT:') else None
+                if not _m: continue
+                _w = re.findall(r'[^\s.,;:]+', _m[2])[:3]
+                if re.search(r'[\s.,;:]+'.join(map(re.escape, _w)), _x[1]):
+                    if f' · {_m[1]}: ' in _x[1]: _lab += 1
+                    else: _nolab.append(f"{_l['id']}:{_x[0]}")
+ok(not _nolab and _lab >= 40, f'v1.20 (review #16 item 6): sign chips show column 4 under its label ({_lab} labelled; unlabelled {_nolab[:5]})')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 
