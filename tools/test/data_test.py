@@ -385,6 +385,10 @@ def _split_words(t):
 _spl = sorted({(l['id'], k, i) for l in LALL for k in ('rules', 'mnem', 'recap', 'ex') for i, r in enumerate(l.get(k, [])) for x in r.get('x', []) if _split_words(x[1])})
 _spl += sorted({('src', s_) for s_, v in SRC.items() for e in v.get('ex', []) if _split_words(e)})
 ok(not _spl, f'v1.18 (review #14 D5): no split word (a lone Hebrew letter) in any chip passage {_spl[:5]}')
+# v1.18 (self-audit): a law chip never stops on an open list ("ויפרט בהודעה את –", "…, או") without saying it goes on (" …")
+_opn = sorted({(l['id'], k, i) for l in LALL for k in ('rules', 'mnem', 'recap', 'ex') for i, r in enumerate(l.get(k, [])) for x in r.get('x', [])
+               if x[0].startswith(('TR:', 'TO:')) and _re.search(r'(?:[–—:]|\sאו)\s*$', x[1])})
+ok(not _opn, f'v1.18 (self-audit): no law chip ends on an open list without " …" {_opn[:5]}')
 ok(_split_words('אם החץ מו פ יע בכיוון') and _split_words('ב קטע דרך') and _split_words('תמרורי ם') and not _split_words('ס - 62 מסעדה, 724 פ או'),
    'v1.18: the split-word check itself flags "מו פ יע", "ב קטע", "תמרורי ם" and allows "ס - 62", "724 פ"')
 _lt = lambda k: ' '.join(SRC.get(k, {}).get('ex', []))

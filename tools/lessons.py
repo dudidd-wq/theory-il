@@ -84,6 +84,8 @@ def excerpt(text, checks):
         ends = [k + 1 for k in (ex.find(m, 900) for m in ('; ', '. ', ' … ')) if 0 <= k < 1300]
         cut = min(ends) if ends else max(ex.rfind(' … ', 0, 900), max(ex.rfind(m, 0, 900) for m in ('; ', '. ')) + 1)
         ex = ex[:cut].rstrip() + ' …'
+    # v1.18 (self-audit): a chip that stops on an open list ('… את –', '…, או') says the list goes on
+    if last is not None and last < len(parts) - 1 and re.search(r'(?:[–—:]|\sאו)\s*$', ex) and not ex.endswith('…'): ex += ' …'
     return ex
 
 PASS = []  # v1.11: passages picked by the last source() calls (per-example official wording)
