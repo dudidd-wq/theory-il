@@ -61,8 +61,11 @@ _bdr = [(k, r) for k, e in CF['q'].items() if e['v'] != 'none' for r in e['rule'
 ok(not _bdn and not _bdr, f'v1.14: a note saying the bank differs is a conflict (X) {_bdn[:5]}; no verdict cites a rule that says the bank differs {_bdr[:5]}')
 # v1.14 (review #10 N5): coverage never rests on uncited lesson-body prose
 ok(not [k for k, e in CF['q'].items() for r in e['rule'] + e['ref'] if '#b' in r], 'v1.14: no verdict cites lesson-body prose (#b units)')
-_RJ4 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v114.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
-_RJ = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v113.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ4}
+_RJ5 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v115.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
+_RJ4 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v114.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ5}
+ok(len(_RJ5) >= 15 and all(CF['q'][q]['by'] == 'v1.15' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ5.items()),
+   f'v1.15: every re-judgement of review #11 and the strict re-sample ({len(_RJ5)}) is applied')
+_RJ = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v113.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ4 and l.split()[0] not in _RJ5}
 ok(all(CF['q'][q]['by'] == 'v1.14' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none')
        and (v != 'conflict' or CF['q'][q].get('src') == 'X') for q, v in _RJ4.items()), f'v1.14: every re-judgement of review #10 ({len(_RJ4)}) is applied')
 ok(all(CF['q'][q]['by'] == 'v1.13' and (v in ('why',) or CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none')) for q, v in _RJ.items()),
@@ -440,6 +443,9 @@ ok(not _jk and _nj >= 1300, f'v1.15 (review #11 C1/T2): every displayed passage 
 _lc = LB['licence2']['rules'][3]; _l3 = LB['law3']['rules'][0]
 ok('אלא אם כן יוכיח מי נהג' in ' '.join(x[1] for x in _lc['x']) and 'כגון מצלמת מהירות' in ' '.join(x[1] for x in _lc['x']), 'v1.15 (review #11 C2): licence2#r3 chip carries the exception "אלא אם כן יוכיח מי נהג" and "כגון מצלמת מהירות" (p.145)')
 ok('המהירות המרבית חלה' not in _l3['t'] and 'להסעת המונים שאינו אוטובוס' in _l3['t'] and 'להסעת המונים שאינו אוטובוס' in ' '.join(x[1] for x in _l3['x']), 'v1.15 (review #11 C3): law3#r0 states only what TO 71א1 says, incl. the mass-transit-lane exception')
+_ltj = [(l['id'], k, i, x[1][:60]) for l in LB.values() for k in ('rules', 'ex', 'recap', 'mnem') for i, r in enumerate(l.get(k) or []) for x in r.get('x') or []
+        if x[0].startswith('LT') and (re.search(r'לוח תמרורים|ספטמבר 2022|התש ?פ', x[1]) or re.match(r'\s*\d+\s*[–-]\s*\d', x[1]))]
+ok(not _ltj, f'v1.15 (review #11 C1): no sign-table chip shows the PDF page header or a sign-number range instead of the sign\'s own entry {_ltj[:3]}')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
 sys.exit(1 if fails else 0)
 

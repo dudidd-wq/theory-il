@@ -1,0 +1,24 @@
+# v1.15 (review #11, item 4) strict re-judgement, applied after rejudge_v114.txt. Same line format: "qid verdict [+lesson#rN ...] | why"
+#
+# reviewer-flagged verdicts
+1058 partial +maint2#r2 | p.127: the manufacturer's instructions cover periodic servicing and "תדירות הטיפול נקבעת על-פי מספר הקילומטרים"; the textbook never says the frequency is the one the manufacturer recommends
+1028 full +maint2#r0 | p.126: chip now carries "…ואף מפורטת בספר הרכב של היצרן" – decides the answer
+1012 partial +safety2#r4 | p.134: seat-back angle together with belts reduces injury; nothing cited says an over-reclined seat impairs the belt (rule claim removed)
+1558 partial +emerg2#r2 | p.149 puncture section: grip the wheel firmly, keep a straight line, slow down as far as possible; "במתינות" (gentle braking) is not in the source
+239 partial +rules4#r9 | TR 84א: chip is the table's heading only; the table rows that exclude a private car are not shown
+1668 full +moto3#r8 | TR 54(א)(1): motor vehicle other than (2)–(5) (bus, heavy commercial, slow vehicle) – a motorcycle – 50 urban / 80 non-urban; shown in the chip
+38 partial | consistency with Q239: TR 84א chip is the table's heading only
+#
+# v1.15 strict re-sample (random.seed(1115), 84 of 623 B/A 'full' non-dictionary verdicts, earlier samples and the reviewer's seed-2611 list excluded) – see rejudge_v115_sample.md
+82 partial | definition of "כביש" (roadparts#r1) does not say which numbered part of the drawing is the roadway (as Q172 in v1.14)
+168 partial | TR 60(2) shows the hand signal; nothing cited says to signal by hand when the electric indicator fails
+237 partial | only the drink-driving penalties (p.147) are cited; the court's general powers for traffic offences are not
+855 partial | sober#r8: falling asleep comes without warning; nothing cited links long continuous driving to fatigue
+927 partial | TR 63 (signal#r8) is the urban-road horn rule only; the question asks about the horn on any road
+938 partial | TR 64(3): the dirt-road vehicle yields; "slow down and watch it" is not in the cited text
+992 partial | ABS chip: prevents wheel locking; that it keeps steering control while braking is not in the cited passage
+1508 partial | as Q855
+1510 partial | sober#r17: stop and rest a quarter hour; that a break helps only for a short time is not in the source
+1538 partial | TR 88: "במשולש" – the colour/reflective triangle is in the second schedule, not shown
+1540 partial | TR 51: reasonable speed for the conditions; that it may not exceed the maximum speed is not in the cited text
+1779 full +priority#r1 | TR 64(2): turning left – yield to the vehicle coming from the opposite direction (was pointed at the right-hand rule)

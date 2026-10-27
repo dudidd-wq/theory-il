@@ -99,9 +99,17 @@ def source(src, checks, where):
         def _own(w):
             e = re.sub(r'\s+', ' ', w)[:220]
             # the sign's own entry only (cut at the next sign number); PDF RTL artefact ' .word' shown as ' word'
-            m = re.search(r'(?<!\d)' + re.escape(key) + r'(?!\d)', e); e2 = e[m.start():] if m else e
+            # v1.15: the entry opens where the number is followed by a word (not a range "101 – 152", a list "101 , 102" or a page header)
+            ww = re.sub(r'\s+', ' ', w)
+            m = re.search(r'(?<![\d\-–] )(?<!\d)' + re.escape(key) + r'(?!\d)(?= [.,]?[א-ת])', ww)
+            m = m or re.search(r'(?<!\d)' + re.escape(key) + r'(?!\d)', e)
+            if m and m.re.pattern.endswith('[א-ת])'): e = ww[m.start():m.start() + 220]; e2 = e
+            else: e2 = e[m.start():] if m else e
             kn = int(re.match(r'\d+', key).group()) if re.match(r'\d+', key) else None
             m = next((m for m in re.finditer(r'\s(\d{3})[א-ת]?\s', e2[len(key):]) if kn and kn < int(m.group(1)) <= kn + 9), None)
+            e2 = e2[:len(key) + m.start()] if m else e2
+            # v1.15: never run into the PDF page header ("12 לוח תמרורים (לות"ם) ספטמבר 2022 …") or the variant entry ("150 פ")
+            m = re.search(r'\s\d{1,3} לוח תמרורים|\sלוח תמרורים \(|\s' + re.escape(key) + r' ?פ(?![א-ת])', e2[len(key):])
             e2 = e2[:len(key) + m.start()] if m else e2
             return e, re.sub(r'(^|\s)[.,:;]+(?=\S)', r'\1', e2).strip()
         if ok:
