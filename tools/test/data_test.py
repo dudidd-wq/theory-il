@@ -795,6 +795,12 @@ ok('(3א) אחד המנויים להלן' in _xs('sober', 'mnem', 0) and '50 מ�
    and 'לא ישלם את האגרה' in _LJ['docs']['rules'][5]['t'],
    'v1.19 D5/D6: sober#m0 shows the (3א) chapeau and 50 µg; cockpit#r1 the chapeau and the right-side item; newdrv#m0 all three claims; docs#r5 says what TR 174(ב) says')
 
+# v1.19 (review #15 D4): fatigue questions cite fatigue rules (Q1704 was mapped to the speed rule defensive#r1)
+_CF = json.load(open(os.path.join(R, 'data/coverage_full.json'), encoding='utf-8'))['q']
+def _rs(ref):
+    lid, n = ref.split('#r'); return _LJ[lid]['rules'][int(n)]['s']
+_fq = [k for k in ('1704', '856', '857', '1509', '1510') if not all(_rs(r).startswith('OFF:fatigue') for r in _CF[k].get('rule', [])) or not _CF[k].get('rule')]
+ok(not _fq, f'v1.19 (review #15 D4): Q1704 and its fatigue twins cite only the RSA fatigue rules {_fq}')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

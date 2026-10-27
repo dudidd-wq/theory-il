@@ -21,3 +21,9 @@
 723 full +bus#r22 | TR 83(ד): do not start before every child has got off and moved away from the vehicle's path (bus#r22); the bank-sourced rule bus#r4 removed
 1445 full +tractor#r0 | TR 54(א)(5): slow vehicle / tractor – the expressway is closed to it ("סגורה בפניו", tractor#r0); the bank-sourced rule tractor#r1 removed
 1478 full +cargo2#r12 +heavy2#r21 | TR 85א(ו)(1): a container only in a vehicle whose licence approves carrying containers (heavy2#r21 shows (1)); was the bank-sourced heavy#r5
+# D4 – Q1704 (fatigue) was mapped to defensive#r1 (speed); re-pointed to the RSA fatigue rules; its fatigue twins re-judged on the same page
+1704 partial +sober#r8 +sober#r17 | fatigue: falling asleep comes without warning; refreshing 'יעזור לשמור על ערנות לפרק זמן קצר בלבד' (RSA fatigue page) – no official text says fatigue accidents happen 'when alertness drops' in these words
+857 full +sober#r17 | RSA fatigue page: stopping to refresh 'יעזור לשמור על ערנות לפרק זמן קצר בלבד' – a short break helps for a short time
+1510 full +sober#r17 | as Q857
+856 full +sober#r17 | RSA fatigue page: plan the rest places before a long trip, 'אם ערים שעות רבות, כדאי להימנע מנהיגה', stop to refresh on the way – rest before driving and breaks while driving
+1509 full +sober#r17 | as Q856
