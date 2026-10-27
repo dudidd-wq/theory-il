@@ -81,7 +81,10 @@ export function whyBox(x, ok, c) {
   const he = n => { n.lang = 'he'; n.dir = 'rtl'; return n; };
   const kids = [];
   if (x.kind === 'sign') {
-    kids.push(he(h('p', {}, h('b', { text: t('ln.why') + ' ' }), x.lines.map((s, i) => h('span', { text: (i ? ' · ' : '') + t('why.sign', s.n) + ' ' + (s.t.length > 220 ? s.t.slice(0, 220).replace(/[\s·,;:–-]+\S*$/, '') + ' …' : s.t) })))));
+    kids.push(he(h('p', {}, h('b', { text: t('ln.why') + ' ' }), x.lines.map((s, i) => h('span', { class: 'sgent' }, h('span', { text: (i ? ' · ' : '') + t('why.sign', s.n) + ' ' }),
+      // v1.20 (review #16 N1): the whole entry is shown – never cut – and each table column ('כוחו יפה:', 'מיועד ל:') on its own line,
+      // so the column that carries the answer (e.g. sign 626 'עד לצומת הקרוב', Q584) is always visible
+      ...s.t.split(' · ').map((col, j) => h('span', { class: j ? 'sgcol' : '', text: col })))))));
     kids.push(h('p', { class: 'refs' }, ...x.lines.map(s => SRC['LT:' + s.n] ? ref('LT:' + s.n) : ext(x.url, t('why.signSrc', s.n)))));
   } else if (x.kind === 'rule' || x.kind === 'part') {
     kids.push(he(h('p', {}, h('b', { text: t(x.kind === 'rule' ? 'ln.why' : 'why.part') + ' ' }), x.t)));

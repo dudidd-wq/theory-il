@@ -290,6 +290,8 @@ input[type="checkbox"], input[type="radio"] { min-width: 24px; min-height: 24px;
 .why { margin: 10px 0 4px; padding: 10px 12px; border-radius: var(--radius); background: var(--surface); border-inline-start: 4px solid var(--ok, #2a8); }
 .why.bad { border-inline-start-color: var(--bad, #c33); }
 .why p { margin: 4px 0; }
+.why .sgcol { display: block; margin-top: 2px; }
+.why .sgent + .sgent { display: block; margin-top: 6px; }
 .lnlist li { gap: 6px; align-items: center; }
 .vz-zone { fill: rgba(231, 76, 60, .28); stroke: #c0392b; stroke-dasharray: 4 3; }
 .vz-obj { fill: #8a9599; }

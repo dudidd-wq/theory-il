@@ -103,6 +103,14 @@ async function run(prof, opts) {
   await p.fill('#sq', '1535'); await p.waitForTimeout(400);
   ok(/1 תוצאות/.test(await text(p)) && /1535/.test(await p.textContent('.sres .qlist li')), 'search by question number');
   await p.click('a[href="#/search/go"]'); await p.waitForSelector('.answers .ans'); ok((await curId(p)) === 1535, 'practise search results');
+  // v1.20 (review #16 N1): Q584's why box shows sign 626's whole entry incl. 'כוחו יפה: עד לצומת הקרוב' (v1.19 cut it at 220 chars)
+  await go(p, '#/search'); await p.waitForSelector('#sq'); await p.fill('#sq', '584'); await p.waitForTimeout(400);
+  if (/584/.test(await p.textContent('.sres'))) {
+    await p.click('a[href="#/search/go"]'); await p.waitForSelector('.answers .ans'); const i84 = await curId(p), c84 = correct(i84);
+    await p.click(`.answers .ans:not([data-i="${c84}"])`); await p.waitForSelector('.why');
+    const w84 = await p.textContent('.why');
+    ok(i84 === 584 && /כוחו יפה: עד לצומת הקרוב/.test(w84) && !/…/.test(w84), 'why box: sign 626 shown whole with its "כוחו יפה" column (Q584)');
+  }
   // v1.15 (review #11 F1): a class-A question opened via search under class B still shows its (A) lesson, not "not explained yet"
   await go(p, '#/search'); await p.waitForSelector('#sq'); await p.fill('#sq', '1595'); await p.waitForTimeout(400);
   if (/1595/.test(await p.textContent('.sres'))) {
