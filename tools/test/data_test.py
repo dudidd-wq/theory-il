@@ -373,28 +373,35 @@ _L7 = LB['law3']['rules'][7]['x'][0][1]
 ok('דרך שאינה עירונית עם שטח הפרדה בנוי – 90' in _L7 and 'רכב מנועי למעט' in _L7, 'v1.14 (review #10 N2): law3#r7 chip states "…עם שטח הפרדה בנוי – 90" for its row')
 
 # v1.14 (review #10 N3): textbook chips are whole sentences/list items, not fragments
-_TBP = [re.sub(r'\s+', ' ', p if isinstance(p, str) else p.get('t', '')) for p in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'official', 'cache', 'textbook_pages.json')))]
-_frag = []; _nt = 0
-for _l in LB.values():
-    for _i, _r in enumerate(_l.get('rules', [])):
-        for _x in _r.get('x') or []:
-            if _x[0] != 'OFF:textbook': continue
-            _m = re.match(r'(.*) \(עמ׳ (\d+)\)$', _x[1]); _c = _m.group(1); _nt += 1
-            if len(_c) >= 45: continue
-            _t = _TBP[int(_m.group(2)) - 1]; _k = _t.find(_c); _e = _t[_k + len(_c):_k + len(_c) + 2]
-            if not (_c.rstrip().endswith(('.', '!', ':')) or _e.strip()[:1] in ('.', '•', '!', ':', '')): _frag.append(f"{_l['id']}#r{_i}")
-ok(not _frag and _nt >= 340, f'v1.14 (review #10 N3): every short textbook chip ends at a sentence/list-item boundary ({_nt} chips; fragments: {_frag[:8]})')
-_smp = []
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'official')); import pin as _pin
-_RAW = [p if isinstance(p, str) else p.get('t', '') for p in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'official', 'cache', 'textbook_pages.json')))]
-for _l in LB.values():
-    for _i, _r in enumerate(_l.get('rules', [])):
-        for _x in _r.get('x') or []:
-            if _x[0] != 'OFF:textbook': continue
-            _m = re.match(r'(.*) \(עמ׳ (\d+)\)$', _x[1]); _pg = _RAW[int(_m.group(2)) - 1]
-            for _z in _pin.quiz_spans(_pg): _pg = _pg.replace(_z, '')
-            if _pin.norm(_m.group(1)) not in _pin.norm(_pg): _smp.append(f"{_l['id']}#r{_i}")
-ok(not _smp, f'v1.14: every textbook chip occurs in the explanatory prose (not a sample-exam block) of the page its tag names ({_smp[:8]})')
+# v1.15 (review #11 T1): these two checks read the full textbook pages, which gov.il terms do not let us republish;
+# from a clean clone run tools/official/fetch_cache.py (one download, sha256-pinned) – otherwise they are SKIPPED, visibly
+_TBPF = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'official', 'cache', 'textbook_pages.json'); SKIPS = []
+if not os.path.exists(_TBPF):
+    SKIPS += ['textbook chips end at sentence boundaries', 'textbook chips are in explanatory prose']
+    print('SKIP 2 textbook-page checks: official cache absent (gov.il terms do not allow republishing whole pages; run tools/official/fetch_cache.py)')
+else:
+    _TBP = [re.sub(r'\s+', ' ', p if isinstance(p, str) else p.get('t', '')) for p in json.load(open(_TBPF, encoding='utf-8'))]
+    _frag = []; _nt = 0
+    for _l in LB.values():
+        for _i, _r in enumerate(_l.get('rules', [])):
+            for _x in _r.get('x') or []:
+                if _x[0] != 'OFF:textbook': continue
+                _m = re.match(r'(.*) \(עמ׳ (\d+)\)$', _x[1]); _c = _m.group(1); _nt += 1
+                if len(_c) >= 45: continue
+                _t = _TBP[int(_m.group(2)) - 1]; _k = _t.find(_c); _e = _t[_k + len(_c):_k + len(_c) + 2]
+                if not (_c.rstrip().endswith(('.', '!', ':')) or _e.strip()[:1] in ('.', '•', '!', ':', '')): _frag.append(f"{_l['id']}#r{_i}")
+    ok(not _frag and _nt >= 340, f'v1.14 (review #10 N3): every short textbook chip ends at a sentence/list-item boundary ({_nt} chips; fragments: {_frag[:8]})')
+    _smp = []
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'official')); import pin as _pin
+    _RAW = [p if isinstance(p, str) else p.get('t', '') for p in json.load(open(_TBPF, encoding='utf-8'))]
+    for _l in LB.values():
+        for _i, _r in enumerate(_l.get('rules', [])):
+            for _x in _r.get('x') or []:
+                if _x[0] != 'OFF:textbook': continue
+                _m = re.match(r'(.*) \(עמ׳ (\d+)\)$', _x[1]); _pg = _RAW[int(_m.group(2)) - 1]
+                for _z in _pin.quiz_spans(_pg): _pg = _pg.replace(_z, '')
+                if _pin.norm(_m.group(1)) not in _pin.norm(_pg): _smp.append(f"{_l['id']}#r{_i}")
+    ok(not _smp, f'v1.14: every textbook chip occurs in the explanatory prose (not a sample-exam block) of the page its tag names ({_smp[:8]})')
 # v1.14 (review #10 item 8 / N2): every number a rule/example/mnemonic/recap states appears in its displayed passages
 _W = {'1': ['אחת', 'אחד'], '2': ['שתי', 'שני', 'שנתיים', 'חודשיים'], '3': ['שלוש'], '4': ['ארבע'], '5': ['חמש', 'חמישה'], '6': ['שש', 'שישה'], '7': ['שבע'], '8': ['שמונה'], '9': ['תשע'], '10': ['עשר'], '11': ['אחד־עשר', 'אחד עשר', 'אחת עשרה'], '12': ['שנים עשר', 'שתים עשרה'], '14': ['ארבע עשרה'], '15': ['חמש עשרה', 'חמישה עשר'], '16': ['שש עשרה', 'שישה עשר', 'שש־עשרה'], '17': ['שבע עשרה', 'שבע־עשרה'], '18': ['שמונה עשרה', 'שמונה־עשרה'], '19': ['תשעה עשר', 'תשע עשרה'], '20': ['עשרים'], '21': ['עשרים ואחת'], '24': ['עשרים וארבע'], '30': ['שלושים'], '40': ['ארבעים'], '48': ['ארבעים ושמונה'], '50': ['חמישים'], '60': ['שישים'], '100': ['מאה'], '8.5': ['8 שעות ו־30 דקות']}
 def _nums(s):
@@ -465,6 +472,6 @@ _st = lambda S: {(w[1:] if w[0] in 'והבלמשכ' and len(w) > 4 else w)[:4] f
 _gb = [(l['id'], i) for l in LB.values() for i, r in enumerate(l.get('rules') or []) if r.get('x') and any(x[1] for x in r['x'])
        and len(_st(_cw(r['t'])) & _st(_cw(' '.join(x[1] for x in r['x'])))) < 1]
 ok(not _gb, f'v1.15 (review #11 T3): every cited rule shares a content word with its passage {_gb[:6]}')
-print(f'\n{len(fails)} failed' if fails else '\nall data checks passed')
+print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 
