@@ -10,7 +10,7 @@ import json, re, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'coverage'))
 from signs_dict import parse, LOT, ROOT
-from signs_tidy import vocab, tidy
+from signs_tidy import vocab, tidy, columns
 from units import norm
 
 PARTS = [(1, 'תמרורי אזהרה והתראה'), (2, 'תמרורי הוריה'), (3, 'תמרורי זכות קדימה'), (4, 'תמרורי איסורים והגבלות'),
@@ -21,6 +21,7 @@ def build():
     from sklearn.feature_extraction.text import TfidfVectorizer
     man = json.load(open(os.path.join(ROOT, 'tools/signs/manual.json')))
     E = parse(); V = vocab(E.values()); keys = sorted(E, key=int)
+    LC = json.load(open(os.path.join(ROOT, 'tools/signs/lt_cols.json')))   # column 4 of the table, by position (signs_cols.py)
     # hand-read cells keep the table's "." after the title: show it as "title – meaning" like the rest
     mt = {k: re.sub(r'^([^.]{3,90}?)\.\s+(?=\S)', r'\1 – ', t, count=1) for k, t in man.get('text', {}).items()}
     E = {k: mt.get(k) or tidy(E[k], V, k) for k in keys}   # extraction repaired; hand-read cells from manual.json
@@ -44,7 +45,7 @@ def build():
         if q.get('i') and how.get(qid) in ('manual', 'text') and len(qmap[qid]) == 1:
             img.setdefault(qmap[qid][0], q['i'])
     out = {'v': 1, 'src': {'title': LOT['title'], 'url': LOT['url'], 'sha256': LOT['sha256']},
-           'parts': [[p, t] for p, t in PARTS], 'e': {k: E[k] for k in keys}, 'img': img, 'q': qmap}
+           'parts': [[p, t] for p, t in PARTS], 'e': {k: columns(E[k], LC, k) for k in keys}, 'img': img, 'q': qmap}
     return out, how
 
 if __name__ == '__main__':

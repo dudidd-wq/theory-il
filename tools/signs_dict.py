@@ -16,14 +16,21 @@ def fix(s):
     if k and re.search(r'[\u05d0-\u05ea]{2}', re.sub(r'\d{3} ?פ', '', rest)):
         s = ' '.join(tok[:k + 1] + ['§'] + tok[k + 1:])
     # pdf text puts sentence punctuation before words: ".משובש" → "משובש."
-    s = re.sub(r'(^|\s)([.,;:]+)(?=[^\s\d])', r'\1', s)
+    # v1.19 (review #15 D2): the mark belongs after its word (".משובש" → "משובש."), not dropped – dropping it ran the
+    # table's sentences and columns together ("…כל דין בחירת הנתיבים…")
+    s = re.sub(r'(?<=[^\s.,;:]) ([.,;:]+)(?=\s|$)', r'\1', s)            # stand-alone mark after a number/word: "926 ." → "926."
+    s = re.sub(r'(^|\s)([.,;:]+)([^\s.,;:§]+)', lambda m: m[1] + m[3] + ('.' if '.' in m[2] else m[2][-1]), s)
     s = re.sub(r'\s+', ' ', s)
     return s.strip(' .§')
 
+PAGE = {}   # sign number -> pdf page of its row (filled by parse)
+
 def parse():
-    pages = [p for p in LOT['pages'][5:] if not ('עדכונים' in p[:200] or (re.search(r'חלק \d', p) and len(p) < 400))]
-    txt = ' '.join(HDR.sub('', p) for p in pages)
-    REF = re.compile(r"((?<!ה)תמרור|תמרורים|מס'?|'מס|עד|ב\s*-|או|ו\s*-|,|לפי|(?<!ה)סימון|כאמור ב\s*[-–])\s*$")
+    pages = [(i, p) for i, p in enumerate(LOT['pages'][5:], 6) if not ('עדכונים' in p[:200] or (re.search(r'חלק \d', p) and len(p) < 400))]
+    txt, at0 = '', []                           # at0: (offset, pdf page) – where each page starts in txt
+    for i, p in pages:
+        at0.append((len(txt) + (1 if txt else 0), i)); txt = (txt + ' ' if txt else '') + HDR.sub('', p)
+    REF = re.compile(r"((?<!ה)תמרור|תמרורים|מס'?|'מס|עד|ב\s*-|או|ו\s*-|,|לפי|(?<!ה)סימון|כאמור ב\s*[-–]|האות|הצהוב)\s*$")   # v1.19: "…להופיע האות 716" / "האור הצהוב 705" are references
     occ = {}
     for m in re.finditer(r'(?<![\d,.\-])([1-9]\d{2})(?![\d,.])', txt):
         if REF.search(txt[max(0, m.start() - 9):m.start()]): continue
@@ -40,7 +47,8 @@ def parse():
         _, e, o = min((c for c in cands if c[0] <= first + 1500), key=lambda c: c[1])
         pos.append((e, o[0], o[1])); last, at = e, o[1]
     for (n, a, b), nxt in zip(pos, pos[1:] + [(0, len(txt), 0)]):
-        v = fix(txt[b:nxt[1]]); ent[str(n)] = v[:402 if '§' in v[:400] else 400]   # +2 for the title mark
+        PAGE[str(n)] = max(pg for off, pg in at0 if off <= a)
+        v = fix(txt[b:nxt[1]]); ent[str(n)] = v[:1202 if '§' in v[:1200] else 1200]   # +2 for the title mark (v1.19: 400 cut six cells mid-word)
     prev = ''
     for k in sorted(ent, key=int):  # pairs like 102/103 share one meaning cell
         if not ent[k]: ent[k] = prev

@@ -38,7 +38,8 @@ def glue(s, V, B):
     return ' '.join(out)
 
 def tidy(s, V, n=None):
-    s = re.sub(r'\s*1 \. צורת ה ?(?:סימון|סמל|תמרור) וצבעו.*$', '', s)          # leaked column header (+ the symbol table after it)
+    s = re.sub(r'\s*1 ?\. ?צורת ?ה ?(?:סימון|סמל|תמרור) וצבעו.*$', '', s)          # leaked column header (+ the symbol table after it)
+    s = re.sub(r'""([^\s"]+)', r'"\1"', s)                                  # v1.19: the pdf puts both quote marks before the word: '""אופניים' → '"אופניים"'
     s = s.replace('""', '"').replace(' מותרת ל - ', ' מותרת ל: ')
     s = re.sub(r'\)\s*([^()]*?)\s*\(\s*', lambda m: '(' + m[1].strip() + ') ', s)   # mirrored brackets ")ס - 43 (" → "(ס - 43) "
     s = re.sub(r'\(([^()]+)\) (נייד|שונות|מדרגות|כבש|יורד)\b', r'(\1 \2)', s)
@@ -46,10 +47,42 @@ def tidy(s, V, n=None):
     s = re.sub(r'!(\S+)', r'\1!', s)                                             # "!עצור" → "עצור!"
     s = re.sub(r"'(מס|מ)(?=[\s.,]|$)", r"\1'", s)                               # "'מס 630" → "מס' 630"
     s = re.sub(r'(?<=[\u05d0-\u05ea\d]) - (?=\d)', '-', s)                        # "כ - 300" → "כ-300"
+    s = re.sub(r'(?<!\S)(של|את|על|אל|עם) (ה) (?=[\u05d0-\u05ea]{2})', r'\1 \2', s)   # "של ה קו" → "של הקו" (not glue's "שלה קו")
     s = glue(s, V, V['__base__'])
+    # v1.19 (review #15): letters glue() could not place – a lone prefix letter joins the next word ("ל שמאל" → "לשמאל"),
+    # any other lone letter is the end of the word before it ("האו ר" → "האור", "חד ה" → "חדה")
+    s = re.sub(r'(?<![^\s(])([בהולמכש]) (?=[\u05d0-\u05ea]{2})', r'\1', s)
+    s = re.sub(r'([\u05d0-\u05ea]{2,}) ((?!ל:)[\u05d0-\u05ea])(?=[\s.,;:!]|$)', r'\1\2', s)   # but "מותרת ל:" stays
     s = re.sub(r'(\d{3}) פ(?=[\s.,]|$)', r'\1פ', s)                             # variant numbers "724 פ" → "724פ"
     if n: s = re.sub(rf'\s*(נוהג רכב)?\s*{n}פ$', '', s)                          # next row's label leaking into the cell
-    s = re.sub(r'\s+נוהג רכב$', '', s)                                          # the "intended for" column of part 7
     s = re.sub(r'\s+([.,;:])', r'\1', s); s = re.sub(r'\s+', ' ', s)
     s = re.sub(r'[.:]?\s*§\s*', ' – ', s, count=1).replace(' § ', ' ').replace('§', '')   # title – meaning
     return s.strip(' .–')
+
+
+def _n(x): return re.sub(r'[^\u05d0-\u05ea0-9]', '', x)
+
+def columns(s, LC, n):
+    """Mark where the table's last column starts: "meaning · כוחו יפה: force" (or "· מיועד ל: …" in part 7).
+    LC = tools/signs/lt_cols.json, the column-4 lines read by position from the pinned PDF (signs_cols.py), n = sign number.
+    The longest run of consecutive column-4 lines that is exactly the cell's tail is the column-4 text."""
+    if '·' in s: return s
+    from signs_dict import PAGE
+    pg = PAGE.get(str(n)); L = [x for x in LC['lines'] if pg and pg <= x[0] <= pg + 1]   # the sign's page (+ the next)
+    e = _n(s); best = None
+    for j in range(len(L)):
+        acc = ''
+        for i in range(j, max(-1, j - 40), -1):
+            if L[i][1] != L[j][1]: break
+            acc = _n(L[i][2]) + acc
+            if not e.endswith(acc): break
+            if len(acc) < 2: continue
+            if len(e) - len(acc) >= 2 and (best is None or len(acc) > len(best[0])): best = (acc, L[j][1])
+    if not best: return s
+    k, cut = len(best[0]), len(s)
+    while k:                                   # walk back over k letters/digits of the original text
+        cut -= 1
+        if re.match(r'[\u05d0-\u05ea0-9]', s[cut]): k -= 1
+    while cut and s[cut - 1] in '("': cut -= 1     # an opening bracket / quote belongs to the column-4 text
+    head, tail = s[:cut].rstrip(' .,;:–-'), s[cut:].strip(' .')
+    return f'{head} · {best[1]}: {tail}' if head else s

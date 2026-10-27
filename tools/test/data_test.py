@@ -178,8 +178,8 @@ bad = [k for k, t in SG['e'].items() if re.search(r'(?<!\S)[\u05d0-\u05ea](?!\S)
 ok(len(bad) <= 3, f'sign texts without split letters / mirrored brackets (left: {bad})')
 ok('ללא ניקוד' in T('js', 'i18n.js') and "t('ln.noNiqqud')" in T('js', 'learn.js'), 'gov.il excerpts marked "ללא ניקוד" (chip + About)')
 ok(all(x in viz for x in ('שלוחה אחורית', "'רוחב וגובה'", '313(א)(3)(ב1)')), 'v1.4: heavy2 size diagram has length / width-height / rear-overhang views')
-ok(SG['e']['701'].startswith('אור אדום – ') and SG['e']['623'] == 'כביש ללא מוצא – בכביש שלפניך', 'sign title and meaning separated by " – " (701, 623)')
-ok(sum(' – ' in t for t in SG['e'].values()) >= 200, 'most sign entries show "title – meaning"')
+ok(SG['e']['701'].startswith('אור אדום – ') and SG['e']['623'] == 'כביש ללא מוצא · כוחו יפה: בכביש שלפניך', 'sign title and meaning separated by " – ", the last column by " · " (701, 623)')
+ok(sum(' – ' in t or ' · ' in t for t in SG['e'].values()) >= 250, 'most sign entries show "title – meaning" or "title · column"')
 RS = lambda i: [r['s'] for r in LB[i]['rules']] + [x for r in LB[i]['rules'] for x in r.get('also', [])]
 ok({'TR:324', 'TR:83(ד)', 'TR:483א'} <= set(map(str, RS('bus'))) or all(any(k in str(x) for x in RS('bus')) for k in ('TR:324', 'TR:83', 'TR:483')), 'v1.4: bus lesson teaches brake terms (324), child doors (83), bins (483א)')
 ok(any('TR:188' in str(x) for x in RS('tractor')), 'v1.4: tractor lesson teaches the age-16 rule (TR:188)')
@@ -709,6 +709,27 @@ _tbad = [(i, j, _cq[str(i)][0], _cq[str(i)][2], _cq[str(j)][0], _cq[str(j)][2]) 
          if sorted(_cq[str(i)][2]) != sorted(_cq[str(j)][2]) or (_cq[str(i)][0] != _cq[str(j)][0] and (i, j) not in TWIN_VERDICT_EXCEPT)]
 ok(not _tbad and (260, 1774) in TWINS and _cq['260'][2] == ['defensive#r11'],
    f'v1.18 (review #14 D2): {len(TWINS)} twin pairs share their cited rules and verdict (Q260 = Q1774 = defensive#r11, TR 107(ד)) {_tbad[:3]}')
+
+# v1.19 (review #15 D2): the sign dictionary keeps the LT table's columns apart – the last column (כוחו יפה / מיועד ל)
+# is cut off with " · " by its word positions in the pinned PDF (tools/signs/lt_cols.json), so no entry runs two cells together
+sys.path.insert(0, os.path.join(R, 'tools'))
+from signs_tidy import columns as _cols
+_LC = json.load(open(os.path.join(R, 'tools', 'signs', 'lt_cols.json')))
+_JOIN = re.compile(r'(?<!שבו)(?<!שבה)(?<!שלצידו)(?<!שלפניו)(?<!שמעליו)(?<!אם)(?<!גם)(?<=[\u05d0-\u05ea\d]) (הוצב התמרור|הוצב הרמזור|בחירת הנתיבים|שולב סמל|לענין זה|לעניין זה|חץ בצבע)')
+def _sign_bad(k, v):
+    p = []
+    if re.sub(r'(?<=[\u05d0-\u05ea])"(?=[\u05d0-\u05ea])', '', v).count('"') % 2: p.append('quote')
+    p += ['lone:' + v[max(0, m.start() - 8):m.end() + 8] for m in re.finditer(r'(?<!\S)[\u05d0-\u05ea](?!\S)', v) if not v.startswith('ס -', m.start())]
+    p += ['join:' + v[max(0, m.start() - 12):m.end()] for m in _JOIN.finditer(v)]
+    if '·' not in v and _cols(v, _LC, k) != v: p.append('column not cut')
+    return p
+_sb = {k: b for k, v in SG['e'].items() for b in [_sign_bad(k, v)] if b}
+ok(not _sb, f'v1.19 (review #15 D2): no sign-dictionary entry merges table columns, leaves a lone letter or an unclosed quote ({len(_sb)}) {list(_sb.items())[:3]}')
+_cut = sum('·' in v for v in SG['e'].values())
+ok(_cut >= 230 and all(re.search(r' · (כוחו יפה|מיועד ל): \S', v) for v in SG['e'].values() if '·' in v), f'v1.19: {_cut} sign entries carry their last table column as " · כוחו יפה: / מיועד ל: …"')
+ok(_sign_bad('706', 'צומת מרומזר – הוראות כל דין בחירת הנתיבים תהיה') and _sign_bad('1', 'מקום "עצור') and _sign_bad('1', 'האו ר הירוק')
+   and not _sign_bad('706', SG['e']['706']), 'v1.19: the sign-entry check catches a merged column, an unclosed quote and a lone letter (self-test)')
+ok('בחירת הנתיבים' in SG['e']['706'] and ', בחירת הנתיבים' in SG['e']['706'] and SG['e']['706'].endswith('· מיועד ל: נוהג רכב'), 'v1.19: sign 706 reads "…הוראות כל דין, בחירת הנתיבים…" with its own column')
 
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
