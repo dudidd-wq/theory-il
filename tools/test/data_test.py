@@ -62,17 +62,18 @@ ok(not _bdn and not _bdr, f'v1.14: a note saying the bank differs is a conflict 
 # v1.14 (review #10 N5): coverage never rests on uncited lesson-body prose
 ok(not [k for k, e in CF['q'].items() for r in e['rule'] + e['ref'] if '#b' in r], 'v1.14: no verdict cites lesson-body prose (#b units)')
 _RJ9 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v119.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
-_RJ10 = {l.split()[0] for l in open('tools/coverage/rejudge_v120.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}  # a later file supersedes
+_RJ11 = {l.split()[0] for l in open('tools/coverage/rejudge_v1201.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}  # v1.20.1 supersedes
+_RJ10 = {l.split()[0] for l in open('tools/coverage/rejudge_v120.txt', encoding='utf-8') if l.strip() and not l.startswith('#')} | _RJ11  # a later file supersedes
 ok(len(_RJ9) >= 1 and all(q in _RJ10 or CF['q'][q]['by'] == 'v1.19' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ9.items()),
    f'v1.19: every re-judgement of review #15 ({len(_RJ9)}) is applied')
 _RJ8 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v118.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ9}
-ok(len(_RJ8) >= 13 and all(CF['q'][q]['by'] == 'v1.18' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ8.items()),
+ok(len(_RJ8) >= 13 and all(q in _RJ10 or CF['q'][q]['by'] == 'v1.18' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ8.items()),
    f'v1.18: every re-judgement of review #14 ({len(_RJ8)}) is applied')
 _RJ7 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v117.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ8 and l.split()[0] not in _RJ9}
-ok(all(CF['q'][q]['by'] == 'v1.17' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ7.items()),
+ok(all(q in _RJ10 or CF['q'][q]['by'] == 'v1.17' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ7.items()),
    f'v1.17: every re-judgement of review #13 not superseded by v1.18 ({len(_RJ7)}) is applied')
 _RJ6 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v116.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ8 and l.split()[0] not in _RJ9 and l.split()[0] not in _RJ7}
-ok(len(_RJ6) >= 15 and all(CF['q'][q]['by'] == 'v1.16' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ6.items()),
+ok(len(_RJ6) >= 15 and all(q in _RJ10 or CF['q'][q]['by'] == 'v1.16' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ6.items()),
    f'v1.16: every re-judgement of review #12 and the strict re-sample ({len(_RJ6)}) is applied')
 _S16 = open('tools/coverage/rejudge_v116_sample.md', encoding='utf-8').read()
 ok(len(set(re.findall(r'^\| *Q?(\d+) *\|', _S16, re.M))) >= 80, 'v1.16: strict re-sample covers at least 80 further B/A full verdicts')
@@ -900,6 +901,12 @@ ok(not _nolab and _lab >= 40, f'v1.20 (review #16 item 6): sign chips show colum
 _lj = open('js/learn.js', encoding='utf-8').read(); _i18 = open('js/i18n.js', encoding='utf-8').read()
 ok("filter(a => !(x.o && a.startsWith('Q:')))" in _lj and "class: 'small refs exq'" in _lj and _i18.count("'ln.pbExQ':") == 2,
    'v1.20 (review #16 N5): partial cards show the example bank question apart, labelled (he+en)')
+# v1.20.1 (review #17 #1): the rail worked example (Q449) must not say overtaking is already forbidden from sign 130 (~300 m);
+# TR 47(ה)(2) + textbook p. 82: only after the "100 מטר" sign (132)
+_rx = _LJI['rail']['ex'][0]
+ok('כבר אסור לעקוף' not in _rx['t'] and '132' in _rx['t'] and 'TR:47(ה)(2)' in _rx['also'] and 'OFF:textbook' in _rx['also'],
+   'rail#x0: no-overtaking starts after sign 132 ("100 מטר"), not at 130; TR:47 and textbook chips shown')
+ok(any('TR:47' in r['s'] and '132' in r['t'] for r in _LJI['rail']['rules']), 'rail TR 47(ה)(2) rule names sign 132 / "100 מטר"')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

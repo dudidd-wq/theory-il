@@ -13749,7 +13749,7 @@
 "why": "TR 47(ה)(2): no overtaking from the warning sign before the crossing until after it",
 "v": "full",
 "u": [
-"rail#r:לא עוקפים מתמרור האזהרה שלפני המפגש "
+"rail#r:לא עוקפים מהתמרור „100 מטר” (132) "
 ]
 },
 "1757": {
@@ -13795,7 +13795,7 @@
 "by": "sample",
 "v": "full",
 "u": [
-"rail#r:לא עוקפים מתמרור האזהרה שלפני המפגש "
+"rail#r:לא עוקפים מהתמרור „100 מטר” (132) "
 ],
 "why": "the cited rule states the correct answer"
 },

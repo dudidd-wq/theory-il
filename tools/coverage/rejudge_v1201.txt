@@ -1,0 +1,2 @@
+# v1.20.1 (review #17, final) re-judgements, applied after rejudge_v120.txt. Same line format.
+394 full +rail#r6 +rail#r4 | textbook p. 82: no overtaking after the sign "100 מטר" before a level crossing (TR 47(ה)(2)); LT 132 = level crossing ~100 m → answer 132
