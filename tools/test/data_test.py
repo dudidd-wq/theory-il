@@ -259,7 +259,7 @@ ok(f"{TBC[0]} of the {TBC[1]} lesson rules cite it; {TBC[2]} excerpts from {TBC[
    f'v1.10: LICENSE-DATA textbook counts match the build ({TBC})')
 ok("'ab.tbookText', ...(COV?.tb" in T('js', 'app.js') and I18.count('{0}') >= 2 and 'רוב הכללים' not in I18, 'v1.10: About textbook counts are computed, not "most rules"')
 ok('GitHub Pages' in I18 and I18.count('IP') >= 2 and "'ln.why'" in I18 and 'במבחן אין הסברים' in I18, 'v1.10: About privacy names GitHub Pages logging; law text says practice shows "Why?"')
-ok(all(len(v) == 9 and v[6] <= v[1] and v[8] <= v[7] for v in CJ.values()), 'v1.10/1.11: app coverage table carries the without-bank-sourced figure (<= full) and partial / shown with bank answer')
+ok(all(len(v) == 12 and v[6] <= v[1] and v[8] <= v[7] and v[10] <= v[9] for v in CJ.values()), 'v1.10/1.11: app coverage table carries the without-bank-sourced figure (<= full) and partial / shown with bank answer')
 ok(all(CA['class'][c]['full_nobank_pct'] <= CA['class'][c]['full_pct'] and CA['class'][c]['full_bank_sourced'] >= 0 for c in CA['class']), 'v1.10: per-class without-bank-sourced figure recorded')
 CM = T('docs', 'COVERAGE.md')
 ok(f"{CA['all']['full_nobank_pct']}%" in CM and 'bank-sourced' in CM, 'v1.10: COVERAGE.md reports the without-bank-sourced figure next to the headline')
@@ -568,6 +568,20 @@ ok(bool(_about) and _about in CM, f'v1.16: About class-B headline equals the COV
 ok(_E.get('B_strict') == CA['class']['B']['strict_pct'] and _E.get('B_full') == CA['class']['B']['full_pct'] and _CJ['tot']['B'][1] == _E['B_full'] and _CJ['tot']['B'][2] == _E['B_strict']
    and _E['B_lo'] <= _E['B_est'] <= _E['B_hi'] < _E['B_full'] and _E['B_strict'] < _E['B_lo'], 'v1.16: coverage.json estimate matches the class-B totals (strict < estimate range < full as judged)')
 _AJ = open(os.path.join(R, 'js', 'app.js'), encoding='utf-8').read()
+# v1.21 (Part 2): the 'מה האתר מכסה' panel numbers for B and A – counts add up to the pool, match the coverage report,
+# none untaught, an A estimate inside its own range below full, and every B/A bank question reachable in practice/exam and a lesson quiz
+_QH = J('data', 'q.he.json'); _QH = _QH if isinstance(_QH, list) else _QH.get('questions', _QH)
+_LS = J('data', 'lessons.json')['lessons']
+for _c in ('B', 'A'):
+    _v = _CJ['tot'][_c]; _n, _full, _strict, _part, _bo, _ns, _cf = _v[0], _v[9], _v[10], _v[7], _v[5], _v[4], _v[11]
+    _pool = {q['id'] for q in _QH if _c in q['t']}
+    _inq = {i for l in _LS if _c in l['cls'] for i in (l.get('quiz') or []) + [b['q'] for b in (l.get('pbank') or [])]}
+    ok(_n == len(_pool) and _full + _part + _bo == _n and _ns + _cf == _bo and _strict <= _full
+       and abs(100 * _full / _n - _E[_c + '_full']) < 0.06 and abs(100 * _strict / _n - _E[_c + '_strict']) < 0.06
+       and _E[_c + '_lo'] <= _E[_c + '_est'] <= _E[_c + '_hi'] < _E[_c + '_full'],
+       f'v1.21: coverage panel {_c}: {_full} full ({_strict} strict) + {_part} partial + {_bo} bank-only = {_n}, 0 untaught, estimate {_E[_c + "_est"]}%')
+    ok(_pool <= _inq and all(q['k'] in ('law', 'safety', 'signs', 'vehicle') for q in _QH if _c in q['t']),
+       f'v1.21: every class-{_c} bank question ({len(_pool)}) is in the practice/exam pool with a topic and in some lesson quiz')
 ok(0 < _AJ.find("t('ab.covB'") < _AJ.find("t('ab.covText'") and 'COV.tot[c][2]).toFixed(1)}% / ' in _AJ, 'v1.16: About shows the strict figure first, then the estimate next to the full figure')
 # v1.16 (review #12 D3): the official sources disagree on how often to check tyre pressure (textbook p.126 "weekly", p.150 and
 # the tyres page "every two weeks"); every rule that states a pressure-check frequency names both and says the sources differ

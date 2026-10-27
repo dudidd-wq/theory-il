@@ -155,15 +155,22 @@ def _est():
     for f in ('rejudge_v115_sample.md', 'rejudge_v116_sample.md'):
         m = re.search(r'\*\*(\d+) of (\d+) downgraded', open(P('tools/coverage/' + f), encoding='utf-8').read()); k += int(m[1]); n += int(m[2])
     chk = {int(x) for l in open(P('tools/coverage/strict_checked.txt'), encoding='utf-8') if not l.startswith('#') for x in l.split()}
-    B = [i for i in ALLIDS if 'B' in by[i]['t']]
-    fullB = [i for i in B if F[str(i)]['v'] == 'full']
-    un = [i for i in fullB if not F[str(i)].get('dict') and i not in chk]
     z = 1.96; ph = k / n; c = (ph + z * z / (2 * n)) / (1 + z * z / n); h = z * math.sqrt(ph * (1 - ph) / n + z * z / (4 * n * n)) / (1 + z * z / n)
-    e = lambda r: round(100 * (len(fullB) - len(un) * r) / len(B), 1)
-    return {'k': k, 'n': n, 'rate': round(100 * ph, 1), 'lo_rate': round(100 * (c - h), 1), 'hi_rate': round(100 * (c + h), 1), 'unchecked': len(un),
-            'B_full': T['class']['B']['full_pct'], 'B_strict': T['class']['B']['strict_pct'], 'B_est': e(ph), 'B_lo': e(c + h), 'B_hi': e(c - h)}
+    out = {'k': k, 'n': n, 'rate': round(100 * ph, 1), 'lo_rate': round(100 * (c - h), 1), 'hi_rate': round(100 * (c + h), 1)}
+    # v1.21: the same estimate for class A (same pooled downgrade rate; the samples were drawn from class-B verdicts, so for A it is an extrapolation)
+    for K in ('B', 'A'):
+        B = [i for i in ALLIDS if K in by[i]['t']]
+        fullB = [i for i in B if F[str(i)]['v'] == 'full']
+        un = [i for i in fullB if not F[str(i)].get('dict') and i not in chk]
+        e = lambda r: round(100 * (len(fullB) - len(un) * r) / len(B), 1)
+        if K == 'B': out['unchecked'] = len(un)
+        else: out['A_unchecked'] = len(un)
+        out.update({K + '_full': T['class'][K]['full_pct'], K + '_strict': T['class'][K]['strict_pct'], K + '_est': e(ph), K + '_lo': e(c + h), K + '_hi': e(c - h)})
+    return out
 EST = _est(); T['est'] = EST
-_t = lambda x: [x['n'], x['full_pct'], x['strict_pct'], x['any_pct'], x['none_nosource'], x['bank_only'], x['full_nobank_pct'], x['partial'], x['partial_shown']]
+_t = lambda x: [x['n'], x['full_pct'], x['strict_pct'], x['any_pct'], x['none_nosource'], x['bank_only'], x['full_nobank_pct'], x['partial'], x['partial_shown'],
+              # v1.21 (the 'מה האתר מכסה' panel): exact counts – full, strict-full, bank answer contradicts the law
+              x['full'], x['strict_full'], x['conflict']]
 json.dump({'v': 2, 'legend': {'f': 'taught', 'w': 'partly', 'n': 'not taught yet', 'S': 'no official state source', 'X': 'bank answer contradicts the law'},
            'est': EST,
            'tot': {'all': _t(T['all']), **{c: _t(T['class'][c]) for c in CLS}},
