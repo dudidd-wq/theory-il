@@ -305,13 +305,11 @@ for L in LESSONS:
         ex.append({**{k: v for k, v in x.items() if k not in ('chk', 'also')}, **({'also': [a_ for a_, _ in x['also']]} if x.get('also') else {}),
                    'qt': qt, 'x': [[d['s'], d['t']] for d in qt], **({'tr': trap(q_)} if q_ and trap(q_) is not None else {})})
     quiz = pick(L, dict(L['quiz']), False)
-    if COV:  # quiz = the bank questions the coverage map sends to this lesson (taught/likely), regex picks as fallback
-        mapped = [int(k) for k, v in COV.items() if v[0] in 'fa' and v[1] and v[1][0] == lid and int(k) in QS
-                  and set(QS[int(k)]['t']) & set(L['cls'])]
-        if all(sum(1 for i in mapped if c in QS[i]['t']) >= L.get('quiz_min', 5) for c in L['cls']):
-            quiz = sorted(mapped)
-        else:
-            quiz = sorted(set(mapped) | set(quiz))
+    if COV:  # quiz = the bank questions the coverage map answers with a unit of THIS lesson
+        # v1.20 (review #16 pedagogy): no regex fallback any more – it filled licence2 with 100 of 102 questions taught in other
+        # lessons (134 such questions over 3 lessons, Q1333 with no teaching unit at all). A lesson's practice now follows what it
+        # teaches: a full verdict with a unit in this lesson (partials join via pbank, below); data_test enforces it.
+        quiz = sorted(int(k) for k, v in COV.items() if v[0] == 'f' and lid in v[1] and int(k) in QS and set(QS[int(k)]['t']) & set(L['cls']))
     # v1.13 (review #9 D2): questions with no official source are never practised as regular lesson items –
     # they appear only in the 'מהמאגר הרשמי' bank-only lessons (question + published answer, no explanation)
     quiz = [i for i in quiz if i not in NOSRC]
@@ -330,7 +328,7 @@ for L in LESSONS:
             gal = [gal[int(k * step)] for k in range(n)]
     per = {c: sum(1 for i in quiz if c in QS[i]['t']) for c in L['cls']}
     for c, n in per.items():
-        if n < L.get('quiz_min', 5): errors.append(f'{lid}: only {n} quiz questions for class {c}')
+        if n < (L.get('quiz_min', 5) if not COV else 1): errors.append(f'{lid}: only {n} quiz questions for class {c}')
     out.append({'id': lid, 'cls': L['cls'], 'icon': L['icon'], 'title': L['title'], 'sub': L['sub'],
                 'body': L['body'], 'rules': rules, 'mnem': mnem,
                 'viz': L.get('viz', []), 'gal': gal, 'ex': ex, 'quiz': quiz, 'recap': recap})

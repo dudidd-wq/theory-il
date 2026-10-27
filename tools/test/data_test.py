@@ -843,6 +843,13 @@ _tbt = re.findall(r"'ab\.tbookText': '([^']*)'", _I18)
 ok(len(_TB) == 8 and _TB[2] == len(_TQ) and _TB[5] == _TW[len(_TW) // 2] and _TB[6] == _TW[-1] and _TB[7] == sum(w <= 20 for w in _TW)
    and len(_tbt) == 2 and all(all('{%d}' % i in x for i in (2, 5, 6, 7)) for x in _tbt) and not any(re.search(r'עד 20 מילים לקטע|at most 20 words', x) for x in _tbt),
    f"v1.20 (review #16 N2): About excerpt-length claim = data ({_TB[2:]} vs {len(_TQ)} excerpts, median {_TW[len(_TW) // 2]}, max {_TW[-1]}, ≤20: {sum(w <= 20 for w in _TW)})")
+# v1.20 (review #16 pedagogy): every question in a lesson's practice set is answered by a unit taught in THAT lesson
+# (v1.19: licence2 100/102 from other lessons, 134 such questions in 3 lessons, Q1333 with no teaching unit)
+_CF = json.load(open(os.path.join(R, 'data/coverage_full.json'), encoding='utf-8'))['q']
+_dq = [(l['id'], q) for l in _LJ.values() if not l['id'].startswith('bank_') for q in l['quiz']
+       if not any(u.split('#')[0] == l['id'] for u in (_CF.get(str(q), {}).get('rule') or []))]
+ok(not _dq and 1333 not in _LJ['licence2']['quiz'] and len(_LJ['licence2']['quiz']) >= 10,
+   f"v1.20 (review #16 pedagogy): every lesson practice question maps to a rule of the same lesson ({len(_dq)} dangling: {_dq[:6]}; licence2 {len(_LJ['licence2']['quiz'])})")
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

@@ -62,7 +62,7 @@ for ln in open(P('tools/coverage/rejudge_v113.txt'), encoding='utf-8'):
         e.update(v='none', u=[], src={'none-T': 'T', 'none-S': 'S', 'conflict': 'X'}[v]); e.pop('dict', None); e.pop('strict_u', None)
 # v1.14 (review #10): second strict re-judgement, applied after v1.13. Same line format; here 'full' may also raise a partial
 # (with +refs, the cited rules that decide the answer) and 'partial' may also re-point a partial (+refs replace its units).
-for _by, ln in ((b, l) for b, fn in (('v1.14', 'rejudge_v114.txt'), ('v1.15', 'rejudge_v115.txt'), ('v1.16', 'rejudge_v116.txt'), ('v1.17', 'rejudge_v117.txt'), ('v1.18', 'rejudge_v118.txt'), ('v1.19', 'rejudge_v119.txt')) for l in open(P('tools/coverage/' + fn), encoding='utf-8')):   # v1.15: review #11 re-judgement appended
+for _by, ln in ((b, l) for b, fn in (('v1.14', 'rejudge_v114.txt'), ('v1.15', 'rejudge_v115.txt'), ('v1.16', 'rejudge_v116.txt'), ('v1.17', 'rejudge_v117.txt'), ('v1.18', 'rejudge_v118.txt'), ('v1.19', 'rejudge_v119.txt'), ('v1.20', 'rejudge_v120.txt')) for l in open(P('tools/coverage/' + fn), encoding='utf-8')):   # v1.15: review #11 re-judgement appended
     ln = '' if ln.lstrip().startswith('#') else ln.strip()
     if not ln: continue
     head, why = (x.strip() for x in ln.split('|', 1)); qid, v, *add = head.split()

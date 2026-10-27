@@ -1,0 +1,14 @@
+# v1.20 (review #16) re-judgements, applied after rejudge_v119.txt. Same line format: "qid verdict [+lesson#rN ...] | why"
+# Pedagogy – licence2's own textbook rules (p. 145/151) state these answers; the unit is added after the existing one so the
+# question is practised in licence2 too (v1.19 filled licence2's quiz by regex with questions taught elsewhere)
+4 full +docs#r11 +licence2#r2 | TO:12א1(ז) (5 years + 24, or 3 years + 30); licence2#r2 (textbook p. 151) gives the first branch
+268 full +newdrv#x0 +licence2#r2 | new driver under 21: no more than two passengers unless a companion sits beside him in front – newdrv#x0 (unchanged); textbook p. 151 (licence2#r2) states it word for word
+653 full +newdrv#x0 +licence2#r2 | same rule as Q268 (private car) – textbook p. 151, licence2#r2
+1681 full +newdrv#x0 +licence2#r2 | same rule as Q268 (private car) – textbook p. 151, licence2#r2
+339 full +newdrv#c0 +licence2#r1 | a new driver's licence is valid two years – textbook p. 151 (licence2#r1)
+329 full +terms#r8 +licence2#r0 | B = motor vehicle up to 3,500 kg – terms#r8; textbook p. 145 (licence2#r0)
+1517 full +terms#r8 +licence2#r0 | B covers motor vehicles (private and commercial) up to 3,500 kg – terms#r8; textbook p. 145 (licence2#r0)
+290 full +law2#r1 +licence2#r3 | TO 27ב(א) owner liability unless he proves who drove – law2#r1; textbook p. 145 (licence2#r3) states it
+1736 full +law2#r1 +licence2#r3 | owner liable (incl. parking) unless he proves who drove – law2#r1; textbook p. 145 (licence2#r3) 'חנייה … אלא אם כן יוכיח מי נהג'
+323 full +docs#r3 +licence2#r3 | address change is reported to the Ministry of the Interior – docs#r3 (TR 13(א1)); textbook p. 145 (licence2#r3)
+1740 partial +terms2#r3 +licence2#r3 | 'pushing = driving' (TR 164; textbook p. 145 licence2#r3); the no-entry part of the answer is not in these passages

@@ -720,11 +720,12 @@
 }
 },
 "by": {
-"hand": 622,
-"spec": 697,
+"hand": 617,
+"v1.20": 11,
+"spec": 692,
 "v1.13": 28,
 "rejudge": 93,
-"sample": 215,
+"sample": 214,
 "v1.18": 20,
 "v1.14": 36,
 "v1.15": 17,
@@ -953,18 +954,20 @@
 "4": {
 "v": "full",
 "rule": [
-"docs#r11"
+"docs#r11",
+"licence2#r2"
 ],
 "ref": [
-"docs#r:מלווה לנהג חדש צעיר: מי שמחזיק 5 שני"
+"docs#r:מלווה לנהג חדש צעיר: מי שמחזיק 5 שני",
+"licence2#r:מלווה של נהג חדש: בן 24 ומעלה שמחזיק"
 ],
-"why": "rule written for this question (TO:12א1(ז))",
+"why": "TO:12א1(ז) (5 years + 24, or 3 years + 30); licence2#r2 (textbook p. 151) gives the first branch",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.20"
 },
 "5": {
 "v": "full",
@@ -6064,18 +6067,20 @@
 "268": {
 "v": "full",
 "rule": [
-"newdrv#x0"
+"newdrv#x0",
+"licence2#r2"
 ],
 "ref": [
-"newdrv#x:Q653"
+"newdrv#x:Q653",
+"licence2#r:מלווה של נהג חדש: בן 24 ומעלה שמחזיק"
 ],
-"why": "the cited rule states the correct answer",
+"why": "new driver under 21: no more than two passengers unless a companion sits beside him in front – newdrv#x0 (unchanged); textbook p. 151 (licence2#r2) states it word for word",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.20"
 },
 "269": {
 "v": "partial",
@@ -6482,12 +6487,14 @@
 "290": {
 "v": "full",
 "rule": [
-"law2#r1"
+"law2#r1",
+"licence2#r3"
 ],
 "ref": [
-"law2#r:עבירה שנעשתה ברכב (גם חנייה אסורה) נ"
+"law2#r:עבירה שנעשתה ברכב (גם חנייה אסורה) נ",
+"licence2#r:מי שדוחף רכב נחשב כמי שנוהג בו. בעל "
 ],
-"why": "rule written for this question (TO:27ב(א))",
+"why": "TO 27ב(א) owner liability unless he proves who drove – law2#r1; textbook p. 145 (licence2#r3) states it",
 "cls": [
 "1",
 "A",
@@ -6497,7 +6504,7 @@
 "D"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.20"
 },
 "291": {
 "v": "full",
@@ -7118,12 +7125,14 @@
 "323": {
 "v": "full",
 "rule": [
-"docs#r3"
+"docs#r3",
+"licence2#r3"
 ],
 "ref": [
-"docs#r:על שינוי בפרט שרשום בתעודה מודיעים ל"
+"docs#r:על שינוי בפרט שרשום בתעודה מודיעים ל",
+"licence2#r:מי שדוחף רכב נחשב כמי שנוהג בו. בעל "
 ],
-"why": "rule written for this question (TR:13(א1))",
+"why": "address change is reported to the Ministry of the Interior – docs#r3 (TR 13(א1)); textbook p. 145 (licence2#r3)",
 "cls": [
 "1",
 "A",
@@ -7133,7 +7142,7 @@
 "D"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.20"
 },
 "324": {
 "v": "full",
@@ -7223,18 +7232,20 @@
 "329": {
 "v": "full",
 "rule": [
-"terms#r8"
+"terms#r8",
+"licence2#r0"
 ],
 "ref": [
-"terms#r:רישיון B: רכב מנועי עד 3,500 ק\"ג ועד"
+"terms#r:רישיון B: רכב מנועי עד 3,500 ק\"ג ועד",
+"licence2#r:רישיון דרגה B מתיר לנהוג ברכב מנועי "
 ],
-"why": "the cited rule states the correct answer",
+"why": "B = motor vehicle up to 3,500 kg – terms#r8; textbook p. 145 (licence2#r0)",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.20"
 },
 "330": {
 "v": "none",
@@ -7396,18 +7407,20 @@
 "339": {
 "v": "full",
 "rule": [
-"newdrv#c0"
+"newdrv#c0",
+"licence2#r1"
 ],
 "ref": [
-"newdrv#c:כמה זמן אתה \"נהג חדש\"?"
+"newdrv#c:כמה זמן אתה \"נהג חדש\"?",
+"licence2#r:רישיון של נהג חדש תקף לשנתיים. את הש"
 ],
-"why": "the cited rule states the correct answer",
+"why": "a new driver's licence is valid two years – textbook p. 151 (licence2#r1)",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.20"
 },
 "340": {
 "v": "full",
@@ -13753,18 +13766,20 @@
 "653": {
 "v": "full",
 "rule": [
-"newdrv#x0"
+"newdrv#x0",
+"licence2#r2"
 ],
 "ref": [
-"newdrv#x:Q653"
+"newdrv#x:Q653",
+"licence2#r:מלווה של נהג חדש: בן 24 ומעלה שמחזיק"
 ],
-"why": "the cited rule states the correct answer",
+"why": "same rule as Q268 (private car) – textbook p. 151, licence2#r2",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "sample"
+"by": "v1.20"
 },
 "654": {
 "v": "partial",
@@ -28638,18 +28653,20 @@
 "1517": {
 "v": "full",
 "rule": [
-"terms#r8"
+"terms#r8",
+"licence2#r0"
 ],
 "ref": [
-"terms#r:רישיון B: רכב מנועי עד 3,500 ק\"ג ועד"
+"terms#r:רישיון B: רכב מנועי עד 3,500 ק\"ג ועד",
+"licence2#r:רישיון דרגה B מתיר לנהוג ברכב מנועי "
 ],
-"why": "the cited rule states the correct answer",
+"why": "B covers motor vehicles (private and commercial) up to 3,500 kg – terms#r8; textbook p. 145 (licence2#r0)",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.20"
 },
 "1518": {
 "v": "full",
@@ -31286,18 +31303,20 @@
 "1681": {
 "v": "full",
 "rule": [
-"newdrv#x0"
+"newdrv#x0",
+"licence2#r2"
 ],
 "ref": [
-"newdrv#x:Q653"
+"newdrv#x:Q653",
+"licence2#r:מלווה של נהג חדש: בן 24 ומעלה שמחזיק"
 ],
-"why": "the cited rule states the correct answer",
+"why": "same rule as Q268 (private car) – textbook p. 151, licence2#r2",
 "cls": [
 "B",
 "C1"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.20"
 },
 "1682": {
 "v": "full",
@@ -32283,12 +32302,14 @@
 "1736": {
 "v": "full",
 "rule": [
-"law2#r1"
+"law2#r1",
+"licence2#r3"
 ],
 "ref": [
-"law2#r:עבירה שנעשתה ברכב (גם חנייה אסורה) נ"
+"law2#r:עבירה שנעשתה ברכב (גם חנייה אסורה) נ",
+"licence2#r:מי שדוחף רכב נחשב כמי שנוהג בו. בעל "
 ],
-"why": "rule written for this question (TO:27ב(א))",
+"why": "owner liable (incl. parking) unless he proves who drove – law2#r1; textbook p. 145 (licence2#r3) 'חנייה … אלא אם כן יוכיח מי נהג'",
 "cls": [
 "1",
 "A",
@@ -32298,7 +32319,7 @@
 "D"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.20"
 },
 "1737": {
 "v": "full",
@@ -32363,12 +32384,14 @@
 "1740": {
 "v": "partial",
 "rule": [
-"terms2#r3"
+"terms2#r3",
+"licence2#r3"
 ],
 "ref": [
-"terms2#r:מי שמסיע רכב בכוח גופו (דוחף אותו) –"
+"terms2#r:מי שמסיע רכב בכוח גופו (דוחף אותו) –",
+"licence2#r:מי שדוחף רכב נחשב כמי שנוהג בו. בעל "
 ],
-"why": "rule covers part of the answer (TR:164)",
+"why": "'pushing = driving' (TR 164; textbook p. 145 licence2#r3); the no-entry part of the answer is not in these passages",
 "cls": [
 "A",
 "B",
@@ -32377,7 +32400,7 @@
 "D"
 ],
 "topic": "law",
-"by": "spec"
+"by": "v1.20"
 },
 "1741": {
 "v": "full",
