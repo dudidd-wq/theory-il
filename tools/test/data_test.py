@@ -61,22 +61,25 @@ _bdr = [(k, r) for k, e in CF['q'].items() if e['v'] != 'none' for r in e['rule'
 ok(not _bdn and not _bdr, f'v1.14: a note saying the bank differs is a conflict (X) {_bdn[:5]}; no verdict cites a rule that says the bank differs {_bdr[:5]}')
 # v1.14 (review #10 N5): coverage never rests on uncited lesson-body prose
 ok(not [k for k, e in CF['q'].items() for r in e['rule'] + e['ref'] if '#b' in r], 'v1.14: no verdict cites lesson-body prose (#b units)')
-_RJ8 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v118.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
-ok(len(_RJ8) >= 14 and all(CF['q'][q]['by'] == 'v1.18' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ8.items()),
+_RJ9 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v119.txt', encoding='utf-8') if l.strip() and not l.startswith('#')}
+ok(len(_RJ9) >= 1 and all(CF['q'][q]['by'] == 'v1.19' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ9.items()),
+   f'v1.19: every re-judgement of review #15 ({len(_RJ9)}) is applied')
+_RJ8 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v118.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ9}
+ok(len(_RJ8) >= 13 and all(CF['q'][q]['by'] == 'v1.18' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ8.items()),
    f'v1.18: every re-judgement of review #14 ({len(_RJ8)}) is applied')
-_RJ7 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v117.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ8}
+_RJ7 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v117.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ8 and l.split()[0] not in _RJ9}
 ok(all(CF['q'][q]['by'] == 'v1.17' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ7.items()),
    f'v1.17: every re-judgement of review #13 not superseded by v1.18 ({len(_RJ7)}) is applied')
-_RJ6 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v116.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ8 and l.split()[0] not in _RJ7}
+_RJ6 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v116.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ8 and l.split()[0] not in _RJ9 and l.split()[0] not in _RJ7}
 ok(len(_RJ6) >= 15 and all(CF['q'][q]['by'] == 'v1.16' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ6.items()),
    f'v1.16: every re-judgement of review #12 and the strict re-sample ({len(_RJ6)}) is applied')
 _S16 = open('tools/coverage/rejudge_v116_sample.md', encoding='utf-8').read()
 ok(len(set(re.findall(r'^\| *Q?(\d+) *\|', _S16, re.M))) >= 80, 'v1.16: strict re-sample covers at least 80 further B/A full verdicts')
-_RJ5 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v115.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ6 and l.split()[0] not in _RJ7 and l.split()[0] not in _RJ8}
-_RJ4 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v114.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ5 and l.split()[0] not in _RJ6 and l.split()[0] not in _RJ7 and l.split()[0] not in _RJ8}
+_RJ5 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v115.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ6 and l.split()[0] not in _RJ7 and l.split()[0] not in _RJ8 and l.split()[0] not in _RJ9}
+_RJ4 = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v114.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ5 and l.split()[0] not in _RJ6 and l.split()[0] not in _RJ7 and l.split()[0] not in _RJ8 and l.split()[0] not in _RJ9}
 ok(len(_RJ5) >= 15 and all(CF['q'][q]['by'] == 'v1.15' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none') for q, v in _RJ5.items()),
    f'v1.15: every re-judgement of review #11 and the strict re-sample ({len(_RJ5)}) is applied')
-_RJ = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v113.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ4 and l.split()[0] not in _RJ5 and l.split()[0] not in _RJ6 and l.split()[0] not in _RJ7 and l.split()[0] not in _RJ8}
+_RJ = {l.split()[0]: l.split()[1] for l in open('tools/coverage/rejudge_v113.txt', encoding='utf-8') if l.strip() and not l.startswith('#') and l.split()[0] not in _RJ4 and l.split()[0] not in _RJ5 and l.split()[0] not in _RJ6 and l.split()[0] not in _RJ7 and l.split()[0] not in _RJ8 and l.split()[0] not in _RJ9}
 ok(all(CF['q'][q]['by'] == 'v1.14' and CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none')
        and (v != 'conflict' or CF['q'][q].get('src') == 'X') for q, v in _RJ4.items()), f'v1.14: every re-judgement of review #10 ({len(_RJ4)}) is applied')
 ok(all(CF['q'][q]['by'] == 'v1.13' and (v in ('why',) or CF['q'][q]['v'] == {'partial': 'partial', 'full': 'full'}.get(v, 'none')) for q, v in _RJ.items()),
@@ -730,6 +733,46 @@ ok(_cut >= 230 and all(re.search(r' · (כוחו יפה|מיועד ל): \S', v) 
 ok(_sign_bad('706', 'צומת מרומזר – הוראות כל דין בחירת הנתיבים תהיה') and _sign_bad('1', 'מקום "עצור') and _sign_bad('1', 'האו ר הירוק')
    and not _sign_bad('706', SG['e']['706']), 'v1.19: the sign-entry check catches a merged column, an unclosed quote and a lone letter (self-test)')
 ok('בחירת הנתיבים' in SG['e']['706'] and ', בחירת הנתיבים' in SG['e']['706'] and SG['e']['706'].endswith('· מיועד ל: נוהג רכב'), 'v1.19: sign 706 reads "…הוראות כל דין, בחירת הנתיבים…" with its own column')
+
+# v1.19 (review #15 D1): operative-term audit. For every fully taught question, the answer's own words (not in the question) that the
+# law has in a paragraph a cited chip elides ("… ") must also appear in some displayed passage of the question's cited rules –
+# otherwise the deciding paragraph is hidden (Q1767: TR 47(ב)(3) was elided). Each pair left below was read: the hit is incidental.
+from overlap import words as _ow
+_LAW = json.load(open(os.path.join(R, 'tools', 'law', 'law.json')))
+def _nz(t): return re.sub(r'\s+', ' ', re.sub(r'[\u0591-\u05c7]', '', t.replace('־', ' ').replace('״', '"').replace('”', '"').replace('“', '"'))).strip()
+_XR = {f"{l['id']}#r{i}": r for l in LALL for i, r in enumerate(l['rules'])}
+def _elided(r):
+    out = ''
+    for src, ps in r.get('x', []):
+        m = re.match(r'(T[RO]):(\d+[א-ת]?\d*)', src)
+        if not m or '…' not in ps or m[2] not in _LAW[m[1]]: continue
+        T = _nz(_LAW[m[1]][m[2]]['text']); pcs = [p for p in (_nz(x).strip(' ;') for x in ps.split('…')) if p]; pos = []
+        for p in pcs:
+            i = T.find(p[:40])
+            if i < 0: break
+            pos.append((i, i + len(p)))
+        if len(pos) == len(pcs): out += ' ' + ' '.join(T[a[1]:b[0]] for a, b in zip(pos, pos[1:]))
+    return out
+ELIDE_OK = {('881', 'priority#r2'): 'מימינו – (3) itself gives way to all traffic on the paved road', ('1737', 'parking#r3'): '(6) shown',
+            ('1171', 'parking#r7'): 'the taxi exception is another unit; the elided items are other places', ('212', 'parking#r8'): '(12) shown (20 m)',
+            ('1757', 'parking2#r3'): '(9) shown (לרבות שולי הדרך)', ('213', 'parking2#r5'): '(12) shown incl. the 12 m proviso', ('1144', 'bus#r7'): 'לפחות – (1) hammers shown',
+            ('340', 'tractor2#r3'): '(4) shown (sign + lights)', ('1788', 'law2#r6'): 'TO 70 list – the elided items are other subjects', ('40', 'terms#r7'): 'vehicle-class table, other classes',
+            ('791', 'turns#r5'): 'textbook p.49 (two left lanes) shown', ('1587', 'moto3#r6'): 'bus-stop item shown', ('1305', 'heavy2#r2'): '(א) 12.00 shown',
+            ('1306', 'heavy2#r2'): '(א) 12.00 shown', ('1652', 'heavy2#r2'): '(ג) 18.75 shown', ('1799', 'heavy2#r2'): '(ד)(1) 16.50 shown',
+            ('1545', 'heavy2#r3'): 'TR 1 definition of נגרר shown; elided = other definitions', ('1425', 'cargo2#r5'): '(2) escort before/behind shown'}
+_eb = []
+for qid, e in cq.items():
+    if e[0] != 'f': continue
+    q = byid[int(qid)]; aw = _ow(q['a'][q['c']]) - _ow(q['q'])
+    shown = set().union(*[_ow(' '.join(p[1] for p in _XR[u].get('x', []))) for u in e[2] if u in _XR] or [set()])
+    for u in e[2]:
+        if u not in _XR: continue
+        hit = (aw & _ow(_elided(_XR[u]))) - shown
+        if hit and (len(hit) >= 2 or not aw & shown) and (qid, u) not in ELIDE_OK: _eb.append((qid, u, sorted(hit)[:4]))
+ok(not _eb, f'v1.19 (review #15 D1): no fully taught answer rests on a paragraph its cited chip elides ({len(_eb)}) {_eb[:4]}')
+_old = {'t': 'x', 's': 'TR:47(ב)', 'x': [['TR:47', '(ב) מותר לנוהג רכב לעקוף רכב אחר מצדו הימני במקרים אלה: (1) נוהג הרכב האחר נמצא בנתיב לפניה שמאלה בלבד או מתכוון לפנות שמאלה ואותת על כך; … (4) נוהג הרכב נוסע בנתיב המיועד לפניה ימינה בלבד.']]}
+ok('לתחבורה ציבורית' in _elided(_old) and 'נוהג הרכב נוסע בנתיב שיועד לתחבורה ציבורית' in _XR['overtake#r3']['x'][0][1] and '(2) בפניה שמאלה' in _XR['overtake#r3']['x'][0][1],
+   'v1.19: overtake#r3 shows TR 47(ב)(2) and (3) (Q1767); the audit sees the v1.18 elision (self-test)')
 
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)

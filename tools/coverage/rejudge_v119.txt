@@ -1,0 +1,3 @@
+# v1.19 (review #15) re-judgements, applied after rejudge_v118.txt. Same line format: "qid verdict [+lesson#rN ...] | why"
+# D1 – operative-term audit: the answer's operative words must be in a displayed passage of the cited rules (not in an elided paragraph)
+175 full +priority#r0 +priority#r1 | TR 64(א)(1) (give way to vehicles from the right) and 64(א)(2) (turning left: give way to oncoming) – the answer names both; was priority#r1 only, whose chip elides (1)

@@ -720,7 +720,7 @@
 }
 },
 "by": {
-"hand": 628,
+"hand": 627,
 "spec": 699,
 "v1.13": 29,
 "rejudge": 93,
@@ -730,6 +730,7 @@
 "v1.15": 18,
 "v1.17": 7,
 "link": 26,
+"v1.19": 1,
 "v1.16": 19,
 "rebase": 9
 },
@@ -4262,12 +4263,14 @@
 "175": {
 "v": "full",
 "rule": [
+"priority#r0",
 "priority#r1"
 ],
 "ref": [
+"priority#r:בלי תמרור: נותנים זכות קדימה לרכב שב",
 "priority#r:פונה שמאלה או עושה פרסה שמאלה – נותן"
 ],
-"why": "the cited rule states the correct answer",
+"why": "TR 64(א)(1) (give way to vehicles from the right) and 64(א)(2) (turning left: give way to oncoming) – the answer names both; was priority#r1 only, whose chip elides (1)",
 "cls": [
 "1",
 "A",
@@ -4277,7 +4280,7 @@
 "D"
 ],
 "topic": "law",
-"by": "hand"
+"by": "v1.19"
 },
 "176": {
 "v": "full",
