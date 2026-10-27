@@ -907,6 +907,8 @@ _rx = _LJI['rail']['ex'][0]
 ok('כבר אסור לעקוף' not in _rx['t'] and '132' in _rx['t'] and 'TR:47(ה)(2)' in _rx['also'] and 'OFF:textbook' in _rx['also'],
    'rail#x0: no-overtaking starts after sign 132 ("100 מטר"), not at 130; TR:47 and textbook chips shown')
 ok(any('TR:47' in r['s'] and '132' in r['t'] for r in _LJI['rail']['rules']), 'rail TR 47(ה)(2) rule names sign 132 / "100 מטר"')
+# v1.20.1 (review #17 #2): Q228 (getting on/off a moving vehicle) rests on TR 81 (duty#r11), not on the STOP-sign rule
+ok(CF['q']['228']['v'] == 'full' and CF['q']['228']['rule'] == ['duty#r11'], 'Q228 full on duty#r11 (TR 81), not priority#x1 (TR 64(ד))')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

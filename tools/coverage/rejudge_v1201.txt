@@ -1,2 +1,3 @@
 # v1.20.1 (review #17, final) re-judgements, applied after rejudge_v120.txt. Same line format.
 394 full +rail#r6 +rail#r4 | textbook p. 82: no overtaking after the sign "100 מטר" before a level crossing (TR 47(ה)(2)); LT 132 = level crossing ~100 m → answer 132
+228 full +duty#r11 | TR 81: no one gets on or off a vehicle except when it stands (no exception) → "forbidden outright"; textbook p. 12 the same. Was mapped to the STOP-sign rule priority#x1 (TR 64(ד)), unrelated
