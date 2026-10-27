@@ -6,7 +6,7 @@ import { t, uiLang } from './i18n.js';
 import * as st from './store.js';
 import * as tts from './tts.js';
 import { VIZ } from './viz.js';
-import { buildSteps, minutes, firstLine, partStarts, partOf } from './steps.js';
+import { buildSteps, minutes, firstLine, partStarts, partOf, grouped } from './steps.js';
 let L = null, SRC = {};
 export const QUIZ_N = 6, MASTER_PCT = 80;
 export async function loadLessons(getJSON) {
@@ -111,16 +111,40 @@ export function makeLearn(ctx) {
     const c = cls(), ls = lessonsFor(c);
     if (!ls.length) return screen(t('ln.title'), h('p', { class: 'empty', text: t('ln.noData') }));
     const done = masteredCount(c), sts = ls.map(l => status(l, ls)), cur = sts.findIndex(s => !s.mastered);
+    // v1.21 (1d): minutes and parts per lesson (step view), a 'next lesson' / 'continue where I stopped' card, lessons grouped by topic
+    const info = ls.map(l => { const sp = stepsOf(l, c, 'steps'); return { n: sp.length, min: minutes(sp.reduce((a, x) => a + x.w, 0)), parts: partStarts(sp.length).length }; });
+    const totalMin = info.reduce((a, x) => a + x.min, 0);
+    const lastId = st.lastLesson(), li = ls.findIndex(l => l.id === lastId), lp = li >= 0 ? st.lpos(lastId) || {} : {};
+    const going = li >= 0 && sts[li].unlocked && (+lp.s || 0) > 0 && (+lp.s || 0) < info[li].n - 1;
+    const nextI = cur >= 0 && sts[cur].unlocked ? cur : sts.findIndex(s => s.unlocked && !s.read);
+    const nextCard = h('div', { class: 'card nextcard' },
+      going ? h('p', {}, h('a', { class: 'btn primary big', href: '#/learn/' + ls[li].id, id: 'ln-cont' }, icon('repeat'),
+        he(h('span', { text: t('ln.cont', ls[li].title, (+lp.s || 0) + 1, info[li].n) })))) : null,
+      nextI >= 0 && !(going && nextI === li) ? h('p', {}, h('a', { class: 'btn ' + (going ? '' : 'primary big'), href: '#/learn/' + ls[nextI].id, id: 'ln-next' }, icon('book'),
+        he(h('span', { text: t('ln.nextL', ls[nextI].title, info[nextI].min) })))) : null,
+      h('p', { class: 'small muted', text: t('ln.totalMin', ls.length, totalMin) }));
+    const item = i => { const l = ls[i], s = sts[i], x = info[i];
+      const state = !s.unlocked ? t('ln.locked') : s.mastered ? t('ln.mastered') + ' · ' + t('ln.best', s.best) : s.read ? t('ln.read') + (s.tries ? ' · ' + t('ln.best', s.best) : '') : t('ln.new');
+      const inner = [h('span', { class: 'lnum' + (s.mastered ? ' ok' : ''), 'aria-hidden': 'true' }, s.mastered ? icon('check') : !s.unlocked ? icon('key') : String(i + 1)),
+        h('span', { class: 'lt' }, he(h('b', { text: l.title })), he(h('small', { text: l.sub })),
+          h('small', { class: 'lst', text: state + ' · ' + t('ln.minN', x.min) + (x.parts > 1 ? ' · ' + t('st.nParts', x.parts) : '') }))];
+      return h('li', { class: (s.unlocked ? '' : 'locked') + (i === cur ? ' cur' : ''), 'data-i': String(i + 1), 'data-id': l.id },
+        s.unlocked ? h('a', { href: '#/learn/' + l.id, 'aria-current': i === cur ? 'step' : null }, inner)
+          : h('div', { 'aria-disabled': 'true' }, inner)); };
+    const groups = grouped(ls).map(([g, is]) => { const m = is.filter(i => sts[i].mastered).length, r = is.filter(i => sts[i].read).length, mins = is.reduce((a, i) => a + info[i].min, 0);
+      return h('section', { class: 'lgroup', 'aria-labelledby': 'lg-' + g, 'data-group': g },
+        h('h2', { class: 'h3', id: 'lg-' + g, text: t('lg.' + g) }),
+        h('p', { class: 'small muted lgmeta', id: 'lgm-' + g, text: t('ln.grpMeta', is.length, r, m, mins) }),
+        h('div', { class: 'stbar lgbar', role: 'progressbar', 'aria-labelledby': 'lg-' + g, 'aria-describedby': 'lgm-' + g, 'aria-valuemin': '0', 'aria-valuemax': String(is.length), 'aria-valuenow': String(r) },
+          h('span', { class: 'stfill', style: { width: (100 * r / is.length) + '%' } })),
+        h('ol', { class: 'lessons' }, is.map(item))); });
     screen(t('ln.title'), h('p', { class: 'sub', text: clsName(c) + ' · ' + t('ln.count', ls.length, done) }),
       h('p', { class: 'small', text: t('ln.hint') }),
       uiLang() !== 'he' ? h('p', { class: 'notice', role: 'note' }, icon('info'), h('span', { text: t('ln.heOnly') })) : null,
+      nextCard,
       h('ol', { class: 'steps3', 'aria-label': t('ln.path') }, ['ln.step1', 'ln.step2', 'ln.step3'].map((k, i) => h('li', { class: i === 0 ? 'on' : '' }, h('b', { text: i + 1 }), h('span', { text: t(k) })))),
-      h('ol', { class: 'lessons' }, ls.map((l, i) => { const s = sts[i];
-        const state = !s.unlocked ? t('ln.locked') : s.mastered ? t('ln.mastered') + ' · ' + t('ln.best', s.best) : s.read ? t('ln.read') + (s.tries ? ' · ' + t('ln.best', s.best) : '') : t('ln.new');
-        const inner = [h('span', { class: 'lnum' + (s.mastered ? ' ok' : ''), 'aria-hidden': 'true' }, s.mastered ? icon('check') : !s.unlocked ? icon('key') : String(i + 1)),
-          h('span', { class: 'lt' }, he(h('b', { text: l.title })), he(h('small', { text: l.sub })), h('small', { class: 'lst', text: state }))];
-        return h('li', { class: (s.unlocked ? '' : 'locked') + (i === cur ? ' cur' : '') },
-          s.unlocked ? h('a', { href: '#/learn/' + l.id, 'aria-current': i === cur ? 'step' : null }, inner) : h('div', { 'aria-disabled': 'true' }, inner)); })),
+      h('p', { class: 'small muted', text: t('ln.grpHint') }),
+      ...groups,
       cur === -1 ? h('p', { class: 'banner', role: 'status' }, icon('award'), h('span', { text: t('ln.allDone') })) : null,
       h('div', { class: 'row' }, link(t('nav.practice'), '#/practice', 'btn', 'book'), link(t('nav.exam'), '#/exam', 'btn', 'exam')),
       h('p', { class: 'small muted', text: t('ln.own') }));

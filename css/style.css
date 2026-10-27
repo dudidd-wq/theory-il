@@ -374,3 +374,9 @@ line.vz-span { stroke: #f3a712; stroke-width: 6; fill: none; }
 .partnav { flex-wrap: wrap; }
 .partnav .btn { min-height: 44px; min-width: 44px; }
 .partend { margin-top: 1rem; }
+.nextcard { padding-top: 12px; }
+.nextcard .btn { min-height: 48px; white-space: normal; text-align: start; }
+.lgroup { margin: 18px 0 8px; }
+.lgroup > h2 { margin: 0 0 2px; }
+.lgmeta { margin: 0 0 6px; }
+.lgbar { margin-bottom: 10px; height: 8px; }

@@ -191,8 +191,15 @@ async function run(prof, opts) {
   // learning stage: path → lesson (law chips, diagram + text alternative, recap) → mini-quiz → mastery → unlock
   const LJ = await p.evaluate(() => fetch('data/lessons.json').then(r => r.json())), LB = LJ.lessons.filter(l => l.cls.includes('B'));
   await go(p, '#/learn'); await p.waitForSelector('.lessons');
-  ok(await p.locator('.lessons li').count() === LB.length && await p.locator('.lessons li:nth-child(1) a').count() === 1 && await p.locator('.lessons li:nth-child(2) [aria-disabled="true"]').count() === 1, `learn path: ${LB.length} lessons for B, only the first open`);
+  ok(await p.locator('.lessons li').count() === LB.length && await p.locator('.lessons li[data-i="1"] a').count() === 1 && await p.locator('.lessons li[data-i="2"] [aria-disabled="true"]').count() === 1, `learn path: ${LB.length} lessons for B, only the first open`);
   await axe(p, 'learn-path', prof);
+  // v1.21 (1d): lessons grouped by topic (each once, in path order inside a topic), per-topic progress + minutes, a 'next lesson' button
+  { const ids = await p.$$eval('.lgroup .lessons li', ls => ls.map(l => l.dataset.id)), ng = await p.locator('.lgroup').count();
+    const nums = await p.$$eval('.lgroup', gs => gs.map(g => [...g.querySelectorAll('li')].map(l => +l.dataset.i)));
+    ok(ng >= 5 && ids.length === LB.length && new Set(ids).size === LB.length && nums.every(a => a.every((x, k) => !k || x > a[k - 1]))
+      && await p.locator('.lgroup .stbar[role=progressbar]').count() === ng && /דק׳/.test(await p.textContent('.lgroup .lgmeta'))
+      && await p.getAttribute('#ln-next', 'href') === '#/learn/' + LB[0].id && /השיעור הבא: .+ · כ-\d+ דק׳/.test(await p.textContent('#ln-next')),
+      `learn path grouped by topic: ${ng} topics, every lesson once, topic progress + minutes, 'השיעור הבא' → lesson 1`); }
   // v1.21: a lesson opens step by step – progress 'שלב 1 מתוך N', back/next ≥44px, focus on the step heading, aria-live, reading time, resume
   { const L0 = LB[0]; await go(p, '#/learn/' + L0.id); await p.waitForSelector('.lstep');
     const N = +(/מתוך (\d+)/.exec(await p.textContent('#st-pos')) || [])[1];
@@ -207,6 +214,10 @@ async function run(prof, opts) {
     await p.reload(); await p.waitForSelector('.lstep');
     ok(/^שלב 2 מתוך/.test((await p.textContent('#st-pos')).trim()) && await p.locator('.resume').count() === 1
       && (await p.evaluate(id => JSON.parse(localStorage.getItem('theoryIL.pos'))[id].s, L0.id)) === 1, 'steps: the position is remembered on this device (reload → step 2, "continue where you stopped" note)');
+    await go(p, '#/learn'); await p.waitForSelector('#ln-cont');
+    ok(/להמשיך מאיפה שעצרתי: .+ \(שלב 2 מתוך \d+\)/.test(await p.textContent('#ln-cont')) && (await p.locator('#ln-cont').boundingBox()).height >= 44, "learn path: 'להמשיך מאיפה שעצרתי' names the lesson and step 2");
+    await p.click('#ln-cont'); await p.waitForSelector('.lstep');
+    ok(/^שלב 2 מתוך/.test((await p.textContent('#st-pos')).trim()), "'continue' opens the lesson at the saved step");
     await p.click('.resume button'); await p.waitForTimeout(100);
     ok(/^שלב 1 מתוך/.test((await p.textContent('#st-pos')).trim()), 'steps: "start over" returns to step 1');
     for (let k = 1; k < N; k++) { await p.click('.stnav .stnext'); await p.waitForTimeout(40); }
@@ -348,7 +359,7 @@ async function run(prof, opts) {
     console.log(`  STATS(${prof}) steps-view words per card: max ${srt[srt.length - 1]}, median ${med(srt)}, cards ${per.length}; steps per lesson: max ${Math.max(...nst)}, median ${med([...nst].sort((a, b) => a - b))}; full-page words: max ${Math.max(...FULLW)}, median ${med([...FULLW].sort((a, b) => a - b))}`);
     ok(!bad.length && srt[srt.length - 1] <= 150 && med(srt) <= 100, `all ${LBA.length} B/A lessons step by step: every rule, diagram, example and bank card is on some card; axe clean; words per card median ${med(srt)} (≤100), max ${srt[srt.length - 1]} (${BIG.join(' ')}) ${bad.slice(0, 4).join(' | ')}`); }
   await go(p, '#/learn'); await p.waitForSelector('.lessons');
-  ok(await p.locator('.lessons li:nth-child(2) a').count() === 1, 'reading lesson 1 unlocked lesson 2');
+  ok(await p.locator('.lessons li[data-i="2"] a').count() === 1, 'reading lesson 1 unlocked lesson 2');
   await go(p, '#/parent'); ok(new RegExp(`שיעורים שנשלטו\\s*1/${LB.length}`).test(await text(p)), 'parent view lists lessons mastered');
   await go(p, '#/stats'); ok(/שיעורים שנשלטו/.test(await text(p)), 'readiness hint mentions lessons');
   // backup code → reset → restore → undo
