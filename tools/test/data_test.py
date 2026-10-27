@@ -531,6 +531,13 @@ ok(_E.get('B_strict') == CA['class']['B']['strict_pct'] and _E.get('B_full') == 
    and _E['B_lo'] <= _E['B_est'] <= _E['B_hi'] < _E['B_full'] and _E['B_strict'] < _E['B_lo'], 'v1.16: coverage.json estimate matches the class-B totals (strict < estimate range < full as judged)')
 _AJ = open(os.path.join(R, 'js', 'app.js'), encoding='utf-8').read()
 ok(0 < _AJ.find("t('ab.covB'") < _AJ.find("t('ab.covText'") and 'COV.tot[c][2]).toFixed(1)}% / ' in _AJ, 'v1.16: About shows the strict figure first, then the estimate next to the full figure')
+# v1.16 (review #12 D3): the official sources disagree on how often to check tyre pressure (textbook p.126 "weekly", p.150 and
+# the tyres page "every two weeks"); every rule that states a pressure-check frequency names both and says the sources differ
+_tp = [f"{_l['id']}#r{_i}" for _l in LALL for _i, _r in enumerate(_l['rules']) if 'לחץ האוויר' in _r['t'] and re.search('שבוע', _r['t'])]
+_tpb = [u for u in _tp if not all(w in (lambda r: r['t'])(LB[u.split('#')[0]]['rules'][int(u.split('#r')[1])]) for w in ('פעם בשבוע', 'אחת לשבועיים', 'אינ'))
+        or not all(any(w in x[1] for x in LB[u.split('#')[0]]['rules'][int(u.split('#r')[1])]['x']) for w in ('פעם בשבוע', 'אחת לשבועיים'))]
+ok(len(_tp) >= 2 and not _tpb, f'v1.16 (review #12 D3): tyre-pressure frequency rules state both official wordings, cite both and label the inconsistency ({len(_tp)} rules) {_tpb}')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
+
 
