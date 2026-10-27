@@ -637,6 +637,14 @@ ok(_low <= set(_CLAIM_OK), f'v1.17 (review #13 N5): every rule clause is backed 
 _alltxt = json.dumps(L, ensure_ascii=False)
 _gone = ['וגם בזמן עקיפה אין לעבור אותה', 'רק אם הוא כבר החל לצאת', 'כוח הבלימה או כוח ההתמדה', 'למשל כשרכב נכנס לנתיבך', 'גם ביום בקיץ']
 ok(not [g for g in _gone if g in _alltxt], f'v1.17 (review #13 N4/N5): phrases not in the source are gone from the lessons {[g for g in _gone if g in _alltxt]}')
+_ltx = [(k, e) for k, v in _SRC.items() if k.startswith('LT:') for e in v.get('ex', [])]
+_badlt = [k for k, e in _ltx if e.endswith('נוהג רכב') or (len(e) >= 200 and not _re.search(r'[.!?)…]$', e)) or _re.search(r'(^|\s)![א-ת]', e)]
+ok(not _badlt, f'v1.17 (review #13 N7): {len(_ltx)} sign-table passages end on a whole word ("…" when cut), without the addressee column "נוהג רכב" or a reversed "!" {_badlt[:6]}')
+_incon = []
+for _l in L:
+    _nr = {(_r.get('t') or '')[:40] for _r in _l.get('rules', []) if 'אינו אחיד' in (_r.get('t') or '')}
+    _incon += [f"{_l['id']}:{e.get('q')}" for e in (_l.get('ex') or []) if (e.get('t') or '')[:40] in _nr and 'אינו אחיד' not in e.get('t', '')]
+ok(not _incon, f'v1.17 (review #13 N8): a lesson example keeps the "the book is not uniform" note of its rule {_incon[:5]}')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 

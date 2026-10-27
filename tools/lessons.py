@@ -34,7 +34,7 @@ def lt_windows(num):
     pat = (r'ס\s*-\s*' + num[2:] if num.startswith('ס-') else re.escape(num)) + r'(?![\d,])'
     for m in re.finditer(r'(?<![\d,])' + pat, LOT_ALL[START:]):
         i = START + m.start()
-        out.append(LOT_ALL[i:i + 400])
+        out.append(LOT_ALL[i:i + 700])   # v1.17 (review #13 N7): long enough that an entry starting late in the window is not cut
     return out
 
 def anchor(key):
@@ -113,15 +113,23 @@ def source(src, checks, where):
                       and not re.search(r'(?:^|\s)(?:או|עד|תמרור|ו)\s?$', _t[:m.start()])), None)
             # v1.16: a services symbol (ס-130) ends at the next symbol number
             m = m or (re.search(r'\sס\s*-\s*\d{2,3}(?!\d)', _t) if key.startswith('ס-') else None)
+            m_end = bool(m)
             e2 = e2[:len(key) + m.start()] if m else e2
             # v1.15: never run into the PDF page header ("12 לוח תמרורים (לות"ם) ספטמבר 2022 …") or the variant entry ("150 פ")
             m = re.search(r'\s\d{1,3} לוח תמרורים|\sלוח תמרורים \(|\s' + re.escape(key) + r' ?פ(?![א-ת])', e2[len(key):])
+            m_end = m_end or bool(m)
             e2 = e2[:len(key) + m.start()] if m else e2
             # v1.17 (review #13 N2): also drop the PDF's displaced stand-alone punctuation (" , .בהתאמה", "בצבע , כחול")
             e2 = re.sub(r'(^|\s)[.,:;]+(?=\S)', r'\1', e2)
             e2 = re.sub(r'\(\)([^\s()]+)', r'(\1)', e2)
-            e2 = re.sub(r'""([^\s"]+)', r'"\1"', e2)   # and reversed quotes 'תמרור ""עצור' -> 'תמרור "עצור"'   # RTL-reversed brackets "()קמפינג" -> "(קמפינג)"
-            return e, re.sub(r'\s+', ' ', re.sub(r'(?<=\s)[.,:;]+(?=\s|$)', '', e2)).strip()
+            e2 = re.sub(r'""([^\s"]+)', r'"\1"', e2)
+            e2 = re.sub(r'(^|\s)!([א-ת]+)', r'\1\2!', e2)   # v1.17: RTL-reversed '!עצור' -> 'עצור!'   # and reversed quotes 'תמרור ""עצור' -> 'תמרור "עצור"'   # RTL-reversed brackets "()קמפינג" -> "(קמפינג)"
+            e2 = re.sub(r'\s+', ' ', re.sub(r'(?<=\s)[.,:;]+(?=\s|$)', '', e2)).strip()
+            # v1.17 (review #13 N7): the table's last column names who the sign addresses ("נוהג רכב") – not part of the meaning
+            e2 = re.sub(r'\s+נוהג רכב$', '', e2)
+            # v1.17: an entry cut by the 220-character cap ends at a whole word, marked '…'
+            if len(e2) >= 200 and not re.search(r'[.!?)]$', e2) and not m_end: e2 = e2.rsplit(' ', 1)[0] + ' …'
+            return e, e2
         if ok:
             # v1.15 (review #11 C1): prefer the window where the number opens the sign's own entry (its cut entry holds the checks),
             # not a cross-reference such as "עד לתמרור 433 , 434" inside the previous sign
