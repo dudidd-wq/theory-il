@@ -1,0 +1,9 @@
+# v1.17 (review #13, items N5/N6) strict re-judgement, applied after rejudge_v116.txt. Same line format: "qid verdict [+lesson#rN ...] | why"
+61 full +duty#r1 | TR 23(a)(1)+(b): obey "שוטר שהזדהה בתעודת מינוי" even against signs – now stated in the rule and quoted
+888 partial | yield2#r0 now states only the textbook rule (the exiting driver yields); slowing to let him merge rests on yield2#r4 ("be ready to give up right of way") – it does not decide the picture
+843 partial | the textbook (p.115) defines a skid as loss of grip after a wrong driving action; "braking / inertia force overcomes grip" is not in an official passage
+955 none-S | its only cited unit (yield2#r4) matched it through the uncited example "כשרכב נכנס לנתיבך", removed in v1.17 (review #13 N5); no official passage on lanes merging from both sides
+# stricter claim-in-passage scan (v1.17, N5): rules lost an uncited example or gloss, so the questions it decided drop to partial
+879 partial | turns#r1 now states only p.47 ("בודקים אם אין רכב אחר בתנועה מצדנו הימני"); the cyclist example that decided the answer was uncited
+725 partial | as 879: letting the cyclist pass and turning behind him is not in the cited p.47 passage
+1046 partial | TR 318א: passing the emissions test is a condition for renewing the licence; "done at the annual licensing test" was an uncited inference

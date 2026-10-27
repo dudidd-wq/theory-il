@@ -85,7 +85,7 @@ for i, e in CF['q'].items():
 ok(not bad, f'every stored unit reference resolves to exactly one unit {bad[:3]}')
 # keyword overlap: the cited unit must share a content word with the question or its answer (stale-pointer guard);
 # the allowlist holds checked pairs whose overlap is a synonym only
-OVL_OK = {('981', 'overtake'): 'ימין / ימני', ('172', 'roadparts'): 'דרך – the defined term itself (a stopword for the matcher)', ('1064', 'defensive'): 'הסחת / היסח דעת', ('910', 'peds2'): 'ילדים / ליד בתי ספר (partial; the textbook excerpt sample shifted in v1.10)'}
+OVL_OK = {('446', 'signs3'): 'the question is the picture of sign 128 itself (v1.17: the uncited "slow down" sentence was removed)', ('1792', 'maint2'): 'ינהג / לנסוע – the answer "none is right" negates each option (v1.17: the uncited "גם ביום בקיץ" was removed)', ('981', 'overtake'): 'ימין / ימני', ('172', 'roadparts'): 'דרך – the defined term itself (a stopword for the matcher)', ('1064', 'defensive'): 'הסחת / היסח דעת', ('910', 'peds2'): 'ילדים / ליד בתי ספר (partial; the textbook excerpt sample shifted in v1.10)'}
 ut = {u['id']: u['text'] for u in _U}; bad = []
 for i, e in cq.items():
     if e[0] == 'n': continue
@@ -568,6 +568,75 @@ _PGl = _PG if isinstance(_PG, list) else list(_PG.values())
 ok(_my and all(SRC[k].get('flaky') for k in _my) and "'ln.flaky'" in I18 and 'x.flaky' in JL and "b'%PDF-'" in _FC and '--pdf-dir' in _FC
    and all('intermittent' in (_PG[i].get('note') or '') for i in ('edu07', 'edu13')) and not any('removed upstream' in (p.get('note') or '') for p in _PGl),
    f'v1.17 (review #13 N1): {len(_my)} MoE-server sources flagged as flaky in the UI; fetch_cache checks %PDF + sha, retries, falls back to --pdf-dir')
+
+# v1.17 (review #13 N4/N5): stricter claim-in-passage check. Every clause of a rule (3+ words of 4+ letters) must have
+# at least 34% of its words (with Hebrew prefix/suffix stems) in the rule's own cited passages or the full cited section.
+# Remaining low-overlap clauses were each re-read against the source; they are paraphrase, a heading or a gloss of a section number.
+import re as _re
+_LAW = json.load(open(os.path.join(os.path.dirname(__file__), '..', 'law', 'law.json')))
+_SRC = json.load(open(os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'sources.json')))
+def _stems(w):
+    out = {w}
+    while len(w) > 3 and w[0] in 'והבלמשכ': w = w[1:]; out.add(w)
+    for x in list(out):
+        for suf in ('ים', 'ות', 'ה', 'ת', 'ו', 'י'):
+            if x.endswith(suf) and len(x) - len(suf) >= 3: out.add(x[:-len(suf)])
+    return out
+def _norm(t): return _re.sub(r'[\u0591-\u05C7]', '', t).replace('־', ' ').replace('-', ' ').replace('״', '"')
+def _full(sid):
+    m = _re.match(r'(TR|TO):(\d+[א-ת]*)', sid)
+    if m and m[2] in _LAW[m[1]]: return _LAW[m[1]][m[2]]['text']
+    e = _SRC.get(sid, {}).get('ex', '')
+    return ' '.join(e) if isinstance(e, list) else str(e)
+_CLAIM_OK = {
+ 'accident#r7': 'heading clause; the cited MDA text is the duty to stop and help',
+ 'moto3#r4': 'TR 306 "all parts and accessories ... at all times" read for lights by day',
+ 'newdrv#r7': 'section-number glosses (57, 26(2)) of the cited third schedule',
+ 'roads2#r20': 'slow down / stop if needed – paraphrase of TR 64(ב) yield',
+ 'signal#r0': 'list heading of TR 41 (turn, deviate, move off)',
+ 'signal#r5': 'paraphrase of TR 41(ג) giving the signalling vehicle room',
+ 'signs2#r10': 'heading for the service-symbol signs of the sign table',
+ 'taxi2#r4': 'list heading of the cited bus-driver sections',
+ 'taxi2#r5': 'list heading of the cited passenger sections',
+ 'vehicle#r13': 'paraphrase of TR 306/308: do not drive a vehicle that is not in order',
+ 'vehicle#r2': 'heading of the emergency-page list of warning signs',
+ 'vehicle#r3': 'paraphrase of TR 306 + 318א (engine condition)',
+ 'rules4#r11': 'paraphrase of TO 62 (forging / altering a licence)',
+ 'rules4#r2': 'paraphrase of TR 72',
+ 'law4#r12': 'meta note on the bank answer, not a claim',
+ 'priority#r10': 'paraphrase of TR 64 entering a busy junction',
+ 'equip#r17': 'paraphrase of TR 87 (100 m behind)',
+ 'moto2#r14': 'purpose clause of the cited textbook passage',
+ 'alc2#r4': 'heading of the cited TO 47/47א clauses',
+ 'brakes3#r5': 'textbook ABS passage paraphrased (pedal vibration is normal)',
+ 'docs#r0': 'heading of TO 3 / TR 2 documents list',
+ 'gap2#r3': 'heading of the tailgating textbook case',
+ 'parking#r7': 'paraphrase of TR 72(ב) bridge/tunnel 50 m',
+ 'rail2#r4': 'sign name heading',
+ 'shoulder2#r6': 'paraphrase of TR 21(ב)',
+ 'signs#r7': 'TR 1 definition of a sign includes road markings',
+ 'signs3#r12': 'sign-group heading',
+ 'speed#r5': 'paraphrase of the speed-limit sign meaning',
+ 'taxi2#r7': 'heading of the cited taxi-marking section',
+ 'winter2#r0': 'paraphrase of the cited textbook lights/windows passage',
+}
+_SK = _re.compile(r'נוהגים אחרת נוהגים נכון|kids\.gov|המקורות הרשמיים|הספר עצמו|אינו אחיד|בנוסח הפקודה')
+_low = set()
+for _l in L['lessons'] if isinstance(L, dict) else L:
+    for _i, _r in enumerate(_l.get('rules', [])):
+        _xs = _r.get('x') or []
+        if not _xs: continue
+        _P = _norm(' '.join(x[1] for x in _xs) + ' ' + ' '.join(_full(x[0]) for x in _xs))
+        for _c in _re.split(r'[.;:?!]\s|\s–\s|, (?=לכן|למשל|וגם|כי|כש)', _norm(_r.get('t') or '')):
+            if _SK.search(_c): continue
+            _ws = _re.findall(r'[א-ת]{4,}', _c)
+            if len(_ws) < 3: continue
+            _miss = [w for w in _ws if not any(st in _P for st in _stems(w))]
+            if 1 - len(_miss) / len(_ws) < 0.34: _low.add(f"{_l['id']}#r{_i}")
+ok(_low <= set(_CLAIM_OK), f'v1.17 (review #13 N5): every rule clause is backed by its cited passage – {len(_low)} low-overlap rules, all reviewed; new: {sorted(_low - set(_CLAIM_OK))[:8]}')
+_alltxt = json.dumps(L, ensure_ascii=False)
+_gone = ['וגם בזמן עקיפה אין לעבור אותה', 'רק אם הוא כבר החל לצאת', 'כוח הבלימה או כוח ההתמדה', 'למשל כשרכב נכנס לנתיבך', 'גם ביום בקיץ']
+ok(not [g for g in _gone if g in _alltxt], f'v1.17 (review #13 N4/N5): phrases not in the source are gone from the lessons {[g for g in _gone if g in _alltxt]}')
 print(f'\n{len(fails)} failed' if fails else '\nall data checks passed' + (f' ({len(SKIPS)} skipped: official cache absent)' if SKIPS else ''))
 sys.exit(1 if fails else 0)
 
